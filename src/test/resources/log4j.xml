@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.cacao.4tuna">
+	<logger name="com.cacao.classting">
 		<level value="info" />
 	</logger>
 	
