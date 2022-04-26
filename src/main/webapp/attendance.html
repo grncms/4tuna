@@ -59,13 +59,24 @@
  gap : 8px;
 }
 
-.attendance th > div {
+
+
+.attendance th:not(:first-child) {
+	padding: 3px;
+	width: 15%;
+}
+
+.attendance th > div{
 	display:flex;
  flex-direction:column;
  justify-content: center;
  align-items : center;
  gap : 0px;
+ padding : 0px;
+
 }
+
+
 </style>
 </head>
 <body>
@@ -167,8 +178,8 @@
 						</div>
 					</div>
 					<div class="col-3">
-						출석완료
-						2/6명
+						<div>출석완료</div>
+						<div><b>2/6</b></div>
 					</div>
 				</div>	
 			</div>
@@ -187,14 +198,35 @@
 							<th></th>
 							<th>
 								<div>
-									<p>화</p>
-									<p>04.19</p>
+									<div>월</div>
+									<div>04.19</div>
 								</div>
 							</th>
-							<th>&nbsp;&nbsp;화<br>04.19</th>
-							<th>&nbsp;&nbsp;수<br>04.20</th>
-							<th>&nbsp;&nbsp;목<br>04.21</th>
-							<th>&nbsp;&nbsp;금<br>04.22</th>
+							<th>
+								<div>
+									<div>월</div>
+									<div>04.19</div>
+								</div>
+							</th>
+							<th>
+								<div>
+									<div>월</div>
+									<div>04.19</div>
+								</div>
+							</th>
+							<th>
+								<div>
+									<div>월</div>
+									<div>04.19</div>
+								</div>
+							</th>
+							<th>
+								<div>
+									<div>월</div>
+									<div>04.19</div>
+								</div>
+							</th>
+							
 						</tr>
 					</thead>
 					<tbody>
