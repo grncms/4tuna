@@ -13,6 +13,12 @@
 
 <title>main</title>
 <style type="text/css">
+body{
+	background-color: #F6F9F7;
+}
+header{
+	background-color: white;
+}
 	#home{
 		margin-left: 40px;
 		font-size: 18px;
@@ -21,51 +27,15 @@
 		margin-left: 20px;
 		font-size: 18px;
 	}
+	#main{
+		width: 900px;
+	}
 	.icon{
 		display: inline;
 		margin-right: 20px;
 	}
 	#profile{
 		margin-left: 20px;
-	}
-	#main{
-		width: 60%;
-	}
-	#main_bg{
-		height: 110px;
-		border-radius: 7px;
-		margin-top: 20px;
-	}
-	#classNotice{
-		border: 1px solid #dcdcdc;
-		border-radius: 10px;
-		width: 100%;
-		height: 500px;
-		margin-top: 20px;
-		padding: 30px;
-		height: auto;
-	}
-	#classList{
-		border: 1px solid #dcdcdc;
-		border-radius: 10px;
-		width: 100%;
-		height: 300px;
-		margin-top: 20px;
-		padding: 20px;
-		height: auto;
-	}
-	#schInfo{
-		border: 1px solid #dcdcdc;
-		border-radius: 10px;
-		width: 100%;
-		height: 300px;
-		margin-top: 20px;
-		padding-left: 30px;
-		padding-bottom: 30px;
-		padding-right: 30px;
-		padding-top: 20px;
-		height: auto;
-		background-color: #F6F9F7;
 	}
 	i{
 		padding-left: 20px;
@@ -77,45 +47,22 @@
 	}
 	p {
 		word-wrap: break-word;
-	}
-	#content{
 		font-size: 15px;
 	}
-	#date{
-		font-size: 13px;
+	.btn-group{
+		font-size: 15px;
+		padding-top: 15px; 
+		padding-bottom: 15px;
 		color: #c8c8c8;
 	}
-	#btn-add{
-		border-radius: 50px;
-		font-size: 14px;
+	.btn-group{
+		border: 1px solid #c8c8c8;
+		color: #8c8c8c;
+	}
+	label{
+		font-size: 13px;
+		color: #787878;
 		font-weight: bold;
-		margin-bottom: 10px;
-	}
-  	#classImg{
-		float: left;
-	}  
- 	#classInfo{
-		float: right;
-		font-size: 15px;
-		padding-top: 3px;
-	}
-	#schNotice{
-		background-color: white;
-		border-radius: 7px;
-		text-align: center;
-		height: 100px;
-		width: 100%;
-		font-size: 14px;
-		margin-bottom: 30px;
-	}
-	#schFood{
-		background-color: white;
-		border-radius: 7px;
-		text-align: center;
-		height: 200px;
-		width: 25%;
-		font-size: 14px;
-		padding: 10px;
 	}
 </style>
 </head>
@@ -134,7 +81,7 @@
 			<div><a href="#" class="text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 				<img src="../../../resources/common/image/profile2.png" width="32" height="32" class="rounded-circle"></a>
 			<ul class="dropdown-menu" aria-labelledby="dropdownUser1">
-				<li><a class="dropdown-item" href="/memberInfo.html">개인정보</a></li>
+				<li><a class="dropdown-item" href="#">개인정보</a></li>
 				<li><a class="dropdown-item" href="#">알림설정</a></li>
 				<li><a class="dropdown-item" href="#">내클래스</a></li>
 				<li><hr class="dropdown-divider"></li>
@@ -147,38 +94,51 @@
 </div>
 <div class="container" id="main">
 	<div class="row">
-	<div class="col-md-7" >
-		<img src="../../../resources/user/image/main_bg.png" class="w-100" id="main_bg"	>
-		<div id="classNotice">
-		<div class="mb-4"><img src="../../../resources/user/image/a3.jpg" width="45" height="45" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px; padding-top: 25px;">4조<i class="fa-solid fa-angle-right"></i></span></div>
-		<span class="badge bg-info text-light mb-3">공지</span><p class="d-inline" id="title">공지 </p>
-		<p id="content">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-		<p id="date"> 2022-04-26</p>
-		<hr style="color: gray;">
-		<span class="badge bg-info text-light mb-3">공지</span><p class="d-inline" id="title">공지 </p>
-		<p id="content">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-		<p id="date"> 2022-04-26</p>
+		<div class="col-md-3">
+		<div class="btn-group-vertical w-100">
+		  <button type="button" class="btn btn-group">개인정보</button>
+		  <button type="button" class="btn btn-group">알림설정</button>
+		  <button type="button" class="btn btn-group">내 클래스</button>
 		</div>
-	</div>
-	<div class="col-md-5">
-		<div id="classList">
-		<h5 style="font-weight: bold; margin-bottom: 30px;">클래스 바로가기</h5>
-		<div class="col-md-2" id="classImg"><img src="../../../resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px;"></div>
-		<div class="col-md-10 mb-5" id="classInfo"><span><b>4조</b></span><p><span>2022</span></div>
-		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
 		</div>
-	</div>
-	<div class="col-md-12">
-		<div id="schInfo"> 
-		<div class="mb-4"><img src="../../../resources/user/image/schIcon.png" width="40" height="40" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px;">사조 초등학교<i class="fa-solid fa-angle-right"></i></span></div>	
-		<p style="margin-left: 10px; font-weight: bold;">공지사항</p>
-		<div id="schNotice">아직 공지사항이 없습니다!</div>
-		<p style="margin-left: 10px; font-weight: bold;">오늘의 급식</p>
-		<div id="schFood"><p><b>4월 26일</b></p><p>친환경강황밥(강황분말)<br>부대찌개<br>새우가스+타르타르소스<br>친환경사과<br>김치</p></div>
-
+		<div class="col-md-9">
+			<h5 style="font-weight: bold">개인정보 수정</h5>
+			<p>프로필</p>
+			<div class="col-10 mx-auto mb-4">
+				<label class="form-label">이름</label>
+				<input type="text" class="form-control" id="" name="" placeholder=""> 
+			</div>
+			<div class="col-10 mx-auto mb-4">
+				<label class="form-label">프로필 사진</label>
+				<input type="text" class="form-control" id="" name="" placeholder=""> 
+			</div>
+			<div class="col-10 mx-auto mb-4">
+				<label class="form-label">학교</label>
+				<div class="input-group">
+				<input type="text" class="form-control" id="" name="" placeholder=""> 
+				<button class="btn btn-outline-secondary" type="button" id=""><i class= "fas fa-search"></i></button>
+				</div>
+			</div>
+			<div class="col-10 mx-auto mb-4">
+				<label class="form-label">학년</label>
+				<select class="form-select" id="kbmmKoreanNy" name="kbmmKoreanNy" >
+					<option selected>:: 학년 ::</option>
+					<option value=""/>1학년</option>	
+				</select>
+			</div>
+			<div class="col-10 mx-auto mb-4">
+				<label class="form-label">프로필</label>
+				<input type="text" class="form-control" id="" name="" placeholder=""> 
+			</div>
 		</div>
-	</div>
-	</div>
+	
+	
+	
+	
+	
+	
+	
+</div>
 </div>	
 <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
 	<p class="col-md-5 mb-0 text-muted">
