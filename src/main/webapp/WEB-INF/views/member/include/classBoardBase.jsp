@@ -229,7 +229,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="header_board">
-                                	<div>
+									<div>
 	                                	<button type="button" class="toggled_btn">게시글</button>
 	                                	<button type="button" class="toggled_btn">사진/동영상</button>
 									</div>	
@@ -318,6 +318,8 @@
 												</div>
 											</div>
 										</div>
+										
+										
 									</div>
                                 </div>
                             </div>
