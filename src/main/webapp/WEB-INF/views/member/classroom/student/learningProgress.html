@@ -56,7 +56,7 @@
 <!-- header s -->
 <header class="p-2 mb-3 border-bottom ">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-	    <img src="./header_logo.png"  width="150" >
+	    <img src="../header_logo.png"  width="150" >
 	      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 	        <li><a href="#" class="nav-link link-dark" id="home">홈</a></li>
 	        <li><a href="#" class="nav-link link-secondary" id="class">클래스</a></li>
@@ -131,12 +131,12 @@
 	<!-- sidebar -->	
 		<section class="col-md-10 d-flex justify-content-center" id="context"> <!-- 전체 컨테이너  -->
 			<div class="col-md-6 d-flex flex-column gap-2">
-				<div class="border p-3"> <!-- 학습 진도 헤더 -->
+				<div class="border rounded p-3"> <!-- 학습 진도 헤더 -->
 					<div><b>학습진도</b></div>
 					<div>내 학습량을 확인하세요.</div>
 				</div>
 				
-				<div class="border p-3 d-flex flex-column gap-4"> <!-- 학습 진도 전체  -->
+				<div class="border rounded p-3 d-flex flex-column gap-4"> <!-- 학습 진도 전체  -->
 					<div><!-- 동영상 강의 컨테이너 -->
 						<header class="row justify-content-between align-items-center"> <!-- 동영상 강의 헤더  -->
 							<div class="col-3">
@@ -152,7 +152,7 @@
 								<div>50%</div>
 							</div>
 						</header>
-						<article><!-- 동영상 강의 본문 -->
+						<article class="d-flex flex-column gap-1"><!-- 동영상 강의 본문 -->
 							<div class="row align-items-center justify-content-between"> <!--  개별 강의 -->
 								<div class="col-2">강의 1</div>
 								<div class="col-6">
@@ -199,25 +199,33 @@
 							</div>
 						</header>
 						
-						<article><!--과제 본문  -->
-							<div class="d-flex justify-content-between"><!-- 개별 과제  -->
-								<div>과제1</div>
-								<div class="d-flex gap-2">
+						<article class="d-flex flex-column gap-1"><!--과제 본문  -->
+							<div class="row align-items-center justify-content-between"><!-- 개별 과제  -->
+								<div class="col-2">과제1</div>
+								<div class="col-6 ">
 									<div><b>50/100점</b></div>
+								</div>
+								<div class="col-2">
 									<span class="badge bg-primary">제출 완료</span>
 								</div>
 							</div>
-							<div class="d-flex justify-content-between"><!-- 개별 과제  -->
-								<div>과제2</div>
-								<div class="d-flex gap-2">
+							<div class="row align-items-center justify-content-between"><!-- 개별 과제  -->
+								<div class="col-2">과제2</div>
+								<div class="col-6">
 									<div></div>
+								</div>
+								<div class="col-2">
 									<span class="badge bg-danger">미제출</span>
 								</div>
 							</div>
-							<div class="d-flex justify-content-between"><!-- 개별 과제  -->
-								<div>과제3</div>
-								<div class="d-flex gap-2">
-									<div><b></b></div>
+							
+							<div class="row align-items-center justify-content-between"><!-- 개별 과제  -->
+								<div class="col-2">과제3</div>
+								<div class="col-6">
+									<div>
+									</div>
+								</div>
+								<div class="col-2">
 									<span class="badge bg-warning">미채점</span>
 								</div>
 							</div>
