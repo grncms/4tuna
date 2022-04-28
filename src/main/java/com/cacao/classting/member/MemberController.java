@@ -36,18 +36,18 @@ public class MemberController {
 	@RequestMapping(value = "/include", method = RequestMethod.GET)
 	public String include() {
 		
-		return "member/include/baseTest";
+		return "member/include/classCommon";
 	}
 	
 	@RequestMapping(value = "/side", method = RequestMethod.GET)
 	public String side() {
 		
-		return "member/include/sideBar";
+		return "member/include/classSidebar";
 	}
 	
 	@RequestMapping(value = "/nav", method = RequestMethod.GET)
 	public String nav() {
 		
-		return "member/include/navBar";
+		return "member/include/classNavbar";
 	}
 }
