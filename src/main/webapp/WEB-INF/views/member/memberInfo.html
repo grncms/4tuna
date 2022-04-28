@@ -255,14 +255,26 @@
 
 		<hr>
 			<div class="col-10 mx-auto mb-4">
-			<button type="button" class="btn btn-outline-danger btn-lg mt-1 w-25 p-2" id="btn-nele">회원 탈퇴</button>
-			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="location.href='./memberInfoEdit.html'">정보 수정</button>
-
+			<button type="button" class="btn btn-outline-danger btn-lg mt-1 w-25 p-2" id="btn-nele" data-bs-toggle="modal" data-bs-target="#formModal">회원 탈퇴</button>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="editModalLabel">회원탈퇴</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">정말로 탈퇴하시겠습니까?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+						<a class="btn btn-danger" role="button" href="../index/oneschool/index.html">삭제</a>
+					</div>
+					</div>
+				</div>
 			</div>
-	
-	
-	
-	
+			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="location.href='./memberInfoEdit.html'">정보 수정</button>
+			</div>
 	</div>
 </div>
 </div>	
