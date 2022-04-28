@@ -21,12 +21,12 @@
 
 <title></title>
 <!-- Custom fonts for this template-->
-<link href="/4tuna/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="/4tuna/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
-<link href="/4tuna/resources/user/css/classCommon.css" rel="stylesheet">
+<link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/resources/user/css/classCommon.css" rel="stylesheet">
 
 
 </head>
@@ -98,7 +98,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈</b></span>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">학생</span>
-                                <img class="img-profile rounded-circle" src="/4tuna/resources/common/image/profile2.png">
+                                <img class="img-profile rounded-circle" src="/resources/common/image/profile2.png">
                             </a>
                         </li>
 
@@ -109,14 +109,14 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/4tuna/resources/common/vendor/jquery/jquery.min.js"></script>
-    <script src="/4tuna/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/common/vendor/jquery/jquery.min.js"></script>
+    <script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/4tuna/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/4tuna/resources/common/js/sb-admin-2.min.js"></script> 
+    <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 
 
 
