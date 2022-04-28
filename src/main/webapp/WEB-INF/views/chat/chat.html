@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+​
+<title>main</title>
+<style type="text/css">
+/*  	body{
+		background-color: #F9F9FA;
+	}
+ */	#sidebar{
+		background-color: white;
+	}
+ 	.btn-toggle{
+		font-size: 15px;
+		font-weight: bold;
+	}
+	#home{
+		margin-left: 40px;
+	}
+	#class{
+		margin-left: 20px;
+	}
+	.icon{
+		display: inline;
+		margin-right: 20px;
+	}
+	#classImg{
+		float: left;
+	}
+	#classInfo{
+		float: right;
+		font-size: 15px;
+		padding-top: 3px;
+	}
+	#menuList{
+		clear: both;
+	}
+	#btn-add{
+		border-radius: 50px;
+		font-size: 14px;
+		font-weight: bold;
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+	.container{max-width:1100px; margin:auto;}
+img{ max-width:100%;}
+.inbox_people {
+  background: #f8f8f8 none repeat scroll 0 0;
+  float: left;
+  overflow: hidden;
+  width: 40%; border-right:1px solid #c4c4c4;
+}
+
+
+.incoming_msg_img {
+  display: inline-block;
+  width: 6%;
+}
+.received_msg {
+  display: inline-block;
+  padding: 0 0 0 10px;
+  vertical-align: top;
+  width: 92%;
+ }
+ .received_withd_msg p {
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #646464;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+}
+.time_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+.received_withd_msg { width: 57%;}
+.mesgs {
+  float: left;
+  padding: 30px 15px 0 25px;
+  width: 100%;
+}
+
+ .sent_msg p {
+  background: #05728f none repeat scroll 0 0;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 0; color:#fff;
+  padding: 5px 10px 5px 12px;
+  width:100%;
+}
+.outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+.sent_msg {
+  float: right;
+  width: 46%;
+}
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
+}
+
+.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.msg_send_btn {
+  background: #05728f none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+.messaging { padding: 0 0 50px 0;}
+.msg_history {
+  height: 516px;
+  overflow-y: auto;
+}
+/* 채팅 */
+
+	.user_img{
+			height: 70px;
+			width: 70px;
+			border:1.5px solid #f5f6fa;
+		
+		}
+		.user_img_msg{
+			height: 40px;
+			width: 40px;
+			border:1.5px solid #f5f6fa;
+		
+		}
+	.img_cont{
+			position: relative;
+			height: 70px;
+			width: 70px;
+	}
+	.img_cont_msg{
+			height: 40px;
+			width: 40px;
+	}
+	.online_icon{
+		position: absolute;
+		height: 15px;
+		width:15px;
+		background-color: #4cd137;
+		border-radius: 50%;
+		bottom: 0.2em;
+		right: 0.4em;
+		border:1.5px solid white;
+	}
+	.offline{
+		background-color: #c23616 !important;
+	}
+	.user_info{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 15px;
+	}
+	.user_info span{
+		font-size: 20px;
+	}
+	.user_info p{
+	font-size: 10px;
+	}
+	.video_cam{
+		margin-left: 50px;
+		margin-top: 5px;
+	}
+
+	#action_menu_btn{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		cursor: pointer;
+		font-size: 20px;
+	}
+	.action_menu{
+		z-index: 1;
+		position: absolute;
+		padding: 15px 0;
+		background-color: rgba(0,0,0,0.5);
+		border-radius: 15px;
+		top: 30px;
+		right: 15px;
+		display: none;
+	}
+</style>
+</head>
+<body>
+<div class="container-fluid">
+<!-- header s -->
+<header class="p-2 mb-3 border-bottom ">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+	    <img src="../../../image/header_logo.png"  width="150" >
+	      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+	        <li><a href="#" class="nav-link link-dark" id="home">홈</a></li>
+	        <li><a href="#" class="nav-link link-secondary" id="class">클래스</a></li>
+	      </ul>
+	      
+	    <div class="container">
+	<h3 class=" text-center">클래스 톡</h3>
+	</div>
+	 
+	    
+		 <div class="dropdown text-end">
+		      <div class="icon"><i class="fa-regular fa-bell fa-2x"></i></div>
+		      <div class="icon"><i class="fa-regular fa-comment fa-2x" ></i></div>
+		      
+		</div> 
+		
+     
+	</div>
+</header>
+<!-- header e -->
+​
+<!-- sidebar -->
+<div class="row">
+		<!-- 3단길이의 첫번째 열 -->
+		<div class="col-md-2 d-none d-md-block h-100" id="sidebar">
+			<div class="col-lg-3" style="" id="classImg"> <img src="../../../image/k.jpg"  width="50" height="50"></div>
+			<div class="col-lg-9" id="classInfo"><span>class이름</span><p><span>구성원 *명</span></div>
+			<div ><button type="button" class="btn btn-outline-secondary w-100" id="btn-add">구성원 초대하기</button></div>
+			<div class="px-0 " id="menuList">
+				<ul class="list-unstyled ps-0">
+					<li class="mb-2">
+						<button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">모든 공지</button>
+					</li>
+					<li class="mb-2">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">모든 과제</button>
+					</li>
+					<li class="mb-2">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">과제 리포트</button>
+					</li>
+					<li class="mb-2">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">출석부</button>
+					</li>
+					<li class=mb-2>
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">구성원</button>
+					</li>
+					<li class="mb-2">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">클래스 설정</button>
+					</li>
+					<li class="border-top my-3"></li>
+					<li class="mb-2">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">예약 / 임시저장한 글</button>
+					</li>
+					<li class="border-top my-3"></li>
+					<li class="mb-2">
+					<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">모두를 위한 공간</button>
+						<div class="collapse" id="account-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="rounded">자유 공간</a></li>
+								<li><a href="#" class="rounded">학습 자료</a></li>
+								<li><a href="#" class="rounded">활동사진</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+			</div>
+		</div>
+	<!-- sidebar -->
+	
+	
+	<div class="container">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="../../../image/k.jpg" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>1</span>
+									<p>1767 Messages</p>
+								</div>
+							</div>
+							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+							<div class="action_menu">
+								<ul>
+									<li><i class="fas fa-user-circle"></i> 1</li>
+									<li><i class="fas fa-users"></i> 2</li>
+									<li><i class="fas fa-plus"></i> 3</li>
+									<li><i class="fas fa-ban"></i>4</li>
+								</ul>
+							</div>
+						</div>
+						</div>
+				
+	
+	
+<div class="messaging">
+      
+        <div class="mesgs">
+          <div class="msg_history">
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img src="../../../image/w.jpg" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>Test</p>
+                  <span class="time_date"> 11:01 AM    |    June 9</span></div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>Test2</p>
+                <span class="time_date"> 11:01 AM    |    June 9</span> </div>
+            </div>
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img src="../../../image/w.jpg" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>Test3</p>
+                  <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>Test4</p>
+                <span class="time_date"> 11:01 AM    |    Today</span> </div>
+            </div>
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img src="../../../image/w.jpg" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>Test5</p>
+                  <span class="time_date"> 11:01 AM    |    Today</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input type="text" class="write_msg" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+    </div>
+
+​
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> --></script>
+<!-- <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>   -->
+​
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+​
+</body>
+</html>
