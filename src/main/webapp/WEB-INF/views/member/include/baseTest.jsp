@@ -30,10 +30,26 @@
 
 
 </head>
-	<jsp:include page = "sideBar.jsp" flush="true"/>
-	<div><jsp:include page = "navBar.jsp" flush="true"/></div>
-	
-	<div></div>
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+		
+		<jsp:include page = "sideBar.jsp" flush="true"/>
+		<jsp:include page = "navBar.jsp" flush="true"/>
+		
+        <!-- End of Content Wrapper -->
+	</div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../../../../resources/common/js/sb-admin-2.min.js"></script> 
+
 
 </body>
 </html>
