@@ -21,12 +21,12 @@
 
 <title></title>
 <!-- Custom fonts for this template-->
-<link href="/4tuna/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="/4tuna/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
-<link href="/4tuna/resources/user/css/classCommon.css" rel="stylesheet">
+<link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/resources/user/css/classCommon.css" rel="stylesheet">
 
 
 </head>
@@ -39,14 +39,14 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-		    <img src="/4tuna/resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;">
+		    <img src="/resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;">
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-            	<div class="col-md-3 mt-4" id="classImg"><img src="/4tuna/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
+            	<div class="col-md-3 mt-4" id="classImg"><img src="/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
 				<div class="col-md-9 mt-4" id="classInfo"><span><b>4조</b></span><p><span>2022</span></div>
 				<button type="button" class="btn btn-lg mt-1 w-100 p-2" id="btn-add"><i class="fa-solid fa-user-plus"></i>  구성원 초대하기</button>
             </li>
@@ -105,14 +105,14 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/4tuna/resources/common/vendor/jquery/jquery.min.js"></script>
-    <script src="/4tuna/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/common/vendor/jquery/jquery.min.js"></script>
+    <script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/4tuna/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/4tuna/resources/common/js/sb-admin-2.min.js"></script> 
+    <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 
 
 
