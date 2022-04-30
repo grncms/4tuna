@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+
+<!-- Custom fonts for this template-->
+<link href="../../../../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="../../../../../resources/common/css/sb-admin-2.css" rel="stylesheet">
+<link href="../../../../../resources/user/css/classCommon.css" rel="stylesheet">
+<link href="../../../../../resources/common/css/boardCss.css" rel="stylesheet">
+<title>과제목록</title>
+
+
+
+<style type="text/css">
+/*  	body{
+		background-color: #F9F9FA;
+	}
+ */
+#sidebar {
+	background-color: white;
+}
+
+.btn-toggle {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#home {
+	margin-left: 40px;
+}
+
+#class {
+	margin-left: 20px;
+}
+
+.icon {
+	display: inline;
+	margin-right: 20px;
+}
+
+#classImg {
+	float: left;
+}
+
+#classInfo {
+	float: right;
+	font-size: 15px;
+	padding-top: 3px;
+}
+
+#menuList {
+	clear: both;
+}
+
+#btn-add {
+	border-radius: 50px;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.profile_box {
+	border-radius: 70%;
+	overflow: hidden;
+	width: 30px;
+	height: 30px;
+}
+
+.profile {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+
+.container_title {
+	border: 1px solid #dee2e6 !important;
+	border-radius: 0.25rem;
+	padding: 1.5rem;
+	background-color: white;
+	margin-bottom: 1.3rem;
+}
+
+.container_title>.header {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #5a5c69;
+}
+
+.container_title>.body {
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.container_title>.footer {
+	display: flex;
+	justify-content: end;
+}
+
+.container_title>.footer>button {
+	width: 110px;
+}
+
+.homework_list > div {
+	 box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+
+
+.container_base:nth-child(2) {
+	border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.container_base:last-child {
+	border-radius: 0 0 0.25rem 0.25rem;
+	border-bottom-style: solid;
+}
+
+.container_base .homework_listitem {
+	padding: 0px;
+}
+
+.container_base .header {
+	margin: 0.5rem 0 0.5rem 0;
+}
+
+.container_base .header {
+	display:flex;
+	align-items:center;
+	gap : 0.5rem;
+}
+
+.container_base .header>span {
+	font-size: 0.75rem;
+}
+
+
+.container_base .header>span:nth-child(3) {
+	color: #858796;
+	font-weight: 400;
+}
+
+.container_base .body {
+	margin: 0.15rem;
+}
+
+.container_base .body>.badge {
+	padding: 6px;
+}
+
+.container_base .body>span:nth-child(3) {
+	color: #5a5c69;
+}
+
+.container_base .body>div:nth-child(4) {
+	font-size: 0.8rem;
+}
+
+.container_base .footer {
+	margin-top: 3rem;
+}
+
+.container_base .footer>* {
+	margin-right: 0.5rem;
+}
+
+.badge_hw {
+	background-color: #cfe2f3;
+	color: #4e73df;
+}
+
+.badge_after3 {
+	background-color: white;
+	border: 1px solid #f6c23e;
+	color: #f6c23e;
+}
+
+.badge_todayend {
+	color: #e74a3b;
+	border: 1px solid #e74a3b;
+}
+
+.badge_alreadyend {
+	color: #858796;
+	border: 1px solid #858796;
+}
+
+.badge_afterNday {
+	color: #1cc88a;
+	border: 1px solid #1cc88a;
+}
+
+.badge_graded {
+	color: #4e73df;
+	border: 1px solid #4e73df;
+}
+</style>
+
+
+
+</head>
+<body>
+<body id="page-top">
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+
+			<!-- Sidebar - Brand -->
+			<img src="../../../../../resources/common/image/header_logo.png" width="180px;" style="margin-left: 10px;">
+
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active">
+				<div class="col-md-3 mt-4" id="classImg">
+					<img src="../../../../../resources/user/image/a3.jpg" width="50" height="50" style="border-radius: 7px;">
+				</div>
+				<div class="col-md-9 mt-4" id="classInfo">
+					<span>
+						<b>4조</b>
+					</span>
+					<p>
+						<span>2022</span>
+				</div>
+				<div class="d-flex justify-content-center w-100">
+					<button type="button" class="btn btn-lg mt-1 p-2" id="btn-add">
+						<i class="fa-solid fa-user-plus"></i>
+						구성원 초대하기
+					</button>
+				</div>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<div class="sidebar-heading" style="color: #828282;">전체 메뉴</div>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-school-circle-check" style="color: #828282;""></i> <span>출석부</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+			<!-- Heading -->
+			<div class="sidebar-heading" style="color: #828282;">나만 참여한 공간</div>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><i class="fa-solid fa-file-pen" style="color: #828282;"></i> <span>예약 / 임시저장한 글</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading" style="color: #828282;">내가 참여한 공간</div>
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> <i class="fas fa-fw fa-folder" style="color: #828282;"></i> <span>모두를 위한 공간</span>
+				</a>
+				<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href="login.html">자유 공간</a> <a class="collapse-item" href="register.html">학습 자료</a> <a class="collapse-item" href="forgot-password.html">활동 사진</a>
+					</div>
+				</div>
+			</li>
+
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+		</ul>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
+
+
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+
+						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+						<li class="nav-item dropdown no-arrow d-sm-none">
+							<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+							</a>
+							<!-- Dropdown - Messages -->
+							<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+								<form class="form-inline mr-auto w-100 navbar-search">
+									<div class="input-group">
+										<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+										<div class="input-group-append">
+											<button class="btn btn-primary" type="button">
+												<i class="fas fa-search fa-sm"></i>
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</li>
+
+						<!-- Nav Item - Alerts -->
+						<li class="nav-item dropdown no-arrow mx-1">
+							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts --> <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+							</a>
+						</li>
+
+						<!-- Nav Item - Messages -->
+						<li class="nav-item dropdown no-arrow mx-1">
+							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-solid fa-comment"></i> <!-- Counter - Messages --> <!-- <span class="badge badge-danger badge-counter">7</span> -->
+							</a>
+						</li>
+
+						<div class="topbar-divider d-none d-sm-block"></div>
+
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+									<b>윤수빈</b>
+								</span> <span class="mr-2 d-none d-lg-inline text-gray-600 small">학생</span> <img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
+							</a>
+						</li>
+
+					</ul>
+
+				</nav>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<div class="row justify-content-center">
+						<div class="homework_list col-md-7 ">
+							<div class="container_title">
+								<div class="header">모든 과제</div>
+								<div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div>
+								<div class="footer dropdown">
+									<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown">과제만들기</button>
+
+									<ul class="dropdown-menu">
+										<li>
+											<a class="dropdown-item" href="#">일반 과제</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#">자료실 과제</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="container_base_wrapper">
+								<div class="container_base">
+									<div class="homework_listitem">
+										<div class="header">
+											<div class="profile_box">
+												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+											</div>
+											<span>박규원</span>
+											<span>4월 22일</span>
+											<span>자유공간</span>
+										</div>
+	
+										<div class="body">
+											<span class='badge badge_hw'>과제</span>
+											<span class='badge badge_todayend'>오늘 종료</span>
+											<span>수학문제 풀기</span>
+											<div>마감 : 4월 25일 오후 11:59</div>
+										</div>
+	
+	
+										<div class="footer">
+											<i class="fa-regular fa-comment"> 2</i>
+											<i class="fa-regular fa-thumbs-up"> 2</i>
+											<i class="fa-solid fa-check"> 1</i>
+											<i class="fa-solid fa-question"> 3</i>
+										</div>
+									</div>
+								</div>
+	
+	
+								<div class="container_base">
+									<div class="homework_listitem">
+										<div class="header">
+											<div class="profile_box">
+												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+											</div>
+											<span>박규원</span>
+											<span>4월 22일</span>
+											<span>자유공간</span>
+										</div>
+	
+										<div class="body">
+											<span class='badge badge_hw'>과제</span>
+											<span class='badge badge_alreadyend'>기한 지남</span>
+											<span>수학문제 풀기</span>
+											<div>마감 : 4월 25일 오후 11:59</div>
+										</div>
+	
+	
+										<div class="footer">
+											<i class="fa-regular fa-comment"> 2</i>
+											<i class="fa-regular fa-thumbs-up"> 2</i>
+											<i class="fa-solid fa-check"> 1</i>
+											<i class="fa-solid fa-question"> 3</i>
+										</div>
+									</div>
+								</div>
+	
+								<div class="container_base">
+									<div class="homework_listitem">
+										<div class="header">
+											<div class="profile_box">
+												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+											</div>
+											<span>박규원</span>
+											<span>4월 22일</span>
+											<span>자유공간</span>
+										</div>
+	
+										<div class="body">
+											<span class='badge badge_hw'>과제</span>
+											<span class='badge badge_after3'>3일 후 마감</span>
+											<span>수학문제 풀기</span>
+											<div>마감 : 4월 25일 오후 11:59</div>
+										</div>
+	
+	
+										<div class="footer">
+											<i class="fa-regular fa-comment"> 2</i>
+											<i class="fa-regular fa-thumbs-up"> 2</i>
+											<i class="fa-solid fa-check"> 1</i>
+											<i class="fa-solid fa-question"> 3</i>
+										</div>
+									</div>
+								</div>
+								<div class="container_base">
+									<div class="homework_listitem">
+										<div class="header">
+											<div class="profile_box">
+												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+											</div>
+											<span>박규원</span>
+											<span>4월 22일</span>
+											<span>자유공간</span>
+										</div>
+	
+										<div class="body">
+											<span class='badge badge_hw'>과제</span>
+											<span class='badge badge_afterNday'>25일 후 마감</span>
+											<span>수학문제 풀기</span>
+											<div>마감 : 4월 25일 오후 11:59</div>
+										</div>
+	
+	
+										<div class="footer">
+											<i class="fa-regular fa-comment"> 2</i>
+											<i class="fa-regular fa-thumbs-up"> 2</i>
+											<i class="fa-solid fa-check"> 1</i>
+											<i class="fa-solid fa-question"> 3</i>
+										</div>
+									</div>
+								</div>
+								<div class="container_base">
+									<div class="homework_listitem">
+										<div class="header">
+											<div class="profile_box">
+												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+											</div>
+											<span>박규원</span>
+											<span>4월 22일</span>
+											<span>자유공간</span>
+										</div>
+	
+										<div class="body">
+											<span class='badge badge_hw'>과제</span>
+											<span class='badge badge_graded'>채점 완료</span>
+											<span>수학문제 풀기</span>
+											<div>마감 : 4월 25일 오후 11:59</div>
+										</div>
+	
+	
+										<div class="footer">
+											<i class="fa-regular fa-comment"> 2</i>
+											<i class="fa-regular fa-thumbs-up"> 2</i>
+											<i class="fa-solid fa-check"> 1</i>
+											<i class="fa-solid fa-question"> 3</i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 오른쪽 사이드 글 설정 끝  -->
+
+					<!-- Footer -->
+					<footer class="sticky-footer bg-white mt-4">
+						<div class="container my-auto">
+							<div class="copyright text-center my-auto">
+								<span>Copyright &copy; CLASSING 2021</span>
+							</div>
+						</div>
+					</footer>
+					<!-- End of Footer -->
+
+				</div>
+				<!-- End of Content Wrapper -->
+
+			</div>
+		</div>
+	</div>
+	<!-- sidebar -->
+	<!-- 			<div class="container" id="context">
+				<div class="col-md-6 d-flex flex-column gap-4">
+					<div class="border rounded p-4">
+						<div>
+							<h4>
+								<b>모든 과제</b>
+							</h4>
+						</div>
+						<div>클래스에 배부된 모든 과제를 모아볼 수 있어요.</div>
+						<div class="d-flex justify-content-end">
+							<button class="btn btn-success">과제만들기</button>
+						</div>
+					</div>
+					<div>
+						과제 전체 컨테이너 
+						<div class='p-4 border'>
+							과제정보 컨테이너 
+							<div class='d-flex gap-2'>
+								과제 낸 선생님, 날짜 , 게시판 
+								<div class='d-flex'>
+									<img src='#' />
+									<p>박규원</p>
+								</div>
+								<p>4월 22일</p>
+								<p>자유 공간</p>
+							</div>
+
+							<div>
+								과제종류,마감일 , 과제 제목
+								<span class='badge bg-primary'>과제</span> <span class='badge bg-secondary'>3일 후 마감</span> 수학문제 풀기
+							</div>
+
+							<div>마감 : 4월 25일 오후 11:59</div>
+
+							<div class="d-flex gap-3">
+								<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+
+	​
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	​
+</body>
+</html>
