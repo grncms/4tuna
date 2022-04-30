@@ -1,5 +1,11 @@
 @charset "utf-8";
 /* 공통부분 */
+	.profile_withname{
+		display:flex;
+		align-items:center;
+		gap:2px;
+	}
+
 	.profile{
 		width:50px;
 		height:50px;
@@ -261,7 +267,145 @@
 	.container_hw hr {
 		color:#00C896;
 	}
-	
-	
-	/* 과제 관련 사이드바 끝*/
-	
+
+/* 과제 관련 사이드바 끝*/
+
+
+
+
+
+
+.profile_box {
+	border-radius: 70%;
+	overflow: hidden;
+	width: 30px;
+	height: 30px;
+}
+
+.profile {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.container_title {
+	border: 1px solid #dee2e6 !important;
+	border-radius: 0.25rem;
+	padding: 1.5rem;
+	background-color: white;
+	margin-bottom: 1.3rem;
+}
+
+.container_title>.header {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #5a5c69;
+}
+
+.container_title>.body {
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.container_title>.footer {
+	display: flex;
+	justify-content: end;
+}
+
+.container_title>.footer>button {
+	width: 110px;
+}
+
+
+
+.container_base {
+	background-color: white;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	padding-top: 1rem;
+	padding-bottom: 0.5rem;
+	border: 1px solid #dee2e6;
+	border-bottom-style: none;
+}
+
+.container_base:nth-child(2) {
+	border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.container_base:last-child {
+	border-radius: 0 0 0.25rem 0.25rem;
+	border-bottom-style: solid;
+}
+
+.container_base>div {
+	padding: 0px;
+}
+
+.container_base>div>div {
+	margin: 0.5rem 0 0.5rem 0;
+}
+
+.container_base .header>span {
+	font-size: 0.75rem;
+}
+
+
+.container_base .header>span:nth-child(3) {
+	color: #858796;
+	font-weight: 400;
+}
+
+.container_base .body>* {
+	margin: 0.15rem;
+}
+
+.container_base .body>.badge {
+	padding: 6px;
+}
+
+.container_base .body>span:nth-child(3) {
+	color: #5a5c69;
+}
+
+.container_base .body>div:nth-child(4) {
+	font-size: 0.8rem;
+}
+
+.container_base .footer {
+	margin-top: 3rem;
+}
+
+.container_base .footer>* {
+	margin-right: 0.5rem;
+}
+
+.badge_hw {
+	background-color: #cfe2f3;
+	color: #4e73df;
+}
+
+.badge_after3 {
+	background-color: white;
+	border: 1px solid #f6c23e;
+	color: #f6c23e;
+}
+
+.badge_todayend {
+	color: #e74a3b;
+	border: 1px solid #e74a3b;
+}
+
+.badge_alreadyend {
+	color: #858796;
+	border: 1px solid #858796;
+}
+
+.badge_afterNday {
+	color: #1cc88a;
+	border: 1px solid #1cc88a;
+}
+
+.badge_graded {
+	color: #4e73df;
+	border: 1px solid #4e73df;
+}
