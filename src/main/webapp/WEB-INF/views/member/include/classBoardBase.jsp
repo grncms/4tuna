@@ -55,7 +55,13 @@
 		color:white;
 		font-weight:300;
 	}
-
+	.reply {
+		display:flex;
+	}
+	
+	.reply:first-child {
+		width:33%;
+	}
 </style>
 </head>
 <body id="page-top">
@@ -306,7 +312,8 @@
 										
 										<hr>
 										
-										<div>
+										<div class="reply"> <!-- 댓글 입력 창  -->
+											<div><img src="#"></div>
 											<div class="w-100 p-2">
 												<div style="position : relative;">
 													<textarea class="form-control w-100" style="height:120px;" placeholder="댓글을 달아주세요."></textarea>
@@ -318,8 +325,6 @@
 												</div>
 											</div>
 										</div>
-										
-										
 									</div>
                                 </div>
                             </div>

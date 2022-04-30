@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #999999;
+ 
   text-decoration: none;
   background-color: transparent;
 }
@@ -3733,7 +3733,7 @@ input[type="button"].btn-block {
 .custom-select[multiple], .custom-select[size]:not([size="1"]) {
   height: auto;
   padding-right: 0.75rem;
-  background-image: none;
+   background-image: none;
 }
 
 .custom-select:disabled {

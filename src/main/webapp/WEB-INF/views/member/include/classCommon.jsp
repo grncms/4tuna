@@ -26,10 +26,12 @@
       
       <jsp:include page = "classSidebar.jsp" flush="true"/>
       <jsp:include page = "classNavbar.jsp" flush="true"/>
+      
+      <div>
+      	여기에 내용
+      </div>
       <jsp:include page = "classFooter.jsp" flush="true"/>
-        <!-- End of Content Wrapper -->
-           </div>
-        <!-- End of Content Wrapper -->
+		
 
     </div>
     <!-- End of Page Wrapper -->
