@@ -65,49 +65,48 @@
 	margin-bottom: 30px;
 }
 
-.container_base .header > *:first-child{
-	font-size:1.2rem;
-	font-weight:600;
+.container_base .header>*:first-child {
+	font-size: 1.2rem;
+	font-weight: 600;
 }
 
-.container_base .header > .progress{
-	height:1.7rem;
+.container_base .header>.progress {
+	height: 1.7rem;
 }
 
-.container_base .body > div {
-	display:flex;
-	justify-content:between;
-	align-items:stretch;
-	height:1.25rem;
-	gap:1rem;
-	margin-bottom:0.5rem;
+.container_base .body>div {
+	display: flex;
+	justify-content: between;
+	align-items: stretch;
+	height: 1.25rem;
+	gap: 1rem;
+	margin-bottom: 0.5rem;
 }
-
+.container_base >.video .header>span {
+	font-size: 0.75rem;
+}
 .container_base .body .badge {
-	width:10%;
-	color:white;
+	width: 10%;
+	color: white;
 }
 
 .container_base .body * {
-	color:#5a5a5a;
-	font-weight:600;
+	color: #5a5a5a;
+	font-weight: 600;
 }
 
-
-
-
-.video .body > div > *:first-child{
-	width:10%;
+.video .body>div>*:first-child {
+	width: 10%;
 }
 
-.video .body .progress{
-	height:100%;
-	width:70%;
+.video .body .progress {
+	height: 100%;
+	width: 70%;
 }
 
-.homework > .body > div > *:nth-child(2){
-	width:70%;
-	text-align:right;
+.homework>.body>div>*:nth-child(2) {
+	width: 70%;
+	text-align: right;
 }
 </style>
 </head>
@@ -129,16 +128,14 @@
 					<img src="../../../../../resources/user/image/a3.jpg" width="50" height="50" style="border-radius: 7px;">
 				</div>
 				<div class="col-md-9 mt-4" id="classInfo">
-					<span>
-						<b>4조</b>
+					<span> <b>4조</b>
 					</span>
 					<p>
 						<span>2022</span>
 				</div>
 				<div class="d-flex justify-content-center w-100">
 					<button type="button" class="btn btn-lg mt-1 p-2" id="btn-add">
-						<i class="fa-solid fa-user-plus"></i>
-						구성원 초대하기
+						<i class="fa-solid fa-user-plus"></i> 구성원 초대하기
 					</button>
 				</div>
 			</li>
@@ -236,9 +233,8 @@
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-									<b>윤수빈</b>
-								</span> <span class="mr-2 d-none d-lg-inline text-gray-600 small">학생</span> <img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <b>윤수빈</b>
+							</span> <span class="mr-2 d-none d-lg-inline text-gray-600 small">학생</span> <img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
 							</a>
 						</li>
 
@@ -256,82 +252,79 @@
 							</div>
 
 							<!-- 동영상 강의 컨테이너 -->
-							<div class="container_base">
-								<div class="video">
-									<!-- 동영상 강의 헤더  -->
-									<div class="header">
-										<span>동영상 강의 전체</span>
-										<div class="progress">
-											<div class="progress-bar" style="width: 50%" role="progressbar">50%</div>
-										</div>
-										<hr>
-									</div>
-									<!-- 동영상 강의 본문 -->
-									<div class="body">
-										<div>
-											<span>강의 1</span>
-											
+							<div class="container_base_wrapper">
+								<div class="container_base">
+									<div class="video">
+										<!-- 동영상 강의 헤더  -->
+										<div class="header">
+											<span>동영상 강의 전체</span>
 											<div class="progress">
-												<div class="progress-bar bg-success" style="width: 100%" role="progressbar" aria-valuemin="0" aria-valuemax="100">100%</div>
+												<div class="progress-bar" style="width: 50%" role="progressbar">50%</div>
 											</div>
-											
-											<span class="badge bg-primary">시청완료</span>
+											<hr>
 										</div>
+										<!-- 동영상 강의 본문 -->
+										<div class="body">
+											<div>
+												<span>강의 1</span>
 
-										<div> 		<!--  개별 강의 -->
-											<span>강의 2</span>
-											
-											<div class="progress">
-												<div class="progress-bar bg-warning" style="width: 40%" role="progressbar" aria-valuemin="0" aria-valuemax="100">40%</div>
+												<div class="progress">
+													<div class="progress-bar bg-success" style="width: 100%" role="progressbar" aria-valuemin="0" aria-valuemax="100">100%</div>
+												</div>
+
+												<span class="badge bg-primary">시청완료</span>
 											</div>
-											
-											<span class="badge bg-warning">미완료</span>
-										</div>
-										<div>
-											<!--  개별 강의 -->
-											<div>강의 3</div>
-											
-											<div class="progress">
-												<div class="progress-bar bg-danger" style="width: 0%" role="progressbar" aria-valuemin="0" aria-valuemax="100">0%</div>
+
+											<div>
+												<!--  개별 강의 -->
+												<span>강의 2</span>
+
+												<div class="progress">
+													<div class="progress-bar bg-warning" style="width: 40%" role="progressbar" aria-valuemin="0" aria-valuemax="100">40%</div>
+												</div>
+
+												<span class="badge bg-warning">미완료</span>
 											</div>
-											
-											<span class="badge bg-danger">미시청</span>
+											<div>
+												<!--  개별 강의 -->
+												<div>강의 3</div>
+
+												<div class="progress">
+													<div class="progress-bar bg-danger" style="width: 0%" role="progressbar" aria-valuemin="0" aria-valuemax="100">0%</div>
+												</div>
+
+												<span class="badge bg-danger">미시청</span>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							<!-- 과제 컨테이너 -->
-							<div class="container_base">
-								<div class="homework">
-									<div class="header">
-										<span>과제</span>
-										
-										<div class="progress">
-											<div class="progress-bar" style="width: 33%" role="progressbar">33%</div>
-										</div>
-										
-										<hr>
-									</div>
 
-									<!--과제 본문  -->
-									<div class="body">
-										<div>
-											<span>과제 1</span>
-											<span>50/100</span>
-											<span class="badge bg-primary">제출완료</span>
-										</div>
-										<div>
-											<span>과제 2</span>
-											<span></span>
-											<span class="badge bg-danger">미제출</span>
+								<!-- 과제 컨테이너 -->
+								<div class="container_base">
+									<div class="homework">
+										<div class="header">
+											<span>과제</span>
+
+											<div class="progress">
+												<div class="progress-bar" style="width: 33%" role="progressbar">33%</div>
+											</div>
+
+											<hr>
 										</div>
 
-										<div>
-											<!-- 개별 과제  -->
-											<span>과제 3</span>
-											<span></span>
-											<span class="badge bg-warning">미채점</span>
+										<!--과제 본문  -->
+										<div class="body">
+											<div>
+												<span>과제 1</span> <span>50/100</span> <span class="badge bg-primary">제출완료</span>
+											</div>
+											<div>
+												<span>과제 2</span> <span></span> <span class="badge bg-danger">미제출</span>
+											</div>
+
+											<div>
+												<!-- 개별 과제  -->
+												<span>과제 3</span> <span></span> <span class="badge bg-warning">미채점</span>
+											</div>
 										</div>
 									</div>
 								</div>
