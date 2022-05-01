@@ -281,8 +281,8 @@ p {
                     <div class="row" id="posting">
                         <!-- Area Chart -->
           				<div class="sidebar_article col-xl-1 col-lg-1">
-							<a href="#"><i class="fa-2x fa-solid fa-thumbs-up"></i></a> <a href="#"><i class="fa-2x fa-solid fa-check"></i></a> <a href="#"><i class="fa-2x fa-solid fa-circle-question"></i></a>
-						</div>
+							<!-- <a href="#"><i class="fa-2x fa-solid fa-thumbs-up"></i></a> <a href="#"><i class="fa-2x fa-solid fa-check"></i></a> <a href="#"><i class="fa-2x fa-solid fa-circle-question"></i></a>
+						 --></div>
                         <div class="col-xl-7 col-lg-7">
 <!-- 타이틀 넣으려고 수정중 -->                        
                             <div class="card shadow mb-4">
@@ -336,7 +336,7 @@ p {
 								<!-- 내용 넣기 시작 -->
 								<div class="title_hw border" >
 									<textarea class="formBoard" rows="20" id="content"
-										name="content" placeholder="본문을 작성하세요."></textarea>						
+										name="content" placeholder="본문을 작성하세요." style="resize:none;"></textarea>						
 								</div>	
 								<!-- 내용 넣기 끝 -->
                                
@@ -393,7 +393,7 @@ p {
 
 												<div> 예약
 													<label class="switch">
-														<input type="checkbox" checked="checked">
+														<input type="checkbox" name="reserve" checked="checked">
 															<span class="slider round"></span>
 													</label>
 													<input type="datetime" class="form-control"
@@ -468,6 +468,7 @@ p {
 			$("p").toggle();
 		});
 	</script>
+	
 
 </body>
 <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
