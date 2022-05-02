@@ -1,16 +1,20 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<!-- Required meta tags -->
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
-​
-<title>main</title>
+<title></title>
 <style type="text/css">
+	/* 채팅css */
 .container{max-width:1000px; margin:auto;}
 img{ max-width:100%;}
 .inbox_people {
@@ -81,10 +85,6 @@ margin:0 0 8px 0;}
 .inbox_chat { height: 700px; overflow-y: scroll;}
 
 
-
-
-
-	
 </style>
 <!-- Custom fonts for this template-->
 <link href="../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -94,6 +94,7 @@ margin:0 0 8px 0;}
 <link href="../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../../../resources/user/css/classCommon.css" rel="stylesheet">
 <link href="../../../resources/common/css/boardCss.css" rel="stylesheet">
+
 </head>
 <body id="page-top">
 
@@ -250,8 +251,10 @@ margin:0 0 8px 0;}
                     </ul>
 
                 </nav>
-	<!-- sidebar -->	
-	<div class="container">
+                <!-- End of Topbar -->
+
+                <!-- chat Content -->
+            <div class="container">
 <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
@@ -271,7 +274,7 @@ margin:0 0 8px 0;}
           <div class="inbox_chat">
             <div class="chat_list active_chat">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>최선락<input class="item"type="checkbox" name="User" value="User"></h5>                                 
                 </div>
@@ -279,7 +282,7 @@ margin:0 0 8px 0;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>최민수<input class="item"type="checkbox" name="User" value="User"></h5>
                 
@@ -288,7 +291,7 @@ margin:0 0 8px 0;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>윤수빈<input class="item"type="checkbox" name="User" value="User"></h5>                 
                 </div>
@@ -296,7 +299,7 @@ margin:0 0 8px 0;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>한동훈<input class="item"type="checkbox" name="User" value="User"></h5>
                 </div>
@@ -304,7 +307,7 @@ margin:0 0 8px 0;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>박규원<input class="item"type="checkbox" name="User" value="User"></h5>
                 </div>
@@ -312,7 +315,7 @@ margin:0 0 8px 0;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>김@@<input class="item"type="checkbox" name="User" value="User"></h5>
                 </div>
@@ -320,7 +323,7 @@ margin:0 0 8px 0;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>고@@<input class="item"type="checkbox" name="User" value="User"></h5>
                 </div>
@@ -338,7 +341,8 @@ margin:0 0 8px 0;}
 	
 	</div>
 </div>
-​<!-- Bootstrap core JavaScript-->
+               
+    <!-- Bootstrap core JavaScript-->
     <script src="../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -347,15 +351,14 @@ margin:0 0 8px 0;}
 
     <!-- Custom scripts for all pages-->
     <script src="../../../resources/common/js/sb-admin-2.min.js"></script> 
-​
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> --></script>
-<!-- <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>   -->
-​
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-​
+
+
+
 </body>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+ -->
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
 </html>

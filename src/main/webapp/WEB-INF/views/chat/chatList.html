@@ -1,55 +1,21 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<!-- Required meta tags -->
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
-​
-<title>main</title>
+<title></title>
 <style type="text/css">
-/*  	body{
-		background-color: #F9F9FA;
-	}
- */	#sidebar{
-		background-color: white;
-	}
- 	.btn-toggle{
-		font-size: 15px;
-		font-weight: bold;
-	}
-	#home{
-		margin-left: 40px;
-	}
-	#class{
-		margin-left: 20px;
-	}
-	.icon{
-		display: inline;
-		margin-right: 20px;
-	}
-	#classImg{
-		float: left;
-	}
-	#classInfo{
-		float: right;
-		font-size: 15px;
-		padding-top: 3px;
-	}
-	#menuList{
-		clear: both;
-	}
-	#btn-add{
-		border-radius: 50px;
-		font-size: 14px;
-		font-weight: bold;
-		margin-top: 10px;
-		margin-bottom: 30px;
-	}
-	.container{max-width:1250px; margin:auto;}
+	/* 채팅css */
+.container{max-width:1250px; margin:auto;}
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -115,7 +81,6 @@ img{ max-width:100%;}
 
 .active_chat{ background:#ebebeb;}
 
-	
 </style>
 <!-- Custom fonts for this template-->
 <link href="../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -125,6 +90,7 @@ img{ max-width:100%;}
 <link href="../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../../../resources/user/css/classCommon.css" rel="stylesheet">
 <link href="../../../resources/common/css/boardCss.css" rel="stylesheet">
+
 </head>
 <body id="page-top">
 
@@ -281,10 +247,11 @@ img{ max-width:100%;}
                     </ul>
 
                 </nav>
+                <!-- End of Topbar -->
 
-	<!-- sidebar -->	
-	<div class="container">
-<div class="messaging">
+                <!-- chat Content -->
+             <div class="container">
+			<div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
           <div class="headind_srch">
@@ -297,13 +264,13 @@ img{ max-width:100%;}
                 <span class="input-group-addon">
                 <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
                 </span>
-                <button type="button"><i>새로운 채팅</i> </button> </div>
+                <button type="button" onclick="location.href='chatclassList.html' "><i>새로운 채팅</i> </button> </div>
             </div>
           </div>
           <div class="inbox_chat">
             <div class="chat_list active_chat">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>최@@ <span class="chat_date">1</span></h5>
                   <p class="status green"></p>
@@ -313,7 +280,7 @@ img{ max-width:100%;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>2 <span class="chat_date">2</span></h5>
                   <p class="status orange"></p>
@@ -323,7 +290,7 @@ img{ max-width:100%;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>3 <span class="chat_date">3</span></h5>
                    <p class="status orange"></p>
@@ -333,7 +300,7 @@ img{ max-width:100%;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>4<span class="chat_date">4</span></h5>
                   <p class="status green"></p>
@@ -343,7 +310,7 @@ img{ max-width:100%;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>5 <span class="chat_date">5</span></h5>
                   <p class="status green"></p>
@@ -353,7 +320,7 @@ img{ max-width:100%;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>6 <span class="chat_date">6</span></h5>
                   <p class="status green"></p>
@@ -363,7 +330,7 @@ img{ max-width:100%;}
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../../../image/k.jpg"> </div>
+                <div class="chat_img"> <img src="../../../resources/chat/image/k.jpg"> </div>
                 <div class="chat_ib">
                   <h5>7 <span class="chat_date">7</span></h5>
                   <p class="status orange"></p>
@@ -379,8 +346,12 @@ img{ max-width:100%;}
 	
 	</div>
 </div>
-​
-<!-- Bootstrap core JavaScript-->
+				
+	
+	
+
+               
+    <!-- Bootstrap core JavaScript-->
     <script src="../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -389,15 +360,14 @@ img{ max-width:100%;}
 
     <!-- Custom scripts for all pages-->
     <script src="../../../resources/common/js/sb-admin-2.min.js"></script> 
-​
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> --></script>
-<!-- <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>   -->
-​
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-​
+
+
+
 </body>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+ -->
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
 </html>
