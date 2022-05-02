@@ -1,211 +1,26 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<!-- Required meta tags -->
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap CSS -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/>
 
-<!-- Custom fonts for this template-->
-<link href="../../../../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-<!-- Custom styles for this template-->
-<link href="../../../../../resources/common/css/sb-admin-2.css" rel="stylesheet">
-<link href="../../../../../resources/user/css/classCommon.css" rel="stylesheet">
-<link href="../../../../../resources/common/css/boardCss.css" rel="stylesheet">
-<title>프로필 설정</title>
-
-
-
+<title></title>
 <style type="text/css">
-/*  	body{
-		background-color: #F9F9FA;
+	#posting{
+		width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 50px;
 	}
- */
-#sidebar {
-	background-color: white;
-}
-
-.btn-toggle {
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#home {
-	margin-left: 40px;
-}
-
-#class {
-	margin-left: 20px;
-}
-
-.icon {
-	display: inline;
-	margin-right: 20px;
-}
-
-#classImg {
-	float: left;
-}
-
-#classInfo {
-	float: right;
-	font-size: 15px;
-	padding-top: 3px;
-}
-
-#menuList {
-	clear: both;
-}
-
-#btn-add {
-	border-radius: 50px;
-	font-size: 14px;
-	font-weight: bold;
-	margin-top: 10px;
-	margin-bottom: 30px;
-}
-
-.profile_box {
-	border-radius: 70%;
-	overflow: hidden;
-	width: 30px;
-	height: 30px;
-}
-
-.profile {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-
-
-.container_title {
-	border: 1px solid #dee2e6 !important;
-	border-radius: 0.25rem;
-	padding: 1.5rem;
-	background-color: white;
-	margin-bottom: 1.3rem;
-}
-
-.container_title>.header {
-	font-size: 1.5rem;
-	font-weight: bold;
-	color: #5a5c69;
-}
-
-.container_title>.body {
-	font-size: 0.8rem;
-	font-weight: 500;
-}
-
-.container_title>.footer {
-	display: flex;
-	justify-content: end;
-}
-
-.container_title>.footer>button {
-	width: 110px;
-}
-
-.homework_list > div {
-	 box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
-}
-
-
-.container_base:nth-child(2) {
-	border-radius: 0.25rem 0.25rem 0 0;
-}
-
-.container_base:last-child {
-	border-radius: 0 0 0.25rem 0.25rem;
-	border-bottom-style: solid;
-}
-
-.container_base .homework_listitem {
-	padding: 0px;
-}
-
-.container_base .header {
-	margin: 0.5rem 0 0.5rem 0;
-}
-
-.container_base .header {
-	display:flex;
-	align-items:center;
-	gap : 0.5rem;
-}
-
-.container_base .header>span {
-	font-size: 0.75rem;
-}
-
-
-.container_base .header>span:nth-child(3) {
-	color: #858796;
-	font-weight: 400;
-}
-
-.container_base .body {
-	margin: 0.15rem;
-}
-
-.container_base .body>.badge {
-	padding: 6px;
-}
-
-.container_base .body>span:nth-child(3) {
-	color: #5a5c69;
-}
-
-.container_base .body>div:nth-child(4) {
-	font-size: 0.8rem;
-}
-
-.container_base .footer {
-	margin-top: 3rem;
-}
-
-.container_base .footer>* {
-	margin-right: 0.5rem;
-}
-
-.badge_hw {
-	background-color: #cfe2f3;
-	color: #4e73df;
-}
-
-.badge_after3 {
-	background-color: white;
-	border: 1px solid #f6c23e;
-	color: #f6c23e;
-}
-
-.badge_todayend {
-	color: #e74a3b;
-	border: 1px solid #e74a3b;
-}
-
-.badge_alreadyend {
-	color: #858796;
-	border: 1px solid #858796;
-}
-
-.badge_afterNday {
-	color: #1cc88a;
-	border: 1px solid #1cc88a;
-}
-
-.badge_graded {
-	color: #4e73df;
-	border: 1px solid #4e73df;
-}
-.picture_change {
+#picture_change {
 font-size:12px; 
 font-weight:bold; 
 border:none; 
@@ -214,9 +29,14 @@ margin-top:0px;
 margin-left:10px;
 }
 </style>
+<!-- Custom fonts for this template-->
+<link href="../../../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-
-
+<!-- Custom styles for this template-->
+<link href="../../../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="../../../../../resources/user/css/classCommon.css" rel="stylesheet">
+<link href="../../../../../resources/common/css/boardCss.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
@@ -228,7 +48,7 @@ margin-left:10px;
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-		    <img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;">
+		    <img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='../../main_teacher.html'">
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -248,11 +68,11 @@ margin-left:10px;
             <div class="sidebar-heading" style="color: #828282;">전체 메뉴</div>
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
+                <a class="nav-link" href="./classHomeworkList.html"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
+                <a class="nav-link" href="../teacher/assigmentsReport.html"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
+                <a class="nav-link" href="../teacher/attendance.html"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
+                <a class="nav-link" href="./classMemberList.html"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
+                <a class="nav-link" href="../teacher/classSetting.html"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
             </li>
 
             <!-- Divider --> 
@@ -278,13 +98,12 @@ margin-left:10px;
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">자유 공간</a>
+                        <a class="collapse-item" href="./classPostListEx.html">자유 공간</a>
                         <a class="collapse-item" href="register.html">학습 자료</a>
                         <a class="collapse-item" href="forgot-password.html">활동 사진</a>
                     </div>
                 </div>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -350,9 +169,7 @@ margin-left:10px;
                                 <!-- <span class="badge badge-danger badge-counter">7</span> -->
                             </a>
                         </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -362,10 +179,10 @@ margin-left:10px;
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-				               <a class="dropdown-item" href="./memberInfo.html">
+				               <a class="dropdown-item" href="../../memberInfo.html">
 				                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
 				               </a>
-				               <a class="dropdown-item" href="./classList_teacher.html">
+				               <a class="dropdown-item" href="../../classList_teacher.html">
 				                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
 				               </a>
 				               <div class="dropdown-divider"></div>
@@ -374,7 +191,6 @@ margin-left:10px;
 				               </a>
 			          		</div>
                         </li>
-
                     </ul>
 
                 </nav>
@@ -384,17 +200,16 @@ margin-left:10px;
 
 
 
-
 <div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="homework_list col-md-7 ">
-				<div class="container_title">
+		<div class="row" id="posting">
+			<div class="col-12">
+				<div class="container_title shadow mb-4">
 					<div class="header">
 						프로필 설정
 					</div>
 					<div class="body">
 						<div class="col-lg-3" id="classImg">
-							<img src="..."  width="70" height="70">
+							<img src="../../../../../resources/common/image/profile2.png"  width="70" height="70" >
 						</div>
 						<div class="col-lg-9" id="classInfo">
 							<span style="font-size: 12px;">이 클래스에서만 사용할<br>
@@ -402,18 +217,17 @@ margin-left:10px;
 							(개인정보 보호에 주의)</span>
 						</div>
 						<div>
-							<button type="button" class="btn btn-outline-primary w-30 picture_change" >사진 변경</button>
+							<button type="button" class="btn btn-outline-primary w-30" id="picture_change" >사진 변경</button>
 						</div>
 					</div>
 			
 			</div>
-			</div>
-			<div class="homework_list col-md-7 ">
+			<div class="homework_list shadow mb-4">
 				<div class="container_title" style="margin-top:20px;">
 					<label for="ifmmName" class="form-label" style="font-weight: bold;">이름</label>
 					<input type="text" class="form-control" id="ifmmName" name="ifmmName">
 				<div style="text-align: right; margin-top:50px;">
-					<button type="button" class="btn btn-outline-success btn-lg w-50" id="btn-add" style="margin-bottom:10px;" data-bs-toggle="modal" data-bs-target="#Change">변경사항 저장</button>
+					<button type="button" class="btn btn-outline-success" id="btn-add" style="margin-bottom:10px; width: 180px;" data-bs-toggle="modal" data-bs-target="#Change">변경사항 저장</button>
 				</div>
 				</div>
 			</div>
@@ -436,8 +250,9 @@ margin-left:10px;
 		    </div>
 		  </div>
 	<!-- modal end -->
-			<div style="clear:both;" class="homework_list col-md-7 ">
-			<div class="container_title">
+			<div style="clear:both;" class="homework_list shadow mb-4">
+			<div class="container_title ">
+
 				<p style="margin-bottom: 20px; margin-top: 10px; font-weight: bold;">클래스 알림 설정</p>
 				
 				<div class="form-check form-switch" style="display: inline; float: right;">
@@ -456,16 +271,16 @@ margin-left:10px;
 			
  <!-- 선생님이 zoom 연동시 생성됨 -->			
 			
-		<div class="homework_list col-md-7 ">
-			<div class="container_title" style="margin-top: 10px;">
-				<p style="font-weight: bold;">실시간 수업 Zoom 연동 해제</p>
-				<p style="font-size: 12px;">관리자로 활동하고 있는 모든 클래스에서 Zoom연동이 해제됩니다. 추후 실시간 수업을 이용하시려면 다시 Zoom을 연동해주세요.</p>
-				<div style=" text-align: right;">
-					<button type="button" class="btn btn-outline-danger btn-lg w-50" id="btn-add" data-bs-toggle="modal" data-bs-target="#zoomOut">Zoom 연동 해제</button>
+				<div class="homework_list shadow mb-4">
+					<div class="container_title" style="margin-top: 10px;">
+						<p style="font-weight: bold;">실시간 수업 Zoom 연동 해제</p>
+						<p style="font-size: 12px;">관리자로 활동하고 있는 모든 클래스에서 Zoom연동이 해제됩니다. 추후 실시간 수업을 이용하시려면 다시 Zoom을 연동해주세요.</p>
+						<div style=" text-align: right;">
+							<button type="button" class="btn btn-outline-danger" id="btn-add" data-bs-toggle="modal" style="width: 180px;" data-bs-target="#zoomOut">Zoom 연동 해제</button>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		
+			
 		<!-- modal -->
 				<div class="modal" tabindex="-1" id="zoomOut">
 				  <div class="modal-dialog">
@@ -490,16 +305,16 @@ margin-left:10px;
 		
 		
 		
-		<div class="homework_list col-md-7 ">
+		<div class="homework_list shadow mb-4">
 			<div class="container_title" style="margin-top: 10px;">
 				<p style="font-weight: bold;">클래스 탈퇴</p>
 				<p style="font-size: 12px;">이 클래스에서 탈퇴해도 기존에 작성한 콘텐츠와 활동 기록은 자동으로 삭제되지 않습니다.</p>
 				<div style="text-align: right;">
-					<button type="button" class="btn btn-outline-danger btn-lg w-50" id="btn-add" style="margin-bottom:10px;" data-bs-toggle="modal" data-bs-target="#goOut">클래스 탈퇴</button>
+					<button type="button" class="btn btn-outline-danger" id="btn-add" style="margin-bottom:10px; width: 180px;" data-bs-toggle="modal" data-bs-target="#goOut">클래스 탈퇴</button>
 				</div>
 			</div>
 		</div>
-				
+		</div>		
 <!-- modal -->
 				<div class="modal" tabindex="-1" id="goOut">
 				  <div class="modal-dialog">
@@ -525,15 +340,32 @@ margin-left:10px;
 			
 			
 			
-			
+
 			
 		</div>
+			      <!-- Footer -->
+            <footer class="sticky-footer bg-white mt-5">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; CLASSING 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 	</div>
 </div>
 
 </div>
-  ​
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <!-- Bootstrap core JavaScript-->
+    <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../../../../../resources/common/js/sb-admin-2.min.js"></script> ​
 	
 </body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </html>
