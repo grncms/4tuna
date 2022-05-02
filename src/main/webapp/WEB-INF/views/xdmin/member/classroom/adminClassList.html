@@ -26,6 +26,9 @@
 		background-color: #F9F9FA;
 	}
  */
+ body{
+		background-color: #F6F9F7;
+	}
 #sidebar {
 	background-color: white;
 }
@@ -212,6 +215,14 @@
     border-radius:10px;
     border: 1px solid silver;
   }
+   footer {
+        position:absolute;
+        bottom:0;
+        width:100%; 
+    }
+    .content {
+    position:relative;
+    }
 </style>
 
 
@@ -268,7 +279,7 @@
 	</ul>
 </nav>
 <!-- Topbar end -->
-		
+<div class="content">		
 		<div class="container" style="margin-bottom:20px;">
 			<h3>클래스관리</h3>
 				<div class="border p-3 ">
@@ -395,10 +406,6 @@
 		      </div>
 		    </div>
 		  </div>
-				<!-- modal -->	
-					
-				
-	
 				<nav aria-label="Page navigation example" style="clear:both;">
 					<ul class="pagination" style="justify-content: center;">
 						<li class="page-item"><a class="page-link" href="#"aria-label="Previous">
@@ -410,13 +417,19 @@
 							<span aria-hidden="true">&raquo;</span></a></li>
 					</ul>
 				</nav>
-		<footer class="sticky-footer bg-white mt-4">
-						<div class="container my-auto">
-							<div class="copyright text-center my-auto">
-								<span>Copyright &copy; CLASSING 2021</span>
-							</div>
+				
+	</div>			
+				<footer class="sticky-footer bg-white mt-4">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Copyright &copy; CLASSING 2021</span>
 						</div>
-					</footer>
+					</div>
+				</footer>
+				
+					
+				
+	
 
  <!-- Bootstrap core JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
