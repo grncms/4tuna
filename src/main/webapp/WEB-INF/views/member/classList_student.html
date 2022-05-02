@@ -15,7 +15,7 @@
 <!-- Custom styles for this template-->
 <link href="../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../../../resources/user/css/classCommon.css" rel="stylesheet">
-<title>main</title>
+<title>classList_teacher</title>
 <style type="text/css">
 	#home{
 		margin-left: 40px;
@@ -28,13 +28,13 @@
 	#main{
 		width: 60%;
 	}
+	i{
+		padding-left: 10px;
+	}
 	#main_bg{
 		height: 110px;
 		border-radius: 7px;
 		margin-top: 20px;
-	}
-	i{
-		padding-left: 10px;
 	}
 	#classNotice{
 		border: 1px solid #dcdcdc;
@@ -88,7 +88,10 @@
 		font-weight: bold;
 		margin-bottom: 10px;
 	}
-	#btn-add:hover{
+	#btn-add:hover,
+	#btn-add:active,
+	#btn-add:visited,
+	#btn-add:focus{
 		color: white;
 	}
 	#btn-open{
@@ -103,7 +106,6 @@
  	#classInfo{
 		float: right;
 		font-size: 15px;
-		padding-top: 3px;
 	}
 	#schNotice{
 		background-color: white;
@@ -160,11 +162,11 @@
                <a class="dropdown-item" href="./memberInfo.html">
                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;개인정보
                </a>
-               <a class="dropdown-item" href="./classList_teacher.html">
+               <a class="dropdown-item" href="#">
                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
                </a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="../index/oneschool/index.html">
+               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
                </a>
            </div>
@@ -174,58 +176,24 @@
 <div class="container" id="main">
 	<div class="row">
 	<div class="col-md-7" >
-		<img src="../../../resources/user/image/main_bg.png" class="w-100" id="main_bg"	>
 		<div id="classNotice">
-		<div class="mb-4" onclick="location.href='./classroom/common/classMain.html'"><img src="../../../resources/user/image/a3.jpg" width="45" height="45" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px; padding-top: 25px;">4조<i class="fa-solid fa-angle-right"></i></span></div>
-		<span class="badge bg-info text-light mb-3">공지</span><p class="d-inline" id="title">공지 </p>
-		<p id="content">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-		<p id="date"> 2022-04-26</p>
-		<hr style="color: gray;">
-		<span class="badge bg-info text-light mb-3">공지</span><p class="d-inline" id="title">공지 </p>
-		<p id="content">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-		<p id="date"> 2022-04-26</p>
-  		</div>
+			<div class=""><span style="font-size: 20px; font-weight: bold;">클래스 목록</span></div>
+		</div>
+		<div id="classNotice">
+			<div><img src="../../../resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
+			<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">3조</span></div>
+			<hr>
+			<div><img src="../../../resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
+			<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">1조</span></div>
+			<hr>
+			<div><img src="../../../resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
+			<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">2조</span></div>
+			<hr>
+		</div>
 	</div>
 	<div class="col-md-5">
 		<div id="classList">
-		<h5 style="font-weight: bold; margin-bottom: 30px;">클래스 바로가기</h5>
-		<div onclick="location.href='./classroom/common/classMain.html'">
-		<div class="col-md-2" id="classImg"><img src="../../../resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px;"></div>
-		<div class="col-md-10 mb-5" id="classInfo"><span><b>4조</b></span><p><span style="">2022</span></div>
-		</div>
-		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
-		<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">클래스 가입</h5>
-						<button type="button" class="btn-close"
-							data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<h3 style="text-align: center">코드입력</h3>
-						<br> <br><div class="input-group mb-3"> <input class="form-control form-control-lg" type="text" placeholder="코드 6자리 입력"> <br>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">닫기</button>
-					<button type="button" data-bs-toggle="modal" class="btn btn-primary">확인</button>
-				</div>
-			</div>
-		</div>
-	</div> 
-		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='./classroom/teacher/classForm.html'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
-		</div>
-	</div>
-	<div class="col-md-12">
-		<div id="schInfo"> 
-		<div class="mb-4"><img src="../../../resources/user/image/schIcon.png" width="40" height="40" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px;">사조 초등학교<i class="fa-solid fa-angle-right"></i></span></div>	
-		<p style="margin-left: 10px; font-weight: bold;">공지사항</p>
-		<div id="schNotice">아직 공지사항이 없습니다!</div>
-		<p style="margin-left: 10px; font-weight: bold;">오늘의 급식</p>
-		<div id="schFood"><p><b>4월 26일</b></p><p>친환경강황밥(강황분말)<br>부대찌개<br>새우가스+타르타르소스<br>친환경사과<br>김치</p></div>
-
+		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
 		</div>
 	</div>
 	</div>
@@ -238,7 +206,7 @@
 		<small>㈜ 클래씽  서울시 종로구 종로구구구구구구<br>   
 			대표이사 : 최민수<br>
 			사업자등록번호 : 111-00-111111<br>
-			<b>대표전화 : 1544-1900 (발신자 부담전화)</b>   팩스 : 0502-987-5711 (지역번호공통)<br>
+			<b>대표전화 : 1544-0000 (발신자 부담전화)</b>   팩스 : 0000-987-5000 (지역번호공통)<br>
 			COPYRIGHT(C) CLASSING CENTRE ALL RIGHTS RESERVED.
 			2021 Company, Inc</p></small> 
 

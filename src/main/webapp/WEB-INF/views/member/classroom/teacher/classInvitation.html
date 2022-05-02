@@ -15,14 +15,24 @@
 <title></title>
 <style type="text/css">
 	#posting{
-		width: 1100px;
+		width: 800px;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 50px;
+		
+	}
+	.content{
+		position:relative;
+	}
+	
+	.footer {
+		position:absolute;
+		bottom:0;
+		width:100%;	
 	}
 </style>
 <!-- Custom fonts for this template-->
-<link href="../../../../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="../../../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
@@ -40,17 +50,17 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-		    <img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;">
+		    <img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='../../main_teacher.html'">
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item active" onclick="location.href='../common/classMain.html'">
             	<div class="col-md-3 mt-4" id="classImg"><img src="../../../../../resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
 				<div class="col-md-9 mt-4" id="classInfo"><span><b>4조</b></span><p><span>2022</span></div>
             </li>
-			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add">
+			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='./classInvitation.html'">
 				<i class="fa-solid fa-user-plus"></i>구성원 초대하기</button>
 			</div>
             <!-- Divider -->
@@ -59,20 +69,20 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <div class="sidebar-heading" style="color: #828282;">전체 메뉴</div>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
+                <a class="nav-link" href="../common/classNoticeList.html"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
+                <a class="nav-link" href="../common/classHomeworkList.html"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
+                <a class="nav-link" href="./assigmentsReport.html"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
+                <a class="nav-link" href="./attendance.html"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
+                <a class="nav-link" href="../common/classMemberList.html"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
+                <a class="nav-link" href="./classSetting.html"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
             </li>
 
             <!-- Divider --> 
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading" style="color: #828282;">나만 참여한 공간</div>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-file-pen" style="color: #828282;"></i> <span>예약 / 임시저장한 글</span></a>
+            <li class="nav-item" onclick="location.href='../common/classStorage.html'">
+                <a class="nav-link" href="../common/classStorage.html"><i class="fa-solid fa-file-pen" style="color: #828282;"></i> <span>예약 / 임시저장한 글</span></a>
             </li>
 
             <!-- Divider -->
@@ -90,13 +100,12 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">자유 공간</a>
-                        <a class="collapse-item" href="register.html">학습 자료</a>
-                        <a class="collapse-item" href="forgot-password.html">활동 사진</a>
+                        <a class="collapse-item" href="../common/classPostList.html">자유 공간</a>
+                        <a class="collapse-item" href="../common/classPostList.html">학습 자료</a>
+                        <a class="collapse-item" href="../common/classPostList.html">활동 사진</a>
                     </div>
                 </div>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -107,7 +116,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" class="content">
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -162,9 +171,7 @@
                                 <!-- <span class="badge badge-danger badge-counter">7</span> -->
                             </a>
                         </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -174,213 +181,74 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-				               <a class="dropdown-item" href="./memberInfo.html">
+				               <a class="dropdown-item" href="../common/classMemberView.html">
 				                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
 				               </a>
-				               <a class="dropdown-item" href="./classList_teacher.html">
+				               <a class="dropdown-item" href="../../classList_teacher.html">
 				                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
 				               </a>
 				               <div class="dropdown-divider"></div>
-				               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+				               <a class="dropdown-item" href="../../../index/oneschool/index.html" >
 				                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
 				               </a>
 			          		</div>
                         </li>
-
                     </ul>
 
                 </nav>
                 <!-- End of Topbar -->
 
-  <!-- Begin Page Content -->
+                <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row" id="posting">
                         <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-8">
-                            <div class="container_title shadow mb-4">
-								<div class="header">자유 공간</div>
-								<!-- <div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div> -->
-								<div class="footer dropdown">
-									<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown">글쓰기</button>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="#">공지</a></li>
-										<li><a class="dropdown-item" href="#">게시글</a></li>
-										<li><a class="dropdown-item" href="#">일반 과제</a></li>
-										<li><a class="dropdown-item" href="#">자료실 과제</a></li>
-									</ul>
-								</div>
-                            </div>
-                            <div class="card shadow mb-4">
+                        <div class="col-12">
+							<div class="container_title shadow mb-4">
+								<div class="header">클래스에 구성원 초대하기</div>
+								<div class="body">구성원을 초대해 클래스에서 수업 관리를 시작하세요.</div>
+								<br>
+							</div>
+							
+							<!-- 클래스 설정 본문 시작 -->
+                            <div class="card shadow mb-4 ">
                             <div class="container_base">
-								<div>
+								<div class="homework_listitem">
 									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-										<span>자유공간</span>
+										<span>클래스 코드</span>
+										<div style="font-size: 13px; color: gray">클래스 코드와 초대 문구를 복사해 이메일, 메신저로 공유하세요.</div>
 									</div>
-
-									<div class="body">
-										<span class='badge badge_hw'>과제</span>
-										<span class='badge badge_todayend'>오늘 종료</span>
-										<span>수학문제 풀기</span>
-										<div>마감 : 4월 25일 오후 11:59</div>
+									<div class="classTitleSetting">
+										<div class="form-control" id="content" name="content" style="resize:none; margin-top: 10px; margin-bottom:25px; height: auto;">
+										<p style="font-size: 35px; text-align: center; margin-top: 10px;">QZUV27</p>
+										</div>	
 									</div>
+								</div>
+								
 
-
-									<div class="footer">
-										<i class="fa-regular fa-comment"> 2</i>
-										<i class="fa-regular fa-thumbs-up"> 2</i>
-										<i class="fa-solid fa-check"> 1</i>
-										<i class="fa-solid fa-question"> 3</i>
+								
+								<div class="homework_listitem">
+									<div class="header">
+										<span>소개글</span>
+									</div>
+									<div class="classTitleSetting">
+										<div class="form-control" id="content" name="content" style="resize:none; margin-top: 10px; margin-bottom:25px; height: auto;">
+										창원경일고등학교의 4조 클래스에 초대합니다! <br> 클래스 코드 : QZUV27 <br>초대받은 클래스로 바로가기 <br>https://www.classting.com/c/QZUV27</div>	
+										<button type="button" class="basic_button mt-10 w-25 p-2" style="float:right">초대문구 복사</button>
 									</div>
 								</div>
 							</div>
-							<div class="container_base">
-								<div>
-									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-										<span>자유공간</span>
-									</div>
-
-									<div class="body">
-										<span class='badge badge_hw'>과제</span>
-										<span class='badge badge_alreadyend'>기한 지남</span>
-										<span>수학문제 풀기</span>
-										<div>마감 : 4월 25일 오후 11:59</div>
-									</div>
-
-
-									<div class="footer">
-										<i class="fa-regular fa-comment"> 2</i>
-										<i class="fa-regular fa-thumbs-up"> 2</i>
-										<i class="fa-solid fa-check"> 1</i>
-										<i class="fa-solid fa-question"> 3</i>
-									</div>
-								</div>
-							</div>
-							<div class="container_base">
-								<div>
-									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-										<span>자유공간</span>
-									</div>
-
-									<div class="body">
-										<span class='badge badge_hw'>과제</span>
-										<span class='badge badge_after3'>3일 후 마감</span>
-										<span>수학문제 풀기</span>
-										<div>마감 : 4월 25일 오후 11:59</div>
-									</div>
-									<div class="footer">
-										<i class="fa-regular fa-comment"> 2</i>
-										<i class="fa-regular fa-thumbs-up"> 2</i>
-										<i class="fa-solid fa-check"> 1</i>
-										<i class="fa-solid fa-question"> 3</i>
-									</div>
-								</div>
-							</div>
-							<div class="container_base">
-								<div>
-									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-										<span>자유공간</span>
-									</div>
-
-									<div class="body">
-										<span class='badge badge_hw'>과제</span>
-										<span class='badge badge_afterNday'>25일 후 마감</span>
-										<span>수학문제 풀기</span>
-										<div>마감 : 4월 25일 오후 11:59</div>
-									</div>
-									<div class="footer">
-										<i class="fa-regular fa-comment"> 2</i>
-										<i class="fa-regular fa-thumbs-up"> 2</i>
-										<i class="fa-solid fa-check"> 1</i>
-										<i class="fa-solid fa-question"> 3</i>
-									</div>
-								</div>
-							</div>
-							<div class="container_base">
-								<div>
-									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-										<span>자유공간</span>
-									</div>
-
-									<div class="body">
-										<span class='badge badge_hw'>과제</span>
-										<span class='badge badge_graded'>채점 완료</span>
-										<span>수학문제 풀기</span>
-										<div>마감 : 4월 25일 오후 11:59</div>
-									</div>
-									<div class="footer">
-										<i class="fa-regular fa-comment"> 2</i>
-										<i class="fa-regular fa-thumbs-up"> 2</i>
-										<i class="fa-solid fa-check"> 1</i>
-										<i class="fa-solid fa-question"> 3</i>
-									</div>
-								</div>
-							</div>
-                                <!-- Card Body -->
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->	
-                        <div class="col-xl-4 col-lg-4">
-                            <div class="container_title shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-								<div class="header mb-5">실시간 수업</div>
-                               	<button type="button" class="btn btn-lg mt-1 w-100 p-2" id="btn-add"> <i class="fa-solid fa-video"></i>  Zoom 연동하기</button>
-								<div class="title_hw" >
-					            	<div class="col-md-2 col-lg-2" id="classImg"><img src="../../../../../resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-									<div class="col-md-10 col-lg-10" id="classInfo"><span><b>최민수</b></span><p><span style="color: #c8c8c8; font-size: 14px;">선셍님</span></div>
-								</div>	
-								<hr>
-								<div class="title_hw" >
-					            	<div class="col-md-2 col-lg-2" id="classImg"><img src="../../../../../resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-									<div class="col-md-10 col-lg-10" id="classInfo"><span><b>박규원</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-								</div>	
-								<div class="title_hw" >
-					            	<div class="col-md-2 col-lg-2" id="classImg"><img src="../../../../../resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-									<div class="col-md-10 col-lg-10" id="classInfo"><span><b>윤수빈</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-								</div>	
-								<div class="title_hw" >
-					            	<div class="col-md-2 col-lg-2" id="classImg"><img src="../../../../../resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-									<div class="col-md-10 col-lg-10" id="classInfo"><span><b>한동훈</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-								</div>	
-								<div class="title_hw" >
-					            	<div class="col-md-2 col-lg-2" id="classImg"><img src="../../../../../resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-									<div class="col-md-10 col-lg-10" id="classInfo"><span><b>최선락</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-								</div>	
-                        </div>
-                    </div>
+							<!-- 클래스 설정 본문 끝 -->
+                           </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
-            </div>
-            <!-- End of Main Content -->
+
+
+			</div>
+		</div>
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white mt-5">
+            <footer class="sticky-footer bg-white mt-5 footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; CLASSING 2021</span>
@@ -388,18 +256,12 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-
-
+	</div>
+	</div>
+	</div>
     <!-- Bootstrap core JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
-    <script src="../../../../../resourc	es/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
