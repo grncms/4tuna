@@ -179,9 +179,9 @@
 	
 		
 		<label for="school" class="form-label" style="color:black;">학교/기관</label>
-		<div class="input-group mb-3">
+		<div class="input-group mb-3" data-bs-toggle="modal" data-bs-target="#schModal">
 			<input type="text" class="form-control" id="school" placeholder="학교/기관의 이름을 입력해주세요."  aria-describedby="button-addon2">
-			<button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass" style="padding:0px;"></i></button>
+			<button class="btn btn-outline-secondary" type="button" id="button-addon2" ><i class="fa-solid fa-magnifying-glass" style="padding:0px;"></i></button>
 		</div>
 		<div style="height:100px; border:1px solid silver; border-radius: 5px;">
 			<span>[학교·기관 이름] 또는 [지역이름 + 학교·기관 이름]으로 검색해주세요.<br>예) 클팅중학교(X), 서울 클팅중학교(O)</span>
@@ -201,7 +201,7 @@
 			   </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-		        <button type="submit" class="btn btn-primary">등록</button>
+		        <button type="submit" class="btn btn-primary" onclick="location.href='./classForm2.html'">등록</button>
 		      </div>
 		      </div>
 		    </div>
@@ -209,8 +209,29 @@
 		<!-- modal end -->
 
 
-	
-
+				<div class="modal fade" id="schModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">학교 / 기관 검색</h5>
+							<button type="button" class="btn-close"
+								data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<h3 style="text-align: center">학교 및 기관 검색</h3>
+							<br> <br><div class="input-group mb-3"> <input class="form-control form-control-lg" type="text" placeholder="이름 입력">
+							<button class="btn btn-outline-secondary" role="button" id="button-addon2">검색</button>
+						</div>
+						<p>[학교·기관 이름] 또는 [지역 이름 + 학교·기관 이름]으로 검색해 보세요.</p>
+						<p>예) 클팅중학교 (X), 서울클팅중학교 (O)</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+						<button type="button" data-bs-toggle="modal" class="btn btn-primary">확인</button>
+					</div>
+				</div>
+			</div>
+			</div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
