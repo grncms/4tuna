@@ -307,7 +307,7 @@
 }
 
 .container_title>.footer>button {
-	width: 110px;
+	width: 20%;
 }
 
 .container_base_wrapper {
@@ -337,9 +337,15 @@
 
 
 
+.container_base > .list .header {
+	display:flex;
+	align-items:center;
+	gap:0.5rem;
+}
 
-
-
+.container_base > .list > .header > *:nth-child(3){
+		font-weight:normal;
+}
 
 
 
@@ -353,17 +359,12 @@
 
 
 
-.container_base .footer {
-	margin-top: 3rem;
-}
 
-.container_base .footer>* {
-	margin-right: 0.5rem;
-}
 
 .badge_hw {
 	background-color: #cfe2f3;
 	color: #4e73df;
+	border:1px solid #cfe2f3;
 }
 
 .badge_after3 {
@@ -390,4 +391,8 @@
 .badge_graded {
 	color: #4e73df;
 	border: 1px solid #4e73df;
+}
+.badge_notice{
+	color: #20c997;
+	border: 1px solid #20c997;
 }
