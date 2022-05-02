@@ -220,9 +220,13 @@
 <body id="page-top">
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 	<img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px; onclick="location.href='./main_teacher.html'">
+	<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+	        <li><a href="../adminMemberList.html" class="nav-link link-dark" id="home">회원관리</a></li>
+	        <li><a href="adminClassList.html" class="nav-link link-secondary" id="class">클래스관리</a></li>
+	      </ul>
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
-	
+		
 	    <!-- Nav Item - Alerts -->
 	    <li class="nav-item mx-1">
 	        <a class="nav-link" href="#" id="" role="button">
@@ -279,7 +283,7 @@
 					<option value="1">Y</option>
 					<option value="2">N</option>
 				</select>
-				<input  class="form-control"  type="text" style="width: 200px; margin-top:10px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜">
+				<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜">
 				<input  class="form-control" type="text" style="width: 200px; display: inline;" name="shDateEnd" id="shDateEnd" placeholder="종료날짜">
 				
 				<br>
@@ -312,7 +316,7 @@
 								<div class="form-check">
 								<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault1"></div></td>
 							<td scope="col">1</td>
-							<td scope="col"><a href="./classView.html">4조</a></td>
+							<td scope="col"><a href="./adminClassView.html">4조</a></td>
 							<td scope="col">이젠</td>
 							<td scope="col">KD83N3</td>
 							<td scope="col">2020.12.12</td>
@@ -414,6 +418,15 @@
 						</div>
 					</footer>
 
+ <!-- Bootstrap core JavaScript-->
+    <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../../../../../resources/common/js/sb-admin-2.min.js"></script> 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
