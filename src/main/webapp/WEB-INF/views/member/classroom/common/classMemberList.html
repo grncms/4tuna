@@ -20,6 +20,16 @@
 		margin-right: auto;
 		margin-top: 50px;
 	}
+	
+	.content{
+		position:relative;
+	}
+	
+	.footer {
+		position:absolute;
+		bottom:0;
+		width:100%;	
+	}
 </style>
 <!-- Custom fonts for this template-->
 <link href="../../../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,7 +50,7 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-		    <img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;">
+		    <a href="../../main_teacher.html"><img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;"></a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -106,7 +116,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" class="content">
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -285,7 +295,7 @@
 		</div>
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white mt-5">
+            <footer class="sticky-footer bg-white footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; CLASSING 2021</span>

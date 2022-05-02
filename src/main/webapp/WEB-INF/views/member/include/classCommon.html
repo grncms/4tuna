@@ -21,8 +21,17 @@
 <link href="../../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../../../../resources/user/css/classCommon.css" rel="stylesheet">
 <style type="text/css">
-</style>
 
+	.content{
+		position:relative;
+	}
+	
+	.footer {
+		position:absolute;
+		bottom:0;
+		width:100%;	
+	}
+</style>
 </head>
 <body id="page-top">
 
@@ -100,7 +109,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" class="content">
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -278,7 +287,7 @@
 
         </div>
             <!-- Footer -->
-            <footer class="sticky-footer bg-white mt-5">
+            <footer class="sticky-footer bg-white mt-5 footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; CLASSING 2021</span>
