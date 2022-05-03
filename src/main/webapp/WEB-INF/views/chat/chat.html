@@ -260,17 +260,19 @@ main footer a{
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-		    <img src="../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;">
-
+		    <a href="../member/main_teacher.html"><img src="../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;"></a> 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-            	<div class="col-md-3 mt-4" id="classImg"><img src="../../../resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
-				<div class="col-md-9 mt-4" id="classInfo"><span><b>4조</b></span><p><span>2022</span></div>
+            	<div class="col-md-3 mt-4" id="classImg">
+            	<img src="../../../resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
+				<div class="col-md-9 mt-4" id="classInfo">
+				<span><b>4조</b></span><p>
+				<span>2022</span></div>
             </li>
-			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add">
+			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='../member/classroom/teacher/classInvitation.html'">
 				<i class="fa-solid fa-user-plus"></i>구성원 초대하기</button>
 			</div>
             <!-- Divider -->
@@ -279,12 +281,12 @@ main footer a{
             <!-- Nav Item - Pages Collapse Menu -->
             <div class="sidebar-heading" style="color: #828282;">전체 메뉴</div>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
+                <a class="nav-link" href="../member/classroom/common/classNoticeList.html"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
+                <a class="nav-link" href="../member/classroom/common/classHomeworkList.html"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
+                <a class="nav-link" href="../member/classroom/teacher/assigmentsReport.html"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
+                <a class="nav-link" href="../member/classroom/teacher/attendance.html"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
+                <a class="nav-link" href="../member/classroom/common/classMemberList.html"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
+                <a class="nav-link" href="../member/classroom/teacher/classSetting.html"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
             </li>
 
             <!-- Divider --> 
@@ -292,7 +294,7 @@ main footer a{
             <!-- Heading -->
             <div class="sidebar-heading" style="color: #828282;">나만 참여한 공간</div>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-file-pen" style="color: #828282;"></i> <span>예약 / 임시저장한 글</span></a>
+                <a class="nav-link" href="../member/classroom/common/classStorage.html"><i class="fa-solid fa-file-pen" style="color: #828282;"></i> <span>예약 / 임시저장한 글</span></a>
             </li>
 
             <!-- Divider -->
@@ -310,9 +312,9 @@ main footer a{
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">자유 공간</a>
-                        <a class="collapse-item" href="register.html">학습 자료</a>
-                        <a class="collapse-item" href="forgot-password.html">활동 사진</a>
+                        <a class="collapse-item" href="../member/classroom/common/classPostlist.html">자유 공간</a>
+                        <a class="collapse-item" href="../member/classroom/common/classPostlist.html">학습 자료</a>
+                        <a class="collapse-item" href="../member/classroom/common/classPostlist.html">활동 사진</a>
                     </div>
                 </div>
             </li>
@@ -391,14 +393,14 @@ main footer a{
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-				               <a class="dropdown-item" href="./memberInfo.html">
+				               <a class="dropdown-item" href="../member/classroom/common/classMemberView.html">
 				                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
 				               </a>
-				               <a class="dropdown-item" href="./classList_teacher.html">
+				               <a class="dropdown-item" href="../member/classList_teacher.html">
 				                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
 				               </a>
 				               <div class="dropdown-divider"></div>
-				               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+				               <a class="dropdown-item" href="../index/oneschool/index.html" data-toggle="modal" data-target="#logoutModal">
 				                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
 				               </a>
 			          		</div>
