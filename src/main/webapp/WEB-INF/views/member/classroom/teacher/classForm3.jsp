@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -14,7 +20,7 @@
 <!-- Custom styles for this template-->
 <link href="../../../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../../../../../resources/user/css/classCommon.css" rel="stylesheet">
-<title>클래스 등록</title>
+<title>클래스 등록완료</title>
 <style type="text/css">
 	#home{
 		margin-left: 40px;
@@ -125,104 +131,41 @@
 		font-size: 14px;
 		padding: 10px;
 	}
-	label {
-	margin-top:10px;
-	}
-	  textarea {
-    width: 100%;
-    height: 6.25em;
-    resize: none;
-    border-radius:10px;
-    border: 1px solid silver;
-  }
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px; onclick="location.href='./main_teacher.html'">
-	<!-- Topbar Navbar -->
-	<ul class="navbar-nav ml-auto">
-	
-	    <!-- Nav Item - Alerts -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fas fa-bell fa-fw"></i>
-	            <!-- Counter - Alerts -->
-	        </a>
-	    </li>
-	
-	    <!-- Nav Item - Messages -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fa-solid fa-comment"></i>
-	            <!-- Counter - Messages -->
-	            <!-- <span class="badge badge-danger badge-counter">7</span> -->
-	        </a>
-	    </li>
-	    <div class="topbar-divider d-none d-sm-block"></div>
-        <li class="nav-item dropdown no-arrow">
-           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈</b></span>
-	           <span class="mr-2 d-none d-lg-inline text-gray-600 small">선생님</span>
-               <img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
-           </a>
-           <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="../common/classMemberView.html">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
-            </a>
-            <a class="dropdown-item" href="../../classList_teacher.html">
-                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="../../../index/oneschool/index.html" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
-            </a>
-   		</div>
-       </li>
-	</ul>
-</nav>
+<jsp:include page="/WEB-INF/views/member/include/main_header.jsp" flush="true" />
 <img style="float: left;" src="../../../../../resources/common/image/classtingFlower.png">
 
 <div class="row justify-content-center" style="color:black;">
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 		<div class="col-md-7" style="margin-top:100px;">
-		<h3 >클래스 이름을 지어주세요.</h3>
-			<label for="className">클래스 이름</label>
-			<input type="text" class="form-control" id="className" placeholder="클래스 이름은 언제든지 설정에서 수정할 수 있어요." >
-
-
-			<label for="year">연도</label>
-			<select class="form-select" id="year">
-				<option>2022</option>
-				<option>2021</option>
-				<option>2020</option>
-				<option>2019</option>
-			</select>			
-
-
-			<label for="grade">학년</label>
-			<select class="form-select" id="grade">
-				<option>학년없음</option>
-				<option>1학년</option>
-				<option>2학년</option>
-				<option>3학년</option>
-				<option>4학년</option>
-				<option>5학년</option>
-				<option>6학년</option>
-			</select>			
-			
-			<label for="introduce">소개글(옵션)</label>
-			<textarea rows="3" cols="80" id="introduce" name="introduce" placeholder="예:즐거운 영어회화 클래스입니다~"></textarea>
-			
-			
-	
-			<button type="button" class="btn btn-outline-secondary" style="display: inline; margin-top:30px;" id="btn-add2" onclick="location.href='./classForm.html'">이전</button>
-			<button type="button" class="btn btn-outline-success" style="display: inline;margin-top:30px; float: right;" id="btn-add2">클래스 개설</button>
+		<h3 >축하합니다!
+			<br>[4조] 클래스가
+			<br>개설되었어요.
+		</h3>
+		<p>클래스 프로필을 설정하고 지금 바로 시작하세요.</p>
+		<div>
+			<div id="classImg" style="height: 120px;">
+	               <img class="rounded-circle" style="width: 80px;" src="../../../../../resources/common/image/profile2.png">
+	        </div> 
+	        <div>   
+	               <span class=" text-gray-60 small">이 클래스에서만 사용할<br>
+	               내 프로필 이미지를 올려주세요.<br>
+	               (개인정보 보호에 주의)
+	               </span>
+			</div>
+		</div>
+		<div style="clear:both;">
+		<label for="name" class="form-label">이름</label>
+		<input type="text" class="form-control" id="name">
 		
+		<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;" >완료</button>
+		</div>
 		</div>
 	</div>
 </div>
+
 
 
 	

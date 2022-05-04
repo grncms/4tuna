@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -17,7 +24,7 @@
 <link href="../../../../resources/common/css/sb-admin-2.css" rel="stylesheet">
 <link href="../../../../resources/common/css/classCommon.css" rel="stylesheet">
 <link href="../../../../resources/common/css/boardCss.css" rel="stylesheet">
-<title>회원정보</title>
+<title>회원정보 수정</title>
 
 
 
@@ -222,74 +229,23 @@
 
 </head>
 <body id="page-top">
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px; onclick="location.href='./main_teacher.html'">
-	<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-	        <li><a href="adminMemberList.html" class="nav-link link-dark" id="home">회원관리</a></li>
-	        <li><a href="./classroom/adminClassList.html" class="nav-link link-secondary" id="class">클래스관리</a></li>
-	</ul>
-	
-	<!-- Topbar Navbar -->
-	<ul class="navbar-nav ml-auto">
-	
-	    <!-- Nav Item - Alerts -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fas fa-bell fa-fw"></i>
-	            <!-- Counter - Alerts -->
-	        </a>
-	    </li>
-	
-	    <!-- Nav Item - Messages -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fa-solid fa-comment"></i>
-	            <!-- Counter - Messages -->
-	            <!-- <span class="badge badge-danger badge-counter">7</span> -->
-	        </a>
-	    </li>
-	    <div class="topbar-divider d-none d-sm-block"></div>
-        <li class="nav-item dropdown no-arrow">
-           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈</b></span>
-	           <span class="mr-2 d-none d-lg-inline text-gray-600 small">관리자</span>
-               <img class="img-profile rounded-circle" src="../../../../resources/common/image/profile2.png">
-           </a>
-           <!-- Dropdown - User Information -->
-           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-               aria-labelledby="userDropdown">
-               <a class="dropdown-item" href="./memberInfo.html">
-                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;개인정보
-               </a>
-               <a class="dropdown-item" href="./classList_teacher.html">
-                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
-               </a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
-               </a>
-           </div>
-       </li>
-	</ul>
-</nav>
-<!-- Topbar end -->
-
-		<div class="row justify-content-center">
+<jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
+	<div class="row justify-content-center">
 			<div class="col-md-10 d-flex justify-content-center" id="context">
 			<div class="col-md-6">
-				<h4 style="text-align: center;">회원정보</h4>
+				<h4 style="text-align: center;">회원정보 수정</h4>
 				<h5>프로필</h5>
 					<label for="ifmmName" class="form-label">이름</label>
-					<input type="text" class="form-control" id="ifmmName" name="ifmmName" value="한동훈" readonly>
+					<input type="text" class="form-control" id="ifmmName" name="ifmmName" value="한동훈">
 					<label for="classImg" class="form-label">클래스 사진</label>
 					<div >
 						<img src="../../../../resources/common/image/profile2.png"  width="70" height="70" >
 					</div>
 					<label for="classSchool" class="form-label">소속 학교</label>
-					<input type="text" class="form-control" id="classSchool" name="classSchool" value="##중학교" readonly>
+					<input type="text" class="form-control" id="classSchool" name="classSchool" value="##중학교">
 							
 				<label for="grade" class="form-label">담당학년</label>
-				<select class="form-select" id="grade" name="grade" disabled>
+				<select class="form-select" id="grade" name="grade">
 					<option>학년 선택
 					<option selected>1학년
 					<option>2학년
@@ -299,9 +255,9 @@
 					<option>6학년
 				</select>
 		            <label class="col-form-label">프로필</label>
-		          	  <textarea rows="3" cols="100" id="ifmmDesc" name="ifmmDesc" disabled>안녕하세요~</textarea>
+		          	  <textarea rows="3" cols="100" id="ifmmDesc" name="ifmmDesc">안녕하세요~</textarea>
 					<label for="gender" class="form-label">성별</label>
-					<select class="form-select" id="gender" name="gender" disabled>
+					<select class="form-select" id="gender" name="gender">
 						<option>성별 선택
 						<option selected>남
 						<option>여
@@ -309,23 +265,23 @@
 					</select>
 					<label for="ifmmDob" class="form-label">생일정보</label>
 					<!-- datepicker 사용 -->
-					<input type="text" class="form-control" id="ifmmDob" name="ifmmDob" value="2020.12.12" readonly> 
+					<input type="text" class="form-control" id="ifmmDob" name="ifmmDob" value="2020.12.12"> 
 					<!-- datepicker 사용 -->
 		<hr>
 			<h5>계정</h5>
 				<label for="ifmmId" class="form-label">아이디</label>
-				<input type="text" class="form-control" id="ifmmId" name="ifmmId" value="한동훈" readonly>
+				<input type="text" class="form-control" id="ifmmId" name="ifmmId" value="한동훈">
 				<label for="ifmmPassword" class="form-label">비밀번호</label>
-				<input type="text" class="form-control" id="ifmmPassword" name="ifmmPassword" value="*****" readonly>
+				<input type="text" class="form-control" id="ifmmPassword" name="ifmmPassword" value="*****">
 				
 				<label for="email" class="form-label">이메일</label>
-				<input type="text" class="form-control"  id="email" name="email" value="Hun@naver.com" readonly>
+				<input type="text" class="form-control"  id="email" name="email" value="Hun@naver.com">
 			
 				<label for="number" class="form-label">휴대폰 번호</label>
-					<input type="text" class="form-control"  id="number" name="number" value="010-0000-0000" readonly>
+					<input type="text" class="form-control"  id="number" name="number" value="010-0000-0000">
 
 			<label for="role" class="form-label">역할</label>
-				<select class="form-select" id="role" name="role" disabled>
+				<select class="form-select" id="role" name="role">
 					<option>선생님
 					<option selected>학생
 				</select>
@@ -333,44 +289,42 @@
 		
 		<h5>알림 상세 설정</h5>
 			<label for="alarm" class="form-label">클래스 초대/수락</label>
-				<select class="form-select" id="alarm" name="alarm" disabled>
+				<select class="form-select" id="alarm" name="alarm">
 					<option>알림 받기
 					<option>알림 거부
 				</select>
 			<label for="homeAlarm" class="form-label">홈소식</label>
-				<select class="form-select" id="homeAlarm" name="homeAlarm" disabled>
+				<select class="form-select" id="homeAlarm" name="homeAlarm">
 					<option>모든 소식 알림
 					<option>알림 거부
 				</select>
 			<label for="replyAlarm" class="form-label">답글</label>
-				<select class="form-select" id="replyAlarm" name="replyAlarm" disabled>
+				<select class="form-select" id="replyAlarm" name="replyAlarm">
 					<option>모든 답글 알림
 					<option>알림 거부
 				</select>
 			<div>
-				<button type="button" class="btn btn-outline-danger btn-lg w-45" style="display: inline; float: left;" id="btn-add"   data-bs-toggle="modal" data-bs-target="#Delete">삭제</button>
-				<button type="button" class="btn btn-outline-primary btn-lg w-45" style="display: inline; float: right;" id="btn-add" onclick="location.href='./adminMemberEdit.html'">수정</button>
-				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right; " id="btn-add" onclick="location.href='./adminMemberList.html'">회원리스트</button>
+				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right;" id="btn-add" data-bs-toggle="modal" data-bs-target="#Change">수정</button>
+				<button type="button" class="btn btn-outline-warning btn-lg w-45" style="display: inline; float: right; " id="btn-add" onclick="location.href='./adminMemberView.html'">돌아가기</button>
 			</div>
 			
 			</div>
 		</div>
 	</div>
-			
-			<!-- modal -->
-			<div class="modal" tabindex="-1" id="Delete">
+	<!-- modal -->
+		<div class="modal" tabindex="-1" id="Change">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title">회원정보 삭제</h5>
+		        <h5 class="modal-title">회원정보 변경</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		    	삭제하시겠습니까?
+		    	수정하시겠습니까?
 			   </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		        <button type="submit" class="btn btn-danger">삭제</button>
+		        <button type="submit" class="btn btn-primary">확인</button>
 		      </div>
 		      </div>
 		    </div>
@@ -379,18 +333,12 @@
 		
 					
 					
-
-</div>
 		
-	<footer class="sticky-footer bg-white mt-4">
-						<div class="container my-auto">
-							<div class="copyright text-center my-auto">
-								<span>Copyright &copy; CLASSING 2021</span>
-							</div>
-						</div>
-					</footer>
+	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
+
+
  <!-- Bootstrap core JavaScript-->
-   <script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->

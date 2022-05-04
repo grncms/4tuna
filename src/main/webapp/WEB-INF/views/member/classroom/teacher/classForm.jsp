@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -14,7 +22,7 @@
 <!-- Custom styles for this template-->
 <link href="../../../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../../../../../resources/user/css/classCommon.css" rel="stylesheet">
-<title>클래스 등록완료</title>
+<title>클래스 등록</title>
 <style type="text/css">
 	#home{
 		margin-left: 40px;
@@ -94,11 +102,6 @@
 		font-weight: bold;
 		margin-bottom: 10px;
 	}
-	#btn-add2{
-		border-radius: 50px;
-		font-size: 14px;
-		font-weight: bold;
-	}
   	#classImg{
 		float: left;
 	}  
@@ -128,86 +131,77 @@
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px; onclick="location.href='./main_teacher.html'">
-	<!-- Topbar Navbar -->
-	<ul class="navbar-nav ml-auto">
-	
-	    <!-- Nav Item - Alerts -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fas fa-bell fa-fw"></i>
-	            <!-- Counter - Alerts -->
-	        </a>
-	    </li>
-	
-	    <!-- Nav Item - Messages -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fa-solid fa-comment"></i>
-	            <!-- Counter - Messages -->
-	            <!-- <span class="badge badge-danger badge-counter">7</span> -->
-	        </a>
-	    </li>
-	    <div class="topbar-divider d-none d-sm-block"></div>
-        <li class="nav-item dropdown no-arrow">
-           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈</b></span>
-	           <span class="mr-2 d-none d-lg-inline text-gray-600 small">선생님</span>
-               <img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
-           </a>
-           <!-- Dropdown - User Information -->
-           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="../common/classMemberView.html">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
-            </a>
-            <a class="dropdown-item" href="../../classList_teacher.html">
-                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="../../../index/oneschool/index.html" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
-            </a>
-   		</div>
-       </li>
-	</ul>
-</nav>
+
+<jsp:include page="/WEB-INF/views/member/include/main_header.jsp" flush="true" />
+
 <img style="float: left;" src="../../../../../resources/common/image/classtingFlower.png">
 
 <div class="row justify-content-center" style="color:black;">
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 		<div class="col-md-7" style="margin-top:100px;">
-		<h3 >축하합니다!
-			<br>[4조] 클래스가
-			<br>개설되었어요.
-		</h3>
-		<p>클래스 프로필을 설정하고 지금 바로 시작하세요.</p>
-		<div>
-			<div id="classImg" style="height: 120px;">
-	               <img class="rounded-circle" style="width: 80px;" src="../../../../../resources/common/image/profile2.png">
-	        </div> 
-	        <div>   
-	               <span class=" text-gray-60 small">이 클래스에서만 사용할<br>
-	               내 프로필 이미지를 올려주세요.<br>
-	               (개인정보 보호에 주의)
-	               </span>
-			</div>
-		</div>
-		<div style="clear:both;">
-		<label for="name" class="form-label">이름</label>
-		<input type="text" class="form-control" id="name">
+		<h3 >환영합니다!
+		<br>클래스 정보를 등록해주세요!</h3>
 		
-		<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;" >완료</button>
+	
+		
+		<label for="school" class="form-label" style="color:black;">학교/기관</label>
+		<div class="input-group mb-3" data-bs-toggle="modal" data-bs-target="#schModal">
+			<input type="text" class="form-control" id="school" placeholder="학교/기관의 이름을 입력해주세요."  aria-describedby="button-addon2">
+			<button class="btn btn-outline-secondary" type="button" id="button-addon2" ><i class="fa-solid fa-magnifying-glass" style="padding:0px;"></i></button>
 		</div>
+		<div style="height:100px; border:1px solid silver; border-radius: 5px;">
+			<span>[학교·기관 이름] 또는 [지역이름 + 학교·기관 이름]으로 검색해주세요.<br>예) 클팅중학교(X), 서울 클팅중학교(O)</span>
+		</div>
+		
+		<button type="button" class="btn btn-outline-none" data-bs-toggle="modal" data-bs-target="#none" style="font-weight: bold;color:black;">학교나 소속 기관이 없는 클래스인가요?</button>
 		</div>
 	</div>
 </div>
+<!-- modal -->
+		<div class="modal" tabindex="-1" id="none" style="color:black;">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		     
+		      <div class="modal-body">
+		    	소속기관이 없는 클래스 개설 시, 일부 기관 관련 기능이 제한될 수 있습니다. 소속이 있는 경우, 학교/기관을 선택해주세요.
+			   </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+		        <button type="submit" class="btn btn-primary" onclick="location.href='./classForm2.html'">등록</button>
+		      </div>
+		      </div>
+		    </div>
+		  </div>
+		<!-- modal end -->
 
 
-
-	
-
-
+				<div class="modal fade" id="schModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">학교 / 기관 검색</h5>
+							<button type="button" class="btn-close"
+								data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<h3 style="text-align: center">학교 및 기관 검색</h3>
+							<br> <br><div class="input-group mb-3"> <input class="form-control form-control-lg" type="text" placeholder="이름 입력">
+							<button class="btn btn-outline-secondary" role="button" id="button-addon2">검색</button>
+						</div>
+						<p>[학교·기관 이름] 또는 [지역 이름 + 학교·기관 이름]으로 검색해 보세요.</p>
+						<p>예) 클팅중학교 (X), 서울클팅중학교 (O)</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+						<button type="button" data-bs-toggle="modal" class="btn btn-primary">확인</button>
+					</div>
+				</div>
+			</div>
+			</div>
+  
+  
+  
+  
     <!-- Bootstrap core JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
