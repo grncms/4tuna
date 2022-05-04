@@ -1,30 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <title>CLASSING</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="../index/oneschool/fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="../index/oneschool/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../index/oneschool/css/jquery-ui.css">
-    <link rel="stylesheet" href="../index/oneschool/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../index/oneschool/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../index/oneschool/css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="../index/oneschool/css/jquery.fancybox.min.css">
-
-    <link rel="stylesheet" href="../index/oneschool/css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="../index/oneschool/fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="../index/oneschool/css/aos.css">
-
-    <link rel="stylesheet" href="../index/oneschool/css/style.css">
-    
+    <link href="/resources/index/fonts/icomoon/style.css" rel="stylesheet">
+    <link href="/resources/index/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/index/css/jquery-ui.css" rel="stylesheet">
+    <link href="/resources/index/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/resources/index/css/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/resources/index/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="/resources/index/fonts/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="/resources/index/css/aos.css" rel="stylesheet">
+    <link href="/resources/index/css/style.css" rel="stylesheet">
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
   
@@ -43,14 +41,14 @@
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <div class="site-logo mr-auto w-25"><a href="index.html">CLASSING</a></div>
+          <div class="site-logo mr-auto w-25"><a href="/index/index">CLASSING</a></div>
         </div>
       </div>
     </header>
 
     <div class="intro-section" id="home-section">
       
-      <div class="slide-1" style="background-image: url('../index/oneschool/images/hero_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="slide-1" style="background-image: url('/resources/index/images/hero_1.jpg');" data-stellar-background-ratio="0.5">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-12">
@@ -58,7 +56,7 @@
                 <div class="col-lg-6 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100">완전히 새로운 클래스관리</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">가정에서도 좀 더 효율적으로 수업을 관리하는 방법</p>
-                  <p data-aos="fade-up" data-aos-delay="300"><a href="../index/oneschool/index.html" class="btn btn-primary py-3 px-5 btn-pill">홈으로</a></p>
+                  <p data-aos="fade-up" data-aos-delay="300"><a href="/index/index" class="btn btn-primary py-3 px-5 btn-pill">홈으로</a></p>
 
                 </div>
 
@@ -75,9 +73,9 @@
                       <input type="password" class="form-control" placeholder="Re-type Password">
                     </div> -->
                     <div class="form-group">
-                      <input type="button" class="btn btn-primary btn-pill" value="아이디 찾기" onclick="location.href='../../member/main_teacher.html'">
+                      <input type="button" class="btn btn-primary btn-pill" value="아이디 찾기">
                     </div>
-                    <a href="../../member/findMain.html"><p class="mb-4" style="color: blue; font-size: 15px;">윤수빈 님의 아이디는 <b>asdasd123</b> 입니다.</p></a>
+                    <a href="/WEB-INF/views/member/findMain.jsp"><p class="mb-4" style="color: blue; font-size: 15px;">윤수빈 님의 아이디는 <b>asdasd123</b> 입니다.</p></a>
                   </form>
                 </div>
               </div>
@@ -111,22 +109,22 @@
   
     
 
-  <script src="../index/oneschool/js/jquery-3.3.1.min.js"></script>
-  <script src="../index/oneschool/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../index/oneschool/js/jquery-ui.js"></script>
-  <script src="../index/oneschool/js/popper.min.js"></script>
-  <script src="../index/oneschool/js/bootstrap.min.js"></script>
-  <script src="../index/oneschool/js/owl.carousel.min.js"></script>
-  <script src="../index/oneschool/js/jquery.stellar.min.js"></script>
-  <script src="../index/oneschool/js/jquery.countdown.min.js"></script>
-  <script src="../index/oneschool/js/bootstrap-datepicker.min.js"></script>
-  <script src="../index/oneschool/js/jquery.easing.1.3.js"></script>
-  <script src="../index/oneschool/js/aos.js"></script>
-  <script src="../index/oneschool/js/jquery.fancybox.min.js"></script>
-  <script src="../index/oneschool/js/jquery.sticky.js"></script>
+  <script src="/resources/index/js/jquery-3.3.1.min.js"></script>
+  <script src="/resources/index/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/resources/index/js/jquery-ui.js"></script>
+  <script src="/resources/index/js/popper.min.js"></script>
+  <script src="/resources/index/js/bootstrap.min.js"></script>
+  <script src="/resources/index/js/owl.carousel.min.js"></script>
+  <script src="/resources/index/js/jquery.stellar.min.js"></script>
+  <script src="/resources/index/js/jquery.countdown.min.js"></script>
+  <script src="/resources/index/js/bootstrap-datepicker.min.js"></script>
+  <script src="/resources/index/js/jquery.easing.1.3.js"></script>
+  <script src="/resources/index/js/aos.js"></script>
+  <script src="/resources/index/js/jquery.fancybox.min.js"></script>
+  <script src="/resources/index/js/jquery.sticky.js"></script>
 
   
-  <script src="../index/oneschool/js/main.js"></script>
+  <script src="/resources/index/js/main.js"></script>
     
   </body>
 </html>
