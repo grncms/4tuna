@@ -21,6 +21,8 @@ public class ClassRoomController {
 	
 
 //동훈	
+
+	
 	@RequestMapping(value = "/classForm", method = RequestMethod.GET)
 	public String classForm() {
 		
@@ -46,10 +48,10 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classMemberView";
 	}
-	@RequestMapping(value = "/classNoticeList", method = RequestMethod.GET)
+	@RequestMapping(value = "/noticeBoard", method = RequestMethod.GET)
 	public String classNoticeList() {
 		
-		return "member/classroom/common/classNoticeList";
+		return "member/classroom/common/noticeBoard";
 	}
 	@RequestMapping(value = "/adminClassList", method = RequestMethod.GET)
 	public String adminClassList() {
@@ -114,12 +116,75 @@ public class ClassRoomController {
 		return "chat/chat";
 	}	
 
-//일단 임시
-	@RequestMapping(value = "/attendance", method = RequestMethod.GET)
-	public String classAttendance() {
+	//수빈
+	@RequestMapping(value = "index/index")
+	public String index() {
 		
-		return "member/classroom/teacher/classAttendance";
-	}	
+		return "index/index";
+	}
+	@RequestMapping(value = "member/findId")
+	public String findId() {
+		
+		return "member/findId";
+	}
+	@RequestMapping(value = "member/findPwd")
+	public String findPwd() {
+		
+		return "member/findPwd";
+	}
+	@RequestMapping(value = "member/main")
+	public String main_teacher() {
+		
+		return "member/main";
+	}
+	@RequestMapping(value = "member/classList")
+	public String test() {
+		
+		return "member/classList";
+	}
+	@RequestMapping(value = "member/memberForm_main")
+	public String memberForm_main() {
+		
+		return "member/memberForm_main";
+	}
+	@RequestMapping(value = "member/memberForm_user")
+	public String memberForm_user() {
+		
+		return "member/memberForm_user";
+	}
+	@RequestMapping(value = "member/memberInfo")
+	public String memberInfo() {
+		
+		return "member/memberInfo";
+	}
+	@RequestMapping(value = "member/memberInfoEdit")
+	public String memberInfoEdit() {
+		
+		return "member/memberInfoEdit";
+	}
+	@RequestMapping(value = "member/classroom/common/classMain")
+	public String classMain() {
+		
+		return "member/classroom/common/classMain";
+	}
+	@RequestMapping(value = "member/classroom/common/classMemberList")
+	public String classMemberList() {
+		
+		return "member/classroom/common/classMemberList";
+	}
+	@RequestMapping(value = "member/classroom/teacher/classInvitation")
+	public String classInvitation() {
+		
+		return "member/classroom/teacher/classInvitation";
+	}
+	
+
+	//일단 임시
+		@RequestMapping(value = "/attendance", method = RequestMethod.GET)
+		public String classAttendance() {
+			
+			return "member/classroom/teacher/classAttendance";
+		}	
 
 
 }
