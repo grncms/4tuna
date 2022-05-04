@@ -36,14 +36,14 @@
            <!-- Dropdown - User Information -->
            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                aria-labelledby="userDropdown">
-               <a class="dropdown-item" href="/WEB-INF/views/member/memberInfo.jsp">
+               <a class="dropdown-item" href="/member/memberInfo">
                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;개인정보
                </a>
-               <a class="dropdown-item" href="/WEB-INF/views/member/classList_teacher.jsp">
+               <a class="dropdown-item" href="/member/classList_teacher">
                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
                </a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="/WEB-INF/views/index/oneschool/index.jsp">
+               <a class="dropdown-item" href="/index/index">
                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
                </a>
            </div>
