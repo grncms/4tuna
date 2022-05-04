@@ -3,17 +3,17 @@
  <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-		    <img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='../../main_teacher.html'">
+		    <img src="/resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='member/main_teacher'">
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active" onclick="location.href='./classMain.html'">
-            	<div class="col-md-3 mt-4" id="classImg"><img src="../../../../../resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
+            <li class="nav-item active" onclick="location.href='/member/classroom/common/classMain'">
+            	<div class="col-md-3 mt-4" id="classImg"><img src="/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
 				<div class="col-md-9 mt-4" id="classInfo"><span><b>4조</b></span><p><span>2022</span></div>
             </li>
-			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='../teacher/classInvitation.html'">
+			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='/member/classroom/teacher/classInvitation'">
 				<i class="fa-solid fa-user-plus"></i>구성원 초대하기</button>
 			</div>
             <!-- Divider -->
@@ -26,7 +26,7 @@
                 <a class="nav-link" href="./classHomeworkList.html"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
                 <a class="nav-link" href="../teacher/assigmentsReport.html"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
                 <a class="nav-link" href="../teacher/attendance.html"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
-                <a class="nav-link" href="./classMemberList.html"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
+                <a class="nav-link" href="/member/classroom/common/classMemberList.html"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
                 <a class="nav-link" href="../teacher/classSetting.html"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
             </li>
 

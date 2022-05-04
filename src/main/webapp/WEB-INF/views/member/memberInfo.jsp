@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -5,138 +12,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
 
 <!-- Custom fonts for this template-->
-<link href="../../../resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
-<link href="../../../resources/user/css/classCommon.css" rel="stylesheet">
-
-
+<link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/resources/user/css/classCommon.css" rel="stylesheet">
+<link href="/resources/user/css/memberInfo.css" rel="stylesheet" type="text/css">
 <title>main</title>
-<style type="text/css">
-	body{
-		background-color: #F6F9F7;
-	}
-	container{
-		background-color: white;
-	}
-	#main{
-		width: 900px;
-	}
- 	.col-md-9{
-		background-color: white;
-		padding: 20px;
-		border-radius: 8px;
-	} 
-	#title{
-		font-weight: bold;
-		color: #00C896;
-		font-size: 30px;
-	}
-	#sub{
-		font-size: 18px;
-		font-weight: bold;
-		margin-left: 10px;
-	}
-	p {
-		word-wrap: break-word;
-		font-size: 15px;
-	}
-	.btn-group{
-		font-size: 15px;
-		padding-top: 15px; 
-		padding-bottom: 15px;
-		color: #c8c8c8;
-		border: 1px solid #c8c8c8;
-		background-color: white;
-	}
-	#btn-nele{
-		font-size: 15px;
-		padding-top: 15px; 
-		padding-bottom: 15px;
-		color: red;
-		float: left;
-	}
-	#btn-edit{
-		font-size: 15px;
-		padding-top: 15px; 
-		padding-bottom: 15px;
-		color: #1E82CD;
-		float: right;
-	}
-	#btn-group:hover{
-		color: white;
-	}
-	#btn-nele:hover{
-		color: white;
-	}
-	#btn-edit:hover{
-		color: white;
-	}
-	label{
-		font-size: 14px;
-		color: #787878;
-		font-weight: bold;
-	}
-	#here{
-		font-weight: bold;
-		font-size: 18px;
-		color: #787878;
-	}
-
-</style>
 </head>
 <body>
- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="../../../resources/common/image/header_logo.png"  width="150" onclick="location.href='./main_teacher.html'">
-	<!-- Topbar Navbar -->
-	<ul class="navbar-nav ml-auto">
-	
-	    <!-- Nav Item - Alerts -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fas fa-bell fa-fw"></i>
-	            <!-- Counter - Alerts -->
-	        </a>
-	    </li>
-	
-	    <!-- Nav Item - Messages -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fa-solid fa-comment"></i>
-	            <!-- Counter - Messages -->
-	            <!-- <span class="badge badge-danger badge-counter">7</span> -->
-	        </a>
-	    </li>
-	    <div class="topbar-divider d-none d-sm-block"></div>
-        <li class="nav-item dropdown no-arrow">
-           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈</b></span>
-	           <span class="mr-2 d-none d-lg-inline text-gray-600 small">선생님</span>
-               <img class="img-profile rounded-circle" src="../../../resources/common/image/profile2.png">
-           </a>
-           <!-- Dropdown - User Information -->
-           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-               aria-labelledby="userDropdown">
-               <a class="dropdown-item" href="./memberInfo.html">
-                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;개인정보
-               </a>
-               <a class="dropdown-item" href="./classList_teacher.html">
-                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
-               </a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="../index/oneschool/index.html">
-                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
-               </a>
-           </div>
-       </li>
-	</ul>
-</nav>
+<%@ include file="/WEB-INF/views/member/include/main_header.jsp" %><!-- header -->
+
 <div class="container" id="main">
 	<div class="row">
 		<div class="col-md-12">
@@ -263,52 +155,40 @@
 					<div class="modal-body">정말로 탈퇴하시겠습니까?</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-						<a class="btn btn-danger" role="button" href="../index/oneschool/index.html">삭제</a>
+						<a class="btn btn-danger" role="button" href="/index/index">삭제</a>
 					</div>
 					</div>
 				</div>
 			</div>
-			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="location.href='./memberInfoEdit.html'">정보 수정</button>
+			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="location.href='memberInfoEdit'">정보 수정</button>
 			</div>
 	</div>
 </div>
-</div>	
-<footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
-	<p class="col-md-5 mb-0 text-muted">
-		<a href="#" class="col-md-4 d-flex mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-			<img src="../../../resources/common/image/header_logo.png"  class="img-fluid" style="width: 100px; height: 40px;">
-		</a>
-		<small>㈜ 클래씽  서울시 종로구 종로구구구구구구<br>   
-			대표이사 : 최민수<br>
-			사업자등록번호 : 111-00-111111<br>
-			<b>대표전화 : 1544-1900 (발신자 부담전화)</b>   팩스 : 0502-987-5711 (지역번호공통)<br>
-			COPYRIGHT(C) CLASSING CENTRE ALL RIGHTS RESERVED.
-			2021 Company, Inc</p></small> 
+</div>
+<%@ include file="/WEB-INF/views/member/include/main_footer.jsp" %><!-- footer -->
 
-</footer>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../../../resources/common/vendor/jquery/jquery.min.js"></script>
-    <script src="../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/common/vendor/jquery/jquery.min.js"></script>
+    <script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../../resources/common/js/sb-admin-2.min.js"></script> 
-
+    <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 
 
 
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> --></script>
-<!-- <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>   -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
-
+<!-- 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+ -->
 </body>
 </html>

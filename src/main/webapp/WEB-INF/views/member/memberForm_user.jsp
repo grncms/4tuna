@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -5,64 +12,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CSS -->
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
- -->
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
 
-<title>memberForm_user</title>
-<style type="text/css">
+<!-- Custom fonts for this template-->
+<link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-	body{
-		background-color: #F6F9F7;
-	}
-	h3{
-		color: #00C896;
-	}
-	.my-wrap{
-		width: 380px;
-	}
-	.btn-certification{
-		border: 1px solid #CED4DA;
-		background-color: white;
-		height: 50px; 
-		font-size: 14px;
-	}
-	.btn-submit{
-		font-size: 20px;
-		border: 1px solid #00C896;
-		height: 60px;
-		color: #00C896;
-		background-color: white;
-		margin-top: 2px;
-	}
-	.btn-submit:hover,
-	.btn-submit:active,
-	.btn-submit:visited,
-	.btn-submit:focus{
-		background-color :#00C896;
-		color: #ffffff;
-	}
-	a:Link,
-	a:hover,
-	a:active,
-	a:visited,
-	a:focus{
-		color: gray;
-		text-decoration: underline;
-	}
-	.form-control,
-	.form-select,
-	.btn-certification{
-		font-size: 13px;
-		height: 50px;
-	}
-	input::placeholder {
-		color: #A2969C;
-		font-size: 13px;
-	}
-</style>
+<!-- Custom styles for this template-->
+<link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/resources/user/css/classCommon.css" rel="stylesheet">
+<link href="/resources/user/css/memberForm_user.css" rel="stylesheet" type="text/css">
+<title>main</title>
 </head>
 <body>
 <div class="container my-wrap">
@@ -70,12 +32,12 @@
 <div class="container my-wrap"><!-- d-none d-sm-block : sm사이즈에서는 보이지 않음 d-block d-sm-none : sm에서만 보임 -->
 	<div class="row mt-5 mb-4 ">
 		<div class="d-grid gap-2 col-12 mx-auto mt-3">
-			<img src="../../../resources/common/image/header_logo.png" style="width: 240px; margin-left: 30px;" >
+			<img src="/resources/common/image/header_logo.png" style="width: 240px; margin-left: 30px;" onclick="location.href='/index/index'">
 		</div>	
 	</div>
 </div>	
 <!-- 헤더 e-->
-	<form action="" method="post" id="memberForm" name="memberForm" class="row">
+	<form action="main_teacher" method="post" id="memberForm" name="memberForm" class="row">
 		<!-- 정보입력 s -->
 			<div class="mt-4 mb-4">
 				<h3 class="text-center">회원가입</h3>
@@ -131,23 +93,19 @@
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 			</div>
+			<div class="d-grid gap-2 col-12 mx-auto  mb-5">
+				<button class="btn btn-submit btn-sm" type="submit" id="" name="" onclick="location.href='/member/main_teacher'">가입완료</button>
+			</div>
 		</form>
-		<div class="d-grid gap-2 col-12 mx-auto  mb-5">
-			<button class="btn btn-submit btn-sm" type="submit" id="" name="" onclick="location.href='./main_teacher.html'">가입완료</button>
-		</div>
 	</div>
-		<!-- 정보입력 e-->
-
-
-
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> --></script>
-<!-- <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>   -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
-
+<!-- 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+ -->
 </body>
 </html>
