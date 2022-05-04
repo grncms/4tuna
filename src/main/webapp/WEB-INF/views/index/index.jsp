@@ -74,7 +74,7 @@
                       <input type="password" class="form-control" placeholder="비밀번호">
                     </div>
                     <div class="form-group">
-                      <input type="button" class="btn btn-primary btn-pill" value="로그인하기" onclick="location.href='/member/main_teacher'" style="font-size: 15px;">
+                      <input type="button" class="btn btn-primary btn-pill" value="로그인하기" onclick="location.href='/member/main'" style="font-size: 15px;">
                     </div>
                     <a href="/member/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
                     <a href="/member/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>

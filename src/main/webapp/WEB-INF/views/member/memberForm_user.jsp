@@ -37,7 +37,7 @@
 	</div>
 </div>	
 <!-- 헤더 e-->
-	<form action="main_teacher" method="post" id="memberForm" name="memberForm" class="row">
+	<form action="main" method="post" id="memberForm" name="memberForm" class="row">
 		<!-- 정보입력 s -->
 			<div class="mt-4 mb-4">
 				<h3 class="text-center">회원가입</h3>
@@ -94,7 +94,7 @@
 				</div>	
 			</div>
 			<div class="d-grid gap-2 col-12 mx-auto  mb-5">
-				<button class="btn btn-submit btn-sm" type="submit" id="" name="" onclick="location.href='/member/main_teacher'">가입완료</button>
+				<button class="btn btn-submit btn-sm" type="submit" id="" name="" onclick="location.href='/member/main'">가입완료</button>
 			</div>
 		</form>
 	</div>

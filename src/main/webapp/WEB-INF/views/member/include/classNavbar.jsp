@@ -38,7 +38,7 @@
 				               <a class="dropdown-item" href="./classMemberView.html">
 				                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
 				               </a>
-				               <a class="dropdown-item" href="/member/classList_teacher">
+				               <a class="dropdown-item" href="/member/classList">
 				                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
 				               </a>
 				               <div class="dropdown-divider"></div>

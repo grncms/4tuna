@@ -3,7 +3,7 @@
  <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-		    <img src="/resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='member/main_teacher'">
+		    <img src="/resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='/member/main'">
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">

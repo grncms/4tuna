@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="/resources/common/image/header_logo.png"  width="150" onclick="location.href='/member/main_teacher'">
+	<img src="/resources/common/image/header_logo.png"  width="150" onclick="location.href='member/main'">
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
 	
@@ -39,7 +39,7 @@
                <a class="dropdown-item" href="/member/memberInfo">
                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;개인정보
                </a>
-               <a class="dropdown-item" href="/member/classList_teacher">
+               <a class="dropdown-item" href="/member/classList">
                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
                </a>
                <div class="dropdown-divider"></div>
