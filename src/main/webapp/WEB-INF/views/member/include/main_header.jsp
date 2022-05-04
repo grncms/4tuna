@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="/resources/common/image/header_logo.png"  width="150" onclick="location.href='/WEB-INF/views/member/main_teacher.jsp'">
+	<img src="/resources/common/image/header_logo.png"  width="150" onclick="location.href='/member/main_teacher'">
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
 	
