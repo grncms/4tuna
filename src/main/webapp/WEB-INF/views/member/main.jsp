@@ -78,7 +78,7 @@
 	</div>
 	<div class="col-md-12">
 		<div id="schInfo"> 
-		<div class="mb-4"><img src="/resources/user/image/schIcon.png" width="40" height="40" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px;">사조 초등학교<i class="fa-solid fa-angle-right"></i></span></div>	
+		<div class="mb-4"><img src="/resources/user/image/schIcon.png" width="40" height="40" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px;">사조 초등학교</span></div>	
 		<p style="margin-left: 10px; font-weight: bold;">공지사항</p>
 		<div id="schNotice">아직 공지사항이 없습니다!</div>
 		<p style="margin-left: 10px; font-weight: bold;">오늘의 급식</p>

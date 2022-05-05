@@ -35,7 +35,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-				               <a class="dropdown-item" href="./classMemberView.html">
+				               <a class="dropdown-item" href="/classMemberView">
 				                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
 				               </a>
 				               <a class="dropdown-item" href="/member/classList">
