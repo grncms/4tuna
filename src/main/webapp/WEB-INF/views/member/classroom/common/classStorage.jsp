@@ -19,7 +19,7 @@
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
 #posting {
-	width: 800px;
+	width: 900px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
