@@ -228,6 +228,7 @@
     }
     .content {
     position:relative;
+     padding-bottom:77px;
     }
 </style>
 

@@ -18,12 +18,6 @@
 	.content{
 		position:relative;
 	}
-	
-	.footer {
-		position:absolute;
-		bottom:0;
-		width:100%;	
-	}	
 </style>
 
 <!-- Custom fonts for this template-->
@@ -118,7 +112,24 @@
 									</div>
 									<div class="classTitleSetting">
 										<textarea class="form-control" cols="80" rows="10" id="content" name="content" placeholder="클래스 소개글을 작성해주세요!" style="resize:none; margin-top: 10px; margin-bottom:25px;"></textarea>	
-										<button type="button" class="basic_button mt-10 w-25 p-2" style="float:right">변경사항 저장</button>
+										<button type="button" class="basic_button mt-10 w-25 p-2" data-bs-toggle="modal" data-bs-target="#formModal" style="float:right">변경사항 저장</button>
+									<!-- 모랄 -->
+											<div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="editModalLabel">수정 완료</h5	>
+															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+														</div>
+														<div class="modal-body">수정이 완료되었습니다.</div>
+														<div class="modal-footer">
+															<button type="button" class="basic_button" data-bs-dismiss="modal">확인</button>
+														</div>
+													</div>
+												</div>
+											</div>									
+									<!-- 모랄 -->
+									
 									</div>
 									<div class="footer">
 									</div>
@@ -151,7 +162,7 @@
 														<div class="modal-body">정말로 폐쇄하시겠습니까?</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-															<a class="btn btn-danger" role="button" href="../../../member/classList_teacher.html">폐쇄</a>
+															<a class="btn btn-danger" role="button" href="/classList">폐쇄</a>
 														</div>
 													</div>
 												</div>
