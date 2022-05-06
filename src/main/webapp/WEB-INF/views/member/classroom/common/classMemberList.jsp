@@ -157,8 +157,8 @@
             <!-- End of Main Content -->
 		</div>
             <!-- Footer -->
-           <%@ include file="/WEB-INF/views/member/include/classFooter.jsp" %>
             <!-- End of Footer -->
+          <%@ include file="/WEB-INF/views/member/include/classFooter.jsp" %>
 	</div>
 </div>
     <!-- Bootstrap core JavaScript-->
