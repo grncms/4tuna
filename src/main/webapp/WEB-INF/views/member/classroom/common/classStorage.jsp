@@ -24,10 +24,6 @@
 	margin-right: auto;
 	margin-top: 50px;
 }
-	.content{
-		position:relative;
-	}
-	
 </style>
 
 </head>

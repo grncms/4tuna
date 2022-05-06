@@ -14,10 +14,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 50px;
-	}
-	.content{
-		position:relative;
-	}
+}
 </style>
 
 <!-- Custom fonts for this template-->
