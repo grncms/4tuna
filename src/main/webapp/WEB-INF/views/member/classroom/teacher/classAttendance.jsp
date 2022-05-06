@@ -94,6 +94,10 @@ table {
 	margin-top: 10%;
 	margin-bottom: 10%;
 }
+
+#posting {
+	margin-top: 50px;
+}
 </style>
 
 </head>
@@ -106,7 +110,7 @@ table {
 		<div id="content-wrapper">
 			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
 
-			<div class="container-fluid">
+			<div class="container-fluid" id="posting">
 				<div class="row justify-content-center">
 					<div class="col-6">
 						<div class="container_title shadow mb-4">
@@ -275,13 +279,12 @@ table {
 					</div>
 				</div>
 			</div>
+				<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 		</div>
 	</div>
-	</div>
 
 
 
-	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 
 
 
