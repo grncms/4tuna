@@ -167,7 +167,7 @@
 			   </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-		        <button type="submit" class="btn btn-primary" onclick="location.href='./classForm2.html'">등록</button>
+		        <button type="submit" class="btn btn-primary" onclick="location.href='./classForm2'">등록</button>
 		      </div>
 		      </div>
 		    </div>
