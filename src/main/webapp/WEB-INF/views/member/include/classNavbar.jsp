@@ -19,7 +19,7 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button">
+                            <a class="nav-link dropdown-toggle" href="/chat" id="messagesDropdown" role="button">
                                 <i class="fa-solid fa-comment"></i>
                                 <!-- Counter - Messages -->
                                 <!-- <span class="badge badge-danger badge-counter">7</span> -->

@@ -64,16 +64,16 @@
 						<h3 style="text-align: center">코드입력</h3>
 						<br> <br><div class="input-group mb-3"> <input class="form-control form-control-lg" type="text" placeholder="코드 6자리 입력"> <br>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">닫기</button>
-					<button type="button" data-bs-toggle="modal" class="btn btn-primary">확인</button>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">닫기</button>
+						<button type="button" data-bs-toggle="modal" class="btn btn-primary">확인</button>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div> 
-		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classroom/teacher/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
+		</div> 
+		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
 		</div>
 	</div>
 	<div class="col-md-12">
