@@ -23,8 +23,8 @@
             <div class="sidebar-heading" style="color: #828282;">전체 메뉴</div>
             <li class="nav-item">
                 <a class="nav-link" href="/noticeBoard"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
+                <a class="nav-link" href="/member/class/teacher/homeworklist"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
+                <a class="nav-link" href="/member/class/teacher/homeworkreport"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
                 <a class="nav-link" href="/attendance"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
                 <a class="nav-link" href="/classMemberList"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
                 <a class="nav-link" href="/classSetting"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
@@ -53,9 +53,9 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">자유 공간</a>
-                        <a class="collapse-item" href="#">학습 자료</a>
-                        <a class="collapse-item" href="#">활동 사진</a>
+                        <a class="collapse-item" href="/member/class/common/postlist">자유 공간</a>
+                        <a class="collapse-item" href="/member/class/common/postlist">학습 자료</a>
+                        <a class="collapse-item" href="/member/class/common/postlist">활동 사진</a>
                     </div>
                 </div>
             </li>
