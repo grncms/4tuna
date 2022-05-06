@@ -18,7 +18,6 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
-
 .container_wrapper>div:first-child {
 	padding: 0;
 }
@@ -30,6 +29,15 @@
 
 .homework_table tbody>tr>td:first-child {
 	color: black;
+}
+
+
+
+#posting {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
 }
 </style>
 
@@ -44,91 +52,89 @@
 			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
 
 			<div class="container-fluid">
-				<div class="row justify-content-center">
-					<div class="col-md-6" id="context">
-						<div class="container_title shadow mb-4">
-							<div class="header">과제 리포트</div>
-							<div class="body">클래스에 배부된 모든 과제 현황을 확인할 수 있어요.</div>
-						</div>
+				<div class="row" id="posting">
+					<div class="container_title shadow mb-4">
+						<div class="header">과제 리포트</div>
+						<div class="body">클래스에 배부된 모든 과제 현황을 확인할 수 있어요.</div>
+					</div>
 
-						<div class="container_wrapper shadow">
-							<div class="container_base">
-								<div class="homework_check">
-									<div class="homework_table table-responsive">
-										<table class="table m-0" id="dataTable" width="100%" cellspacing="0">
-											<thead>
-												<tr>
-													<th>전체 5명</th>
-													<th>과제1</th>
-													<th>과제2</th>
-													<th>과제3</th>
-													<th>과제4</th>
-												</tr>
+					<div class="container_wrapper shadow p-0">
+						<div class="container_base">
+							<div class="homework_check">
+								<div class="homework_table table-responsive">
+									<table class="table m-0" id="dataTable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th>전체 5명</th>
+												<th>과제1</th>
+												<th>과제2</th>
+												<th>과제3</th>
+												<th>과제4</th>
+											</tr>
 
-												<tr>
-													<td>평균 점수</td>
-													<td>0/100점</td>
-													<td>50/100점</td>
-													<td>40/100점</td>
-													<td>0/100점</td>
-												</tr>
-												<tr>
-													<td>제출률</td>
-													<td>0%</td>
-													<td>0%</td>
-													<td>50%</td>
-													<td>100%</td>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>박규원</td>
-													<td>
-														<div>
-															<span class="badge bg-danger">미제출</span>
-														</div>
-													</td>
-													<td>-</td>
-													<td>50점</td>
-													<td><span class="badge bg-warning">확인 필요</span></td>
-												</tr>
-												<tr>
-													<td>박규원</td>
-													<td>
-														<div>
-															<span class="badge bg-danger">미제출</span>
-														</div>
-													</td>
-													<td>-</td>
-													<td>50점</td>
-													<td><span class="badge bg-warning">확인 필요</span></td>
-												</tr>
-												<tr>
-													<td>박규원</td>
-													<td>
-														<div>
-															<span class="badge bg-danger">미제출</span>
-														</div>
-													</td>
-													<td>-</td>
-													<td>50점</td>
-													<td><span class="badge bg-warning">확인 필요</span></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+											<tr>
+												<td>평균 점수</td>
+												<td>0/100점</td>
+												<td>50/100점</td>
+												<td>40/100점</td>
+												<td>0/100점</td>
+											</tr>
+											<tr>
+												<td>제출률</td>
+												<td>0%</td>
+												<td>0%</td>
+												<td>50%</td>
+												<td>100%</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>박규원</td>
+												<td>
+													<div>
+														<span class="badge bg-danger">미제출</span>
+													</div>
+												</td>
+												<td>-</td>
+												<td>50점</td>
+												<td><span class="badge bg-warning">확인 필요</span></td>
+											</tr>
+											<tr>
+												<td>박규원</td>
+												<td>
+													<div>
+														<span class="badge bg-danger">미제출</span>
+													</div>
+												</td>
+												<td>-</td>
+												<td>50점</td>
+												<td><span class="badge bg-warning">확인 필요</span></td>
+											</tr>
+											<tr>
+												<td>박규원</td>
+												<td>
+													<div>
+														<span class="badge bg-danger">미제출</span>
+													</div>
+												</td>
+												<td>-</td>
+												<td>50점</td>
+												<td><span class="badge bg-warning">확인 필요</span></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<footer style="margin-top:auto;"><jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" /></footer>
 		</div>
 	</div>
 
 
 
-	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 
 
 
