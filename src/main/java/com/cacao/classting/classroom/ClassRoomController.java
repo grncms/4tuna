@@ -16,13 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ClassRoomController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ClassRoomController.class);
-	
-	
-	
-
 //동훈	
 
-	
 	@RequestMapping(value = "/classForm", method = RequestMethod.GET)
 	public String classForm() {
 		
@@ -117,62 +112,62 @@ public class ClassRoomController {
 	}	
 
 	//수빈
-	@RequestMapping(value = "index/index")
+	@RequestMapping(value = "/index")
 	public String index() {
 		
 		return "index/index";
 	}
-	@RequestMapping(value = "member/findId")
+	@RequestMapping(value = "/findId")
 	public String findId() {
 		
 		return "member/findId";
 	}
-	@RequestMapping(value = "member/findPwd")
+	@RequestMapping(value = "/findPwd")
 	public String findPwd() {
 		
 		return "member/findPwd";
 	}
-	@RequestMapping(value = "member/main")
+	@RequestMapping(value = "/main")
 	public String main_teacher() {
 		
 		return "member/main";
 	}
-	@RequestMapping(value = "member/classList")
+	@RequestMapping(value = "/classList")
 	public String test() {
 		
 		return "member/classList";
 	}
-	@RequestMapping(value = "member/memberForm_main")
+	@RequestMapping(value = "/memberForm_main")
 	public String memberForm_main() {
 		
 		return "member/memberForm_main";
 	}
-	@RequestMapping(value = "member/memberForm_user")
+	@RequestMapping(value = "/memberForm_user")
 	public String memberForm_user() {
 		
 		return "member/memberForm_user";
 	}
-	@RequestMapping(value = "member/memberInfo")
+	@RequestMapping(value = "/memberInfo")
 	public String memberInfo() {
 		
 		return "member/memberInfo";
 	}
-	@RequestMapping(value = "member/memberInfoEdit")
+	@RequestMapping(value = "/memberInfoEdit")
 	public String memberInfoEdit() {
 		
 		return "member/memberInfoEdit";
 	}
-	@RequestMapping(value = "member/classroom/common/classMain")
+	@RequestMapping(value = "/classMain")
 	public String classMain() {
 		
 		return "member/classroom/common/classMain";
 	}
-	@RequestMapping(value = "member/classroom/common/classMemberList")
+	@RequestMapping(value = "/classMemberList")
 	public String classMemberList() {
 		
 		return "member/classroom/common/classMemberList";
 	}
-	@RequestMapping(value = "member/classroom/teacher/classInvitation")
+	@RequestMapping(value = "/classInvitation")
 	public String classInvitation() {
 		
 		return "member/classroom/teacher/classInvitation";
