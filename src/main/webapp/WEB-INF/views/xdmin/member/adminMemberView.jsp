@@ -307,8 +307,8 @@
 				</select>
 			<div>
 				<button type="button" class="btn btn-outline-danger btn-lg w-45" style="display: inline; float: left;" id="btn-add"   data-bs-toggle="modal" data-bs-target="#Delete">삭제</button>
-				<button type="button" class="btn btn-outline-primary btn-lg w-45" style="display: inline; float: right;" id="btn-add" onclick="location.href='./adminMemberEdit.html'">수정</button>
-				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right; " id="btn-add" onclick="location.href='./adminMemberList.html'">회원리스트</button>
+				<button type="button" class="btn btn-outline-primary btn-lg w-45" style="display: inline; float: right;" id="btn-add" onclick="location.href='./adminMemberEdit'">수정</button>
+				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right; " id="btn-add" onclick="location.href='./adminMemberList'">회원리스트</button>
 			</div>
 			
 			</div>

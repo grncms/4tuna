@@ -290,7 +290,7 @@
 								<div class="form-check">
 								<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault1"></div></td>
 							<td scope="col">1</td>
-							<td scope="col"><a href="./adminMemberView.html">한동훈</a></td>
+							<td scope="col"><a href="./adminMemberView">한동훈</a></td>
 							<td scope="col">학생</td>
 							<td scope="col">##중학교</td>
 							<td scope="col">2020.12.12</td>
@@ -349,7 +349,7 @@
 		
 	<div style="text-align: right;">
 		<button type="button" class="btn btn-outline-danger btn-lg w-45"  id="btn-add" data-bs-toggle="modal" data-bs-target="#delete" id="btn-add" style="margin-bottom:10px;">삭제</button>
-		<button type="button" class="btn btn-outline-primary btn-lg w-45"  id="btn-add" style="margin-bottom:10px;" onclick="location.href='./adminMemberForm.html'">회원추가</button>
+		<button type="button" class="btn btn-outline-primary btn-lg w-45"  id="btn-add" style="margin-bottom:10px;" onclick="location.href='./adminMemberForm'">회원추가</button>
 	</div>			
 				<!-- modal -->	
 					<div class="modal" tabindex="-1" id="delete">

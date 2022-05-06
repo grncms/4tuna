@@ -304,7 +304,7 @@
 					<option>알림 거부
 				</select>
 			<div>
-				<button type="button" class="btn btn-outline-secondary btn-lg w-45" style="display: inline; float: left;" id="btn-add"onclick="location.href='./adminMemberList.html'">취소</button>
+				<button type="button" class="btn btn-outline-secondary btn-lg w-45" style="display: inline; float: left;" id="btn-add"onclick="location.href='./adminMemberList'">취소</button>
 				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right; " id="btn-add">가입</button>
 			</div>
 	

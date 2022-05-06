@@ -272,7 +272,7 @@
 							
 							<div>
 							<button type="button" class="btn btn-outline-danger btn-lg w-45" style="display: inline;" id="btn-add" data-bs-toggle="modal" data-bs-target="#classDelete">클래스 삭제</button>
-							<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right;" id="btn-add" onclick="location.href='./adminClassList.html'">클래스리스트</button>
+							<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right;" id="btn-add" onclick="location.href='./adminClassList'">클래스리스트</button>
 							</div>
 					</div>
 				</div>

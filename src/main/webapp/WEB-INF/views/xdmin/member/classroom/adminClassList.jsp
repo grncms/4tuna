@@ -286,7 +286,7 @@
 								<div class="form-check">
 								<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault1"></div></td>
 							<td scope="col">1</td>
-							<td scope="col"><a href="./adminClassView.html">4조</a></td>
+							<td scope="col"><a href="./adminClassView">4조</a></td>
 							<td scope="col">이젠</td>
 							<td scope="col">KD83N3</td>
 							<td scope="col">2020.12.12</td>

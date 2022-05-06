@@ -305,7 +305,7 @@
 				</select>
 			<div>
 				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right;" id="btn-add" data-bs-toggle="modal" data-bs-target="#Change">수정</button>
-				<button type="button" class="btn btn-outline-warning btn-lg w-45" style="display: inline; float: right; " id="btn-add" onclick="location.href='./adminMemberView.html'">돌아가기</button>
+				<button type="button" class="btn btn-outline-warning btn-lg w-45" style="display: inline; float: right; " id="btn-add" onclick="location.href='./adminMemberView'">돌아가기</button>
 			</div>
 			
 			</div>
