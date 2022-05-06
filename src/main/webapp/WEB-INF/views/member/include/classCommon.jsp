@@ -24,12 +24,16 @@
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-
 		<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
-		<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
-		<!-- 여기에 내용  -->
-		<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
+		<div>
+			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+			<div>
+				<!--여기에 내용  -->
+			</div>
+		</div>
 	</div>
+
+	<div><jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" /></div>
 
 
 

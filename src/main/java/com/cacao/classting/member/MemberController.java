@@ -25,7 +25,7 @@ public class MemberController {
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(Locale locale, Model model) {
 				
-		return "member/include/classBoardBase";
+		return "member/include/classCommon";
 	}
 	@RequestMapping(value = "/basetemplate", method = RequestMethod.GET)
 	public String baseTemplate() {
