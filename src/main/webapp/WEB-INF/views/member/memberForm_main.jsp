@@ -30,8 +30,9 @@
 <div class="container my-wrap">
 	<div class="row mx-auto">
 		<div class="col-md-7 ">
-			<img src="/resources/common/image/logo_ver2.png" style="width: 320px; margin-bottom: 10px;" onclick="loation.href='/index'">
+			<img src="/resources/common/image/logo_ver2.png" style="width: 320px; margin-bottom: 10px;" >
 			<p>선생님과 학생 모두가 편한<br><span style="color: #00C896;">CLASSING</span>에서 효율적으로 수업을 관리해보세요</p>
+			<a href="./index" style="text-decoration-line: none;"><p style="color: #c8c8c8; font-size: 14px;">홈으로 돌아가기</p></a>
 		</div>
 		<div class="col-md-5">
 			<div class="d-grid gap-2 col-10 mx-auto mt-5 mb-2">

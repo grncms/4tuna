@@ -24,7 +24,7 @@
 <link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/user/css/classList.css" rel="stylesheet" type="text/css">
-<title>classList_teacher</title>
+<title>classList</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/member/include/main_header.jsp" %><!-- header -->
@@ -36,21 +36,48 @@
 			<div class=""><span style="font-size: 20px; font-weight: bold;">클래스 목록</span></div>
 		</div>
 		<div id="classNotice">
-			<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
-			<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">3조</span></div>
+			<div class="class" onclick="location.href='/classMain'">
+				<img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left">
+				<span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">4조</span>
+			</div>
 			<hr>
-			<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
-			<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">1조</span></div>
+			<div class="class" onclick="location.href='/classMain'">
+				<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
+				<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">1조</span></div>
+			</div>
 			<hr>
-			<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
-			<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">2조</span></div>
+			<div class="class" onclick="location.href='/classMain'">
+				<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
+				<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">2조</span></div>
+			</div>
 			<hr>
 		</div>
 	</div>
 	<div class="col-md-5">
 		<div id="classList">
-		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
-		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
+		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
+		<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">클래스 가입</h5>
+						<button type="button" class="btn-close"
+							data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<h3 style="text-align: center">코드입력</h3>
+						<br> <br><div class="input-group mb-3"> <input class="form-control form-control-lg" type="text" placeholder="코드 6자리 입력"> <br>
+					</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">닫기</button>
+						<button type="button" data-bs-toggle="modal" class="btn btn-primary">확인</button>
+					</div>
+				</div>
+			</div>
+		</div> 
+		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
 		</div>
 	</div>
 	</div>
