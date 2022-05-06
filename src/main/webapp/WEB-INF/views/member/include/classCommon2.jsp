@@ -18,7 +18,6 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
-
 </style>
 
 </head>
@@ -30,14 +29,15 @@
 
 		<div id="content-wrapper">
 			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
-			
-			<!-- 여기에 콘텐츠를 넣어주세요 -->
+			<!--
+			 여기에 콘텐츠를 넣어주세요 
+			 -->
+			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 		</div>
 	</div>
-	
 
 
-	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
+
 
 
 
