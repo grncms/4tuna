@@ -49,7 +49,6 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <div id="content">
                 <!-- Topbar -->
         <%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
                 <!-- End of Topbar -->
@@ -202,7 +201,6 @@
             <!-- Footer -->
            <%@ include file="/WEB-INF/views/member/include/classFooter.jsp" %>
             <!-- End of Footer -->
-		</div>
 	</div>
 </div>
     <!-- Bootstrap core JavaScript-->
