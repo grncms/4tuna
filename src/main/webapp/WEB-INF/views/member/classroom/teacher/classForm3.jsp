@@ -160,7 +160,7 @@
 		<label for="name" class="form-label">이름</label>
 		<input type="text" class="form-control" id="name">
 		
-		<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;" >완료</button>
+		<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;" onclick="location.href='./main'">완료</button>
 		</div>
 		</div>
 	</div>

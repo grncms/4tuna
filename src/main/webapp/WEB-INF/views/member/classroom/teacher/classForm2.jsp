@@ -182,7 +182,7 @@
 			
 	
 			<button type="button" class="btn btn-outline-secondary" style="display: inline; margin-top:30px;" id="btn-add2" onclick="location.href='./classForm'">이전</button>
-			<button type="button" class="btn btn-outline-success" style="display: inline;margin-top:30px; float: right;" id="btn-add2">클래스 개설</button>
+			<button type="button" class="btn btn-outline-success" style="display: inline;margin-top:30px; float: right;" id="btn-add2" onclick="location.href='./classForm3'">클래스 개설</button>
 		
 		</div>
 	</div>
