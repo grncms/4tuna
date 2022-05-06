@@ -21,8 +21,8 @@
 	margin-top: 50px;
 }
 
-.leftbarProfile{
-	cursor:pointer;
+.leftbarProfile {
+	cursor: pointer;
 }
 
 .post>.header {
@@ -30,7 +30,7 @@
 }
 
 .post_title {
-	cursor:pointer;
+	cursor: pointer;
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -55,36 +55,40 @@
 		<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a href="../../main_teacher.html"><img src="../../../../../resources/common/image/header_logo.png" width="180px;" style="margin-left: 10px;"></a>
+			<a href="../../main_teacher.html">
+				<img src="../../../../../resources/common/image/header_logo.png" width="180px;" style="margin-left: 10px;">
+			</a>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active leftbarProfile">
-				<div class="col-md-3 mt-4" id="classImg">
-					<img src="../../../../../resources/user/image/a3.jpg" width="50" height="50" style="border-radius: 7px;">
-				</div>
-				<div class="col-md-9 mt-4" id="classInfo">
-					<span>
-						<b>4조</b>
-					</span>
-					<p>
-						<span>2022</span>
-				</div>
-			</li>
-			<div class="d-flex justify-content-center w-100">
-				<button type="button" class="btn btn-lg mt-1 p-2" id="btn-add">
-					<i class="fa-solid fa-user-plus"></i>구성원 초대하기
-				</button>
-			</div>
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Nav Item - Pages Collapse Menu -->
 			<div class="sidebar-heading" style="color: #828282;">전체 메뉴</div>
 			<li class="nav-item">
-				<a class="nav-link" href="#"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a> <a class="nav-link" href="#"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
+				<a class="nav-link" href="../common/classNoticeList.html">
+					<i class="fa-solid fa-bullhorn" style="color: #828282;"></i>
+					<span>모든 공지</span>
+				</a>
+				<a class="nav-link" href="classHomeworkList.html">
+					<i class="fa-solid fa-pencil" style="color: #828282;"></i>
+					<span>모든 과제</span>
+				</a>
+				<a class="nav-link" href="../teacher/classHomeworkReport.html">
+					<i class="fa-solid fa-file-circle-check" style="color: #828282;"></i>
+					<span>과제 리포트</span>
+				</a>
+				<a class="nav-link" href="#">
+					<i class="fa-solid fa-school-circle-check" style="color: #828282;""></i>
+					<span>출석부</span>
+				</a>
+				<a class="nav-link" href="../common/classMemberList.html">
+					<i class="fa-solid fa-users" style="color: #828282;"></i>
+					<span>구성원</span>
+				</a>
+				<a class="nav-link" href="classSetting.html">
+					<i class="fa-solid fa-gear" style="color: #828282;"></i>
+					<span>클래스 설정</span>
+				</a>
 			</li>
 
 			<!-- Divider -->
@@ -92,7 +96,10 @@
 			<!-- Heading -->
 			<div class="sidebar-heading" style="color: #828282;">나만 참여한 공간</div>
 			<li class="nav-item">
-				<a class="nav-link" href="#"><i class="fa-solid fa-file-pen" style="color: #828282;"></i> <span>예약 / 임시저장한 글</span></a>
+				<a class="nav-link" href="../common/classStorage.html">
+					<i class="fa-solid fa-file-pen" style="color: #828282;"></i>
+					<span>예약 / 임시저장한 글</span>
+				</a>
 			</li>
 
 			<!-- Divider -->
@@ -103,11 +110,15 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> <i class="fas fa-fw fa-folder" style="color: #828282;"></i> <span>모두를 위한 공간</span>
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+					<i class="fas fa-fw fa-folder" style="color: #828282;"></i>
+					<span>모두를 위한 공간</span>
 				</a>
 				<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="login.html">자유 공간</a> <a class="collapse-item" href="register.html">학습 자료</a> <a class="collapse-item" href="forgot-password.html">활동 사진</a>
+						<a class="collapse-item" href="login.html">자유 공간</a>
+						<a class="collapse-item" href="register.html">학습 자료</a>
+						<a class="collapse-item" href="forgot-password.html">활동 사진</a>
 					</div>
 				</div>
 			</li>
@@ -138,7 +149,8 @@
 
 						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
 						<li class="nav-item dropdown no-arrow d-sm-none">
-							<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+							<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-search fa-fw"></i>
 							</a>
 							<!-- Dropdown - Messages -->
 							<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
@@ -157,13 +169,19 @@
 
 						<!-- Nav Item - Alerts -->
 						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts --> <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-bell fa-fw"></i>
+								<!-- Counter - Alerts -->
+								<!-- <span class="badge badge-danger badge-counter">3+</span> -->
 							</a>
 						</li>
 
 						<!-- Nav Item - Messages -->
 						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-solid fa-comment"></i> <!-- Counter - Messages --> <!-- <span class="badge badge-danger badge-counter">7</span> -->
+							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa-solid fa-comment"></i>
+								<!-- Counter - Messages -->
+								<!-- <span class="badge badge-danger badge-counter">7</span> -->
 							</a>
 						</li>
 
@@ -171,17 +189,24 @@
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small">
 									<b>윤수빈</b>
-								</span> <span class="mr-2 d-none d-lg-inline text-gray-600 small">학생</span> <img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
+								</span>
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small">학생</span>
+								<img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="./memberInfo.html"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
-								</a> <a class="dropdown-item" href="./classList_teacher.html"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
+								<a class="dropdown-item" href="./memberInfo.html">
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
+								</a>
+								<a class="dropdown-item" href="./classList_teacher.html">
+									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
+								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
 								</a>
 							</div>
 						</li>
@@ -231,7 +256,7 @@
 										<div class="post_title">
 											<span class='badge badge_notice'>공지</span>
 											<span>숙제 하세요!@</span>
-											
+
 										</div>
 
 										<div class="post_content">
@@ -256,13 +281,11 @@
 										<div class="post_content">
 											<div>글내용 글내용 글내용 글내용 글내용</div>
 										</div>
-										
+
 										<div class="post_emotion">
-											<i class="fa-regular fa-comment"> 2</i>
-											<i class="fa-regular fa-thumbs-up"> 2</i>
-											<i class="fa-solid fa-check"> 1</i>
+											<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i>
 										</div>
-										
+
 									</div>
 								</div>
 								<div class="container_base">
@@ -285,7 +308,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 
 								<!-- Card Body -->
 							</div>
@@ -384,7 +407,7 @@
 		</div>
 		<!-- End of Page Wrapper -->
 
-		
+
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
@@ -395,15 +418,14 @@
 
 		<!-- Custom scripts for all pages-->
 		<script src="../../../../../resources/common/js/sb-admin-2.min.js"></script>
-		
+
 		<script>
-			$(".post_title").click(function(){
+			$(".post_title").click(function() {
 				location.href = "classPostView.html";
 			});
-			$(".leftbarProfile").click(function(){
+			$(".leftbarProfile").click(function() {
 				location.href = "classMain.html"
 			});
-
 		</script>
 </body>
 <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

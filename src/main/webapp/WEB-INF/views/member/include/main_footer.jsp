@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+<footer class="d-flex flex-wrap justify-content-center align-items-center border-top">
 	<p class="col-md-5 mb-0 text-muted">
 		<a href="#" class="col-md-4 d-flex mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
 			<img src="/resources/common/image/header_logo.png"  class="img-fluid" style="width: 100px; height: 40px;">
