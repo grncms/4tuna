@@ -229,6 +229,7 @@
     }
     .content {
     position:relative;
+    padding-bottom:77px;
     }
 </style>
 
@@ -341,7 +342,7 @@
 			    </tbody>
 			  </table>
 			</div>
-		</div>
+		
 	
 		
 	<div style="text-align: right;">
