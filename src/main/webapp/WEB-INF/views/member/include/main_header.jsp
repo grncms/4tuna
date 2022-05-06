@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="/resources/common/image/header_logo.png"  width="150" onclick="location.href='member/main'">
+	<img src="/resources/common/image/header_logo.png"  width="150" onclick="location.href='/main'">
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
 	
@@ -19,13 +19,13 @@
 	    </li>
 	
 	    <!-- Nav Item - Messages -->
-	    <li class="nav-item mx-1">
+<!-- 	    <li class="nav-item mx-1">
 	        <a class="nav-link" href="#" id="" role="button">
 	            <i class="fa-solid fa-comment"></i>
-	            <!-- Counter - Messages -->
-	            <!-- <span class="badge badge-danger badge-counter">7</span> -->
+	            Counter - Messages
+	            <span class="badge badge-danger badge-counter">7</span>
 	        </a>
-	    </li>
+	    </li> -->
 	    <div class="topbar-divider d-none d-sm-block"></div>
         <li class="nav-item dropdown no-arrow">
            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,14 +36,14 @@
            <!-- Dropdown - User Information -->
            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                aria-labelledby="userDropdown">
-               <a class="dropdown-item" href="/member/memberInfo">
+               <a class="dropdown-item" href="/memberInfo">
                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;개인정보
                </a>
-               <a class="dropdown-item" href="/member/classList">
+               <a class="dropdown-item" href="/classList">
                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
                </a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="/index/index">
+               <a class="dropdown-item" href="/index">
                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
                </a>
            </div>

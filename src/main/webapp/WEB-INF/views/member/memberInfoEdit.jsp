@@ -180,7 +180,7 @@
 					<div class="modal-body">수정되었습니다.</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-						<a class="btn btn-primary" role="button" href="memberInfo">확인</a>
+						<a class="btn btn-primary" role="button" href="/memberInfo">확인</a>
 					</div>
 					</div>
 				</div>

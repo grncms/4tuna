@@ -44,7 +44,7 @@
       
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <div class="site-logo mr-auto w-25"><a href="/index/index">CLASSING</a></div>
+          <div class="site-logo mr-auto w-25"><a href="/index">CLASSING</a></div>
         </div>
       </div>
       
@@ -60,7 +60,7 @@
                 <div class="col-lg-6 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100">완전히 새로운 클래스관리</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">가정에서도 좀 더 효율적으로 수업을 관리하는 방법</p>
-                  <p data-aos="fade-up" data-aos-delay="300"><a href="/member/memberForm_main" class="btn btn-primary py-3 px-5 btn-pill" style="font-size: 15px;">회원가입하기</a></p>
+                  <p data-aos="fade-up" data-aos-delay="300"><a href="/memberForm_main" class="btn btn-primary py-3 px-5 btn-pill" style="font-size: 15px;">회원가입하기</a></p>
 
                 </div>
 
@@ -74,10 +74,10 @@
                       <input type="password" class="form-control" placeholder="비밀번호">
                     </div>
                     <div class="form-group">
-                      <input type="button" class="btn btn-primary btn-pill" value="로그인하기" onclick="location.href='/member/main'" style="font-size: 15px;">
+                      <input type="button" class="btn btn-primary btn-pill" value="로그인하기" onclick="location.href='/main'" style="font-size: 15px;">
                     </div>
-                    <a href="/member/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
-                    <a href="/member/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
+                    <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
+                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
                   </form>
                 </div>
               </div>

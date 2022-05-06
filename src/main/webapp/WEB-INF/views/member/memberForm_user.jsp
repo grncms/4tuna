@@ -32,7 +32,7 @@
 <div class="container my-wrap"><!-- d-none d-sm-block : sm사이즈에서는 보이지 않음 d-block d-sm-none : sm에서만 보임 -->
 	<div class="row mt-5 mb-4 ">
 		<div class="d-grid gap-2 col-12 mx-auto mt-3">
-			<img src="/resources/common/image/header_logo.png" style="width: 240px; margin-left: 30px;" onclick="location.href='/index/index'">
+			<img src="/resources/common/image/header_logo.png" style="width: 240px; margin-left: 30px;" onclick="location.href='/index'">
 		</div>	
 	</div>
 </div>	
@@ -94,7 +94,7 @@
 				</div>	
 			</div>
 			<div class="d-grid gap-2 col-12 mx-auto  mb-5">
-				<button class="btn btn-submit btn-sm" type="submit" id="" name="" onclick="location.href='/member/main'">가입완료</button>
+				<button class="btn btn-submit btn-sm" type="submit" id="" name="" onclick="location.href='/main'">가입완료</button>
 			</div>
 		</form>
 	</div>

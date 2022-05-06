@@ -38,11 +38,11 @@
 				               <a class="dropdown-item" href="/classMemberView">
 				                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;클래스 정보
 				               </a>
-				               <a class="dropdown-item" href="/member/classList">
+				               <a class="dropdown-item" href="/classList">
 				                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
 				               </a>
 				               <div class="dropdown-divider"></div>
-				               <a class="dropdown-item" href="/index/index">
+				               <a class="dropdown-item" href="/index">
 				                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
 				               </a>
 			          		</div>

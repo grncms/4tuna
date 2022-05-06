@@ -34,7 +34,7 @@
 	<div class="col-md-7" >
 		<img src="/resources/user/image/main_bg.png" class="w-100" id="main_bg"	>
 		<div id="classNotice">
-		<div class="mb-4" onclick="location.href='/member/classroom/common/classMain'"><img src="/resources/user/image/a3.jpg" width="45" height="45" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px; padding-top: 25px;">4조<i class="fa-solid fa-angle-right"></i></span></div>
+		<div class="mb-4" onclick="location.href='/classMain'"><img src="/resources/user/image/a3.jpg" width="45" height="45" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px; padding-top: 25px;">4조<i class="fa-solid fa-angle-right"></i></span></div>
 		<span class="badge bg-info text-light mb-3">공지</span><p class="d-inline" id="title">공지 </p>
 		<p id="content">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 		<p id="date"> 2022-04-26</p>
@@ -47,7 +47,7 @@
 	<div class="col-md-5">
 		<div id="classList">
 		<h5 style="font-weight: bold; margin-bottom: 30px;">클래스 바로가기</h5>
-		<div onclick="location.href='/member/classroom/common/classMain'">
+		<div onclick="location.href='/classMain'">
 		<div class="col-md-2" id="classImg"><img src="/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px;"></div>
 		<div class="col-md-10 mb-5" id="classInfo"><span><b>4조</b></span><p><span style="">2022</span></div>
 		</div>

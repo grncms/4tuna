@@ -160,7 +160,7 @@
 					</div>
 				</div>
 			</div>
-			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="location.href='memberInfoEdit'">정보 수정</button>
+			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="location.href='/memberInfoEdit'">정보 수정</button>
 			</div>
 	</div>
 </div>
