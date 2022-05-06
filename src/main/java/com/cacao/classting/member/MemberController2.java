@@ -57,6 +57,11 @@ public class MemberController2 {
 		
 		return "member/classroom/common/classPostView";
 	}
+	@RequestMapping(value = "member/class/common/postedit", method = RequestMethod.GET)
+	public String classPostEdit(){
+		
+		return "member/classroom/common/classPostEdit2";
+	}
 
 	
 	

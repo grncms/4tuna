@@ -64,7 +64,7 @@ margin-left:10px;
 								<div class="header">모든 공지</div>
 								<div class="body">클래스의 공지를 확인할 수 있어요.</div>
 								<div class="footer dropdown">
-									<button type="button" class="basic_button" onclick="location.href='./classPostEdit.html'">공지쓰기</button>
+									<button type="button" class="basic_button" onclick="location.href='./classPostEdit'">공지쓰기</button>
 								</div>
 							</div>
                             <div class="card shadow mb-4 ">

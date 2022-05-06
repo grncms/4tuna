@@ -88,12 +88,12 @@
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
+			<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
 
 		<div id="content-wrapper">
-		<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
 			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
 
-			<div class="container-fluid" style="margin-left:230px;">
+			<div class="container-fluid">
 				<div class="row" id="posting">
 					<!-- Area Chart -->
 					<div class="sidebar_article col-xl-1 col-lg-1">
@@ -170,12 +170,12 @@
 					<jsp:include page="/WEB-INF/views/member/classroom/common/classGraded.jsp" flush="true" />
 				</div>
 			</div>
+			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 		</div>
 	</div>
 
 
 
-	<jsp:include page="/WEB-INF/views/member/include/main_footer.jsp" flush="true" />
 
 
 

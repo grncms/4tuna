@@ -35,7 +35,7 @@
 <link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
-<link href="/resources/user/css/classMemberList.css" rel="stylesheet">
+<link href="/resources/common/css/boardCss.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
@@ -50,7 +50,6 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <div id="content" class="content">
                 <!-- Topbar -->
         <%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
                 <!-- End of Topbar -->
@@ -64,7 +63,11 @@
 								<div class="header">클래스 구성원</div>
 								<div class="body">총 6명</div>
 							</div>
+							
                             <div class="card shadow mb-4 ">
+                            <div class="container_base">
+							 <div class="body">선생님 (관리자)</div>
+							 </div>	
                             <div class="container_base">
 								<div class="homework_listitem mt-3">
 									<div class="title_hw" >
@@ -73,6 +76,9 @@
 									</div>
 								</div>
 							</div>	
+							 <div class="container_base">
+							 <div class="body">학생 목록</div>
+							 </div>		
 							 <div class="container_base">		
 								<div class="homework_listitem">	
 									<div class="title_hw" >
@@ -153,7 +159,6 @@
             <!-- Footer -->
            <%@ include file="/WEB-INF/views/member/include/classFooter.jsp" %>
             <!-- End of Footer -->
-		</div>
 	</div>
 </div>
     <!-- Bootstrap core JavaScript-->
