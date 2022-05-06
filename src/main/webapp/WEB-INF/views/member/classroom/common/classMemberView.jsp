@@ -42,6 +42,7 @@ margin-top:0px;
 margin-left:10px;
 }
 
+
 </style>
 </head>
 <body id="page-top">
@@ -197,8 +198,8 @@ margin-left:10px;
 			
 
 			
-		<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 		</div>
+		<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 	</div>
 	</div>
 
