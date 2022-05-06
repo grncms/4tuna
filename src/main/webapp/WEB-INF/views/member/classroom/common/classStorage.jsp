@@ -141,9 +141,9 @@ margin-left:10px;
         </div>
 
 
-			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 		</div>
 	</div>
+			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 
 
 
