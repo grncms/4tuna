@@ -35,7 +35,6 @@
 <link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
-<link href="/resources/common/css/boardCss.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
