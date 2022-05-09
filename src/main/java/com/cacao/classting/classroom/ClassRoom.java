@@ -21,8 +21,9 @@ public class ClassRoom {
 //	ctClassMember
 	private String ctcmSeq;
 	private String ctcmName;
-	private String ccDesc;
-	private Integer ctcmRoleCd;
+	private String ctcmDesc;
+	private Integer ctcmTeacherNy;
+	private Integer ctcmDelNy;
 	private String mmSeq;
 	
 //	ctAddendance
@@ -171,17 +172,23 @@ public class ClassRoom {
 	public void setCtcmName(String ctcmName) {
 		this.ctcmName = ctcmName;
 	}
-	public String getCcDesc() {
-		return ccDesc;
+	public String getCtcmDesc() {
+		return ctcmDesc;
 	}
-	public void setCcDesc(String ccDesc) {
-		this.ccDesc = ccDesc;
+	public void setCtcmDesc(String ctcmDesc) {
+		this.ctcmDesc = ctcmDesc;
 	}
-	public Integer getCtcmRoleCd() {
-		return ctcmRoleCd;
+	public Integer getCtcmTeacherNy() {
+		return ctcmTeacherNy;
 	}
-	public void setCtcmRoleCd(Integer ctcmRoleCd) {
-		this.ctcmRoleCd = ctcmRoleCd;
+	public void setCtcmTeacherNy(Integer ctcmTeacherNy) {
+		this.ctcmTeacherNy = ctcmTeacherNy;
+	}
+	public Integer getCtcmDelNy() {
+		return ctcmDelNy;
+	}
+	public void setCtcmDelNy(Integer ctcmDelNy) {
+		this.ctcmDelNy = ctcmDelNy;
 	}
 	public String getMmSeq() {
 		return mmSeq;
@@ -470,8 +477,9 @@ public class ClassRoom {
 	}
 	public void setPseq(Integer pseq) {
 		this.pseq = pseq;
-	}	
-
+	}
+	
+	
 	
 
 
