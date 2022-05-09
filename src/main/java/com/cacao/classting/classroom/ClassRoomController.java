@@ -188,6 +188,16 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classPostList";
 	}
+	@RequestMapping(value = "member/class/common/postdatalist", method = RequestMethod.GET)
+	public String postdatalist() {
+		
+		return "member/classroom/common/classPostDataList";
+	}
+	@RequestMapping(value = "member/class/common/postpicturelist", method = RequestMethod.GET)
+	public String postpicturelist() {
+		
+		return "member/classroom/common/classPostPictureList";
+	}
 
 	
 	@RequestMapping(value = "member/class/teacher/homeworkreport", method = RequestMethod.GET)

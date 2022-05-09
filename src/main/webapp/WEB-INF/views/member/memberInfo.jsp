@@ -155,7 +155,7 @@
 					<div class="modal-body">정말로 탈퇴하시겠습니까?</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-						<a class="btn btn-danger" role="button" href="/index/index">삭제</a>
+						<a class="btn btn-danger" role="button" href="/index">삭제</a>
 					</div>
 					</div>
 				</div>

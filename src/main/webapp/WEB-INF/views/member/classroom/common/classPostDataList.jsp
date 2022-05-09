@@ -69,7 +69,7 @@
 			<div class="row" id="posting">
 				<div class="col-xl-8 col-lg-8">
 					<div class="container_title shadow mb-4">
-						<div class="header">자유 공간</div>
+						<div class="header">학습 자료</div>
 							<div class="footer dropdown">
 								<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown">글쓰기</button>
 								<ul class="dropdown-menu">

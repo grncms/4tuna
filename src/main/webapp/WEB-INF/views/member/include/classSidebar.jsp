@@ -54,8 +54,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/member/class/common/postlist">자유 공간</a>
-                        <a class="collapse-item" href="#">학습 자료</a>
-                        <a class="collapse-item" href="#">활동 사진</a>
+                        <a class="collapse-item" href="/member/class/common/postdatalist">학습 자료</a>
+                        <a class="collapse-item" href="/member/class/common/postpicturelist">활동 사진</a>
                     </div>
                 </div>
             </li>
