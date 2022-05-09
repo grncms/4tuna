@@ -39,14 +39,20 @@
 </head>
 <body id="page-top">
 
-	<!-- Page Wrapper -->
-	<div id="wrapper">
-		<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
+<!-- Page Wrapper -->
+<div id="wrapper">
 
-		<div id="content-wrapper">
-			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
-			<div class="container-fluid">
-				<div class="row" id="posting">
+	<!-- Sidebar -->
+	<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
+
+	<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
+
+	<!-- Topbar -->
+	<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+		<div class="container-fluid">
+			<div class="row" id="posting">
+				<div class="col-12">
 					<div class="container_title shadow mb-4">
 						<div class="header">모든 과제</div>
 						<div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div>
@@ -94,15 +100,15 @@
 									<span>4월 22일</span>
 									<span>자유공간</span>
 								</div>
-
+	
 								<div class="body">
 									<span class='badge badge_hw'>과제</span>
 									<span class='badge badge_alreadyend'>기한 지남</span>
 									<span>수학문제 풀기</span>
 									<div>마감 : 4월 25일 오후 11:59</div>
 								</div>
-
-
+	
+	
 								<div class="footer">
 									<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
 								</div>
@@ -118,7 +124,7 @@
 									<span>4월 22일</span>
 									<span>자유공간</span>
 								</div>
-
+	
 								<div class="body">
 									<span class='badge badge_hw'>과제</span>
 									<span class='badge badge_after3'>3일 후 마감</span>
@@ -140,7 +146,7 @@
 									<span>4월 22일</span>
 									<span>자유공간</span>
 								</div>
-
+	
 								<div class="body">
 									<span class='badge badge_hw'>과제</span>
 									<span class='badge badge_afterNday'>25일 후 마감</span>
@@ -162,7 +168,7 @@
 									<span>4월 22일</span>
 									<span>자유공간</span>
 								</div>
-
+	
 								<div class="body">
 									<span class='badge badge_hw'>과제</span>
 									<span class='badge badge_graded'>채점 완료</span>
@@ -177,9 +183,10 @@
 						<!-- Card Body -->
 					</div>
 				</div>
-			</div>
+			</div>	
 		</div>
 	</div>
+</div>
 
 
 
@@ -199,4 +206,6 @@
 
 
 </body>
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
 </html>

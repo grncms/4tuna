@@ -1,10 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>ForTest</title>
+<title></title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
@@ -24,7 +34,6 @@
 	margin-right: auto;
 	margin-top: 50px;
 }
-
 .leftbarProfile {
 	cursor: pointer;
 }
@@ -44,20 +53,23 @@
 </head>
 <body id="page-top">
 
-	<!-- Page Wrapper -->
-	<div id="wrapper">
-		<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
+<!-- Page Wrapper -->
+<div id="wrapper">
 
-		<div id="content-wrapper">
-			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+	<!-- Sidebar -->
+	<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
 
-			<div class="container-fluid">
-				<div class="row" id="posting">
-					<!-- Area Chart -->
-					<div class="col-xl-8 col-lg-8">
-						<div class="container_title shadow mb-4">
-							<div class="header">자유 공간</div>
-							<!-- <div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div> -->
+	<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
+			
+	<!-- Topbar -->		
+	<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+
+		<div class="container-fluid">
+			<div class="row" id="posting">
+				<div class="col-xl-8 col-lg-8">
+					<div class="container_title shadow mb-4">
+						<div class="header">자유 공간</div>
 							<div class="footer dropdown">
 								<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown">글쓰기</button>
 								<ul class="dropdown-menu">
@@ -141,13 +153,8 @@
 									</div>
 								</div>
 							</div>
-
-
-							<!-- Card Body -->
 						</div>
 					</div>
-
-					<!-- Pie Chart -->
 					<div class="col-xl-4 col-lg-4">
 						<div class="container_title shadow mb-4">
 							<!-- Card Header - Dropdown -->
@@ -218,12 +225,10 @@
 							</div>
 						</div>
 					</div>
-					<!-- /.container-fluid -->
 				</div>
-				<!-- End of Main Content -->
 			</div>
-		</div>
 	</div>
+</div>
 
 
 
@@ -243,4 +248,6 @@
 
 
 </body>
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
 </html>

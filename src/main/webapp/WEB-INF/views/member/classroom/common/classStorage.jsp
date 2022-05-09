@@ -1,4 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,20 +28,14 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
-#posting {
-	width: 800px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-}
 
 #picture_change {
-font-size:12px; 
-font-weight:bold; 
-border:none; 
-margin-bottom:10px;
-margin-top:0px;
-margin-left:10px;
+	font-size:12px; 
+	font-weight:bold; 
+	border:none; 
+	margin-bottom:10px;
+	margin-top:0px;
+	margin-left:10px;
 }
 
 </style>
@@ -39,110 +43,103 @@ margin-left:10px;
 </head>
 <body id="page-top">
 
-	<!-- Page Wrapper -->
-	<div id="wrapper">
-		<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
-
-		<div id="content-wrapper">
-			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+<!-- Page Wrapper -->
+<div id="wrapper">
 		
-<!-- 내용 -->		
+	<!-- Sidebar -->	
+	<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
 
-               <!-- Begin Page Content -->
-               <div class="container-fluid">
-                <div class="row" id="posting">
-                    <!-- Area Chart -->
-                    <div class="col-12">
-                        <div class="container_title shadow mb-4">
-                            <div class="header" >예약/임시저장한 글</div>
-                            <div class="body">예약 및 임시저장 게시물이 있습니다.</div>
-                        </div>
-                        <div class="card shadow mb-4 ">
-                        <div class="container_base" onclick="location.href='./classPostEdit.html';">
-                            5월 2일 오전 11:02 자유 공간
-                            <div class="homework_listitem mt-3">
-                                <div class="title_hw" >
-                                    <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)모니터는역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">21:9~!~!~!</span></div>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item text-danger" href="#">삭제</a>
-                                        </div>
-                                       </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container_base" onclick="location.href='./classPostEdit.html';">
-                            5월 2일 오전 11:02 자유 공간
-                            <div class="homework_listitem mt-3">
-                                <div class="title_hw" >
-                                    <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)모니터는역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">21:9~!~!~!</span></div>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item text-danger" href="#">삭제</a>
-                                        </div>
-                                       </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container_base" onclick="location.href='./classPostEdit.html';">
-                            5월 2일 오전 11:02 자유 공간
-                            <div class="homework_listitem mt-3">
-                                <div class="title_hw" >
-                                    <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)모니터는역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">21:9~!~!~!</span></div>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item text-danger" href="#">삭제</a>
-                                        </div>
-                                       </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container_base" onclick="location.href='./classPostEdit.html';">
-                            5월 3일 오후 12:02 자유 공간
-                            <div class="homework_listitem mt-3">
-                                <div class="title_hw" >
-                                    <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)마우스는 역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">고민중입니다.</span></div>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item text-danger" href="#">삭제</a>
-                                        </div>
-                                       </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                            <!-- Card Body -->
-                        </div>
-                    </div>
-                    <!-- Pie Chart -->	
-            <!-- /.container-fluid -->
-        </div>
-        <!-- End of Main Content -->
-
-
-
-        </div>
-
-
+	<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
+	
+	<!-- Topbar -->
+	<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+		
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+		<div class="row" id="posting">
+		<div class="col-12">
+		    <div class="container_title shadow mb-4">
+		        <div class="header" >예약/임시저장한 글</div>
+		        <div class="body">예약 및 임시저장 게시물이 있습니다.</div>
+		    </div>
+		    <div class="card shadow mb-4 ">
+		    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
+			5월 2일 오전 11:02 자유 공간
+			<div class="homework_listitem mt-3">
+			    <div class="title_hw" >
+			        <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)모니터는역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">21:9~!~!~!</span></div>
+			            <div class="dropdown no-arrow">
+			                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+			                </a>
+			                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+			                    aria-labelledby="dropdownMenuLink">
+			                    <a class="dropdown-item text-danger" href="#">삭제</a>
+			                </div>
+			               </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="container_base" onclick="location.href='/member/class/common/postedit';">
+			5월 2일 오전 11:02 자유 공간
+			<div class="homework_listitem mt-3">
+			    <div class="title_hw" >
+			        <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)모니터는역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">21:9~!~!~!</span></div>
+			            <div class="dropdown no-arrow">
+			                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+			                </a>
+			                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+			                    aria-labelledby="dropdownMenuLink">
+			                    <a class="dropdown-item text-danger" href="#">삭제</a>
+			                </div>
+			               </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="container_base" onclick="location.href='/member/class/common/postedit';">
+			5월 2일 오전 11:02 자유 공간
+			<div class="homework_listitem mt-3">
+			    <div class="title_hw" >
+			        <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)모니터는역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">21:9~!~!~!</span></div>
+			            <div class="dropdown no-arrow">
+			                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+			                </a>
+			                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+			                    aria-labelledby="dropdownMenuLink">
+			                    <a class="dropdown-item text-danger" href="#">삭제</a>
+			                </div>
+			               </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="container_base" onclick="location.href='/member/class/common/postedit';">
+			5월 3일 오후 12:02 자유 공간
+			<div class="homework_listitem mt-3">
+			    <div class="title_hw" >
+			        <div class="col-md-10 col-lg-10" id="classInfo"><span><b>(글제목)마우스는 역시</b></span><p><span style="color: #c8c8c8; font-size: 14px;">고민중입니다.</span></div>
+			            <div class="dropdown no-arrow">
+			                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+			                </a>
+			                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+			                    aria-labelledby="dropdownMenuLink">
+			                    <a class="dropdown-item text-danger" href="#">삭제</a>
+			                </div>
+			               </div>
+			        </div>
+			    </div>
+			</div>
+		    <!-- Card Body -->
+		    </div>
 		</div>
+		</div>
+	<!-- End of Main Content -->
 	</div>
+	</div>
+</div>
 
 
 

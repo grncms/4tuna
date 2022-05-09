@@ -25,7 +25,7 @@
                 <a class="nav-link" href="/noticeBoard"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
                 <a class="nav-link" href="/member/class/teacher/homeworklist"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
                 <a class="nav-link" href="/member/class/teacher/homeworkreport"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
-                <a class="nav-link" href="/attendance"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
+                <a class="nav-link" href="/member/class/teacher/attendance"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
                 <a class="nav-link" href="/classMemberList"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
                 <a class="nav-link" href="/classSetting"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
             </li>
