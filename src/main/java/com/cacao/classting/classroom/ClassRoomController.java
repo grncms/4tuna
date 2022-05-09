@@ -93,7 +93,7 @@ public class ClassRoomController {
 	}
 	
 	@RequestMapping(value = "/classPostEdit", method = RequestMethod.GET)
-	public String classPostEdit() {
+	public String classPostEdit3() {
 		
 		return "member/classroom/common/classPostEdit";
 	}
@@ -174,12 +174,55 @@ public class ClassRoomController {
 	}
 	
 
-	//일단 임시
-		@RequestMapping(value = "/attendance", method = RequestMethod.GET)
-		public String classAttendance() {
-			
-			return "member/classroom/teacher/classAttendance";
-		}	
+//규원
+	@RequestMapping(value = "member/class/student/learningprogress", method = RequestMethod.GET)
+	public String learnpro() {
+		
+		return "member/classroom/student/classLearningProgress";
+	}
+	
+	
+	
+	@RequestMapping(value = "member/class/common/postlist", method = RequestMethod.GET)
+	public String postlist() {
+		
+		return "member/classroom/common/classPostList";
+	}
 
+	
+	@RequestMapping(value = "member/class/teacher/homeworkreport", method = RequestMethod.GET)
+	public String homeworkReport(){
+		
+		return "member/classroom/teacher/classHomeworkReport";
+	}
+	
+	@RequestMapping(value = "member/class/teacher/homeworklist", method = RequestMethod.GET)
+	public String homeworkList(){
+		
+		return "member/classroom/common/classHomeworkList";
+	}
+	
+
+	@RequestMapping(value = "member/class/teacher/attendance", method = RequestMethod.GET)
+	public String classattendance(){
+		
+		return "member/classroom/teacher/classAttendance";
+	}
+	@RequestMapping(value = "member/class/common/postview", method = RequestMethod.GET)
+	public String classPostView(){
+		
+		return "member/classroom/common/classPostView";
+	}
+	@RequestMapping(value = "member/class/common/postedit", method = RequestMethod.GET)
+	public String classPostEdit(){
+		
+		return "member/classroom/common/classPostEdit";
+	}
+
+	@RequestMapping(value = "member/class/common/postedit2", method = RequestMethod.GET)
+	public String classPostEdit2(){
+		
+		return "member/classroom/common/classPostEdit2";
+	}
 
 }
