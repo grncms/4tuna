@@ -23,6 +23,8 @@ public class ClassRoom {
 	private String ctcmName;
 	private String ctcmDesc;
 	private Integer ctcmTeacherNy;
+	private Integer ctcmAlarmReplyNy;
+	private Integer ctcmAlarmReactionNy;
 	private Integer ctcmDelNy;
 	private String mmSeq;
 	
@@ -183,6 +185,18 @@ public class ClassRoom {
 	}
 	public void setCtcmTeacherNy(Integer ctcmTeacherNy) {
 		this.ctcmTeacherNy = ctcmTeacherNy;
+	}
+	public Integer getCtcmAlarmReplyNy() {
+		return ctcmAlarmReplyNy;
+	}
+	public void setCtcmAlarmReplyNy(Integer ctcmAlarmReplyNy) {
+		this.ctcmAlarmReplyNy = ctcmAlarmReplyNy;
+	}
+	public Integer getCtcmAlarmReactionNy() {
+		return ctcmAlarmReactionNy;
+	}
+	public void setCtcmAlarmReactionNy(Integer ctcmAlarmReactionNy) {
+		this.ctcmAlarmReactionNy = ctcmAlarmReactionNy;
 	}
 	public Integer getCtcmDelNy() {
 		return ctcmDelNy;
