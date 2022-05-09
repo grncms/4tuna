@@ -98,7 +98,6 @@
 		</div>
             <!-- Footer -->
             <!-- End of Footer -->
-          <%@ include file="/WEB-INF/views/member/include/classFooter.jsp" %>
 	</div>
 </div>
     <!-- Bootstrap core JavaScript-->

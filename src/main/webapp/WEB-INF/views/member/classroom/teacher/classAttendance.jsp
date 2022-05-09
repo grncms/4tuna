@@ -101,7 +101,6 @@ table {
 	margin-right: auto;
 	margin-top: 50px;
 }
-
 </style>
 
 </head>
@@ -283,7 +282,6 @@ table {
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 
 
 

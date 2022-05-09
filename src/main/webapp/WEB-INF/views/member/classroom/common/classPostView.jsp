@@ -141,14 +141,14 @@
 							</div>
 							<div class="container_base">
 								<div class="comment_write row">
-									<div class="col-md-3 col-lg-1" id="classImg">
+									<div class="col-md-3 col-lg-2" id="classImg">
 										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 										<div>
-											<b>박규원</b>
+											박규원
 										</div>
 									</div>
 
-									<div class="col-md-9 col-lg-11" id="classInfo">
+									<div class="col-md-9 col-lg-10" id="classInfo">
 										<input type="text" class="w-100">
 										<div>
 											<div class="btn-group" role="group">
@@ -170,7 +170,6 @@
 					<jsp:include page="/WEB-INF/views/member/classroom/common/classGraded.jsp" flush="true" />
 				</div>
 			</div>
-			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 		</div>
 	</div>
 

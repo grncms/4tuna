@@ -88,9 +88,8 @@
 									</div>
 
 									<div class="post_title">
-										<span class='badge badge_notice'>공지</span>
-										<span>숙제 하세요!@</span>
-
+										<a href="/member/class/common/postview"> <span class='badge badge_notice'>공지</span> <span>숙제 하세요!@</span>
+										</a>
 									</div>
 
 									<div class="post_content">
@@ -228,7 +227,6 @@
 
 
 
-	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 
 
 

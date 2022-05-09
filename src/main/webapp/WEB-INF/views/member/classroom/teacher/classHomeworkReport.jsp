@@ -129,7 +129,6 @@
 					</div>
 				</div>
 			</div>
-			<footer style="margin-top:auto;"><jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" /></footer>
 		</div>
 	</div>
 
