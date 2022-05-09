@@ -6,44 +6,8 @@
 
 <mapper namespace="com.cacao.classting.classroom.ClassRoomMpp">
 
-    <resultMap id="resultMapObj" type="com.cacao.classting.classroom.ClassRoomMpp"></resultMap>
-	
-	
-	<!-- to be selectList code -->
-	<select id="selectList" resultMap="resultMapObj">
-		<![CDATA[
-		select * from 
-	        (select @rownum := @rownum + 1 as rn, 
-	        		a.ifmmSeq, 
-			        a.ifmmName, 
-			        a.ifmmId, 
-					a.ifmmPassword, 
-					a.ifmmChildrenNum, 
-					a.ifmmDelNy
-	    	 from infrmember a, (select @rownum := 0)  as rowcolumn 
-	    	where 1=1
-	    	]]>
-	    	
-	    	<choose>
-				<when test="shIfmmDelNy == 1">AND a.ifmmDelNy = 1</when>
-				<when test="shIfmmDelNy == 0">AND a.ifmmDelNy = 0</when>
-			</choose>
-			<choose>
-				<when test="shOption == 0">AND a.ifmmName LIKE concat('%',#{shIfmmName},'%') = 1
-				</when>
-				<when test="shOption == 1">AND a.ifmmId LIKE concat('%',#{shIfmmName},'%') 	= 1
-				</when>
-				<when test="shOption == 2">AND a.ifmmId LIKE concat('%',#{shIfmmName},'%') OR a.ifmmName LIKE concat('%',#{shIfmmName},'%')
-				</when>
-			</choose>
-	    	
-	    	<![CDATA[
-	    	order by ifmmSeq ASC) as rownum_table  
-		where rn >= #{startPaging} and rn <= #{endPaging}
-		]]>
-	</select>
+    <resultMap id="resultMapObj" type="com.cacao.classting.classroom.ClassRoom"></resultMap>
 	
 
-	
 
 </mapper>
