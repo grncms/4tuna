@@ -8,7 +8,7 @@ public class Chat {
 	private String ctmgSeq;
 	private Integer ctmgDefaultNy;
 	private Integer ctmgDelNy;
-	private Integer ctmgUser;
+	private String ctmgUser;
 	private String ctmgId;
 	private String ctmgChannel;
 	private String ctmgImage;
@@ -22,7 +22,7 @@ public class Chat {
 	private Integer ctchSeq;
 	private Integer ctchDefaultNy;
 	private Integer ctchDelNy;
-	private Integer ctchalUser;
+	private String ctchalUser;
 	private String ctchalId;
 	
 //	ctChats
@@ -30,8 +30,8 @@ public class Chat {
 	private String ctctId;
 	private Integer ctctDefaultNy;
 	private Integer ctctDelNy;
-	private Integer ctctUser;
 	private Integer ctctChannel;
+	private String ctctUser;
 	public String getCtmgSeq() {
 		return ctmgSeq;
 	}
@@ -50,10 +50,10 @@ public class Chat {
 	public void setCtmgDelNy(Integer ctmgDelNy) {
 		this.ctmgDelNy = ctmgDelNy;
 	}
-	public Integer getCtmgUser() {
+	public String getCtmgUser() {
 		return ctmgUser;
 	}
-	public void setCtmgUser(Integer ctmgUser) {
+	public void setCtmgUser(String ctmgUser) {
 		this.ctmgUser = ctmgUser;
 	}
 	public String getCtmgId() {
@@ -122,10 +122,10 @@ public class Chat {
 	public void setCtchDelNy(Integer ctchDelNy) {
 		this.ctchDelNy = ctchDelNy;
 	}
-	public Integer getCtchalUser() {
+	public String getCtchalUser() {
 		return ctchalUser;
 	}
-	public void setCtchalUser(Integer ctchalUser) {
+	public void setCtchalUser(String ctchalUser) {
 		this.ctchalUser = ctchalUser;
 	}
 	public String getCtchalId() {
@@ -158,18 +158,20 @@ public class Chat {
 	public void setCtctDelNy(Integer ctctDelNy) {
 		this.ctctDelNy = ctctDelNy;
 	}
-	public Integer getCtctUser() {
-		return ctctUser;
-	}
-	public void setCtctUser(Integer ctctUser) {
-		this.ctctUser = ctctUser;
-	}
 	public Integer getCtctChannel() {
 		return ctctChannel;
 	}
 	public void setCtctChannel(Integer ctctChannel) {
 		this.ctctChannel = ctctChannel;
 	}
+	public String getCtctUser() {
+		return ctctUser;
+	}
+	public void setCtctUser(String ctctUser) {
+		this.ctctUser = ctctUser;
+	}
+	
+	
 	
 	
 
