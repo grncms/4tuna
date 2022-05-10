@@ -22,6 +22,7 @@ public class Member {
 	private Integer mmEventNotificationNy;
 	private Integer mmPersonalInfoNy;
 	private Integer mmDelNy;
+	private Integer mmPhoneNumber;
 	private Date mmPwdModDate;
 	private Date mmDob;
 	private Date regDateTime;
@@ -130,6 +131,12 @@ public class Member {
 	}
 	public void setMmDelNy(Integer mmDelNy) {
 		this.mmDelNy = mmDelNy;
+	}
+	public Integer getMmPhoneNumber() {
+		return mmPhoneNumber;
+	}
+	public void setMmPhoneNumber(Integer mmPhoneNumber) {
+		this.mmPhoneNumber = mmPhoneNumber;
 	}
 	public Date getMmPwdModDate() {
 		return mmPwdModDate;
