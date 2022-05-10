@@ -239,5 +239,15 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classGrade";
 	}
+	@RequestMapping(value = "member/class/common/classGraded", method = RequestMethod.GET)
+	public String classGraded(){
+		
+		return "member/classroom/common/classGraded";
+	}
+	@RequestMapping(value = "member/class/common/classGradeStandby", method = RequestMethod.GET)
+	public String classGradeStandby(){
+		
+		return "member/classroom/common/classGradeStandby";
+	}
 
 }
