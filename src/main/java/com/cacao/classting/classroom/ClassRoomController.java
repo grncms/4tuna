@@ -234,5 +234,10 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classPostEdit2";
 	}
+	@RequestMapping(value = "member/class/common/classGrade", method = RequestMethod.GET)
+	public String classGrade(){
+		
+		return "member/classroom/common/classGrade";
+	}
 
 }
