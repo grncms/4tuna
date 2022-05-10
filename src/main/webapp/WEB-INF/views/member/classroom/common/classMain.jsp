@@ -52,7 +52,7 @@
 					<div class="header">4조</div>
 					<div class="body">4조 클래스에 오신 것을 환영합니다</div>
 				</div>
-				<div class="card shadow mb-4 ">
+				<div class="card shadow mb-4">
 					<div class="container_base">
 						<div class="body">전체 게시글</div>
 					</div>	
