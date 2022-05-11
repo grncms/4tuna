@@ -8,7 +8,7 @@
 
     <resultMap id="resultMapObj" type="com.cacao.classting.member.Member"></resultMap>
 	
-	<insert id="insertPhone">
+	<insert id="insert">
 		INSERT INTO Member(
 			mmAdminNy
 			,mmDormacyNy
