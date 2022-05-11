@@ -8,6 +8,52 @@
 
     <resultMap id="resultMapObj" type="com.cacao.classting.member.Member"></resultMap>
 	
+	<insert id="insertPhone">
+		INSERT INTO Member(
+			mmAdminNy
+			,mmDormacyNy
+			,mmTeacherNy
+			,mmGradeCd
+			,mmName
+			,mmId
+			,mmPassword
+			,mmPhoneNumber
+			,mmGenderCd
+			,mmDob
+			,mmMemberEmail
+			,mmTypeOfLoginCd
+			,mmTermsOfserviceNy
+			,mmEventNotificationNy
+			,mmPersonalInfoNy
+			,mmDelNy
+			,modDateTime
+			,modDateTimeSvr
+			,regDateTime
+			,regDateTimeSvr
+		) VALUES (
+			0
+			,0
+			,#{mmTeacherNy}
+			,#{mmGradeCd}
+			,#{mmName}
+			,#{mmId}
+			,#{mmPassword}
+			,#{mmPhoneNumber}
+			,#{mmGenderCd}
+			,#{mmDob}
+			,#{mmMemberEmail}
+			,#{mmTypeOfLoginCd}
+			,#{mmTermsOfserviceNy}
+			,#{mmEventNotificationNy}
+			,#{mmPersonalInfoNy}
+			,0
+			,#{modDateTime}
+			,#{modDateTimeSvr}
+			,#{regDateTime}
+			,#{regDateTimeSvr}
+		)		
+	</insert>	
+	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
 			mmSeq

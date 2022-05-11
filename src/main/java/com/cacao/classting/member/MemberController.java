@@ -23,10 +23,18 @@ public class MemberController {
 	
 	@RequestMapping(value = "/index")
 	public String index() {
-		
 		return "index/index";
 	}
 	
+	@RequestMapping(value = "/memberForm_main")
+	public String memberForm_main() {
+		return "member/memberForm_main";
+	}
+	
+	@RequestMapping(value = "/memberForm_user")
+	public String memberForm_user() {
+		return "member/memberForm_user";
+	}
 	
 	
 	
