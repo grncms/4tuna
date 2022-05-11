@@ -37,7 +37,7 @@
 	</div>
 </div>	
 <!-- 헤더 e-->
-	<form action="/memberInst" method="post" id="memberForm" name="memberForm" class="row" enctype="multipart/form-data">
+	<form action="/memberInst" method="post" id="memberForm" name="memberForm" class="row">
 	<input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">	
 		<!-- 정보입력 s -->
 			<div class="mt-4 mb-4">
@@ -60,11 +60,11 @@
 				<label class="form-label"><b>역할</b></label>
 				<div class="form-check">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" id="mmTeacherNy" name="mmTeacherNy_n" value="0" >
+						<input class="form-check-input" type="radio" name="mmTeacherNy"  id="mmTeacherNy_n" value="0" >
 						<label class="form-check-label">학생</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" id="mmTeacherNy"  name="mmTeacherNy_y" value="1" >
+						<input class="form-check-input" type="radio" name="mmTeacherNy"  id="mmTeacherNy_y" value="1" >
 						<label class="form-check-label">선생님</label>
 					</div>
 				</div>
@@ -78,21 +78,21 @@
 				</div>	
 				<hr class="w-100" style="color: #A2969C">
 				<div class="form-check mb-3">
-					<input class="form-check-input" type="checkbox" value="1" id="mmTermsOfserviceNy" name="mmTermsOfserviceNy_y">
-					<input class="form-check-input" type="hidden" value="0" id="mmTermsOfserviceNy" name="mmTermsOfserviceNy_n">
+					<input class="form-check-input" type="checkbox" value="1" name="mmTermsOfserviceNy" id="mmTermsOfserviceNy_y">
+					<input class="form-check-input" type="hidden" value="0" name="mmTermsOfserviceNy" id="mmTermsOfserviceNy_n">
 					<label class="form-check-label" >클래스팅 이용약관<span style="color: red;">(필수)</span></label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<div class="form-check mb-3">
-					<input class="form-check-input" type="checkbox" value="1" id="mmPersonalInfoNy" name="mmPersonalInfoNy_y">
-					<input class="form-check-input" type="hidden" value="0" id="mmPersonalInfoNy" name="mmPersonalInfoNy_n">
+					<input class="form-check-input" type="checkbox" value="1" name="mmPersonalInfoNy" id="mmPersonalInfoNy_y">
+					<input class="form-check-input" type="hidden" value="0" name="mmPersonalInfoNy" id="mmPersonalInfoNy_n">
 					<label class="form-check-label" >개인정보 수집 및 이용<span style="color: red;">(필수)</span></label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<hr class="w-100" style="color: #A2969C">
 				<div class="form-check mb-3">
-					<input class="form-check-input" type="checkbox" value ="1" id="mmEventNotificationNy" name="mmEventNotificationNy_y">
-					<input class="form-check-input" type="hidden" value ="0" id="mmEventNotificationNy" name="mmEventNotificationNy_n">
+					<input class="form-check-input" type="checkbox" value ="1" name="mmEventNotificationNy" id="mmEventNotificationNy_y">
+					<input class="form-check-input" type="hidden" value ="0" name="mmEventNotificationNy" id="mmEventNotificationNy_n">
 					<label class="form-check-label" >이벤트, 서비스 안내 수신(선택)</label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	

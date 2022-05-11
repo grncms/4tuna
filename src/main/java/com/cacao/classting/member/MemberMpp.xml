@@ -6,7 +6,7 @@
 
 <mapper namespace="com.cacao.classting.member.MemberMpp">
 
-    <resultMap id="resultMapObj" type="com.cacao.classting.member.Member"></resultMap>
+<resultMap id="resultMapObj" type="com.cacao.classting.member.Member"></resultMap>
 	
 	<insert id="insert">
 		INSERT INTO Member(
