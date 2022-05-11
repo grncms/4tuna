@@ -188,6 +188,43 @@
     <!-- Custom scripts for all pages-->
     <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 
+<script type="text/javascript">
+
+$("#roleT").hide();
+$("#roleS").hide();
+
+if(${sessTeacher}==0){
+	$("#roleT").hide();		
+	$("#roleS").show();		
+	$("#btn-open").hide();		
+}else{
+	$("#roleT").show();		
+	$("#roleS").hide();		
+	$("#btn-open").show();		
+} 
+
+
+$("#btnLogout").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/index";
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});	
+});
+</script>
 
 
 </body>

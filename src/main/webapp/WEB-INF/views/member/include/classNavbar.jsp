@@ -29,8 +29,9 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈</b></span>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">선생님</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>${sessName}</b></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleT">선생님</font></span>
+	         					<span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleS">학생</font></span>
                                 <img class="img-profile rounded-circle" src="/resources/common/image/profile2.png">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -42,9 +43,14 @@
 				                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
 				               </a>
 				               <div class="dropdown-divider"></div>
-				               <a class="dropdown-item" href="/index">
-				                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
+				               <a class="dropdown-item" id="btnLogout">
+					               <c:if test="${not empty sessSeq}">
+					                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
+					               </c:if>
 				               </a>
+<!-- 				               <a class="dropdown-item" href="/index">
+				                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
+				               </a> -->
 			          		</div>
                         </li>
                     </ul>
