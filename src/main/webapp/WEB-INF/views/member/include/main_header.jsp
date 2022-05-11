@@ -44,9 +44,14 @@
                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;내 클래스
                </a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="/index">
+               <c:if test="${not empty sessSeq}">
+               <a class="dropdown-item" id="btnLogout">
                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
                </a>
+               </c:if>
+<!--                <a class="dropdown-item" href="/index">
+                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;&nbsp;로그아웃
+               </a> -->
            </div>
        </li>
 	</ul>

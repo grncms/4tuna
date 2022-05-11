@@ -54,7 +54,14 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	
+	@ResponseBody	//	로그아웃
+	@RequestMapping(value = "/member/logoutProc")
+	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
 	
 	
 	
