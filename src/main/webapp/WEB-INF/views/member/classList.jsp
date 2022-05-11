@@ -85,16 +85,52 @@
 <%@ include file="/WEB-INF/views/member/include/main_footer.jsp" %><!-- footer -->
 
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/resources/common/vendor/jquery/jquery.min.js"></script>
-    <script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="/resources/common/vendor/jquery/jquery.min.js"></script>
+<script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="/resources/common/js/sb-admin-2.min.js"></script> 
+<!-- Custom scripts for all pages-->
+<script src="/resources/common/js/sb-admin-2.min.js"></script> 
+<script type="text/javascript">
+alert("asd");
+$("#roleT").hide();
+$("#roleS").hide();
 
+if(${sessTeacher}==0){
+	$("#roleT").hide();		
+	$("#roleS").show();		
+	$("#btn-open").hide();		
+}else{
+	$("#roleT").show();		
+	$("#roleS").hide();		
+	$("#btn-open").show();		
+} 
+
+
+$("#btnLogout").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/index";
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});	
+});
+</script>
 
 
 
