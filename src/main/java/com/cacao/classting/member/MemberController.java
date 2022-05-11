@@ -86,7 +86,8 @@ public class MemberController {
 	
 	
 	
-	
+	//------------------------------------------------------------------------------------------------------------
+		
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(Locale locale, Model model) {
 				
