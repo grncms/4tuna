@@ -7,28 +7,29 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <title>CLASSING</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
-    <link href="/resources/index/fonts/icomoon/style.css" rel="stylesheet">
-    <link href="/resources/index/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resources/index/css/jquery-ui.css" rel="stylesheet">
-    <link href="/resources/index/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="/resources/index/css/jquery.fancybox.min.css" rel="stylesheet">
-    <link href="/resources/index/css/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="/resources/index/fonts/flaticon/font/flaticon.css" rel="stylesheet">
-    <link href="/resources/index/css/aos.css" rel="stylesheet">
-    <link href="/resources/index/css/style.css" rel="stylesheet">
-    
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-  
-  <div class="site-wrap">
+<head>
+<title>CLASSING</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+<link href="/resources/index/fonts/icomoon/style.css" rel="stylesheet">
+<link href="/resources/index/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/index/css/jquery-ui.css" rel="stylesheet">
+<link href="/resources/index/css/owl.carousel.min.css" rel="stylesheet">
+<link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
+<link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
+<link href="/resources/index/css/jquery.fancybox.min.css" rel="stylesheet">
+<link href="/resources/index/css/bootstrap-datepicker.css" rel="stylesheet">
+<link href="/resources/index/fonts/flaticon/font/flaticon.css" rel="stylesheet">
+<link href="/resources/index/css/aos.css" rel="stylesheet">
+<link href="/resources/index/css/style.css" rel="stylesheet">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
@@ -73,9 +74,9 @@
                       <input type="password" class="form-control" id="mmPassword" name="mmPassword" placeholder="비밀번호" value="1111">
                     </div>
                     <div class="form-group">
-                      <!-- <input type="button" class="btn btn-primary btn-pill" value="로그인하기"> -->
-                      <button class="btn btn-primary btn-pill" id="btnLogin" name="">로그인하기</button>
-                    </div>
+                    <input type="button" class="btn btn-primary btn-pill" id="btnLogin"  value="로그인하기">
+<!--                     <button class="btn btn-primary btn-pill" id="" name="" onclick="location.href='/memberForm_main'">로그인하기</button>
+ -->                    </div>
                     <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
                     <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
                   </form>
@@ -188,12 +189,14 @@
   
     
   </div> <!-- .site-wrap -->
-<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
 <!--일반 로그인 -->  
- $("#btnLogin").on("click",function(){
+$("#btnLogin").on("click",function(){ 
+	 
+/*  	if(!checkNull($("mmId"), $.trim($("#mmId").val()), "아이디를 입력해 주세요!")) return false;
+	if(!checkNull($("mmPassword"), $.trim($("#mmPassword").val()), "비밀번호를 입력해 주세요!")) return false; */
 	
 	$.ajax({
 		async: true 
@@ -212,8 +215,7 @@
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-	alert("눌리냐");
-});  
+});   
  
 
 </script> 
@@ -235,6 +237,5 @@
 <script src="/resources/index/js/main.js"></script>
 
 <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
-    
 </body>
 </html>
