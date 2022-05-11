@@ -190,13 +190,13 @@
     
   </div> <!-- .site-wrap -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/js/validation.js"></script>
 <script type="text/javascript">
-
 <!--일반 로그인 -->  
 $("#btnLogin").on("click",function(){ 
 	 
-/*  	if(!checkNull($("mmId"), $.trim($("#mmId").val()), "아이디를 입력해 주세요!")) return false;
-	if(!checkNull($("mmPassword"), $.trim($("#mmPassword").val()), "비밀번호를 입력해 주세요!")) return false; */
+  	if(!checkNull($("mmId"), $.trim($("#mmId").val()), "아이디를 입력해 주세요!")) return false;
+	if(!checkNull($("mmPassword"), $.trim($("#mmPassword").val()), "비밀번호를 입력해 주세요!")) return false; 
 	
 	$.ajax({
 		async: true 

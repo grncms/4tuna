@@ -108,9 +108,11 @@ $("#roleS").hide();
 if(${sessTeacher}==0){
 	$("#roleT").hide();		
 	$("#roleS").show();		
+	$("#btn-open").hide();		
 }else{
 	$("#roleT").show();		
 	$("#roleS").hide();		
+	$("#btn-open").show();		
 } 
 
 </script>
