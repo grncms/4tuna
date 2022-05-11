@@ -24,6 +24,7 @@
 <link href="/resources/index/fonts/flaticon/font/flaticon.css" rel="stylesheet">
 <link href="/resources/index/css/aos.css" rel="stylesheet">
 <link href="/resources/index/css/style.css" rel="stylesheet">
+<link href="/resources/index/css/index.css" rel="stylesheet">
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
@@ -75,6 +76,7 @@
                     </div>
                     <div class="form-group">
                     <input type="button" class="btn btn-primary btn-pill" id="btnLogin"  value="로그인하기">
+                    <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
 <!--                     <button class="btn btn-primary btn-pill" id="" name="" onclick="location.href='/memberForm_main'">로그인하기</button>
  -->                    </div>
                     <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
@@ -190,6 +192,8 @@
     
   </div> <!-- .site-wrap -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=715934576096402" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 <script src="/resources/common/js/validation.js"></script>
 <script type="text/javascript">
 <!--일반 로그인 -->  
@@ -215,7 +219,73 @@ $("#btnLogin").on("click",function(){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-});   
+});
+
+<!-- 페이스북 로그인-->
+
+function checkLoginState() {               					//로그인 클릭시 호출
+	    FB.getLoginStatus(function(response) {  
+	      statusChangeCallback(response);
+	    });
+	  }
+
+function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
+	
+console.log(response);             			 			//사용자의 현재 로그인 상태.
+	if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
+		testAPI();  
+	} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
+		console.log('Please log into this webpage.'); 
+	}
+}
+
+function fnFbCustomLogin(){
+	FB.login(function(response) {
+		if (response.status === 'connected') {
+			FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+				console.log(r);
+				console.log('Successful login for: ' + r.name);
+			/* 	console.log(testAPI(response)); */
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/member/FBLgProc"
+					,data : {"mmName" : r.name}		// 넘겨줄 데이터를 설정
+					,success: function(response) {
+						if(response.item == "success") {
+							location.href = "/main";
+						} else {
+							alert("페이스북 로그인 실패");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				})
+			})
+		} 
+	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
+} 
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '715934576096402', // 내 앱 ID.
+		cookie     : true,
+		xfbml      : true,
+		version    : 'v13.0'
+	});
+	FB.getLoginStatus(function(response) {   
+		statusChangeCallback(response);        // 로그인 상태를 말해줌
+	});
+}; 
+
+	function testAPI(response) {                      
+	console.log('Welcome!  Fetching your information.... ');
+	FB.api('/me', function(response) {
+		console.log('Thanks for logging in ' + response.name);
+	});
+}  
+
  
 
 </script> 

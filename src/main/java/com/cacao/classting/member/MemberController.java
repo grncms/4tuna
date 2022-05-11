@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -63,7 +64,21 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	
+	//페북 로그인
+		@ResponseBody
+		@RequestMapping(value = "/member/FBLgProc")
+		public Map<String, Object> FBLgProc(@RequestParam("mmName")String name, Member dto, HttpSession httpSession) throws Exception {
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			
+			System.out.println("페북"+name);
+			httpSession.setAttribute("sessName", name);
+			httpSession.setAttribute("sessId","페이스북 회원입니다");
+			httpSession.setAttribute("sessSeq","페이스북 회원입니다");
+			
+			returnMap.put("item", "success");
+			
+			return returnMap;	
+		}
 	
 	
 	
