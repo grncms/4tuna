@@ -67,10 +67,10 @@
                   <form action="" method="post" class="form-box">
                     <h3 class="h4 text-black mb-4">CLASSING에 로그인</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="mmId" name="mmId" placeholder="아이디">
+                      <input type="text" class="form-control" id="mmId" name="mmId" placeholder="아이디" value="asd123">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="mmPassword" name="mmPassword" placeholder="비밀번호">
+                      <input type="password" class="form-control" id="mmPassword" name="mmPassword" placeholder="비밀번호" value="1111">
                     </div>
                     <div class="form-group">
                       <!-- <input type="button" class="btn btn-primary btn-pill" value="로그인하기"> -->
@@ -188,9 +188,8 @@
   
     
   </div> <!-- .site-wrap -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
 <!--일반 로그인 -->  
@@ -213,8 +212,10 @@
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-	
+	alert("눌리냐");
 });  
+ 
+
 </script> 
 <script src="/resources/index/js/jquery-3.3.1.min.js"></script>
 <script src="/resources/index/js/jquery-migrate-3.0.1.min.js"></script>

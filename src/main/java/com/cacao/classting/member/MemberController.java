@@ -22,7 +22,7 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "/index", method = { RequestMethod.GET, RequestMethod.POST })
 	public String index() {
 		
 		return "index/index";
@@ -37,7 +37,7 @@ public class MemberController {
 		Member rtMember = service.selectOneLogin(dto);
 		
 		if(rtMember != null) {
-			rtMember = service.selectOneLogin(dto);
+//			rtMember = service.selectOneLogin(dto);
 			if(rtMember.getMmSeq() != null) {
 //				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 				
