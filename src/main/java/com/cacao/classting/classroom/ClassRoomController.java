@@ -112,11 +112,6 @@ public class ClassRoomController {
 	}	
 
 	//수빈
-	@RequestMapping(value = "/index")
-	public String index() {
-		
-		return "index/index";
-	}
 	@RequestMapping(value = "/findId")
 	public String findId() {
 		
