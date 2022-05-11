@@ -27,6 +27,27 @@ public class MemberController {
 		return "index/index";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	기본로그인
 	@ResponseBody
 	@RequestMapping(value = "member/loginProc", method = { RequestMethod.GET, RequestMethod.POST })
