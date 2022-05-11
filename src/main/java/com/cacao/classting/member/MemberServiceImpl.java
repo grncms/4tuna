@@ -9,6 +9,11 @@ public class MemberServiceImpl implements MemberService{
 
 	@Autowired
 	MemberDao dao;
+
+	@Override
+	public Member selectOneLogin(Member dto) throws Exception {
+		return dao.selectOneLogin(dto);
+	}
 	
 
 }

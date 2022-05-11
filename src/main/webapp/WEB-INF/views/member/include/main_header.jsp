@@ -29,7 +29,7 @@
 	    <div class="topbar-divider d-none d-sm-block"></div>
         <li class="nav-item dropdown no-arrow">
            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈</b></span>
+               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>윤수빈${sessName}</b></span>
 	           <span class="mr-2 d-none d-lg-inline text-gray-600 small">선생님</span>
                <img class="img-profile rounded-circle" src="/resources/common/image/profile2.png">
            </a>

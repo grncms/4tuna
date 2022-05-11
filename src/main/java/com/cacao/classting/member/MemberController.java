@@ -29,31 +29,31 @@ public class MemberController {
 	}
 	
 //	기본로그인
-//	@ResponseBody
-//	@RequestMapping(value = "member/loginProc", method = { RequestMethod.GET, RequestMethod.POST })
-//	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
-////		Map<String, Object> returnMap = new HashMap<String, Object>();
-////		
-////		Member rtMember = service.selectOneLogin(dto);
-////		
-////		if(rtMember != null) {
-//////			rtMember = service.selectOneLogin(dto);
-////			if(rtMember.getKbmmSeq() != null) {
-////				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-////				
-////				httpSession.setAttribute("sessSeq", rtMember.getKbmmSeq());
-////				httpSession.setAttribute("sessId", rtMember.getKbmmId());
-////				httpSession.setAttribute("sessName", rtMember.getKbmmName());
-////				
-////				returnMap.put("rt", "success");
-////			} else {
-////				returnMap.put("rt", "fail");
-////			}
-////		} else {
-////			returnMap.put("rt", "fail");
-////		}
-////		return returnMap;
-//	}
+	@ResponseBody
+	@RequestMapping(value = "member/loginProc", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member rtMember = service.selectOneLogin(dto);
+		
+		if(rtMember != null) {
+			rtMember = service.selectOneLogin(dto);
+			if(rtMember.getMmSeq() != null) {
+//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+				
+				httpSession.setAttribute("sessSeq", rtMember.getMmSeq());
+				httpSession.setAttribute("sessId", rtMember.getMmId());
+				httpSession.setAttribute("sessName", rtMember.getMmName());
+				
+				returnMap.put("rt", "success");
+			} else {
+				returnMap.put("rt", "fail");
+			}
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
 	
 	
 	

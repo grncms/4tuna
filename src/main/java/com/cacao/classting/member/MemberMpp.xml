@@ -8,6 +8,19 @@
 
     <resultMap id="resultMapObj" type="com.cacao.classting.member.Member"></resultMap>
 	
-
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			mmSeq
+			,mmId
+			,mmName
+			,mmPassword
+			,mmTeacherNy
+		FROM
+			Member
+		WHERE 1=1 
+			AND mmId = #{mmId}	
+			AND mmPassword = #{mmPassword}	
+	</select>
+	
 
 </mapper>
