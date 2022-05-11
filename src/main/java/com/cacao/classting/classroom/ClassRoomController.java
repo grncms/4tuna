@@ -132,16 +132,7 @@ public class ClassRoomController {
 		
 		return "member/classList";
 	}
-	@RequestMapping(value = "/memberForm_main")
-	public String memberForm_main() {
-		
-		return "member/memberForm_main";
-	}
-	@RequestMapping(value = "/memberForm_user")
-	public String memberForm_user() {
-		
-		return "member/memberForm_user";
-	}
+
 	@RequestMapping(value = "/memberInfo")
 	public String memberInfo() {
 		
