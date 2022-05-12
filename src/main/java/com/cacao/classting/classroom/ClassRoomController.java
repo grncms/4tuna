@@ -64,7 +64,7 @@ public class ClassRoomController {
 			List<ClassRoom> list = service.selectListClass(vo);
 			model.addAttribute("list",list);}
 		else {
-		//pass	
+		//by pass	
 			
 		}
 		
