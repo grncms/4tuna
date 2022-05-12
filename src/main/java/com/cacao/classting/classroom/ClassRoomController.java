@@ -3,17 +3,25 @@ package com.cacao.classting.classroom;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+
 @Controller
 public class ClassRoomController {
+	
+	@Autowired
+	ClassRoomServiceImpl service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ClassRoomController.class);
 //동훈	
@@ -49,7 +57,17 @@ public class ClassRoomController {
 		return "member/classroom/common/noticeBoard";
 	}
 	@RequestMapping(value = "/adminClassList", method = RequestMethod.GET)
-	public String adminClassList() {
+	public String adminClassList(@ModelAttribute("vo") ClassRoomVo vo, Model model) throws Exception {
+		
+		int count = service.selectOneCount(vo);
+		if(count !=0) {
+			List<ClassRoom> list = service.selectListClass(vo);
+			model.addAttribute("list",list);}
+		else {
+		//pass	
+			
+		}
+		
 		
 		return "xdmin/member/classroom/adminClassList";
 	}
