@@ -138,6 +138,9 @@
 <img style="float: left;" src="../../../../../resources/common/image/classtingFlower.png">
 
 <div class="row justify-content-center" style="color:black;">
+<form action="/classMemberInst" method="post" id="classMemberForm" name="classMemberForm" class="row">
+	<input type="hidden" name="ctcsSeq" id="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
+	<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 		<div class="col-md-7" style="margin-top:100px;">
 		<h3 >축하합니다!
@@ -156,14 +159,16 @@
 	               </span>
 			</div>
 		</div>
+		
 		<div style="clear:both;">
 		<label for="name" class="form-label">이름</label>
-		<input type="text" class="form-control" id="name">
+		<input type="text" class="form-control" id="ctcmName" name="ctcmName">
 		
-		<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;" onclick="location.href='./main'">완료</button>
+		<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;">완료</button>
 		</div>
 		</div>
 	</div>
+</form>
 </div>
 
 
@@ -195,6 +200,13 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+
+$("#btn-add2").on("click", function(){
+	
+	$("#classMemberForm").attr("action", "/classMemberInst");
+	$("#classMemberForm").submit();
+
+});
 
 $("#btnLogout").on("click", function(){
 	

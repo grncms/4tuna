@@ -32,6 +32,19 @@ public class Member {
 	private Date modDateTime;
 	private Date modDateTimeSvr;
 	
+	private String ctcsSeq;
+	private String ctcsBelongto;
+	private String ctcsName;
+	private String ctcsYear;
+	private Integer ctcsGradeCd;
+	private String ctcsDesc;
+	private String ctcsCode;
+	private Integer ctcsDelNy;
+	
+	private String ctcmName;
+	private Integer ctcmAlarmReplyNy;
+	private Integer ctcmAlarmReactionNy;
+	private Integer ctcmDelNy;
 	
 	public String getMmSeq() {
 		return mmSeq;
@@ -188,6 +201,78 @@ public class Member {
 	}
 	public void setMmPhoneNumber(String mmPhoneNumber) {
 		this.mmPhoneNumber = mmPhoneNumber;
+	}
+	public String getCtcsBelongto() {
+		return ctcsBelongto;
+	}
+	public void setCtcsBelongto(String ctcsBelongto) {
+		this.ctcsBelongto = ctcsBelongto;
+	}
+	public String getCtcsName() {
+		return ctcsName;
+	}
+	public void setCtcsName(String ctcsName) {
+		this.ctcsName = ctcsName;
+	}
+	public String getCtcsYear() {
+		return ctcsYear;
+	}
+	public void setCtcsYear(String ctcsYear) {
+		this.ctcsYear = ctcsYear;
+	}
+	public Integer getCtcsGradeCd() {
+		return ctcsGradeCd;
+	}
+	public void setCtcsGradeCd(Integer ctcsGradeCd) {
+		this.ctcsGradeCd = ctcsGradeCd;
+	}
+	public String getCtcsDesc() {
+		return ctcsDesc;
+	}
+	public void setCtcsDesc(String ctcsDesc) {
+		this.ctcsDesc = ctcsDesc;
+	}
+	public String getCtcsCode() {
+		return ctcsCode;
+	}
+	public void setCtcsCode(String ctcsCode) {
+		this.ctcsCode = ctcsCode;
+	}
+	public Integer getCtcsDelNy() {
+		return ctcsDelNy;
+	}
+	public void setCtcsDelNy(Integer ctcsDelNy) {
+		this.ctcsDelNy = ctcsDelNy;
+	}
+	public String getCtcmName() {
+		return ctcmName;
+	}
+	public void setCtcmName(String ctcmName) {
+		this.ctcmName = ctcmName;
+	}
+	public Integer getCtcmAlarmReplyNy() {
+		return ctcmAlarmReplyNy;
+	}
+	public void setCtcmAlarmReplyNy(Integer ctcmAlarmReplyNy) {
+		this.ctcmAlarmReplyNy = ctcmAlarmReplyNy;
+	}
+	public Integer getCtcmAlarmReactionNy() {
+		return ctcmAlarmReactionNy;
+	}
+	public void setCtcmAlarmReactionNy(Integer ctcmAlarmReactionNy) {
+		this.ctcmAlarmReactionNy = ctcmAlarmReactionNy;
+	}
+	public Integer getCtcmDelNy() {
+		return ctcmDelNy;
+	}
+	public void setCtcmDelNy(Integer ctcmDelNy) {
+		this.ctcmDelNy = ctcmDelNy;
+	}
+	public String getCtcsSeq() {
+		return ctcsSeq;
+	}
+	public void setCtcsSeq(String ctcsSeq) {
+		this.ctcsSeq = ctcsSeq;
 	}
 	
 	

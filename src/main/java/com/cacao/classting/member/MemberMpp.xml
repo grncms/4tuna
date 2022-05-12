@@ -119,5 +119,59 @@
 			AND mmPassword = #{mmPassword}	
 	</select>
 	
-
+<!-- 	class생성 -->
+	<insert id="insertClass">
+		INSERT INTO ctClass(
+			<!-- ctcsBelongto -->
+			ctcsName
+			,ctcsYear
+			,ctcsGradeCd
+			,ctcsDesc
+			,ctcsCode
+			,ctcsDelNy
+			,modDateTime
+			,modDateTimeSvr
+			,regDateTime
+			,regDateTimeSvr
+		) VALUES (
+			<!-- #{ctcsBelongto} -->
+			#{ctcsName}
+			,#{ctcsYear}
+			,#{ctcsGradeCd}
+			,#{ctcsDesc}
+			,#{ctcsCode}
+			,0
+			,#{modDateTime}
+			,#{modDateTimeSvr}
+			,#{regDateTime}
+			,#{regDateTimeSvr}
+		)		
+	</insert>
+	<select id="selectOneClass" resultMap="resultMapObj">
+		SELECT
+			ctcsSeq
+			,ctcsName
+		FROM
+			ctClass
+		WHERE 1=1 
+			AND ctcsSeq = #{ctcsSeq}	
+	</select>
+		
+	<insert id="insertClassMember">
+		INSERT INTO ctClassMember(
+			ctcmName
+			,ctcmAlarmReplyNy
+			,ctcmAlarmReactionNy
+			,ctcmDelNy
+			,mmSeq
+			,ctcsSeq
+		) VALUES (
+			#{ctcmName}
+			,0
+			,0
+			,0
+			,#{mmSeq}
+			,#{ctcsSeq}
+		)		
+	</insert>	
 </mapper>

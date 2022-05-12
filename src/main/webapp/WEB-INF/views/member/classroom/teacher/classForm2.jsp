@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-
+<jsp:useBean id="CodeServiceImpl" class="com.cacao.classting.code.CodeServiceImpl"/>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -149,42 +149,35 @@
 <img style="float: left;" src="../../../../../resources/common/image/classtingFlower.png">
 
 <div class="row justify-content-center" style="color:black;">
+<c:set var="CodeClassGrade" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<div class="col-md-10 d-flex justify-content-center" id="context">
+	<form action="/classInst" method="post" id="classForm" name="classForm" class="row">
+	<input type="hidden" name="ctcsSeq" id="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
+	<input type="hidden" name="ctcsName" id="ctcsName" value="<c:out value="${vo.ctcsName}"/>">
+	<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
 		<div class="col-md-7" style="margin-top:100px;">
 		<h3 >클래스 이름을 지어주세요.</h3>
 			<label for="className">클래스 이름</label>
-			<input type="text" class="form-control" id="className" placeholder="클래스 이름은 언제든지 설정에서 수정할 수 있어요." >
-
-
+			<input type="text" class="form-control" id="ctcsName" name="ctcsName" placeholder="클래스 이름은 언제든지 설정에서 수정할 수 있어요." >
 			<label for="year">연도</label>
-			<select class="form-select" id="year">
-				<option>2022</option>
-				<option>2021</option>
-				<option>2020</option>
-				<option>2019</option>
-			</select>			
+			<input type="text" class="form-control" id="ctcsYear" name="ctcsYear" placeholder="숫자만 입력해주세요.  예시)2022" >
 
 
-			<label for="grade">학년</label>
-			<select class="form-select" id="grade">
-				<option>학년없음</option>
-				<option>1학년</option>
-				<option>2학년</option>
-				<option>3학년</option>
-				<option>4학년</option>
-				<option>5학년</option>
-				<option>6학년</option>
-			</select>			
+			<label for="ctcsGradeCd">학년</label>
+			<select class="form-select" id="ctcsGradeCd" name="ctcsGradeCd" >
+				<c:forEach items="${CodeClassGrade}" var="itemClassGrade" varStatus="statusClassGrade">
+					<option value="<c:out value="${itemClassGrade.ifcdOrder}"/>" <c:if test="${item.ctcsGradeCd eq itemClassGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemClassGrade.ifcdName}"/></option>	
+				</c:forEach>
+			</select>
 			
 			<label for="introduce">소개글(옵션)</label>
-			<textarea rows="3" cols="80" id="introduce" name="introduce" placeholder="예:즐거운 영어회화 클래스입니다~"></textarea>
-			
-			
+			<textarea rows="3" cols="80" id="ctcsDesc" name="ctcsDesc" placeholder="예:즐거운 영어회화 클래스입니다~"></textarea>
 	
 			<button type="button" class="btn btn-outline-secondary" style="display: inline; margin-top:30px;" id="btn-add2" onclick="location.href='./classForm'">이전</button>
-			<button type="button" class="btn btn-outline-success" style="display: inline;margin-top:30px; float: right;" id="btn-add2" onclick="location.href='./classForm3'">클래스 개설</button>
+			<button type="submit" class="btn btn-outline-success" style="display: inline;margin-top:30px; float: right;" id="btn-add2" >클래스 개설</button>
 		
 		</div>
+	</form>	
 	</div>
 </div>
 
@@ -216,6 +209,12 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+$("#btn-add2").on("click", function(){
+	
+	$("#classForm").attr("action", "/classInst");
+	$("#classForm").submit();
+
+});
 
 $("#btnLogout").on("click", function(){
 	

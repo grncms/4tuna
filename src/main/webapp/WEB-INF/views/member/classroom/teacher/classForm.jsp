@@ -141,12 +141,9 @@
 		<div class="col-md-7" style="margin-top:100px;">
 		<h3 >환영합니다!
 		<br>클래스 정보를 등록해주세요!</h3>
-		
-	
-		
 		<label for="school" class="form-label" style="color:black;">학교/기관</label>
 		<div class="input-group mb-3" data-bs-toggle="modal" data-bs-target="#schModal">
-			<input type="text" class="form-control" id="school" placeholder="학교/기관의 이름을 입력해주세요."  aria-describedby="button-addon2">
+			<input type="text" class="form-control" id="ctcsBelongto" name="ctcsBelongto" placeholder="학교/기관의 이름을 입력해주세요."  aria-describedby="button-addon2">
 			<button class="btn btn-outline-secondary" type="button" id="button-addon2" ><i class="fa-solid fa-magnifying-glass" style="padding:0px;"></i></button>
 		</div>
 		<div style="height:100px; border:1px solid silver; border-radius: 5px;">
