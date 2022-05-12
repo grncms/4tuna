@@ -93,11 +93,10 @@
 			,mmId = #{mmId}
 			,mmPassword = #{mmPassword}
 			,mmPhoneNumber = #{mmPhoneNumber}
-			,mmGenderCd = #{mmGenderCd}
 			,mmDob = #{mmDob}
 			,mmMemberEmail = #{mmMemberEmail}
 			,mmDesc = #{mmDesc}
-			,mmEventNotificationNy = #{mmTermsOfserviceNy}
+			,mmEventNotificationNy = #{mmEventNotificationNy}
 			,mmAlarmInvitationNy = #{mmAlarmInvitationNy}
 			,mmAlarmReplyNy = #{mmAlarmReplyNy}
 			,modDateTime = #{modDateTime}

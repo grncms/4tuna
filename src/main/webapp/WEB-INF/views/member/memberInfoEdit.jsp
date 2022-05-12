@@ -38,8 +38,8 @@
 
 	<div class="row">
 		<div class="col-md-12">
-		<form action="" method="post" id="memberInfoEdit" name="memberInfoEdit">
-		<%-- <input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>"> --%>
+		<form action="/memberUpdt" method="post" id="memberInfoEdit" name="memberInfoEdit">
+		<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
 			<p id="title">개인정보</p>
 			<p id="sub">프로필</p>
 			<div class="col-10 mx-auto mb-4">
@@ -59,8 +59,8 @@
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">학년</label>
 				<select class="form-select" id="mmGradeCd" name="mmGradeCd" >
-				<c:forEach items="${CodeGrade}" var="rtGrade" varStatus="statusGrade">
-					<option value="<c:out value="${rtGrade.ifcdOrder}"/>" <c:if test="${rt.mmGradeCd eq rtGrade.ifcdOrder }">selected</c:if> ><c:out value="${rtGrade.ifcdName}"/></option>	
+				<c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
+					<option value="<c:out value="${itemGrade.ifcdOrder}"/>" <c:if test="${item.mmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
 				</c:forEach>
 				</select>
 			</div>
@@ -71,8 +71,8 @@
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">성별</label>
 				<select class="form-select" id="" name="" >
-				<c:forEach items="${CodeGender}" var="rtGender" varStatus="statusGender">
-					<option value="<c:out value="${rtGender.ifcdOrder}"/>" <c:if test="${rt.mmGenderCd eq rtGender.ifcdOrder }">selected</c:if> ><c:out value="${rtGender.ifcdName}"/></option>	
+				<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
+					<option value="<c:out value="${itemGender.ifcdOrder}"/>" <c:if test="${item.mmGenderCd eq itemGender.ifcdOrder }">selected</c:if> ><c:out value="${itemGender.ifcdName}"/></option>	
 				</c:forEach>
 					
 				</select>
@@ -86,6 +86,10 @@
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">아이디</label>
 				<input type="text" class="form-control" id="mmId" name="mmId" value="<c:out value="${rt.mmId}"/>"> 
+			</div>
+			<div class="col-10 mx-auto mb-4">
+				<label class="form-label">비밀번호</label>
+				<input type="text" class="form-control" id="mmPassword" name="mmPassword" value="<c:out value="${rt.mmPassword}"/>"> 
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">이메일 주소</label>
@@ -136,7 +140,7 @@
 				<label class="form-label">이벤트, 서비스 안내 수신(선택)</label>
 				<div class="col-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="mmEventNotificationNy" id="mmEventNotificationNy_y" value="1" <c:if test="${rt.mmEventNotificationNy eq 1}">checked</c:if>>
+						<input class="form-check-input" type="radio" name="mmEventNotificationNy" id="mmEventNotificationNy_y" value="1" <c:if test="${rt.mmEventNotificationNy eq 1}"> checked</c:if>>
 						<label class="form-check-label" for="mmEventNotificationNy_y">동의</label>
 					</div>
 					<div class="form-check form-check-inline">
@@ -147,28 +151,11 @@
 			</div>
 
 		<hr>
+		</form>	
 			<div class="col-10 mx-auto mb-4">
 			<button type="button" class="btn btn-outline-secondary btn-lg mt-1 w-25 p-2" id="btn-back" onclick="javascript:goView();">뒤로 가기</button>
-			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" data-bs-toggle="modal" data-bs-target="#formModal" >정보 수정</button>
-			<div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="editModalLabel">정보 수정</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">수정되었습니다.</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary" onclick="javascript:goEdit();">확인</button>
-						<<!-- a class="btn btn-primary" role="button" href="/memberInfo">확인</a> -->
-						
-					</div>
-					</div>
-				</div>
+			<button type="submit" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" name="btn-edit" >정보 수정</button>
 			</div>
-			</div>
-		</form>	
 	</div>
 </div>
 </div>
@@ -184,33 +171,38 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/resources/common/js/sb-admin-2.min.js"></script> 
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
+	
+	$("#roleT").hide();
+	$("#roleS").hide();
+	
+	if(${sessTeacher}==0){
+		$("#roleT").hide();		
+		$("#roleS").show();		
+		$("#btn-open").hide();		
+	}else{
+		$("#roleT").show();		
+		$("#roleS").hide();		
+		$("#btn-open").show();		
+	} 
 
-$("#roleT").hide();
-$("#roleS").hide();
-
-if(${sessTeacher}==0){
-	$("#roleT").hide();		
-	$("#roleS").show();		
-	$("#btn-open").hide();		
-}else{
-	$("#roleT").show();		
-	$("#roleS").hide();		
-	$("#btn-open").show();		
-} 
-
-goView = function(seq){
-	$("#memberInfoEdit").attr("action","/memberInfo");
-	$("#memberInfoEdit").submit();
-}
-
-goEdit = function(){
-	$("#memberInfoEdit").attr("action", "/memberUpdt");
-	$("#memberInfoEdit").submit();
-};
-
-
+	goView = function(seq){
+		$("#memberInfoEdit").attr("action","/memberInfo");
+		$("#memberInfoEdit").submit();
+	}
+	
+	$("#btn-edit").on("click", function(){
+		var answer = confirm("수정하시겠습니까?");
+		
+		if(answer){
+			$("#memberInfoEdit").attr("action", "/memberUpdt");
+			$("#memberInfoEdit").submit();
+		}else{
+			return false;
+		}
+		
+	});
 
 $("#btnLogout").on("click", function(){
 	

@@ -52,12 +52,6 @@ public class MemberController {
 		
 		service.insert(dto);
 
-		System.out.println("getmmSeq() : " + dto.getMmSeq());
-
-		vo.setMmSeq(dto.getMmSeq());
-
-		redirectAttributes.addFlashAttribute("vo", vo);
-
 		return "redirect:/index";
 	}
 	@RequestMapping(value = "/memberInfo")
@@ -84,11 +78,14 @@ public class MemberController {
 		return "member/memberInfoEdit";
 	}
 	@RequestMapping(value = "/memberUpdt")
-	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes) throws Exception{
-		
+	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes,HttpSession httpSession) throws Exception{
+
 		service.update(dto);
 		
-		vo.setMmSeq(dto.getMmSeq());
+		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessSeq"));
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+
+//		vo.setMmSeq(dto.getMmSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
 		
 		return "redirect:/memberInfo";
