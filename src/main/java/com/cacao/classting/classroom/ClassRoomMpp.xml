@@ -20,7 +20,7 @@
 	<select id="selectOneCount" resultType="Integer">
 			SELECT 
 				count(*)
-				<include refid="selectCommon"/>		
+				<!-- <include refid="selectCommon"/>	 -->	
 	</select>
 	
 <update id="updateClass">
