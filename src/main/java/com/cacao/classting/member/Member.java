@@ -21,13 +21,17 @@ public class Member {
 	private Integer mmTermsOfserviceNy;
 	private Integer mmEventNotificationNy;
 	private Integer mmPersonalInfoNy;
+	private Integer mmAlarmInvitationNy;
+	private Integer mmAlarmReplyNy;
 	private Integer mmDelNy;
+	private String mmPhoneNumber;
 	private Date mmPwdModDate;
-	private Date mmDob;
+	private String mmDob;
 	private Date regDateTime;
 	private Date regDateTimeSvr;
 	private Date modDateTime;
 	private Date modDateTimeSvr;
+	
 	
 	public String getMmSeq() {
 		return mmSeq;
@@ -137,10 +141,10 @@ public class Member {
 	public void setMmPwdModDate(Date mmPwdModDate) {
 		this.mmPwdModDate = mmPwdModDate;
 	}
-	public Date getMmDob() {
+	public String getMmDob() {
 		return mmDob;
 	}
-	public void setMmDob(Date mmDob) {
+	public void setMmDob(String mmDob) {
 		this.mmDob = mmDob;
 	}
 	public Date getRegDateTime() {
@@ -166,6 +170,24 @@ public class Member {
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public Integer getMmAlarmInvitationNy() {
+		return mmAlarmInvitationNy;
+	}
+	public void setMmAlarmInvitationNy(Integer mmAlarmInvitationNy) {
+		this.mmAlarmInvitationNy = mmAlarmInvitationNy;
+	}
+	public Integer getMmAlarmReplyNy() {
+		return mmAlarmReplyNy;
+	}
+	public void setMmAlarmReplyNy(Integer mmAlarmReplyNy) {
+		this.mmAlarmReplyNy = mmAlarmReplyNy;
+	}
+	public String getMmPhoneNumber() {
+		return mmPhoneNumber;
+	}
+	public void setMmPhoneNumber(String mmPhoneNumber) {
+		this.mmPhoneNumber = mmPhoneNumber;
 	}
 	
 	

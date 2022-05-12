@@ -6,29 +6,31 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>CLASSING</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
-    <link href="/resources/index/fonts/icomoon/style.css" rel="stylesheet">
-    <link href="/resources/index/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resources/index/css/jquery-ui.css" rel="stylesheet">
-    <link href="/resources/index/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="/resources/index/css/jquery.fancybox.min.css" rel="stylesheet">
-    <link href="/resources/index/css/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="/resources/index/fonts/flaticon/font/flaticon.css" rel="stylesheet">
-    <link href="/resources/index/css/aos.css" rel="stylesheet">
-    <link href="/resources/index/css/style.css" rel="stylesheet">
-    
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-  
-  <div class="site-wrap">
+<html lang="ko">
+<head>
+<title>CLASSING</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+<link href="/resources/index/fonts/icomoon/style.css" rel="stylesheet">
+<link href="/resources/index/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/index/css/jquery-ui.css" rel="stylesheet">
+<link href="/resources/index/css/owl.carousel.min.css" rel="stylesheet">
+<link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
+<link href="/resources/index/css/owl.theme.default.min.css" rel="stylesheet">
+<link href="/resources/index/css/jquery.fancybox.min.css" rel="stylesheet">
+<link href="/resources/index/css/bootstrap-datepicker.css" rel="stylesheet">
+<link href="/resources/index/fonts/flaticon/font/flaticon.css" rel="stylesheet">
+<link href="/resources/index/css/aos.css" rel="stylesheet">
+<link href="/resources/index/css/style.css" rel="stylesheet">
+<link href="/resources/index/css/index.css" rel="stylesheet">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
@@ -60,22 +62,24 @@
                 <div class="col-lg-6 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100">완전히 새로운 클래스관리</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">가정에서도 좀 더 효율적으로 수업을 관리하는 방법</p>
-                  <p data-aos="fade-up" data-aos-delay="300"><a href="/memberForm_main" class="btn btn-primary py-3 px-5 btn-pill" style="font-size: 15px;">회원가입하기</a></p>
-
+                  <p data-aos="fade-up" data-aos-delay="300"><button class="btn btn-primary py-3 px-5 btn-pill" onclick="location.href='/memberForm_main'">회원가입하기</button></p>
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
                   <form action="" method="post" class="form-box">
+                  <input type="hidden" name="mmSeq" id="mmSeq">
                     <h3 class="h4 text-black mb-4">CLASSING에 로그인</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="아이디">
+                      <input type="text" class="form-control" id="mmId" name="mmId" placeholder="아이디" value="asd123">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" placeholder="비밀번호">
+                      <input type="password" class="form-control" id="mmPassword" name="mmPassword" placeholder="비밀번호" value="1111">
                     </div>
                     <div class="form-group">
-                      <input type="button" class="btn btn-primary btn-pill" value="로그인하기" onclick="location.href='/main'" style="font-size: 15px;">
-                    </div>
+                    <input type="button" class="btn btn-primary btn-pill" id="btnLogin"  value="로그인하기">
+                    <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
+<!--                     <button class="btn btn-primary btn-pill" id="" name="" onclick="location.href='/memberForm_main'">로그인하기</button>
+ -->                    </div>
                     <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
                     <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
                   </form>
@@ -102,17 +106,6 @@
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">비대면 수업 서비스 제공</h2>
             <p class="mb-4">계속되는 비대면 수업으로 인한 불편함<br>ZOOM을 이용한 CLASSING으로 해결</p>
-
-<!--             <div class="d-flex align-items-center custom-icon-wrap mb-3">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-              <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-            </div>
-
-            <div class="d-flex align-items-center custom-icon-wrap">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-            </div> -->
-
           </div>
         </div>
 
@@ -123,16 +116,6 @@
           <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">한번에 배부하고 <br>한눈에 파악하도록</h2>
             <p class="mb-4">이제 과제를 자동으로 수합하고 빠르게 채점하세요. </p>
-
-<!--             <div class="d-flex align-items-center custom-icon-wrap mb-3">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-              <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-            </div>
-
-            <div class="d-flex align-items-center custom-icon-wrap">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-            </div> -->
 
           </div>
         </div>
@@ -194,137 +177,6 @@
         </div>
       </div>
     </div>
-
-<!--     <div class="site-section bg-image overlay" style="background-image: url('images/hero_1.jpg');">
-      <div class="container">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-md-8 text-center testimony">
-            <img src="images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-            <h3 class="mb-4">Jerome Jensen</h3>
-            <blockquote>
-              <p>&ldquo; Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem soluta sit eius necessitatibus voluptate excepturi beatae ad eveniet sapiente impedit quae modi quo provident odit molestias! Rem reprehenderit assumenda &rdquo;</p>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section pb-0">
-
-      <div class="future-blobs">
-        <div class="blob_2">
-          <img src="images/blob_2.svg" alt="Image">
-        </div>
-        <div class="blob_1">
-          <img src="images/blob_1.svg" alt="Image">
-        </div>
-      </div>
-      <div class="container">
-        <div class="row mb-5 justify-content-center" data-aos="fade-up" data-aos-delay="">
-          <div class="col-lg-7 text-center">
-            <h2 class="section-title">Why Choose Us</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 ml-auto align-self-start"  data-aos="fade-up" data-aos-delay="100">
-
-            <div class="p-4 rounded bg-white why-choose-us-box">
-
-              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
-                <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-              </div>
-
-              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
-                <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-              </div>
-
-              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
-                <div><h3 class="m-0">Top Professionals in The World</h3></div>
-              </div>
-
-              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
-                <div><h3 class="m-0">Expand Your Knowledge</h3></div>
-              </div>
-
-              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
-                <div><h3 class="m-0">Best Online Teaching Assistant Courses</h3></div>
-              </div>
-
-              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light">
-                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
-                <div><h3 class="m-0">Best Teachers</h3></div>
-              </div>
-
-            </div>
-
-
-          </div>
-          <div class="col-lg-7 align-self-end"  data-aos="fade-left" data-aos-delay="200">
-            <img src="images/person_transparent.png" alt="Image" class="img-fluid">
-          </div> -->
-        </div>
-      </div>
-    </div>
-
-    
-
-
-<!-- 
-    <div class="site-section bg-light" id="contact-section">
-      <div class="container">
-
-        <div class="row justify-content-center">
-          <div class="col-md-7">
- -->
-
-            
-           <!--  <h2 class="section-title mb-3">Message Us</h2>
-            <p class="mb-5">Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p>
-          
-            <form method="post" data-aos="fade">
-              <div class="form-group row">
-                <div class="col-md-6 mb-3 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Last name">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Subject">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <input type="email" class="form-control" placeholder="Email">
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-6">
-                  
-                  <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Send Message">
-                </div>
-              </div>
-
-            </form> -->
-          </div>
-        </div>
-      </div>
-    </div>
     
      
     <footer class="footer-section bg-white">
@@ -340,23 +192,121 @@
   
     
   </div> <!-- .site-wrap -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=715934576096402" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script src="/resources/common/js/validation.js"></script>
+<script type="text/javascript">
+<!--일반 로그인 -->  
+$("#btnLogin").on("click",function(){ 
+	 
+  	if(!checkNull($("mmId"), $.trim($("#mmId").val()), "아이디를 입력해 주세요!")) return false;
+	if(!checkNull($("mmPassword"), $.trim($("#mmPassword").val()), "비밀번호를 입력해 주세요!")) return false; 
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/loginProc"
+		,data : { "mmId" : $("#mmId").val(), "mmPassword" : $("#mmPassword").val()}
+		,success: function(response) {
+			if(response.rt == "success") { 
+					location.href = "/main";
+			} else {
+				alert("회원없음");
+			}
+		}			
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});
 
-  <script src="/resources/index/js/jquery-3.3.1.min.js"></script>
-  <script src="/resources/index/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="/resources/index/js/jquery-ui.js"></script>
-  <script src="/resources/index/js/popper.min.js"></script>
-  <script src="/resources/index/js/bootstrap.min.js"></script>
-  <script src="/resources/index/js/owl.carousel.min.js"></script>
-  <script src="/resources/index/js/jquery.stellar.min.js"></script>
-  <script src="/resources/index/js/jquery.countdown.min.js"></script>
-  <script src="/resources/index/js/bootstrap-datepicker.min.js"></script>
-  <script src="/resources/index/js/jquery.easing.1.3.js"></script>
-  <script src="/resources/index/js/aos.js"></script>
-  <script src="/resources/index/js/jquery.fancybox.min.js"></script>
-  <script src="/resources/index/js/jquery.sticky.js"></script>
+<!-- 페이스북 로그인-->
 
-  
-  <script src="/resources/index/js/main.js"></script>
-    
-  </body>
+function checkLoginState() {               					//로그인 클릭시 호출
+	    FB.getLoginStatus(function(response) {  
+	      statusChangeCallback(response);
+	    });
+	  }
+
+function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
+	
+console.log(response);             			 			//사용자의 현재 로그인 상태.
+	if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
+		testAPI();  
+	} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
+		console.log('Please log into this webpage.'); 
+	}
+}
+
+function fnFbCustomLogin(){
+	FB.login(function(response) {
+		if (response.status === 'connected') {
+			FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+				console.log(r);
+				console.log('Successful login for: ' + r.name);
+			/* 	console.log(testAPI(response)); */
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/member/FBLgProc"
+					,data : {"mmName" : r.name}		// 넘겨줄 데이터를 설정
+					,success: function(response) {
+						if(response.item == "success") {
+							location.href = "/main";
+						} else {
+							alert("페이스북 로그인 실패");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				})
+			})
+		} 
+	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
+} 
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '715934576096402', // 내 앱 ID.
+		cookie     : true,
+		xfbml      : true,
+		version    : 'v13.0'
+	});
+	FB.getLoginStatus(function(response) {   
+		statusChangeCallback(response);        // 로그인 상태를 말해줌
+	});
+}; 
+
+	function testAPI(response) {                      
+	console.log('Welcome!  Fetching your information.... ');
+	FB.api('/me', function(response) {
+		console.log('Thanks for logging in ' + response.name);
+	});
+}  
+
+ 
+
+</script> 
+<script src="/resources/index/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/index/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/resources/index/js/jquery-ui.js"></script>
+<script src="/resources/index/js/popper.min.js"></script>
+<script src="/resources/index/js/bootstrap.min.js"></script>
+<script src="/resources/index/js/owl.carousel.min.js"></script>
+<script src="/resources/index/js/jquery.stellar.min.js"></script>
+<script src="/resources/index/js/jquery.countdown.min.js"></script>
+<script src="/resources/index/js/bootstrap-datepicker.min.js"></script>
+<script src="/resources/index/js/jquery.easing.1.3.js"></script>
+<script src="/resources/index/js/aos.js"></script>
+<script src="/resources/index/js/jquery.fancybox.min.js"></script>
+<script src="/resources/index/js/jquery.sticky.js"></script>
+
+
+<script src="/resources/index/js/main.js"></script>
+
+<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
+</body>
 </html>

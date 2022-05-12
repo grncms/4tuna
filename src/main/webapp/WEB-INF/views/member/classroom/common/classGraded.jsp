@@ -75,6 +75,49 @@
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 
+<script type="text/javascript">
+
+$("#roleT").hide();
+$("#roleS").hide();
+
+if(${sessTeacher}==0){
+	$("#roleT").hide();		
+	$("#roleS").show();		
+	$("#btn-open").hide();		
+}else{
+	$("#roleT").show();		
+	$("#roleS").hide();		
+	$("#btn-open").show();		
+} 
+
+
+$("#btnLogout").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/index";
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});	
+});
+</script>
+
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 
 </body>
 </html>

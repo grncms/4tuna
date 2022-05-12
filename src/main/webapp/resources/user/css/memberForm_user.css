@@ -1,11 +1,11 @@
-body{
+	body{
 		background-color: #F6F9F7;
 	}
 	h3{
 		color: #00C896;
 	}
 	.my-wrap{
-		width: 400px;
+		width: 380px;
 	}
 	.btn-certification{
 		border: 1px solid #CED4DA;

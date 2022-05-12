@@ -112,11 +112,6 @@ public class ClassRoomController {
 	}	
 
 	//수빈
-	@RequestMapping(value = "/index")
-	public String index() {
-		
-		return "index/index";
-	}
 	@RequestMapping(value = "/findId")
 	public String findId() {
 		
@@ -132,31 +127,7 @@ public class ClassRoomController {
 		
 		return "member/main";
 	}
-	@RequestMapping(value = "/classList")
-	public String test() {
-		
-		return "member/classList";
-	}
-	@RequestMapping(value = "/memberForm_main")
-	public String memberForm_main() {
-		
-		return "member/memberForm_main";
-	}
-	@RequestMapping(value = "/memberForm_user")
-	public String memberForm_user() {
-		
-		return "member/memberForm_user";
-	}
-	@RequestMapping(value = "/memberInfo")
-	public String memberInfo() {
-		
-		return "member/memberInfo";
-	}
-	@RequestMapping(value = "/memberInfoEdit")
-	public String memberInfoEdit() {
-		
-		return "member/memberInfoEdit";
-	}
+
 	@RequestMapping(value = "/classMain")
 	public String classMain() {
 		
@@ -187,6 +158,16 @@ public class ClassRoomController {
 	public String postlist() {
 		
 		return "member/classroom/common/classPostList";
+	}
+	@RequestMapping(value = "member/class/common/postdatalist", method = RequestMethod.GET)
+	public String postdatalist() {
+		
+		return "member/classroom/common/classPostDataList";
+	}
+	@RequestMapping(value = "member/class/common/postpicturelist", method = RequestMethod.GET)
+	public String postpicturelist() {
+		
+		return "member/classroom/common/classPostPictureList";
 	}
 
 	
@@ -223,6 +204,21 @@ public class ClassRoomController {
 	public String classPostEdit2(){
 		
 		return "member/classroom/common/classPostEdit2";
+	}
+	@RequestMapping(value = "member/class/common/classGrade", method = RequestMethod.GET)
+	public String classGrade(){
+		
+		return "member/classroom/common/classGrade";
+	}
+	@RequestMapping(value = "member/class/common/classGraded", method = RequestMethod.GET)
+	public String classGraded(){
+		
+		return "member/classroom/common/classGraded";
+	}
+	@RequestMapping(value = "member/class/common/classGradeStandby", method = RequestMethod.GET)
+	public String classGradeStandby(){
+		
+		return "member/classroom/common/classGradeStandby";
 	}
 
 }

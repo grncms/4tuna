@@ -1,10 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>ForTest</title>
+<title></title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
@@ -19,7 +29,7 @@
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
 #posting {
-	width: 1200px;
+	width: 1100px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
@@ -90,194 +100,165 @@ input:checked+.slider:before {
 	border-radius: 50%;
 }
 
-p {
-	margin: 0px;
-	display: inline-block;
-	font-size: 15px;
-	font-weight: bold;
-}
 /* 스위치 */
 </style>
 
 </head>
 <body id="page-top">
 
-	<!-- Page Wrapper -->
-	<div id="wrapper">
-		<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
-
-		<div id="content-wrapper">
-			<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
-			<div class="row" id="posting">
-				<div class="col-xl-7 col-lg-7">
+<!-- Page Wrapper -->
+<div id="wrapper">
+	
+	<!-- Sidebar -->
+	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
+	
+	<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
+	
+	<!-- Topbar -->
+	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
+	
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+		<div class="row" id="posting">
+			<div class="col-xl-8 col-lg-8">
 				<!-- 타이틀 넣으려고 수정중 -->                        
-                            <div class="card shadow mb-4">
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                <h6 style="font-weight: italic;">모두를 위한 공간</h6>
-                                <h4 style="font-weight: bold; color: black;">자유공간</h4><Br><br>
-                               
-                                </div>
-                            </div>
-<!-- 타이틀 넣으려고 수정중 -->  
-					<div class="card shadow mb-4">
-						<!-- Card Body -->
-						<div class="card-body">
-							<!-- 제목 시작 -->
-							<div class="form-title">
-								<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="title" maxlength="100" required="required" pattern=".{4,100}">
-							</div>
-							<hr>
-							<!-- 제목 끝  -->
-
-							<!-- 첨부파일 넣기 시작 -->
-							<div class="title_hw border">
-								<div class="col-md-10 col-lg-11" id="classInfo">
-									<div class="btn-group" role="group" aria-label="Basic outlined example">
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-image fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-file-circle-plus fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-video fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-link fa-2x"></i>
-										</button>
-
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-b fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-italic fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-underline fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-text-height fa-2x"></i>
-										</button>
-
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-list fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-list-ol fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-check fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-check fa-2x"></i>
-										</button>
-										<button type="button" class="btn btn-outline-secondary btn-sm">
-											<i class="fa-solid fa-check fa-2x"></i>
-										</button>
-									</div>
-
-
-								</div>
-							</div>
-							<hr>
-							<!-- 첨부파일 넣기 끝 -->
-
-
-							<!-- 내용 넣기 시작 -->
-							<div class="title_hw border">
-								<textarea class="formBoard" rows="20" id="content" name="content" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
-							</div>
-							<!-- 내용 넣기 끝 -->
+<!-- 				<div class="card shadow mb-4">
+				    Card Body
+				    <div class="card-body">
+					    <h6 style="font-weight: italic;">모두를 위한 공간</h6>
+					    <h4 style="font-weight: bold; color: black;">자유공간</h4><Br><br>
+				    </div>
+				</div> -->
+				<div class="card shadow mb-4">
+					<!-- Card Body -->
+					<div class="card-body">
+						<!-- 제목 시작 -->
+						<div class="form-title">
+							<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="title" maxlength="100" required="required" pattern=".{4,100}">
 						</div>
-					</div>
-				</div>
+						<hr>
+						<!-- 제목 끝  -->
 
-				<div class="col-xl-4 col-lg-4">
-					<div class="card shadow mb-4">
-						<!-- Card Header - Dropdown -->
-						<!-- Card Body -->
-						<div class="card-body">
-							<h4 style="font-weight: bold;">옵션</h4>
-							<br>
-							<div class="body_hw">
-								<!-- 각 개별 항목 시작 -->
-								<!-- 공간 시작 -->
-								<div class="title_hw">
-									<div>공간</div>
+						<!-- 첨부파일 넣기 시작 -->
+						<div class="title_hw border">
+							<div class="col-md-10 col-lg-11" id="classInfo">
+								<div class="btn-group" role="group" aria-label="Basic outlined example">
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-image fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-file-circle-plus fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-video fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-link fa-2x"></i>
+									</button>
+
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-b fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-italic fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-underline fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-text-height fa-2x"></i>
+									</button>
+
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-list fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-list-ol fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-check fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-check fa-2x"></i>
+									</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm">
+										<i class="fa-solid fa-check fa-2x"></i>
+									</button>
 								</div>
-								<div class="form-group">
-									<select type="text" class="form-control" id="title">
-										<option value="0">자유공간
-										<option value="1">과제제출
-										<option value="2">학습자료
-									</select>
-								</div>
-								<hr>
-								<!-- 공간 끝  -->
 
-								<!-- 태그 시작 -->
-								<div class="title_hw">
-									<div>태그</div>
-								</div>
-								<div>
-									<input type="text" class="form-control" placeholder="#태그 입력"> <a style="font-size: 12px">#태그는 5개까지 가능</a>
-								</div>
-								<hr>
-								<!-- 태그 끝  -->
 
-								<!-- 게시글설정 시작 -->
-
-								<div class="d-flex flex-column gap-2">
-									<div>게시글 설정</div>
-
-									<div>
-										공지 <label class="switch"> <input type="checkbox"> <span class="slider round"></span>
-										</label>
-									</div>
-									<br>
-
-									<div>
-										예약 <label class="switch"> <input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span>
-										</label> <input type="datetime" class="form-control" placeholder="2022.04.28 (오전 03:16)" style="margin-top: 15px;">
-									</div>
-									<br>
-
-									<div>
-										관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span>
-										</label>
-									</div>
-
-								</div>
-								<!-- 게시글설정 끝 -->
-								<div>
-									<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="location.href='/classStorage'">임시저장</button>
-									<button type="button" class="basic_button w-100" onclick="location.href='/member/class/common/postlist'">등록</button>
-								</div>
 							</div>
-							<!--                                     <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
-                                    </div> -->
 						</div>
+						<hr>
+						<!-- 첨부파일 넣기 끝 -->
+
+
+						<!-- 내용 넣기 시작 -->
+						<div class="title_hw border">
+							<textarea class="formBoard" rows="20" id="content" name="content" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
+						</div>
+						<!-- 내용 넣기 끝 -->
 					</div>
 				</div>
 			</div>
 
+			<div class="col-xl-4 col-lg-4">
+				<div class="card shadow mb-4">
+					<!-- Card Header - Dropdown -->
+					<!-- Card Body -->
+					<div class="card-body">
+						<h4 style="font-weight: bold;">옵션</h4>
+						<br>
+						<div class="body_hw">
+							<!-- 각 개별 항목 시작 -->
+							<!-- 공간 시작 -->
+							<div class="title_hw">
+								<div>공간</div>
+							</div>
+							<div class="form-group">
+								<select type="text" class="form-control" id="title">
+									<option value="0">자유공간
+									<option value="1">과제제출
+									<option value="2">학습자료
+								</select>
+							</div>
+							<hr>
+							<!-- 공간 끝  -->
+							<!-- 태그 시작 -->
+							<div class="title_hw">
+								<div>태그</div>
+							</div>
+							<div>
+								<input type="text" class="form-control" placeholder="#태그 입력"> <a style="font-size: 12px">#태그는 5개까지 가능</a>
+							</div>
+							<hr>
+							<!-- 태그 끝  -->
+
+							<!-- 게시글설정 시작 -->
+							<div class="d-flex flex-column gap-2">
+								<div>게시글 설정</div>
+								<div>공지 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
+								<br>
+								<div>예약 <label class="switch"> <input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span>
+									</label> <input type="datetime" class="form-control" placeholder="2022.04.28 (오전 03:16)" style="margin-top: 15px;">
+								</div>
+								<br>
+								<div>관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
+							</div>
+							<!-- 게시글설정 끝 -->
+							<div>
+								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="location.href='/classStorage'">임시저장</button>
+								<button type="button" class="basic_button w-100" onclick="location.href='/member/class/common/postlist'">등록</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		</div>
 	</div>
-
-
-
-
-
+</div>
 
 	<!-- End of Page Wrapper -->
 	<!-- Bootstrap core JavaScript-->
@@ -289,7 +270,46 @@ p {
 
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
+<script src="/resources/common/js/sb-admin-2.min.js"></script> 
+<script type="text/javascript">
 
+$("#roleT").hide();
+$("#roleS").hide();
+
+if(${sessTeacher}==0){
+	$("#roleT").hide();		
+	$("#roleS").show();		
+	$("#btn-open").hide();		
+}else{
+	$("#roleT").show();		
+	$("#roleS").hide();		
+	$("#btn-open").show();		
+} 
+
+
+$("#btnLogout").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/index";
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});	
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 
 </body>
 </html>

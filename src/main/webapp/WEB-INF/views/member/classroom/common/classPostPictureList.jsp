@@ -69,7 +69,7 @@
 			<div class="row" id="posting">
 				<div class="col-xl-8 col-lg-8">
 					<div class="container_title shadow mb-4">
-						<div class="header">자유 공간</div>
+						<div class="header">활동 사진</div>
 							<div class="footer dropdown">
 								<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown">글쓰기</button>
 								<ul class="dropdown-menu">
@@ -245,7 +245,6 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
-
 <script type="text/javascript">
 
 $("#roleT").hide();
@@ -289,6 +288,7 @@ $("#btnLogout").on("click", function(){
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
+
 
 </body>
 	

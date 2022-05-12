@@ -6,6 +6,9 @@
 	min-height:100%;
 	padding-bottom:20px;
 } */
+
+
+
 .leftbarProfile{
 	cursor:pointer;
 		
@@ -417,4 +420,10 @@
 .badge_notice{
 	color: #20c997;
 	border: 1px solid #20c997;
+}
+#posting {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
 }
