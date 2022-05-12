@@ -145,22 +145,7 @@ public class ClassRoomController {
 		
 		return "member/main";
 	}
-	@RequestMapping(value = "/classList")
-	public String test() {
-		
-		return "member/classList";
-	}
 
-	@RequestMapping(value = "/memberInfo")
-	public String memberInfo() {
-		
-		return "member/memberInfo";
-	}
-	@RequestMapping(value = "/memberInfoEdit")
-	public String memberInfoEdit() {
-		
-		return "member/memberInfoEdit";
-	}
 	@RequestMapping(value = "/classMain")
 	public String classMain() {
 		

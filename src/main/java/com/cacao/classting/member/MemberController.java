@@ -33,7 +33,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/memberForm_main")
 	public String memberForm_main(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-		
 		model.addAttribute("CodeLogin", CodeServiceImpl.selectListCachedCode("7"));
 		return "member/memberForm_main";
 	}
@@ -53,34 +52,52 @@ public class MemberController {
 		
 		service.insert(dto);
 
-		System.out.println("getmmSeq() : " + dto.getMmSeq());
-
-		vo.setMmSeq(dto.getMmSeq());
-
-		redirectAttributes.addFlashAttribute("vo", vo);
-
 		return "redirect:/index";
+	}
+	@RequestMapping(value = "/memberInfo")
+	public String memberInfo(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
+
+		System.out.println("httpSession.getAttribute(\"sessSeq\"): " + httpSession.getAttribute("sessSeq"));
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		
+		Member rt = service.selectOne(vo);
+		model.addAttribute("item", rt);
+		
+		return "member/memberInfo";
+	}
+	
+	@RequestMapping(value = "/memberInfoEdit")
+	public String memberInfoEdit(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception{
+		
+		System.out.println("httpSession.getAttribute(\"sessSeq\"): " + httpSession.getAttribute("sessSeq"));
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		
+		Member rt = service.selectOne(vo);
+		model.addAttribute("rt", rt);
+		
+		return "member/memberInfoEdit";
+	}
+	@RequestMapping(value = "/memberUpdt")
+	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes,HttpSession httpSession) throws Exception{
+
+		service.update(dto);
+		
+		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessSeq"));
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+
+//		vo.setMmSeq(dto.getMmSeq());
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
+		return "redirect:/memberInfo";
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value = "/classList")
+	public String test() {
+		
+		return "member/classList";
+	}
 	
 //	기본로그인
 	@ResponseBody
