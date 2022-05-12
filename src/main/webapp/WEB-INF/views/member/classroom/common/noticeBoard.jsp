@@ -35,6 +35,17 @@
 	margin-top: 0px;
 	margin-left: 10px;
 }
+
+.container_base .header {
+	display:flex;
+	align-items:center;
+	gap:8px;
+}
+
+.container_base .header > span:nth-child(3){
+	font-weight:normal;
+}
+
 </style>
 </head>
 <body id="page-top">
