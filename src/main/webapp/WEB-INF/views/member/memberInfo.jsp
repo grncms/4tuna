@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.cacao.classting.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -30,13 +32,19 @@
 <%@ include file="/WEB-INF/views/member/include/main_header.jsp" %><!-- header -->
 
 <div class="container" id="main">
+<c:set var="CodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+<c:set var="CodeGrade" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
+<c:set var="CodeLogin" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
+
 	<div class="row">
 		<div class="col-md-12">
+		<form action="" method="post" id="memberInfo" name="memberInfo">
+		<%-- <input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>"> --%>
 			<p id="title">개인정보</p>
 			<p id="sub">프로필</p>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">이름</label>
-				<input type="text" class="form-control" id="" name="" value="윤수빈" placeholder="" > 
+				<input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>" > 
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">프로필 사진</label>
@@ -46,56 +54,53 @@
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">학교</label>
-				<input type="text" class="form-control" id="" name="" value="4조 초등학교" placeholder=""> 
+				<input type="text" class="form-control" id="" name="" value=""> 
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">학년</label>
-				<select class="form-select" id="kbmmKoreanNy" name="kbmmKoreanNy" >
-					<option >:: 학년 ::</option>
-					<option value="1" selected>1학년</option>	
-					<option value="2">2학년</option>	
-					<option value="3">3학년</option>	
-					<option value="4">4학년</option>	
-					<option value="5">5학년</option>	
-					<option value="6">6학년</option>	
+				<select class="form-select" id="mmGradeCd" name="mmGradeCd" >
+				<c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
+					<option value="<c:out value="${itemGrade.ifcdOrder}"/>" <c:if test="${item.mmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
+				</c:forEach>
 				</select>
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">프로필</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				<textarea class="form-control" id="mmDesc" name="mmDesc" rows="3"><c:out value="${item.mmDesc}" escapeXml="false"/></textarea>
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">성별</label>
 				<select class="form-select" id="" name="" >
-					<option >:: 성별 ::</option>
-					<option value="1">남성</option>	
-					<option value="2" selected>여성</option>	
+				<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
+					<option value="<c:out value="${itemGender.ifcdOrder}"/>" <c:if test="${item.mmGenderCd eq itemGender.ifcdOrder }">selected</c:if> ><c:out value="${itemGender.ifcdName}"/></option>	
+				</c:forEach>
+					
 				</select>
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">생년월일</label>
-				<input type="text" class="form-control" id="" name="" value="2022-12-12" placeholder=""> 
+				<input type="text" class="form-control" id="mmDob" name="mmDob" value="<c:out value="${item.mmDob}"/>" > 
 			</div>
 		<hr>
 			<p id="sub">계정</p>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">아이디</label>
-				<input type="text" class="form-control" id="" name="" value="asdasdasd" placeholder="" > 
+				<input type="text" class="form-control" id="mmId" name="mmId" value="<c:out value="${item.mmId}"/>"> 
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">이메일 주소</label>
-				<input type="text" class="form-control" id="" name="" value="asd123@naver.com" placeholder="" > 
+				<input type="text" class="form-control" id="mmMemberEmail" name="mmMemberEmail" value="<c:out value="${item.mmMemberEmail}"/>" > 
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">휴대폰 번호</label>
-				<input type="text" class="form-control" id="" name="" value="010-1111-1111" placeholder="" > 
+				<input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" value="<c:out value="${item.mmPhoneNumber}"/>" > 
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">역할</label>
-				<select class="form-select" id="kbmmKoreanNy" name="kbmmKoreanNy" >
+				<select class="form-select" id="mmTeacherNy" name="mmTeacherNy" >
 					<option disabled>:: 역할 ::</option>
-					<option value="">학생</option>	
-					<option value="" selected>선생님</option>	
+					<option value="0"<c:if test="${item.mmTeacherNy eq 0}">selected</c:if>>학생</option>	
+					<option value="1"<c:if test="${item.mmTeacherNy eq 1}">selected</c:if>>선생님</option>	
 				</select>
 			</div>
 		<hr>
@@ -104,41 +109,42 @@
 				<label class="form-label">클래스 초대 수락</label>
 				<div class="col-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="kbmmUseConsentNy_c" id="kbmmUseConsentNy_cy" value="1" checked>
-						<label class="form-check-label" for="kbmmUseConsentNy_cy">동의</label>
+						<input class="form-check-input" type="radio" name="mmAlarmInvitationNy" id="mmAlarmInvitationNy_y" value="1" <c:if test="${item.mmAlarmInvitationNy eq 1}">checked</c:if>>
+						<label class="form-check-label" for="mmAlarmInvitationNy_y">동의</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="kbmmUseConsentNy_c" id="kbmmUseConsentNy_cn" value="0" >
-						<label class="form-check-label" for="kbmmUseConsentNy_cn">비동의</label>
+						<input class="form-check-input" type="radio" name="mmAlarmInvitationNy" id="mmAlarmInvitationNy_n" value="0" <c:if test="${item.mmAlarmInvitationNy eq 0}">checked</c:if> >
+						<label class="form-check-label" for="mmAlarmInvitationNy_n">비동의</label>
 					</div>
 	 			</div> 
 			</div>
 			<div class="col-10 mx-auto mb-4">
-				<label class="col-form-label">홈 소식</label>
-				<div class="col-10">
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="home" id="home1" value="1" checked>
-						<label class="form-check-label" for="home1">동의</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="home" id="home0" value="0" >
-						<label class="form-check-label" for="home0">비동의</label>
-					</div>
-	 			</div>
-	 		</div>
-			<div class="col-10 mx-auto mb-4">
 				<label class="col-form-label">답글</label>
 				<div class="col-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="reply" id="reply1" value="1" checked>
-						<label class="form-check-label" for="reply1">동의</label>
+						<input class="form-check-input" type="radio" name="mmAlarmReplyNy" id="mmAlarmReplyNy_y" value="1" <c:if test="${item.mmAlarmReplyNy eq 1}">checked</c:if>>
+						<label class="form-check-label" for="mmAlarmReplyNy_y">동의</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="reply" id="reply0" value="0" >
-						<label class="form-check-label" for="reply0">비동의</label>
+						<input class="form-check-input" type="radio" name="mmAlarmReplyNy" id="mmAlarmReplyNy_n" value="0" <c:if test="${item.mmAlarmReplyNy eq 0}">checked</c:if>>
+						<label class="form-check-label" for="mmAlarmReplyNy_n">비동의</label>
 					</div>
 	 			</div>
 	 		</div>
+			<p id="sub">동의설정</p>
+			<div class="col-10 mx-auto mb-4">
+				<label class="form-label">이벤트, 서비스 안내 수신(선택)</label>
+				<div class="col-10">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="mmEventNotificationNy" id="mmEventNotificationNy_y" value="1" <c:if test="${item.mmEventNotificationNy eq 1}">checked</c:if>>
+						<label class="form-check-label" for="mmEventNotificationNy_y">동의</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="mmEventNotificationNy" id="mmEventNotificationNy_n" value="0" <c:if test="${item.mmEventNotificationNy eq 0}">checked</c:if>>
+						<label class="form-check-label" for="mmEventNotificationNy_n">비동의</label>
+					</div>
+	 			</div> 
+			</div>
 
 		<hr>
 			<div class="col-10 mx-auto mb-4">
@@ -160,8 +166,9 @@
 					</div>
 				</div>
 			</div>
-			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="location.href='/memberInfoEdit'">정보 수정</button>
+			<button type="button" class="btn btn-outline-primary btn-lg mt-1 w-25 p-2" id="btn-edit" onclick="javascript:goEditForm();">정보 수정</button>
 			</div>
+		</form>	
 	</div>
 </div>
 </div>
@@ -193,6 +200,12 @@ if(${sessTeacher}==0){
 	$("#roleS").hide();		
 	$("#btn-open").show();		
 } 
+
+goEditForm = function(){
+	$("#memberInfo").attr("action", "/memberInfoEdit");
+	$("#memberInfo").submit();
+};
+
 
 
 $("#btnLogout").on("click", function(){

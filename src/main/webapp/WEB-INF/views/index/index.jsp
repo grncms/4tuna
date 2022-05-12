@@ -67,6 +67,7 @@
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
                   <form action="" method="post" class="form-box">
+                  <input type="hidden" name="mmSeq" id="mmSeq">
                     <h3 class="h4 text-black mb-4">CLASSING에 로그인</h3>
                     <div class="form-group">
                       <input type="text" class="form-control" id="mmId" name="mmId" placeholder="아이디" value="asd123">

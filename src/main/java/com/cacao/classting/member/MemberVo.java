@@ -11,7 +11,5 @@ public class MemberVo {
 	public void setMmSeq(String mmSeq) {
 		this.mmSeq = mmSeq;
 	}
-	
-	
-	
+
 }

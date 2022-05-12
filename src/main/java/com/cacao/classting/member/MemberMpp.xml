@@ -8,6 +8,37 @@
 
 <resultMap id="resultMapObj" type="com.cacao.classting.member.Member"></resultMap>
 	
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			mmAdminNy
+			,mmDormacyNy
+			,mmTeacherNy
+			,mmGradeCd
+			,mmName
+			,mmId
+			,mmPassword
+			,mmPhoneNumber
+			,mmGenderCd
+			,mmDob
+			,mmMemberEmail
+			,mmTypeOfLoginCd
+			,mmTermsOfserviceNy
+			,mmEventNotificationNy
+			,mmPersonalInfoNy
+			,mmAlarmInvitationNy
+			,mmAlarmReplyNy
+			,mmDelNy
+			,mmDesc
+			,modDateTime
+			,modDateTimeSvr
+			,regDateTime
+			,regDateTimeSvr
+		FROM	
+			Member
+		WHERE 1=1
+			AND mmSeq = #{mmSeq}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO Member(
 			mmAdminNy
@@ -53,6 +84,27 @@
 			,#{regDateTimeSvr}
 		)		
 	</insert>	
+	
+	<update id="update">
+		UPDATE Member SET 	
+			mmTeacherNy = #{mmTeacherNy}
+			,mmGradeCd = #{mmGradeCd}
+			,mmName = #{mmName}
+			,mmId = #{mmId}
+			,mmPassword = #{mmPassword}
+			,mmPhoneNumber = #{mmPhoneNumber}
+			,mmGenderCd = #{mmGenderCd}
+			,mmDob = #{mmDob}
+			,mmMemberEmail = #{mmMemberEmail}
+			,mmDesc = #{mmDesc}
+			,mmEventNotificationNy = #{mmTermsOfserviceNy}
+			,mmAlarmInvitationNy = #{mmAlarmInvitationNy}
+			,mmAlarmReplyNy = #{mmAlarmReplyNy}
+			,modDateTime = #{modDateTime}
+			,modDateTimeSvr = #{modDateTimeSvr}
+		WHERE 1=1
+			AND mmSeq=#{mmSeq}	
+	</update>
 	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
