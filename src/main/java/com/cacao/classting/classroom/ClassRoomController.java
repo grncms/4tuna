@@ -26,21 +26,21 @@ public class ClassRoomController {
 	private static final Logger logger = LoggerFactory.getLogger(ClassRoomController.class);
 //동훈	
 
-	@RequestMapping(value = "/classForm", method = RequestMethod.GET)
-	public String classForm() {
-		
-		return "member/classroom/teacher/classForm";
-	}
-	@RequestMapping(value = "/classForm2", method = RequestMethod.GET)
-	public String classForm2() {
-		
-		return "member/classroom/teacher/classForm2";
-	}
-	@RequestMapping(value = "/classForm3", method = RequestMethod.GET)
-	public String classForm3() {
-		
-		return "member/classroom/teacher/classForm3";
-	}
+//	@RequestMapping(value = "/classForm", method = RequestMethod.GET)
+//	public String classForm() {
+//		
+//		return "member/classroom/teacher/classForm";
+//	}
+//	@RequestMapping(value = "/classForm2", method = RequestMethod.GET)
+//	public String classForm2() {
+//		
+//		return "member/classroom/teacher/classForm2";
+//	}
+//	@RequestMapping(value = "/classForm3", method = RequestMethod.GET)
+//	public String classForm3() {
+//		
+//		return "member/classroom/teacher/classForm3";
+//	}
 	@RequestMapping(value = "/classStudentForm", method = RequestMethod.GET)
 	public String classStudentForm() {
 		
