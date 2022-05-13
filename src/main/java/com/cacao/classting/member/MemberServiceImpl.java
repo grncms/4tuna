@@ -1,6 +1,8 @@
 package com.cacao.classting.member;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member selectOneClass(MemberVo vo) throws Exception {
 		return dao.selectOneClass(vo);
+	}
+
+	@Override
+	public List<Member> selectListClass(MemberVo vo) throws Exception {
+		return dao.selectListClass(vo);
 	}
 
 

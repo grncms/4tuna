@@ -167,10 +167,8 @@
 			,#{mmSeq}
 			,#{ctcsSeq}
 		)	
-		<selectKey resultType="String" keyProperty="ctcsSeq" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>	
 	</insert>	
+	
 	<select id="selectOneClass" resultMap="resultMapObj">
 		SELECT
 			ctcsSeq
@@ -180,4 +178,20 @@
 		WHERE 1=1 
 			AND ctcsSeq = #{ctcsSeq}	
 	</select>
+	
+	<select id="selectListClass" resultMap="resultMapObj">
+		select
+			a.ctcmSeq
+			,a.ctcmName
+			,a.ctcmDelNy
+			,b.ctcsYear
+			,a.mmSeq
+			,a.ctcsSeq
+		FROM
+			ctClassMember a
+			LEFT JOIN ctClass b on b.ctcsSeq = a.ctcsSeq
+		WHERE 1=1
+			AND mmSeq = #{mmSeq}
+	</select>
+	
 </mapper>

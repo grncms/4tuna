@@ -1,13 +1,15 @@
 package com.cacao.classting.member;
 
 
-import javax.annotation.Resource;
+import java.util.List;
 
+import javax.annotation.Resource;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class MemberDao {
@@ -26,5 +28,6 @@ public class MemberDao {
 	public int insertClass(Member dto) {return sqlSession.insert(namespace +".insertClass", dto);}
 	public int insertClassMember(Member dto) {return sqlSession.insert(namespace +".insertClassMember", dto);}
 	public Member selectOneClass(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOneClass", vo);}
+	public List<Member> selectListClass(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListClass",vo); }
 	
 }

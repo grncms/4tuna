@@ -1,5 +1,7 @@
 package com.cacao.classting.member;
 
+import java.util.List;
+
 public interface MemberService {
 	
 	public Member selectOne(MemberVo vo) throws Exception;
@@ -10,4 +12,5 @@ public interface MemberService {
 	public int insertClass(Member dto) throws Exception;
 	public int insertClassMember(Member dto) throws Exception;
 	public Member selectOneClass(MemberVo vo) throws Exception;
+	public List<Member> selectListClass(MemberVo vo) throws Exception;
 }
