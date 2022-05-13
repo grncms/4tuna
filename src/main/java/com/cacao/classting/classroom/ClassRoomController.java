@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.cacao.classting.member.Member;
+import com.cacao.classting.member.MemberVo;
 
 
 
@@ -150,7 +155,12 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/classMain")
-	public String classMain() {
+	public String classMain(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+//		vo.setCtcsSeq(dto.getCtcsSeq() );
+		System.out.println("dto.getCtcsSeq(); " + dto.getCtcsSeq());
 		
 		return "member/classroom/common/classMain";
 	}
