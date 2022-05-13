@@ -1,6 +1,7 @@
 package com.cacao.classting.member;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -151,7 +152,13 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/classList")
-	public String test() {
+	public String classList(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+		
+		List<Member> list = service.selectListClass(vo);
+		model.addAttribute("list", list);
 		
 		return "member/classList";
 	}

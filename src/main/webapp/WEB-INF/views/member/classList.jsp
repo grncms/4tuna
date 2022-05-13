@@ -36,12 +36,14 @@
 			<div class=""><span style="font-size: 20px; font-weight: bold;">클래스 목록</span></div>
 		</div>
 		<div id="classNotice">
+			<c:forEach items="${list}" var="item" varStatus="status">	
 			<div class="class" onclick="location.href='/classMain'">
 				<img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left">
-				<span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">4조</span>
+				<span class="col-md-10 float-right" id="date"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcmName}"/></span>
 			</div>
 			<hr>
-			<div class="class" onclick="location.href='/classMain'">
+			</c:forEach>
+<!-- 			<div class="class" onclick="location.href='/classMain'">
 				<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
 				<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">1조</span></div>
 			</div>
@@ -50,7 +52,7 @@
 				<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
 				<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">2조</span></div>
 			</div>
-			<hr>
+			<hr> -->
 		</div>
 	</div>
 	<div class="col-md-5">
