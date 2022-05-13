@@ -30,6 +30,9 @@
 <%@ include file="/WEB-INF/views/member/include/main_header.jsp" %><!-- header -->
 
 <div class="container" id="main">
+<form id="classList" name="classList" method="post" action="">
+<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+<input  type="hidden" id="mmSeq" name="mmSeq">
 	<div class="row">
 	<div class="col-md-7" >
 		<div id="classNotice">
@@ -37,7 +40,7 @@
 		</div>
 		<div id="classNotice">
 			<c:forEach items="${list}" var="item" varStatus="status">	
-			<div class="class" onclick="location.href='/classMain'">
+			<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
 				<img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left">
 				<span class="col-md-10 float-right" id="date"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcmName}"/></span>
 			</div>
@@ -83,6 +86,7 @@
 		</div>
 	</div>
 	</div>
+</form>	
 </div>	
 <%@ include file="/WEB-INF/views/member/include/main_footer.jsp" %><!-- footer -->
 
@@ -111,6 +115,12 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+
+goClass = function(seq){
+	$("#ctcsSeq").val(seq);
+	$("#classList").attr("action","/classMain");
+	$("#classList").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	
