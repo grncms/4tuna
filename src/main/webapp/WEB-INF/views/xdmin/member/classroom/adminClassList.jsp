@@ -25,6 +25,8 @@
 <link href="../../../../../resources/common/css/sb-admin-2.css" rel="stylesheet">
 <link href="../../../../../resources/common/css/classCommon.css" rel="stylesheet">
 <link href="../../../../../resources/common/css/boardCss.css" rel="stylesheet">
+<link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
+
 <title>클래스관리</title>
 
 
@@ -240,34 +242,37 @@
 <body id="page-top">
 	<jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
 <!-- Topbar end -->
+<div class="content">		
 <form id ="classList" name="classList" method="post" action="adminClassList">
 <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${item.ctcsSeq}"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="checkboxSeqArray">
-<div class="content">		
 		<div class="container" style="margin-bottom:20px;">
 			<h3>클래스관리</h3>
 				<div class="border p-3 ">
 				
-				<select class="form-select" style="width: 200px; display: inline;">
+				<select class="form-select" style="width: 200px; display: inline;" name="shOption">
 					<option value="">검색구분</option>
 					<option value="1">이름</option>
 					<option value="2">아이디</option>
 				</select>
-				<select class="form-select" style="width: 200px; display: inline;">
+				<select class="form-select" style="width: 200px; display: inline;" name="shCtcsDelNy">
 					<option value="">삭제여부</option>
 					<option value="1">Y</option>
 					<option value="2">N</option>
 				</select>
-				<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜">
-				<input  class="form-control" type="text" style="width: 200px; display: inline;" name="shDateEnd" id="shDateEnd" placeholder="종료날짜">
+				<fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd"/>
+					<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜"value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" autocomplete="off">
+				
+				<fmt:parseDate value="${vo.shDateEnd}" var="shDateEnd" pattern="yyyy-MM-dd"/>
+				<input  class="form-control" type="text" style="width: 200px; display: inline;" name="shDateEnd" id="shDateEnd" placeholder="종료날짜"value="<fmt:formatDate value="${shDateEnd}" pattern="yyyy-MM-dd" />" autocomplete="off">
 				
 				<br>
 				<input type="text" class="form-control" placeholder="소속검색"style="width:200px; display:inline;">
-				<input type="text" class="form-control" placeholder="검색어"style="width:200px; display:inline;">
-				<button type="button" class="btn btn-outline-success btn-lg w-45" id="btn-add" style="margin-bottom:10px;">검색</button>
-				<button type="button" class="btn btn-outline-warning btn-lg w-45" id="btn-add" style="margin-bottom:10px;">새로고침</button>
+				<input type="text" class="form-control" placeholder="검색어"style="width:200px; display:inline;" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>">
+				<button type="submit" class="btn btn-outline-success btn-lg w-45" id="btn-add" style="margin-bottom:10px;">검색</button>
+				<button type="button" class="btn btn-outline-warning btn-lg w-45" id="btn-add" style="margin-bottom:10px;" onclick="location.href='adminClassList'">새로고침</button>
 		</div>
 			</div>
 			<div class="table-responsive">
@@ -294,7 +299,7 @@
 								<input class="form-check-input" type="checkbox"id="checkboxSeq" name="checkboxSeq" value="<c:out value="${item.ctcsSeq}"/>">
 								</div></td>
 							<td scope="col"><c:out value="${item.ctcsSeq}"/></td>
-							<td scope="col"><a href="./adminClassView"><c:out value="${item.ctcsName}"/></a></td>
+							<td scope="col"><a href="javascript:goView(<c:out value='${item.ctcsSeq}'/>);"><c:out value="${item.ctcsName}"/></a></td>
 							<td scope="col"><c:out value="${item.ctcsBelongto}"/></td>
 							<td scope="col"><c:out value="${item.ctcsCode}"/></td>
 							<td scope="col"><c:out value="${item.regDateTime}"/></td>
@@ -324,66 +329,110 @@
 			   </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		        <button type="submit" class="btn btn-danger">삭제</button>
+		        <button type="submit" class="btn btn-danger" id="btnDele" name="btnDele">삭제</button>
 		      </div>
 		      </div>
 		    </div>
 		  </div>
-				<!-- <nav aria-label="Page navigation example" style="clear:both;">
-					<ul class="pagination" style="justify-content: center;">
-						<li class="page-item"><a class="page-link" href="#"aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span></a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"aria-label="Next">
-							<span aria-hidden="true">&raquo;</span></a></li>
-					</ul>
-				</nav> -->
-				<nav aria-label="..." >
-	  <ul class="pagination"style="justify-content: center;">
-		<c:if test="${vo.startPage gt vo.pageNumToShow}">
-			<li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${vo.startPage - 1}'/>);">Previous</a></li>
-		</c:if>
-		<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
-			<c:choose>
-				<c:when test="${i.index eq vo.thisPage}">
-	                <li class="page-item active"><a class="page-link"href="javascript:page(<c:out value='${i.index}'/>);">${i.index}</a></li>
-				</c:when>
-				<c:otherwise>             
-	                <li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${i.index}'/>);">${i.index}</a></li>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>     
-		<c:if test="${vo.endPage ne vo.totalPages}">                
-			<li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${vo.endPage + 1}'/>);">Next</a></li>
-		</c:if>  
-	  </ul>
-	</nav>
+			
+			<nav aria-label="..." >
+			  <ul class="pagination"style="justify-content: center;">
+				<c:if test="${vo.startPage gt vo.pageNumToShow}">
+					<li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${vo.startPage - 1}'/>);">Previous</a></li>
+				</c:if>
+				<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+					<c:choose>
+						<c:when test="${i.index eq vo.thisPage}">
+			                <li class="page-item active"><a class="page-link"href="javascript:page(<c:out value='${i.index}'/>);">${i.index}</a></li>
+						</c:when>
+						<c:otherwise>             
+			                <li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${i.index}'/>);">${i.index}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>     
+				<c:if test="${vo.endPage ne vo.totalPages}">                
+					<li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${vo.endPage + 1}'/>);">Next</a></li>
+				</c:if>  
+			  </ul>
+			</nav>
 				
-	</div>			
-</form>						
-			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
-					
+	</form>				
+	</div>		
 				
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <!-- Bootstrap core JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages-->
     <script src="../../../../../resources/common/js/sb-admin-2.min.js"></script> 
-
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+	<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js" rel="stylesheet"></script>
+
 <script type="text/javascript">
+
+$("#checkboxAll").click(function() {
+	if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
+	else $("input[name=checkboxSeq]").prop("checked", false);
+});
+
+var checkboxSeqArray = [];
+$("#btnDele").on("click", function(){
+	var answer = confirm;
+	
+	if(answer){
+	$("input[name=checkboxSeq]:checked").each(function() {
+		checkboxSeqArray.push($(this).val());	
+	});
+	
+	$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+	$("#classList").attr("action", "/classMultiUele");
+	$("#classList").submit();
+	} else {
+		return false;
+	}
+});
+
+
 page = function(seq) {
 	$("#thisPage").val(seq);
 	$("#classList").submit();
 }
+
+goView = function(seq) {
+	$("#ctcsSeq").val(seq);
+	$("#classList").attr("action","/adminClassView");
+	$("#classList").submit();
+}
+
+
+
+
+
+$(document).ready(function(){
+	$("#shDateStart").datepicker();
+	
+});
+
+$(document).ready(function(){
+	 $("#shDateEnd").datepicker();
+}); 
+
+$.datepicker.setDefaults({
+    dateFormat: 'yy-mm-dd',
+    prevText: '이전 달',
+    nextText: '다음 달',
+    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+    showMonthAfterYear: true,
+    yearSuffix: '년'
+    });
 
 </script>
 </body>

@@ -43,9 +43,11 @@ public class ClassRoomVo {
 		//common
 		private String shOption;
 		private String shValue;
+		private String shBelongto;
 		
 
 		
+
 		private int thisPage = 1;									// 현재 페이지
 		private int rowNumToShow = 5;								// 화면에 보여줄 데이터 줄 갯수
 		private int pageNumToShow = 10;								// 화면에 보여줄 페이징 번호 갯수
@@ -299,6 +301,14 @@ public class ClassRoomVo {
 		}
 		public void setStartRnumForMysql(int startRnumForMysql) {
 			this.startRnumForMysql = startRnumForMysql;
+		}
+		
+
+		public String getShBelongto() {
+			return shBelongto;
+		}
+		public void setShBelongto(String shBelongto) {
+			this.shBelongto = shBelongto;
 		}
 		
 		// ---- paging
