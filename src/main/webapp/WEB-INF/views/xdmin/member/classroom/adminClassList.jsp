@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.cacao.classting.code.CodeServiceImpl"/>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -239,6 +240,11 @@
 <body id="page-top">
 	<jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
 <!-- Topbar end -->
+<form id ="classList" name="classList" method="post" action="adminClassList">
+<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${item.ctcsSeq}"/>">
+<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+<input type="hidden" name="checkboxSeqArray">
 <div class="content">		
 		<div class="container" style="margin-bottom:20px;">
 			<h3>클래스관리</h3>
@@ -264,14 +270,13 @@
 				<button type="button" class="btn btn-outline-warning btn-lg w-45" id="btn-add" style="margin-bottom:10px;">새로고침</button>
 		</div>
 			</div>
-	
 			<div class="table-responsive">
 			  <table class="table">
 	  			  <thead>
 	   				   <tr>
 							<th scope="col" style="width: 15%;">
 								<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault"> 
+								<input class="form-check-input" type="checkbox" value=""id="checkboxAll"> 
 								<label class="form-check-label" for="flexCheckDefault" style="width: 100px;">전체선택</label></div></th>
 							<th scope="col" style="width: 5%;"><div style="width: 100px;">번호</div></th>
 							<th scope="col" style="width: 10%;"><div style="width: 100px;">이름</div></th>
@@ -282,63 +287,21 @@
 	      				</tr>
 	   			 </thead>
 	   			 <tbody>
+	   			 <c:forEach items="${list}" var="item" varStatus="status">
 	      				<tr>
 							<td scope="col">
 								<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault1"></div></td>
-							<td scope="col">1</td>
-							<td scope="col"><a href="./adminClassView">4조</a></td>
-							<td scope="col">이젠</td>
-							<td scope="col">KD83N3</td>
-							<td scope="col">2020.12.12</td>
-							<td scope="col">O</td>
+								<input class="form-check-input" type="checkbox"id="checkboxSeq" name="checkboxSeq" value="<c:out value="${item.ctcsSeq}"/>">
+								</div></td>
+							<td scope="col"><c:out value="${item.ctcsSeq}"/></td>
+							<td scope="col"><a href="./adminClassView"><c:out value="${item.ctcsName}"/></a></td>
+							<td scope="col"><c:out value="${item.ctcsBelongto}"/></td>
+							<td scope="col"><c:out value="${item.ctcsCode}"/></td>
+							<td scope="col"><c:out value="${item.regDateTime}"/></td>
+							<td scope="col"><c:out value="${item.ctcsDelNy}"/></td>
 								
 	    			  </tr>
-				      <tr>
-							<td scope="col">
-								<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault2"></div></td>
-							<td scope="col">2</td>
-							<td scope="col">즐거운 영어</td>
-							<td scope="col">##초등학교</td>
-							<td scope="col">B923D3</td>
-							<td scope="col">2010.10.11</td>
-							<td scope="col">X</td>
-								
-	    			  </tr>
-	           		 <tr>
-							<td scope="col">
-								<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault3"></div></td>
-								<td scope="col">3</td>
-								<td scope="col">행복한 수학</td>
-								<td scope="col">##초등학교</td>
-								<td scope="col">DSVCUS</td>
-								<td scope="col">1999.03.03</td>
-								<td scope="col">O</td>
-				   </tr>
-				   	<tr>
-								<td scope="col">
-									<div class="form-check">
-									<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault4"></div></td>
-								<td scope="col">4</td>
-								<td scope="col">우와 국어</td>
-								<td scope="col">##고등학교</td>
-								<td scope="col">UU28D3</td>
-								<td scope="col">2002.03.02</td>
-								<td scope="col">X</td>
-					</tr>
-					<tr>
-								<td scope="col">
-									<div class="form-check">
-									<input class="form-check-input" type="checkbox" value=""id="flexCheckDefault5"></div></td>
-								<td scope="col">5</td>
-								<td scope="col">알쏭달쏭 과학</td>
-								<td scope="col">##고등학교</td>
-								<td scope="col">FFFFFF</td>
-								<td scope="col">2003.12.11</td>
-								<td scope="col">X</td>
-					</tr>
+				  </c:forEach>
 			    </tbody>
 			  </table>
 			</div>
@@ -366,7 +329,7 @@
 		      </div>
 		    </div>
 		  </div>
-				<nav aria-label="Page navigation example" style="clear:both;">
+				<!-- <nav aria-label="Page navigation example" style="clear:both;">
 					<ul class="pagination" style="justify-content: center;">
 						<li class="page-item"><a class="page-link" href="#"aria-label="Previous">
 							<span aria-hidden="true">&laquo;</span></a></li>
@@ -376,15 +339,35 @@
 						<li class="page-item"><a class="page-link" href="#"aria-label="Next">
 							<span aria-hidden="true">&raquo;</span></a></li>
 					</ul>
-				</nav>
+				</nav> -->
+				<nav aria-label="..." >
+	  <ul class="pagination"style="justify-content: center;">
+		<c:if test="${vo.startPage gt vo.pageNumToShow}">
+			<li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${vo.startPage - 1}'/>);">Previous</a></li>
+		</c:if>
+		<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+			<c:choose>
+				<c:when test="${i.index eq vo.thisPage}">
+	                <li class="page-item active"><a class="page-link"href="javascript:page(<c:out value='${i.index}'/>);">${i.index}</a></li>
+				</c:when>
+				<c:otherwise>             
+	                <li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${i.index}'/>);">${i.index}</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>     
+		<c:if test="${vo.endPage ne vo.totalPages}">                
+			<li class="page-item"><a class="page-link" href="javascript:page(<c:out value='${vo.endPage + 1}'/>);">Next</a></li>
+		</c:if>  
+	  </ul>
+	</nav>
 				
 	</div>			
-							
+</form>						
 			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 					
 				
 	
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <!-- Bootstrap core JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -396,6 +379,12 @@
     <script src="../../../../../resources/common/js/sb-admin-2.min.js"></script> 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script type="text/javascript">
+page = function(seq) {
+	$("#thisPage").val(seq);
+	$("#classList").submit();
+}
 
+</script>
 </body>
 </html>

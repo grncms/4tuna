@@ -56,18 +56,21 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/noticeBoard";
 	}
-	@RequestMapping(value = "/adminClassList", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/adminClassList"/* , method = RequestMethod.GET */)
 	public String adminClassList(@ModelAttribute("vo") ClassRoomVo vo, Model model) throws Exception {
 		
 		int count = service.selectOneCount(vo);
+		vo.setParamsPaging(count);
 		if(count !=0) {
 			List<ClassRoom> list = service.selectListClass(vo);
-			model.addAttribute("list",list);}
+			model.addAttribute("list", list);
+		
+		}
 		else {
 		//by pass	
 			
 		}
-		
 		
 		return "xdmin/member/classroom/adminClassList";
 	}

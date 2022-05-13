@@ -7,7 +7,25 @@
 <mapper namespace="com.cacao.classting.classroom.ClassRoomMpp">
 
     <resultMap id="resultMapObj" type="com.cacao.classting.classroom.ClassRoom"></resultMap>
-
+    <sql id = "selectCommonClass">
+		 FROM 
+		 	ctClass
+		 WHERE 1=1
+			<choose>
+				<when test="shCtcsDelNy ==1">AND ctcsDelNy = 1</when>
+				<when test="shCtcsDelNy ==0">AND ctcsDelNy = 0</when>
+			</choose>
+			<if test="shCtcsName != null and !shCtcsName.equals('')"> AND ctcsName LIKE concat('%',#{shCtcsName},'%')</if>
+			<choose>
+				<when test="shOption ==1">AND ctcsName LIKE concat('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND ctcsId LIKE concat('%',#{shValue},'%')</when>
+			</choose>
+			<choose>
+		<when test="shOptionDate == 1">AND regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		<when test="shOptionDate == 2">AND modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+	</choose>
+    
+	</sql>
 <select id="selectOneMemberClass" resultMap ="resultMapObj">
 			select 
 				ctcmName
@@ -20,7 +38,7 @@
 	<select id="selectOneCount" resultType="Integer">
 			SELECT 
 				count(*)
-				<!-- <include refid="selectCommon"/>	 -->	
+			<include refid="selectCommonClass"/>	
 	</select>
 	
 <update id="updateClass">
@@ -44,16 +62,15 @@
 
 <select id="selectListClass" resultMap="resultMapObj">
 	SELECT 
-			a.ctcsSeq
-			,a.ctcsName
-			,a.ctcsBelongto
-			,a.ctcsCode
-			,a.RegDateTime
-			
-	 FROM 
-	 		ctClass	a
-	WHERE 1=1
-			and a.ctcsSeq = #{ctcsSeq}
+			ctcsSeq
+			,ctcsName
+			,ctcsBelongto
+			,ctcsCode
+			,regDateTime
+			,ctcsDelNy
+		<include refid="selectCommonClass"/>		
+			limit #{startRnumForMysql},#{rowNumToShow} 	
+		
 	</select>
 
 
