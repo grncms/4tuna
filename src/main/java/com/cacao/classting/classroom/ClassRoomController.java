@@ -20,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cacao.classting.member.Member;
 import com.cacao.classting.member.MemberVo;
 
+import com.cacao.classting.common.constants.Constants;
+import com.cacao.classting.common.util.UtilDateTime;
+
+
 
 
 @Controller
@@ -64,6 +68,18 @@ public class ClassRoomController {
 
 	@RequestMapping(value = "/adminClassList"/* , method = RequestMethod.GET */)
 	public String adminClassList(@ModelAttribute("vo") ClassRoomVo vo, Model model) throws Exception {
+		System.out.println("UtilDateTime.nowLocalDateTime()" + UtilDateTime.nowLocalDateTime());
+		System.out.println("UtilDateTime.nowDate()"+UtilDateTime.nowDate());
+		System.out.println("UtilDateTime.nowString()"+UtilDateTime.nowString());
+		
+		 
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
+
+		
+		vo.setShOptionDate(vo.getShOptionDate() == null ? 0 : vo.getShOptionDate());
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.add00TimeString(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addNowTimeString(vo.getShDateEnd()));
 		
 		int count = service.selectOneCount(vo);
 		vo.setParamsPaging(count);
@@ -79,32 +95,6 @@ public class ClassRoomController {
 		
 		return "xdmin/member/classroom/adminClassList";
 	}
-	@RequestMapping(value = "/adminClassView", method = RequestMethod.GET)
-	public String adminClassView() {
-		
-		return "xdmin/member/classroom/adminClassView";
-	}
-	@RequestMapping(value = "/adminMemberView", method = RequestMethod.GET)
-	public String adminMemberView() {
-		
-		return "xdmin/member/adminMemberView";
-	}
-	@RequestMapping(value = "/adminMemberEdit", method = RequestMethod.GET)
-	public String adminMemberEdit() {
-		
-		return "xdmin/member/adminMemberEdit";
-	}
-	@RequestMapping(value = "/adminMemberForm", method = RequestMethod.GET)
-	public String adminMemberForm() {
-		
-		return "xdmin/member/adminMemberForm";
-	}
-	@RequestMapping(value = "/adminMemberList", method = RequestMethod.GET)
-	public String adminMemberList() {
-		
-		return "xdmin/member/adminMemberList";
-	}
-	
 //민수	
 	@RequestMapping(value = "/classBoardUpload", method = RequestMethod.GET)
 	public String postUpload() {
