@@ -144,7 +144,7 @@
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 		<div class="col-md-7" style="margin-top:100px;">
 		<h3 >축하합니다!
-			<br>[4조] 클래스가
+			<br><c:out value="${item.ctcsName}"/> 클래스가
 			<br>개설되었어요.
 		</h3>
 		<p>클래스 프로필을 설정하고 지금 바로 시작하세요.</p>

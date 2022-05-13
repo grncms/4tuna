@@ -127,6 +127,8 @@ public class MemberController {
 	@RequestMapping(value = "/classForm3", method = RequestMethod.GET)
 	public String classForm3(@ModelAttribute("vo") MemberVo vo, Model model, Member dto, HttpSession httpSession) throws Exception{
 		
+		Member rt = service.selectOneClass(vo);
+		model.addAttribute("item", rt);
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));

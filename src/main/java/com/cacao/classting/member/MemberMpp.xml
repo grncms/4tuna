@@ -171,7 +171,7 @@
 			SELECT last_insert_id()
 		</selectKey>	
 	</insert>	
-<!-- 	<select id="selectOneClass" resultMap="resultMapObj">
+	<select id="selectOneClass" resultMap="resultMapObj">
 		SELECT
 			ctcsSeq
 			,ctcsName
@@ -179,5 +179,5 @@
 			ctClass
 		WHERE 1=1 
 			AND ctcsSeq = #{ctcsSeq}	
-	</select> -->
+	</select>
 </mapper>

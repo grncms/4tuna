@@ -25,6 +25,6 @@ public class MemberDao {
 
 	public int insertClass(Member dto) {return sqlSession.insert(namespace +".insertClass", dto);}
 	public int insertClassMember(Member dto) {return sqlSession.insert(namespace +".insertClassMember", dto);}
-//	public Member selectOneClass(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOneClass", vo);}
+	public Member selectOneClass(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOneClass", vo);}
 	
 }

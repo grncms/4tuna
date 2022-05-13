@@ -40,10 +40,10 @@ public class MemberServiceImpl implements MemberService{
 		return dao.insertClassMember(dto);
 	}
 
-//	@Override
-//	public Member selectOneClass(MemberVo vo) throws Exception {
-//		return dao.selectOneClass(vo);
-//	}
+	@Override
+	public Member selectOneClass(MemberVo vo) throws Exception {
+		return dao.selectOneClass(vo);
+	}
 
 
 	
