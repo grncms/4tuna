@@ -92,20 +92,18 @@ public class MemberController {
 		return "redirect:/memberInfo";
 	}
 	
-	
 //	클래스생성
 	
-	@RequestMapping(value = "/classForm", method = RequestMethod.GET)
-	public String classForm(Member dto, MemberVo vo, Model model,HttpSession httpSession) throws Exception{
+	@RequestMapping(value = "/classForm")
+	public String classForm() throws Exception{
 		
 		return "member/classroom/teacher/classForm";
 	}
-	@RequestMapping(value = "/classForm2", method = RequestMethod.GET)
-	public String classForm2(Member dto, Model model, MemberVo vo, HttpSession httpSession) throws Exception{
-		
-		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
-		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+	
+	@RequestMapping(value = "/classForm2")
+	public String classForm2() throws Exception{
 
+		
 		return "member/classroom/teacher/classForm2";
 	}
 	
@@ -115,7 +113,10 @@ public class MemberController {
 		service.insertClass(dto);
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		vo.setCtcsSeq(dto.getCtcsSeq());
+		
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+		System.out.println("vo.getCtcsSeq() inst: " +vo.getCtcsSeq());
 		System.out.println("dto.getCtcsSeq() inst: " +dto.getCtcsSeq());
 		
 		redirectAttributes.addFlashAttribute("vo",vo);
@@ -126,15 +127,11 @@ public class MemberController {
 	@RequestMapping(value = "/classForm3", method = RequestMethod.GET)
 	public String classForm3(@ModelAttribute("vo") MemberVo vo, Model model, Member dto, HttpSession httpSession) throws Exception{
 		
-		Member rt = service.selectOneClass(vo);
-		model.addAttribute("item", rt);
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
-		vo.setCtcsSeq(dto.getCtcsSeq());
-		System.out.println("dto.getCtcsSeq() 3: " +vo.getCtcsSeq());
-		System.out.println("dto.getCtcsSeq() 3: " +dto.getCtcsSeq());
 
+		
 		return "member/classroom/teacher/classForm3";
 	}
 	@RequestMapping(value = "/classMemberInst")
@@ -144,10 +141,8 @@ public class MemberController {
 		 
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
-		dto.setCtcsSeq(vo.getCtcsSeq());
 		System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
 		
-//		vo.setMmSeq(dto.getMmSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/main";
 	}

@@ -145,17 +145,11 @@
 			,#{modDateTimeSvr}
 			,#{regDateTime}
 			,#{regDateTimeSvr}
-		)		
+		)
+		<selectKey resultType="String" keyProperty="ctcsSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
-	<select id="selectOneClass" resultMap="resultMapObj">
-		SELECT
-			ctcsSeq
-			,ctcsName
-		FROM
-			ctClass
-		WHERE 1=1 
-			AND ctcsSeq = #{ctcsSeq}	
-	</select>
 		
 	<insert id="insertClassMember">
 		INSERT INTO ctClassMember(
@@ -172,6 +166,18 @@
 			,0
 			,#{mmSeq}
 			,#{ctcsSeq}
-		)		
+		)	
+		<selectKey resultType="String" keyProperty="ctcsSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>	
 	</insert>	
+<!-- 	<select id="selectOneClass" resultMap="resultMapObj">
+		SELECT
+			ctcsSeq
+			,ctcsName
+		FROM
+			ctClass
+		WHERE 1=1 
+			AND ctcsSeq = #{ctcsSeq}	
+	</select> -->
 </mapper>

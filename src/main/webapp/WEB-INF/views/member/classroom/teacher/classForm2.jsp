@@ -153,16 +153,13 @@
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 	<form action="/classInst" method="post" id="classForm" name="classForm" class="row">
 	<input type="hidden" name="ctcsSeq" id="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
-	<input type="hidden" name="ctcsName" id="ctcsName" value="<c:out value="${vo.ctcsName}"/>">
-	<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
+	<%-- <input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>"> --%>
 		<div class="col-md-7" style="margin-top:100px;">
 		<h3 >클래스 이름을 지어주세요.</h3>
 			<label for="className">클래스 이름</label>
 			<input type="text" class="form-control" id="ctcsName" name="ctcsName" placeholder="클래스 이름은 언제든지 설정에서 수정할 수 있어요." >
 			<label for="year">연도</label>
 			<input type="text" class="form-control" id="ctcsYear" name="ctcsYear" placeholder="숫자만 입력해주세요.  예시)2022" >
-
-
 			<label for="ctcsGradeCd">학년</label>
 			<select class="form-select" id="ctcsGradeCd" name="ctcsGradeCd" >
 				<c:forEach items="${CodeClassGrade}" var="itemClassGrade" varStatus="statusClassGrade">
