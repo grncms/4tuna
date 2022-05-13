@@ -95,6 +95,31 @@ public class ClassRoomController {
 		
 		return "xdmin/member/classroom/adminClassList";
 	}
+	@RequestMapping(value = "/adminClassView", method = RequestMethod.GET)
+	public String adminClassView() {
+		
+		return "xdmin/member/classroom/adminClassView";
+	}
+	@RequestMapping(value = "/adminMemberView", method = RequestMethod.GET)
+	public String adminMemberView() {
+		
+		return "xdmin/member/adminMemberView";
+	}
+	@RequestMapping(value = "/adminMemberEdit", method = RequestMethod.GET)
+	public String adminMemberEdit() {
+		
+		return "xdmin/member/adminMemberEdit";
+	}
+	@RequestMapping(value = "/adminMemberForm", method = RequestMethod.GET)
+	public String adminMemberForm() {
+		
+		return "xdmin/member/adminMemberForm";
+	}
+	@RequestMapping(value = "/adminMemberList", method = RequestMethod.GET)
+	public String adminMemberList() {
+		
+		return "xdmin/member/adminMemberList";
+	}
 //민수	
 	@RequestMapping(value = "/classBoardUpload", method = RequestMethod.GET)
 	public String postUpload() {
