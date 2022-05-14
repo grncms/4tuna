@@ -22,4 +22,6 @@ public interface ClassRoomService {
 	public ClassRoom selectOneMemberClass(ClassRoom vo) throws Exception;
 
 	public int deleteMemberForcely(ClassRoom dto) throws Exception;
+	
+	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception;
 }

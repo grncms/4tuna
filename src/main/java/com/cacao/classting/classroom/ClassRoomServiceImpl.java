@@ -62,6 +62,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception {
+		return dao.selectOneClassInfo(vo);
+	}
 	
 
 }

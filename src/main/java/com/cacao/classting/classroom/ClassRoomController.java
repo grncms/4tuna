@@ -2,6 +2,7 @@ package com.cacao.classting.classroom;
 
 
 import java.text.DateFormat;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -17,14 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cacao.classting.member.Member;
-import com.cacao.classting.member.MemberVo;
-
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
-
-
-
 
 @Controller
 public class ClassRoomController {
@@ -165,12 +160,18 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/classMain")
-	public String classMain(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
+	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
 //		vo.setCtcsSeq(dto.getCtcsSeq() );
+		
+		ClassRoom rt = service.selectOneClassInfo(vo);
+		model.addAttribute("item", rt);
+		
 		System.out.println("dto.getCtcsSeq(); " + dto.getCtcsSeq());
+		
+		
 		
 		return "member/classroom/common/classMain";
 	}

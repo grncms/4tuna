@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class ClassRoomDao {
 	
@@ -35,6 +36,8 @@ public class ClassRoomDao {
 
 	public int deleteMemberForcely(ClassRoom dto) {return sqlSession.update(namespace + ".DeleteMemberForcely", dto);}
 
+//	class
+	public ClassRoom selectOneClassInfo(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneClassInfo", vo);}
 
 	
 }

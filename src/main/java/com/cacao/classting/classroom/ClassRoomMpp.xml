@@ -96,6 +96,16 @@
 			AND ctcsSeq = #{ctcsSeq}
 	</delete>
 	
+<!-- 	클래스내 정보 불러오기! -->
+	<select id="selectOneClassInfo" resultMap="resultMapObj">
+		SELECT
+			ctcsSeq
+			,ctcsName
+		FROM
+			ctClass
+		WHERE 1=1 
+			AND ctcsSeq = #{ctcsSeq}	
+	</select>
 
 
 </mapper>
