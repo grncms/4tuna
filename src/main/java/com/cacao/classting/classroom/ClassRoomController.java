@@ -163,11 +163,6 @@ public class ClassRoomController {
 		
 		return "member/findPwd";
 	}
-	@RequestMapping(value = "/main")
-	public String main_teacher() {
-		
-		return "member/main";
-	}
 
 	@RequestMapping(value = "/classMain")
 	public String classMain(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
