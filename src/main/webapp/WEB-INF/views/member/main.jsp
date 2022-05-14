@@ -45,12 +45,18 @@
   		</div>
 	</div>
 	<div class="col-md-5">
+	<form id="mainclassList" name="mainclassList" method="post" action="">
+	<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+	<input  type="hidden" id="mmSeq" name="mmSeq">
 		<div id="classList">
 		<h5 style="font-weight: bold; margin-bottom: 30px;">클래스 바로가기</h5>
-		<div onclick="location.href='/classMain'">
-		<div class="col-md-2" id="classImg"><img src="/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px;"></div>
-		<div class="col-md-10 mb-5" id="classInfo"><span><b>4조</b></span><p><span style="">2022</span></div>
-		</div>
+			<c:forEach items="${list}" var="item" varStatus="status">	
+			<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
+				<img src="/resources/user/image/a3.jpg" class="" width="50" height="50" style="border-radius: 7px; float: left">
+				<span class="" id="date" style="margin-left: 13px;"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcsName}"/></span>
+			</div>
+			<hr>
+			</c:forEach>
 		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
 		<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -75,6 +81,7 @@
 		</div> 
 		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
 		</div>
+	</form>	
 	</div>
 	<div class="col-md-12">
 		<div id="schInfo"> 
@@ -115,6 +122,12 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+
+goClass = function(seq){
+	$("#ctcsSeq").val(seq);
+	$("#mainclassList").attr("action","/classMain");
+	$("#mainclassList").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	

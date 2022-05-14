@@ -30,11 +30,11 @@
 <%@ include file="/WEB-INF/views/member/include/main_header.jsp" %><!-- header -->
 
 <div class="container" id="main">
-<form id="classList" name="classList" method="post" action="">
-<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-<input  type="hidden" id="mmSeq" name="mmSeq">
 	<div class="row">
 	<div class="col-md-7" >
+	<form id="subclassList" name="subclassList" method="post" action="">
+	<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+	<input  type="hidden" id="mmSeq" name="mmSeq">
 		<div id="classNotice">
 			<div class=""><span style="font-size: 20px; font-weight: bold;">클래스 목록</span></div>
 		</div>
@@ -42,21 +42,12 @@
 			<c:forEach items="${list}" var="item" varStatus="status">	
 			<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
 				<img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left">
-				<span class="col-md-10 float-right" id="date"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcmName}"/></span>
+				<span class="col-md-10 float-right" id="date"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcsName}"/></span>
 			</div>
 			<hr>
 			</c:forEach>
-<!-- 			<div class="class" onclick="location.href='/classMain'">
-				<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
-				<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">1조</span></div>
-			</div>
-			<hr>
-			<div class="class" onclick="location.href='/classMain'">
-				<div><img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left"></div>
-				<div class=""><span class="col-md-10 float-right" id="date">2022</span><br><span style="margin-left: 12px;">2조</span></div>
-			</div>
-			<hr> -->
 		</div>
+	</form>	
 	</div>
 	<div class="col-md-5">
 		<div id="classList">
@@ -84,9 +75,9 @@
 		</div> 
 		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
 		</div>
+
 	</div>
 	</div>
-</form>	
 </div>	
 <%@ include file="/WEB-INF/views/member/include/main_footer.jsp" %><!-- footer -->
 
@@ -101,7 +92,6 @@
 <!-- Custom scripts for all pages-->
 <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 <script type="text/javascript">
-alert("asd");
 $("#roleT").hide();
 $("#roleS").hide();
 
@@ -118,8 +108,8 @@ if(${sessTeacher}==0){
 
 goClass = function(seq){
 	$("#ctcsSeq").val(seq);
-	$("#classList").attr("action","/classMain");
-	$("#classList").submit();
+	$("#subclassList").attr("action","/classMain");
+	$("#subclassList").submit();
 }
 
 $("#btnLogout").on("click", function(){

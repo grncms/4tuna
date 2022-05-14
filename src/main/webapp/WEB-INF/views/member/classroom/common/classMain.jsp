@@ -47,8 +47,8 @@
 		<div class="row" id="posting">
 			<div class="col-12">
 				<div class="container_title shadow mb-4">
-					<div class="header">4조</div>
-					<div class="body">4조 클래스에 오신 것을 환영합니다</div>
+					<div class="header"><c:out value="${item.ctcsName}"/></div>
+					<div class="body"><c:out value="${item.ctcsName}"/> 클래스에 오신 것을 환영합니다</div>
 				</div>
 				<div class="card shadow mb-4">
 					<div class="container_base">

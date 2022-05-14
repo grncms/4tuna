@@ -33,6 +33,18 @@ public class MemberController {
 		return "index/index";
 	}
 	
+	@RequestMapping(value = "/main")
+	public String main_teacher(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
+		
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+		
+		List<Member> list = service.selectListClass(vo);
+		model.addAttribute("list", list);
+		
+		return "member/main";
+	}
+	
 	@RequestMapping(value = "/memberForm_main")
 	public String memberForm_main(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		model.addAttribute("CodeLogin", CodeServiceImpl.selectListCachedCode("7"));
