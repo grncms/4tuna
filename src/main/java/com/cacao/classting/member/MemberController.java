@@ -109,8 +109,8 @@ public class MemberController {
 	@RequestMapping(value = "/findId")
 	public String findId(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception{
 		
-//		Member rt = service.selectOneId(dto);
-//		model.addAttribute("item", rt);
+		Member rt = service.selectOneId(dto);
+		model.addAttribute("item", rt);
 		
 		return "member/findId";
 	}
@@ -222,16 +222,16 @@ public class MemberController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "member/findId", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> findId(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> findId(@ModelAttribute("vo") MemberVo vo, Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		Member rtMember = service.selectOneId(dto);
 		
 		if(rtMember != null) {
-//			rtMember = service.selectOneLogin(dto);
+//			rtMember = service.selectOneId(dto);
 			if(rtMember.getMmSeq() != null) {
 //				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-				
+				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
 				httpSession.setAttribute("sessSeq", rtMember.getMmSeq());
 				httpSession.setAttribute("sessId", rtMember.getMmId());
 				httpSession.setAttribute("sessName", rtMember.getMmName());
@@ -239,10 +239,11 @@ public class MemberController {
 				
 				returnMap.put("rt", "success");
 			} else {
-				returnMap.put("rt", "fail");
+				returnMap.put("rt", "fail1");
 			}
 		} else {
-			returnMap.put("rt", "fail");
+			System.out.println("rtMember : " + rtMember);
+			returnMap.put("rt", "fail2");
 		}
 		return returnMap;
 	}

@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="" id="findId" name="findId" method="post" class="form-box">
+                  <form action="member/findId" id="findId" name="findId" method="post" class="form-box">
                   <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
                     <h3 class="h4 text-black mb-4">아이디 찾기</h3>
                     <div class="form-group">
@@ -107,16 +107,18 @@
 <script type="text/javascript">
 <!--일반 로그인 -->  
 $("#showId").hide();	
-
-$(document).on('click','#btn-submit',function(){
-
+$("#btn-submit").on("click",function(seq){ 
+	
+	$("#mmSeq").val(seq);
+	
 	$.ajax({
 		async: true 
 		,cache: false
 		,type: "post"
 		,url: "/member/findId"
-		,data : { "mmName" : $("#mmName").val(), "mmPhoneNumber" : $("#mmPhoneNumber").val()}
-		,success: function(data) {
+		,dataType: "JSON"
+		,data : { "mmSeq" : $("#mmSeq").val(), "mmName" : $("#mmName").val(), "mmPhoneNumber" : $("#mmPhoneNumber").val()}
+		,success: function(response) {
 			if(response.rt == "success") { 
 				$("#showId").append($("#mmName").val()+" 님의 아이디는 "+"<b>"+sessId+"</b>"+"입니다.")
 			} else {
@@ -129,6 +131,7 @@ $(document).on('click','#btn-submit',function(){
 	});
 	
 });
+	
 <!-- 페이스북 로그인-->
 
 
