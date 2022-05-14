@@ -148,16 +148,7 @@ public class ClassRoomController {
 	}	
 
 	//수빈
-	@RequestMapping(value = "/findId")
-	public String findId() {
-		
-		return "member/findId";
-	}
-	@RequestMapping(value = "/findPwd")
-	public String findPwd() {
-		
-		return "member/findPwd";
-	}
+
 
 	@RequestMapping(value = "/classMain")
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
