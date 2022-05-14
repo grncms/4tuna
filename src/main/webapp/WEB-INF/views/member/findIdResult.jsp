@@ -61,19 +61,19 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="" id="findId" name="findId" method="post" class="form-box">
+                  <form action="findIdChk" id="findId" name="findId" method="post" class="form-box">
                   <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
                     <h3 class="h4 text-black mb-4">아이디 찾기</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="mmName" name="mmName" placeholder="이름">
+                      <input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" placeholder="숫자만 입력 (예. 01011112222)">
+                      <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" value="<c:out value="${item.mmPhoneNumber}"/>">
                     </div>
                     <div class="form-group">
                       <button class="btn btn-primary btn-pill" type="submit" id="btn-submit" name="" >아이디 찾기</button>
                     </div>
-	                    <p class="mb-4" id="showId" style="color: blue; font-size: 15px;"></p>
+	                    <div id="showId"><p class="mb-4" style="color: blue; font-size: 15px;"><c:out value="${item.mmName}"/> 님의 아이디는 <b><c:out value="${item.mmId}"/></b> 입니다.</p></div>
                   </form>
                 </div>
               </div>
@@ -108,17 +108,16 @@
 <!--일반 로그인 -->  
 $("#showId").hide();	
 
-$(document).on('click','#btn-submit',function(){
-
+$("#btn-submit").on("click",function(){ 
 	$.ajax({
 		async: true 
 		,cache: false
 		,type: "post"
-		,url: "/member/findId"
+		,url: "/findIdChk"
 		,data : { "mmName" : $("#mmName").val(), "mmPhoneNumber" : $("#mmPhoneNumber").val()}
-		,success: function(data) {
+		,success: function(response) {
 			if(response.rt == "success") { 
-				$("#showId").append($("#mmName").val()+" 님의 아이디는 "+"<b>"+sessId+"</b>"+"입니다.")
+					location.href = "/findId";
 			} else {
 				alert("회원없음");
 			}
@@ -127,8 +126,22 @@ $(document).on('click','#btn-submit',function(){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-	
 });
+
+
+
+if(${sessSeq}==NULL){
+	$("#showId").show();		
+}else{
+} 
+
+/* $("#btn-submit").on("click",function(){ 
+	$("#mmSeq").val(seq);
+	$("#findId").attr("action", "/findIdChk");
+	$("#findId").submit();
+	$("#showId").show();		
+});
+ */
 <!-- 페이스북 로그인-->
 
 

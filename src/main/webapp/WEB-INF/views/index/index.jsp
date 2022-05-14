@@ -78,8 +78,7 @@
                     <div class="form-group">
                     <input type="button" class="btn btn-primary btn-pill" id="btnLogin"  value="로그인하기">
                     <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
-<!--                     <button class="btn btn-primary btn-pill" id="" name="" onclick="location.href='/memberForm_main'">로그인하기</button>
- -->                    </div>
+                    </div>
                     <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
                     <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
                   </form>

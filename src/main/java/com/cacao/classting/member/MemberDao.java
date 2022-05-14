@@ -24,6 +24,8 @@ public class MemberDao {
 	public int insert(Member dto) {return sqlSession.insert(namespace +".insert", dto);}
 	public int update(Member dto) {return sqlSession.update(namespace +".update", dto);}
 	public Member selectOneLogin(Member dto) {return sqlSession.selectOne(namespace +".selectOneLogin", dto);}
+	public Member selectOneId(Member dto) {return sqlSession.selectOne(namespace +".selectOneId", dto);}
+	public Member selectOnePassword(Member dto) {return sqlSession.selectOne(namespace +".selectOnePassword", dto);}
 
 	public int insertClass(Member dto) {return sqlSession.insert(namespace +".insertClass", dto);}
 	public int insertClassMember(Member dto) {return sqlSession.insert(namespace +".insertClassMember", dto);}

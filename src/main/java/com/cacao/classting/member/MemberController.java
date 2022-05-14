@@ -30,6 +30,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/index")
 	public String index() {
+		
 		return "index/index";
 	}
 	
@@ -103,6 +104,23 @@ public class MemberController {
 		redirectAttributes.addFlashAttribute("vo",vo);
 		
 		return "redirect:/memberInfo";
+	}
+	
+	@RequestMapping(value = "/findId")
+	public String findId(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception{
+		
+//		Member rt = service.selectOneId(dto);
+//		model.addAttribute("item", rt);
+		
+		return "member/findId";
+	}
+	@RequestMapping(value = "/findPwd")
+	public String findPwd(Member dto, Model model, HttpSession httpSession) throws Exception{
+		
+		Member rt = service.selectOnePassword(dto);
+		model.addAttribute("item", rt);
+		
+		return "member/findPwd";
 	}
 	
 //	클래스생성
@@ -192,6 +210,32 @@ public class MemberController {
 				httpSession.setAttribute("sessId", rtMember.getMmId());
 				httpSession.setAttribute("sessName", rtMember.getMmName());
 				httpSession.setAttribute("sessTeacher", rtMember.getMmTeacherNy());
+				
+				returnMap.put("rt", "success");
+			} else {
+				returnMap.put("rt", "fail");
+			}
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
+	@ResponseBody
+	@RequestMapping(value = "member/findId", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map<String, Object> findId(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member rtMember = service.selectOneId(dto);
+		
+		if(rtMember != null) {
+//			rtMember = service.selectOneLogin(dto);
+			if(rtMember.getMmSeq() != null) {
+//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+				
+				httpSession.setAttribute("sessSeq", rtMember.getMmSeq());
+				httpSession.setAttribute("sessId", rtMember.getMmId());
+				httpSession.setAttribute("sessName", rtMember.getMmName());
+				httpSession.setAttribute("sessNumber", rtMember.getMmPhoneNumber());
 				
 				returnMap.put("rt", "success");
 			} else {

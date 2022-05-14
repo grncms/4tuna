@@ -52,6 +52,16 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectListClass(vo);
 	}
 
+	@Override
+	public Member selectOneId(Member dto) throws Exception {
+		return dao.selectOneId(dto);
+	}
+
+	@Override
+	public Member selectOnePassword(Member dto) throws Exception {
+		return dao.selectOnePassword(dto);
+	}
+
 
 	
 

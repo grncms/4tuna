@@ -118,6 +118,39 @@
 			AND mmId = #{mmId}	
 			AND mmPassword = #{mmPassword}	
 	</select>
+	<select id="selectOneId" resultMap="resultMapObj">
+		select
+			mmSeq
+			,mmName
+			,mmId
+			,mmPhoneNumber
+			,mmDelNy
+		FROM	
+			Member
+		WHERE 1=1
+			AND mmSeq = #{mmSeq}
+			AND mmName = #{mmName}
+			AND mmPhoneNumber = #{mmPhoneNumber}
+			AND mmDelNy = 0
+	</select>
+	<select id="selectOnePassword" resultMap="resultMapObj">
+		select
+			mmSeq
+			,mmName
+			,mmId
+			,mmPassword
+			,mmPhoneNumber
+			,mmDelNy
+		FROM	
+			Member
+		WHERE 1=1
+			AND mmSeq = #{mmSeq}
+			AND mmName = #{mmName}
+			AND mmPhoneNumber = #{mmPhoneNumber}
+			AND mmId = #{mmId}
+			AND mmDelNy = 0
+	</select>
+	
 	
 <!-- 	class생성 -->
 	<insert id="insertClass">
@@ -178,8 +211,6 @@
 		WHERE 1=1 
 			AND ctcsSeq = #{ctcsSeq}	
 	</select>
-	
-
 	
 	<select id="selectListClass" resultMap="resultMapObj">
 		select
