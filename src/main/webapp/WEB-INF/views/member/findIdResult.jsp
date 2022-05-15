@@ -57,12 +57,9 @@
                   <h1  data-aos="fade-up" data-aos-delay="100">완전히 새로운 클래스관리</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">가정에서도 좀 더 효율적으로 수업을 관리하는 방법</p>
                   <p data-aos="fade-up" data-aos-delay="300"><a href="/index" class="btn btn-primary py-3 px-5 btn-pill">홈으로</a></p>
-
                 </div>
-
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="findIdChk" id="findId" name="findId" method="post" class="form-box">
-                  <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
+                  <form action="" id="findId" name="findId" method="post" class="form-box">
                     <h3 class="h4 text-black mb-4">아이디 찾기</h3>
                     <div class="form-group">
                       <input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>">
@@ -73,7 +70,7 @@
                     <div class="form-group">
                       <button class="btn btn-primary btn-pill" type="submit" id="btn-submit" name="" >아이디 찾기</button>
                     </div>
-	                    <div id="showId"><p class="mb-4" style="color: blue; font-size: 15px;"><c:out value="${item.mmName}"/> 님의 아이디는 <b><c:out value="${item.mmId}"/></b> 입니다.</p></div>
+	                   <p class="mb-4" style="color: blue; font-size: 15px;"><c:out value="${item.mmName}"/> 님의 아이디는 <b><c:out value="${item.mmId}"/></b> 입니다.</p>
                   </form>
                 </div>
               </div>
@@ -106,43 +103,8 @@
 <script src="/resources/common/js/validation.js"></script>
 <script type="text/javascript">
 <!--일반 로그인 -->  
-$("#showId").hide();	
-
-$("#btn-submit").on("click",function(){ 
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/findIdChk"
-		,data : { "mmName" : $("#mmName").val(), "mmPhoneNumber" : $("#mmPhoneNumber").val()}
-		,success: function(response) {
-			if(response.rt == "success") { 
-					location.href = "/findId";
-			} else {
-				alert("회원없음");
-			}
-		}			
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});
-});
 
 
-
-if(${sessSeq}==NULL){
-	$("#showId").show();		
-}else{
-} 
-
-/* $("#btn-submit").on("click",function(){ 
-	$("#mmSeq").val(seq);
-	$("#findId").attr("action", "/findIdChk");
-	$("#findId").submit();
-	$("#showId").show();		
-});
- */
-<!-- 페이스북 로그인-->
 
 
  

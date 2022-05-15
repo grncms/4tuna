@@ -122,7 +122,7 @@ $('#consentAll').click(function(){
 		$('input:checkbox').prop('checked',true);
 });
 
-upload = function(seq,div){
+/* upload = function(seq,div){
 	
 	$("#ulFile" + seq).children().remove();
 	
@@ -161,7 +161,7 @@ addUploadLi = function(seq,index,name){
 	
 	$("#ulFile"+seq).append(li);
 }
-
+ */
 function readImage(input) {
     // 인풋 태그에 파일이 있는 경우
     if(input.files && input.files[0]) {

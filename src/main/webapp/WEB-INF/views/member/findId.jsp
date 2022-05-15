@@ -65,7 +65,7 @@
                   <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
                     <h3 class="h4 text-black mb-4">아이디 찾기</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="mmName" name="mmName" placeholder="이름">
+                      <input type="text" class="form-control" id="mmName" name="mmName" placeholder="이름" value="<c:out value="${item.mmName}"/>">
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" placeholder="숫자만 입력 (예. 01011112222)">
@@ -73,12 +73,11 @@
                     <div class="form-group">
                       <button class="btn btn-primary btn-pill" type="submit" id="btn-submit" name="" >아이디 찾기</button>
                     </div>
-	                    <p class="mb-4" id="showId" style="color: blue; font-size: 15px;"></p>
+	                    <div id="showId"><p class="mb-4" id="showId" style="color: blue; font-size: 15px;"><c:out value="${item.mmName}"/>의 아이디 :</p></div>
                   </form>
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -106,7 +105,14 @@
 <script src="/resources/common/js/validation.js"></script>
 <script type="text/javascript">
 <!--일반 로그인 -->  
-$("#showId").hide();	
+/* $("#btn-submit").on("click",function(seq){ 
+	
+	$("#mmSeq").val(seq); 
+	$("#findId").attr("action", "/selectFindId");
+	$("#findId").submit();
+	
+});  */
+$("#showId").hide();
 $("#btn-submit").on("click",function(seq){ 
 	
 	$("#mmSeq").val(seq);
@@ -116,11 +122,12 @@ $("#btn-submit").on("click",function(seq){
 		,cache: false
 		,type: "post"
 		,url: "/member/findId"
-		,dataType: "JSON"
-		,data : { "mmSeq" : $("#mmSeq").val(), "mmName" : $("#mmName").val(), "mmPhoneNumber" : $("#mmPhoneNumber").val()}
+		,data : { "mmSeq" : $("#mmSeq").val(), "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val()}
 		,success: function(response) {
-			if(response.rt == "success") { 
-				$("#showId").append($("#mmName").val()+" 님의 아이디는 "+"<b>"+sessId+"</b>"+"입니다.")
+			if(response.rt == "success") {
+				location.href = "findId";
+				$("#showId").show();
+				$("#showId").append($("#mmName").val()+" 님의 아이디는 "+"<b>"+${sessId}+"</b>"+"입니다.")
 			} else {
 				alert("회원없음");
 			}
@@ -131,7 +138,6 @@ $("#btn-submit").on("click",function(seq){
 	});
 	
 });
-	
 <!-- 페이스북 로그인-->
 
 
