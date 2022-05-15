@@ -130,7 +130,7 @@
 		WHERE 1=1
 			AND mmName = #{mmName}
 			AND mmPhoneNumber = #{mmPhoneNumber}
-			AND mmDelNy = 0
+			<!-- AND mmDelNy = 0 -->
 	</select>
 	<select id="selectOnePassword" resultMap="resultMapObj">
 		select
@@ -146,7 +146,7 @@
 			AND mmName = #{mmName}
 			AND mmPhoneNumber = #{mmPhoneNumber}
 			AND mmId = #{mmId}
-			AND mmDelNy = 0
+			<!-- AND mmDelNy = 0 -->
 	</select>
 	
 <!-- 	이미지 -->

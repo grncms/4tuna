@@ -128,6 +128,7 @@ public class MemberController {
 			if(rtMember.getMmSeq() != null) {
 //				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
+				System.out.println("rtMember.getMmDelNy() : " + rtMember.getMmDelNy());
 				httpSession.setAttribute("sessFISeq", rtMember.getMmSeq());
 				httpSession.setAttribute("sessFIId", rtMember.getMmId());
 				httpSession.setAttribute("sessFIName", rtMember.getMmName());
@@ -166,6 +167,7 @@ public class MemberController {
 //				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
 				System.out.println("rtMember.getMmName() : " + rtMember.getMmName());
+				System.out.println("rtMember.getMmDelNy() : " + rtMember.getMmDelNy());
 				httpSession.setAttribute("sessFPSeq", rtMember.getMmSeq());
 				httpSession.setAttribute("sessFPId", rtMember.getMmId());
 				httpSession.setAttribute("sessFPPassword", rtMember.getMmPassword());
