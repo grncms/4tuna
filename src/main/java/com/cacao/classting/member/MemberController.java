@@ -106,6 +106,7 @@ public class MemberController {
 		return "redirect:/memberInfo";
 	}
 	
+//	아이디찾기
 	@RequestMapping(value = "/findId")
 	public String findId(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception{
 		
@@ -114,6 +115,7 @@ public class MemberController {
 		
 		return "member/findId";
 	}
+	
 	@ResponseBody
 	@RequestMapping(value = "member/getId", method = { RequestMethod.GET, RequestMethod.POST })
 	public Map<String, Object> getId(Member dto, HttpSession httpSession) throws Exception {
@@ -142,16 +144,44 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	
+//	비번찾기
 	@RequestMapping(value = "/findPwd")
-	public String findPwd(Member dto, Model model, HttpSession httpSession) throws Exception{
+	public String findPwd(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception{
 		
-//		Member rt = service.selectOnePassword(dto);
-//		model.addAttribute("item", rt);
+		Member rt = service.selectOnePassword(dto);
+		model.addAttribute("item", rt);
 		
 		return "member/findPwd";
 	}
-	
+	@ResponseBody
+	@RequestMapping(value = "member/getPassword", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map<String, Object> getPassword(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member rtMember = service.selectOnePassword(dto);
+		
+		if(rtMember != null) {
+//			rtMember = service.selectOnePassword(dto);
+			if(rtMember.getMmSeq() != null) {
+//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
+				System.out.println("rtMember.getMmName() : " + rtMember.getMmName());
+				httpSession.setAttribute("sessFPSeq", rtMember.getMmSeq());
+				httpSession.setAttribute("sessFPId", rtMember.getMmId());
+				httpSession.setAttribute("sessFPPassword", rtMember.getMmPassword());
+				httpSession.setAttribute("sessFPName", rtMember.getMmName());
+				httpSession.setAttribute("sessFPNumber", rtMember.getMmPhoneNumber());
+				
+				returnMap.put("rt", "success");
+			} else {
+				returnMap.put("rt", "fail1");
+			}
+		} else {
+			System.out.println("rtMember : " + rtMember);
+			returnMap.put("rt", "fail2");
+		}
+		return returnMap;
+	}
 //	클래스생성
 	
 	@RequestMapping(value = "/classForm")

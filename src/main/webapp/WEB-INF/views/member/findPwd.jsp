@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
     <link href="/resources/index/fonts/icomoon/style.css" rel="stylesheet">
     <link href="/resources/index/css/bootstrap.min.css" rel="stylesheet">
     <link href="/resources/index/css/jquery-ui.css" rel="stylesheet">
@@ -61,21 +62,25 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="" method="post" class="form-box">
+                  <form action="member/getPassword" id="findPwd" name="findPwd" method="post" class="form-box">
+                  <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">  
                     <h3 class="h4 text-black mb-4">비밀번호 찾기</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="이름">
+                      <input type="text" class="form-control" id="mmName" name="mmName" value="김선생" placeholder="이름">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" placeholder="아이디">
+                      <input type="text" class="form-control" id="mmId" name="mmId" value="asd123" placeholder="아이디">
                     </div>
                     <div class="form-group mb-4">
-                      <input type="password" class="form-control" placeholder="핸드폰번호">
+                      <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" value="01011112222" placeholder="숫자만 입력 (예. 01011112222)">
                     </div>
                     <div class="form-group">
-                      <input type="button" class="btn btn-primary btn-pill" value="비밀번호 찾기">
+                      <button class="btn btn-primary btn-pill" type="button" id="btn-findPwd" name="" >비밀번호 찾기</button>
+                      <button class="btn btn-primary btn-pill" type="button" id="btn-goLogin" name="" onclick="location.href='/index'" >로그인하기</button>
                     </div>
-                    <p class="mb-4" style="color: red; font-size: 15px;">윤수빈 님의 비밀번호는 <b>asdasd123!</b> 입니다.</p>
+                    <!-- <p class="mb-4" style="color: red; font-size: 15px;">윤수빈 님의 비밀번호는 <b>asdasd123!</b> 입니다.</p> -->
+                    <p class="mb-4" id="showPwd" style="color: blue; font-size: 15px;">${sessFPName} 님의 비밀번호는 ${sessFPPassword} 입니다.</p>
+					<a href="/findPwd" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 비밀번호 다시 찾기</span></a>
                   </form>
                 </div>
               </div>
@@ -105,7 +110,56 @@
         </div>
       </div>
     </footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/js/validation.js"></script>
+<script type="text/javascript">
+<!--일반 로그인 -->  
+/* $("#btn-submit").on("click",function(seq){ 
+	
+	$("#mmSeq").val(seq); 
+	$("#findId").attr("action", "/selectFindId");
+	$("#findId").submit();
+	
+});  */
+$("#showPwd").hide();
+$("#goBack").hide();
+$("#btn-goLogin").hide();
 
+
+$("#btn-findPwd").on("click",function(seq){ 
+	
+	$("#mmSeq").val(seq);
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/getPassword"
+		,data : { "mmSeq" : $("#mmSeq").val(), "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val(), "mmId": $("#mmId").val()}
+		,success: function(response) {
+			if(response.rt == "success") {
+				/* location.href = "/findId"; */
+				$("#showPwd").show(); 
+				$("#goBack").show();
+				$("#btn-goLogin").show();
+				$("#btn-findPwd").hide(); 
+			} else {
+				alert("회원없음");
+			}
+		}			
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+	
+});
+<!-- 페이스북 로그인-->
+
+
+ 
+
+</script> 
+  
   
     
 

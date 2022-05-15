@@ -66,10 +66,10 @@
                   <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
                     <h3 class="h4 text-black mb-4">아이디 찾기</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="mmName" name="mmName" placeholder="이름" value="<c:out value="${item.mmName}"/>">
+                      <input type="text" class="form-control" id="mmName" name="mmName" placeholder="이름" value="김선생">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" placeholder="숫자만 입력 (예. 01011112222)">
+                      <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" value="01011112222" placeholder="숫자만 입력 (예. 01011112222)">
                     </div>
                     <div class="form-group">
                     	<button class="btn btn-primary btn-pill" type="button" id="btn-findId" name="" >아이디 찾기</button>

@@ -130,8 +130,9 @@
 		WHERE 1=1
 			AND mmName = #{mmName}
 			AND mmPhoneNumber = #{mmPhoneNumber}
+			AND mmDelNy = 0
 	</select>
-<!-- 	<select id="selectOnePassword" resultMap="resultMapObj">
+	<select id="selectOnePassword" resultMap="resultMapObj">
 		select
 			mmSeq
 			,mmName
@@ -142,12 +143,11 @@
 		FROM	
 			Member
 		WHERE 1=1
-			AND mmSeq = #{mmSeq}
 			AND mmName = #{mmName}
 			AND mmPhoneNumber = #{mmPhoneNumber}
 			AND mmId = #{mmId}
 			AND mmDelNy = 0
-	</select> -->
+	</select>
 	
 <!-- 	이미지 -->
 	<insert id="insertUploaded">

@@ -7,6 +7,7 @@ public class MemberVo {
 
 	private String mmName;
 	private String mmPhoneNumber;
+	private String mmId;
 	private Integer mmDelNy;
 	
 	private String pseq;
@@ -57,6 +58,14 @@ public class MemberVo {
 
 	public void setPseq(String pseq) {
 		this.pseq = pseq;
+	}
+
+	public String getMmId() {
+		return mmId;
+	}
+
+	public void setMmId(String mmId) {
+		this.mmId = mmId;
 	}
 
 }
