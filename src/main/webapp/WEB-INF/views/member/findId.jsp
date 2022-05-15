@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
     <link href="/resources/index/fonts/icomoon/style.css" rel="stylesheet">
     <link href="/resources/index/css/bootstrap.min.css" rel="stylesheet">
     <link href="/resources/index/css/jquery-ui.css" rel="stylesheet">
@@ -71,10 +72,11 @@
                       <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" placeholder="숫자만 입력 (예. 01011112222)">
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-primary btn-pill" type="submit" id="btn-submit" name="" >아이디 찾기</button>
+                    	<button class="btn btn-primary btn-pill" type="button" id="btn-findId" name="" >아이디 찾기</button>
+	                    <button class="btn btn-primary btn-pill" type="button" id="btn-findPwd" name="" onclick="location.href='/findPwd'" >비밀번호 찾기</button>
                     </div>
-	                    <div id="showId"><p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${sessFIName} 님의 아이디는 ${sessFIId}</p></div>
-                 		<!-- <div id="showId"></div> -->
+	                    <p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${sessFIName} 님의 아이디는 ${sessFIId} 입니다.</p>
+						<a href="/findId" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 아이디 다시 찾기</span></a>
                   </form>
                 </div>
               </div>
@@ -114,9 +116,11 @@
 	
 });  */
 $("#showId").hide();
+$("#btn-findPwd").hide();
+$("#goBack").hide();
 
 
-$("#btn-submit").on("click",function(seq){ 
+$("#btn-findId").on("click",function(seq){ 
 	
 	$("#mmSeq").val(seq);
 	
@@ -130,8 +134,11 @@ $("#btn-submit").on("click",function(seq){
 		,success: function(response) {
 			if(response.rt == "success") {
 				/* location.href = "/findId"; */
-				$("#showId").show();
-			/* 	$("#showId").append($("#mmName").val()+" 님의 아이디는 "+"<b>"+${sessId}+"</b>"+"입니다.")  */
+				$("#showId").show(); 
+				$("#btn-findPwd").show();
+				$("#btn-findId").hide();
+				$("#goBack").show();
+			/*  	$("#showId").append(${sessFIName}+" 님의 아이디는 "+"<b>"+${sessFIId}+"</b>"+"입니다.")   */
 			} else {
 				alert("회원없음");
 			}

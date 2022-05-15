@@ -146,8 +146,8 @@ public class MemberController {
 	@RequestMapping(value = "/findPwd")
 	public String findPwd(Member dto, Model model, HttpSession httpSession) throws Exception{
 		
-		Member rt = service.selectOnePassword(dto);
-		model.addAttribute("item", rt);
+//		Member rt = service.selectOnePassword(dto);
+//		model.addAttribute("item", rt);
 		
 		return "member/findPwd";
 	}
