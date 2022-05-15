@@ -11,7 +11,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active" onclick="location.href='/classMain'">
             	<div class="col-md-3 mt-4" id="classImg"><img src="/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
-				<div class="col-md-9 mt-4" id="classInfo"><span><b>4조</b></span><p><span>2022</span></div>
+				<div class="col-md-9 mt-4" id="classInfo"><span><b><c:out value="${item.ctcsName}"/></b></span><p><span><c:out value="${item.ctcsYear}"/></span></div>
             </li>
 			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='/classInvitation'">
 				<i class="fa-solid fa-user-plus"></i>구성원 초대하기</button>

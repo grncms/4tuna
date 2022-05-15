@@ -101,6 +101,7 @@
 		SELECT
 			ctcsSeq
 			,ctcsName
+			,ctcsYear
 		FROM
 			ctClass
 		WHERE 1=1 
