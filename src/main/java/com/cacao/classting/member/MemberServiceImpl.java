@@ -1,10 +1,13 @@
 package com.cacao.classting.member;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.cacao.classting.common.util.UtilUpload;
+
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -19,7 +22,29 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int insert(Member dto) throws Exception {
-		return dao.insert(dto);
+		
+		dao.insert(dto);
+		
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0()) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.uploadMember(multipartFile, pathModule, dto);
+			
+			dto.setTableName("ctMemberUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(1);
+			dto.setSort(j); 	
+			dto.setDelNy(0);
+			dto.setPseq(dto.getMmSeq());
+			
+			dao.insertUploaded(dto);
+			j++;
+			
+		}
+		
+		return 1;
+		
+		
 	}
 
 	@Override
@@ -60,6 +85,21 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member selectOnePassword(Member dto) throws Exception {
 		return dao.selectOnePassword(dto);
+	}
+
+	@Override
+	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
+		return dao.selectListMemberUploaded(vo);
+	}
+
+	@Override
+	public int insertUploaded(Member dto) throws Exception {
+		return 0;
+	}
+
+	@Override
+	public int updateUploaded(Member dto) throws Exception {
+		return 0;
 	}
 
 

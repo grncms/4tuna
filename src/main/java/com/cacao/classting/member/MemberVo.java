@@ -9,6 +9,8 @@ public class MemberVo {
 	private String mmPhoneNumber;
 	private Integer mmDelNy;
 	
+	private String pseq;
+	
 	public String getMmSeq() {
 		return mmSeq;
 	}
@@ -47,6 +49,14 @@ public class MemberVo {
 
 	public void setMmDelNy(Integer mmDelNy) {
 		this.mmDelNy = mmDelNy;
+	}
+
+	public String getPseq() {
+		return pseq;
+	}
+
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
 	}
 
 }

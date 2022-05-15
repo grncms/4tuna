@@ -15,4 +15,8 @@ public interface MemberService {
 	public int insertClassMember(Member dto) throws Exception;
 	public Member selectOneClass(MemberVo vo) throws Exception;
 	public List<Member> selectListClass(MemberVo vo) throws Exception;
+
+	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception;
+	public int insertUploaded(Member dto) throws Exception;
+	public int updateUploaded(Member dto) throws Exception;
 }

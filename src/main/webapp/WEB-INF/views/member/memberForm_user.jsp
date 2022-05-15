@@ -56,6 +56,13 @@
 				<input type="password" class="form-control mb-2" id="mmPassword" name="mmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
 				<input type="password" class="form-control" id="mmPasswordChk" name="mmPasswordChk" placeholder="비밀번호 확인"> 
 			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>프로필 사진</b></label>
+				<div class="input-group">
+					<input type="file" class="form-control mb-2" id="file0" name="file0" multiple onChange="upload(0,2);">
+				</div>
+				<img style="width: 100px;" id="preview-image0" src="">
+			</div>
 			<div class="col-12 mx-auto mb-4">
 				<label class="form-label"><b>역할</b></label>
 				<div class="form-check">
@@ -105,6 +112,8 @@
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
+<script src="/resources/common/js/commonXdmin.js"></script>
+<script src="/resources/common/js/validation.js"></script>
 <script>
 
 $('#consentAll').click(function(){
@@ -112,6 +121,67 @@ $('#consentAll').click(function(){
 	if(checked)
 		$('input:checkbox').prop('checked',true);
 });
+
+upload = function(seq,div){
+	
+	$("#ulFile" + seq).children().remove();
+	
+	var fileCount = $("input[type=file]")[seq].files.length;
+	
+	if(checkUploadedTotalFileNumber(fileCount, seq) == false) {return false;}
+	
+	var totalFileSize;
+	for(var i = 0; i < fileCount; i++){
+		if(div==1){
+			if(checkUploadedAllExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		}else if(div==2){
+			if(checkUploadedImageExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		}else {
+			return false;
+		}
+		
+		if(checkUploadedEachFileSize($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		totalFileSize += $("input[type=file]")[seq].files[i].size;
+	}
+	if(checkUploadedTotalFileSize(totalFileSize, seq) == false) {return false;}
+	
+	for(var i=0; i<fileCount; i++){
+		addUploadLi(seq, i, $("input[type=file]")[seq].files[i].name);
+	}
+}
+
+addUploadLi = function(seq,index,name){
+	
+	var ul_list = $("#ulFile0");
+	
+	li = '<li id="li_'+seq+'_'+index+'" class="list-group-item d-flex justify-content-between align-item-center">';
+	li = li + name;
+	li = li + '<span class="badge bg-danger rounded-pill" onClick="delLi('+ seq +','+index +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
+	li = li + '</li>';
+	
+	$("#ulFile"+seq).append(li);
+}
+
+function readImage(input) {
+    // 인풋 태그에 파일이 있는 경우
+    if(input.files && input.files[0]) {
+        // 이미지 파일인지 검사 (생략)
+        // FileReader 인스턴스 생성
+        const reader = new FileReader()
+        // 이미지가 로드가 된 경우
+        reader.onload = e => {
+            const previewImage = document.getElementById("preview-image0")
+            previewImage.src = e.target.result
+        }
+        // reader가 이미지 읽도록 하기
+        reader.readAsDataURL(input.files[0])
+    }
+}
+// input file에 change 이벤트 부여 (파일 미리보기)
+const inputImage = document.getElementById("file0")
+inputImage.addEventListener("change", e => {
+    readImage(e.target)
+})
 
 $("#btn-submit").on("click", function(){
 	/* kbmmName */
