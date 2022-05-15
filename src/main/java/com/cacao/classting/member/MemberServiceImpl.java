@@ -102,6 +102,29 @@ public class MemberServiceImpl implements MemberService{
 		return 0;
 	}
 
+	@Override
+	public List<Member> selectListMember(MemberVo vo) throws Exception {
+		return dao.selectListMember(vo);
+	}
+
+	@Override
+	public int deleteMember(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Member selectOneMember(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int selectOneCountMember(MemberVo vo) throws Exception {
+		
+		return dao.selectOneCountMember(vo);
+	}
+
 
 	
 

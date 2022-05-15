@@ -290,4 +290,121 @@
 			AND ctcsDelNy = 0
 	</select>
 	
+	
+	
+<!-- admin -->
+ <sql id = "selectCommonMember">
+		 FROM 
+		 	Member
+		 WHERE 1=1
+			<choose>
+				<when test="shMmDelNy ==1">AND mmDelNy = 1</when>
+				<when test="shMmDelNy ==0">AND mmDelNy = 0</when>
+			</choose>
+			<if test="shMmName != null and !shMmName.equals('')"> AND mmName LIKE concat('%',#{shMmName},'%')</if>
+			<choose>
+				<when test="shOption ==1">AND mmName LIKE concat('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND mmId LIKE concat('%',#{shValue},'%')</when>
+			</choose>
+			<choose>
+		<when test="shOptionDate == 1">AND regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		<when test="shOptionDate == 2">AND modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+	</choose>
+    
+	</sql>
+	<select id="selectListMember" resultMap="resultMapObj">
+	SELECT 
+			mmSeq
+			,mmName
+			,mmTeacherNy
+			,mmSchoolCd
+			,mmDob
+			,RegDatetime
+	<include refid="selectCommonMember"/>		
+			limit #{startRnumForMysql},#{rowNumToShow} 	
+			
+	</select>
+
+<delete id="deleteMember">
+		DELETE FROM 
+			Member
+		WHERE 1=1
+			AND mmSeq = #{mmSeq}
+	</delete>
+
+<insert id="insertMember">
+			INSERT INTO Member (
+				mmName
+				,mmSchoolCd
+				,mmGradeCd
+				,mmDesc
+				,mmGenderCd
+				,mmDob
+				,mmId
+				,mmPassword
+				,mmMemberEmail
+				,mmPhoneNumber
+				,mmTeacherNy
+				,mmTermsOfserviceNy
+				,mmEventNotificationNy
+				,mmPersonalInfoNy
+				,mmDormacyNy
+				,mmDelNy
+				,modDateTime
+				,modDateTimeSvr
+				,regDateTime
+				,regDateTimeSvr
+				) values (
+				#{mmName}
+				,#{mmSchoolCd}
+				,#{mmGradeCd}
+				,#{mmDesc}
+				,#{mmGenderCd}
+				,#{mmDob}
+				,#{mmId}
+				,#{mmPassword}
+				,#{mmMemberEmail}
+				,#{mmPhoneNumber}
+				,#{mmTeacherNy}
+				,#{mmTermsOfserviceNy}
+				,#{mmEventNotificationNy}
+				,#{mmPersonalInfoNy}
+				,0
+				,0
+				,#{modDateTime}
+				,#{modDateTimeSvr}
+				,#{regDateTime}
+				,#{regDateTimeSvr}
+	<selectKey resultType="String" keyProperty="mmSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+</insert>
+
+
+<select id="selectOneMember" resultMap ="resultMapObj">
+			select 
+				mmName
+				,mmSchoolCd
+				,mmGradeCd
+				,mmDesc
+				,mmGenderCd
+				,mmDob
+				,mmId
+				,mmPassword
+				,mmMemberEmail
+				,mmPhoneNumber
+				,mmTeacherNy
+				,mmTermsOfserviceNy
+				,mmEventNotificationNy
+				,mmPersonalInfoNy
+			 from 
+				Member
+			where 1=1
+				and mmSeq = #{mmSeq}
+	</select>
+	<select id="selectOneCountMember" resultType="Integer">
+			SELECT 
+				count(*)
+			<include refid="selectCommonMember"/>	
+	</select>
 </mapper>

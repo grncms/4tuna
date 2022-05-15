@@ -10,6 +10,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.cacao.classting.classroom.ClassRoom;
+import com.cacao.classting.classroom.ClassRoomVo;
+
 
 @Repository
 public class MemberDao {
@@ -36,4 +39,13 @@ public class MemberDao {
 	public int insertUploaded(Member dto) {return sqlSession.insert(namespace +".insertUploaded", dto);}
 	public int updateUploaded(Member dto) {return sqlSession.update(namespace +".updateUploaded", dto);}
 	
+	
+	//admin
+	public List<Member> selectListMember(MemberVo vo) { List<Member> list = sqlSession.selectList(namespace + ".selectListMember",vo); return list;}
+
+	public Member selectOneMember(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOneMember", vo);}
+
+	public int deleteMember(MemberVo vo) {return sqlSession.update(namespace + ".DeleteMember", vo);}
+	
+	public int selectOneCountMember(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOneCountMember", vo);}
 }

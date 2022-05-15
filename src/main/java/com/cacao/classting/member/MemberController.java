@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.classroom.ClassRoom;
+import com.cacao.classting.classroom.ClassRoomVo;
 import com.cacao.classting.code.CodeServiceImpl;
+import com.cacao.classting.common.constants.Constants;
+import com.cacao.classting.common.util.UtilDateTime;
 
 
 @Controller
@@ -316,8 +319,46 @@ public class MemberController {
 		}
 	
 	
-	
-	
+// admin member
+		@RequestMapping(value = "/adminMemberView", method = RequestMethod.GET)
+		public String adminMemberView() {
+			
+			return "xdmin/member/adminMemberView";
+		}
+		@RequestMapping(value = "/adminMemberEdit", method = RequestMethod.GET)
+		public String adminMemberEdit() {
+			
+			return "xdmin/member/adminMemberEdit";
+		}
+		@RequestMapping(value = "/adminMemberForm", method = RequestMethod.GET)
+		public String adminMemberForm() {
+			
+			return "xdmin/member/adminMemberForm";
+		}
+
+		@RequestMapping(value = "/adminMemberList" /*method = RequestMethod.GET*/)
+		public String adminMemberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+			vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+			vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
+
+			
+			vo.setShOptionDate(vo.getShOptionDate() == null ? 0 : vo.getShOptionDate());
+			vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.add00TimeString(vo.getShDateStart()));
+			vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addNowTimeString(vo.getShDateEnd()));
+			
+			int count = service.selectOneCountMember(vo);
+			vo.setParamsPaging(count);
+			if(count !=0) {
+				List<Member> list = service.selectListMember(vo);
+				model.addAttribute("list", list);
+			
+			}
+			else {
+			//by pass	
+				
+			}
+			return "xdmin/member/adminMemberList";
+		}
 	
 	
 	
