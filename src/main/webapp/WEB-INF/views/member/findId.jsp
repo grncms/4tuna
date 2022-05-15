@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="member/findId" id="findId" name="findId" method="post" class="form-box">
+                  <form action="member/getId" id="findId" name="findId" method="post" class="form-box">
                   <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
                     <h3 class="h4 text-black mb-4">아이디 찾기</h3>
                     <div class="form-group">
@@ -73,7 +73,8 @@
                     <div class="form-group">
                       <button class="btn btn-primary btn-pill" type="submit" id="btn-submit" name="" >아이디 찾기</button>
                     </div>
-	                    <div id="showId"><p class="mb-4" id="showId" style="color: blue; font-size: 15px;"><c:out value="${item.mmName}"/>의 아이디 :</p></div>
+	                    <div id="showId"><p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${sessFIName} 님의 아이디는 ${sessFIId}</p></div>
+                 		<!-- <div id="showId"></div> -->
                   </form>
                 </div>
               </div>
@@ -113,6 +114,8 @@
 	
 });  */
 $("#showId").hide();
+
+
 $("#btn-submit").on("click",function(seq){ 
 	
 	$("#mmSeq").val(seq);
@@ -121,13 +124,14 @@ $("#btn-submit").on("click",function(seq){
 		async: true 
 		,cache: false
 		,type: "post"
-		,url: "/member/findId"
+		,url: "/member/getId"
+/* 		,url: "/member/findId" */
 		,data : { "mmSeq" : $("#mmSeq").val(), "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val()}
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "findId";
+				/* location.href = "/findId"; */
 				$("#showId").show();
-				$("#showId").append($("#mmName").val()+" 님의 아이디는 "+"<b>"+${sessId}+"</b>"+"입니다.")
+			/* 	$("#showId").append($("#mmName").val()+" 님의 아이디는 "+"<b>"+${sessId}+"</b>"+"입니다.")  */
 			} else {
 				alert("회원없음");
 			}
