@@ -76,7 +76,6 @@
                     </div>
                     <div class="form-group">
                       <button class="btn btn-primary btn-pill" type="button" id="btn-findPwd" name="" >비밀번호 찾기</button>
-                      <button class="btn btn-primary btn-pill" type="button" id="btn-goLogin" name="" onclick="location.href='/index'" >로그인하기</button>
                     </div>
                     <!-- <p class="mb-4" style="color: red; font-size: 15px;">윤수빈 님의 비밀번호는 <b>asdasd123!</b> 입니다.</p> -->
                     <p class="mb-4" id="showPwd" style="color: blue; font-size: 15px;">${sessFPName} 님의 비밀번호는 ${sessFPPassword} 입니다.</p>
@@ -123,7 +122,6 @@
 });  */
 $("#showPwd").hide();
 $("#goBack").hide();
-$("#btn-goLogin").hide();
 
 
 $("#btn-findPwd").on("click",function(seq){ 
@@ -141,7 +139,6 @@ $("#btn-findPwd").on("click",function(seq){
 				/* location.href = "/findId"; */
 				$("#showPwd").show(); 
 				$("#goBack").show();
-				$("#btn-goLogin").show();
 				$("#btn-findPwd").hide(); 
 			} else {
 				alert("회원없음");

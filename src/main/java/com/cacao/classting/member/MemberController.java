@@ -144,7 +144,15 @@ public class MemberController {
 		}
 		return returnMap;
 	}
-	
+	@ResponseBody	
+	@RequestMapping(value = "/member/outId")
+	public Map<String, Object> outId(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		System.out.println("되등녀?");
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
 //	비번찾기
 	@RequestMapping(value = "/findPwd")
 	public String findPwd(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception{

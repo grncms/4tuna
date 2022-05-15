@@ -73,10 +73,11 @@
                     </div>
                     <div class="form-group">
                     	<button class="btn btn-primary btn-pill" type="button" id="btn-findId" name="" >아이디 찾기</button>
-	                    <button class="btn btn-primary btn-pill" type="button" id="btn-findPwd" name="" onclick="location.href='/findPwd'" >비밀번호 찾기</button>
                     </div>
 	                    <p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${sessFIName} 님의 아이디는 ${sessFIId} 입니다.</p>
+						<c:if test="${not empty sessFISeq}">
 						<a href="/findId" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 아이디 다시 찾기</span></a>
+                 		</c:if>
                   </form>
                 </div>
               </div>
@@ -116,7 +117,6 @@
 	
 });  */
 $("#showId").hide();
-$("#btn-findPwd").hide();
 $("#goBack").hide();
 
 
@@ -135,7 +135,6 @@ $("#btn-findId").on("click",function(seq){
 			if(response.rt == "success") {
 				/* location.href = "/findId"; */
 				$("#showId").show(); 
-				$("#btn-findPwd").show();
 				$("#btn-findId").hide();
 				$("#goBack").show();
 			/*  	$("#showId").append(${sessFIName}+" 님의 아이디는 "+"<b>"+${sessFIId}+"</b>"+"입니다.")   */
@@ -149,8 +148,26 @@ $("#btn-findId").on("click",function(seq){
 	});
 	
 });
-<!-- 페이스북 로그인-->
 
+$("#goBack").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/outId"
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/findId";
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});	
+}); 
 
  
 
