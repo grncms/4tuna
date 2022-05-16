@@ -25,22 +25,22 @@ public class MemberServiceImpl implements MemberService{
 		
 		dao.insert(dto);
 		
-		int j = 0;
-		for(MultipartFile multipartFile : dto.getFile0()) {
-			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-			UtilUpload.uploadMember(multipartFile, pathModule, dto);
-			
-			dto.setTableName("ctMemberUploaded");
-			dto.setType(0);
-			dto.setDefaultNy(1);
-			dto.setSort(j); 	
-			dto.setDelNy(0);
-			dto.setPseq(dto.getMmSeq());
-			
-			dao.insertUploaded(dto);
-			j++;
-			
-		}
+//		int j = 0;
+//		for(MultipartFile multipartFile : dto.getFile0()) {
+//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//			UtilUpload.uploadMember(multipartFile, pathModule, dto);
+//			
+//			dto.setTableName("ctMemberUploaded");
+//			dto.setType(0);
+//			dto.setDefaultNy(1);
+//			dto.setSort(j); 	
+//			dto.setDelNy(0);
+//			dto.setPseq(dto.getMmSeq());
+//			
+//			dao.insertUploaded(dto);
+//			j++;
+//			
+//		}
 		
 		return 1;
 		
@@ -87,20 +87,20 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOnePassword(dto);
 	}
 
-	@Override
-	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
-		return dao.selectListMemberUploaded(vo);
-	}
-
-	@Override
-	public int insertUploaded(Member dto) throws Exception {
-		return 0;
-	}
-
-	@Override
-	public int updateUploaded(Member dto) throws Exception {
-		return 0;
-	}
+//	@Override
+//	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
+//		return dao.selectListMemberUploaded(vo);
+//	}
+//
+//	@Override
+//	public int insertUploaded(Member dto) throws Exception {
+//		return 0;
+//	}
+//
+//	@Override
+//	public int updateUploaded(Member dto) throws Exception {
+//		return 0;
+//	}
 
 	@Override
 	public List<Member> selectListMember(MemberVo vo) throws Exception {

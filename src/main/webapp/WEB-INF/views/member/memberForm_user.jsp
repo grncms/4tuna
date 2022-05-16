@@ -56,13 +56,13 @@
 				<input type="password" class="form-control mb-2" id="mmPassword" name="mmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
 				<input type="password" class="form-control" id="mmPasswordChk" name="mmPasswordChk" placeholder="비밀번호 확인"> 
 			</div>
-			<div class="col-12 mb-4">
+<!-- 			<div class="col-12 mb-4">
 				<label class="form-label"><b>프로필 사진</b></label>
 				<div class="input-group">
 					<input type="file" class="form-control mb-2" id="file0" name="file0" multiple onChange="upload(0,2);">
 				</div>
 				<img style="width: 100px;" id="preview-image0" src="">
-			</div>
+			</div> -->
 			<div class="col-12 mx-auto mb-4">
 				<label class="form-label"><b>역할</b></label>
 				<div class="form-check">
