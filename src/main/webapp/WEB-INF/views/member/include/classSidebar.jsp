@@ -7,13 +7,12 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active" onclick="location.href='/classMain'">
             	<div class="col-md-3 mt-4" id="classImg"><img src="/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
 				<div class="col-md-9 mt-4" id="classInfo"><span><b><c:out value="${item.ctcsName}"/></b></span><p><span><c:out value="${item.ctcsYear}"/></span></div>
             </li>
-			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='/classInvitation'">
+			<div class="d-flex justify-content-center w-100 mt-4"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='/classInvitation'">
 				<i class="fa-solid fa-user-plus"></i>구성원 초대하기</button>
 			</div>
             <!-- Divider -->
@@ -22,11 +21,12 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <div class="sidebar-heading" style="color: #828282;">전체 메뉴</div>
             <li class="nav-item">
+                <a class="nav-link" href="/classMain"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>전체 게시글</span></a>
                 <a class="nav-link" href="/noticeBoard"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
                 <a class="nav-link" href="/member/class/teacher/homeworklist"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
                 <a class="nav-link" href="/member/class/teacher/homeworkreport"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
                 <a class="nav-link" href="/member/class/teacher/attendance"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
-                <a class="nav-link" href="/classMemberList"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
+                <a class="nav-link" role="button" onclick="location.href='javascript:goClassMemberList(<c:out value="${item.ctcsSeq}"/>)'"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
                 <a class="nav-link" href="/classSetting"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
             </li>
 
@@ -59,7 +59,6 @@
                     </div>
                 </div>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
         </ul>

@@ -32,10 +32,11 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
+<form id="mainInfo" name="mainInfo" method="post" action="">
+<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
 	<!-- Sidebar -->
 	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
-	
+</form>	
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column">
 	
@@ -78,7 +79,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="container_base">
+					<!-- <div class="container_base">
 						<div class="header">
 							<div class="profile_box">
 								<img class="profile" src="/resources/common/image/test.jpg" />
@@ -167,7 +168,7 @@
 							<i class="fa-solid fa-check"> 1</i>
 							<i class="fa-solid fa-question"> 3</i>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -200,6 +201,11 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+goClassMemberList = function(seq){
+	$("#ctcsSeq").val(seq);
+	$("#mainInfo").attr("action","/classMemberList");
+ 	$("#mainInfo").submit(); 
+}
 
 $("#btnLogout").on("click", function(){
 	

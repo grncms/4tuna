@@ -135,23 +135,30 @@ public class ClassRoomController {
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
-//		vo.setCtcsSeq(dto.getCtcsSeq() );
-		
+//		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+		//사이드바 구현을 위한 
 		ClassRoom rt = service.selectOneClassInfo(vo);
 		model.addAttribute("item", rt);
-		
-		System.out.println("dto.getCtcsSeq(); " + dto.getCtcsSeq());
-		
-		
+
+		vo.setCtcsSeq(dto.getCtcsSeq());
+		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
 		
 		return "member/classroom/common/classMain";
 	}
+	
 	@RequestMapping(value = "/classMemberList")
-	public String classMemberList() {
+	public String classMemberList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model) throws Exception{
+		
+		//사이드바 구현을 위한 
+		ClassRoom rt = service.selectOneClassInfo(vo);
+		model.addAttribute("item", rt);
+
+		vo.setCtcsSeq(dto.getCtcsSeq());
+		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
 		
 		return "member/classroom/common/classMemberList";
 	}
+	
 	@RequestMapping(value = "/classInvitation")
 	public String classInvitation() {
 		
