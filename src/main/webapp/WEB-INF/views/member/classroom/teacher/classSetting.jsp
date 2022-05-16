@@ -111,7 +111,7 @@
 										<textarea class="form-control" cols="80" rows="10" id="content" name="content" placeholder="클래스 소개글을 작성해주세요!" style="resize:none; margin-top: 10px; margin-bottom:25px;"></textarea>	
 										<button type="button" class="basic_button mt-10 w-25 p-2" data-bs-toggle="modal" data-bs-target="#formModal" style="float:right">변경사항 저장</button>
 									<!-- 모랄 -->
-											<div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
+											<!-- <div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
 														<div class="modal-header">
@@ -124,7 +124,7 @@
 														</div>
 													</div>
 												</div>
-											</div>									
+											</div>								 -->	
 									<!-- 모랄 -->
 									
 									</div>

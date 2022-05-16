@@ -71,7 +71,7 @@
 					<div class="container_title shadow mb-4">
 						<div class="header">자유 공간</div>
 							<div class="footer dropdown">
-								<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown">글쓰기</button>
+								<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown" onclick="location.href='/classBoardUpload'">글쓰기</button>
 								<ul class="dropdown-menu">
 									<li>
 										<a class="dropdown-item" href="/classBoardUpload">공지</a>
