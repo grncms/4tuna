@@ -122,25 +122,21 @@ $("#goBack").hide();
 
 $("#btn-findId").on("click",function(seq){ 
 	
-	$("#mmSeq").val(seq);
-	
 	$.ajax({
 		async: true 
 		,cache: false
 		,type: "post"
 		,url: "/member/getId"
-/* 		,url: "/member/findId" */
-		,data : { "mmSeq" : $("#mmSeq").val(), "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val()}
-		,success: function(response) {
-			if(response.rt == "success") {
-				/* location.href = "/findId"; */
+		,dataType : "JSON"
+		,data : { "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val()}
+		,success: function(data) {
 				$("#showId").show(); 
 				$("#btn-findId").hide();
 				$("#goBack").show();
-			/*  	$("#showId").append(${sessFIName}+" 님의 아이디는 "+"<b>"+${sessFIId}+"</b>"+"입니다.")   */
-			} else {
-				alert("회원없음");
-			}
+				alert(data);
+				alert(JSON.stringify(data));
+				/* alert(JSON.stringify(data['rtMember'][0]['mmSeq'])); */
+				alert(JSON.Object.keys(stringify(data)));
 		}			
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
@@ -156,12 +152,7 @@ $("#goBack").on("click", function(){
 		,cache: false
 		,type: "post"
 		,url: "/member/outId"
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/findId";
-			} else {
-				// by pass
-			}
+		,success: function(data) {
 		}
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);

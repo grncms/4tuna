@@ -120,40 +120,21 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "member/getId", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> getId(Member dto, HttpSession httpSession, Model model) throws Exception {
+	@RequestMapping(value = "member/getId")
+	public Map<String, Object> getId(MemberVo vo, Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
+//		Member rtMember = service.selectOneId(dto);
+//		model.addAttribute("rtMember", rtMember);
 		Member rtMember = service.selectOneId(dto);
-//		model.addAttribute("item", rt);
-//		if(rtMember != null) {
-////			rtMember = service.selectOneId(dto);
-//			if(rtMember.getMmSeq() != null) {
-////				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-//				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
-//				System.out.println("rtMember.getMmDelNy() : " + rtMember.getMmDelNy());
-//				httpSession.setAttribute("sessFISeq", rtMember.getMmSeq());
-//				httpSession.setAttribute("sessFIId", rtMember.getMmId());
-//				httpSession.setAttribute("sessFIName", rtMember.getMmName());
-//				httpSession.setAttribute("sessFINumber", rtMember.getMmPhoneNumber());
-//				
-//				returnMap.put("rt", "success");
-//			} else {
-//				returnMap.put("rt", "fail1");
-//			}
-//		} else {
-//			System.out.println("rtMember : " + rtMember);
-//			returnMap.put("rt", "fail2");
-//		}
-		return returnMap;
-	}
-	@ResponseBody	
-	@RequestMapping(value = "/member/outId")
-	public Map<String, Object> outId(HttpSession httpSession) throws Exception {
-		Map<String, Object> returnMap = new HashMap<String, Object>();
-		httpSession.invalidate();
-		System.out.println("되등녀?");
+		model.addAttribute("rtMember", rtMember);
+		
+		returnMap.put("rtMember", rtMember);
 		returnMap.put("rt", "success");
+		
+		System.out.println("rtMember.getSeq(); "+rtMember.getSeq());
+		System.out.println("dto.getMmSeq(): " + dto.getMmSeq());
+		
 		return returnMap;
 	}
 //	비번찾기
