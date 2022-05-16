@@ -32,11 +32,9 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-<form id="mainInfo" name="mainInfo" method="post" action="">
-<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
+
 	<!-- Sidebar -->
 	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
-</form>	
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column">
 	

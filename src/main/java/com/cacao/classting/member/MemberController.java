@@ -121,30 +121,30 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value = "member/getId", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> getId(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> getId(Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		Member rtMember = service.selectOneId(dto);
-		
-		if(rtMember != null) {
-//			rtMember = service.selectOneId(dto);
-			if(rtMember.getMmSeq() != null) {
-//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
-				System.out.println("rtMember.getMmDelNy() : " + rtMember.getMmDelNy());
-				httpSession.setAttribute("sessFISeq", rtMember.getMmSeq());
-				httpSession.setAttribute("sessFIId", rtMember.getMmId());
-				httpSession.setAttribute("sessFIName", rtMember.getMmName());
-				httpSession.setAttribute("sessFINumber", rtMember.getMmPhoneNumber());
-				
-				returnMap.put("rt", "success");
-			} else {
-				returnMap.put("rt", "fail1");
-			}
-		} else {
-			System.out.println("rtMember : " + rtMember);
-			returnMap.put("rt", "fail2");
-		}
+//		model.addAttribute("item", rt);
+//		if(rtMember != null) {
+////			rtMember = service.selectOneId(dto);
+//			if(rtMember.getMmSeq() != null) {
+////				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+//				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
+//				System.out.println("rtMember.getMmDelNy() : " + rtMember.getMmDelNy());
+//				httpSession.setAttribute("sessFISeq", rtMember.getMmSeq());
+//				httpSession.setAttribute("sessFIId", rtMember.getMmId());
+//				httpSession.setAttribute("sessFIName", rtMember.getMmName());
+//				httpSession.setAttribute("sessFINumber", rtMember.getMmPhoneNumber());
+//				
+//				returnMap.put("rt", "success");
+//			} else {
+//				returnMap.put("rt", "fail1");
+//			}
+//		} else {
+//			System.out.println("rtMember : " + rtMember);
+//			returnMap.put("rt", "fail2");
+//		}
 		return returnMap;
 	}
 	@ResponseBody	

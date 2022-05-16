@@ -4,7 +4,8 @@
 
             <!-- Sidebar - Brand -->
 		    <img src="/resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='/main'">
-
+	<form id="mainInfo" name="mainInfo" method="post" action="">
+	<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
@@ -62,3 +63,4 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
         </ul>
+	</form>
