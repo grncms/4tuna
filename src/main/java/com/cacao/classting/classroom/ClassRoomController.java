@@ -30,39 +30,24 @@ public class ClassRoomController {
 	private static final Logger logger = LoggerFactory.getLogger(ClassRoomController.class);
 //동훈	
 
-//	@RequestMapping(value = "/classForm", method = RequestMethod.GET)
-//	public String classForm() {
-//		
-//		return "member/classroom/teacher/classForm";
-//	}
-//	@RequestMapping(value = "/classForm2", method = RequestMethod.GET)
-//	public String classForm2() {
-//		
-//		return "member/classroom/teacher/classForm2";
-//	}
-//	@RequestMapping(value = "/classForm3", method = RequestMethod.GET)
-//	public String classForm3() {
-//		
-//		return "member/classroom/teacher/classForm3";
-//	}
-	@RequestMapping(value = "/classStudentForm", method = RequestMethod.GET)
-	public String classStudentForm() {
+	@RequestMapping(value = "/classStudentForm")
+	public String classStudentForm(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/student/classStudentForm";
 	}
-	@RequestMapping(value = "/classMemberView", method = RequestMethod.GET)
-	public String classMemberView() {
+	@RequestMapping(value = "/classMemberView")
+	public String classMemberView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/classMemberView";
 	}
-	@RequestMapping(value = "/noticeBoard", method = RequestMethod.GET)
-	public String classNoticeList() {
+	@RequestMapping(value = "/noticeBoard")
+	public String classNoticeList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/noticeBoard";
 	}
 
-	@RequestMapping(value = "/adminClassList"/* , method = RequestMethod.GET */)
-	public String adminClassList(@ModelAttribute("vo") ClassRoomVo vo, Model model) throws Exception {
+	@RequestMapping(value = "/adminClassList"/*  */)
+	public String adminClassList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		System.out.println("UtilDateTime.nowLocalDateTime()" + UtilDateTime.nowLocalDateTime());
 		System.out.println("UtilDateTime.nowDate()"+UtilDateTime.nowDate());
 		System.out.println("UtilDateTime.nowString()"+UtilDateTime.nowString());
@@ -90,40 +75,40 @@ public class ClassRoomController {
 		
 		return "xdmin/member/classroom/adminClassList";
 	}
-	@RequestMapping(value = "/adminClassView", method = RequestMethod.GET)
-	public String adminClassView() {
+	@RequestMapping(value = "/adminClassView")
+	public String adminClassView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "xdmin/member/classroom/adminClassView";
 	}
 
 //민수	
-	@RequestMapping(value = "/classBoardUpload", method = RequestMethod.GET)
-	public String postUpload() {
+	@RequestMapping(value = "/classBoardUpload")
+	public String postUpload(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/classBoardUpload";
 	}
 	
-	@RequestMapping(value = "/classStorage", method = RequestMethod.GET)
-	public String classStorage() {
+	@RequestMapping(value = "/classStorage")
+	public String classStorage(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/classStorage";
 	}
 	
-	@RequestMapping(value = "/classPostEdit", method = RequestMethod.GET)
-	public String classPostEdit3() {
+	@RequestMapping(value = "/classPostEdit")
+	public String classPostEdit3(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/classPostEdit";
 	}
 
-	@RequestMapping(value = "/classSetting", method = RequestMethod.GET)
-	public String classSetting() {
+	@RequestMapping(value = "/classSetting")
+	public String classSetting(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/teacher/classSetting";
 	}	
 
 	// 선락 
-	@RequestMapping(value = "/chat", method = RequestMethod.GET)
-	public String chat() {
+	@RequestMapping(value = "/chat")
+	public String chat(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "chat/chat";
 	}	
@@ -135,14 +120,14 @@ public class ClassRoomController {
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		
 		if(vo.getCtcsSeq() != null) {
-			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
+			httpSession.setAttribute("hyspSeq", vo.getCtcsSeq());
 		}
 		//사이드바 구현을 위한 
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		
 		
 		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -152,11 +137,10 @@ public class ClassRoomController {
 		model.addAttribute("item", rt);
 
 //		클래스 입장 하면서 세션에 스페이스이름 값 세팅 => 사이드바 include 파일에서 활용
-		httpSession.setAttribute("ctcsName", rt.getCtcsName());
 		httpSession.setAttribute("ctcsYear", rt.getCtcsYear());
+		httpSession.setAttribute("ctcsName", rt.getCtcsName());
 		httpSession.setAttribute("ctcmName", rt.getCtcmName());
 		
-//		httpSession.setAttribute("ctcmSeq", rt.getCtcmSeq());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsName()) : " + rt.getCtcsName());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsYear()) : " + rt.getCtcsYear());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmName()) : " + rt.getCtcmName());
@@ -170,97 +154,91 @@ public class ClassRoomController {
 	}
 	
 	@RequestMapping(value = "/classMemberList")
-	public String classMemberList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model) throws Exception{
+	public String classMemberList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
-		//사이드바 구현을 위한 
-		ClassRoom rt = service.selectOneSidebar(vo);
-		model.addAttribute("item", rt);
-
-		vo.setCtcsSeq(dto.getCtcsSeq());
-		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
 		
 		return "member/classroom/common/classMemberList";
 	}
 	
 	@RequestMapping(value = "/classInvitation")
-	public String classInvitation() {
+	public String classInvitation(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/teacher/classInvitation";
 	}
 	
 
 //규원
-	@RequestMapping(value = "member/class/student/learningprogress", method = RequestMethod.GET)
-	public String learnpro() {
+	@RequestMapping(value = "member/class/student/learningprogress")
+	public String learnpro(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/student/classLearningProgress";
 	}
 	
 	
 	
-	@RequestMapping(value = "member/class/common/postlist", method = RequestMethod.GET)
-	public String postlist() {
+	@RequestMapping(value = "member/class/common/postlist")
+	public String postlist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/classPostList";
 	}
-	@RequestMapping(value = "member/class/common/postdatalist", method = RequestMethod.GET)
-	public String postdatalist() {
+	@RequestMapping(value = "member/class/common/postdatalist")
+	public String postdatalist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/classPostDataList";
 	}
-	@RequestMapping(value = "member/class/common/postpicturelist", method = RequestMethod.GET)
-	public String postpicturelist() {
+	@RequestMapping(value = "member/class/common/postpicturelist")
+	public String postpicturelist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "member/classroom/common/classPostPictureList";
 	}
 
 	
-	@RequestMapping(value = "member/class/teacher/homeworkreport", method = RequestMethod.GET)
-	public String homeworkReport(){
+	@RequestMapping(value = "member/class/teacher/homeworkreport")
+	public String homeworkReport(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/teacher/classHomeworkReport";
 	}
 	
-	@RequestMapping(value = "member/class/teacher/homeworklist", method = RequestMethod.GET)
-	public String homeworkList(){
+	@RequestMapping(value = "member/class/teacher/homeworklist")
+	public String homeworkList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/common/classHomeworkList";
 	}
 	
 
-	@RequestMapping(value = "member/class/teacher/attendance", method = RequestMethod.GET)
-	public String classattendance(){
+	@RequestMapping(value = "member/class/teacher/attendance")
+	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/teacher/classAttendance";
 	}
-	@RequestMapping(value = "member/class/common/postview", method = RequestMethod.GET)
-	public String classPostView(){
+	@RequestMapping(value = "member/class/common/postview")
+	public String classPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/common/classPostView";
 	}
-	@RequestMapping(value = "member/class/common/postedit", method = RequestMethod.GET)
-	public String classPostEdit(){
+	@RequestMapping(value = "member/class/common/postedit")
+	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/common/classPostEdit";
 	}
 
-	@RequestMapping(value = "member/class/common/postedit2", method = RequestMethod.GET)
-	public String classPostEdit2(){
+	@RequestMapping(value = "member/class/common/postedit2")
+	public String classPostEdit2(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/common/classPostEdit2";
 	}
-	@RequestMapping(value = "member/class/common/classGrade", method = RequestMethod.GET)
-	public String classGrade(){
+	@RequestMapping(value = "member/class/common/classGrade")
+	public String classGrade(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/common/classGrade";
 	}
-	@RequestMapping(value = "member/class/common/classGraded", method = RequestMethod.GET)
-	public String classGraded(){
+	@RequestMapping(value = "member/class/common/classGraded")
+	public String classGraded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/common/classGraded";
 	}
-	@RequestMapping(value = "member/class/common/classGradeStandby", method = RequestMethod.GET)
-	public String classGradeStandby(){
+	@RequestMapping(value = "member/class/common/classGradeStandby")
+	public String classGradeStandby(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
 		return "member/classroom/common/classGradeStandby";
 	}

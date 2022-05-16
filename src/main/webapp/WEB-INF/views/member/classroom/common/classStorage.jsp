@@ -47,13 +47,13 @@
 <div id="wrapper">
 		
 	<!-- Sidebar -->	
-	<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
+	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
 
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column">
 	
 	<!-- Topbar -->
-	<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 		
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
