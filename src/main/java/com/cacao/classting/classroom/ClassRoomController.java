@@ -140,10 +140,12 @@ public class ClassRoomController {
 		httpSession.setAttribute("ctcsYear", rt.getCtcsYear());
 		httpSession.setAttribute("ctcsName", rt.getCtcsName());
 		httpSession.setAttribute("ctcmName", rt.getCtcmName());
+		httpSession.setAttribute("teacherNy", rt.getCtcmTeacherNy());
 		
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsName()) : " + rt.getCtcsName());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsYear()) : " + rt.getCtcsYear());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmName()) : " + rt.getCtcmName());
+		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmTeacherNy()) : " + rt.getCtcmTeacherNy());
 //		if(rt.getCtcmTeacherNy() == 0) {
 //			httpSession.setAttribute("hostNy", 1);
 //		} else {
