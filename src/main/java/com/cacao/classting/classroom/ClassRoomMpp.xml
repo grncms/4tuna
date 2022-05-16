@@ -99,13 +99,17 @@
 <!-- 	클래스내 정보 불러오기! -->
 	<select id="selectOneSidebar" resultMap="resultMapObj">
 		SELECT
-			ctcsSeq
-			,ctcsName
-			,ctcsYear
+			a.ctcsSeq
+			,a.ctcsYear
+			,a.ctcsName
+			,b.ctcmName
+			,b.ctcmTeacherNy
 		FROM
-			ctClass
+			ctClass a
+		LEFT JOIN ctClassMember b on b.ctcsSeq = a.ctcsSeq
 		WHERE 1=1 
-			AND ctcsSeq = #{ctcsSeq}	
+			AND b.ctcsSeq = #{ctcsSeq}
+			AND b.mmSeq = #{mmSeq}
 	</select>
 
 

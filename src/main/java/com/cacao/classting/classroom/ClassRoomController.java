@@ -134,14 +134,37 @@ public class ClassRoomController {
 	@RequestMapping(value = "/classMain")
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		
-		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-//		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+		if(vo.getCtcsSeq() != null) {
+			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
+		}
 		//사이드바 구현을 위한 
+		httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
+		
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		
+		
+		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+		
 		ClassRoom rt = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt);
 
-		vo.setCtcsSeq(dto.getCtcsSeq());
-		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
+//		클래스 입장 하면서 세션에 스페이스이름 값 세팅 => 사이드바 include 파일에서 활용
+		httpSession.setAttribute("ctcsName", rt.getCtcsName());
+		httpSession.setAttribute("ctcsYear", rt.getCtcsYear());
+		httpSession.setAttribute("ctcmName", rt.getCtcmName());
+		
+//		httpSession.setAttribute("ctcmSeq", rt.getCtcmSeq());
+		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsName()) : " + rt.getCtcsName());
+		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsYear()) : " + rt.getCtcsYear());
+		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmName()) : " + rt.getCtcmName());
+//		if(rt.getCtcmTeacherNy() == 0) {
+//			httpSession.setAttribute("hostNy", 1);
+//		} else {
+//			httpSession.setAttribute("hostNy", 0);
+//		}
 		
 		return "member/classroom/common/classMain";
 	}
