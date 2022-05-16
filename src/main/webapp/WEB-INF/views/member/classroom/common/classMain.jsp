@@ -198,7 +198,7 @@ if(${sessTeacher}==0){
 	$("#roleS").hide();		
 	$("#btn-open").show();		
 } 
-
+/* 사이드바 */
 goClassMemberList = function(seq){
 	$("#ctcsSeq").val(seq);
 	$("#mainInfo").attr("action","/classMemberList");

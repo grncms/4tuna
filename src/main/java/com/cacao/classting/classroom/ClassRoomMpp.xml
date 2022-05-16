@@ -97,7 +97,7 @@
 	</delete>
 	
 <!-- 	클래스내 정보 불러오기! -->
-	<select id="selectOneClassInfo" resultMap="resultMapObj">
+	<select id="selectOneSidebar" resultMap="resultMapObj">
 		SELECT
 			ctcsSeq
 			,ctcsName

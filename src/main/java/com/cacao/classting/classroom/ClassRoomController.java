@@ -137,7 +137,7 @@ public class ClassRoomController {
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 //		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
 		//사이드바 구현을 위한 
-		ClassRoom rt = service.selectOneClassInfo(vo);
+		ClassRoom rt = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt);
 
 		vo.setCtcsSeq(dto.getCtcsSeq());
@@ -150,7 +150,7 @@ public class ClassRoomController {
 	public String classMemberList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model) throws Exception{
 		
 		//사이드바 구현을 위한 
-		ClassRoom rt = service.selectOneClassInfo(vo);
+		ClassRoom rt = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt);
 
 		vo.setCtcsSeq(dto.getCtcsSeq());
