@@ -130,6 +130,22 @@
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
+<!-- 	과제 리스트 -->	
+	<select id="selectListHomework" resultMap="resultMapObj">
+		SELECT
+			a.cthpSeq
+			,a.cthpTitle
+			,a.cthpDesc
+			,a.cthpData 
+			,a.cthpEndDateTime
+			,a.cthpUseNy
+			,a.cthpDelNy
+		FROM
+			ctHomeworkPost a 
+			LEFT JOIN ctHomework b on b.cthwSeq = a.cthwSeq
+		WHERE 1=1
+			AND b.ctcsSeq = #{ctcsSeq}
+	</select>
 	
 
 

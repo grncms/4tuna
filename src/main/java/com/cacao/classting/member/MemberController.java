@@ -122,8 +122,8 @@ public class MemberController {
 	@RequestMapping(value = "/findId")
 	public String findId(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception{
 		
-		Member rt = service.selectOneId(dto);
-		model.addAttribute("item", rt);
+		List<Member> list = service.selectListId(vo);
+		model.addAttribute("list", list);
 		
 		return "member/findId";
 	}
@@ -135,14 +135,12 @@ public class MemberController {
 		
 //		Member rtMember = service.selectOneId(dto);
 //		model.addAttribute("rtMember", rtMember);
-		Member rtMember = service.selectOneId(dto);
-		model.addAttribute("rtMember", rtMember);
 		
-		returnMap.put("rtMember", rtMember);
+		List<Member> idList = service.selectListId(vo);
+		model.addAttribute("idList", idList);
+		
+		returnMap.put("idList", idList);
 		returnMap.put("rt", "success");
-		
-		System.out.println("rtMember.getSeq(); "+rtMember.getSeq());
-		System.out.println("dto.getMmSeq(): " + dto.getMmSeq());
 		
 		return returnMap;
 	}

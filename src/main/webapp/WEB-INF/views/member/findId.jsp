@@ -74,10 +74,8 @@
                     <div class="form-group">
                     	<button class="btn btn-primary btn-pill" type="button" id="btn-findId" name="" >아이디 찾기</button>
                     </div>
-	                    <p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${sessFIName} 님의 아이디는 ${sessFIId} 입니다.</p>
-						<c:if test="${not empty sessFISeq}">
+	                    <p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${mmName} 님의 아이디는 ${sessFIId} 입니다.</p>
 						<a href="/findId" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 아이디 다시 찾기</span></a>
-                 		</c:if>
                   </form>
                 </div>
               </div>
@@ -134,9 +132,10 @@ $("#btn-findId").on("click",function(seq){
 				$("#btn-findId").hide();
 				$("#goBack").show();
 				alert(data);
-				alert(JSON.stringify(data));
-				/* alert(JSON.stringify(data['rtMember'][0]['mmSeq'])); */
-				alert(JSON.Object.keys(stringify(data)));
+				alert(JSON.stringify(data)); 
+				alert(JSON.stringify(data['idList'][0]['mmName']));
+				
+				$('#showId').append(data['idList'][0]['mmName'] + '님의 아이디는 ' + data['idList'][0]['mmId'] + '입니다.');
 		}			
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
@@ -144,21 +143,6 @@ $("#btn-findId").on("click",function(seq){
 	});
 	
 });
-
-$("#goBack").on("click", function(){
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/member/outId"
-		,success: function(data) {
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});	
-}); 
 
  
 
