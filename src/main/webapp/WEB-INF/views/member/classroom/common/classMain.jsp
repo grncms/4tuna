@@ -71,9 +71,9 @@
 								<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
 								</c:forEach>
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-								<c:forEach items="${CodePost}" var="itemPost" varStatus="statusPost">
+<%-- 								<c:forEach items="${CodePost}" var="itemPost" varStatus="statusPost">
 								<c:if test="${item.ctboTypeCd eq itemPost.ifcdOrder }"><span><c:out value="${itemPost.ifcdName}"/></span></c:if>	
-								</c:forEach>
+								</c:forEach> --%>
 							</div>
 							<div class="body mt-1">
 								<c:if test="${item.ctboTypeCd eq 25}"><span class='badge badge_notice'>공지</span></c:if>

@@ -89,7 +89,7 @@
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								<span>공지</span>
 							</div>
-							<div class="body">
+							<div class="body mt-1">
 								<span class='badge badge_hw'>공지</span>
 								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
 								<br><br>

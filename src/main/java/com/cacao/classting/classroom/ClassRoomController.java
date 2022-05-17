@@ -271,6 +271,9 @@ public class ClassRoomController {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
+		
 		List<ClassRoom> list = service.selectListHomework(vo);
 		model.addAttribute("list", list);
 		

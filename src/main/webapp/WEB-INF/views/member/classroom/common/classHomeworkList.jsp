@@ -14,7 +14,7 @@
 <title>ForTest</title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
 <!-- Custom fonts for this template-->
 <link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -83,13 +83,15 @@
 									<div class="profile_box">
 										<img class="profile" src="/resources/common/image/test.jpg" />
 									</div>
-									<span><c:out value="${item.cthpWriter}"/></span>
+									<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+									</c:forEach>
 									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 									<span>과제</span>
 								</div>
-								<div class="body">
+								<div class="body mt-1">
 									<span class='badge badge_hw'>과제</span>
-									<span class='badge badge_todayend'>오늘 종료</span>
+									<!-- <span class='badge badge_todayend'>오늘 종료</span> -->
 									<span><c:out value="${item.cthpTitle}"/></span>
 									<div>마감 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 									<br><p><c:out value="${item.cthpDesc}"/></p>
