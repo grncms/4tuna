@@ -48,6 +48,23 @@ public class Member {
 	private Integer ctcmAlarmReactionNy;
 	private Integer ctcmDelNy;
 	
+//	ct
+	private String ctboSeq;	
+	private Integer ctboTypeCd;	
+	private Integer ctboDelNy;	
+	
+//	ctPost
+	private String ctptSeq;	
+	private String ctptTitle;	
+	private String ctptContent;	
+	private String ctptTag;	
+	private Integer ctptWriter;	
+	private Integer ctptView;	
+	private Integer ctptLike1;	
+	private Integer ctptLike2;	
+	private Integer ctptLike3;	
+	private Integer ctptDelNy;
+	
 	private String tableName;
 	private String seq;
 	private Integer type;
@@ -368,6 +385,84 @@ public class Member {
 	}
 	public void setFile1(MultipartFile[] file1) {
 		this.file1 = file1;
+	}
+	public String getCtboSeq() {
+		return ctboSeq;
+	}
+	public void setCtboSeq(String ctboSeq) {
+		this.ctboSeq = ctboSeq;
+	}
+	public Integer getCtboTypeCd() {
+		return ctboTypeCd;
+	}
+	public void setCtboTypeCd(Integer ctboTypeCd) {
+		this.ctboTypeCd = ctboTypeCd;
+	}
+	public Integer getCtboDelNy() {
+		return ctboDelNy;
+	}
+	public void setCtboDelNy(Integer ctboDelNy) {
+		this.ctboDelNy = ctboDelNy;
+	}
+	public String getCtptSeq() {
+		return ctptSeq;
+	}
+	public void setCtptSeq(String ctptSeq) {
+		this.ctptSeq = ctptSeq;
+	}
+	public String getCtptTitle() {
+		return ctptTitle;
+	}
+	public void setCtptTitle(String ctptTitle) {
+		this.ctptTitle = ctptTitle;
+	}
+	public String getCtptContent() {
+		return ctptContent;
+	}
+	public void setCtptContent(String ctptContent) {
+		this.ctptContent = ctptContent;
+	}
+	public String getCtptTag() {
+		return ctptTag;
+	}
+	public void setCtptTag(String ctptTag) {
+		this.ctptTag = ctptTag;
+	}
+	public Integer getCtptWriter() {
+		return ctptWriter;
+	}
+	public void setCtptWriter(Integer ctptWriter) {
+		this.ctptWriter = ctptWriter;
+	}
+	public Integer getCtptView() {
+		return ctptView;
+	}
+	public void setCtptView(Integer ctptView) {
+		this.ctptView = ctptView;
+	}
+	public Integer getCtptLike1() {
+		return ctptLike1;
+	}
+	public void setCtptLike1(Integer ctptLike1) {
+		this.ctptLike1 = ctptLike1;
+	}
+	public Integer getCtptLike2() {
+		return ctptLike2;
+	}
+	public void setCtptLike2(Integer ctptLike2) {
+		this.ctptLike2 = ctptLike2;
+	}
+	public Integer getCtptLike3() {
+		return ctptLike3;
+	}
+	public void setCtptLike3(Integer ctptLike3) {
+		this.ctptLike3 = ctptLike3;
+	}
+	public Integer getCtptDelNy() {
+		return ctptDelNy;
+	}
+	public void setCtptDelNy(Integer ctptDelNy) {
+		this.ctptDelNy = ctptDelNy;
 	}
 	
 	

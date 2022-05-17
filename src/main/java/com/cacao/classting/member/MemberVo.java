@@ -37,6 +37,9 @@ public class MemberVo {
 	private Date modDateTime;
 	private Date modDateTimeSvr;
 	
+	private String ctptSeq;
+	private String ctboSeq;
+	
 	//member search
 			private String shMmDelNy;
 			private String shMmName;
@@ -452,7 +455,23 @@ public class MemberVo {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 	
-	// ---- paging
+	public String getCtptSeq() {
+		return ctptSeq;
+	}
+
+	public void setCtptSeq(String ctptSeq) {
+		this.ctptSeq = ctptSeq;
+	}
+
+	public String getCtboSeq() {
+		return ctboSeq;
+	}
+
+	public void setCtboSeq(String ctboSeq) {
+		this.ctboSeq = ctboSeq;
+	}
+
+			// ---- paging
 			public void setParamsPaging(int totalRowsParam) {
 				
 				totalRows = totalRowsParam;

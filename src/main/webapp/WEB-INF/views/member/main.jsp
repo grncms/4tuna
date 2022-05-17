@@ -32,22 +32,31 @@
 <div class="container" id="main">
 	<div class="row">
 	<div class="col-md-7" >
-		<img src="/resources/user/image/main_bg.png" class="w-100" id="main_bg"	>
+	<img src="/resources/user/image/main_bg.png" class="w-100" id="main_bg"	>
+	
 		<div id="classNotice">
-		<div class="mb-4" onclick="location.href='/classMain'"><img src="/resources/user/image/a3.jpg" width="45" height="45" style="border-radius: 7px;"><span style="font-size: 20px; font-weight: bold; margin-left: 20px; padding-top: 25px;">4조<i class="fa-solid fa-angle-right"></i></span></div>
-		<span class="badge bg-info text-light mb-3">공지</span><p class="d-inline" id="title">공지 </p>
-		<p id="content">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-		<p id="date"> 2022-04-26</p>
-		<hr style="color: gray;">
-		<span class="badge bg-info text-light mb-3">공지</span><p class="d-inline" id="title">공지 </p>
-		<p id="content">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-		<p id="date"> 2022-04-26</p>
+		<h5 style="font-weight: bold; margin-bottom: 30px;">내 클래스 공지 알림</h5>
+		<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
+		<c:forEach items="${list}" var="item" varStatus="status">
+		<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
+			<div class="mb-2" onclick="location.href='javascript:goClass(<c:out value="${itemPost.ctcsSeq}"/>)'"><span style="font-size: 20px; font-weight: bold; margin-left: 20px; padding-top: 25px;">
+			</span></div>
+		<c:out value="${item.ctcName}"/>	
+		</c:if>	
+		</c:forEach>
+			<div>	
+				<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/><p class="d-inline" id="title">공지</p>
+				<p id="content"><c:out value="${itemPost.ctptContent}"/></p>
+				<p id="date"><fmt:formatDate value="${itemPost.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+				<hr style="color: gray;">
+			</div>
+		</c:forEach>
   		</div>
 	</div>
 	<div class="col-md-5">
 	<form id="mainclassList" name="mainclassList" method="post" action="">
-	<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-	<input  type="hidden" id="mmSeq" name="mmSeq">
+	<input type="hidden" id="ctcsSeq" name="ctcsSeq">
+	<input type="hidden" id="mmSeq" name="mmSeq">
 		<div id="classList">
 		<h5 style="font-weight: bold; margin-bottom: 30px;">클래스 바로가기</h5>
 			<c:forEach items="${list}" var="item" varStatus="status">	

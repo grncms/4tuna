@@ -2,6 +2,7 @@ package com.cacao.classting.member;
 
 import java.util.HashMap;
 
+
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import com.cacao.classting.code.CodeServiceImpl;
 import com.cacao.classting.common.constants.Constants;
@@ -44,6 +44,9 @@ public class MemberController {
 		
 		List<Member> list = service.selectListClass(vo);
 		model.addAttribute("list", list);
+		
+		List<Member> listNotice = service.selectListNotice(vo);
+		model.addAttribute("listNotice", listNotice);
 		
 		return "member/main";
 	}

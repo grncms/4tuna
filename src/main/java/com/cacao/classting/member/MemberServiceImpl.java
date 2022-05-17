@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cacao.classting.classroom.ClassRoom;
+import com.cacao.classting.classroom.ClassRoomVo;
 import com.cacao.classting.common.util.UtilUpload;
 
 
@@ -128,6 +130,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public List<Member> selectListId(MemberVo vo) throws Exception {
 		return dao.selectListId(vo);
+	}
+
+	@Override
+	public List<Member> selectListNotice(MemberVo vo) throws Exception {
+		return dao.selectListNotice(vo);
 	}
 
 
