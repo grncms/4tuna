@@ -130,6 +130,24 @@
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
+	
+<!-- 게시글 등록 -->	
+	<insert id="insertPost">
+        insert into ctPost (
+            ctptTitle,
+			ctptContent,
+			ctptWriter,
+			regDateTime
+			)
+        values(
+        	#{ctptTitle},
+        	#{ctptContent},
+        	#{ctptWriter},
+        	#{regDateTime}
+        	)
+	</insert>	
+	
+	
 <!-- 	과제 리스트 -->	
 	<select id="selectListHomework" resultMap="resultMapObj">
 		SELECT
