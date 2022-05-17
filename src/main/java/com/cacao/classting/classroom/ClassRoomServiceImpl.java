@@ -86,6 +86,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception {
 		return dao.selectOneClassInfo(vo);
 	}
+
+	@Override
+	public List<ClassRoom> selectListStorage(ClassRoomVo vo) throws Exception {
+		return dao.selectListStorage(vo);
+	}
 	
 
 }

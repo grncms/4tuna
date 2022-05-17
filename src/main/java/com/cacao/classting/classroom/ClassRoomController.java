@@ -98,7 +98,16 @@ public class ClassRoomController {
 	}
 	
 	@RequestMapping(value = "/classStorage")
-	public String classStorage(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String classStorage(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
+		
+		List<ClassRoom> list = service.selectListStorage(vo);
+		model.addAttribute("list", list);
 		
 		return "member/classroom/common/classStorage";
 	}

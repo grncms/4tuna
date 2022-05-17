@@ -128,6 +128,7 @@
 			,a.ctptWriter
 			,a.ctptContent 
 			,a.regDateTime
+			,a.ctptReservationTypeCd
 			,a.ctptLike1
 			,a.ctptLike2
 			,a.ctptLike3
@@ -169,6 +170,24 @@
 		WHERE 1=1
 			AND a.ctcsSeq = #{ctcsSeq}
 	</select>
-
+<!-- 	예약/임시저장 리스트 -->
+	<select id="selectListStorage" resultMap="resultMapObj">
+		SELECT
+			a.ctptSeq
+			,a.ctptTitle
+			,a.ctptWriter
+			,a.ctptContent
+			,a.regDateTime
+			,a.ctboSeq
+			,a.ctptReservationTypeCd
+			,b.ctboTypeCd
+		FROM
+			ctPost a 
+			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
+			LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
+		WHERE 1=1
+			AND b.ctcsSeq = #{ctcsSeq}
+			AND c.mmSeq = #{mmSeq}
+	</select>
 
 </mapper>

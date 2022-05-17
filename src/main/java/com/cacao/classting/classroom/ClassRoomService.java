@@ -28,6 +28,7 @@ public interface ClassRoomService {
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception;
 	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListPost(ClassRoomVo vo) throws Exception;
+	public List<ClassRoom> selectListStorage(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
 }

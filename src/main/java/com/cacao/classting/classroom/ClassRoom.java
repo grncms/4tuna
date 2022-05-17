@@ -66,6 +66,7 @@ public class ClassRoom {
 	private String ctptTag;	
 	private Integer ctptWriter;	
 	private Integer ctptView;	
+	private Integer ctptReservationTypeCd;	
 	private Integer ctptLike1;	
 	private Integer ctptLike2;	
 	private Integer ctptLike3;	
@@ -505,6 +506,12 @@ public class ClassRoom {
 	}
 	public void setCthpEndDateTime(Date cthpEndDateTime) {
 		this.cthpEndDateTime = cthpEndDateTime;
+	}
+	public Integer getCtptReservationTypeCd() {
+		return ctptReservationTypeCd;
+	}
+	public void setCtptReservationTypeCd(Integer ctptReservationTypeCd) {
+		this.ctptReservationTypeCd = ctptReservationTypeCd;
 	}
 	
 	

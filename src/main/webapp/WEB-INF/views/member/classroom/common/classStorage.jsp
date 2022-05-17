@@ -64,6 +64,12 @@
 		        <div class="body">예약 및 임시저장 게시물이 있습니다.</div>
 		    </div>
 		    <div class="card shadow mb-4 ">
+            <div class="container_base">
+				<div class="body">예약한 글</div>
+			</div>
+            <div class="container_base">
+				<div class="body">임시저장한 글</div>
+			</div>
 		    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
 			5월 2일 오전 11:02 자유 공간
 			<div class="homework_listitem mt-3">
