@@ -86,7 +86,7 @@
 	justify-content: center;
 }
 #posting {
-	width: 850px;
+	width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
@@ -112,7 +112,7 @@
 					<i class="fa-2x fa-solid fa-check" role="button" onclick=''></i><br>
 					<i class="fa-2x fa-solid fa-circle-question" role="button" onclick=''></i>
 				</div>
-				<div class="col-xl-11 col-lg-11">
+				<div class="col-xl-7 col-lg-7">
 					<div class="card shadow mb-4">
 						<div class="container_base">
 							<div class="title">수학문제 5페이지 풀이</div>
@@ -180,9 +180,9 @@
 							</div>
 						</div>
 			</div>
-	<%-- 			<div class="col-xl-3 col-lg-3">
+				<div class="col-xl-3 col-lg-3">
 					<%@ include file="/WEB-INF/views/member/classroom/common/classGraded.jsp" %>
-				</div> --%>
+				</div>
 		</div>
 	</div>
 		</div>

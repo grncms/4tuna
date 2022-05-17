@@ -32,7 +32,7 @@
 
 </head>
 <body id="page-top">
-<c:set var="CodePostType" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
+<c:set var="CodePost" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -67,13 +67,16 @@
 									<img class="profile" src="/resources/common/image/test.jpg" />
 								</div>
 								<span><c:out value="${item.ctptWriter}"/></span>
-								<span><c:out value="${item.regDateTime}"/></span>
-								<span><c:out value="${item.ctboTypeCd}"/></span>
+								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+								<c:forEach items="${CodePost}" var="itemPost" varStatus="statusPost">
+								 <c:if test="${item.ctboTypeCd eq itemPost.ifcdOrder }"><span><c:out value="${itemPost.ifcdName}"/></span></c:if>	
+								</c:forEach>
 							</div>
 							<div class="body">
 								<span class='badge badge_hw'>과제</span>
 								<span class='badge badge_todayend'>오늘 종료</span>
-								<span><c:out value="${item.ctptTitle}"/></span>
+								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
+								<p><c:out value="${item.ctptContent}"/></p>
 								<!-- <div>마감 : 4월 25일 오후 11:59</div> -->
 							</div>
 							<div class="footer">

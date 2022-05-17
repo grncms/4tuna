@@ -217,6 +217,11 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classPostView";
 	}
+	@RequestMapping(value = "member/class/common/postHomeworkview")
+	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
+		
+		return "member/classroom/common/classPostHomeworkView";
+	}
 	@RequestMapping(value = "member/class/common/postedit")
 	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		
