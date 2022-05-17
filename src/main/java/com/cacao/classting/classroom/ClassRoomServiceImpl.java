@@ -72,6 +72,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public List<ClassRoom> selectListPost(ClassRoomVo vo) throws Exception {
 		return dao.selectListPost(vo);
 	}
+
+	@Override
+	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception {
+		return dao.selectListHomework(vo);
+	}
 	
 
 }

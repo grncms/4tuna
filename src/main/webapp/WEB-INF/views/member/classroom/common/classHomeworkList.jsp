@@ -76,28 +76,30 @@
 						</div>
 					</div>
 					<div class="card shadow mb-4 ">
+					<c:forEach items="${list}" var="item" varStatus="status">
 						<div class="container_base">
 							<div class="homework list">
 								<div class="header">
 									<div class="profile_box">
-										<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+										<img class="profile" src="/resources/common/image/test.jpg" />
 									</div>
-									<span>박규원</span>
-									<span>4월 22일</span>
-									<span>자유공간</span>
+									<span><c:out value="${item.ctptWriter}"/></span>
+									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+									<span>과제</span>
 								</div>
 								<div class="body">
 									<span class='badge badge_hw'>과제</span>
 									<span class='badge badge_todayend'>오늘 종료</span>
-									<span>수학문제 풀기</span>
-									<div>마감 : 4월 25일 오후 11:59</div>
+									<span><c:out value="${item.cthpTitle}"/></span>
+									<div>마감 : <c:out value="${item.cthpEndDateTime}"/></div>
 								</div>
 								<div class="footer">
 									<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
 								</div>
 							</div>
 						</div>
-						<div class="container_base">
+						</c:forEach>
+						<!-- <div class="container_base">
 							<div class="homework list">
 								<div class="header">
 									<div class="profile_box">
@@ -120,8 +122,8 @@
 									<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
 								</div>
 							</div>
-						</div>
-						<div class="container_base">
+						</div> -->
+						<!-- <div class="container_base">
 							<div class="homework list">
 								<div class="header">
 									<div class="profile_box">
@@ -186,7 +188,7 @@
 									<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- Card Body -->
 					</div>
 				</div>

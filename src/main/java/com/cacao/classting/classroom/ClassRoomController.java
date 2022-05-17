@@ -201,7 +201,10 @@ public class ClassRoomController {
 	}
 	
 	@RequestMapping(value = "member/class/teacher/homeworklist")
-	public String homeworkList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
+	public String homeworkList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+		
+		List<ClassRoom> list = service.selectListHomework(vo);
+		model.addAttribute("list", list);
 		
 		return "member/classroom/common/classHomeworkList";
 	}

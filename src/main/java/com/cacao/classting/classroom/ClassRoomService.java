@@ -23,8 +23,9 @@ public interface ClassRoomService {
 
 	public int deleteMemberForcely(ClassRoom dto) throws Exception;
 	
-	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception;
 
 //	클래스 내 정보
+	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListPost(ClassRoomVo vo) throws Exception;
+	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 }
