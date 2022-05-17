@@ -201,17 +201,50 @@ public class ClassRoomController {
 	
 	
 	@RequestMapping(value = "member/class/common/postlist")
-	public String postlist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String postlist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
+//		게시물 리스트 불러오기
+		List<ClassRoom> list = service.selectListPost(vo);
+		model.addAttribute("list", list);
+		
+//		회원리스트 불러오기
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
 		
 		return "member/classroom/common/classPostList";
 	}
 	@RequestMapping(value = "member/class/common/postdatalist")
-	public String postdatalist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String postdatalist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
+//		게시물 리스트 불러오기
+		List<ClassRoom> list = service.selectListPost(vo);
+		model.addAttribute("list", list);
+		
+//		회원리스트 불러오기
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
 		
 		return "member/classroom/common/classPostDataList";
 	}
 	@RequestMapping(value = "member/class/common/postpicturelist")
-	public String postpicturelist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String postpicturelist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
+//		게시물 리스트 불러오기
+		List<ClassRoom> list = service.selectListPost(vo);
+		model.addAttribute("list", list);
+		
+//		회원리스트 불러오기
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
 		
 		return "member/classroom/common/classPostPictureList";
 	}
