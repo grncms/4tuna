@@ -6,8 +6,8 @@ public interface ClassRoomService {
 	
 	//adminClass
 
-	public List<ClassRoom> selectListClass(ClassRoomVo vo) throws Exception;
 
+	public List<ClassRoom> selectListClass(ClassRoomVo vo) throws Exception;
 	public int insertClass(ClassRoom dto) throws Exception;
 
 	public int deleteClass(ClassRoom dto) throws Exception;
@@ -24,4 +24,7 @@ public interface ClassRoomService {
 	public int deleteMemberForcely(ClassRoom dto) throws Exception;
 	
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception;
+
+//	클래스 내 정보
+	public List<ClassRoom> selectListPost(ClassRoomVo vo) throws Exception;
 }

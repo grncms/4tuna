@@ -111,6 +111,22 @@
 			AND b.ctcsSeq = #{ctcsSeq}
 			AND b.mmSeq = #{mmSeq}
 	</select>
+	
+<!-- 	게시물 리스트 -->
+	<select id="selectListPost" resultMap="resultMapObj">
+		SELECT
+			a.ctptSeq
+			,a.ctptTitle
+			,a.ctptContent 
+			,b.ctboTypeCd
+			,a.regDateTime
+		FROM
+			ctPost a 
+			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq; 
+		WHERE 1=1
+			b.ctcsSeq = #{ctcsSeq}
+	</select>
+	
 
 
 </mapper>

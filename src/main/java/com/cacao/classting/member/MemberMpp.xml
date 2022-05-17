@@ -247,6 +247,7 @@
 	<insert id="insertClassMember">
 		INSERT INTO ctClassMember(
 			ctcmName
+			,ctcmTeacherNy
 			,ctcmAlarmReplyNy
 			,ctcmAlarmReactionNy
 			,ctcmDelNy
@@ -254,6 +255,7 @@
 			,ctcsSeq
 		) VALUES (
 			#{ctcmName}
+			#{ctcmTeacherNy}
 			,0
 			,0
 			,0
@@ -289,6 +291,7 @@
 			AND mmSeq = #{mmSeq}
 			AND ctcsDelNy = 0
 	</select>
+
 	
 	
 	

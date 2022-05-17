@@ -146,11 +146,10 @@ public class ClassRoomController {
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsYear()) : " + rt.getCtcsYear());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmName()) : " + rt.getCtcmName());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmTeacherNy()) : " + rt.getCtcmTeacherNy());
-//		if(rt.getCtcmTeacherNy() == 0) {
-//			httpSession.setAttribute("hostNy", 1);
-//		} else {
-//			httpSession.setAttribute("hostNy", 0);
-//		}
+
+//		클래스 리스트 불러오기
+		List<ClassRoom> list = service.selectListPost(vo);
+		model.addAttribute("list", list);
 		
 		return "member/classroom/common/classMain";
 	}

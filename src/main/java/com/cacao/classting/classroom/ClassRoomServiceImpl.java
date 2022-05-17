@@ -67,6 +67,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception {
 		return dao.selectOneSidebar(vo);
 	}
+
+	@Override
+	public List<ClassRoom> selectListPost(ClassRoomVo vo) throws Exception {
+		return dao.selectListPost(vo);
+	}
 	
 
 }
