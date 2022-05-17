@@ -47,12 +47,12 @@ public class ClassRoom {
 //	ctHomeworkPost
 	private String cthpSeq;	
 	private String cthpTitle;	
-	private Integer ctphWriter;
+	private Integer cthpWriter;
 	private String cthpDesc;	
 	private String cthpData;	
 	private Integer cthpUseNy;	
 	private Integer cthpDelNy;	
-	private Date cthpEndDate;
+	private Date cthpEndDateTime;
 	
 //	ctBoard
 	private String ctboSeq;	
@@ -494,17 +494,17 @@ public class ClassRoom {
 	public void setPseq(Integer pseq) {
 		this.pseq = pseq;
 	}
-	public Integer getCtphWriter() {
-		return ctphWriter;
+	public Integer getCthpWriter() {
+		return cthpWriter;
 	}
-	public void setCtphWriter(Integer ctphWriter) {
-		this.ctphWriter = ctphWriter;
+	public void setCthpWriter(Integer cthpWriter) {
+		this.cthpWriter = cthpWriter;
 	}
-	public Date getCthpEndDate() {
-		return cthpEndDate;
+	public Date getCthpEndDateTime() {
+		return cthpEndDateTime;
 	}
-	public void setCthpEndDate(Date cthpEndDate) {
-		this.cthpEndDate = cthpEndDate;
+	public void setCthpEndDateTime(Date cthpEndDateTime) {
+		this.cthpEndDateTime = cthpEndDateTime;
 	}
 	
 	

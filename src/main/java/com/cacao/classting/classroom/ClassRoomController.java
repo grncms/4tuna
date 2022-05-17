@@ -203,6 +203,9 @@ public class ClassRoomController {
 	@RequestMapping(value = "member/class/teacher/homeworklist")
 	public String homeworkList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
 		List<ClassRoom> list = service.selectListHomework(vo);
 		model.addAttribute("list", list);
 		

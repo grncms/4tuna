@@ -28,6 +28,7 @@ public class ClassRoomVo {
 		private Integer ctcmDelNy;
 		private String mmSeq;
 		
+		private String cthwSeq;
 		
 		
 		//class search
@@ -67,6 +68,12 @@ public class ClassRoomVo {
 		
 		
 		
+		public String getCthwSeq() {
+			return cthwSeq;
+		}
+		public void setCthwSeq(String cthwSeq) {
+			this.cthwSeq = cthwSeq;
+		}
 		public String getCtcsSeq() {
 			return ctcsSeq;
 		}
