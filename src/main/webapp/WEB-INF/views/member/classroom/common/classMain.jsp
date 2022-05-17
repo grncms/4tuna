@@ -61,65 +61,38 @@
 					</div>	
 					<c:forEach items="${list}" var="item" varStatus="status">
 					<div class="container_base">
-						<div class="homework_listitem">
+						<div class="homework list">
 							<div class="header">
 								<div class="profile_box">
 									<img class="profile" src="/resources/common/image/test.jpg" />
 								</div>
-								<span><c:out value="${item.ctptWriter}"/></span>
+								<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+								<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+								</c:forEach>
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								<c:forEach items="${CodePost}" var="itemPost" varStatus="statusPost">
-								 <c:if test="${item.ctboTypeCd eq itemPost.ifcdOrder }"><span><c:out value="${itemPost.ifcdName}"/></span></c:if>	
+								<c:if test="${item.ctboTypeCd eq itemPost.ifcdOrder }"><span><c:out value="${itemPost.ifcdName}"/></span></c:if>	
 								</c:forEach>
 							</div>
-							<div class="body">
-								<span class='badge badge_hw'>과제</span>
-								<span class='badge badge_todayend'>오늘 종료</span>
+							<div class="body mt-1">
+								<c:if test="${item.ctboTypeCd eq 25}"><span class='badge badge_notice'>공지</span></c:if>
+								<c:if test="${item.ctboTypeCd eq 19}"><span class='badge badge_graded'>자유공간</span></c:if>
 								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
+								<br><br>
 								<p><c:out value="${item.ctptContent}"/></p>
-								<!-- <div>마감 : 4월 25일 오후 11:59</div> -->
 							</div>
-							<div class="footer">
-								<i class="fa-regular fa-comment"> 2</i>
-								<i class="fa-regular fa-thumbs-up"><c:out value="${item.ctptLike1}"/></i>
-								<i class="fa-solid fa-check"><c:out value="${item.ctptLike2}"/></i>
-								<i class="fa-solid fa-question"><c:out value="${item.ctptLike3}"/></i>
+							<div class="footer mt-3">
+								<i class="fa-regular fa-comment"> 2</i>&nbsp;
+								<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
+								<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
+								<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
 							</div>
 						</div>
 					</div>
 					</c:forEach>
-					<div class="container_base">
+<!-- 					<div class="container_base">
 						<div class="body">과제 게시글</div>
-					</div>	
-					<%-- <c:forEach items="${list}" var="item" varStatus="status">
-					<div class="container_base">
-						<div class="homework_listitem">
-							<div class="header">
-								<div class="profile_box">
-									<img class="profile" src="/resources/common/image/test.jpg" />
-								</div>
-								<span><c:out value="${item.ctptWriter}"/></span>
-								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-								<c:forEach items="${CodePost}" var="itemPost" varStatus="statusPost">
-								 <c:if test="${item.ctboTypeCd eq itemPost.ifcdOrder }"><span><c:out value="${itemPost.ifcdName}"/></span></c:if>	
-								</c:forEach>
-							</div>
-							<div class="body">
-								<span class='badge badge_hw'>과제</span>
-								<span class='badge badge_todayend'>오늘 종료</span>
-								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
-								<p><c:out value="${item.ctptContent}"/></p>
-								<!-- <div>마감 : 4월 25일 오후 11:59</div> -->
-							</div>
-							<div class="footer">
-								<i class="fa-regular fa-comment"> 2</i>
-								<i class="fa-regular fa-thumbs-up"><c:out value="${item.ctptLike1}"/></i>
-								<i class="fa-solid fa-check"><c:out value="${item.ctptLike2}"/></i>
-								<i class="fa-solid fa-question"><c:out value="${item.ctptLike3}"/></i>
-							</div>
-						</div>
-					</div>
-					</c:forEach> --%>
+					</div>	 -->
 				</div>
 				</form>
 			</div>

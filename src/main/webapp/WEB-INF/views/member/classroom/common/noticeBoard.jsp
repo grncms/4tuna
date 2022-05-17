@@ -75,27 +75,36 @@
 					</div>
 				</div>
 				<div class="card shadow mb-4 ">
+				<c:forEach items="${list}" var="item" varStatus="status">
+				<c:if test="${item.ctboTypeCd eq 25}">
 					<div class="container_base">
-						<div class="homework_listitem">
+						<div class="homework list">
 							<div class="header">
 								<div class="profile_box">
 									<img class="profile" src="../../../../../resources/common/image/test.jpg" />
 								</div>
-								<span>박규원</span>
-								<span>4월 22일</span>
-								<span>자유공간</span>
+								<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+									<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+								</c:forEach>
+								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+								<span>공지</span>
 							</div>
 							<div class="body">
 								<span class='badge badge_hw'>공지</span>
-								<span>부모님 모셔와라</span>
-								<div>상담한다.</div>
+								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
+								<br><br>
+								<p><c:out value="${item.ctptContent}"/></p>
 							</div>
-							<div class="footer">
-								<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
+							<div class="footer mt-3">
+								<i class="fa-regular fa-comment"> 2</i>&nbsp;
+								<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
+								<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
+								<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
 							</div>
 						</div>
 					</div>
-					<div class="container_base">
+				</c:if></c:forEach>	
+					<!-- <div class="container_base">
 						<div>
 							<div class="header">
 								<div class="profile_box">
@@ -180,7 +189,7 @@
 								<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

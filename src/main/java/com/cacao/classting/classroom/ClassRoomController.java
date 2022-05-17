@@ -41,7 +41,16 @@ public class ClassRoomController {
 		return "member/classroom/common/classMemberView";
 	}
 	@RequestMapping(value = "/noticeBoard")
-	public String classNoticeList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String classNoticeList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
+		
+		List<ClassRoom> list = service.selectListPost(vo);
+		model.addAttribute("list", list);
 		
 		return "member/classroom/common/noticeBoard";
 	}
@@ -150,6 +159,9 @@ public class ClassRoomController {
 //		클래스 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
+//		회원리스트 불러오기
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
 		
 		return "member/classroom/common/classMain";
 	}
