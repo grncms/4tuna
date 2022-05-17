@@ -101,58 +101,6 @@
 									</div>	
 								</c:if>	
 								</c:forEach>
-									<!-- <div class="title_hw" >
-						            	<div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-										<div class="col-md-10 col-lg-10" id="classInfo"><span><b>윤수빈</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-										<div class="dropdown no-arrow">
-	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-	                                        </a>
-	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-	                                            aria-labelledby="dropdownMenuLink">
-	                                            <a class="dropdown-item text-danger" href="#">회원탈퇴</a>
-	                                        </div>
-                                   		</div>
-									</div>	
-									<div class="title_hw" >
-						            	<div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-										<div class="col-md-10 col-lg-10" id="classInfo"><span><b>한동훈</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-										<div class="dropdown no-arrow">
-	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-	                                        </a>
-	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-	                                            aria-labelledby="dropdownMenuLink">
-	                                            <a class="dropdown-item text-danger" href="#">회원탈퇴</a>
-	                                        </div>
-                                   		</div>
-									</div>	
-									<div class="title_hw" >
-						            	<div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-										<div class="col-md-10 col-lg-10" id="classInfo"><span><b>최선락</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-										<div class="dropdown no-arrow">
-	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-	                                        </a>
-	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-	                                            aria-labelledby="dropdownMenuLink">
-	                                            <a class="dropdown-item text-danger" href="#">회원탈퇴</a>
-	                                        </div>
-                                   		</div>
-									</div>	
-									<div class="title_hw" >
-						            	<div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/common/image/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
-										<div class="col-md-10 col-lg-10" id="classInfo"><span><b>최민수</b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-										<div class="dropdown no-arrow">
-	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-	                                        </a>
-	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-	                                            aria-labelledby="dropdownMenuLink">
-	                                            <a class="dropdown-item text-danger" href="#">회원탈퇴</a>
-	                                        </div>
-                                   		</div>
-									</div> -->	
 								</div>	
 							</div>
                                 <!-- Card Body -->

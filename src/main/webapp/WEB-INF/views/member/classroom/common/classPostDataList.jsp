@@ -17,7 +17,7 @@
 <title></title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
 <!-- Custom fonts for this template-->
 <link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -71,160 +71,42 @@
 					<div class="container_title shadow mb-4">
 						<div class="header">학습 자료</div>
 							<div class="footer dropdown">
-								<button type="button" class="basic_button dropdown-toggle" data-bs-toggle="dropdown">글쓰기</button>
-								<ul class="dropdown-menu">
-									<li>
-										<a class="dropdown-item" href="/classBoardUpload">공지</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/classBoardUpload">게시글</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/classBoardUpload">일반 과제</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/classBoardUpload">자료실 과제</a>
-									</li>
-								</ul>
+								<button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">글쓰기</button>
 							</div>
 						</div>
 						<div class="card shadow mb-4">
-							<div class="container_base">
-								<div class="post list">
-									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+							<c:forEach items="${list}" var="item" varStatus="status">
+							<c:if test="${item.ctboTypeCd eq 20}">
+								<div class="container_base">
+									<div class="homework list">
+										<div class="header">
+											<div class="profile_box">
+												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+											</div>
+											<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+												<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+											</c:forEach>
+											<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-									</div>
-
-									<div class="post_title">
-										<a href="/member/class/common/postview"> <span class='badge badge_notice'>공지</span> <span>숙제 하세요!@</span>
-										</a>
-									</div>
-
-									<div class="post_content">
-										<div>글내용 글내용 글내용 글내용 글내용</div>
+										<div class="body mt-2">
+											<span class='badge badge_hw'>학습자료</span>
+											<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
+											<br><br>
+											<p><c:out value="${item.ctptContent}"/></p>
+											<br>
+										</div>
+										<div class="footer mt-3">
+											<i class="fa-regular fa-comment"> 2</i>&nbsp;
+											<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
+											<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
+											<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="container_base">
-								<div class="post list">
-									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-									</div>
-
-									<div class="post_title">
-										<span>일반글 제목</span>
-									</div>
-
-									<div class="post_content">
-										<div>글내용 글내용 글내용 글내용 글내용</div>
-									</div>
-
-									<div class="post_emotion">
-										<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i>
-									</div>
-
-								</div>
-							</div>
-							<div class="container_base">
-								<div class="post list">
-									<div class="header">
-										<div class="profile_box">
-											<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-										</div>
-										<span>박규원</span>
-										<span>4월 22일</span>
-									</div>
-
-									<div class="post_title">
-										<span class='badge badge_hw'>과제</span>
-										<span>과제 입니다</span>
-									</div>
-
-									<div class="post_content">
-										<div>글내용 글내용 글내용 글내용 글내용</div>
-									</div>
-								</div>
-							</div>
+							</c:if></c:forEach>
 						</div>
 					</div>
-					<div class="col-xl-4 col-lg-4">
-						<div class="container_title shadow mb-4">
-							<!-- Card Header - Dropdown -->
-							<div class="header mb-5">실시간 수업</div>
-							<button type="button" class="btn btn-lg mt-1 w-100 p-2" id="btn-add">
-								<i class="fa-solid fa-video"></i> Zoom 연동하기
-							</button>
-							<div class="title_hw">
-								<div class="col-md-2 col-lg-2" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="40" height="40" style="border-radius: 7px;">
-								</div>
-								<div class="col-md-10 col-lg-10" id="classInfo">
-									<span>
-										<b>최민수</b>
-									</span>
-									<p>
-										<span style="color: #c8c8c8; font-size: 14px;">선셍님</span>
-								</div>
-							</div>
-							<hr>
-							<div class="title_hw">
-								<div class="col-md-2 col-lg-2" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="40" height="40" style="border-radius: 7px;">
-								</div>
-								<div class="col-md-10 col-lg-10" id="classInfo">
-									<span>
-										<b>박규원</b>
-									</span>
-									<p>
-										<span style="color: #c8c8c8; font-size: 14px;">학생</span>
-								</div>
-							</div>
-							<div class="title_hw">
-								<div class="col-md-2 col-lg-2" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="40" height="40" style="border-radius: 7px;">
-								</div>
-								<div class="col-md-10 col-lg-10" id="classInfo">
-									<span>
-										<b>윤수빈</b>
-									</span>
-									<p>
-										<span style="color: #c8c8c8; font-size: 14px;">학생</span>
-								</div>
-							</div>
-							<div class="title_hw">
-								<div class="col-md-2 col-lg-2" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="40" height="40" style="border-radius: 7px;">
-								</div>
-								<div class="col-md-10 col-lg-10" id="classInfo">
-									<span>
-										<b>한동훈</b>
-									</span>
-									<p>
-										<span style="color: #c8c8c8; font-size: 14px;">학생</span>
-								</div>
-							</div>
-							<div class="title_hw">
-								<div class="col-md-2 col-lg-2" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="40" height="40" style="border-radius: 7px;">
-								</div>
-								<div class="col-md-10 col-lg-10" id="classInfo">
-									<span>
-										<b>최선락</b>
-									</span>
-									<p>
-										<span style="color: #c8c8c8; font-size: 14px;">학생</span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<%@ include file="/WEB-INF/views/member/include/classPostList_include.jsp" %>
 				</div>
 			</div>
 	</div>
