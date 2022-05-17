@@ -132,6 +132,23 @@
 			AND mmPhoneNumber = #{mmPhoneNumber}
 			<!-- AND mmDelNy = 0 -->
 	</select>
+	<select id="selectListClass" resultMap="resultMapObj">
+		select
+			a.ctcmSeq
+			,a.ctcmName
+			,a.ctcmDelNy
+			,b.ctcsYear
+			,a.mmSeq
+			,a.ctcsSeq
+			,b.ctcsName
+			,b.ctcsDelNy
+		FROM
+			ctClassMember a
+			LEFT JOIN ctClass b on b.ctcsSeq = a.ctcsSeq
+		WHERE 1=1
+			AND mmSeq = #{mmSeq}
+			AND ctcsDelNy = 0
+	</select>
 	<select id="selectListId" resultMap="resultMapObj">
 		select
 			mmSeq

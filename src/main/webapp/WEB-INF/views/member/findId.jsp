@@ -74,7 +74,8 @@
                     <div class="form-group">
                     	<button class="btn btn-primary btn-pill" type="button" id="btn-findId" name="" >아이디 찾기</button>
                     </div>
-	                    <p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${mmName} 님의 아이디는 ${sessFIId} 입니다.</p>
+	                    <%-- <p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${mmName} 님의 아이디는 ${sessFIId} 입니다.</p> --%>
+	                    <ul id="showId"class="list-group"></ul>
 						<a href="/findId" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 아이디 다시 찾기</span></a>
                   </form>
                 </div>
@@ -128,14 +129,16 @@ $("#btn-findId").on("click",function(seq){
 		,dataType : "JSON"
 		,data : { "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val()}
 		,success: function(data) {
-				$("#showId").show(); 
+				/* $("#showId").show();  */
 				$("#btn-findId").hide();
 				$("#goBack").show();
 				alert(data);
 				alert(JSON.stringify(data)); 
-				alert(JSON.stringify(data['idList'][0]['mmName']));
+				alert(JSON.stringify(data['idList'][0]['mmId']));
 				
-				$('#showId').append(data['idList'][0]['mmName'] + '님의 아이디는 ' + data['idList'][0]['mmId'] + '입니다.');
+				for(var i = 0; i < data['idList'].length; i++){	
+					$('#showId').append('<li>' +data['idList'][i]['mmId']+ '</li>') ;
+					}
 		}			
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
