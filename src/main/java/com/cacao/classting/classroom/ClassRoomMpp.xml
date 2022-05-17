@@ -117,14 +117,18 @@
 		SELECT
 			a.ctptSeq
 			,a.ctptTitle
+			,a.ctptWriter
 			,a.ctptContent 
-			,b.ctboTypeCd
 			,a.regDateTime
+			,a.ctptLike1
+			,a.ctptLike2
+			,a.ctptLike3
+			,b.ctboTypeCd
 		FROM
 			ctPost a 
-			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq; 
+			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
 		WHERE 1=1
-			b.ctcsSeq = #{ctcsSeq}
+			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
 	
 

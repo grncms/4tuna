@@ -5,6 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.cacao.classting.code.CodeServiceImpl"/>
+
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -29,7 +32,7 @@
 
 </head>
 <body id="page-top">
-
+<c:set var="CodePostType" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -49,34 +52,39 @@
 					<div class="header"><c:out value="${item.ctcsName}"/></div>
 					<div class="body"><c:out value="${item.ctcsName}"/> 클래스에 오신 것을 환영합니다</div>
 				</div>
+				<form id="postList" name="postList" method="post">
+				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+				<input  type="hidden" id="mmSeq" name="mmSeq">
 				<div class="card shadow mb-4">
 					<div class="container_base">
 						<div class="body">전체 게시글</div>
 					</div>	
+					<c:forEach items="${list}" var="item" varStatus="status">
 					<div class="container_base">
 						<div class="homework_listitem">
 							<div class="header">
 								<div class="profile_box">
 									<img class="profile" src="/resources/common/image/test.jpg" />
 								</div>
-								<span>박규원</span>
-								<span>4월 22일</span>
-								<span>자유공간</span>
+								<span><c:out value="${item.ctptWriter}"/></span>
+								<span><c:out value="${item.regDateTime}"/></span>
+								<span><c:out value="${item.ctboTypeCd}"/></span>
 							</div>
 							<div class="body">
 								<span class='badge badge_hw'>과제</span>
 								<span class='badge badge_todayend'>오늘 종료</span>
-								<span>수학문제 풀기</span>
-								<div>마감 : 4월 25일 오후 11:59</div>
+								<span><c:out value="${item.ctptTitle}"/></span>
+								<!-- <div>마감 : 4월 25일 오후 11:59</div> -->
 							</div>
 							<div class="footer">
 								<i class="fa-regular fa-comment"> 2</i>
-								<i class="fa-regular fa-thumbs-up"> 2</i>
-								<i class="fa-solid fa-check"> 1</i>
-								<i class="fa-solid fa-question"> 3</i>
+								<i class="fa-regular fa-thumbs-up"><c:out value="${item.ctptLike1}"/></i>
+								<i class="fa-solid fa-check"><c:out value="${item.ctptLike2}"/></i>
+								<i class="fa-solid fa-question"><c:out value="${item.ctptLike3}"/></i>
 							</div>
 						</div>
 					</div>
+					</c:forEach>
 					<!-- <div class="container_base">
 						<div class="header">
 							<div class="profile_box">
@@ -168,6 +176,7 @@
 						</div>
 					</div> -->
 				</div>
+				</form>
 			</div>
 		</div>
 	<!-- End of Main Content -->
