@@ -135,7 +135,7 @@ input:checked+.slider:before {
 					<div class="card-body">
 						<!-- 제목 시작 -->
 						<div class="form-title">
-							<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="title" maxlength="100" required="required" pattern=".{4,100}">
+							<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="ctptTitle" maxlength="100" required="required" pattern=".{4,100}">
 						</div>
 						<hr>
 						<!-- 제목 끝  -->
@@ -196,7 +196,9 @@ input:checked+.slider:before {
 
 						<!-- 내용 넣기 시작 -->
 						<div class="title_hw border">
-							<textarea class="formBoard" rows="20" id="content" name="content" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
+							<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;">
+								
+							</textarea>
 						</div>
 						<!-- 내용 넣기 끝 -->
 					</div>
