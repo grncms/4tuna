@@ -60,6 +60,7 @@
 						<div class="body">전체 게시글</div>
 					</div>	
 					<c:forEach items="${list}" var="item" varStatus="status">
+					<c:if test="${item.ctptReservationTypeCd eq null}">
 					<div class="container_base">
 						<div class="homework list">
 							<div class="header">
@@ -77,6 +78,8 @@
 							<div class="body mt-1">
 								<c:if test="${item.ctboTypeCd eq 25}"><span class='badge badge_notice'>공지</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 19}"><span class='badge badge_graded'>자유공간</span></c:if>
+								<c:if test="${item.ctboTypeCd eq 20}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+								<c:if test="${item.ctboTypeCd eq 21}"><span class='badge badge_after3'>활동사진</span></c:if>
 								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
 								<br><br>
 								<p><c:out value="${item.ctptContent}"/></p>
@@ -89,6 +92,7 @@
 							</div>
 						</div>
 					</div>
+					</c:if>
 					</c:forEach>
 <!-- 					<div class="container_base">
 						<div class="body">과제 게시글</div>

@@ -67,6 +67,7 @@ public class ClassRoom {
 	private Integer ctptWriter;	
 	private Integer ctptView;	
 	private Integer ctptReservationTypeCd;	
+	private Date ctptReservation;
 	private Integer ctptLike1;	
 	private Integer ctptLike2;	
 	private Integer ctptLike3;	
@@ -512,6 +513,12 @@ public class ClassRoom {
 	}
 	public void setCtptReservationTypeCd(Integer ctptReservationTypeCd) {
 		this.ctptReservationTypeCd = ctptReservationTypeCd;
+	}
+	public Date getCtptReservation() {
+		return ctptReservation;
+	}
+	public void setCtptReservation(Date ctptReservation) {
+		this.ctptReservation = ctptReservation;
 	}
 	
 	
