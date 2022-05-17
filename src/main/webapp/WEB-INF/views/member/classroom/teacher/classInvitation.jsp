@@ -62,7 +62,7 @@
 					<div class="body">구성원을 초대해 클래스에서 수업 관리를 시작하세요.</div>
 				</div>
 				<div class="card shadow mb-4 ">
-					<div class="container_base">
+				<div class="container_base">
 						<div class="homework_listitem">
 							<div class="header">
 								<span>클래스 코드</span>
@@ -70,7 +70,7 @@
 						</div>
 						<div class="classTitleSetting">
 							<div class="form-control" id="content" style=" margin-top: 10px; margin-bottom:25px; height: auto;">
-						<p style="font-size: 35px; text-align: center; margin-top: 10px;">QZUV27</p>
+						<p style="font-size: 35px; text-align: center; margin-top: 10px;"><c:out value="${item.ctcsCode}"/></p>
 								</div>	
 							</div>
 						</div>
@@ -80,9 +80,9 @@
 							</div>
 							<div class="classTitleSetting">
 								<div class="form-control" id="content"style="resize:none; margin-top: 10px; margin-bottom:25px; height: auto;">
-						창원경일고등학교의 4조 클래스에 초대합니다! <br> 클래스 코드 : QZUV27 <br>초대받은 클래스로 바로가기 <br>https://www.classting.com/c/QZUV27</div>	
-						<button type="button" class="basic_button mt-10 w-25 p-2" style="float:right">초대문구 복사</button>
+						창원경일고등학교의 4조 클래스에 초대합니다! <br> 클래스 코드 : <c:out value="${item.ctcsCode}"/> 	
 							</div>
+						<button type="button" class="basic_button mt-3 mb-4 w-25 p-2" style="float:right">초대문구 복사</button>
 						</div>
 					</div>
 				</div>	

@@ -12,7 +12,7 @@ public interface ClassRoomService {
 
 	public int deleteClass(ClassRoom dto) throws Exception;
 
-	public ClassRoom selectOneClass(ClassRoom dto) throws Exception;
+	public ClassRoom selectOneClass(ClassRoomVo vo) throws Exception;
 	
 	public int selectOneCount(ClassRoomVo vo) throws Exception;
 
@@ -26,6 +26,7 @@ public interface ClassRoomService {
 
 //	클래스 내 정보
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception;
+	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListPost(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;

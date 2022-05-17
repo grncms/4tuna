@@ -34,24 +34,23 @@
 	<div class="col-md-7" >
 	<img src="/resources/user/image/main_bg.png" class="w-100" id="main_bg"	>
 	
-		<div id="classNotice">
+	<div id="classNotice">
 		<h5 style="font-weight: bold; margin-bottom: 30px;">내 클래스 공지 알림</h5>
 		<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
 		<c:forEach items="${list}" var="item" varStatus="status">
 		<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
-			<div class="mb-2" onclick="location.href='javascript:goClass(<c:out value="${itemPost.ctcsSeq}"/>)'"><span style="font-size: 20px; font-weight: bold; margin-left: 20px; padding-top: 25px;">
-			</span></div>
-		<c:out value="${item.ctcName}"/>	
+			<div class="mb-2" onclick="location.href='javascript:goClass(<c:out value="${itemPost.ctcsSeq}"/>)'">
+			<span style="font-size: 20px; font-weight: bold; padding-top: 25px;"><c:out value="${item.ctcsName}"/></span></div>
 		</c:if>	
 		</c:forEach>
 			<div>	
-				<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/><p class="d-inline" id="title">공지</p>
+				<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/>
 				<p id="content"><c:out value="${itemPost.ctptContent}"/></p>
 				<p id="date"><fmt:formatDate value="${itemPost.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
 				<hr style="color: gray;">
 			</div>
 		</c:forEach>
-  		</div>
+	</div>
 	</div>
 	<div class="col-md-5">
 	<form id="mainclassList" name="mainclassList" method="post" action="">

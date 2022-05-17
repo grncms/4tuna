@@ -75,19 +75,19 @@
 
 
 <select id="selectOneClass" resultMap ="resultMapObj">
-			select 
-				a.ctcsName
-				,a.ctcsBelongto
-				,a.ctcsDesc
-				,a.regDateTime
-				,a.ctcsCode
-				,b.ctcmName
-			 from 
-				ctClass a
-			LEFT JOIN ctClassMember b on a.ctcsSeq = b.ctcsSeq
-			where 1=1
-				and ctcsSeq = #{ctcsSeq}
-	</select>
+	select 
+		a.ctcsName
+		,a.ctcsBelongto
+		,a.ctcsDesc
+		,a.regDateTime
+		,a.ctcsCode
+		,b.ctcmName
+	 from 
+		ctClass a
+	LEFT JOIN ctClassMember b on a.ctcsSeq = b.ctcsSeq
+	where 1=1
+		and ctcsSeq = #{ctcsSeq}
+</select>
 
 <delete id="deleteClass">
 		DELETE FROM 
@@ -111,7 +111,15 @@
 			AND b.ctcsSeq = #{ctcsSeq}
 			AND b.mmSeq = #{mmSeq}
 	</select>
-	
+<!-- 	구성원 초대하기 -->	
+<select id="selectOneClassInfo" resultMap ="resultMapObj">
+	select 
+		ctcsCode
+	 from 
+		ctClass
+	where 1=1
+		and ctcsSeq = #{ctcsSeq}
+</select>
 <!-- 	게시물 리스트 -->
 	<select id="selectListPost" resultMap="resultMapObj">
 		SELECT

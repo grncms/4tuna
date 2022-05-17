@@ -34,12 +34,6 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 
 
 	@Override
-	public ClassRoom selectOneClass(ClassRoom dto) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int selectOneCount(ClassRoomVo vo) throws Exception {
 		
 		return dao.selectOneCount(vo);
@@ -81,6 +75,16 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	@Override
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception {
 		return dao.selectListClassMember(vo);
+	}
+
+	@Override
+	public ClassRoom selectOneClass(ClassRoomVo vo) throws Exception {
+		return dao.selectOneClass(vo);
+	}
+
+	@Override
+	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception {
+		return dao.selectOneClassInfo(vo);
 	}
 	
 

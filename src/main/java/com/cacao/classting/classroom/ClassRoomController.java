@@ -179,7 +179,13 @@ public class ClassRoomController {
 	}
 	
 	@RequestMapping(value = "/classInvitation")
-	public String classInvitation(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String classInvitation(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+		ClassRoom rt = service.selectOneClassInfo(vo);
+		model.addAttribute("item", rt);
 		
 		return "member/classroom/teacher/classInvitation";
 	}
