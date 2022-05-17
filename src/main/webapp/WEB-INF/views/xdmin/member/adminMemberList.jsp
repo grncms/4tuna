@@ -254,10 +254,10 @@
 					<option value="1">선생님</option>
 					<option value="2">학생</option>
 				</select>
-				<select class="form-select" style="width: 200px; display: inline;">
+				<select class="form-select" style="width: 200px; display: inline;" name="shMmDelNy">
 					<option value="">삭제여부</option>
-					<option value="1">Y</option>
-					<option value="2">N</option>
+					<option value="1"<c:if test="${vo.shMmDelNy eq 1}">selected</c:if>>Y</option>
+					<option value="0"<c:if test="${vo.shMmDelNy eq 0}">selected</c:if>>N</option>
 				</select>
 				<fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd"/>
 					<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜"value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" autocomplete="off">
@@ -268,14 +268,14 @@
 				<br>
 				
 				
-				<select class="form-select" style="width: 200px; display: inline;">
+				<select class="form-select" style="width: 200px; display: inline;" name="shOption">
 					<option value="">검색구분</option>
-					<option value="1">이름</option>
-					<option value="2">아이디</option>
+					<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
+					<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
 				</select>
-				<input type="text" class="form-control" placeholder="검색어"style="width:200px; display:inline;">
-				<button type="button" class="btn btn-outline-success btn-lg w-45" id="btn-add" style="margin-bottom:10px;">검색</button>
-				<button type="button" class="btn btn-outline-warning btn-lg w-45" id="btn-add" style="margin-bottom:10px;">새로고침</button>
+				<input type="text" class="form-control" placeholder="검색어"style="width:200px; display:inline;"name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>">
+				<button type="submit" class="btn btn-outline-success btn-lg w-45" id="btn-add" style="margin-bottom:10px;">검색</button>
+				<button type="button" class="btn btn-outline-warning btn-lg w-45" id="btn-add" style="margin-bottom:10px;" onclick="location.href='adminMemberList'">새로고침</button>
 		</div>
 			</div>
 	
@@ -297,6 +297,7 @@
 	   			 </thead>
 	   			 <tbody>
 	      			 <c:forEach items="${list}" var="item" varStatus="status">
+	      			 	 <fmt:formatDate value="${item.regDateTime}" var="regDateTime" pattern="yyyy-MM-dd"/>
 	      				<tr>
 							<td scope="col">
 								<div class="form-check">
@@ -304,10 +305,15 @@
 								</div></td>
 							<td scope="col"><c:out value="${item.mmSeq}"/></td>
 							<td scope="col"><a href="javascript:goView(<c:out value='${item.mmSeq}'/>);"><c:out value="${item.mmName}"/></a></td>
-							<td scope="col"><c:out value="${item.mmTeacherNy}"/></td>
+							<td scope="col">
+							<c:choose>
+								<c:when test="${item.mmTeacherNy eq 0}">학생</c:when>
+								<c:otherwise>선생님</c:otherwise>
+							</c:choose>
+							</td>
 							<td scope="col"><c:out value="${item.mmSchoolCd}"/></td>
 							<td scope="col"><c:out value="${item.mmDob}"/></td>
-							<td scope="col"><c:out value="${item.regDateTime}"/></td>
+							<td scope="col"><fmt:formatDate value="${item.regDateTime}"/></td>
 								
 	    			  </tr>
 				  </c:forEach>

@@ -254,19 +254,19 @@
 				
 				<select class="form-select" style="width: 200px; display: inline;" name="shOption">
 					<option value="">검색구분</option>
-					<option value="1">이름</option>
-					<option value="2">아이디</option>
+					<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
+					<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
 				</select>
 				<select class="form-select" style="width: 200px; display: inline;" name="shCtcsDelNy">
 					<option value="">삭제여부</option>
-					<option value="1">Y</option>
-					<option value="2">N</option>
+					<option value="1"<c:if test="${vo.shCtcsDelNy eq 1}">selected</c:if>>Y</option>
+					<option value="0"<c:if test="${vo.shCtcsDelNy eq 0}">selected</c:if> >N</option>
 				</select>
 				<fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd"/>
-					<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜"value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" autocomplete="off">
+					<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" autocomplete="off">
 				
 				<fmt:parseDate value="${vo.shDateEnd}" var="shDateEnd" pattern="yyyy-MM-dd"/>
-				<input  class="form-control" type="text" style="width: 200px; display: inline;" name="shDateEnd" id="shDateEnd" placeholder="종료날짜"value="<fmt:formatDate value="${shDateEnd}" pattern="yyyy-MM-dd" />" autocomplete="off">
+				<input  class="form-control" type="text" style="width: 200px; display: inline;" name="shDateEnd" id="shDateEnd" value="<fmt:formatDate value="${shDateEnd}" pattern="yyyy-MM-dd" />" autocomplete="off">
 				
 				<br>
 				<input type="text" class="form-control" placeholder="소속검색"style="width:200px; display:inline;">
@@ -293,6 +293,7 @@
 	   			 </thead>
 	   			 <tbody>
 	   			 <c:forEach items="${list}" var="item" varStatus="status">
+		   			 <fmt:formatDate value="${item.regDateTime}" var="regDateTime" pattern="yyyy-MM-dd"/>
 	      				<tr>
 							<td scope="col">
 								<div class="form-check">
@@ -302,8 +303,14 @@
 							<td scope="col"><a href="javascript:goView(<c:out value='${item.ctcsSeq}'/>);"><c:out value="${item.ctcsName}"/></a></td>
 							<td scope="col"><c:out value="${item.ctcsBelongto}"/></td>
 							<td scope="col"><c:out value="${item.ctcsCode}"/></td>
-							<td scope="col"><c:out value="${item.regDateTime}"/></td>
-							<td scope="col"><c:out value="${item.ctcsDelNy}"/></td>
+							<td scope="col"><fmt:formatDate value="${item.regDateTime}"/>
+							</td>
+							<td scope="col">
+							<c:choose>
+								<c:when test="${item.ctcsDelNy eq 0}">X</c:when>
+								<c:otherwise>O</c:otherwise>
+							</c:choose>
+							</td>							
 								
 	    			  </tr>
 				  </c:forEach>

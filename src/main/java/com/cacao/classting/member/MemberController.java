@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cacao.classting.classroom.ClassRoom;
-import com.cacao.classting.classroom.ClassRoomVo;
+
 import com.cacao.classting.code.CodeServiceImpl;
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
@@ -48,7 +47,17 @@ public class MemberController {
 		
 		return "member/main";
 	}
-	
+
+	@RequestMapping(value = "/login_xdmin")
+	public String login_xdmin() throws Exception{
+		
+		return "xdmin/member/login_xdmin";
+	}
+	@RequestMapping(value = "/memberForm_xdmin")
+	public String memberForm_xdmin() throws Exception{
+		
+		return "xdmin/member/memberForm_xdmin";
+	}
 	@RequestMapping(value = "/memberForm_main")
 	public String memberForm_main(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		model.addAttribute("CodeLogin", CodeServiceImpl.selectListCachedCode("7"));
@@ -301,18 +310,24 @@ public class MemberController {
 	
 	
 // admin member
-		@RequestMapping(value = "/adminMemberView", method = RequestMethod.GET)
-		public String adminMemberView() {
-			
+		@RequestMapping(value = "/adminMemberView", method = RequestMethod.GET) 
+		public String adminMemberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception  {
+			  Member item = service.selectOne(vo);
+			  model.addAttribute("item", item);
 			return "xdmin/member/adminMemberView";
 		}
 		@RequestMapping(value = "/adminMemberEdit", method = RequestMethod.GET)
-		public String adminMemberEdit() {
+		public String adminMemberEdit(Member dto, MemberVo vo, RedirectAttributes redirectAttributes)throws Exception  {
+				service.update(dto);
 			
+			
+			redirectAttributes.addFlashAttribute("vo",vo);
 			return "xdmin/member/adminMemberEdit";
 		}
 		@RequestMapping(value = "/adminMemberForm", method = RequestMethod.GET)
-		public String adminMemberForm() {
+		public String adminMemberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception  {
+			Member rt = service.selectOne(vo);
+			model.addAttribute("item", rt);
 			
 			return "xdmin/member/adminMemberForm";
 		}
