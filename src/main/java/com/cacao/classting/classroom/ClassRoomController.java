@@ -157,6 +157,11 @@ public class ClassRoomController {
 	@RequestMapping(value = "/classMemberList")
 	public String classMemberList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
+		List<ClassRoom> list = service.selectListClassMember(vo);
+		model.addAttribute("list", list);
 		
 		return "member/classroom/common/classMemberList";
 	}

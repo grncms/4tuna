@@ -130,7 +130,26 @@
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
-<!--  구성원 리스트 -->	
+<!-- 	과제 리스트 -->	
+	<select id="selectListHomework" resultMap="resultMapObj">
+		SELECT
+			a.cthpSeq
+			,a.cthpTitle
+			,a.cthpWriter
+			,a.cthpDesc
+			,a.cthpData 
+			,a.cthpEndDateTime
+			,a.cthpUseNy
+			,a.cthpDelNy
+			,a.regDateTime
+			,b.cthwSeq
+		FROM
+			ctHomeworkPost a 
+			LEFT JOIN ctHomework b on b.cthwSeq = a.cthwSeq
+		WHERE 1=1
+			AND b.ctcsSeq = #{ctcsSeq}
+	</select>
+<!-- 	구성원 리스트 -->		
 	<select id="selectListClassMember" resultMap="resultMapObj">
 		SELECT
 			a.ctcmSeq
@@ -138,11 +157,10 @@
 			,a.ctcmTeacherNy
 			,a.ctcsSeq
 		FROM
-			ctHomeworkPost a 
+			ctClassMember a 
 		WHERE 1=1
 			AND a.ctcsSeq = #{ctcsSeq}
 	</select>
-	
 
 
 </mapper>
