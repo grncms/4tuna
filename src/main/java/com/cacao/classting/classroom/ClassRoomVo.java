@@ -30,6 +30,7 @@ public class ClassRoomVo {
 		
 		private String cthwSeq;
 		
+		private String ctboSeq;
 		
 		//class search
 		private String shCtcsDelNy;
@@ -317,6 +318,12 @@ public class ClassRoomVo {
 			this.shBelongto = shBelongto;
 		}
 		
+		public String getCtboSeq() {
+			return ctboSeq;
+		}
+		public void setCtboSeq(String ctboSeq) {
+			this.ctboSeq = ctboSeq;
+		}
 		// ---- paging
 		public void setParamsPaging(int totalRowsParam) {
 			

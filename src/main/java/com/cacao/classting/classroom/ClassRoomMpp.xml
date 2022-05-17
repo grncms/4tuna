@@ -179,17 +179,17 @@
 			,a.ctptWriter
 			,a.ctptReservation
 			,a.ctptContent
+			,a.ctptReservationTypeCd
 			,a.regDateTime
 			,a.ctboSeq
-			,a.ctptReservationTypeCd
 			,b.ctboTypeCd
 		FROM
 			ctPost a 
 			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
-			LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
+			<!-- LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter -->
 		WHERE 1=1
+			AND a.ctboSeq = 4
 			AND b.ctcsSeq = #{ctcsSeq}
-			AND c.ctcmSeq = #{ctcmSeq}
 	</select>
 
 </mapper>
