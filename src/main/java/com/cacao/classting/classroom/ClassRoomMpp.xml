@@ -230,4 +230,11 @@
 		AND b.ctcsSeq = #{ctcsSeq}
 </select>
 
+
+<!-- 조회수 증가  -->
+<update id="hitUpdate">
+	update ctPost 
+	set ctptView = ctptView + 1 
+	where ctptSeq = #{ctptSeq}
+</update>
 </mapper>

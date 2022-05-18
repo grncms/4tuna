@@ -22,9 +22,10 @@ public interface ClassRoomService {
 	public ClassRoom selectOneMemberClass(ClassRoom vo) throws Exception;
 
 	public int deleteMemberForcely(ClassRoom dto) throws Exception;
-	
+	// 조회수 
+	public int hitUpdate(ClassRoom dto) throws Exception;
 
-//	클래스 내 정보
+//	�겢�옒�뒪 �궡 �젙蹂�
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception;
 	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception;
 	public ClassRoom selectOneClassPost(ClassRoomVo vo) throws Exception;
@@ -32,4 +33,5 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListStorage(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
+	
 }

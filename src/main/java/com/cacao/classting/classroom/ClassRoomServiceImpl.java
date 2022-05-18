@@ -96,6 +96,15 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public ClassRoom selectOneClassPost(ClassRoomVo vo) throws Exception {
 		return dao.selectOneClassPost(vo);
 	}
+
+	@Override
+	public int hitUpdate(ClassRoom dto) throws Exception {
+		dao.hitUpdate(dto);
+		return 0;
+	}
+
+
+
 	
 
 }
