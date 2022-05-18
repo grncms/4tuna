@@ -49,4 +49,21 @@ public class ClassRoomDao {
 //ï¿½ï¿½È¸ï¿½ï¿½
 	
 	public int hitUpdate(ClassRoom dto) {return sqlSession.update(namespace + ".hitUpdate",dto);}
+	
+	
+	// Ãâ¼®ºÎ
+	public ClassRoom getClassId(ClassRoomVo vo) {
+		return sqlSession.selectOne(namespace+".getClassId",vo);
+		
+	}
+	
+	public int attendance(ClassRoom dto) {
+		return sqlSession.insert(namespace + ".attendance",dto);
+		
+	}
+	
+	public List<ClassRoom> today(ClassRoom dto){
+		return sqlSession.selectList(namespace+ ".today",dto);
+		
+	}
 }

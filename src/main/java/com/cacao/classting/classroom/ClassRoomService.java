@@ -35,4 +35,9 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
 	
+	
+// 출석부
+	public ClassRoom getClassId(ClassRoomVo vo) throws Exception;
+	public int attendance(ClassRoom dto) throws Exception;
+	public List<ClassRoom> today(ClassRoom dto) throws Exception;
 }

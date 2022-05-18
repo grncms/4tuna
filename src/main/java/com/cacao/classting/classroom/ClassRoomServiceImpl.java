@@ -108,6 +108,23 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.selectOneClassHomework(vo);
 	}
 
+	@Override
+	public ClassRoom getClassId(ClassRoomVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getClassId(vo);
+	}
+
+	@Override
+	public int attendance(ClassRoom dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.attendance(dto);
+	}
+
+	@Override
+	public List<ClassRoom> today(ClassRoom dto) throws Exception {
+		return dao.today(dto);
+	}
+
 
 
 	

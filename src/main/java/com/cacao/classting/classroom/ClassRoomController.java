@@ -1,11 +1,9 @@
 package com.cacao.classting.classroom;
 
 
-import java.text.DateFormat;
-
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
@@ -136,7 +133,8 @@ public class ClassRoomController {
 
 	@RequestMapping(value = "/classMain")
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
-		
+		String today = LocalDate.now().toString();
+		String now = LocalDateTime.now().toString();
 		if(vo.getCtcsSeq() != null) {
 			httpSession.setAttribute("hyspSeq", vo.getCtcsSeq());
 		}
@@ -147,9 +145,11 @@ public class ClassRoomController {
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		
+		
 		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		
+	
 		
 		ClassRoom rt = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt);
@@ -174,6 +174,16 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
+		//출석 체크
+		ClassRoom attendance = service.getClassId(vo); 
+		System.out.println("클래스멤버" + attendance.getCtcmSeq());
+		attendance.setCtadRegDateTime(now);
+		attendance.setAttendanceToday(today);
+		System.out.println("시간" + attendance.getCtadRegDateTime());
+		if(service.today(attendance).size() < 1 && rt.getCtcmTeacherNy()==0 ) {
+			service.attendance(attendance) ;
+			System.out.println("출석부에 등록");
+		}
 		return "member/classroom/common/classMain";
 	}
 	
@@ -285,7 +295,7 @@ public class ClassRoomController {
 
 	@RequestMapping(value = "member/class/teacher/attendance")
 	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
-		
+		System.out.println("출석부 :" +  httpSession.getAttribute("sessSeq"));
 		return "member/classroom/teacher/classAttendance";
 	}
 	@RequestMapping(value = "member/class/common/postview")

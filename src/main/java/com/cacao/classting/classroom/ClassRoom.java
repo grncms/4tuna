@@ -30,7 +30,7 @@ public class ClassRoom {
 	
 //	ctAddendance
 	private String ctadSeq;
-	private Date ctadRegDateTime;
+	private String ctadRegDateTime;
 	
 //	ctHomework
 	private String cthwSeq;
@@ -94,6 +94,11 @@ public class ClassRoom {
 	private long size;	
 	private Integer delNy;	
 	private Integer pseq;
+	
+	//√‚ºÆ
+	
+	private String attendanceToday;
+	
 	public String getCtcsSeq() {
 		return ctcsSeq;
 	}
@@ -220,10 +225,10 @@ public class ClassRoom {
 	public void setCtadSeq(String ctadSeq) {
 		this.ctadSeq = ctadSeq;
 	}
-	public Date getCtadRegDateTime() {
+	public String getCtadRegDateTime() {
 		return ctadRegDateTime;
 	}
-	public void setCtadRegDateTime(Date ctadRegDateTime) {
+	public void setCtadRegDateTime(String ctadRegDateTime) {
 		this.ctadRegDateTime = ctadRegDateTime;
 	}
 	public String getCthwSeq() {
@@ -519,6 +524,12 @@ public class ClassRoom {
 	}
 	public void setCtptReservation(Date ctptReservation) {
 		this.ctptReservation = ctptReservation;
+	}
+	public String getAttendanceToday() {
+		return attendanceToday;
+	}
+	public void setAttendanceToday(String attendanceToday) {
+		this.attendanceToday = attendanceToday;
 	}
 	
 	

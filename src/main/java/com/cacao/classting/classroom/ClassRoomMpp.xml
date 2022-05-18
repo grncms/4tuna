@@ -274,4 +274,29 @@
 
 </update>
 
+<!-- 출석부 -->
+
+<insert id="attendance">
+	insert into ctAttendance (
+	ctcmSeq,
+	ctadRegDateTime
+	) values (
+		
+		#{ctcmSeq},
+		#{ctadRegDateTime}
+	)
+</insert>
+
+<select id = "getClassId" resultMap="resultMapObj">
+	select ctcmSeq
+	from ctClassMember
+	where mmSeq = ${mmSeq} and ctcsSeq = ${ctcsSeq}
+</select>
+
+<!-- 출석부 날짜비교해서 하루에 한번만 기록 들어가게끔, 오늘 날짜로 들어간것들 다 불러오는 쿼리  -->
+<select id ="today" resultMap="resultMapObj">
+	select ctadRegDateTime
+	from ctAttendance
+	where DATE_FORMAT(ctadRegDateTime, '%Y-%m-%d') =  ${attendanceToday}
+</select>
 </mapper>

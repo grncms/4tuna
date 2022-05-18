@@ -126,6 +126,7 @@
 										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
 										</c:forEach>
 									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+									<span style="color: #c8c8c8; font-size: 14px;">조회수:<c:out value="${item.ctptView }"/></span>
 									</div>
 								</div>
 						</div>
