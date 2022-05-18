@@ -144,18 +144,16 @@
 	<!-- 	게시물 보기 -->	
 <select id="selectOneClassPost" resultMap ="resultMapObj">
 	select 
-		a.ctptSeq
-		,a.ctptTitle
-		,a.ctptWriter
-		,a.ctptContent 
-		,a.regDateTime
-		,a.ctptReservationTypeCd
-		,a.ctptLike1
-		,a.ctptLike2
-		,a.ctptLike3
-		,b.ctboTypeCd
+		ctptSeq
+		,ctptTitle
+		,ctptWriter
+		,ctptContent 
+		,regDateTime
+		,ctptLike1
+		,ctptLike2
+		,ctptLike3
 	 from 
-		ctClass
+		ctPost
 	where 1=1
 		and ctptSeq = #{ctptSeq}
 </select>

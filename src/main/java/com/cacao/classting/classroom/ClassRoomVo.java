@@ -29,7 +29,7 @@ public class ClassRoomVo {
 		private String mmSeq;
 		
 		private String cthwSeq;
-		
+		private String ctptSeq;
 		private String ctboSeq;
 		
 		//class search
@@ -323,6 +323,13 @@ public class ClassRoomVo {
 		}
 		public void setCtboSeq(String ctboSeq) {
 			this.ctboSeq = ctboSeq;
+		}
+		
+		public String getCtptSeq() {
+			return ctptSeq;
+		}
+		public void setCtptSeq(String ctptSeq) {
+			this.ctptSeq = ctptSeq;
 		}
 		// ---- paging
 		public void setParamsPaging(int totalRowsParam) {

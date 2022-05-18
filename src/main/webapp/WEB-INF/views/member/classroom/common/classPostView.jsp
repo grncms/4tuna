@@ -110,7 +110,7 @@
 				<div class="col-12">
 					<div class="card shadow mb-4">
 						<div class="container_base">
-							<div class="title"><c:out value="${item.ctptContent}"/></div>
+							<div class="title"><c:out value="${item.ctptTitle}"/></div>
 						</div>
 						<div class="container_base">
 								<div class="writer row">
@@ -118,22 +118,22 @@
 										<img src="/resources/common/image/profile2.png" width="45" height="45" style="border-radius: 7px;">
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
-										<span>
-											<b>박규원</b>
-										</span>
-										<span style="color: #c8c8c8; font-size: 14px;">4월 22일 오전 11:16</span>
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
+										</c:forEach>
+									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 									</div>
 								</div>
 						</div>
 						<div class="container_base">
 							<div class="post_content">
 								<div>
-									sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> asdas
+									<c:out value="${item.ctptContent}"/>
 								</div>
 								<div class="post_content mt-3 float-end">
-								<i class="fa fa-solid fa-thumbs-up" role="button" onclick=''> 1</i>
-								<i class="fa fa-solid fa-check" role="button" onclick=''> 1</i>
-								<i class="fa fa-solid fa-circle-question" role="button" onclick=''> 1</i>
+								<i class="fa fa-solid fa-thumbs-up" role="button" onclick=''> <c:out value="${item.ctptLike1}"/></i>
+								<i class="fa fa-solid fa-check" role="button" onclick=''> <c:out value="${item.ctptLike2}"/></i>
+								<i class="fa fa-solid fa-circle-question" role="button" onclick=''> <c:out value="${item.ctptLike3}"/></i>
 								</div>
 							</div>
 						</div>
