@@ -54,6 +54,7 @@
 				</div>
 				<form id="postList" name="postList" method="post">
 				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+				<input  type="hidden" id=ctptSeq name="ctptSeq">
 				<input  type="hidden" id="mmSeq" name="mmSeq">
 				<div class="card shadow mb-4">
 					<div class="container_base">
@@ -71,16 +72,13 @@
 								<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
 								</c:forEach>
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-<%-- 								<c:forEach items="${CodePost}" var="itemPost" varStatus="statusPost">
-								<c:if test="${item.ctboTypeCd eq itemPost.ifcdOrder }"><span><c:out value="${itemPost.ifcdName}"/></span></c:if>	
-								</c:forEach> --%>
 							</div>
-							<div class="body mt-1">
+							<div class="body mt-1" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
 								<c:if test="${item.ctboTypeCd eq 25}"><span class='badge badge_notice'>공지</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 19}"><span class='badge badge_graded'>자유공간</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 20}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 21}"><span class='badge badge_after3'>활동사진</span></c:if>
-								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
+								<span><c:out value="${item.ctptTitle}"/></span>
 								<br><br>
 								<p><c:out value="${item.ctptContent}"/></p>
 							</div>
@@ -129,6 +127,12 @@ if(${sessTeacher}==0){
 	$("#roleS").hide();		
 	$("#btn-open").show();		
 } 
+
+goView = function(seq){
+	$("#ctptSeq").val(seq);
+	$("#postList").attr("action","/member/class/common/postview");
+	$("#postList").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	

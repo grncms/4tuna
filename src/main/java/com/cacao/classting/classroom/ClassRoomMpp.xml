@@ -141,7 +141,24 @@
 			AND b.ctcsSeq = #{ctcsSeq}
 		ORDER BY a.regDateTime 	
 	</select>
-	
+	<!-- 	게시물 보기 -->	
+<select id="selectOneClassPost" resultMap ="resultMapObj">
+	select 
+		a.ctptSeq
+		,a.ctptTitle
+		,a.ctptWriter
+		,a.ctptContent 
+		,a.regDateTime
+		,a.ctptReservationTypeCd
+		,a.ctptLike1
+		,a.ctptLike2
+		,a.ctptLike3
+		,b.ctboTypeCd
+	 from 
+		ctClass
+	where 1=1
+		and ctptSeq = #{ctptSeq}
+</select>
 	<!-- 게시물 등록 -->
 	<insert id="insertPost">
 		INSERT INTO ctPost(
@@ -194,25 +211,24 @@
 			AND a.ctcsSeq = #{ctcsSeq}
 	</select>
 <!-- 	예약/임시저장 리스트 -->
-	<select id="selectListStorage" resultMap="resultMapObj">
-		SELECT
-			a.ctptSeq
-			,a.ctptTitle
-			,a.ctptWriter
-			,a.ctptReservation
-			,a.ctptContent
-			,a.ctptReservationTypeCd
-			,a.regDateTime
-			,a.ctboSeq
-			,b.ctboTypeCd
-		FROM
-			ctPost a 
-			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
-			LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
-		WHERE 1=1
-			AND a.ctboSeq = 4
-			AND b.ctcsSeq = #{ctcsSeq}
-			<!-- AND a.ctptWriter = #{ctcmSeq} -->
-	</select>
+<select id="selectListStorage" resultMap="resultMapObj">
+	SELECT
+		a.ctptSeq
+		,a.ctptTitle
+		,a.ctptWriter
+		,a.ctptReservation
+		,a.ctptContent
+		,a.ctptReservationTypeCd
+		,a.regDateTime
+		,a.ctboSeq
+		,b.ctboTypeCd
+	FROM
+		ctPost a 
+		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
+		LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
+	WHERE 1=1
+		AND a.ctboSeq = 4
+		AND b.ctcsSeq = #{ctcsSeq}
+</select>
 
 </mapper>

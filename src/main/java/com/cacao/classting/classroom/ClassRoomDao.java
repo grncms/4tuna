@@ -39,6 +39,7 @@ public class ClassRoomDao {
 //	class
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneSidebar", vo);}
 	public ClassRoom selectOneClassInfo(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneClassInfo", vo);}
+	public ClassRoom selectOneClassPost(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneClassPost", vo);}
 	public List<ClassRoom> selectListPost(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListPost",vo); return list;}
 	public List<ClassRoom> selectListStorage(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListStorage",vo); return list;}
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomework",vo); return list;}

@@ -80,6 +80,7 @@
 						<div class="container_base">
 							<div class="homework list">
 								<div class="header">
+
 									<div class="profile_box">
 										<img class="profile" src="/resources/common/image/test.jpg" />
 									</div>

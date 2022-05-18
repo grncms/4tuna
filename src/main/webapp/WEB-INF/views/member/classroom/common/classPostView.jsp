@@ -18,7 +18,7 @@
 <title>ForTest</title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <!-- Custom fonts for this template-->
 <link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -85,12 +85,12 @@
 	display: flex;
 	justify-content: center;
 }
-#posting {
+/* #posting {
 	width: 850px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
-}
+} */
 </style>
 
 
@@ -107,15 +107,10 @@
 
 		<div class="container-fluid">
 			<div class="row" id="posting">
-				<div class="col-xl-1 col-lg-1">
-					<i class="fa-2x fa-solid fa-thumbs-up" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-check" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-circle-question" role="button" onclick=''></i>
-				</div>
-				<div class="col-xl-11 col-lg-11">
+				<div class="col-12">
 					<div class="card shadow mb-4">
 						<div class="container_base">
-							<div class="title">수학문제 5페이지 풀이</div>
+							<div class="title"><c:out value="${item.ctptContent}"/></div>
 						</div>
 						<div class="container_base">
 								<div class="writer row">
@@ -135,10 +130,15 @@
 								<div>
 									sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> asdas
 								</div>
-								<h6>댓글 1</h6>
+								<div class="post_content mt-3 float-end">
+								<i class="fa fa-solid fa-thumbs-up" role="button" onclick=''> 1</i>
+								<i class="fa fa-solid fa-check" role="button" onclick=''> 1</i>
+								<i class="fa fa-solid fa-circle-question" role="button" onclick=''> 1</i>
+								</div>
 							</div>
 						</div>
 						<div class="container_base">
+							<h5>댓글 1</h5>
 							<div class="comment row">
 								<div class="col-md-2 col-lg-1" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">

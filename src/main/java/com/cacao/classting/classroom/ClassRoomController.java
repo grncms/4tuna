@@ -287,7 +287,18 @@ public class ClassRoomController {
 		return "member/classroom/teacher/classAttendance";
 	}
 	@RequestMapping(value = "member/class/common/postview")
-	public String classPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
+	public String classPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+//		게시물보기
+		ClassRoom rt = service.selectOneClassPost(vo);
+		model.addAttribute("item", rt);
+
+//		회원리스트 불러오기
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
 		
 		return "member/classroom/common/classPostView";
 	}
