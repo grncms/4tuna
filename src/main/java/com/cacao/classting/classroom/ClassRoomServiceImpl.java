@@ -103,6 +103,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return 0;
 	}
 
+	@Override
+	public ClassRoom selectOneClassHomework(ClassRoomVo vo) throws Exception {
+		return dao.selectOneClassHomework(vo);
+	}
+
 
 
 	

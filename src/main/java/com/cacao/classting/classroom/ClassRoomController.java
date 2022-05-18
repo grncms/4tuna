@@ -305,7 +305,19 @@ public class ClassRoomController {
 		return "member/classroom/common/classPostView";
 	}
 	@RequestMapping(value = "member/class/common/homeworkview")
-	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
+	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+//		homeworkView
+		ClassRoom rt = service.selectOneClassHomework(vo);
+		model.addAttribute("item", rt);
+
+//		
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
+		
 		
 		return "member/classroom/common/classHomeworkView";
 	}

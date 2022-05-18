@@ -40,12 +40,13 @@ public class ClassRoomDao {
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneSidebar", vo);}
 	public ClassRoom selectOneClassInfo(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneClassInfo", vo);}
 	public ClassRoom selectOneClassPost(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneClassPost", vo);}
+	public ClassRoom selectOneClassHomework(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneClassHomework", vo);}
 	public List<ClassRoom> selectListPost(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListPost",vo); return list;}
 	public List<ClassRoom> selectListStorage(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListStorage",vo); return list;}
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomework",vo); return list;}
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassMember",vo); return list;}
 
-//Á¶È¸¼ö
+//ï¿½ï¿½È¸ï¿½ï¿½
 	
 	public int hitUpdate(ClassRoom dto) {return sqlSession.update(namespace + ".hitUpdate",dto);}
 }

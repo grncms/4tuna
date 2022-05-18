@@ -86,7 +86,7 @@
 	justify-content: center;
 }
 #posting {
-	width: 1200px;
+	width: 1100px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
@@ -107,12 +107,12 @@
 
 		<div class="container-fluid">
 			<div class="row" id="posting">
-				<div class="col-xl-1 col-lg-1">
+				<!-- <div class="col-xl-1 col-lg-1">
 					<i class="fa-2x fa-solid fa-thumbs-up" role="button" onclick=''></i><br>
 					<i class="fa-2x fa-solid fa-check" role="button" onclick=''></i><br>
 					<i class="fa-2x fa-solid fa-circle-question" role="button" onclick=''></i>
-				</div>
-				<div class="col-xl-7 col-lg-7">
+				</div> -->
+				<div class="col-xl-8 col-lg-8">
 					<div class="card shadow mb-4">
 						<div class="container_base">
 							<div class="title">수학문제 5페이지 풀이</div>
