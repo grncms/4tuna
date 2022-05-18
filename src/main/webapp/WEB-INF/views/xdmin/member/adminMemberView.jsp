@@ -231,83 +231,86 @@
 <body id="page-top">
 <jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
 <!-- Topbar end -->
-
+<form id="memberView" name="memberView" method="post" action="adminMemberView">
+	<input type="hidden" id="shOption" name="shOption" value="<c:out value="${vo.shOption}"/>">
+	<input type="hidden" id="shValue" name="shValue" value="<c:out value="${vo.shValue}"/>">
+	<input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${item.mmSeq}"/>">
 		<div class="row justify-content-center">
 			<div class="col-md-10 d-flex justify-content-center" id="context">
 			<div class="col-md-6">
 				<h4 style="text-align: center;">회원정보</h4>
 				<h5>프로필</h5>
-					<label for="ifmmName" class="form-label">이름</label>
-					<input type="text" class="form-control" id="ifmmName" name="ifmmName" value="한동훈" readonly>
+					<label for="mmName" class="form-label">이름</label>
+					<input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>" readonly>
 					<label for="classImg" class="form-label">클래스 사진</label>
 					<div >
 						<img src="../../../../resources/common/image/profile2.png"  width="70" height="70" >
 					</div>
-					<label for="classSchool" class="form-label">소속 학교</label>
-					<input type="text" class="form-control" id="classSchool" name="classSchool" value="##중학교" readonly>
+					<label for="mmSchoolCd" class="form-label">소속 학교</label>
+					<input type="text" class="form-control" id="classSchool" name="classSchool"  value="<c:out value="${item.mmSchoolCd}"/>" readonly>
 							
-				<label for="grade" class="form-label">담당학년</label>
-				<select class="form-select" id="grade" name="grade" disabled>
+				<label for="mmGradeCd" class="form-label">담당학년</label>
+				<select class="form-select" id="mmGradeCd" name="mmGradeCd" disabled>
 					<option>학년 선택
-					<option selected>1학년
-					<option>2학년
-					<option>3학년
-					<option>4학년
-					<option>5학년
-					<option>6학년
+					<option value="1" <c:if test="${item.mmGradeCd eq 1 }">selected</c:if>>1학년
+					<option value="2" <c:if test="${item.mmGradeCd eq 2 }">selected</c:if>>2학년
+					<option value="3" <c:if test="${item.mmGradeCd eq 3 }">selected</c:if>>3학년
+					<option value="4" <c:if test="${item.mmGradeCd eq 4 }">selected</c:if>>4학년
+					<option value="5" <c:if test="${item.mmGradeCd eq 5 }">selected</c:if>>5학년
+					<option value="6" <c:if test="${item.mmGradeCd eq 6 }">selected</c:if>>6학년
 				</select>
-		            <label class="col-form-label">프로필</label>
-		          	  <textarea rows="3" cols="100" id="ifmmDesc" name="ifmmDesc" disabled>안녕하세요~</textarea>
-					<label for="gender" class="form-label">성별</label>
-					<select class="form-select" id="gender" name="gender" disabled>
-						<option>성별 선택
-						<option selected>남
-						<option>여
-						<option>선택안함
+		            <label class="col-form-label" for="mmDesc">프로필</label>
+		          	  <textarea rows="3" cols="100" id="mmDesc" name="mmDesc" disabled><c:out value="${item.mmDesc}"/></textarea>
+					<label for="mmGenderCd" class="form-label">성별</label>
+					<select class="form-select" id="mmGenderCd" name="mmGenderCd" disabled>
+						<option >성별 선택
+						<option value="1" <c:if test="${item.mmGenderCd eq 1 }">selected</c:if>>남
+						<option value="2" <c:if test="${item.mmGenderCd eq 2 }">selected</c:if>>여
+						<option value="3" <c:if test="${item.mmGenderCd eq 3 }">selected</c:if>>선택안함
 					</select>
-					<label for="ifmmDob" class="form-label">생일정보</label>
+					<label for="mmDob" class="form-label">생일정보</label>
 					<!-- datepicker 사용 -->
-					<input type="text" class="form-control" id="ifmmDob" name="ifmmDob" value="2020.12.12" readonly> 
+					<input type="text" class="form-control" id="mmDob" name="mmDob" value="<c:out value="${item.mmDob}"/>" readonly> 
 					<!-- datepicker 사용 -->
 		<hr>
 			<h5>계정</h5>
-				<label for="ifmmId" class="form-label">아이디</label>
-				<input type="text" class="form-control" id="ifmmId" name="ifmmId" value="한동훈" readonly>
-				<label for="ifmmPassword" class="form-label">비밀번호</label>
-				<input type="text" class="form-control" id="ifmmPassword" name="ifmmPassword" value="*****" readonly>
+				<label for="mmId" class="form-label">아이디</label>
+				<input type="text" class="form-control" id="mmId" name="mmId" value="<c:out value="${item.mmId}"/>" readonly>
+				<label for="mmPassword" class="form-label">비밀번호</label>
+				<input type="text" class="form-control" id="mmPassword" name="mmPassword" value="<c:out value="${item.mmPassword}"/>" readonly>
 				
-				<label for="email" class="form-label">이메일</label>
-				<input type="text" class="form-control"  id="email" name="email" value="Hun@naver.com" readonly>
+				<label for="mmMemberEmail" class="form-label">이메일</label>
+				<input type="text" class="form-control"  id="mmMemberEmail" name="mmMemberEmail" value="<c:out value="${item.mmMemberEmail}"/>" readonly>
 			
-				<label for="number" class="form-label">휴대폰 번호</label>
-					<input type="text" class="form-control"  id="number" name="number" value="010-0000-0000" readonly>
+				<label for="mmPhoneNumber" class="form-label">휴대폰 번호</label>
+					<input type="text" class="form-control"  id="mmPhoneNumber" name="mmPhoneNumber" value="<c:out value="${item.mmPhoneNumber}"/>" readonly>
 
-			<label for="role" class="form-label">역할</label>
-				<select class="form-select" id="role" name="role" disabled>
-					<option>선생님
-					<option selected>학생
+			<label for="mmTeacherNy" class="form-label">역할</label>
+				<select class="form-select" id="mmTeacherNy" name="mmTeacherNy" disabled>
+					<option value="1" <c:if test="${item.mmTeacherNy eq 1 }">selected</c:if>>선생님
+					<option value="2" <c:if test="${item.mmTeacherNy eq 0 }">selected</c:if>>학생
 				</select>
 		<hr>
 		
 		<h5>알림 상세 설정</h5>
-			<label for="alarm" class="form-label">클래스 초대/수락</label>
-				<select class="form-select" id="alarm" name="alarm" disabled>
-					<option>알림 받기
-					<option>알림 거부
+			<label for="mmAlarmInvitationNy" class="form-label">클래스 초대/수락</label>
+				<select class="form-select" id="mmAlarmInvitationNy" name="mmAlarmInvitationNy" disabled>
+					<option value="1" <c:if test="${item.mmAlarmInvitationNy eq 1}">selected</c:if>>알림 받기
+					<option value="0" <c:if test="${item.mmAlarmInvitationNy eq 0}">selected</c:if>>알림 거부
 				</select>
-			<label for="homeAlarm" class="form-label">홈소식</label>
-				<select class="form-select" id="homeAlarm" name="homeAlarm" disabled>
-					<option>모든 소식 알림
-					<option>알림 거부
+			<label for="mmEventNotificationNy" class="form-label">홈소식</label>
+				<select class="form-select" id="mmEventNotificationNy" name="mmEventNotificationNy" disabled>
+					<option value="1" <c:if test="${item.mmEventNotificationNy eq 1 }">selected</c:if>>모든 소식 알림
+					<option value="0" <c:if test="${item.mmEventNotificationNy eq 0 }">selected</c:if>>알림 거부
 				</select>
-			<label for="replyAlarm" class="form-label">답글</label>
-				<select class="form-select" id="replyAlarm" name="replyAlarm" disabled>
-					<option>모든 답글 알림
-					<option>알림 거부
+			<label for="mmAlarmReplyNy" class="form-label">답글</label>
+				<select class="form-select" id="mmAlarmReplyNy" name="mmAlarmReplyNy" disabled>
+					<option value="1" <c:if test="${item.mmAlarmReplyNy eq 1 }">selected</c:if>>모든 답글 알림
+					<option value="0" <c:if test="${item.mmAlarmReplyNy eq 0 }">selected</c:if>>알림 거부
 				</select>
 			<div>
 				<button type="button" class="btn btn-outline-danger btn-lg w-45" style="display: inline; float: left;" id="btn-add"   data-bs-toggle="modal" data-bs-target="#Delete">삭제</button>
-				<button type="button" class="btn btn-outline-primary btn-lg w-45" style="display: inline; float: right;" id="btn-add" onclick="location.href='./adminMemberEdit'">수정</button>
+				<button type="button" class="btn btn-outline-primary btn-lg w-45" style="display: inline; float: right;" id="btn-add"  onclick="javascript:goEdit(<c:out value='${item.mmSeq}'/>);">수정</button>
 				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right; " id="btn-add" onclick="location.href='./adminMemberList'">회원리스트</button>
 			</div>
 			
@@ -339,8 +342,8 @@
 					
 
 </div>
-		
-	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
+
+</form>
  <!-- Bootstrap core JavaScript-->
    <script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -350,8 +353,15 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../../../../resources/common/js/sb-admin-2.min.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script type="text/javascript">
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+goEdit = function(seq) {
+	$("#mmSeq").val(seq);
+	$("#memberView").attr("action","/adminMemberEdit");
+	$("#memberView").submit();
+}
+</script>
 </body>
 </html>

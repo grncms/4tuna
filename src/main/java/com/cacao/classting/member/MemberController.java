@@ -310,52 +310,71 @@ public class MemberController {
 		}
 	
 	
-// admin member
-		@RequestMapping(value = "/adminMemberView", method = RequestMethod.GET) 
-		public String adminMemberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception  {
-			  Member item = service.selectOne(vo);
-			  model.addAttribute("item", item);
-			return "xdmin/member/adminMemberView";
-		}
-		@RequestMapping(value = "/adminMemberEdit", method = RequestMethod.GET)
-		public String adminMemberEdit(Member dto, MemberVo vo, RedirectAttributes redirectAttributes)throws Exception  {
-				service.update(dto);
-			
-			
-			redirectAttributes.addFlashAttribute("vo",vo);
-			return "xdmin/member/adminMemberEdit";
-		}
-		@RequestMapping(value = "/adminMemberForm", method = RequestMethod.GET)
-		public String adminMemberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception  {
-			Member rt = service.selectOne(vo);
-			model.addAttribute("item", rt);
-			
-			return "xdmin/member/adminMemberForm";
-		}
-
-		@RequestMapping(value = "/adminMemberList" /*method = RequestMethod.GET*/)
-		public String adminMemberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-			vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
-			vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
-
-			
-			vo.setShOptionDate(vo.getShOptionDate() == null ? 0 : vo.getShOptionDate());
-			vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.add00TimeString(vo.getShDateStart()));
-			vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addNowTimeString(vo.getShDateEnd()));
-			
-			int count = service.selectOneCountMember(vo);
-			vo.setParamsPaging(count);
-			if(count !=0) {
-				List<Member> list = service.selectListMember(vo);
-				model.addAttribute("list", list);
-			
-			}
-			else {
-			//by pass	
+		// admin member
+				@RequestMapping(value = "/adminMemberView") 
+				public String adminMemberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception  {
+					  Member item = service.selectOne(vo);
+					  model.addAttribute("item", item);
+					return "xdmin/member/adminMemberView";
+				}
 				
-			}
-			return "xdmin/member/adminMemberList";
-		}
+				@RequestMapping(value = "/adminMemberEdit")
+				public String adminMemberEdit(MemberVo vo, Model model)throws Exception  {
+						
+					 Member item = service.selectOne(vo);
+					  
+					  model.addAttribute("item", item);
+					
+					
+					return "xdmin/member/adminMemberEdit";
+				}
+				
+				@RequestMapping(value = "/adminMemberForm")
+				public String adminMemberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception  {
+					
+					
+					return "xdmin/member/adminMemberForm";
+				}
+				
+				
+				
+				@RequestMapping(value = "/updateMember")
+				public String updateMember(Member dto) throws Exception  {
+					service.updateMember(dto);
+					
+					return "redirect:/adminMemberList";
+				}
+				
+				@RequestMapping(value = "/insertMember")
+				public String insertMember(Member dto) throws Exception  {
+					service.insertMember(dto);
+					
+					return "redirect:/adminMemberList";
+				}
+
+				@RequestMapping(value = "/adminMemberList" /*method = RequestMethod.GET*/)
+				public String adminMemberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+					vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+					vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
+
+					
+					vo.setShOptionDate(vo.getShOptionDate() == null ? 0 : vo.getShOptionDate());
+					vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.add00TimeString(vo.getShDateStart()));
+					vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addNowTimeString(vo.getShDateEnd()));
+					
+					int count = service.selectOneCountMember(vo);
+					vo.setParamsPaging(count);
+					if(count !=0) {
+						List<Member> list = service.selectListMember(vo);
+						model.addAttribute("list", list);
+					
+					}
+					else {
+					//by pass	
+						
+					}
+					return "xdmin/member/adminMemberList";
+				}
 	
 	
 	

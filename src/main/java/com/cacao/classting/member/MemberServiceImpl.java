@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cacao.classting.classroom.ClassRoom;
 import com.cacao.classting.classroom.ClassRoomVo;
+import com.cacao.classting.common.util.UtilDateTime;
 import com.cacao.classting.common.util.UtilUpload;
 
 
@@ -120,7 +121,22 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public int insertMember(Member dto) throws Exception {
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setRegDateTimeSvr(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
+		dto.setModDateTimeSvr(UtilDateTime.nowDate());
+		dao.insertMember(dto);
+		return 1;
+	}
 
+	@Override
+	public int updateMember(Member dto) throws Exception {
+		return dao.updateMember(dto);
+	}
+	
 	@Override
 	public int selectOneCountMember(MemberVo vo) throws Exception {
 		

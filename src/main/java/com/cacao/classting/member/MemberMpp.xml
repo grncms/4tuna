@@ -10,7 +10,8 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-			mmAdminNy
+			mmSeq
+			,mmAdminNy
 			,mmDormacyNy
 			,mmTeacherNy
 			,mmGradeCd
@@ -379,9 +380,9 @@
 				,mmMemberEmail
 				,mmPhoneNumber
 				,mmTeacherNy
-				,mmTermsOfserviceNy
+				,mmAlarmInvitationNy
 				,mmEventNotificationNy
-				,mmPersonalInfoNy
+				,mmAlarmReplyNy
 				,mmDormacyNy
 				,mmDelNy
 				,modDateTime
@@ -389,6 +390,7 @@
 				,regDateTime
 				,regDateTimeSvr
 				) values (
+			
 				#{mmName}
 				,#{mmSchoolCd}
 				,#{mmGradeCd}
@@ -400,19 +402,43 @@
 				,#{mmMemberEmail}
 				,#{mmPhoneNumber}
 				,#{mmTeacherNy}
-				,#{mmTermsOfserviceNy}
+				,#{mmAlarmInvitationNy}
 				,#{mmEventNotificationNy}
-				,#{mmPersonalInfoNy}
+				,#{mmAlarmReplyNy}
 				,0
 				,0
 				,#{modDateTime}
 				,#{modDateTimeSvr}
 				,#{regDateTime}
 				,#{regDateTimeSvr}
-	<selectKey resultType="String" keyProperty="mmSeq" order="AFTER">
+				)
+	 <!--  <selectKey resultType="String" keyProperty="mmSeq" order="AFTER">
 		SELECT last_insert_id()
-	</selectKey>
+	</selectKey> -->
 </insert>
+
+
+	<update id="updateMember">
+		UPDATE Member SET 	
+			mmTeacherNy = #{mmTeacherNy}
+			,mmGradeCd = #{mmGradeCd}
+		
+			,mmName = #{mmName}
+			,mmId = #{mmId}
+			,mmPassword = #{mmPassword}
+			,mmPhoneNumber = #{mmPhoneNumber}
+			,mmDob = #{mmDob}
+			,mmMemberEmail = #{mmMemberEmail}
+			,mmDesc = #{mmDesc}
+			,mmEventNotificationNy = #{mmEventNotificationNy}
+			,mmAlarmInvitationNy = #{mmAlarmInvitationNy}
+			,mmAlarmReplyNy = #{mmAlarmReplyNy}
+			,modDateTime = #{modDateTime}
+			,modDateTimeSvr = #{modDateTimeSvr}
+		WHERE 1=1
+			AND mmSeq=#{mmSeq}	
+	</update>
+
 
 
 <select id="selectOneMember" resultMap ="resultMapObj">

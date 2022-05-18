@@ -34,4 +34,8 @@ public interface MemberService {
 	public Member selectOneMember(Member dto) throws Exception;
 	
 	public int selectOneCountMember(MemberVo vo) throws Exception;
+
+	public int insertMember(Member dto) throws Exception;
+
+	public int updateMember(Member dto) throws Exception;
 }

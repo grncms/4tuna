@@ -230,82 +230,84 @@
 </head>
 <body id="page-top">
 <jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
+<form method="post" action="/insertMember" enctype="multipart/form-data">
+	<input type="hidden" id="mmSeq" name ="mmSeq">
 			<div class="row  mb-3 justify-content-center">
 				<div class="col-md-10 d-flex justify-content-center" id="context">
 				<div class="col-md-6">
 		<h4 style="text-align: center;">회원추가</h4>
 		<h5>프로필</h5>
-					<label for="ifmmName" class="form-label">이름</label>
-					<input type="text" class="form-control" id="ifmmName" name="ifmmName">
+					<label for="mmName" class="form-label">이름</label>
+					<input type="text" class="form-control" id="mmName" name="mmName">
 					<label for="classImg" class="form-label">클래스 사진</label>
 					<div >
 						<img src="../../../../resources/common/image/profile2.png"  width="70" height="70" >
 					</div>
-					<label for="classSchool" class="form-label">소속 학교</label>
-					<input type="text" class="form-control" id="classSchool" name="classSchool" placeholder="학교/기관 이름">
-					<label for="grade" class="form-label">담당학년</label>
-					<select class="form-select" id="grade" name="grade">
-						<option>학년 선택
-						<option>1학년
-						<option>2학년
-						<option>3학년
-						<option>4학년
-						<option>5학년
-						<option>6학년
+					<label for="mmSchoolCd" class="form-label">소속 학교</label>
+					<input type="text" class="form-control" id="mmSchoolCd" name="mmSchoolCd" placeholder="학교/기관 이름">
+					<label for="mmGradeCd" class="form-label">담당학년</label>
+					<select class="form-select" id="mmGradeCd" name="mmGradeCd">
+						<option value="0">학년 선택
+						<option value="1">1학년
+						<option value="2">2학년
+						<option value="3">3학년
+						<option value="4">4학년
+						<option value="5">5학년
+						<option value="6">6학년
 					</select>
-		            <label class="col-form-label">프로필</label>
+		            <label class="col-form-label" for="mmDesc">프로필</label>
 		            <div class="col-12">
-		          	  <textarea rows="3" cols="90" id="ifmmDesc" name="ifmmDesc"></textarea>
+		          	  <textarea rows="3" cols="90" id="mmDesc" name="mmDesc"></textarea>
 		            </div>
-					<label for="gender" class="form-label">성별</label>
-					<select class="form-select" id="gender" name="gender">
-						<option>성별 선택
-						<option>남
-						<option>여
-						<option>선택안함
+					<label for="mmGenderCd" class="form-label">성별</label>
+					<select class="form-select" id="mmGenderCd" name="mmGenderCd">
+						<option value="0">성별 선택
+						<option value="1">남
+						<option value="2">여
+						<option value="3">선택안함
 					</select>
-					<label for="ifmmDob" class="form-label">생일</label>
+					<label for="mmDob" class="form-label">생일</label>
 					<!-- datepicker 사용 -->
-					<input type="text" class="form-control" id="ifmmDob" name="ifmmDob"> 
+					<input type="text" class="form-control" id="mmDob" name="mmDob"> 
 					<!-- datepicker 사용 -->
 			<hr>
 			<h5>계정</h5>
-				<label for="ifmmId" class="form-label">아이디</label>
-				<input type="text" class="form-control" id="ifmmId" name="ifmmId">
-				<label for="ifmmPassword" class="form-label">비밀번호</label>
-				<input type="text" class="form-control" id="ifmmPassword" name="ifmmPassword">
-				<label for="email" class="form-label">이메일</label>
-				<input type="text" class="form-control"  id="email" name="email">
-			<label for="number" class="form-label">휴대폰 번호</label>
+				<label for="mmId" class="form-label">아이디</label>
+				<input type="text" class="form-control" id="mmId" name="mmId">
+				<label for="mmPassword" class="form-label">비밀번호</label>
+				<input type="text" class="form-control" id="mmPassword" name="mmPassword">
+				<label for="mmMemberEmail" class="form-label">이메일</label>
+				<input type="text" class="form-control"  id="mmMemberEmail" name="mmMemberEmail">
+			<label for="mmPhoneNumber" class="form-label">휴대폰 번호</label>
 				<div class="input-group mb-3">
-					<input type="text" class="form-control"  id="number" name="number">
+					<input type="text" class="form-control"  id="mmPhoneNumber" name="mmPhoneNumber">
 				</div>
-			<label for="role" class="form-label">역할</label>
-				<select class="form-select" id="role" name="role">
-					<option>선생님
-					<option>학생
+			<label for="mmTeacherNy" class="form-label">역할</label>
+				<select class="form-select" id="mmTeacherNy" name="mmTeacherNy">
+					<option value="1">선생님
+					<option value="0">학생
 				</select>
 		<hr>
 		
 		<h5>알림 상세 설정</h5>
-			<label for="alarm" class="form-label">클래스 초대/수락</label>
-				<select class="form-select" id="alarm" name="alarm">
-					<option>알림 받기
-					<option>알림 거부
+			<label for="mmAlarmInvitationNy" class="form-label">클래스 초대/수락</label>
+				<select class="form-select" id="mmAlarmInvitationNy" name="mmAlarmInvitationNy">
+					<option value="1">알림 받기
+					<option value="0">알림 거부
 				</select>
-			<label for="homeAlarm" class="form-label">홈소식</label>
-				<select class="form-select" id="homeAlarm" name="homeAlarm">
-					<option>모든 소식 알림
-					<option>알림 거부
+			<label for="mmEventNotificationNy" class="form-label">홈소식</label>
+				<select class="form-select" id="mmEventNotificationNy" name="mmEventNotificationNy">
+					<option value="1">모든 소식 알림
+					<option value="0">알림 거부
 				</select>
-			<label for="replyAlarm" class="form-label">답글</label>
-				<select class="form-select" id="replyAlarm" name="replyAlarm">
-					<option>모든 답글 알림
-					<option>알림 거부
+			<label for="mmAlarmReplyNy" class="form-label">답글</label>
+				<select class="form-select" id="mmAlarmReplyNy" name="mmAlarmReplyNy">
+					<option value="1">모든 답글 알림
+					<option value="0">알림 거부
 				</select>
 			<div>
 				<button type="button" class="btn btn-outline-secondary btn-lg w-45" style="display: inline; float: left;" id="btn-add"onclick="location.href='./adminMemberList'">취소</button>
-				<button type="button" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right; " id="btn-add">가입</button>
+				<button type="submit" class="btn btn-outline-success btn-lg w-45" style="display: inline; float: right; " id="btn-add">가입</button>
 			</div>
 	
 			</div>
@@ -316,7 +318,7 @@
 					
 
 </div>
-	<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
+</form>
  <!-- Bootstrap core JavaScript-->
     <script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
     <script src="../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
