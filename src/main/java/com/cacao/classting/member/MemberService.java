@@ -29,7 +29,7 @@ public interface MemberService {
 	
 	public List<Member> selectListMember(MemberVo vo) throws Exception;
 
-	public int deleteMember(Member dto) throws Exception;
+	public int deleteMember(MemberVo vo) throws Exception;
 
 	public Member selectOneMember(Member dto) throws Exception;
 	

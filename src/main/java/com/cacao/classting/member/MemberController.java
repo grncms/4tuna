@@ -24,6 +24,7 @@ import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
 
 
+
 @Controller
 public class MemberController {
 	
@@ -256,6 +257,7 @@ public class MemberController {
 		return "member/classList";
 	}
 	
+	
 //	기본로그인
 	@ResponseBody
 	@RequestMapping(value = "member/loginProc", method = { RequestMethod.GET, RequestMethod.POST })
@@ -352,6 +354,14 @@ public class MemberController {
 					return "redirect:/adminMemberList";
 				}
 
+				@RequestMapping(value = "/deleteMember") 
+				public String deleteMember(MemberVo vo , RedirectAttributes redirectAttributes ) throws Exception {
+					  service.deleteMember(vo);
+						
+					  
+					  return "redirect:/adminMemberList";
+				  }
+				
 				@RequestMapping(value = "/adminMemberList" /*method = RequestMethod.GET*/)
 				public String adminMemberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 					vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));

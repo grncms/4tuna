@@ -45,7 +45,7 @@ public class MemberDao {
 
 	public Member selectOneMember(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOneMember", vo);}
 
-	public int deleteMember(MemberVo vo) {return sqlSession.update(namespace + ".DeleteMember", vo);}
+	public int deleteMember(MemberVo vo) {return sqlSession.update(namespace + ".deleteMember", vo);}
 	
 	public int selectOneCountMember(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOneCountMember", vo);}
 

@@ -24,6 +24,7 @@
 <link href="../../../../resources/common/css/sb-admin-2.css" rel="stylesheet">
 <link href="../../../../resources/common/css/classCommon.css" rel="stylesheet">
 <link href="../../../../resources/common/css/boardCss.css" rel="stylesheet">
+<link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
 <title>회원정보 수정</title>
 
 
@@ -352,7 +353,7 @@
     <script src="../../../../resources/common/js/sb-admin-2.min.js"></script> 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js" rel="stylesheet"></script>
 <script type="text/javascript">
 
 goView = function(seq) {
@@ -360,6 +361,23 @@ goView = function(seq) {
 	$("#memberEdit").attr("action","/adminMemberView");
 	$("#memberEdit").submit();
 }
+
+$(document).ready(function(){
+	 $("#mmDob").datepicker();
+}); 
+
+$.datepicker.setDefaults({
+   dateFormat: 'yy-mm-dd',
+   prevText: '이전 달',
+   nextText: '다음 달',
+   monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+   monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+   dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+   dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+   dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+   showMonthAfterYear: true,
+   yearSuffix: '년'
+   });
 
 </script>
 

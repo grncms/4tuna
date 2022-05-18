@@ -231,10 +231,11 @@
 <body id="page-top">
 <jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
 <!-- Topbar end -->
-<form id="memberView" name="memberView" method="post" action="adminMemberView">
+<form id="memberView" name="memberView" method="post" action="deleteMember">
 	<input type="hidden" id="shOption" name="shOption" value="<c:out value="${vo.shOption}"/>">
 	<input type="hidden" id="shValue" name="shValue" value="<c:out value="${vo.shValue}"/>">
 	<input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${item.mmSeq}"/>">
+	<input type="hidden" id="mmDelNy" name="mmDelNy" value="<c:out value="${item.mmDelNy}"/>">
 		<div class="row justify-content-center">
 			<div class="col-md-10 d-flex justify-content-center" id="context">
 			<div class="col-md-6">
@@ -362,6 +363,8 @@ goEdit = function(seq) {
 	$("#memberView").attr("action","/adminMemberEdit");
 	$("#memberView").submit();
 }
+
+
 </script>
 </body>
 </html>

@@ -360,12 +360,13 @@
 			
 	</select>
 
-<delete id="deleteMember">
-		DELETE FROM 
-			Member
-		WHERE 1=1
+<update id="deleteMember">
+		UPDATE Member SET
+			mmDelNy = 1
+		WHERE 1 = 1
 			AND mmSeq = #{mmSeq}
-	</delete>
+	</update>
+	
 
 <insert id="insertMember">
 			INSERT INTO Member (
