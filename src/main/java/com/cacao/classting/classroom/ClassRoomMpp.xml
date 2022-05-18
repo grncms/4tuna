@@ -133,6 +133,7 @@
 			,a.ctptLike1
 			,a.ctptLike2
 			,a.ctptLike3
+			,a.ctptView
 			,b.ctboTypeCd
 		FROM
 			ctPost a 
@@ -153,6 +154,7 @@
 		,ctptLike2
 		,ctptLike3
 		,ctboSeq
+		,ctptView
 	 from 
 		ctPost
 	where 1=1

@@ -72,6 +72,7 @@
 								<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
 								</c:forEach>
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+								<span>조회수:<c:out value = "${item.ctptView }"/></span>
 							</div>
 							<div class="body mt-1" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
 								<c:if test="${item.ctboTypeCd eq 25}"><span class='badge badge_notice'>공지</span></c:if>
@@ -87,6 +88,7 @@
 								<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
 								<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
 								<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
+								
 							</div>
 						</div>
 					</div>
