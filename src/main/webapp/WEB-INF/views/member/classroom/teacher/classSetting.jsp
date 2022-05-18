@@ -81,6 +81,7 @@
 									</div>
 									<div class="classTitleSetting">
 										<select class="form-control" style="margin-top:10px;">
+											<option value="9"><span><c:out value="${ctcsYear}"/></span>
 											<option value="0">2022
 											<option value="1">2021
 											<option value="2">2020
