@@ -68,7 +68,7 @@
 				<div class="body">예약한 글</div>
 			</div>
 			<c:forEach items="${list}" var="item" varStatus="status">
-			<c:if test="${item.ctptReservation ne null}">
+			<c:if test="${item.ctptReservation ne null && item.ctptWriter eq ctcmSeq}">
 			    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
 				예약 날짜/시간 : <fmt:formatDate value="${item.ctptReservation}" pattern="yyyy-MM-dd HH:mm:ss"/>							
 					<c:if test="${item.ctptReservationTypeCd eq 5}"><span class='badge badge_notice'>공지</span></c:if>
@@ -101,7 +101,7 @@
 				<div class="body">임시 저장한 글</div>
 			</div>
 			<c:forEach items="${list}" var="item" varStatus="status">
-   			<c:if test="${item.ctptReservation eq null}">
+   			<c:if test="${item.ctptReservation eq null && item.ctptWriter eq ctcmSeq}">
 			    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
 			    임시 저장 중
    					<c:if test="${item.ctptReservationTypeCd eq 5}"><span class='badge badge_notice'>공지</span></c:if>

@@ -102,6 +102,7 @@
 			a.ctcsSeq
 			,a.ctcsYear
 			,a.ctcsName
+			,b.ctcmSeq
 			,b.ctcmName
 			,b.ctcmTeacherNy
 		FROM
@@ -207,10 +208,11 @@
 		FROM
 			ctPost a 
 			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
-			<!-- LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter -->
+			LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
 		WHERE 1=1
 			AND a.ctboSeq = 4
 			AND b.ctcsSeq = #{ctcsSeq}
+			<!-- AND a.ctptWriter = #{ctcmSeq} -->
 	</select>
 
 </mapper>
