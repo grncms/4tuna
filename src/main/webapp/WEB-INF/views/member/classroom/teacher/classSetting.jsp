@@ -69,7 +69,7 @@
 										<span>클래스 이름</span>
 									</div>
 									<div class="classTitleSetting">
-										<input type="text" class="form-control" placeholder="클래스 이름은 언제든지 설정에서 수정 할 수 있어요." maxlength="50" style="margin-top:10px;" size="80px;">
+										<input type="text" class="form-control" placeholder="클래스 이름은 언제든지 설정에서 수정 할 수 있어요." value="${ctcsName}" maxlength="50" style="margin-top:10px;" size="80px;">
 									</div>
 									<div class="footer">
 									</div>
