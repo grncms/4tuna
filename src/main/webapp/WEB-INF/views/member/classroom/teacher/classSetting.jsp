@@ -91,7 +91,7 @@
 											<option value="6">2016
 											<option value="7">2015
 											<option value="8">2014
-										</select> 
+										</select>
 									</div>
 									<div class="footer">
 									</div>
@@ -110,6 +110,11 @@
 											<option value="4">5학년
 											<option value="5">6학년
 										</select> 
+<%-- 									<select class="form-select" id="ctcsGradeCd" name="ctcsGradeCd" >
+											<c:forEach items="${CodeClassGrade}" var="itemClassGrade" varStatus="statusClassGrade">
+												<option value="<c:out value="${itemClassGrade.ifcdOrder}"/>" <c:if test="${item.ctcsGradeCd eq itemClassGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemClassGrade.ifcdName}"/></option>	
+											</c:forEach>
+										</select>		 --%>
 									</div>
 									<div class="footer">
 									</div>
@@ -120,7 +125,7 @@
 										<span>소개글</span>
 									</div>
 									<div class="classTitleSetting">
-										<textarea class="form-control" cols="80" rows="10" id="content" name="content" placeholder="클래스 소개글을 작성해주세요!" style="resize:none; margin-top: 10px; margin-bottom:25px;"></textarea>	
+										<textarea class="form-control" cols="80" rows="10" id="content" name="content" placeholder="클래스 소개글을 작성해주세요!" value="${ctcsDesc}"  style="resize:none; margin-top: 10px; margin-bottom:25px;"></textarea>	
 										<button type="button" class="basic_button mt-10 w-25 p-2" data-bs-toggle="modal" data-bs-target="#formModal1" style="float:right">변경사항 저장</button>
 									<!-- 모랄 -->
 											<div class="modal fade" id="formModal1" tabindex="-1" aria-hidden="true">
