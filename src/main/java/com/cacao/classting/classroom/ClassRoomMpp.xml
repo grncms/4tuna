@@ -152,6 +152,7 @@
 		,ctptLike1
 		,ctptLike2
 		,ctptLike3
+		,ctboSeq
 	 from 
 		ctPost
 	where 1=1

@@ -110,6 +110,10 @@
 				<div class="col-12">
 					<div class="card shadow mb-4">
 						<div class="container_base">
+								<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
+								<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
+								<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+								<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
 							<div class="title"><c:out value="${item.ctptTitle}"/></div>
 						</div>
 						<div class="container_base">
@@ -156,11 +160,8 @@
 								<div class="comment_write row">
 									<div class="col-md-3 col-lg-2" id="classImg">
 										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-										<div>
-											박규원
-										</div>
+										<div>${ctcmName}</div>
 									</div>
-	
 									<div class="col-md-9 col-lg-10" id="classInfo">
 										<input type="text" class="w-100">
 										<div>
@@ -172,7 +173,6 @@
 													<i class="fa-solid fa-image"></i>
 												</button>
 											</div>
-	
 											<button type="button" class="basic_button">등록</button>
 										</div>
 									</div>
