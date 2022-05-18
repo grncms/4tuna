@@ -230,7 +230,7 @@
 </head>
 <body id="page-top">
 <jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
-<form method="post" action="/insertMember" enctype="multipart/form-data">
+<form method="post" action="/insertMember">
 	<input type="hidden" id="mmSeq" name ="mmSeq" >
 			<div class="row  mb-3 justify-content-center">
 				<div class="col-md-10 d-flex justify-content-center" id="context">
