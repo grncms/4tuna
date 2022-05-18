@@ -83,7 +83,6 @@
 										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
 									</c:forEach>
 									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-									<span>과제</span>
 								</div>
 								<div class="body mt-1" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
 									<span class='badge badge_hw'>과제</span>
