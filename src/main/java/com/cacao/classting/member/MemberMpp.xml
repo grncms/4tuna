@@ -312,12 +312,15 @@
 			,a.ctptContent 
 			,a.regDateTime
 			,b.ctcsSeq
+			,d.mmSeq
 		FROM
 			ctPost a 
 			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
+			LEFT JOIN ctClass c on c.ctcsSeq = b.ctcsSeq
+			LEFT JOIN ctClassMember d on d.ctcsSeq = c.ctcsSeq
 		WHERE 1=1
-			<!-- AND b.ctcsSeq = #{ctcsSeq} -->
 			AND b.ctboTypeCd = 25
+<!-- 			AND a.ctcsSeq = #{ctcsSeq} -->
 	</select>
 
 	

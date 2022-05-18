@@ -37,6 +37,7 @@
 	<div id="classNotice">
 		<h5 style="font-weight: bold; margin-bottom: 30px;">내 클래스 공지 알림</h5>
 		<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
+		<c:if test="${sessSeq eq itemPost.mmSeq}">
 		<c:forEach items="${list}" var="item" varStatus="status">
 		<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
 			<div class="mb-2" onclick="location.href='javascript:goClass(<c:out value="${itemPost.ctcsSeq}"/>)'">
@@ -49,7 +50,8 @@
 				<p id="date"><fmt:formatDate value="${itemPost.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
 				<hr style="color: gray;">
 			</div>
-		</c:forEach>
+		</c:if>	
+	</c:forEach>
 	</div>
 	</div>
 	<div class="col-md-5">
