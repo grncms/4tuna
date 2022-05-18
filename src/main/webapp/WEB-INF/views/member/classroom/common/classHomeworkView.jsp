@@ -115,7 +115,7 @@
 				<div class="col-xl-8 col-lg-8">
 					<div class="card shadow mb-4">
 						<div class="container_base">
-							<div class="title">수학문제 5페이지 풀이</div>
+							<div class="title"><c:out value="${item.cthpTitle}"/></div>
 						</div>
 						<div class="container_base">
 								<div class="writer row">
@@ -123,23 +123,22 @@
 										<img src="/resources/common/image/profile2.png" width="45" height="45" style="border-radius: 7px;">
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
-										<span>
-											<b>박규원</b>
-										</span>
-										<span style="color: #c8c8c8; font-size: 14px;">4월 22일 오전 11:16</span>
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
+										</c:forEach>
+										<span style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 									</div>
 								</div>
 						</div>
 						<div class="container_base">
 							<div class="post_content">
-								<div>
-									sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> sdasd<br> asdas
-								</div>
-								<h6>댓글 1</h6>
+								<div class="mb-5"><c:out value="${item.cthpDesc}"/></div>
+								<div >마감일 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 							</div>
 						</div>
-						<div class="container_base">
-							<div class="comment row">
+ 						<div class="container_base">
+								<h6>댓글</h6>
+<!-- 							<div class="comment row">
 								<div class="col-md-2 col-lg-1" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
@@ -150,15 +149,13 @@
 									<div style="color: #c8c8c8; font-size: 14px;">4월 22일 오전 11:16</div>
 									<div>우왕 너무 유익해요요</div>
 								</div>
-							</div>
-						</div>
+							</div> -->
+						</div> -->
 						<div class="container_base">
 								<div class="comment_write row">
 									<div class="col-md-3 col-lg-2" id="classImg">
 										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-										<div>
-											박규원
-										</div>
+										<div>${ctcmName}</div>
 									</div>
 	
 									<div class="col-md-9 col-lg-10" id="classInfo">
@@ -180,7 +177,7 @@
 							</div>
 						</div>
 			</div>
-				<div class="col-xl-3 col-lg-3">
+				<div class="col-xl-4 col-lg-4">
 					<%@ include file="/WEB-INF/views/member/classroom/common/classGraded.jsp" %>
 				</div>
 		</div>

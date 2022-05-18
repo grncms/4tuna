@@ -8,9 +8,9 @@
 				<div class="container_base">
 					<div class="title_hw">
 						<div>마감일시</div>
-						<div>기한지남</div>
+						<!-- <div>기한지남</div> -->
 					</div>
-					<div>2022.04.26 오후</div>
+					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 				</div>
 				<div class="container_base">
 					<div class="title_hw">
