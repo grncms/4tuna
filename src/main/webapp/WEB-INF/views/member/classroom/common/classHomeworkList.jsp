@@ -65,22 +65,17 @@
 						<div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div>
 						<div class="footer dropdown">
 							<button type="button" class="basic_button">과제 만들기</button>
-							<!-- <ul class="dropdown-menu">
-								<li>
-									<a class="dropdown-item" href="#">일반 과제</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">자료실 과제</a>
-								</li>
-							</ul> -->
 						</div>
 					</div>
+					<form id="postList" name="postList" method="post">
+					<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+					<input  type="hidden" id=cthpSeq name="cthpSeq">
+					<input  type="hidden" id="mmSeq" name="mmSeq">
 					<div class="card shadow mb-4 ">
 					<c:forEach items="${list}" var="item" varStatus="status">
 						<div class="container_base">
 							<div class="homework list">
 								<div class="header">
-
 									<div class="profile_box">
 										<img class="profile" src="/resources/common/image/test.jpg" />
 									</div>
@@ -90,7 +85,7 @@
 									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 									<span>과제</span>
 								</div>
-								<div class="body mt-1">
+								<div class="body mt-1" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
 									<span class='badge badge_hw'>과제</span>
 									<!-- <span class='badge badge_todayend'>오늘 종료</span> -->
 									<span><c:out value="${item.cthpTitle}"/></span>
@@ -104,6 +99,7 @@
 						</div>
 					</c:forEach>
 					</div>
+					</form>
 				</div>
 			</div>	
 		</div>
@@ -141,6 +137,11 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+goView = function(seq){
+	$("#cthpSeq").val(seq);
+	$("#postList").attr("action","/member/class/common/homeworkview");
+	$("#postList").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	
