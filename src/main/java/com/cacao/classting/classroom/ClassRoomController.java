@@ -28,7 +28,7 @@ public class ClassRoomController {
 	ClassRoomServiceImpl service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ClassRoomController.class);
-//�룞�썕	
+
 
 	@RequestMapping(value = "/classStudentForm")
 	public String classStudentForm(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
@@ -90,7 +90,7 @@ public class ClassRoomController {
 		return "xdmin/member/classroom/adminClassView";
 	}
 
-//誘쇱닔	
+
 	@RequestMapping(value = "/classBoardUpload")
 	public String postUpload(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
@@ -124,14 +124,14 @@ public class ClassRoomController {
 		return "member/classroom/teacher/classSetting";
 	}	
 
-	// �꽑�씫 
+
 	@RequestMapping(value = "/chat")
 	public String chat(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
 		return "chat/chat";
 	}	
 
-	//�닔鍮�
+
 
 
 	@RequestMapping(value = "/classMain")
@@ -140,7 +140,7 @@ public class ClassRoomController {
 		if(vo.getCtcsSeq() != null) {
 			httpSession.setAttribute("hyspSeq", vo.getCtcsSeq());
 		}
-		//�궗�씠�뱶諛� 援ы쁽�쓣 �쐞�븳 
+		//사이드바 구현을 위한  
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
 		
@@ -154,7 +154,7 @@ public class ClassRoomController {
 		ClassRoom rt = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt);
 
-//		�겢�옒�뒪 �엯�옣 �븯硫댁꽌 �꽭�뀡�뿉 �뒪�럹�씠�뒪�씠由� 媛� �꽭�똿 => �궗�씠�뱶諛� include �뙆�씪�뿉�꽌 �솢�슜
+//		클래스 입장 하면서 세션에 스페이스이름 값 세팅 => 사이드바 include 파일에서 활용
 		httpSession.setAttribute("ctcsYear", rt.getCtcsYear());
 		httpSession.setAttribute("ctcsName", rt.getCtcsName());
 		httpSession.setAttribute("ctcmSeq", rt.getCtcmSeq());
@@ -167,10 +167,10 @@ public class ClassRoomController {
 		System.out.println("httpSession.setAttribute(\"ctcmSeq\", rt.getCtcmName()) : " + rt.getCtcmName());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmTeacherNy()) : " + rt.getCtcmTeacherNy());
 
-//		�겢�옒�뒪 由ъ뒪�듃 遺덈윭�삤湲�
+//		클래스 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
-//		�쉶�썝由ъ뒪�듃 遺덈윭�삤湲�
+//		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
@@ -202,7 +202,7 @@ public class ClassRoomController {
 	}
 	
 
-//洹쒖썝
+
 	@RequestMapping(value = "member/class/student/learningprogress")
 	public String learnpro(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 		
@@ -217,11 +217,11 @@ public class ClassRoomController {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 
-//		寃뚯떆臾� 由ъ뒪�듃 遺덈윭�삤湲�
+//		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
 		
-//		�쉶�썝由ъ뒪�듃 遺덈윭�삤湲�
+//		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
@@ -233,11 +233,11 @@ public class ClassRoomController {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 
-//		寃뚯떆臾� 由ъ뒪�듃 遺덈윭�삤湲�
+//		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
 		
-//		�쉶�썝由ъ뒪�듃 遺덈윭�삤湲�
+//		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
@@ -249,11 +249,11 @@ public class ClassRoomController {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 
-//		寃뚯떆臾� 由ъ뒪�듃 遺덈윭�삤湲�
+//		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
 		
-//		�쉶�썝由ъ뒪�듃 遺덈윭�삤湲�
+//		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		

@@ -25,7 +25,7 @@ public interface ClassRoomService {
 	// 조회수 
 	public int hitUpdate(ClassRoom dto) throws Exception;
 
-//	�겢�옒�뒪 �궡 �젙蹂�
+//	클래스 내 정보
 	public ClassRoom selectOneSidebar(ClassRoomVo vo) throws Exception;
 	public ClassRoom selectOneClassInfo(ClassRoomVo vo) throws Exception;
 	public ClassRoom selectOneClassPost(ClassRoomVo vo) throws Exception;
