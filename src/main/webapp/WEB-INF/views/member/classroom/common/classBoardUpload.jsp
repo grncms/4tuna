@@ -221,8 +221,10 @@ input:checked+.slider:before {
 							<div class="form-group">
 								<select type="text" class="form-control" id="title" name="ctboTypeCd">
 									<option value="0">자유공간
-									<option value="1">과제제출
-									<option value="2">학습자료
+									<option value="1">학습자료
+									<option value="2">활동사진
+									<option value="3">공지
+									<option value="4">과제
 								</select>
 							</div>
 							<hr>
