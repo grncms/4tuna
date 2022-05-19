@@ -160,18 +160,6 @@
 								</div>
 							</div>
 							</c:forEach>
-<!-- 							<div class="comment row">
-								<div class="col-md-2 col-lg-1" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-								</div>
-								<div class="col-md-10 col-lg-11" id="classInfo">
-									<div>
-										<b>박규원</b>
-									</div>
-									<div style="color: #c8c8c8; font-size: 14px;">4월 22일 오전 11:16</div>
-									<div>우왕 너무 유익해요요</div>
-								</div>
-							</div> -->
 						</div>
 						<div class="container_base">
 								<div class="comment_write row">

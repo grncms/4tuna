@@ -168,7 +168,7 @@ public class ClassRoomController {
 		String today = LocalDate.now().toString();
 		String now = LocalDateTime.now().toString();
 		if(vo.getCtcsSeq() != null) {
-			httpSession.setAttribute("hyspSeq", vo.getCtcsSeq());
+			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
 		}
 		//사이드바 구현을 위한  
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -356,8 +356,13 @@ public class ClassRoomController {
 	@RequestMapping(value = "member/class/common/homeworkview")
 	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+		ClassRoom rt2 = service.selectOneSidebar(vo);
+		model.addAttribute("item", rt2);
 		
 //		homeworkView
 		ClassRoom rt = service.selectOneClassHomework(vo);
@@ -367,8 +372,27 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
+		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
+		System.out.println("httpSession.setAttribute(\"ctcsName\", rt2.getCtcmTeacherNy()) : " + rt2.getCtcmTeacherNy());
 		
 		return "member/classroom/common/classHomeworkView";
+	}
+	@RequestMapping(value = "member/class/student/classHomeworkView_student")
+	public String classHomeworkView_student(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+//		homeworkView
+		ClassRoom rt = service.selectOneClassHomework(vo);
+		model.addAttribute("item", rt);
+		
+//		
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
+		
+		
+		return "member/classroom/student/classHomeworkView_student";
 	}
 	@RequestMapping(value = "member/class/common/postedit")
 	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){

@@ -18,7 +18,7 @@
 <title>ForTest</title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <!-- Custom fonts for this template-->
 <link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -170,7 +170,7 @@
 												</button>
 											</div>
 	
-											<button type="button" class="basic_button">등록</button>
+											<button type="button" class="basic_button">과제 등록</button>
 										</div>
 									</div>
 								</div>	
@@ -178,8 +178,7 @@
 						</div>
 			</div>
 				<div class="col-xl-5 col-lg-5">
-					<c:if test="${teacherNy eq 1 }"><%@ include file="/WEB-INF/views/member/include/classGraded.jsp" %></c:if>
-					<c:if test="${teacherNy eq 0 }"><%@ include file="/WEB-INF/views/member/include/classHomeworkSubmit.jsp" %></c:if>
+					<%@ include file="/WEB-INF/views/member/include/classHomeworkSubmit.jsp" %>
 				</div>
 		</div>
 	</div>
