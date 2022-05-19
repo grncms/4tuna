@@ -261,7 +261,7 @@
 		ctReply a 
 		LEFT JOIN ctPost b on b.ctptSeq = a.ctptSeq
 	WHERE 1=1
-		AND a.ctptSeq = {ctptSeq}
+		AND a.ctptSeq = #{ctptSeq}
 </select>
 
 

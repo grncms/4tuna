@@ -80,7 +80,7 @@ public class ClassRoom {
 //	ctReply
 	private String ctrpSeq;	
 	private String ctrpContent;	
-	private String ctrpUserId;	
+	private Integer ctrpWriter;	
 	private Integer ctrpDelNy;	
 	
 //	ctPostUploaded
@@ -95,7 +95,7 @@ public class ClassRoom {
 	private Integer delNy;	
 	private Integer pseq;
 	
-	//�⼮
+	//�⼮
 	
 	private String attendanceToday;
 	
@@ -429,12 +429,6 @@ public class ClassRoom {
 	public void setCtrpContent(String ctrpContent) {
 		this.ctrpContent = ctrpContent;
 	}
-	public String getCtrpUserId() {
-		return ctrpUserId;
-	}
-	public void setCtrpUserId(String ctrpUserId) {
-		this.ctrpUserId = ctrpUserId;
-	}
 	public Integer getCtrpDelNy() {
 		return ctrpDelNy;
 	}
@@ -530,6 +524,12 @@ public class ClassRoom {
 	}
 	public void setAttendanceToday(String attendanceToday) {
 		this.attendanceToday = attendanceToday;
+	}
+	public Integer getCtrpWriter() {
+		return ctrpWriter;
+	}
+	public void setCtrpWriter(Integer ctrpWriter) {
+		this.ctrpWriter = ctrpWriter;
 	}
 	
 	
