@@ -336,7 +336,7 @@
 			   </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		        <button type="submit" class="btn btn-danger" id="btnDele" name="btnDele">삭제</button>
+		        <button type="button" class="btn btn-danger" id="btnDele" name="btnDele">삭제</button>
 		      </div>
 		      </div>
 		    </div>
@@ -396,7 +396,7 @@ $("#btnDele").on("click", function(){
 	});
 	
 	$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
-	$("#classList").attr("action", "/classMultiUele");
+	$("#classList").attr("action", "/deleteClassMulti");
 	$("#classList").submit();
 	} else {
 		return false;

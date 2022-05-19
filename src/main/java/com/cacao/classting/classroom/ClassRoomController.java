@@ -89,9 +89,9 @@ public class ClassRoomController {
 			ClassRoom item = service.selectOneClass(vo);
 			model.addAttribute("item", item);
 			
-			List<ClassRoom> list = service.selectListClassMember(vo);
-			model.addAttribute("list", list);
-			
+			  List<ClassRoom> list = service.selectListClassMember(vo);
+			  model.addAttribute("list", list);
+			 
 		return "xdmin/member/classroom/adminClassView";
 	}
 
@@ -103,20 +103,20 @@ public class ClassRoomController {
 		  return "redirect:/adminClassList";
 	  }
 	
-	@RequestMapping(value = "/deleteClassMulti") public String
-	  deleteClassMulti(ClassRoomVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value = "/deleteClassMulti") 
+	public String deleteClassMulti(ClassRoomVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		  String[] checkboxSeqArray = vo.getCheckboxSeqArray();
 		  System.out.println("vo.getCheckboxSeqArray():" + vo.getCheckboxSeqArray());
 		  for(String checkboxSeq : checkboxSeqArray) {
-			  vo.setMmSeq(checkboxSeq);
+			  vo.setCtcsSeq(checkboxSeq);
 			  service.deleteClassMulti(vo);
 		  }
 		  
 		   
 		  
 		  
-		  return "redirect:/adminMemberList";
+		  return "redirect:/adminClassList";
 	  }
 
 

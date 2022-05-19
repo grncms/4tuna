@@ -92,12 +92,14 @@
 </select>
 
 <update id="deleteClass">
-		UPDATE  ctClass SET
-			ctcsDelNy = 1
+		UPDATE
+			ctClass
+		SET
+			ctcsDelny = 1
 		WHERE 1=1
-			AND ctcsSeq = #{ctcsSeq}
+					AND ctcsSeq = #{ctcsSeq}
 	</update>
-	<update id="deleteClassMulti">
+<update id="deleteClassMulti">
 		UPDATE
 			ctClass
 		SET

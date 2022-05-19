@@ -26,7 +26,7 @@ public class ClassRoomDao {
 
 	public ClassRoom selectOneClass(ClassRoomVo vo) { return sqlSession.selectOne(namespace + ".selectOneClass", vo);}
 
-	public int deleteClass(ClassRoomVo vo) {return sqlSession.update(namespace + ".DeleteClass", vo);}
+	public int deleteClass(ClassRoomVo vo) {return sqlSession.update(namespace + ".deleteClass", vo);}
 	
 	public int selectOneCount(ClassRoomVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 
