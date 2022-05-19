@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
 
+
 @Controller
 public class ClassRoomController {
 	
@@ -82,8 +83,9 @@ public class ClassRoomController {
 		return "xdmin/member/classroom/adminClassList";
 	}
 	@RequestMapping(value = "/adminClassView")
-	public String adminClassView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
-		
+	public String adminClassView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+			ClassRoom item = service.selectOneClass(vo);
+			model.addAttribute("item", item);
 		return "xdmin/member/classroom/adminClassView";
 	}
 
