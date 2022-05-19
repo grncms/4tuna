@@ -231,15 +231,19 @@
 
 </head>
 <body id="page-top">
+<form id="classView" name="classView" method="post" action="deleteClass">
 	<jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
 <!-- Topbar end -->
-		
+	<input type="hidden" id="shOption" name="shOption" value="<c:out value="${vo.shOption}"/>">
+	<input type="hidden" id="shValue" name="shValue" value="<c:out value="${vo.shValue}"/>">
+	<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${item.ctcsSeq}"/>">
+	<input type="hidden" id="ctcsDelNy" name="ctcsDelNy" value="<c:out value="${item.ctcsDelNy}"/>">
 			<div class="row justify-content-center">
 				<div class="col-md-10 d-flex justify-content-center" id="context">
 					<div class="col-md-6">
 						<h4  style="text-align: center;">클래스정보</h4>
-							<label for="className" class="form-label">클래스 이름</label>
-							<input type="text" class="form-control" id="className" name="className" value="4조">
+							<label for="ctcsName" class="form-label">클래스 이름</label>
+							<input type="text" class="form-control" id="ctcsName" name="ctcsName" value="<c:out value="${item.ctcsName}"/>" readonly>
 							
 							<label for="classImg" class="form-label">클래스 사진</label>
 							<div >
@@ -247,28 +251,27 @@
 							</div>
 							
 							
-							<label for="classSchool" class="form-label">소속 학교</label>
-							<input type="text" class="form-control" id="classSchool" name="classSchool" value="##고등학교">
+							<label for="ctcsBelongto" class="form-label">소속 학교</label>
+							<input type="text" class="form-control" id="ctcsBelongto" name="ctcsBelongto" value="<c:out value="${item.ctcsBelongto}"/>" readonly>
 							
-				            <label class="col-form-label" for="classDesc">클래스설명</label>
-				          	<textarea rows="3" cols="100" id="classDesc" name="classDesc">4조입니다.</textarea>
+				            <label class="col-form-label" for="ctcsDesc">클래스설명</label>
+				          	<textarea rows="3" cols="100" id="ctcsDesc" name="ctcsDesc" disabled><c:out value="${item.ctcsDesc}"/></textarea>
 				        
-							<label for="ifmmDob" class="form-label">생성날짜</label>
+				        	 <fmt:formatDate value="${item.regDateTime}" var="regDateTime" pattern="yyyy-MM-dd"/>
+							<label for="regDateTime" class="form-label">생성날짜</label>
 							<!-- datepicker 사용 -->
-							<input type="text" class="form-control" id="classDob" name="classDob" value="2020.12.12"> 
+							<input type="text" class="form-control" id="regDateTime" name="regDateTime" value="<fmt:formatDate value="${item.regDateTime}"/>" readonly> 
 							<!-- datepicker 사용 -->
 							
-							<label for="member" class="form-label">구성원</label>
-							<div id="member" name="member">
-			      			 	<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong>최민수</strong>
-			      			 	<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong>윤수빈</strong>
-			      			 	<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong>박규원</strong>
-			      			 	<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong>최선락</strong>
-			      			 	<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong>한동훈</strong>
+							<label for="ctcmName" class="form-label">구성원</label>
+							<div id="ctcmName" name="ctcmName">
+							<c:forEach items="${list}" var="item" varStatus="status">
+			      			 	<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong><c:out value="${item.ctcmName}"/></strong>
+							</c:forEach>
 							</div>
 							
-							<label for="classCode" class="form-label">클래스 코드</label>
-							<input type="text" class="form-control"  id="classCode" name="classCode" value="KD83N3">
+							<label for="ctcsCode" class="form-label">클래스 코드</label>
+							<input type="text" class="form-control"  id="ctcsCode" name="ctcsCode" value="<c:out value="${item.ctcsCode}"/>" readonly>
 							
 							<div>
 							<button type="button" class="btn btn-outline-danger btn-lg w-45" style="display: inline;" id="btn-add" data-bs-toggle="modal" data-bs-target="#classDelete">클래스 삭제</button>
@@ -295,7 +298,7 @@
 		      </div>
 		    </div>
 		  </div>
-	
+	</form>
 					
 					
 

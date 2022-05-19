@@ -86,6 +86,10 @@ public class ClassRoomController {
 	public String adminClassView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 			ClassRoom item = service.selectOneClass(vo);
 			model.addAttribute("item", item);
+			
+			List<ClassRoom> list = service.selectListClassMember(vo);
+			model.addAttribute("list", list);
+			
 		return "xdmin/member/classroom/adminClassView";
 	}
 

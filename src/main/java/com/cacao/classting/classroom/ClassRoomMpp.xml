@@ -75,18 +75,20 @@
 
 
 <select id="selectOneClass" resultMap ="resultMapObj">
-	select 
-		a.ctcsName
+	select
+		a.ctcsSeq 
+		,a.ctcsName
 		,a.ctcsBelongto
 		,a.ctcsDesc
 		,a.regDateTime
 		,a.ctcsCode
-		,b.ctcmName
+		
 	 from 
 		ctClass a
-	LEFT JOIN ctClassMember b on a.ctcsSeq = b.ctcsSeq
+	 
 	where 1=1
-		and ctcsSeq = #{ctcsSeq}
+		AND a.ctcsSeq = #{ctcsSeq}
+		
 </select>
 
 <delete id="deleteClass">
