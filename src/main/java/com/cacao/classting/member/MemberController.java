@@ -396,7 +396,7 @@ public class MemberController {
 						  service.deleteMemberMulti(vo);
 					  }
 					  
-					  
+					   
 					  
 					  
 					  return "redirect:/adminMemberList";
