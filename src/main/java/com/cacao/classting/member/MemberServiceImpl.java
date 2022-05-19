@@ -153,7 +153,10 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectListNotice(vo);
 	}
 
-
+	@Override
+	public int deleteMemberMulti(MemberVo vo) throws Exception {
+		return dao.deleteMemberMulti(vo);
+	}
 	
 
 }

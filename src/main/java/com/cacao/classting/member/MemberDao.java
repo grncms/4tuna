@@ -53,4 +53,7 @@ public class MemberDao {
 
 	public int updateMember(Member dto) {return sqlSession.update(namespace + ".updateMember", dto);}
 	
+	public int deleteMemberMulti(MemberVo vo) {return sqlSession.update(namespace + ".deleteMemberMulti", vo);}
+
+	
 }

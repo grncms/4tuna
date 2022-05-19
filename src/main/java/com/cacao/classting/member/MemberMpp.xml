@@ -367,6 +367,14 @@
 			AND mmSeq = #{mmSeq}
 	</update>
 	
+	<update id="deleteMemberMulti">
+		UPDATE
+			Member
+		SET
+			mmDelny = 1
+		WHERE 1=1
+					AND mmSeq = #{mmSeq}
+	</update>
 
 <insert id="insertMember">
 			INSERT INTO Member (

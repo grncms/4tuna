@@ -39,8 +39,10 @@ public class MemberVo {
 	
 	private String ctptSeq;
 	private String ctboSeq;
+	private String[] checkboxSeqArray;
 	
-	//member search
+	
+			//member search
 			private String shMmDelNy;
 			private String shMmName;
 			private String shMmId;
@@ -48,7 +50,6 @@ public class MemberVo {
 			private String shDateEnd;
 			private Integer shOptionDate;
 			
-
 
 			//common
 			private String shOption;
@@ -470,6 +471,14 @@ public class MemberVo {
 	public void setCtboSeq(String ctboSeq) {
 		this.ctboSeq = ctboSeq;
 	}
+	public String[] getCheckboxSeqArray() {
+		return checkboxSeqArray;
+	}
+
+	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+		this.checkboxSeqArray = checkboxSeqArray;
+	}
+
 
 			// ---- paging
 			public void setParamsPaging(int totalRowsParam) {

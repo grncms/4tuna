@@ -386,7 +386,21 @@ public class MemberController {
 					return "xdmin/member/adminMemberList";
 				}
 	
-	
+				@RequestMapping(value = "/deleteMemberMulti") public String
+				  deleteMemberMulti(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+					  String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+					  System.out.println("vo.getCheckboxSeqArray():" + vo.getCheckboxSeqArray());
+					  for(String checkboxSeq : checkboxSeqArray) {
+						  vo.setMmSeq(checkboxSeq);
+						  service.deleteMemberMulti(vo);
+					  }
+					  
+					  
+					  
+					  
+					  return "redirect:/adminMemberList";
+				  }
 	
 	//------------------------------------------------------------------------------------------------------------
 		

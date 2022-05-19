@@ -38,4 +38,6 @@ public interface MemberService {
 	public int insertMember(Member dto) throws Exception;
 
 	public int updateMember(Member dto) throws Exception;
+	
+	int deleteMemberMulti(MemberVo vo) throws Exception;
 }
