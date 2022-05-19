@@ -34,6 +34,7 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListStorage(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
+	public List<ClassRoom> selectListReply(ClassRoomVo vo) throws Exception;
 	
 	
 // 출석부
