@@ -251,13 +251,13 @@
 				<div class="border p-3 ">
 				<select class="form-select" style="width:200px; display: inline;">
 					<option selected>회원구분</option>
-					<option value="1">선생님</option>
-					<option value="2">학생</option>
+					<option value="1" <c:if test="${vo.shMmTeacherNy eq 1}">selected</c:if>>선생님</option>
+					<option value="2" <c:if test="${vo.shMmTeacherNy eq 2}">selected</c:if>>학생</option>
 				</select>
 				<select class="form-select" style="width: 200px; display: inline;" name="shMmDelNy">
 					<option value="">삭제여부</option>
 					<option value="1"<c:if test="${vo.shMmDelNy eq 1}">selected</c:if>>Y</option>
-					<option value="0"<c:if test="${vo.shMmDelNy eq 0}">selected</c:if>>N</option>
+					<option value="2"<c:if test="${vo.shMmDelNy eq 2}">selected</c:if>>N</option>
 				</select>
 				<fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd"/>
 					<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜"value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" autocomplete="off">
@@ -293,6 +293,7 @@
 							<th scope="col" style="width: 10%;"><div style="width: 100px;">소속</div></th>
 							<th scope="col" style="width: 15%;"><div style="width: 100px;">생년월일</div></th>	
 							<th scope="col" style="width: 15%;"><div style="width: 100px;">가입날짜</div></th>
+							<th scope="col" style="width: 15%;"><div style="width: 100px;">삭제여부</div></th>
 	      				</tr>
 	   			 </thead>
 	   			 <tbody>
@@ -301,7 +302,7 @@
 	      				<tr>
 							<td scope="col">
 								<div class="form-check">
-								<input class="form-check-input" type="checkbox"id="checkboxSeq" name="checkboxSeq" value="<c:out value="${item.ctcsSeq}"/>">
+								<input class="form-check-input" type="checkbox"id="checkboxSeq" name="checkboxSeq" value="<c:out value="${item.mmSeq}"/>">
 								</div></td>
 							<td scope="col"><c:out value="${item.mmSeq}"/></td>
 							<td scope="col"><a href="javascript:goView(<c:out value='${item.mmSeq}'/>);"><c:out value="${item.mmName}"/></a></td>
@@ -314,6 +315,12 @@
 							<td scope="col"><c:out value="${item.mmSchoolCd}"/></td>
 							<td scope="col"><c:out value="${item.mmDob}"/></td>
 							<td scope="col"><fmt:formatDate value="${item.regDateTime}"/></td>
+							<td scope="col">
+							<c:choose>
+								<c:when test="${item.mmDelNy eq 0}">X</c:when>
+								<c:otherwise>O</c:otherwise>
+							</c:choose>
+							</td>
 								
 	    			  </tr>
 				  </c:forEach>
@@ -339,7 +346,7 @@
 			   </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		        <button type="submit" class="btn btn-danger">삭제</button>
+		        <button type="button" class="btn btn-danger" id="btnDele" name="btnDele">삭제</button>
 		      </div>
 		      </div>
 		    </div>
@@ -401,7 +408,7 @@ $("#btnDele").on("click", function(){
 	});
 	
 	$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
-	$("#memberList").attr("action", "/memberMultiUele");
+	$("#memberList").attr("action", "/deleteMemberMulti");
 	$("#memberList").submit();
 	} else {
 		return false;

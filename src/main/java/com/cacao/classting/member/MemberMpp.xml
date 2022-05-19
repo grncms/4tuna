@@ -333,8 +333,12 @@
 		 	Member
 		 WHERE 1=1
 			<choose>
+				<when test="shMmTeacherNy ==1">AND mmTeacherNy = 1</when>
+				<when test="shMmTeacherNy ==2">AND mmTeacherNy = 0</when>
+			</choose>
+			<choose>
 				<when test="shMmDelNy ==1">AND mmDelNy = 1</when>
-				<when test="shMmDelNy ==0">AND mmDelNy = 0</when>
+				<when test="shMmDelNy ==2">AND mmDelNy = 0</when>
 			</choose>
 			<if test="shMmName != null and !shMmName.equals('')"> AND mmName LIKE concat('%',#{shMmName},'%')</if>
 			<choose>
@@ -355,6 +359,7 @@
 			,mmSchoolCd
 			,mmDob
 			,RegDatetime
+			,mmDelNy
 	<include refid="selectCommonMember"/>		
 			limit #{startRnumForMysql},#{rowNumToShow} 	
 			
@@ -466,6 +471,7 @@
 				,mmTermsOfserviceNy
 				,mmEventNotificationNy
 				,mmPersonalInfoNy
+				,mmDelNy
 			 from 
 				Member
 			where 1=1

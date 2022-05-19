@@ -44,6 +44,7 @@ public class MemberVo {
 	
 			//member search
 			private String shMmDelNy;
+			private String shMmTeacherNy;
 			private String shMmName;
 			private String shMmId;
 			private String shDateStart;
@@ -316,6 +317,13 @@ public class MemberVo {
 		return shMmName;
 	}
 
+	public String getShMmTeacherNy() {
+		return shMmTeacherNy;
+	}
+
+	public void setShMmTeacherNy(String shMmTeacherNy) {
+		this.shMmTeacherNy = shMmTeacherNy;
+	}
 	public void setShMmName(String shMmName) {
 		this.shMmName = shMmName;
 	}
