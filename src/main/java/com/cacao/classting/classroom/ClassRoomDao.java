@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
+
+
 @Repository
 public class ClassRoomDao {
 	
@@ -27,6 +29,8 @@ public class ClassRoomDao {
 	public int deleteClass(ClassRoomVo vo) {return sqlSession.update(namespace + ".DeleteClass", vo);}
 	
 	public int selectOneCount(ClassRoomVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+
+	public int deleteClassMulti(ClassRoomVo vo) {return sqlSession.update(namespace + ".deleteClassMulti", vo);}
 
 
 	//classMemberView

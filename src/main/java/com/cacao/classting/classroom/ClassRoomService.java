@@ -2,6 +2,7 @@ package com.cacao.classting.classroom;
 
 import java.util.List;
 
+
 public interface ClassRoomService {
 	
 	//adminClass
@@ -10,11 +11,13 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListClass(ClassRoomVo vo) throws Exception;
 	public int insertClass(ClassRoom dto) throws Exception;
 
-	public int deleteClass(ClassRoom dto) throws Exception;
+	public int deleteClass(ClassRoomVo vo) throws Exception;
 
 	public ClassRoom selectOneClass(ClassRoomVo vo) throws Exception;
 	
 	public int selectOneCount(ClassRoomVo vo) throws Exception;
+	
+	int deleteClassMulti(ClassRoomVo vo) throws Exception;
 
 	//classMemberView
 	public int updateClass(ClassRoom dto) throws Exception;

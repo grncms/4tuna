@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
+
 
 
 @Controller
@@ -92,6 +94,30 @@ public class ClassRoomController {
 			
 		return "xdmin/member/classroom/adminClassView";
 	}
+
+	@RequestMapping(value = "/deleteClass") 
+	public String deleteClass(ClassRoomVo vo , RedirectAttributes redirectAttributes ) throws Exception {
+		  service.deleteClass(vo);
+			
+		  
+		  return "redirect:/adminClassList";
+	  }
+	
+	@RequestMapping(value = "/deleteClassMulti") public String
+	  deleteClassMulti(ClassRoomVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		  String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		  System.out.println("vo.getCheckboxSeqArray():" + vo.getCheckboxSeqArray());
+		  for(String checkboxSeq : checkboxSeqArray) {
+			  vo.setMmSeq(checkboxSeq);
+			  service.deleteClassMulti(vo);
+		  }
+		  
+		   
+		  
+		  
+		  return "redirect:/adminMemberList";
+	  }
 
 
 	@RequestMapping(value = "/classBoardUpload")

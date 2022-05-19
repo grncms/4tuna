@@ -41,10 +41,10 @@ public class ClassRoomVo {
 		private String shDateStart;
 		private String shDateEnd;
 		private Integer shOptionDate;
-		
 
 
 		//common
+		private String[] checkboxSeqArray;
 		private String shOption;
 		private String shValue;
 		private String shBelongto;
@@ -198,6 +198,13 @@ public class ClassRoomVo {
 			this.mmSeq = mmSeq;
 		}
 
+
+		public String[] getCheckboxSeqArray() {
+			return checkboxSeqArray;
+		}
+		public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+			this.checkboxSeqArray = checkboxSeqArray;
+		}
 		public String getShCtcsDelNy() {
 			return shCtcsDelNy;
 		}

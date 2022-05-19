@@ -91,12 +91,20 @@
 		
 </select>
 
-<delete id="deleteClass">
-		DELETE FROM 
-			ctClass
+<update id="deleteClass">
+		UPDATE  ctClass SET
+			ctcsDelNy = 1
 		WHERE 1=1
 			AND ctcsSeq = #{ctcsSeq}
-	</delete>
+	</update>
+	<update id="deleteClassMulti">
+		UPDATE
+			ctClass
+		SET
+			ctcsDelny = 1
+		WHERE 1=1
+					AND ctcsSeq = #{ctcsSeq}
+	</update>
 	
 <!-- 	클래스내 정보 불러오기! -->
 	<select id="selectOneSidebar" resultMap="resultMapObj">

@@ -26,9 +26,14 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 	@Override
-	public int deleteClass(ClassRoom dto) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteClass(ClassRoomVo vo) throws Exception {
+		
+		return dao.deleteClass(vo);
+	}
+	@Override
+	public int deleteClassMulti(ClassRoomVo vo) throws Exception {
+		
+		return dao.deleteClassMulti(vo);
 	}
 
 
