@@ -144,6 +144,20 @@
 						</div>
 						<div class="container_base">
 							<h5>댓글</h5>
+							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
+							<div class="comment row">
+								<div class="col-md-2 col-lg-1" id="classImg">
+									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+								</div>
+								<div class="col-md-10 col-lg-11" id="classInfo">
+									<div>
+										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+									</div>
+									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+									<div><c:out value="${itemMember.ctrpContent}"/></div>
+								</div>
+							</div>
+							</c:forEach>
 <!-- 							<div class="comment row">
 								<div class="col-md-2 col-lg-1" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">

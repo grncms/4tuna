@@ -98,7 +98,7 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 
-	@Override
+//	@Override
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) throws Exception {
 		return dao.selectListReply(vo);
 	}
