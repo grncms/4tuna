@@ -298,22 +298,29 @@ public class ClassRoomController {
 		System.out.println("출석부 :" +  httpSession.getAttribute("sessSeq"));
 		return "member/classroom/teacher/classAttendance";
 	}
+	
 	@RequestMapping(value = "member/class/common/postview")
 	public String classPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		service.hitUpdate(dto); //조회수 증가
-//		寃뚯떆臾쇰낫湲�
+		
+//		게시물
 		ClassRoom rt = service.selectOneClassPost(vo);
 		model.addAttribute("item", rt);
 
-//		�쉶�썝由ъ뒪�듃 遺덈윭�삤湲�
+//		멤버리스트
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
+//		멤버리스트
+		List<ClassRoom> replyList = service.selectListReply(vo);
+		model.addAttribute("replyList", replyList);
+		
 		return "member/classroom/common/classPostView";
 	}
+	
 	@RequestMapping(value = "member/class/common/homeworkview")
 	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		

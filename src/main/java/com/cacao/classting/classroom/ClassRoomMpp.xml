@@ -248,6 +248,41 @@
 		AND a.ctboSeq = 4
 		AND b.ctcsSeq = #{ctcsSeq}
 </select>
+<!-- 	댓글 리스트 -->
+<select id="selectListReply" resultMap="resultMapObj">
+	SELECT
+		a.ctrpSeq
+		,a.ctrpContent
+		,a.ctrpWriter
+		,a.ctrpWriter
+		,a.regDateTime
+		,a.ctptSeq
+	FROM
+		ctReply a 
+		LEFT JOIN ctPost b on b.ctptSeq = a.ctptSeq
+	WHERE 1=1
+		AND a.ctptSeq = {ctptSeq}
+</select>
+<!-- 	예약/임시저장 리스트 -->
+<select id="selectListStorage" resultMap="resultMapObj">
+	SELECT
+		a.ctptSeq
+		,a.ctptTitle
+		,a.ctptWriter
+		,a.ctptReservation
+		,a.ctptContent
+		,a.ctptReservationTypeCd
+		,a.regDateTime
+		,a.ctboSeq
+		,b.ctboTypeCd
+	FROM
+		ctPost a 
+		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
+		LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
+	WHERE 1=1
+		AND a.ctboSeq = 4
+		AND b.ctcsSeq = #{ctcsSeq}
+</select>
 
 
 <!-- 조회수 증가  -->
