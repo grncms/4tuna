@@ -15,7 +15,7 @@
 				<div class="container_base">
 					<div class="title_hw" >
 					<div class="col-md-4 col-lg-4 mt-2"><p style="font-size: 18px; font-weight: bold; color: black;">한동훈</p></div>
-					<div class="col-md-8 col-lg-8"><input type="text" class="form-control" id="" name="" placeholder="숫자만 작성"><span class="badge bg-primary">과제보러가기</span></div>
+					<div class="col-md-8 col-lg-8"><input type="text" class="form-control" id="" name="" placeholder="숫자만 작성"><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
 					</div>
 				</div>
 				<div class="container_base">

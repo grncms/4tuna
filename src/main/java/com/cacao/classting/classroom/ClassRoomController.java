@@ -352,6 +352,15 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classPostView";
 	}
+	@RequestMapping(value = "member/class/common/homeworkPostView")
+	public String homeworkPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+		
+//		멤버리스트
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
+		
+		return "member/classroom/common/classHomeworkPostView";
+	}
 	
 	@RequestMapping(value = "member/class/common/homeworkview")
 	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{

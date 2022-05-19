@@ -85,12 +85,12 @@
 	display: flex;
 	justify-content: center;
 }
-#posting {
-	width: 1100px;
+/* #posting {
+	width: 850px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
-}
+} */
 </style>
 
 
@@ -106,16 +106,12 @@
 		<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 
 		<div class="container-fluid">
-			<div class="row" id="posting">
-				<!-- <div class="col-xl-1 col-lg-1">
-					<i class="fa-2x fa-solid fa-thumbs-up" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-check" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-circle-question" role="button" onclick=''></i>
-				</div> -->
-				<div class="col-xl-7 col-lg-7">
+				<div class="row" id="posting">
+				<div class="col-12">
 					<div class="card shadow mb-4">
 						<div class="container_base">
-							<div class="title"><c:out value="${item.cthpTitle}"/></div>
+								<span class='badge badge_notice'>과제제출</span>
+							<div class="title"><c:out value="${item.ctptTitle}"/>과제제출합니다</div>
 						</div>
 						<div class="container_base">
 								<div class="writer row">
@@ -124,40 +120,55 @@
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
+										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/>한동훈</b></span></c:if>
 										</c:forEach>
-										<span style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>2022-22-22</span>
 									</div>
 								</div>
 						</div>
 						<div class="container_base">
 							<div class="post_content">
-								<div class="mb-5"><c:out value="${item.cthpDesc}"/></div>
-								<div >마감일 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+								<div class="mt-5 mb-5">
+									<c:out value="${item.ctptContent}"/>제출합니다. 첨부파일 확인해주세요
+								</div>
 							</div>
 						</div>
- 						<div class="container_base">
-								<h6>댓글</h6>
-<!-- 							<div class="comment row">
+						<div class="container_base">
+							<div class="row">
+							<h5 class="col-md-2 col-lg-2 mt-2">점수</h5>
+								<div class="col-md-2 col-lg-3">
+									<input type="text" class="form-control" id="" name="" >
+								</div>
+								<div class="col-md-2 col-lg-3">
+									<button type="button" class="basic_button">등록</button>
+								</div>
+							</div>
+						</div>
+						<div class="container_base">
+							<h5>댓글</h5>
+							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
+							<div class="comment row mt-2 mb-3">
 								<div class="col-md-2 col-lg-1" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
 								<div class="col-md-10 col-lg-11" id="classInfo">
 									<div>
-										<b>박규원</b>
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+										</c:forEach>
 									</div>
-									<div style="color: #c8c8c8; font-size: 14px;">4월 22일 오전 11:16</div>
-									<div>우왕 너무 유익해요요</div>
+									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+									<div><c:out value="${itemReply.ctrpContent}"/></div>
 								</div>
-							</div> -->
-						</div> 
+							</div>
+							</c:forEach>
+						</div>
 						<div class="container_base">
 								<div class="comment_write row">
 									<div class="col-md-3 col-lg-2" id="classImg">
 										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 										<div>${ctcmName}</div>
 									</div>
-	
 									<div class="col-md-9 col-lg-10" id="classInfo">
 										<input type="text" class="w-100">
 										<div>
@@ -169,17 +180,94 @@
 													<i class="fa-solid fa-image"></i>
 												</button>
 											</div>
-	
-											<button type="button" class="basic_button">과제 등록</button>
+											<button type="button" class="basic_button">등록</button>
 										</div>
 									</div>
 								</div>	
 							</div>
 						</div>
-			</div>
-				<div class="col-xl-5 col-lg-5">
-					<%@ include file="/WEB-INF/views/member/include/classHomeworkSubmit.jsp" %>
 				</div>
+<%-- 				<div class="col-12">
+					<div class="card shadow mb-4">
+						<div class="container_base">
+								<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
+								<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
+								<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+								<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
+							<div class="title"><c:out value="${item.ctptTitle}"/></div>
+						</div>
+						<div class="container_base">
+								<div class="writer row">
+									<div class="col-md-2 col-lg-1" id="classImg">
+										<img src="/resources/common/image/profile2.png" width="45" height="45" style="border-radius: 7px;">
+									</div>
+									<div class="col-md-10 col-lg-11" id="classInfo">
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
+										</c:forEach>
+									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+									<span style="color: #c8c8c8; font-size: 14px;">조회수:<c:out value="${item.ctptView }"/></span>
+									</div>
+								</div>
+						</div>
+						<div class="container_base">
+							<div class="post_content">
+								<div>
+									<c:out value="${item.ctptContent}"/>
+								</div>
+								<div class="post_content mt-3 float-end">
+								<i class="fa fa-solid fa-thumbs-up" role="button" onclick=''> <c:out value="${item.ctptLike1}"/></i>
+								<i class="fa fa-solid fa-check" role="button" onclick=''> <c:out value="${item.ctptLike2}"/></i>
+								<i class="fa fa-solid fa-circle-question" role="button" onclick=''> <c:out value="${item.ctptLike3}"/></i>
+								</div>
+							</div>
+						</div>
+						<div class="container_base">
+							<h5>댓글</h5>
+							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
+							<div class="comment row mt-2 mb-3">
+								<div class="col-md-2 col-lg-1" id="classImg">
+									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+								</div>
+								<div class="col-md-10 col-lg-11" id="classInfo">
+									<div>
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+										</c:forEach>
+									</div>
+									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+									<div><c:out value="${itemReply.ctrpContent}"/></div>
+								</div>
+							</div>
+							</c:forEach>
+						</div>
+						<div class="container_base">
+								<div class="comment_write row">
+									<div class="col-md-3 col-lg-2" id="classImg">
+										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+										<div>${ctcmName}</div>
+									</div>
+									<div class="col-md-9 col-lg-10" id="classInfo">
+										<input type="text" class="w-100">
+										<div>
+											<div class="btn-group" role="group">
+												<button type="button" class="btn btn-outline-secondary btn-sm">
+													<i class="fa-solid fa-file-circle-plus"></i>
+												</button>
+												<button type="button" class="btn btn-outline-secondary btn-sm">
+													<i class="fa-solid fa-image"></i>
+												</button>
+											</div>
+											<button type="button" class="basic_button">등록</button>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+				</div> --%>
+	<%-- 			<div class="col-xl-3 col-lg-3">
+					<%@ include file="/WEB-INF/views/member/classroom/common/classGraded.jsp" %>
+				</div> --%>
 		</div>
 	</div>
 		</div>
