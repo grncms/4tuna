@@ -298,7 +298,6 @@
 	
 					
 					
-			<jsp:include page="/WEB-INF/views/member/include/classFooter.jsp" flush="true" />
 
  <!-- Bootstrap core JavaScript-->
     <script src="../../../../../resources/common/vendor/jquery/jquery.min.js"></script>
