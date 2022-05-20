@@ -2,7 +2,7 @@
 
 		<div class="card shadow mb-4">
 		<form id="hwSubmitList" name="hwSubmitList" method="post">
-			<input type="hidden" id="cthsSeq" name="cthsSeq">
+		<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${item.cthsSeq}" />">
 			<!-- <div class="rightbar"> -->
 				<div class="container_base">
 					<div class="title">과제목록</div>
@@ -23,7 +23,7 @@
 						</c:forEach>	
 					</div>
 					<div class="col-md-8 col-lg-8">
-						<p><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='javascript:goHomeworkSubmit(<c:out value="${itemPost.cthsSeq}"/>)'">과제보러가기</span>
+						<p><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='javascript:goHomeworkSubmit(<c:out value="${itemSubmit.cthsSeq}"/>)'">과제보러가기</span>
 						</div>
 					</div>
 				</div>

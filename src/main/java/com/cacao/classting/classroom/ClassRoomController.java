@@ -371,6 +371,10 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
+//		homeworkView
+		ClassRoom rt = service.selectOneHomeworkSubmit(vo);
+		model.addAttribute("item", rt);
+		
 		return "member/classroom/common/classHomeworkPostView";
 	}
 	

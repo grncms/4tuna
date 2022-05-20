@@ -111,17 +111,17 @@
 					<div class="card shadow mb-4">
 						<div class="container_base">
 								<span class='badge badge_notice'>과제제출</span>
-							<div class="title"><c:out value="${item.ctptTitle}"/>과제제출합니다</div>
+							<div class="title"><c:out value="${item.cthsTitle}"/></div>
 						</div>
 						<div class="container_base">
 								<div class="writer row">
 									<div class="col-md-2 col-lg-1" id="classImg">
 										<img src="/resources/common/image/profile2.png" width="45" height="45" style="border-radius: 7px;">
 									</div>
-									<div class="col-md-10 col-lg-11" id="classInfo">
-										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
-										</c:forEach>
+									<div class="col-md-10 col-lg-11" id="classInfo"><c:out value="${item.cthsWriter}"/>
+<%-- 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<c:if test="${item.cthsWriter eq itemMember.ctcmSeq}"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
+										</c:forEach> --%>
 									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>2022-22-22</span>
 									</div>
 								</div>
@@ -129,7 +129,7 @@
 						<div class="container_base">
 							<div class="post_content">
 								<div class="mt-5 mb-5">
-									<c:out value="${item.ctptContent}"/>제출합니다. 첨부파일 확인해주세요
+									<c:out value="${item.cthsDesc}"/>
 								</div>
 							</div>
 						</div>
@@ -137,7 +137,7 @@
 							<div class="row">
 							<h5 class="col-md-2 col-lg-2 mt-2">점수</h5>
 								<div class="col-md-2 col-lg-3">
-									<input type="text" class="form-control" id="" name="" >
+									<input type="text" class="form-control" id="cthsScore" name="cthsScore" >
 								</div>
 								<div class="col-md-2 col-lg-3">
 									<button type="button" class="basic_button">등록</button>

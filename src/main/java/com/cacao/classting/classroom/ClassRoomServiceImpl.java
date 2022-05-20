@@ -148,6 +148,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.selectOneCount(vo);
 	}
 
+	@Override
+	public ClassRoom selectOneHomeworkSubmit(ClassRoomVo vo) throws Exception {
+		return dao.selectOneHomeworkSubmit(vo);
+	}
+
 
 
 

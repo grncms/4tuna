@@ -252,6 +252,25 @@
 			AND a.cthpSeq = #{cthpSeq}
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
+	
+<!-- 	과제제출 보기 -->	
+<select id="selectOneHomeworkSubmit" resultMap ="resultMapObj">
+	select 
+		cthsSeq
+		,cthsTitle
+		,cthsWriter
+		,cthsDesc
+		,cthsData 
+		,cthsScore
+		,cthsUseNy
+		,cthsDelNy
+		,regDateTime
+	 from 
+		ctHomeworkSubmit
+	where 1=1
+		and cthsSeq = #{cthsSeq}
+</select>	
+	
 <!-- 	구성원 리스트 -->		
 <select id="selectListClassMember" resultMap="resultMapObj">
 	SELECT
