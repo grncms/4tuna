@@ -137,6 +137,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.today(dto);
 	}
 
+	@Override
+	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) throws Exception {
+		return dao.selectListHomeworkSubmit(vo);
+	}
+
 
 
 	

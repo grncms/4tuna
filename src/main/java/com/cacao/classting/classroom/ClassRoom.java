@@ -54,6 +54,16 @@ public class ClassRoom {
 	private Integer cthpDelNy;	
 	private Date cthpEndDateTime;
 	
+//	ctHomeworkSubmit
+	private String cthsSeq;	
+	private String cthsTitle;	
+	private String cthsDesc;	
+	private String cthsData;	
+	private Integer cthsWriter;	
+	private Integer cthsScore;	
+	private Integer cthsUseNy;	
+	private Integer cthsDelNy;	
+	
 //	ctBoard
 	private String ctboSeq;	
 	private Integer ctboTypeCd;	
@@ -530,6 +540,54 @@ public class ClassRoom {
 	}
 	public void setCtrpWriter(Integer ctrpWriter) {
 		this.ctrpWriter = ctrpWriter;
+	}
+	public String getCthsSeq() {
+		return cthsSeq;
+	}
+	public void setCthsSeq(String cthsSeq) {
+		this.cthsSeq = cthsSeq;
+	}
+	public String getCthsTitle() {
+		return cthsTitle;
+	}
+	public void setCthsTitle(String cthsTitle) {
+		this.cthsTitle = cthsTitle;
+	}
+	public String getCthsDesc() {
+		return cthsDesc;
+	}
+	public void setCthsDesc(String cthsDesc) {
+		this.cthsDesc = cthsDesc;
+	}
+	public String getCthsData() {
+		return cthsData;
+	}
+	public void setCthsData(String cthsData) {
+		this.cthsData = cthsData;
+	}
+	public Integer getCthsWriter() {
+		return cthsWriter;
+	}
+	public void setCthsWriter(Integer cthsWriter) {
+		this.cthsWriter = cthsWriter;
+	}
+	public Integer getCthsScore() {
+		return cthsScore;
+	}
+	public void setCthsScore(Integer cthsScore) {
+		this.cthsScore = cthsScore;
+	}
+	public Integer getCthsUseNy() {
+		return cthsUseNy;
+	}
+	public void setCthsUseNy(Integer cthsUseNy) {
+		this.cthsUseNy = cthsUseNy;
+	}
+	public Integer getCthsDelNy() {
+		return cthsDelNy;
+	}
+	public void setCthsDelNy(Integer cthsDelNy) {
+		this.cthsDelNy = cthsDelNy;
 	}
 	
 	

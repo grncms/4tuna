@@ -3,7 +3,7 @@
 		<div class="card shadow mb-4">
 			<!-- <div class="rightbar"> -->
 				<div class="container_base">
-					<div class="title">점수등록</div>
+					<div class="title">과제목록</div>
 				</div>
 				<div class="container_base">
 					<div class="title_hw">
@@ -16,6 +16,24 @@
 					<div class="title_hw" >
 					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">한동훈</p></div>
 					<div class="col-md-8 col-lg-8"><p>80 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
+					</div>
+				</div>
+				<div class="container_base">
+					<div class="title_hw" >
+					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">최민수</p></div>
+					<div class="col-md-8 col-lg-8"><p>70 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
+					</div>
+				</div>
+				<div class="container_base">
+					<div class="title_hw" >
+					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">박규원</p></div>
+					<div class="col-md-8 col-lg-8"><p>100 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
+					</div>
+				</div>
+				<div class="container_base">
+					<div class="title_hw" >
+					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">최선락</p></div>
+					<div class="col-md-8 col-lg-8"><p>90 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
 					</div>
 				</div>
 				<div class="container_base">

@@ -380,6 +380,10 @@ public class ClassRoomController {
 //		
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
+
+//		selectListHomeworkSubmit
+		List<ClassRoom> submitList = service.selectListClassMember(vo);
+		model.addAttribute("submitList", submitList);
 		
 		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt2.getCtcmTeacherNy()) : " + rt2.getCtcmTeacherNy());

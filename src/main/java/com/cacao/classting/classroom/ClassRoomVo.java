@@ -49,7 +49,7 @@ public class ClassRoomVo {
 		private String shValue;
 		private String shBelongto;
 		
-
+		private String cthsSeq;
 		
 
 		private int thisPage = 1;									// 현재 페이지
@@ -353,6 +353,14 @@ public class ClassRoomVo {
 		}
 		public void setCtrpSeq(String ctrpSeq) {
 			this.ctrpSeq = ctrpSeq;
+		}
+		
+		
+		public String getCthsSeq() {
+			return cthsSeq;
+		}
+		public void setCthsSeq(String cthsSeq) {
+			this.cthsSeq = cthsSeq;
 		}
 		// ---- paging
 		public void setParamsPaging(int totalRowsParam) {

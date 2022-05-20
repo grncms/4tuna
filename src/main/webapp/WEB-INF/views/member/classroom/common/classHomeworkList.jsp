@@ -64,13 +64,13 @@
 						<div class="header">모든 과제</div>
 						<div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div>
 						<div class="footer dropdown">
-							<button type="button" class="basic_button">과제 만들기</button>
+							<button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">과제 만들기</button>
 						</div>
 					</div>
 					<form id="postList" name="postList" method="post">
-					<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-					<input  type="hidden" id=cthpSeq name="cthpSeq">
-					<input  type="hidden" id="mmSeq" name="mmSeq">
+					<input type="hidden" id="ctcsSeq" name="ctcsSeq">
+					<input type="hidden" id=cthpSeq name="cthpSeq">
+					<input type="hidden" id="mmSeq" name="mmSeq">
 					<div class="card shadow mb-4 ">
 					<c:forEach items="${list}" var="item" varStatus="status">
 						<div class="container_base">
@@ -80,7 +80,7 @@
 										<img class="profile" src="/resources/common/image/test.jpg" />
 									</div>
 									<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq}"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
 									</c:forEach>
 									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								</div>
