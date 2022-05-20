@@ -385,6 +385,8 @@ public class ClassRoomController {
 		List<ClassRoom> submitList = service.selectListClassMember(vo);
 		model.addAttribute("submitList", submitList);
 		
+		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
+		
 		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt2.getCtcmTeacherNy()) : " + rt2.getCtcmTeacherNy());
 		
