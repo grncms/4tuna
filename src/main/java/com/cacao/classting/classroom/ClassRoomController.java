@@ -193,11 +193,6 @@ public class ClassRoomController {
 		httpSession.setAttribute("ctcmName", rt.getCtcmName());
 		httpSession.setAttribute("teacherNy", rt.getCtcmTeacherNy());
 		
-		vo.setCtcsYear((String) httpSession.getAttribute("ctcsYear"));
-		vo.setCtcsYear((String) httpSession.getAttribute("ctcsName"));
-		vo.setCtcsYear((String) httpSession.getAttribute("ctcmSeq"));
-		vo.setCtcsYear((String) httpSession.getAttribute("ctcmName"));
-		vo.setCtcsYear((String) httpSession.getAttribute("teacherNy"));
 		
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsName()) : " + rt.getCtcsName());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsYear()) : " + rt.getCtcsYear());
