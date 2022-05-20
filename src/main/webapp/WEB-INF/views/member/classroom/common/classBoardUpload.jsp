@@ -119,6 +119,7 @@ input:checked+.slider:before {
 	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 	
 	<!-- Begin Page Content -->
+		<form method="post" id="puf" action="/member/classroom/common/classPostInst">
 	<div class="container-fluid">
 		<div class="row" id="posting">
 			<div class="col-xl-8 col-lg-8">
@@ -196,9 +197,7 @@ input:checked+.slider:before {
 
 						<!-- 내용 넣기 시작 -->
 						<div class="title_hw border">
-							<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;">
-								
-							</textarea>
+							<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
 						</div>
 						<!-- 내용 넣기 끝 -->
 					</div>
@@ -253,7 +252,7 @@ input:checked+.slider:before {
 							<!-- 게시글설정 끝 -->
 							<div>
 								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="location.href='/classStorage'">임시저장</button>
-								<button type="button" class="basic_button w-100" onclick="location.href='/member/class/common/postlist'">등록</button>
+								<button type="button" class="basic_button w-100" onclick="postUploadSubmit()">등록</button>
 							</div>
 						</div>
 					</div>
@@ -261,6 +260,7 @@ input:checked+.slider:before {
 			</div>
 		</div>
 		</div>
+		</form>
 	</div>
 </div>
 
@@ -311,6 +311,12 @@ $("#btnLogout").on("click", function(){
 		}
 	});	
 });
+</script>
+
+<script>
+	function postUploadSubmit(){
+		document.getElementById('puf').submit();
+	}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  

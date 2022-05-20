@@ -174,7 +174,7 @@
 </select>
 	<!-- 게시물 등록 -->
 	<insert id="insertPost">
-		INSERT INTO ctPost(
+		insert into ctPost(
 			ctptSeq
 			,ctptTitle
 			,ctptWriter
@@ -186,7 +186,7 @@
 			,#{ctptTitle}
 			,#{ctptWriter}
 			,#{ctptContent}
-			,#{regDateTime}
+			,#{now}
 			,#{ctboSeq}
 		)	
 	</insert>	
