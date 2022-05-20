@@ -180,8 +180,6 @@ public class ClassRoomController {
 		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		
-	
-		
 		ClassRoom rt = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt);
 

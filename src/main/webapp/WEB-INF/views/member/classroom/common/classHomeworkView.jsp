@@ -216,6 +216,11 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+goHomeworkSubmit = function(seq){
+	$("#cthsSeq").val(seq);
+	$("#hwSubmitList").attr("action","/member/class/common/homeworkPostView");
+	$("#hwSubmitList").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	

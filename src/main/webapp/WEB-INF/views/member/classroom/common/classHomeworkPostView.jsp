@@ -120,7 +120,7 @@
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/>한동훈</b></span></c:if>
+										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
 										</c:forEach>
 									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>2022-22-22</span>
 									</div>

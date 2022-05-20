@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 		<div class="card shadow mb-4">
+		<form id="hwSubmitList" name="hwSubmitList" method="post">
+			<input type="hidden" id="cthsSeq" name="cthsSeq">
 			<!-- <div class="rightbar"> -->
 				<div class="container_base">
 					<div class="title">과제목록</div>
@@ -21,23 +23,11 @@
 						</c:forEach>	
 					</div>
 					<div class="col-md-8 col-lg-8">
-						<p><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span>
+						<p><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='javascript:goHomeworkSubmit(<c:out value="${itemPost.cthsSeq}"/>)'">과제보러가기</span>
 						</div>
 					</div>
 				</div>
 				</c:forEach>
-<!-- 				<div class="container_base">
-					<div class="title_hw" >
-					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">박규원</p></div>
-					<div class="col-md-8 col-lg-8"><p>100 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
-					</div>
-				</div>
-				<div class="container_base">
-					<div class="title_hw" >
-					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">최선락</p></div>
-					<div class="col-md-8 col-lg-8"><p>90 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
-					</div>
-				</div> -->
 				<div class="container_base">
 					<div class="title_hw">
 						<div>제출 현황</div>
@@ -51,6 +41,7 @@
 					</div>
 				</div>
 			<!-- </div> -->
+		</form>	
 		</div>
 	
 
