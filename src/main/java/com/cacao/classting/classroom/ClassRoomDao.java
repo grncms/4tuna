@@ -58,7 +58,7 @@ public class ClassRoomDao {
 	public int hitUpdate(ClassRoom dto) {return sqlSession.update(namespace + ".hitUpdate",dto);}
 	
 	
-	// �⼮��
+	//출석부
 	public ClassRoom getClassId(ClassRoomVo vo) {
 		return sqlSession.selectOne(namespace+".getClassId",vo);
 		
@@ -69,8 +69,8 @@ public class ClassRoomDao {
 		
 	}
 	
-	public List<ClassRoom> today(ClassRoom dto){
-		return sqlSession.selectList(namespace+ ".today",dto);
+	public int today(ClassRoom dto){
+		return sqlSession.selectOne(namespace+ ".today",dto);
 		
 	}
 }

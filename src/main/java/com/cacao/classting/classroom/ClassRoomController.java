@@ -165,8 +165,7 @@ public class ClassRoomController {
 
 	@RequestMapping(value = "/classMain")
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
-		String today = LocalDate.now().toString();
-		String now = LocalDateTime.now().toString();
+
 		if(vo.getCtcsSeq() != null) {
 			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
 		}
@@ -207,15 +206,29 @@ public class ClassRoomController {
 		model.addAttribute("memberList", memberList);
 		
 		//출석 체크
-		ClassRoom attendance = service.getClassId(vo); 
+		String today = LocalDate.now().toString();
+		String now = LocalDateTime.now().toString();
+		
+		ClassRoom attendance = service.getClassId(vo); // mmseq와 ctcsseq로 ctcmseq를 조회
+		
+		System.out.println("오늘:" + today);
 		System.out.println("클래스멤버" + attendance.getCtcmSeq());
-		attendance.setCtadRegDateTime(now);
-		attendance.setAttendanceToday(today);
-		System.out.println("시간" + attendance.getCtadRegDateTime());
-		if(service.today(attendance).size() < 1 && rt.getCtcmTeacherNy()==0 ) {
-			service.attendance(attendance) ;
-			System.out.println("출석부에 등록");
-		}
+		
+		attendance.setCtadRegDateTime(now); //attendance에 지금 시각 기록
+		attendance.setAttendanceToday(today); //오늘날짜 기록
+		
+		System.out.println("입장시간:" + attendance.getCtadRegDateTime());
+		System.out.println("클래스멤버번호:" + attendance.getCtcmSeq());
+		System.out.println("오늘날짜:" + attendance.getAttendanceToday());
+		int todayEnterNum = service.today(attendance); //오늘 입장 횟수 조회
+		System.out.println("등록된 멤버수: "+ todayEnterNum);
+		
+		  if(todayEnterNum < 1 && rt.getCtcmTeacherNy()==0 ) {
+			  service.attendance(attendance) ; 
+			  System.out.println("출석부에 등록"); 
+		  }else {
+			  System.out.println("이미 출석기록이 있거나 선생님입니다.");
+		  }
 		return "member/classroom/common/classMain";
 	}
 	

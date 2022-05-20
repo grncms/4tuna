@@ -133,7 +133,7 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 	@Override
-	public List<ClassRoom> today(ClassRoom dto) throws Exception {
+	public int today(ClassRoom dto) throws Exception {
 		return dao.today(dto);
 	}
 

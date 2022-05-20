@@ -339,6 +339,8 @@
 
 </update>
 
+
+
 <!-- 출석부 -->
 
 <insert id="attendance">
@@ -359,9 +361,11 @@
 </select>
 
 <!-- 출석부 날짜비교해서 하루에 한번만 기록 들어가게끔, 오늘 날짜로 들어간것들 다 불러오는 쿼리  -->
-<select id ="today" resultMap="resultMapObj">
-	select ctadRegDateTime
+<select id ="today" resultType="int">
+	select count(*)
 	from ctAttendance
-	where DATE_FORMAT(ctadRegDateTime, '%Y-%m-%d') =  ${attendanceToday}
+	where ctcmSeq=${ctcmSeq}
+	and DATE_FORMAT(ctadRegDateTime, '%Y-%m-%d')=#{attendanceToday}
+
 </select>
 </mapper>

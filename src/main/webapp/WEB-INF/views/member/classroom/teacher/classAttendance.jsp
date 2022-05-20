@@ -127,13 +127,14 @@
 									</tr>
 								</thead>
 								<tbody>
+									<c:forEach var="ml" items="${memberList}" varStatus="st" >
 									<tr>
 										<td>
 											<div>
 												<div class="profile_box">
 													<img src="../../../../../resources/common/image/test.jpg" class="profile">
 												</div>
-												<span>박규원</span>
+												<span><c:out value="${ml.ctcmName }"/></span>
 											</div>
 										</td>
 										<td>
@@ -166,45 +167,8 @@
 										</td>
 
 									</tr>
-									<tr>
-										<td>
-											<div>
-												<div class="profile_box">
-													<img src="../../../../../resources/common/image/test.jpg" class="profile">
-												</div>
-												<span>박규원</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
-												<span class="badge bg-secondary">16:34:22</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
-												<span class="badge bg-secondary">16:34:22</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-xmark fa-2x" style="color: red;"></i>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
-												<span class="badge bg-secondary">16:34:22</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-xmark fa-2x" style="color: red;"></i>
-											</div>
-										</td>
-
-									</tr>
+									</c:forEach>
+									
 
 								</tbody>
 							</table>
