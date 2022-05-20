@@ -228,7 +228,7 @@ public class ClassRoomController {
 			  service.attendance(attendance) ; 
 			  System.out.println("출석부에 등록"); 
 		  }else {
-			  System.out.println("이미 출석기록이 있거나 선생님입니다.");
+			  System.out.println("오늘 이미 출석기록이 있거나 선생님입니다.");
 		  }
 		return "member/classroom/common/classMain";
 	}

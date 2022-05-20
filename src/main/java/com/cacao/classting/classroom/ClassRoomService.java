@@ -42,7 +42,7 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) throws Exception;
 	
 	
-// 출석부
+//출석부
 	public ClassRoom getClassId(ClassRoomVo vo) throws Exception;
 	public int attendance(ClassRoom dto) throws Exception;
 	public int today(ClassRoom dto) throws Exception;

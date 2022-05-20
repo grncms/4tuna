@@ -58,7 +58,7 @@ public class ClassRoomDao {
 	public int hitUpdate(ClassRoom dto) {return sqlSession.update(namespace + ".hitUpdate",dto);}
 	
 	
-	//출석부
+	// 출석부
 	public ClassRoom getClassId(ClassRoomVo vo) {
 		return sqlSession.selectOne(namespace+".getClassId",vo);
 		
