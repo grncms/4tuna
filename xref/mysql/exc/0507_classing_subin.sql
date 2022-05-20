@@ -14,31 +14,20 @@ left join ctBoard b on b.ctboSeq = a.ctboSeq;
 
 use classing;
 
-CREATE TABLE IF NOT EXISTS `ctHomeworkSubmit` (
-  `cthsSeq` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `cthsTitle` VARCHAR(255) NULL,
-  `cthsDesc` VARCHAR(255) NULL,
-  `cthsData` VARCHAR(255) NULL,
-  `cthsUseNy` INT NOT NULL,
-  `cthsDelNy` TINYINT NOT NULL,
-  `regIp` VARCHAR(100) NULL,
-  `regSeq` BIGINT NULL,
-  `regDevice` TINYINT NULL,
-  `regDateTime` DATETIME NULL,
-  `regDateTimeSvr` DATETIME NULL,
-  `modIp` VARCHAR(100) NULL,
-  `modSeq` BIGINT NULL,
-  `modDevice` TINYINT NULL,
-  `modDateTime` DATETIME NULL,
-  `modDateTimeSvr` DATETIME NULL,
-  `cthpSeq` BIGINT UNSIGNED NOT NULL,
-  PRIMARY KEY (`cthsSeq`),
-  INDEX `fk_ctHomeworkPost_copy1_ctHomeworkPost1_idx` (`cthpSeq` ASC) VISIBLE,
-  CONSTRAINT `fk_ctHomeworkPost_copy1_ctHomeworkPost1`
-    FOREIGN KEY (`cthpSeq`)
-    REFERENCES `ctHomeworkPost` (`cthpSeq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_unicode_ci;
+		SELECT
+			a.cthsSeq
+			,a.cthsTitle
+			,a.cthsWriter
+			,a.cthsDesc
+			,a.cthsData 
+			,a.cthsScore
+			,a.cthsUseNy
+			,a.cthsDelNy
+			,a.regDateTime
+			,b.ctcsSeq
+		FROM
+			ctHomeworkSubmit a
+			LEFT JOIN ctHomeworkPost b on b.cthpSeq = a.cthpSeq
+		WHERE 1=1
+			AND a.cthpSeq = 1
+			AND b.ctcsSeq = 1;

@@ -12,19 +12,21 @@
 					</div>
 					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 				</div>
+				<c:forEach items="${submitList}" var="itemSubmit" varStatus="status">
 				<div class="container_base">
 					<div class="title_hw" >
-					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">한동훈</p></div>
-					<div class="col-md-8 col-lg-8"><p>80 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
+					<div class="col-md-4 col-lg-4">
+						<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+							<c:if test="${itemSubmit.cthsWriter eq itemMember.ctcmSeq }"><p style="font-size: 18px; font-weight: bold; color: black;"><c:out value="${itemMember.ctcmName}"/></p></c:if>
+						</c:forEach>	
+					</div>
+					<div class="col-md-8 col-lg-8">
+						<p><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span>
+						</div>
 					</div>
 				</div>
-				<div class="container_base">
-					<div class="title_hw" >
-					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">최민수</p></div>
-					<div class="col-md-8 col-lg-8"><p>70 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
-					</div>
-				</div>
-				<div class="container_base">
+				</c:forEach>
+<!-- 				<div class="container_base">
 					<div class="title_hw" >
 					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">박규원</p></div>
 					<div class="col-md-8 col-lg-8"><p>100 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
@@ -35,11 +37,11 @@
 					<div class="col-md-4 col-lg-4"><p style="font-size: 18px; font-weight: bold; color: black;">최선락</p></div>
 					<div class="col-md-8 col-lg-8"><p>90 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='/member/class/common/homeworkPostView'">과제보러가기</span></div>
 					</div>
-				</div>
+				</div> -->
 				<div class="container_base">
 					<div class="title_hw">
 						<div>제출 현황</div>
-						<div>전체 학생 6명 중 5명 제출</div>
+						<div>전체 학생 <c:out value="${vo.totalMembers}"/>명 중 5명 제출</div>
 					</div>
 				</div>
 				

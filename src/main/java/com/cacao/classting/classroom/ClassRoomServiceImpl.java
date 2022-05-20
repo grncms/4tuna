@@ -143,6 +143,15 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 
+	@Override
+	public int selectOneMemberCount(ClassRoomVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
+
+
+
+
+
 
 	
 

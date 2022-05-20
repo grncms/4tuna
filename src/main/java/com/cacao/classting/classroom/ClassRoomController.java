@@ -369,20 +369,22 @@ public class ClassRoomController {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
-		
+
 		ClassRoom rt2 = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt2);
+
+		int totalMembers = service.selectOneMemberCount(vo);
+		vo.setTotalMembers(totalMembers);
 		
 //		homeworkView
 		ClassRoom rt = service.selectOneClassHomework(vo);
 		model.addAttribute("item", rt);
-
 //		
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 
 //		selectListHomeworkSubmit
-		List<ClassRoom> submitList = service.selectListClassMember(vo);
+		List<ClassRoom> submitList = service.selectListHomeworkSubmit(vo);
 		model.addAttribute("submitList", submitList);
 		
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
@@ -390,6 +392,8 @@ public class ClassRoomController {
 		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt2.getCtcmTeacherNy()) : " + rt2.getCtcmTeacherNy());
 		
+
+		System.out.println("totalMembers : "+totalMembers);
 		return "member/classroom/common/classHomeworkView";
 	}
 	@RequestMapping(value = "member/class/student/classHomeworkView_student")

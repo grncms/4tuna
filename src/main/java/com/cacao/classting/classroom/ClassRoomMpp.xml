@@ -204,10 +204,10 @@
 			,a.cthpUseNy
 			,a.cthpDelNy
 			,a.regDateTime
-			,b.cthwSeq
+			,b.ctcsSeq
 		FROM
 			ctHomeworkPost a 
-			LEFT JOIN ctHomework b on b.cthwSeq = a.cthwSeq
+			LEFT JOIN ctClass b on b.ctcsSeq = a.ctcsSeq
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
@@ -224,9 +224,11 @@
 		,cthpUseNy
 		,cthpDelNy
 		,regDateTime
+		,ctcsSeq
 	 from 
 		ctHomeworkPost
 	where 1=1
+		and ctcsSeq = #{ctcsSeq}
 		and cthpSeq = #{cthpSeq}
 </select>
 
@@ -242,26 +244,40 @@
 			,a.cthsUseNy
 			,a.cthsDelNy
 			,a.regDateTime
+			,b.ctcsSeq
 		FROM
-			ctHomeworkSubmit a 
+			ctHomeworkSubmit a
 			LEFT JOIN ctHomeworkPost b on b.cthpSeq = a.cthpSeq
-			LEFT JOIN ctHomework c on c.ctcsSeq = b.ctcsSeq
 		WHERE 1=1
-			AND b.cthpSeq = #{cthpSeq}
-			AND c.ctcsSeq = #{ctcsSeq}
+			AND a.cthpSeq = #{cthpSeq}
+			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
 <!-- 	구성원 리스트 -->		
-	<select id="selectListClassMember" resultMap="resultMapObj">
-		SELECT
-			a.ctcmSeq
-			,a.ctcmName
-			,a.ctcmTeacherNy
-			,a.ctcsSeq
-		FROM
-			ctClassMember a 
-		WHERE 1=1
-			AND a.ctcsSeq = #{ctcsSeq}
-	</select>
+<select id="selectListClassMember" resultMap="resultMapObj">
+	SELECT
+		a.ctcmSeq
+		,a.ctcmName
+		,a.ctcmTeacherNy
+		,a.ctcsSeq
+	FROM
+		ctClassMember a 
+	WHERE 1=1
+		AND a.ctcsSeq = #{ctcsSeq}
+</select>
+
+<!-- 전체 구성원 수 -->	
+<select id="selectOneMemberCount" resultType="Integer">
+	SELECT
+		count(ctcmSeq)
+	FROM 
+		ctClassMember
+	WHERE 1=1
+		AND ctcsSeq = #{ctcsSeq}
+		AND ctcmTeacherNy = 0
+</select>
+
+	
+	
 <!-- 	예약/임시저장 리스트 -->
 <select id="selectListStorage" resultMap="resultMapObj">
 	SELECT

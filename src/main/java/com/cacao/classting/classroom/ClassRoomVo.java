@@ -34,6 +34,9 @@ public class ClassRoomVo {
 		private String cthpSeq;
 		private String ctrpSeq;
 		
+
+		private int totalMembers;	
+		
 		//class search
 		private String shCtcsDelNy;
 		private String shCtcsName;
@@ -55,6 +58,7 @@ public class ClassRoomVo {
 		private int thisPage = 1;									// 현재 페이지
 		private int rowNumToShow = 5;								// 화면에 보여줄 데이터 줄 갯수
 		private int pageNumToShow = 10;								// 화면에 보여줄 페이징 번호 갯수
+									
 
 		private int totalRows;										// 전체 데이터 갯수
 		private int totalPages;										// 전체 페이지 번호
@@ -67,9 +71,13 @@ public class ClassRoomVo {
 		private int startRnumForMysql = 0;							// 쿼리 시작 row
 		
 		
-		
-		
-		
+		public int getTotalMembers() {
+			return totalMembers;
+		}
+
+		public void setTotalMembers(int totalMembers) {
+			this.totalMembers = totalMembers;
+		}
 		
 		public String getCthwSeq() {
 			return cthwSeq;
@@ -362,6 +370,11 @@ public class ClassRoomVo {
 		public void setCthsSeq(String cthsSeq) {
 			this.cthsSeq = cthsSeq;
 		}
+		
+		
+		
+
+		
 		// ---- paging
 		public void setParamsPaging(int totalRowsParam) {
 			

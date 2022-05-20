@@ -104,6 +104,7 @@ public class ClassRoom {
 	private long size;	
 	private Integer delNy;	
 	private Integer pseq;
+
 	
 	//�⼮
 	
@@ -589,7 +590,6 @@ public class ClassRoom {
 	public void setCthsDelNy(Integer cthsDelNy) {
 		this.cthsDelNy = cthsDelNy;
 	}
-	
 	
 	
 
