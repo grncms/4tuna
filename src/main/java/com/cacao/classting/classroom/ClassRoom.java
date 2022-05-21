@@ -590,9 +590,33 @@ public class ClassRoom {
 	public void setCthsDelNy(Integer cthsDelNy) {
 		this.cthsDelNy = cthsDelNy;
 	}
+	@Override
+	public String toString() {
+		return "ClassRoom [ctcsSeq=" + ctcsSeq + ", ctcsBelongto=" + ctcsBelongto + ", ctcsName=" + ctcsName
+				+ ", ctcsYear=" + ctcsYear + ", ctcsGradeCd=" + ctcsGradeCd + ", ctcsDesc=" + ctcsDesc + ", ctcsCode="
+				+ ctcsCode + ", ctcsDelNy=" + ctcsDelNy + ", regDateTime=" + regDateTime + ", regDateTimeSvr="
+				+ regDateTimeSvr + ", modDateTime=" + modDateTime + ", modDateTimeSvr=" + modDateTimeSvr + ", ctcmSeq="
+				+ ctcmSeq + ", ctcmName=" + ctcmName + ", ctcmDesc=" + ctcmDesc + ", ctcmTeacherNy=" + ctcmTeacherNy
+				+ ", ctcmAlarmReplyNy=" + ctcmAlarmReplyNy + ", ctcmAlarmReactionNy=" + ctcmAlarmReactionNy
+				+ ", ctcmDelNy=" + ctcmDelNy + ", mmSeq=" + mmSeq + ", ctadSeq=" + ctadSeq + ", ctadRegDateTime="
+				+ ctadRegDateTime + ", cthwSeq=" + cthwSeq + ", cthwTitle=" + cthwTitle + ", cthwData=" + cthwData
+				+ ", cthwDesc=" + cthwDesc + ", cthwCd=" + cthwCd + ", cthwMaxScore=" + cthwMaxScore + ", cthwScore="
+				+ cthwScore + ", cthwUseNy=" + cthwUseNy + ", cthwDelNy=" + cthwDelNy + ", cthwEndDate=" + cthwEndDate
+				+ ", cthpSeq=" + cthpSeq + ", cthpTitle=" + cthpTitle + ", cthpWriter=" + cthpWriter + ", cthpDesc="
+				+ cthpDesc + ", cthpData=" + cthpData + ", cthpUseNy=" + cthpUseNy + ", cthpDelNy=" + cthpDelNy
+				+ ", cthpEndDateTime=" + cthpEndDateTime + ", cthsSeq=" + cthsSeq + ", cthsTitle=" + cthsTitle
+				+ ", cthsDesc=" + cthsDesc + ", cthsData=" + cthsData + ", cthsWriter=" + cthsWriter + ", cthsScore="
+				+ cthsScore + ", cthsUseNy=" + cthsUseNy + ", cthsDelNy=" + cthsDelNy + ", ctboSeq=" + ctboSeq
+				+ ", ctboTypeCd=" + ctboTypeCd + ", ctboDelNy=" + ctboDelNy + ", ctptSeq=" + ctptSeq + ", ctptTitle="
+				+ ctptTitle + ", ctptContent=" + ctptContent + ", ctptTag=" + ctptTag + ", ctptWriter=" + ctptWriter
+				+ ", ctptView=" + ctptView + ", ctptReservationTypeCd=" + ctptReservationTypeCd + ", ctptReservation="
+				+ ctptReservation + ", ctptLike1=" + ctptLike1 + ", ctptLike2=" + ctptLike2 + ", ctptLike3=" + ctptLike3
+				+ ", ctptDelNy=" + ctptDelNy + ", cttgSeq=" + cttgSeq + ", cttgName=" + cttgName + ", ctrpSeq="
+				+ ctrpSeq + ", ctrpContent=" + ctrpContent + ", ctrpWriter=" + ctrpWriter + ", ctrpDelNy=" + ctrpDelNy
+				+ ", seq=" + seq + ", originalName=" + originalName + ", uuidName=" + uuidName + ", ext=" + ext
+				+ ", type=" + type + ", defaultNy=" + defaultNy + ", sort=" + sort + ", size=" + size + ", delNy="
+				+ delNy + ", pseq=" + pseq + ", attendanceToday=" + attendanceToday + "]";
+	}
 	
-	
-
-
 
 }

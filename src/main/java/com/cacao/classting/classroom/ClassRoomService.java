@@ -47,4 +47,10 @@ public interface ClassRoomService {
 	public ClassRoom getClassId(ClassRoomVo vo) throws Exception;
 	public int attendance(ClassRoom dto) throws Exception;
 	public int today(ClassRoom dto) throws Exception;
+	
+	
+//게시글등록
+	public int insertPost(ClassRoom dto) throws Exception;
+	public ClassRoom selectClassRoomInfoById(ClassRoom dto);
+	public int insertAddress(ClassRoom dto);
 }

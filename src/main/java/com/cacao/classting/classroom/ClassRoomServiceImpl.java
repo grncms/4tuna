@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class ClassRoomServiceImpl implements ClassRoomService{
 
@@ -153,6 +154,24 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.selectOneHomeworkSubmit(vo);
 	}
 
+	@Override
+	public int insertPost(ClassRoom dto) {
+		// TODO Auto-generated method stub
+		return dao.insertPost(dto);
+	}
+
+
+	
+	public ClassRoom selectClassRoomInfoById(ClassRoom dto) {
+		return dao.selectClassRoomInfoById(dto);
+	}
+
+	public int insertAddress(ClassRoom dto) {
+		// TODO Auto-generated method stub
+		return dao.insertAddress(dto);
+	}	
+	
+	
 
 
 

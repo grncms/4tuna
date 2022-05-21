@@ -181,13 +181,15 @@
 			,ctptContent
 			,regDateTime
 			,ctboSeq
+			,ctptDelNy
 		) VALUES (
 			#{ctptSeq}
 			,#{ctptTitle}
 			,#{ctptWriter}
 			,#{ctptContent}
-			,#{now}
+			,now()
 			,#{ctboSeq}
+			,0
 		)	
 	</insert>	
 

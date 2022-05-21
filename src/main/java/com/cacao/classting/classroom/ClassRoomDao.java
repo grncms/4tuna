@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 @Repository
 public class ClassRoomDao {
 	
@@ -74,4 +75,19 @@ public class ClassRoomDao {
 		return sqlSession.selectOne(namespace+ ".today",dto);
 		
 	}
+
+	
+//게시글 등록	
+	public int insertPost(ClassRoom dto) {
+		return sqlSession.insert(namespace+ ".insertPost", dto);
+	}
+	
+	public ClassRoom selectClassRoomInfoById(ClassRoom dto) {
+		return sqlSession.selectOne(namespace+ ".selectClassRoomInfoById");
+	}
+
+	public int insertAddress(ClassRoom dto) {
+		return sqlSession.insert(namespace + ".insertAddress", dto);
+	}
+	
 }
