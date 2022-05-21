@@ -77,17 +77,19 @@ public class ClassRoomDao {
 	}
 
 	
-//게시글 등록	
+//게시글
 	public int insertPost(ClassRoom dto) {
 		return sqlSession.insert(namespace+ ".insertPost", dto);
 	}
 	
-	public ClassRoom selectClassRoomInfoById(ClassRoom dto) {
-		return sqlSession.selectOne(namespace+ ".selectClassRoomInfoById");
-	}
-
 	public int insertAddress(ClassRoom dto) {
 		return sqlSession.insert(namespace + ".insertAddress", dto);
 	}
+	
+/*
+ * public int updatePost(ClassRoom dto) {
+ * 
+ * }
+ */
 	
 }

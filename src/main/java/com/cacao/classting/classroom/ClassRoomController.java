@@ -128,7 +128,7 @@ public class ClassRoomController {
 	
 
 	@RequestMapping(value = "/member/classroom/common/classPostInst")
-	public String classPostInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+	public String classPostInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, String temp, Model model, HttpSession httpSession) throws Exception {
 
 		System.out.println("dto.getCtptTitle(): " + dto.getCtptTitle());
 		System.out.println("dto.getCtptContent(): " + dto.getCtptContent());
@@ -137,31 +137,46 @@ public class ClassRoomController {
 		// 로그인 세션값인 로그인아이디 정보를 가져와서 writer 에다가 세팅하는 작업입니다. 
 		dto.setCtptWriter(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()));
 		
-		System.out.println("input 값 체크 : " + dto.toString());
-		
-		// 입력을 작동시킨다.
-		int result = service.insertPost(dto);
-		
-		// 생성된 id를 토대로 seq 번호를 받아오는 작업
-		String seq = "";
-		
+		// 임시저장인지 아닌지 확인하는 메서드
+		if(temp.equals("temp")) {
+			System.out.println("input 값 체크 : " + dto.toString());
+			
+			dto.setCtboSeq("4");
+			
+			int result = service.insertPost(dto);
+			
+			vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+			System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 
-		
-		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
-		
-//		게시물 리스트 불러오기
-		List<ClassRoom> list = service.selectListPost(vo);
-		model.addAttribute("list", list);
-		
-//		회원리스트 불러오기
-		List<ClassRoom> memberList = service.selectListClassMember(vo);
-		model.addAttribute("memberList", memberList);
-		
-		
-		System.out.println("result: " + result);
+			List<ClassRoom> memberList = service.selectListClassMember(vo);
+			model.addAttribute("memberList", memberList);
+			
+			List<ClassRoom> list = service.selectListStorage(vo);
+			model.addAttribute("list", list);
+			
+			return "member/classroom/common/classStorage";
+		}else {
+			System.out.println("input 값 체크 : " + dto.toString());
+			// 입력을 작동시킨다.
+			int result = service.insertPost(dto);
+			
+			vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+			System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+			
+//			게시물 리스트 불러오기
+			List<ClassRoom> list = service.selectListPost(vo);
+			model.addAttribute("list", list);
+			
+//			회원리스트 불러오기
+			List<ClassRoom> memberList = service.selectListClassMember(vo);
+			model.addAttribute("memberList", memberList);
+			
+			
+			System.out.println("result: " + result);
 
-		return "member/classroom/common/classMain";
+			return "member/classroom/common/classMain";
+		}
+		
 	}	
 	
 	@RequestMapping(value = "/classStorage")
@@ -471,7 +486,7 @@ public class ClassRoomController {
 		return "member/classroom/student/classHomeworkView_student";
 	}
 	@RequestMapping(value = "member/class/common/postedit")
-	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
+	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
 		return "member/classroom/common/classPostEdit";
 	}

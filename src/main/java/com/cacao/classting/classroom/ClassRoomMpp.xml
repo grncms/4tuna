@@ -172,7 +172,7 @@
 	where 1=1
 		and ctptSeq = #{ctptSeq}
 </select>
-	<!-- 게시물 등록 -->
+	<!-- 게시글 등록 -->
 	<insert id="insertPost">
 		insert into ctPost(
 			ctptSeq
@@ -191,7 +191,25 @@
 			,#{ctboSeq}
 			,0
 		)	
-	</insert>	
+	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="updatePost">
+		update ctPost (
+			ctptTitle
+			,ctptWriter
+			,ctptContent
+			,ctboSeq
+			,ctptDelNy
+		) VALUES (
+			,#{ctptTitle}
+			,#{ctptWriter}
+			,#{ctptContent}
+			,#{ctboSeq}
+			,0
+			)		
+	</update>
+		
 
 	
 <!-- 	과제 리스트 -->	

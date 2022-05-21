@@ -247,12 +247,28 @@ input:checked+.slider:before {
 								<br>
 								<div>관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
 							</div>
+							
+							<input type="text" id="temp" name="temp" style="display:none;">
+							
+							
 							<!-- 게시글설정 끝 -->
 							<div>
-								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="location.href='/classStorage'">임시저장</button>
-								<button type="button" class="basic_button w-100" onclick="postUploadSubmit()">등록</button>
+								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="postUploadSubmit('temp')">임시저장</button>
+								<button type="button" class="basic_button w-100" onclick="postUploadSubmit('submit')">등록</button>
 							</div>
 						</div>
+						
+						<script>
+							function postUploadSubmit(val){
+								if(val == 'temp') {
+									$('#temp').val('temp');		
+								}else {
+									$('#temp').val('submit');
+								}
+								
+								document.getElementById('puf').submit();
+							}
+						</script>
 					</div>
 				</div>
 			</div>
@@ -311,11 +327,7 @@ $("#btnLogout").on("click", function(){
 });
 </script>
 
-<script>
-	function postUploadSubmit(){
-		document.getElementById('puf').submit();
-	}
-</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 

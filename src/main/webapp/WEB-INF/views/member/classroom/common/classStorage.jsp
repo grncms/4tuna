@@ -126,6 +126,7 @@
 			        </div>
 			    </div>
 				</div>	
+				
 			</c:if>	
 			</c:forEach>
 		    <!-- Card Body -->

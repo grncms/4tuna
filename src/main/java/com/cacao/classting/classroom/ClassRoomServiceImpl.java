@@ -161,10 +161,6 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 
-	
-	public ClassRoom selectClassRoomInfoById(ClassRoom dto) {
-		return dao.selectClassRoomInfoById(dto);
-	}
 
 	public int insertAddress(ClassRoom dto) {
 		// TODO Auto-generated method stub
