@@ -257,10 +257,10 @@
 				            <label class="col-form-label" for="ctcsDesc">클래스설명</label>
 				          	<textarea rows="3" cols="100" id="ctcsDesc" name="ctcsDesc" disabled><c:out value="${item.ctcsDesc}"/></textarea>
 				        
-				        	 <fmt:formatDate value="${item.regDateTime}" var="regDateTime" pattern="yyyy-MM-dd"/>
-							<label for="regDateTime" class="form-label">생성날짜</label>
+				        	 <fmt:formatDate value="${item.regDateTime}" var="regDate" pattern="yyyy-MM-dd"/>
+							<label for="regDate" class="form-label">생성날짜</label>
 							<!-- datepicker 사용 -->
-							<input type="text" class="form-control" id="regDateTime" name="regDateTime" value="<fmt:formatDate value="${item.regDateTime}"/>" readonly> 
+							<input type="text" class="form-control" id="regDate" name="regDate" value="<fmt:formatDate value="${item.regDateTime}"/>" readonly> 
 							<!-- datepicker 사용 -->
 							
 							<label for="ctcmName" class="form-label">구성원</label>
