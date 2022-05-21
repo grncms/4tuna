@@ -82,6 +82,7 @@ public class ClassRoom {
 	private Integer ctptLike2;	
 	private Integer ctptLike3;	
 	private Integer ctptDelNy;	
+	private Integer ctptReservationNy;	
 	
 //	ctTag
 	private String cttgSeq;	
@@ -590,6 +591,13 @@ public class ClassRoom {
 	public void setCthsDelNy(Integer cthsDelNy) {
 		this.cthsDelNy = cthsDelNy;
 	}
+	public Integer getCtptReservationNy() {
+		return ctptReservationNy;
+	}
+	public void setCtptReservationNy(Integer ctptReservationNy) {
+		this.ctptReservationNy = ctptReservationNy;
+	}
+	
 	@Override
 	public String toString() {
 		return "ClassRoom [ctcsSeq=" + ctcsSeq + ", ctcsBelongto=" + ctcsBelongto + ", ctcsName=" + ctcsName
@@ -617,6 +625,5 @@ public class ClassRoom {
 				+ ", type=" + type + ", defaultNy=" + defaultNy + ", sort=" + sort + ", size=" + size + ", delNy="
 				+ delNy + ", pseq=" + pseq + ", attendanceToday=" + attendanceToday + "]";
 	}
-	
 
 }

@@ -64,6 +64,7 @@ public class Member {
 	private Integer ctptLike2;	
 	private Integer ctptLike3;	
 	private Integer ctptDelNy;
+	private Integer ctptReservationNy;
 	
 	private String tableName;
 	private String seq;
@@ -463,6 +464,12 @@ public class Member {
 	}
 	public void setCtptDelNy(Integer ctptDelNy) {
 		this.ctptDelNy = ctptDelNy;
+	}
+	public Integer getCtptReservationNy() {
+		return ctptReservationNy;
+	}
+	public void setCtptReservationNy(Integer ctptReservationNy) {
+		this.ctptReservationNy = ctptReservationNy;
 	}
 	
 	

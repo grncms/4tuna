@@ -71,10 +71,10 @@
 			<c:if test="${item.ctptReservation ne null && item.ctptWriter eq ctcmSeq}">
 			    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
 				예약 날짜/시간 : <fmt:formatDate value="${item.ctptReservation}" pattern="yyyy-MM-dd HH:mm:ss"/>							
-					<c:if test="${item.ctptReservationTypeCd eq 5}"><span class='badge badge_notice'>공지</span></c:if>
-					<c:if test="${item.ctptReservationTypeCd eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
-					<c:if test="${item.ctptReservationTypeCd eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
-					<c:if test="${item.ctptReservationTypeCd eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
+					<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
+					<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
+					<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+					<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
 				<div class="homework_listitem mt-3">
 				    <div class="title_hw" >
 				        <div class="col-md-10 col-lg-10" id="classInfo">
@@ -95,6 +95,7 @@
 			        </div>
 			    </div>
 				</div>	
+				
 			</c:if>	
 			</c:forEach>
             <div class="container_base">
@@ -104,10 +105,10 @@
    			<c:if test="${item.ctptReservation eq null && item.ctptWriter eq ctcmSeq}">
 			    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
 			    임시 저장 중
-   					<c:if test="${item.ctptReservationTypeCd eq 5}"><span class='badge badge_notice'>공지</span></c:if>
-					<c:if test="${item.ctptReservationTypeCd eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
-					<c:if test="${item.ctptReservationTypeCd eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
-					<c:if test="${item.ctptReservationTypeCd eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
+   					<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
+					<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
+					<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+					<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
 								<div class="homework_listitem mt-3">
 			    <div class="title_hw" >
 			        <div class="col-md-10 col-lg-10" id="classInfo">

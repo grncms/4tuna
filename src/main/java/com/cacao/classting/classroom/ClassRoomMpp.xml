@@ -141,17 +141,18 @@
 			,a.ctptWriter
 			,a.ctptContent 
 			,a.regDateTime
-			,a.ctptReservationTypeCd
 			,a.ctptLike1
 			,a.ctptLike2
 			,a.ctptLike3
 			,a.ctptView
+			,a.ctptReservationNy
 			,b.ctboTypeCd
 		FROM
 			ctPost a 
 			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
+			AND a.ctptReservationNy = 0
 		ORDER BY a.regDateTime 	
 	</select>
 	<!-- 	게시물 보기 -->	
@@ -325,7 +326,7 @@
 		,a.ctptWriter
 		,a.ctptReservation
 		,a.ctptContent
-		,a.ctptReservationTypeCd
+		,a.ctptReservationNy
 		,a.regDateTime
 		,a.ctboSeq
 		,b.ctboTypeCd
@@ -334,7 +335,7 @@
 		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
 		LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
 	WHERE 1=1
-		AND a.ctboSeq = 4
+		AND a.ctptReservationNy = 1
 		AND b.ctcsSeq = #{ctcsSeq}
 </select>
 <!-- 	댓글 리스트 -->

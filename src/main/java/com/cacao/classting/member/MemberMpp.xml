@@ -321,6 +321,7 @@
 			LEFT JOIN ctClassMember d on d.ctcsSeq = c.ctcsSeq
 		WHERE 1=1
 			AND b.ctboTypeCd = 25
+			AND a.ctptReservationNy = 0
 <!-- 			AND a.ctcsSeq = #{ctcsSeq} -->
 	</select>
 

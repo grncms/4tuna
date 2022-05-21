@@ -61,7 +61,6 @@
 						<div class="body">전체 게시글</div>
 					</div>	
 					<c:forEach items="${list}" var="item" varStatus="status">
-					<c:if test="${item.ctptReservationTypeCd eq null}">
 					<div class="container_base">
 						<div class="homework list">
 							<div class="header">
@@ -92,7 +91,6 @@
 							</div>
 						</div>
 					</div>
-					</c:if>
 					</c:forEach>
 <!-- 					<div class="container_base">
 						<div class="body">과제 게시글</div>
