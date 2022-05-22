@@ -417,8 +417,6 @@ public class ClassRoomController {
 		
 		System.out.println("vo.getCtptSeq():"+vo.getCtptSeq());
 		
-//		댓글등록
-		
 		return "member/classroom/common/classPostView";
 	}
 	@RequestMapping(value = "member/class/common/replyInst")
