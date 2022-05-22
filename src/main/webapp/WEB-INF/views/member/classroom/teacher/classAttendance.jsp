@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <!--  ㅇ-->
@@ -33,153 +33,118 @@
 </head>
 <body id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-	<!-- Sidebar -->
-	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
+		<!-- Sidebar -->
+		<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp"%>
 
-	<!-- Content Wrapper -->
-	<div id="content-wrapper" class="d-flex flex-column">
-	
-	<!-- Topbar -->	
-	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-		<div class="container-fluid">
-			<div class="row" id="posting">
-			<div class="col-12">
-				<div class="container_title shadow mb-4">
-					<div class="header">출석부</div>
-					<div class="body">학생의 출석 현황을 확인할 수 있어요</div>
+			<!-- Topbar -->
+			<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp"%>
 
-				</div>
-				<div class="container_base_wrapper shadow">
-					<div class="container_base">
-						<div class="today_attendance">
-							<div class="header">
-								<span>오늘의 출석 현황</span>
-								<span>2022-04-25 19:34 기준</span>
-							</div>
-							<div class="body">
-								<div class="attendance_bar">
-									<div>50%</div>
-									<div class="progress">
-										<div class="progress-bar base_bgcolor" style="width: 50%" role="progressbar"></div>
+			<div class="container-fluid">
+				<div class="row" id="posting">
+					<div class="col-12">
+						<div class="container_title shadow mb-4">
+							<div class="header">출석부</div>
+							<div class="body">학생의 출석 현황을 확인할 수 있어요</div>
+
+						</div>
+						<div class="container_base_wrapper shadow">
+							<div class="container_base">
+								<div class="today_attendance">
+									<div class="header">
+										<span>오늘의 출석 현황</span>
+										<span>
+											<c:out value="${now }" />
+											기준
+										</span>
+									</div>
+									<div class="body">
+										<div class="attendance_bar">
+											<div>50%</div>
+											<div class="progress">
+												<div class="progress-bar base_bgcolor" style="width: 50%" role="progressbar"></div>
+											</div>
+										</div>
+										<div class="attendance_text">
+											<div class="base_color">출석완료</div>
+											<div>3/6</div>
+										</div>
 									</div>
 								</div>
-								<div class="attendance_text">
-									<div class="base_color">출석완료</div>
-									<div>3/6</div>
+							</div>
+						</div>
+
+						<div class="container_base_wrapper shadow">
+							<div class="container_base d-flex justify-content-center">
+								<div class="attendance_setdate">
+									<!-- 출석 확인 날짜 설정  -->
+									<button class="btn btn-primary base_bgcolor"><</button>
+									<input type="text" class="daterange " name="daterange" value="01/01/2018 - 01/15/2018" />
+									<button class="btn btn-primary base_bgcolor">></button>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+						<div class="container_base_wrapper shadow">
+							<div class="container_base p-0">
+								<div class="attendance_table table-responsive">
+									<table class="table attendance" id="dataTable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th></th>
+												<c:forEach var="week" items="${week}" varStatus="var">
+													<th>
+														<div>
+															<c:out value="${week }" />
+														</div>
+														<div>
+															<c:out value="${day[var.index]}" />
+														</div>
+													</th>
+												</c:forEach>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="ml" items="${memberList}" varStatus="st">
+												<tr>
+													<td>
+														<div>
+															<div class="profile_box">
+																<img src="../../../../../resources/common/image/test.jpg" class="profile">
+															</div>
+															<span>
+																<c:out value="${ml.ctcmName }" />
+															</span>
+														</div>
+													</td>
+													<c:forEach var="logData" items="${log }" varStatus="st">
+														<td>
+															<div>
+																<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
+																<span class="badge bg-secondary">16:34:22</span>
+															</div>
+														</td>
+													</c:forEach>
+													
 
-				<div class="container_base_wrapper shadow">
-					<div class="container_base d-flex justify-content-center">
-						<div class="attendance_setdate">
-							<!-- 출석 확인 날짜 설정  -->
-							<button class="btn btn-primary base_bgcolor"><</button>
-							<input type="text" class="daterange " name="daterange" value="01/01/2018 - 01/15/2018" />
-							<button class="btn btn-primary base_bgcolor">></button>
-						</div>
-					</div>
-				</div>
-				<div class="container_base_wrapper shadow">
-					<div class="container_base p-0">
-						<div class="attendance_table table-responsive">
-							<table class="table attendance" id="dataTable" width="100%" cellspacing="0">
-								<thead>
-									<tr>
-										<th></th>
-										<th>
-											<div>
-												<div>월</div>
-												<div>04.19</div>
-											</div>
-										</th>
-										<th>
-											<div>
-												<div>월</div>
-												<div>04.19</div>
-											</div>
-										</th>
-										<th>
-											<div>
-												<div>월</div>
-												<div>04.19</div>
-											</div>
-										</th>
-										<th>
-											<div>
-												<div>월</div>
-												<div>04.19</div>
-											</div>
-										</th>
-										<th>
-											<div>
-												<div>월</div>
-												<div>04.19</div>
-											</div>
-										</th>
+												</tr>
+											</c:forEach>
 
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="ml" items="${memberList}" varStatus="st" >
-									<tr>
-										<td>
-											<div>
-												<div class="profile_box">
-													<img src="../../../../../resources/common/image/test.jpg" class="profile">
-												</div>
-												<span><c:out value="${ml.ctcmName }"/></span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
-												<span class="badge bg-secondary">16:34:22</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
-												<span class="badge bg-secondary">16:34:22</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-xmark fa-2x" style="color: red;"></i>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
-												<span class="badge bg-secondary">16:34:22</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<i class="fa-regular fa-circle-xmark fa-2x" style="color: red;"></i>
-											</div>
-										</td>
 
-									</tr>
-									</c:forEach>
-									
-
-								</tbody>
-							</table>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		</div>
 	</div>
-</div>
 
 
 
@@ -196,7 +161,7 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript">
 
 $("#roleT").hide();
 $("#roleS").hide();
@@ -234,7 +199,7 @@ $("#btnLogout").on("click", function(){
 });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
 </html>
