@@ -170,10 +170,14 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	@Override
 	public int insertReply(ClassRoom dto) throws Exception {
 		return dao.insertReply(dto);
+	}
+
+	@Override
+	public int insertHomeworkSubmit(ClassRoom dto) throws Exception {
+		return dao.insertHomeworkSubmit(dto);
 	}	
 	
 	
-
 
 
 

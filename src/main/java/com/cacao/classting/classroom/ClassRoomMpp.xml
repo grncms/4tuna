@@ -274,7 +274,34 @@
 			AND a.cthpSeq = #{cthpSeq}
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
-	
+<!-- 과제제출(학생) -->
+<insert id="insertHomeworkSubmit">
+   insert into ctHomeworkSubmit(
+      cthsSeq
+      ,cthsTitle
+      ,cthsDesc
+      ,cthsData
+      ,cthsWriter
+      ,cthsScore
+      ,cthsUseNy
+      ,cthsDelNy
+      ,regDateTime
+      ,regDateTime
+      ,cthpSeq
+   ) VALUES (
+      #{cthsSeq}
+      ,#{cthsTitle}
+      ,#{cthsDesc}
+      ,#{cthsData}
+      ,#{cthsWriter}
+      ,#{cthsScore}
+      ,1
+      ,0
+      ,now()
+      ,now()
+      ,#{cthpSeq}
+   )   
+</insert>	
 <!-- 	과제제출 보기 -->	
 <select id="selectOneHomeworkSubmit" resultMap ="resultMapObj">
 	select 
