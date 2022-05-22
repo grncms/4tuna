@@ -173,7 +173,7 @@
 	where 1=1
 		and ctptSeq = #{ctptSeq}
 </select>
-	<!-- 게시글 등록 -->
+<!-- 게시글 등록 -->
 	<insert id="insertPost">
 		insert into ctPost(
 			ctptSeq
@@ -193,6 +193,7 @@
 			,0
 		)	
 	</insert>
+
 	
 	<!-- 게시글 수정 -->
 	<update id="updatePost">
@@ -344,7 +345,7 @@
 		a.ctrpSeq
 		,a.ctrpContent
 		,a.ctrpWriter
-		,a.ctrpWriter
+		,a.ctrpDelNy
 		,a.regDateTime
 		,a.ctptSeq
 	FROM
@@ -353,7 +354,24 @@
 	WHERE 1=1
 		AND a.ctptSeq = #{ctptSeq}
 </select>
-
+<!-- 댓글 등록 -->
+<insert id="insertReply">
+	insert into ctReply(
+		ctrpSeq
+		,ctrpContent
+		,ctrpWriter
+		,ctrpDelNy
+		,regDateTime
+		,ctptSeq
+	) VALUES (
+		#{ctrpSeq}
+		,#{ctrpContent}
+		,#{ctrpWriter}
+		,0
+		,now()
+		,#{ctptSeq}
+	)	
+</insert>
 
 <!-- 조회수 증가  -->
 <update id="hitUpdate">

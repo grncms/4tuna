@@ -49,8 +49,8 @@
 		<div class="row" id="posting">
 			<div class="col-12">
 				<div class="container_title shadow mb-4">
-					<div class="header"><c:out value="${item.ctcsName}"/></div>
-					<div class="body"><c:out value="${item.ctcsName}"/> 클래스에 오신 것을 환영합니다</div>
+					<div class="header"><c:out value="${ctcsName}"/></div>
+					<div class="body"><c:out value="${ctcsName}"/> 클래스에 오신 것을 환영합니다</div>
 				</div>
 				<form id="postList" name="postList" method="post">
 				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">

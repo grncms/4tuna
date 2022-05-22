@@ -165,6 +165,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public int insertAddress(ClassRoom dto) {
 		// TODO Auto-generated method stub
 		return dao.insertAddress(dto);
+	}
+
+	@Override
+	public int insertReply(ClassRoom dto) throws Exception {
+		return dao.insertReply(dto);
 	}	
 	
 	

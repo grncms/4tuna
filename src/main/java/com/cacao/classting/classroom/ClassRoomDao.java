@@ -54,6 +54,9 @@ public class ClassRoomDao {
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomeworkSubmit",vo); return list;}
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassMember",vo); return list;}
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListReply",vo); return list;}
+	
+	public int insertReply(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertReply", dto);}
+	
 
 //��ȸ��
 	

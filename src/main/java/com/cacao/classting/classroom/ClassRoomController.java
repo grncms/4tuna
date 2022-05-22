@@ -411,12 +411,32 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
-//		멤버리스트
+//		댓글리스트
 		List<ClassRoom> replyList = service.selectListReply(vo);
 		model.addAttribute("replyList", replyList);
 		
+		System.out.println("vo.getCtptSeq():"+vo.getCtptSeq());
+		
+//		댓글등록
+		
 		return "member/classroom/common/classPostView";
 	}
+	@RequestMapping(value = "member/class/common/replyInst")
+	public String replyInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+//		댓글등록
+		service.insertReply(dto);
+		
+		System.out.println("dto.getCtrpWriter() : "+dto.getCtrpWriter());
+		System.out.println("되능겨?");
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/member/class/common/postview";
+	}
+	
 	@RequestMapping(value = "member/class/common/homeworkPostView")
 	public String homeworkPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		

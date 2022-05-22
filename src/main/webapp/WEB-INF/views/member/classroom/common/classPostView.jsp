@@ -162,36 +162,37 @@
 							</c:forEach>
 						</div>
 						<div class="container_base">
-								<div class="comment_write row">
-									<div class="col-md-3 col-lg-2" id="classImg">
-										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-										<div>${ctcmName}</div>
-									</div>
-									<div class="col-md-9 col-lg-10" id="classInfo">
-										<input type="text" class="w-100">
-										<div>
-											<div class="btn-group" role="group">
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-file-circle-plus"></i>
-												</button>
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-image"></i>
-												</button>
-											</div>
-											<button type="button" class="basic_button">등록</button>
+						<form id="replyInst" name="replyInst" action="/member/class/common/replyInst" method="post">
+						<input type="hidden" id="ctptSeq" name="ctptSeq" value="<c:out value="${vo.ctptSeq}"/>">
+						<input type="hidden" id="ctrpWriter" name="ctrpWriter" value="<c:out value="${ctcmSeq}"/>">
+							<div class="comment_write row">
+								<div class="col-md-3 col-lg-2" id="classImg">
+									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+									<div>${ctcmName}</div>
+								</div>
+								<div class="col-md-9 col-lg-10" id="classInfo">
+									<input type="text" id="ctrpContent" name="ctrpContent" class="w-100">
+									<div>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-outline-secondary btn-sm">
+												<i class="fa-solid fa-file-circle-plus"></i>
+											</button>
+											<button type="button" class="btn btn-outline-secondary btn-sm">
+												<i class="fa-solid fa-image"></i>
+											</button>
 										</div>
+										<button type="submit" class="basic_button" onclick="location.href='javascript:goReply()'">등록</button>
 									</div>
-								</div>	
+								</div>
 							</div>
+						</form>		
 						</div>
+					</div>
 			</div>
-	<%-- 			<div class="col-xl-3 col-lg-3">
-					<%@ include file="/WEB-INF/views/member/classroom/common/classGraded.jsp" %>
-				</div> --%>
 		</div>
 	</div>
-		</div>
 	</div>
+</div>
 
 
 
@@ -223,6 +224,10 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+goReply = function(){
+	$("#replyInst").attr("action","/member/class/common/replyInst");
+	$("#replyInst").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	
