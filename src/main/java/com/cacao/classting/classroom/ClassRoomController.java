@@ -3,8 +3,6 @@ package com.cacao.classting.classroom;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -395,51 +393,8 @@ public class ClassRoomController {
 	
 
 	@RequestMapping(value = "member/class/teacher/attendance")
-	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		System.out.println("출석부 :" +  httpSession.getAttribute("sessSeq"));
-		String classSeq = (String) httpSession.getAttribute("ctcsSeq");
-		vo.setCtcsSeq(classSeq);
-		List<LocalDate> days = new ArrayList<LocalDate>();
-		List<String> week = new ArrayList<String>();
-		LocalDate day = LocalDate.now();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		String now = LocalDateTime.now().format(dtf);
-		List<ClassRoom> memberList = service.selectListClassMember(vo);
-		String korean = "";
-		for(int i = 4 ; i >= 0 ; i --) {
-			days.add(day.minusDays(i));	
-			
-			switch(day.minusDays(i).getDayOfWeek()) {
-			case MONDAY:
-				korean = "월요일";
-				break;
-			case TUESDAY:
-				korean = "화요일";
-				break;
-			case WEDNESDAY:
-				korean = "수요일";
-				break;
-			case THURSDAY:
-				korean = "목요일";
-				break;
-			case FRIDAY:
-				korean = "금요일";
-				break;
-			case SATURDAY:
-				korean = "토요일";
-				break;
-			case SUNDAY:
-				korean = "일요일";
-				break;
-			}
-			week.add(korean);	
-			System.out.println(day.minusDays(i).getDayOfWeek()); 	
-			
-		}
-		model.addAttribute("day",days);
-		model.addAttribute("week",week);
-		model.addAttribute("now",now);
-		model.addAttribute("memberList",memberList);
 		return "member/classroom/teacher/classAttendance";
 	}
 	
@@ -492,13 +447,13 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
-//		homeworkView
+//		homeworkPostView
 		ClassRoom rt = service.selectOneHomeworkSubmit(vo);
 		model.addAttribute("item", rt);
 		
 		return "member/classroom/common/classHomeworkPostView";
 	}
-	
+//	모든과제
 	@RequestMapping(value = "member/class/common/homeworkview")
 	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
@@ -524,6 +479,10 @@ public class ClassRoomController {
 		List<ClassRoom> submitList = service.selectListHomeworkSubmit(vo);
 		model.addAttribute("submitList", submitList);
 		
+//		homeworkPostView
+		ClassRoom rt3 = service.selectOneHomeworkSubmit(vo);
+		model.addAttribute("itemSubmit", rt3);
+		
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		
 		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
@@ -532,6 +491,7 @@ public class ClassRoomController {
 
 		System.out.println("totalMembers : "+totalMembers);
 		return "member/classroom/common/classHomeworkView";
+		
 	}
 	@RequestMapping(value = "member/class/student/classHomeworkView_student")
 	public String classHomeworkView_student(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
