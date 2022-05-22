@@ -222,9 +222,11 @@ public class ClassRoomController {
 		if(vo.getCtcsSeq() != null) {
 			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
 		}
+
 		//사이드바 구현을 위한  
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
+
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
