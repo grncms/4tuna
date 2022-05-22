@@ -406,7 +406,7 @@ public class ClassRoomController {
 		String now = LocalDateTime.now().format(dtf);
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		String korean = "";
-		for(int i = 5 ; i > 0 ; i --) {
+		for(int i = 4 ; i >= 0 ; i --) {
 			days.add(day.minusDays(i));	
 			
 			switch(day.minusDays(i).getDayOfWeek()) {
