@@ -34,13 +34,13 @@ public class MemberController {
 	@RequestMapping(value = "/")
 	public String a9xlab() {
 		
-		return "/index";
-	}
-	@RequestMapping(value = "/index")
-	public String index() {
-		
 		return "index/index";
 	}
+//	@RequestMapping(value = "/index")
+//	public String index() {
+//		
+//		return "index/index";
+//	}
 	
 	@RequestMapping(value = "/main")
 	public String main_teacher(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
