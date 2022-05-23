@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ForTest</title>
+<title></title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -85,12 +85,12 @@
 	display: flex;
 	justify-content: center;
 }
-#posting {
-	width: 1100px;
+/* #posting {
+	width: 850px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
-}
+} */
 </style>
 
 
@@ -107,15 +107,14 @@
 
 		<div class="container-fluid">
 			<div class="row" id="posting">
-				<!-- <div class="col-xl-1 col-lg-1">
-					<i class="fa-2x fa-solid fa-thumbs-up" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-check" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-circle-question" role="button" onclick=''></i>
-				</div> -->
-				<div class="col-xl-7 col-lg-7">
+				<div class="col-12">
 					<div class="card shadow mb-4">
 						<div class="container_base">
-							<div class="title"><c:out value="${item.cthpTitle}"/></div>
+								<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
+								<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
+								<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+								<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
+							<div class="title"><c:out value="${itemSubmit.cthsTitle}"/></div>
 						</div>
 						<div class="container_base">
 								<div class="writer row">
@@ -124,67 +123,73 @@
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
+										<c:if test="${itemSubmit.cthsWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
 										</c:forEach>
-										<span style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${itemSubmit.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 									</div>
 								</div>
 						</div>
 						<div class="container_base">
 							<div class="post_content">
-								<div class="mb-5"><c:out value="${item.cthpDesc}"/></div>
-								<div >마감일 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+								<div class="mt-4">
+									<c:out value="${itemSubmit.cthsDesc}"/>
+								</div>
+								<div class="post_content mt-3 float-end">
+									1. 첨부파일.jpg
+								</div>
 							</div>
 						</div>
- 						<div class="container_base">
-								<h6>댓글</h6>
-<!-- 							<div class="comment row">
+						<div class="container_base">
+							<h5>댓글</h5>
+							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
+							<div class="comment row mt-2 mb-3">
 								<div class="col-md-2 col-lg-1" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
 								<div class="col-md-10 col-lg-11" id="classInfo">
 									<div>
-										<b>박규원</b>
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+										</c:forEach>
 									</div>
-									<div style="color: #c8c8c8; font-size: 14px;">4월 22일 오전 11:16</div>
-									<div>우왕 너무 유익해요요</div>
+									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+									<div><c:out value="${itemReply.ctrpContent}"/></div>
 								</div>
-							</div> -->
-						</div> 
-						<div class="container_base">
-								<div class="comment_write row">
-									<div class="col-md-3 col-lg-2" id="classImg">
-										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-										<div>${ctcmName}</div>
-									</div>
-	
-									<div class="col-md-9 col-lg-10" id="classInfo">
-										<input type="text" class="w-100">
-										<div>
-											<div class="btn-group" role="group">
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-file-circle-plus"></i>
-												</button>
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-image"></i>
-												</button>
-											</div>
-	
-											<button type="button" class="basic_button">등록</button>
-										</div>
-									</div>
-								</div>	
 							</div>
+							</c:forEach>
 						</div>
+						<div class="container_base">
+						<form id="replyInst" name="replyInst" action="/member/class/common/replyInst" method="post">
+						<input type="hidden" id="ctptSeq" name="ctptSeq" value="<c:out value="${vo.ctptSeq}"/>">
+						<input type="hidden" id="ctrpWriter" name="ctrpWriter" value="<c:out value="${ctcmSeq}"/>">
+							<div class="comment_write row">
+								<div class="col-md-3 col-lg-2" id="classImg">
+									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+									<div>${ctcmName}</div>
+								</div>
+								<div class="col-md-9 col-lg-10" id="classInfo">
+									<input type="text" id="ctrpContent" name="ctrpContent" class="w-100">
+									<div>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-outline-secondary btn-sm">
+												<i class="fa-solid fa-file-circle-plus"></i>
+											</button>
+											<button type="button" class="btn btn-outline-secondary btn-sm">
+												<i class="fa-solid fa-image"></i>
+											</button>
+										</div>
+										<button type="submit" class="basic_button" onclick="location.href='javascript:goReply()'">등록</button>
+									</div>
+								</div>
+							</div>
+						</form>		
+						</div>
+					</div>
 			</div>
-				<div class="col-xl-5 col-lg-5">
-					<c:if test="${teacherNy eq 1 }"><%@ include file="/WEB-INF/views/member/include/classGraded.jsp" %></c:if>
-					<c:if test="${teacherNy eq 0 }"><%@ include file="/WEB-INF/views/member/include/classHomeworkSubmit.jsp" %></c:if>
-				</div>
 		</div>
 	</div>
-		</div>
 	</div>
+</div>
 
 
 
@@ -193,14 +198,14 @@
 
 	<!-- End of Page Wrapper -->
 	<!-- Bootstrap core JavaScript-->
-	<script src="/resources/common/vendor/jquery/jquery.min.js"></script>
-	<script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
+	<script src="../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="/resources/common/js/sb-admin-2.min.js"></script>
+	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script type="text/javascript">
 
 $("#roleT").hide();
@@ -216,28 +221,10 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
-goHomeworkSubmit = function(seq){
-	$("#cthsSeq").val(seq);
-	$("#hwSubmitList").attr("action","/member/class/common/homeworkPostView");
-	$("#hwSubmitList").submit();
+goReply = function(){
+	$("#replyInst").attr("action","/member/class/common/replyInst");
+	$("#replyInst").submit();
 }
-
-goHomeworkSubmitStu = function(seq){
-	$("#cthsSeq").val(seq);
-	$("#homeworkSubmit").attr("action","/classHomeworkPostView_student");
-	$("#homeworkSubmit").submit();
-}
-
-goHomeworkSubmitStuEdit = function(seq){
-	
-	$("#cthsSeq").val(seq);
-	$("#homeworkSubmit").attr("action","/classHomeworkSubmitEdit");
-	$("#homeworkSubmit").submit();
-
-}
-
-
-
 
 $("#btnLogout").on("click", function(){
 	

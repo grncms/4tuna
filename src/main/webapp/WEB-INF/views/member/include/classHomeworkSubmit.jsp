@@ -2,13 +2,12 @@
 
 		<div class="card shadow mb-4">
 			<!-- <div class="rightbar"> -->
-				<form action="/member/classroom/common/homeworkSubmitInst" id="homeworkSubmit" name="homeworkSubmit" method="post">
+			<form action="" id="homeworkSubmit" name="homeworkSubmit" method="post">
 				<input type="hidden" id="cthsWriter" name="cthsWriter" value="${ctcmSeq}">
-				<input type="hidden" id="cthsUseNy" name="cthsUseNy" value="1">
-				<input type="hidden" id="cthsDelNy" name="cthsDelNy" value="0">
 				<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
+				<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
 				<div class="container_base">
-					<div class="title">과제 제출</div>
+					<div class="title">내 과제</div>
 				</div>
 				<div class="container_base">
 					<div class="title_hw">
@@ -31,15 +30,19 @@
 				<div class="container_base">
 					<div class="title_hw">
 						<div>채점 현황</div>
-						<div>채점이 완료되었습니다.</div>
-						<c:if test="${itemSubmit.cthsScore ne null}"><p style="font-size: 20px; color: blue;"><c:out value="${itemSubmit.cthsScore}"/></p>점</c:if>
-						<c:if test="${itemSubmit.cthsScore eq null}"><div>아직 채점 전 입니다.</div></c:if>
 					</div>
+					<div>
+						<c:if test="${itemSubmit.cthsScore ne null}">채점이 완료되었습니다. <p style="font-size: 20px; color: blue; display: inline; margin-left: 20px; margin-right: 10px;"><c:out value="${itemSubmit.cthsScore}"/></p>점</c:if>
+						<c:if test="${itemSubmit.cthsScore eq null}"><div>아직 채점 전 입니다.</div></c:if>
+					</div>	
+					<c:if test="${itemSubmit.cthsSeq ne null && itemSubmit.cthsScore ne null}"><button type="button" class="btn btn-light" style="font-size: 15px; margin-top: 10px;" onclick="location.href='javascript:goHomeworkSubmitStu(<c:out value="${itemSubmit.cthsSeq}"/>)'">제출한 과제 확인</button></c:if>
 				</div>
 				
 				<div class="container_base">
 					<div class="rightbar_button">
-						<button type="submit" class="basic_button w-50" onclick="location.href='javascript:submitHomework()'">과제 등록</button>
+						<c:if test="${itemSubmit.cthsSeq eq null}"><button type="submit" class="basic_button w-50" onclick="">과제 등록</button></c:if>
+						<c:if test="${itemSubmit.cthsSeq ne null && itemSubmit.cthsScore eq null}"><button type="button" class="basic_button w-50" onclick="location.href='javascript:goHomeworkSubmitStuEdit(<c:out value="${itemSubmit.cthsSeq}"/>)'">과제 수정</button></c:if>
+						<c:if test="${itemSubmit.cthsScore ne null}">채점완료된 과제는 수정할 수 없습니다. </c:if>
 					</div>
 				</div>
 			<!-- </div> -->
