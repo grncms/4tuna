@@ -222,6 +222,13 @@ goHomeworkSubmit = function(seq){
 	$("#hwSubmitList").submit();
 }
 
+submitHomework = function(){
+	
+	$("#homeworkSubmitInst").attr("action","/member/classroom/common/homeworkSubmitInst");
+	$("#homeworkSubmitInst").submit();
+}
+
+
 $("#btnLogout").on("click", function(){
 	
 	$.ajax({

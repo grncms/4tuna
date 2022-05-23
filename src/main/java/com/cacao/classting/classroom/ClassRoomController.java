@@ -491,7 +491,7 @@ public class ClassRoomController {
 		return "member/classroom/common/classHomeworkView";
 		
 	}
-	@RequestMapping(value = "/homeworkSubmitInst")
+	@RequestMapping(value = "/member/classroom/common/homeworkSubmitInst")
 	public String homeworkSubmitInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
 		
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));

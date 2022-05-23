@@ -2,6 +2,11 @@
 
 		<div class="card shadow mb-4">
 			<!-- <div class="rightbar"> -->
+				<form action="/member/classroom/common/homeworkSubmitInst" id="homeworkSubmit" name="homeworkSubmit" method="post">
+				<input type="hidden" id="cthsWriter" name="cthsWriter" value="${ctcmSeq}">
+				<input type="hidden" id="cthsUseNy" name="cthsUseNy" value="1">
+				<input type="hidden" id="cthsDelNy" name="cthsDelNy" value="0">
+				<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 				<div class="container_base">
 					<div class="title">과제 제출</div>
 				</div>
@@ -13,19 +18,13 @@
 					<span class="badge bg-danger">제출 전</span><span class="badge bg-primary">제출 완료</span><span class="badge bg-secondary">미완료</span>
 				</div>
 				<div class="container_base">
-				<div class="mb-1"><input type="text" class="form-control" id="cthpTitle" name="cthpTitle" placeholder="제목입력" value="<c:out value="${itemSubmit.cthpTitle}"/>"></div>
-				<textarea class="form-control mb-1" id="cthpDesc" name="cthpDesc" rows="3" placeholder="내용입력" value="<c:out value="${itemSubmit.cthpDesc}"/>"></textarea>
+				<div class="mb-1"><input type="text" class="form-control" id="cthsTitle" name="cthsTitle" placeholder="제목입력"></div>
+				<textarea class="form-control mb-1" id="cthsDesc" name="cthsDesc" rows="3" placeholder="내용입력" ></textarea>
 				<div class="input-group">
 				  <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
 				  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
 				</div>
 				</div>
-<!-- 				<div class="container_base">
-					<div class="title_hw" >
-					<div class="col-md-4 col-lg-4 mt-2"><p style="font-size: 18px; font-weight: bold; color: black;">한동훈</p></div>
-					<div class="col-md-8 col-lg-8"><input type="text" class="form-control" id="" name="" placeholder="숫자만 작성"><span class="badge bg-primary">과제보러가기</span></div>
-					</div>
-				</div> -->
 				<div class="container_base">
 					<div class="title_hw">
 						<div>채점 현황</div>
@@ -35,10 +34,11 @@
 				
 				<div class="container_base">
 					<div class="rightbar_button">
-						<button type="button" class="basic_button w-50">과제 등록</button>
+						<button type="submit" class="basic_button w-50" onclick="location.href='javascript:submitHomework()'">과제 등록</button>
 					</div>
 				</div>
 			<!-- </div> -->
+		</form>	
 		</div>
 	
 
