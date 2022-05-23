@@ -181,6 +181,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public ClassRoom selectOneHomeworkSubmitStudent(ClassRoomVo vo) throws Exception {
 		return dao.selectOneHomeworkSubmitStudent(vo);
 	}
+
+	@Override
+	public int updateHomeworkSubmitScore(ClassRoom dto) throws Exception {
+		return dao.updateHomeworkSubmitScore(dto);
+	}
 	
 
 

@@ -65,24 +65,43 @@
                   <p data-aos="fade-up" data-aos-delay="300"><button class="btn btn-primary py-3 px-5 btn-pill" onclick="location.href='/memberForm_main'">회원가입하기</button></p>
                 </div>
 
-                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="" method="post" class="form-box">
-                  <input type="hidden" name="mmSeq" id="mmSeq">
-                    <h3 class="h4 text-black mb-4">CLASSING에 로그인</h3>
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="mmId" name="mmId" placeholder="아이디" value="asd123">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control" id="mmPassword" name="mmPassword" placeholder="비밀번호" value="1111">
-                    </div>
-                    <div class="form-group">
-                    <input type="button" class="btn btn-primary btn-pill" id="btnLogin"  value="로그인하기">
-                    <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
-                    </div>
-                    <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
-                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
-                  </form>
-                </div>
+                	<div class="col-lg-5 ml-auto mb-2" data-aos="fade-up" data-aos-delay="500">
+                 	 <form action="" method="post" class="form-box">
+	                  <input type="hidden" name="mmSeq" id="mmSeq">
+	                    <h3 class="h4 text-black mb-4">CLASSING에 로그인(선생님)</h3>
+	                    <div class="form-group">
+	                      <input type="text" class="form-control" id="mmId" name="mmId" placeholder="아이디" value="asd123">
+	                    </div>
+	                    <div class="form-group">
+	                      <input type="password" class="form-control" id="mmPassword" name="mmPassword" placeholder="비밀번호" value="1111">
+	                    </div>
+	                    <div class="form-group">
+	                    <input type="button" class="btn btn-primary btn-pill" id="btnLogin"  value="로그인하기">
+	                    <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
+	                    </div>
+	                    <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
+	                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
+                 	 </form>
+               		 </div>
+               		 
+                	<div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
+                 	 <form action="" method="post" class="form-box">
+	                  <input type="hidden" name="mmSeq" id="mmSeq">
+	                    <h3 class="h4 text-black mb-4">CLASSING에 로그인(학생) </h3>
+	                    <div class="form-group">
+	                      <input type="text" class="form-control" id="mmId2" name="mmId2" placeholder="아이디" value="zxc123">
+	                    </div>
+	                    <div class="form-group">
+	                      <input type="password" class="form-control" id="mmPassword2" name="mmPassword2" placeholder="비밀번호" value="1111">
+	                    </div>
+	                    <div class="form-group">
+	                    <input type="button" class="btn btn-primary btn-pill" id="btnLogin2"  value="로그인하기">
+	                    <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
+	                    </div>
+	                    <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
+	                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
+                 	 </form>
+               		 </div>
               </div>
             </div>
             
@@ -208,6 +227,29 @@ $("#btnLogin").on("click",function(){
 		,type: "post"
 		,url: "/member/loginProc"
 		,data : { "mmId" : $("#mmId").val(), "mmPassword" : $("#mmPassword").val()}
+		,success: function(response) {
+			if(response.rt == "success") { 
+					location.href = "/main";
+			} else {
+				alert("회원없음");
+			}
+		}			
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});
+$("#btnLogin2").on("click",function(){ 
+	 
+  	if(!checkNull($("mmId"), $.trim($("#mmId").val()), "아이디를 입력해 주세요!")) return false;
+	if(!checkNull($("mmPassword"), $.trim($("#mmPassword").val()), "비밀번호를 입력해 주세요!")) return false; 
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/loginProc"
+		,data : { "mmId" : $("#mmId2").val(), "mmPassword" : $("#mmPassword2").val()}
 		,success: function(response) {
 			if(response.rt == "success") { 
 					location.href = "/main";

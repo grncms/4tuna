@@ -23,7 +23,9 @@
 						</c:forEach>	
 					</div>
 					<div class="col-md-8 col-lg-8">
-						<p><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p><span class="badge bg-primary" role="button" onclick="location.href='javascript:goHomeworkSubmit(<c:out value="${itemSubmit.cthsSeq}"/>)'">과제보러가기</span>
+						<c:if test="${itemSubmit.cthsScore eq null}"><p>등록된 점수가 없습니다.</p></c:if>
+						<c:if test="${itemSubmit.cthsScore ne null}"><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p></c:if>
+						<span class="badge bg-primary" role="button" onclick="location.href='javascript:goHomeworkSubmit(<c:out value="${itemSubmit.cthsSeq}"/>)'">과제보러가기</span>
 						</div>
 					</div>
 				</div>

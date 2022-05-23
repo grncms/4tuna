@@ -18,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
+import com.cacao.classting.member.Member;
+import com.cacao.classting.member.MemberVo;
 
 
 
@@ -419,6 +421,7 @@ public class ClassRoomController {
 		
 		System.out.println("vo.getCtptSeq():"+vo.getCtptSeq());
 		
+		
 		return "member/classroom/common/classPostView";
 	}
 	@RequestMapping(value = "member/class/common/replyInst")
@@ -453,6 +456,16 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classHomeworkPostView";
 	}
+//	과제점수 업데이트
+	@RequestMapping(value = "member/class/common/submitScoreUpdt")
+	public String submitScoreUpdt(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, RedirectAttributes redirectAttributes,HttpSession httpSession) throws Exception{
+
+		service.updateHomeworkSubmitScore(dto);
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/member/classroom/common/classHomeworkPostView";
+	}
+	
 //	모든과제
 	@RequestMapping(value = "member/class/common/homeworkview")
 	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
@@ -465,9 +478,6 @@ public class ClassRoomController {
 		ClassRoom rt2 = service.selectOneSidebar(vo);
 		model.addAttribute("item", rt2);
 
-		int totalMembers = service.selectOneMemberCount(vo);
-		vo.setTotalMembers(totalMembers);
-		
 //		homeworkView
 		ClassRoom rt = service.selectOneClassHomework(vo);
 		model.addAttribute("item", rt);
@@ -475,7 +485,7 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 
-//		selectListHomeworkSubmit
+//		selectListHomeworkSubmit : 해당 과제에 과제물 제출 목록
 		List<ClassRoom> submitList = service.selectListHomeworkSubmit(vo);
 		model.addAttribute("submitList", submitList);
 		
@@ -487,8 +497,7 @@ public class ClassRoomController {
 //		homeworkPostView(학생화면)
 //		제출
 //		제출한 과제 보여주기
-		ClassRoom rt3 = service.selectOneHomeworkSubmitStudent(vo);
-		model.addAttribute("itemSubmit", rt3);
+
 		
 		return "member/classroom/common/classHomeworkView";
 		
@@ -543,8 +552,17 @@ public class ClassRoomController {
 		return "member/classroom/common/classGrade";
 	}
 	@RequestMapping(value = "member/class/common/classGraded")
-	public String classGraded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
+	public String classGraded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
+//		System.out.println("여긴 graded");
+//		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
+//		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+//		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
+//		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+//
+//		ClassRoom rt = service.selectOneHomeworkSubmitStudent(vo);
+//		model.addAttribute("itemSubmit", rt);
+//		
 		return "member/classroom/common/classGraded";
 	}
 	@RequestMapping(value = "member/class/common/classGradeStandby")

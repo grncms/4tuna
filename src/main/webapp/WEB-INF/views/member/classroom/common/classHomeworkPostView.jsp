@@ -166,28 +166,30 @@
 							</div>
 							</c:forEach>
 						</div>
+					<!-- 댓글 s -->
 						<div class="container_base">
-								<div class="comment_write row">
-									<div class="col-md-3 col-lg-2" id="classImg">
-										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-										<div>${ctcmName}</div>
-									</div>
-									<div class="col-md-9 col-lg-10" id="classInfo">
-										<input type="text" class="w-100">
-										<div>
-											<div class="btn-group" role="group">
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-file-circle-plus"></i>
-												</button>
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-image"></i>
-												</button>
-											</div>
-											<button type="button" class="basic_button">등록</button>
+							<div class="comment_write row">
+								<div class="col-md-3 col-lg-2" id="classImg">
+									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+									<div>${ctcmName}</div>
+								</div>
+								<div class="col-md-9 col-lg-10" id="classInfo">
+									<input type="text" class="w-100">
+									<div>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-outline-secondary btn-sm">
+												<i class="fa-solid fa-file-circle-plus"></i>
+											</button>
+											<button type="button" class="btn btn-outline-secondary btn-sm">
+												<i class="fa-solid fa-image"></i>
+											</button>
 										</div>
+										<button type="button" class="basic_button">등록</button>
 									</div>
-								</div>	
-							</div>
+								</div>
+							</div>	
+						</div>
+					<!-- 댓글 e -->	
 						</div>
 				</div>
 <%-- 				<div class="col-12">
@@ -317,7 +319,7 @@ $("#btnLogout").on("click", function(){
 		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "/index";
+				location.href = "/";
 			} else {
 				// by pass
 			}

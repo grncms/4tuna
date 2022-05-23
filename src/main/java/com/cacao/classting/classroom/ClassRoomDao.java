@@ -59,6 +59,7 @@ public class ClassRoomDao {
 	public int insertReply(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertReply", dto);}
 	public int insertHomeworkSubmit(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertHomeworkSubmit", dto);}
 	
+	public int updateHomeworkSubmitScore(ClassRoom dto)  {return sqlSession.update(namespace + ".updateHomeworkSubmitScore", dto);}
 
 //��ȸ��
 	

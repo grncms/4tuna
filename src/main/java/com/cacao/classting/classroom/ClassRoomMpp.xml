@@ -302,6 +302,16 @@
       ,#{cthpSeq}
    )   
 </insert>	
+<!-- 과제 점수 update -->
+<update id="updateHomeworkSubmitScore">
+	UPDATE 
+		ctHomeworkSubmit 
+	SET 
+		cthsScore = #{cthsScore} 
+	WHERE 1=1
+		AND cthsSeq = #{cthsSeq}
+</update>
+
 <!-- 	과제제출 보기(선생님->학생것) -->	
 <select id="selectOneHomeworkSubmit" resultMap ="resultMapObj">
 	select 
