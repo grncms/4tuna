@@ -3,6 +3,7 @@
 		<div class="card shadow mb-4">
 		<form id="hwSubmitList" name="hwSubmitList" method="post">
 		<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${item.cthsSeq}" />">
+		<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${item.cthpSeq}" />">
 			<!-- <div class="rightbar"> -->
 				<div class="container_base">
 					<div class="title">과제목록</div>
