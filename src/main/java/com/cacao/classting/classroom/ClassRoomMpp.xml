@@ -286,7 +286,7 @@
       ,cthsUseNy
       ,cthsDelNy
       ,regDateTime
-      ,regDateTime
+      ,modDateTime
       ,cthpSeq
    ) VALUES (
       #{cthsSeq}

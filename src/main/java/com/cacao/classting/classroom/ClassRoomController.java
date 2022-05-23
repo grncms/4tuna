@@ -479,19 +479,32 @@ public class ClassRoomController {
 		List<ClassRoom> submitList = service.selectListHomeworkSubmit(vo);
 		model.addAttribute("submitList", submitList);
 		
-//		homeworkPostView
-		ClassRoom rt3 = service.selectOneHomeworkSubmit(vo);
-		model.addAttribute("itemSubmit", rt3);
-		
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		
 		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
 		System.out.println("httpSession.setAttribute(\"ctcsName\", rt2.getCtcmTeacherNy()) : " + rt2.getCtcmTeacherNy());
 		
-
-		System.out.println("totalMembers : "+totalMembers);
+//		homeworkPostView(학생화면)
+//		제출
+		
+//		제출한 과제 보여주기
 		return "member/classroom/common/classHomeworkView";
 		
+	}
+	@RequestMapping(value = "/homeworkSubmitInst")
+	public String homeworkSubmitInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+//		댓글등록
+		service.insertHomeworkSubmit(dto);
+		
+		System.out.println("dto.getCtrpWriter() : "+dto.getCtrpWriter());
+		System.out.println("되능겨?");
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/member/class/common/homeworkview";
 	}
 	@RequestMapping(value = "member/class/student/classHomeworkView_student")
 	public String classHomeworkView_student(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
