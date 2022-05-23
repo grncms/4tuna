@@ -150,7 +150,7 @@ input:checked+.slider:before {
 							<textarea class="formBoard" rows="20" cols="100" id="cthsDesc" name="cthsDesc" placeholder="본문을 작성하세요."><c:out value="${itemSubmit.cthsDesc}"/></textarea>
 						</div>
 						
-						<button type="submit" class="basic_button w-25 mt-1" onclick="location.href='javascript:goView(<c:out value="${itemSubmit.cthsSeq}"/>)'">등록</button>
+						<button type="submit" class="basic_button w-25 mt-1" id="submitUpdt" name="submitUpdt">등록</button>
 						<!-- 내용 넣기 끝 -->
 					</div>
 				</div>
@@ -192,11 +192,17 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
-goView = function(seq){
-	$("#editSubmit").attr("action","/classHomeworkSubmitEditUpdt");
-	$("#editSubmit").submit();
-}
-
+$("#submitUpdt").on("click", function(){
+	var answer = confirm("수정하시겠습니까?");
+	
+	if(answer){
+		$("#editSubmit").attr("action","/classHomeworkSubmitEditUpdt");
+		$("#editSubmit").submit();
+	}else{
+		return false;
+	}
+	
+});
 $("#btnLogout").on("click", function(){
 	
 	$.ajax({

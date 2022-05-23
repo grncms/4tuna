@@ -563,8 +563,10 @@ public class ClassRoomController {
 		
 		vo.setCthpSeq(dto.getCthpSeq());
 		vo.setCthsSeq(dto.getCthsSeq());
+		System.out.println("cthsSeq : "+vo.getCthsSeq());
+		System.out.println("cthpSeq : "+vo.getCthpSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
-		return "redirect:/classHomeworkPostView_student";
+		return "redirect:/member/class/common/homeworkview";
 	}
 	@RequestMapping(value = "member/class/common/postedit")
 	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{

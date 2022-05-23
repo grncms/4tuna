@@ -355,9 +355,8 @@
 		ctHomeworkSubmit 
 	SET 
 		cthsTitle = #{cthsTitle} 
-		cthsDesc = #{cthsDesc} 
+		,cthsDesc = #{cthsDesc} 
 	WHERE 1=1
-		AND cthpSeq = #{cthpSeq}
 		AND cthsSeq = #{cthsSeq}
 </update>
 <!-- 	구성원 리스트 -->		
