@@ -392,7 +392,26 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 	<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js" rel="stylesheet"></script>
 	<script type="text/javascript">
-
+	$("#btnLogout").on("click", function(){
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/login_xdmin";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});	
+	});
 $("#checkboxAll").click(function() {
 	if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
 	else $("input[name=checkboxSeq]").prop("checked", false);
