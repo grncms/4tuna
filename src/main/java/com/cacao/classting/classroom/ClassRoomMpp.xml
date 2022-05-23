@@ -302,7 +302,7 @@
       ,#{cthpSeq}
    )   
 </insert>	
-<!-- 	과제제출 보기 -->	
+<!-- 	과제제출 보기(선생님->학생것) -->	
 <select id="selectOneHomeworkSubmit" resultMap ="resultMapObj">
 	select 
 		cthsSeq
@@ -318,6 +318,24 @@
 		ctHomeworkSubmit
 	where 1=1
 		and cthsSeq = #{cthsSeq}
+</select>	
+<!-- 	과제제출 보기(학생->본인것) -->	
+<select id="selectOneHomeworkSubmitStudent" resultMap ="resultMapObj">
+	select 
+		cthsSeq
+		,cthsTitle
+		,cthsWriter
+		,cthsDesc
+		,cthsData 
+		,cthsScore
+		,cthsUseNy
+		,cthsDelNy
+		,regDateTime
+	 from 
+		ctHomeworkSubmit
+	where 1=1
+		and cthsSeq = #{cthsSeq}
+		and cthsWriter = #{cthsWriter}
 </select>	
 	
 <!-- 	구성원 리스트 -->		

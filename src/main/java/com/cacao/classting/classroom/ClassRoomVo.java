@@ -33,6 +33,7 @@ public class ClassRoomVo {
 		private String ctboSeq;
 		private String cthpSeq;
 		private String ctrpSeq;
+		private String cthsWriter;
 		
 
 		private int totalMembers;	
@@ -370,11 +371,14 @@ public class ClassRoomVo {
 		public void setCthsSeq(String cthsSeq) {
 			this.cthsSeq = cthsSeq;
 		}
-		
-		
-		
+		public String getCthsWriter() {
+			return cthsWriter;
+		}
 
-		
+		public void setCthsWriter(String cthsWriter) {
+			this.cthsWriter = cthsWriter;
+		}
+
 		// ---- paging
 		public void setParamsPaging(int totalRowsParam) {
 			

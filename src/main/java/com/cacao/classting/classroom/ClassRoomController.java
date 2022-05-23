@@ -486,11 +486,14 @@ public class ClassRoomController {
 		
 //		homeworkPostView(학생화면)
 //		제출
-		
 //		제출한 과제 보여주기
+		ClassRoom rt3 = service.selectOneHomeworkSubmitStudent(vo);
+		model.addAttribute("itemSubmit", rt3);
+		
 		return "member/classroom/common/classHomeworkView";
 		
 	}
+//	과제제출(학생)
 	@RequestMapping(value = "/member/classroom/common/homeworkSubmitInst")
 	public String homeworkSubmitInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
 		

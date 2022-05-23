@@ -18,8 +18,8 @@
 					<span class="badge bg-danger">제출 전</span><span class="badge bg-primary">제출 완료</span><span class="badge bg-secondary">미완료</span>
 				</div>
 				<div class="container_base">
-				<div class="mb-1"><input type="text" class="form-control" id="cthsTitle" name="cthsTitle" placeholder="제목입력"></div>
-				<textarea class="form-control mb-1" id="cthsDesc" name="cthsDesc" rows="3" placeholder="내용입력" ></textarea>
+				<div class="mb-1"><input type="text" class="form-control" id="cthsTitle" name="cthsTitle" placeholder="제목입력" value="<c:out value="${itemSubmit.cthsTitle}"/>"/></div>
+				<textarea class="form-control mb-1" id="cthsDesc" name="cthsDesc" rows="3" placeholder="내용입력"><c:out value="${itemSubmit.cthsDesc}"/></textarea>
 				<div class="input-group">
 				  <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
 				  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
