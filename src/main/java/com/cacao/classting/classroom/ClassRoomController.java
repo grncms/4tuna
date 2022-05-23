@@ -462,8 +462,13 @@ public class ClassRoomController {
 
 		service.updateHomeworkSubmitScore(dto);
 		
+		vo.setCthpSeq(dto.getCthpSeq());
+		vo.setCthsSeq(dto.getCthsSeq());
+		System.out.println("cthsSeq : "+vo.getCthsSeq());
+		System.out.println("cthpSeq : "+vo.getCthpSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
-		return "redirect:/member/classroom/common/classHomeworkPostView";
+		
+		return "redirect:/member/class/common/homeworkview";
 	}
 	
 //	모든과제
@@ -488,6 +493,7 @@ public class ClassRoomController {
 //		selectListHomeworkSubmit : 해당 과제에 과제물 제출 목록
 		List<ClassRoom> submitList = service.selectListHomeworkSubmit(vo);
 		model.addAttribute("submitList", submitList);
+		
 		
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		

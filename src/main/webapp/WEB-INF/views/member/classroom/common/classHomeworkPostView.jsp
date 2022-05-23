@@ -137,15 +137,19 @@
 							</div>
 						</div>
 						<div class="container_base">
+						<form action="/member/class/common/submitScoreUpdt" id="scoreUpdt" name="scoreUpdt" method="post">
+						<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>"/>
+						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>"/>
 							<div class="row">
 							<h5 class="col-md-2 col-lg-2 mt-2">점수</h5>
 								<div class="col-md-2 col-lg-3">
 									<input type="text" class="form-control" id="cthsScore" name="cthsScore" value="<c:out value="${item.cthsScore}"/>" >
 								</div>
 								<div class="col-md-2 col-lg-3">
-									<button type="button" class="basic_button">등록</button>
+									<button type="submit" class="basic_button" id="submitScore" name="submitScore">등록</button>
 								</div>
 							</div>
+						</form>	
 						</div>
 						<div class="container_base">
 							<h5>댓글</h5>
@@ -307,7 +311,17 @@ if(${sessTeacher}==0){
 	$("#roleS").hide();		
 	$("#btn-open").show();		
 } 
-
+$("#submitScore").on("click", function(){
+	var answer = confirm("점수를 등록 하시겠습니까?");
+	
+	if(answer){
+		$("#scoreUpdt").attr("action", "/member/class/common/submitScoreUpdt");
+		$("#scoreUpdt").submit();
+	}else{
+		return false;
+	}
+	
+});
 
 $("#btnLogout").on("click", function(){
 	

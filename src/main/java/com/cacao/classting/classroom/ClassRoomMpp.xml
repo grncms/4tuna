@@ -309,6 +309,7 @@
 	SET 
 		cthsScore = #{cthsScore} 
 	WHERE 1=1
+		AND cthpSeq = #{cthpSeq}
 		AND cthsSeq = #{cthsSeq}
 </update>
 
@@ -324,6 +325,7 @@
 		,cthsUseNy
 		,cthsDelNy
 		,regDateTime
+		,cthpSeq
 	 from 
 		ctHomeworkSubmit
 	where 1=1
