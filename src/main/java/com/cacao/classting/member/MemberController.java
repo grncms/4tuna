@@ -31,6 +31,11 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	@RequestMapping(value = "/")
+	public String a9xlab() {
+		
+		return "/index";
+	}
 	@RequestMapping(value = "/index")
 	public String index() {
 		
