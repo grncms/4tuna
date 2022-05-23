@@ -105,9 +105,7 @@ public class ClassRoom {
 	private long size;	
 	private Integer delNy;	
 	private Integer pseq;
-
 	
-	//�⼮
 	
 	private String attendanceToday;
 	

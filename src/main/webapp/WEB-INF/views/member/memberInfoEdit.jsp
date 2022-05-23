@@ -214,7 +214,7 @@ $("#btnLogout").on("click", function(){
 		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "/index";
+				location.href = "/";
 			} else {
 				// by pass
 			}

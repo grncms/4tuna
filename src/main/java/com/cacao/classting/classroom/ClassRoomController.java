@@ -494,7 +494,8 @@ public class ClassRoomController {
 		List<ClassRoom> submitList = service.selectListHomeworkSubmit(vo);
 		model.addAttribute("submitList", submitList);
 		
-		
+		vo.setCthsWriter((String)httpSession.getAttribute("ctcmSeq"));
+		System.out.println("vo.getCthsWriter() : "+vo.getCthsWriter());
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		
 		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
@@ -503,7 +504,9 @@ public class ClassRoomController {
 //		homeworkPostView(학생화면)
 //		제출
 //		제출한 과제 보여주기
-
+		
+		ClassRoom rt3= service.selectOneHomeworkSubmitStudent(vo);
+		model.addAttribute("itemSubmit", rt3);
 		
 		return "member/classroom/common/classHomeworkView";
 		
