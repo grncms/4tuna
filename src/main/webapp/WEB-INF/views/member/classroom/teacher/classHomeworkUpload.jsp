@@ -167,86 +167,29 @@ input:checked+.slider:before {
 							<h4 style="font-weight: bold;">옵션</h4>
 						</div>
 						<div class="container_base">
-							<div class="title_hw">
+							<div class="title_hw mb-2">
 								<div>공간</div>
-								<!-- <div>기한지남</div> -->
 							</div>
-							<div><fmt:formatDate value="" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+							<input type="text" class="form-control" id="" name="" placeholder="과제" disabled>
 						</div>
 						
 						<div class="container_base">
-							<div class="title_hw">
+							<div class="title_hw mb-2">
 								<div>마감기한</div>
 							</div>
+							<input type="text" class="form-control" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
 						</div>
-						
 						<div class="container_base">
 							<div class="rightbar_button">
+								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray">임시저장</button>
 								<button type="button" class="basic_button w-100">점수 등록</button>
 							</div>
 						</div>
-					<!-- </div> -->
-				</div>
-				
-				<div class="card shadow mb-4">
-					<div class="container_base">
-						<h4 style="font-weight: bold;">옵션</h4>
-					</div>	
-					<div class="container_base">
-						<div class="title_hw">
-							<div>공간</div>
-						</div>
-					</div>
-						
-							각 개별 항목 시작
-							공간 시작
-							<div class="title_hw">
-								<div>공간</div>
-							</div>
-							<div class="form-group">
-								<select class="form-control" id="title" name="ctboSeq">
-									<option value="">과제
-								</select>
-							</div>
-							<hr>
-							공간 끝 
-							태그 끝 
-
-							게시글설정 시작
-							<div class="d-flex flex-column gap-2">
-								<div class="title_hw">게시글 설정</div>
-								<div>마감일<input type="text" class="form-control" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
-								</div>
-								<br>
-							</div>
-							
-							<input type="text" id="temp" name="temp" style="display:none;">
-							
-							
-							게시글설정 끝
-							<div>
-								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="postUploadSubmit('temp')">임시저장</button>
-								<button type="button" class="basic_button w-100" onclick="postUploadSubmit('submit')">등록</button>
-							</div>
-						
-						<script>
-							function postUploadSubmit(val){
-								if(val == 'temp') {
-									$('#temp').val('temp');		
-								}else {
-									$('#temp').val('submit');
-								}
-								
-								document.getElementById('puf').submit();
-							}
-						</script>
 					</div>
 				</div>
 			</div>
 		</div>
-		</form>
-<!-- 	</div>
-</div> -->
+	</form>
 
 	<!-- End of Page Wrapper -->
 	<!-- Bootstrap core JavaScript-->

@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cacao.classting.common.util.UtilDateTime;
+
 
 @Service
 public class ClassRoomServiceImpl implements ClassRoomService{
@@ -190,6 +192,16 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	@Override
 	public int updateHomeworkSubmit(ClassRoom dto) throws Exception {
 		return dao.updateHomeworkSubmit(dto);
+	}
+
+	@Override
+	public int insertHomeworkPost(ClassRoom dto) throws Exception {
+	
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
+		dao.insertHomeworkPost(dto);
+		return 1;
+		
 	}
 	
 
