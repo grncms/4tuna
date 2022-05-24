@@ -2,6 +2,7 @@ package com.cacao.classting.classroom;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -202,6 +203,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		dao.insertHomeworkPost(dto);
 		return 1;
 		
+	}
+
+	@Override
+	public List<ClassRoom> enterLog(Map<String, String> dates) throws Exception {
+	return	dao.enterLog(dates);
 	}
 	
 

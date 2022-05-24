@@ -1,6 +1,7 @@
 package com.cacao.classting.classroom;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface ClassRoomService {
@@ -53,6 +54,7 @@ public interface ClassRoomService {
 	public ClassRoom getClassId(ClassRoomVo vo) throws Exception;
 	public int attendance(ClassRoom dto) throws Exception;
 	public int today(ClassRoom dto) throws Exception;
+	public List<ClassRoom> enterLog(Map<String, String> dates) throws Exception;
 	
 	
 //게시글등록

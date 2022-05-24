@@ -2,6 +2,7 @@ package com.cacao.classting.classroom;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -82,6 +83,10 @@ public class ClassRoomDao {
 	public int today(ClassRoom dto){
 		return sqlSession.selectOne(namespace+ ".today",dto);
 		
+	}
+	
+	public List<ClassRoom> enterLog(Map<String, String> dates){
+		return sqlSession.selectList(namespace + ".enterLog" , dates );
 	}
 
 	

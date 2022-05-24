@@ -526,12 +526,15 @@
 	and DATE_FORMAT(ctadRegDateTime, '%Y-%m-%d')=#{attendanceToday}
 </select>	
 
-<!-- 출석부 입장기록 조회  -->
-<select id = "enterLog" resultMap="resultMapObj">
-	select ctcmName,ctadRegDateTime 
-	from ctClassMember a 
-	left join ctAttendance b on a.ctcmSeq = b.ctcmSeq 
-	where ctcsSeq = ${ctcsSeq} 
-
+<select id = "enterLog" resultMap = "resultMapObj">
+<![CDATA[
+select ctcmName,ctadRegDateTime 
+from ctClassMember a 
+left join ctAttendance b on a.ctcmSeq = b.ctcmSeq 
+where ctcsSeq = #{classSeq}
+and ctadRegDateTime > #{startDate} 
+and ctadRegDateTime  < #{endDate}
+and ctcmName = #{memberName}
+]]>
 </select>
 </mapper>
