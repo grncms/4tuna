@@ -4,8 +4,8 @@
 			<!-- <div class="rightbar"> -->
 			<form action="" id="homeworkSubmit" name="homeworkSubmit" method="post">
 				<input type="hidden" id="cthsWriter" name="cthsWriter" value="${ctcmSeq}">
-				<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 				<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
+				<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 				<div class="container_base">
 					<div class="title">내 과제</div>
 				</div>
@@ -13,7 +13,8 @@
 					<div class="title_hw">
 						<div>마감일시</div>
 					</div>
-					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+					<div><c:out value="${item.cthpEndDateTime}"/></div>
+<%-- 					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 					<c:if test="${itemSubmit.cthsSeq eq null}"><span class="badge bg-danger">제출 전</span></c:if>
 					<c:if test="${itemSubmit.cthsSeq ne null}"><span class="badge bg-primary">제출 완료</span></c:if>
 					<c:if test="${itemSubmit.cthsScore ne null}"><span class="badge bg-success">채점완료</span></c:if>

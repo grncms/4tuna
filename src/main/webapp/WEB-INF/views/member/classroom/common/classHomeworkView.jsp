@@ -133,7 +133,8 @@
 						<div class="container_base">
 							<div class="post_content">
 								<div class="mb-5"><c:out value="${item.cthpDesc}"/></div>
-								<div >마감일 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+								<div >마감일 : <c:out value="${item.cthpEndDateTime}"/></div>
+								<%-- <div >마감일 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 							</div>
 						</div>
  						<div class="container_base">

@@ -88,7 +88,8 @@
 									<span class='badge badge_hw'>과제</span>
 									<!-- <span class='badge badge_todayend'>오늘 종료</span> -->
 									<span><c:out value="${item.cthpTitle}"/></span>
-									<div>마감 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+									<div>마감 : <c:out value="${item.cthpEndDateTime}"/></div>
+<%-- 									<div>마감 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 									<br><p><c:out value="${item.cthpDesc}"/></p>
 								</div>
 								<div class="footer">

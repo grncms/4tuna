@@ -119,10 +119,11 @@ input:checked+.slider:before {
 	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 	
 	<!-- Begin Page Content -->
+	<div class="container-fluid">
 	<form method="post" id="homeworkForm" name="homeworkForm" action="/classHomeworkUploadInst">
 	<input type="hidden" id="cthpWriter" name="cthpWriter" value="${ctcmSeq}">
-	<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq }"/>">
-	<div class="container-fluid">
+	<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
+	<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 		<div class="row" id="posting">
 			<div class="col-xl-8 col-lg-8">
 				<div class="card shadow mb-4">
@@ -184,14 +185,14 @@ input:checked+.slider:before {
 						<div class="container_base">
 							<div class="rightbar_button">
 								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray">임시저장</button>
-								<button type="button" class="basic_button w-100" id="btn-submit" name="btn-submit">점수 등록</button>
+								<button type="submit" class="basic_button w-100" id="btn-submit" name="">과제 등록</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</form>
 		</div>
-	</form>
 
 	<!-- End of Page Wrapper -->
 	<!-- Bootstrap core JavaScript-->
@@ -223,7 +224,7 @@ $("#btn-submit").on("click", function(){
 	
 	$("#homeworkForm").attr("action", "/classHomeworkUploadInst");
 	$("#homeworkForm").submit();
-
+	
 });
 
 $("#btnLogout").on("click", function(){

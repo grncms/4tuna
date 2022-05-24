@@ -3,11 +3,7 @@ package com.cacao.classting.classroom;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
+import com.cacao.classting.member.Member;
+import com.cacao.classting.member.MemberVo;
 
 
 
@@ -398,76 +396,8 @@ public class ClassRoomController {
 	
 
 	@RequestMapping(value = "member/class/teacher/attendance")
-	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
+	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
 		System.out.println("출석부 :" +  httpSession.getAttribute("sessSeq"));
-		String classSeq = (String) httpSession.getAttribute("ctcsSeq");
-		vo.setCtcsSeq(classSeq);
-		List<String> days = new ArrayList<String>();
-		List<String> week = new ArrayList<String>();
-		LocalDate day = LocalDate.now();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		String now = LocalDateTime.now().format(dtf);
-		List<ClassRoom> memberList = service.selectListClassMember(vo);
-		String korean = "";
-		
-		
-		
-		for(int i = 4 ; i >=0 ; i --) {
-			days.add(String.valueOf(day.minusDays(i)));	
-			
-			switch(day.minusDays(i).getDayOfWeek()) {
-			case MONDAY:
-				korean = "월요일";
-				break;
-			case TUESDAY:
-				korean = "화요일";
-				break;
-			case WEDNESDAY:
-				korean = "수요일";
-				break;
-			case THURSDAY:
-				korean = "목요일";
-				break;
-			case FRIDAY:
-				korean = "금요일";
-				break;
-			case SATURDAY:
-				korean = "토요일";
-				break;
-			case SUNDAY:
-				korean = "일요일";
-				break;
-			}
-			week.add(korean);	
-			System.out.println(day.minusDays(i).getDayOfWeek()); 	
-		}
-		
-		Map dates = new HashMap();
-		String startDate = String.valueOf(day.minusDays(4));
-		String endDate = String.valueOf(day.plusDays(1));
-		dates.put("startDate", startDate);
-		dates.put("endDate", endDate);
-		dates.put("classSeq", classSeq);
-		List attendList = new ArrayList();
-		for(int i = 0 ; i < memberList.size() ; i ++ ) {
-			dates.put("name", memberList.get(i).getCtcmName());
-			List<ClassRoom> attend= service.enterLog(dates);
-			attendList.add(attend);
-		}
-		
-		
-		System.out.println("시작날 :" + startDate);
-		System.out.println("마지막날:" + endDate);
-		System.out.println("클래스번호:" + classSeq);
-
-		
-		
-		model.addAttribute("day",days);
-		model.addAttribute("week",week);
-		model.addAttribute("now",now);
-		model.addAttribute("memberList",memberList);
-		model.addAttribute("attendList",attendList);
-		
 		return "member/classroom/teacher/classAttendance";
 	}
 	
@@ -566,6 +496,7 @@ public class ClassRoomController {
 		model.addAttribute("submitList", submitList);
 		
 		vo.setCthsWriter((String)httpSession.getAttribute("ctcmSeq"));
+		vo.setCthpSeq(dto.getCthpSeq());
 		System.out.println("vo.getCthsWriter() : "+vo.getCthsWriter());
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		
@@ -575,7 +506,6 @@ public class ClassRoomController {
 //		homeworkPostView(학생화면)
 //		제출
 //		제출한 과제 보여주기
-		
 		ClassRoom rt3= service.selectOneHomeworkSubmitStudent(vo);
 		model.addAttribute("itemSubmit", rt3);
 		
@@ -589,20 +519,26 @@ public class ClassRoomController {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		
-		
 		return "/member/classroom/teacher/classHomeworkUpload";
 	}
 // 
 	@RequestMapping(value = "/classHomeworkUploadInst")
-	public String classHomeworkUploadInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
-		
-		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+	public String classHomeworkUploadInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, RedirectAttributes redirectAttributes) throws Exception{
 		
 		service.insertHomeworkPost(dto);
 		
+		System.out.println("dto.getCthpSeq() : "+dto.getCthpSeq());
+		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
+		System.out.println("+dto.getCthpTitle() : "+dto.getCthpTitle());
+		
+//		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+//		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+		vo.setCthpSeq(dto.getCthpSeq());
+		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:member/class/common/homeworkview";
+		
+		return "redirect:/member/class/common/homeworkview";
 	}
 //	과제제출(학생)
 	@RequestMapping(value = "/member/classroom/common/homeworkSubmitInst")

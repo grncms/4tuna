@@ -42,7 +42,7 @@ public class ClassRoom {
 	private Integer cthwScore;
 	private Integer cthwUseNy;
 	private Integer cthwDelNy;
-	private Date cthwEndDate;
+	private String cthwEndDate;
 	
 //	ctHomeworkPost
 	private String cthpSeq;	
@@ -52,7 +52,7 @@ public class ClassRoom {
 	private String cthpData;	
 	private Integer cthpUseNy;	
 	private Integer cthpDelNy;	
-	private Date cthpEndDateTime;
+	private String cthpEndDateTime;
 	
 //	ctHomeworkSubmit
 	private String cthsSeq;	
@@ -295,10 +295,10 @@ public class ClassRoom {
 	public void setCthwDelNy(Integer cthwDelNy) {
 		this.cthwDelNy = cthwDelNy;
 	}
-	public Date getCthwEndDate() {
+	public String getCthwEndDate() {
 		return cthwEndDate;
 	}
-	public void setCthwEndDate(Date cthwEndDate) {
+	public void setCthwEndDate(String cthwEndDate) {
 		this.cthwEndDate = cthwEndDate;
 	}
 	public String getCthpSeq() {
@@ -511,10 +511,10 @@ public class ClassRoom {
 	public void setCthpWriter(Integer cthpWriter) {
 		this.cthpWriter = cthpWriter;
 	}
-	public Date getCthpEndDateTime() {
+	public String getCthpEndDateTime() {
 		return cthpEndDateTime;
 	}
-	public void setCthpEndDateTime(Date cthpEndDateTime) {
+	public void setCthpEndDateTime(String cthpEndDateTime) {
 		this.cthpEndDateTime = cthpEndDateTime;
 	}
 	public Integer getCtptReservationTypeCd() {

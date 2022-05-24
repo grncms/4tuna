@@ -201,6 +201,7 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		dto.setRegDateTime(UtilDateTime.nowDate());
 		dto.setModDateTime(UtilDateTime.nowDate());
 		dao.insertHomeworkPost(dto);
+		
 		return 1;
 		
 	}

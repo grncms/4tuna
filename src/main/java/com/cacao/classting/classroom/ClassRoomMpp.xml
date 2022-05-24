@@ -307,8 +307,7 @@
 <!-- 과제등록(선생님) -->
 <insert id="insertHomeworkPost">
 	insert into ctHomeworkPost(
-		cthpSeq
-		,cthpTitle
+		cthpTitle
 		,cthpDesc
 		,cthpData
 		,cthpWriter
@@ -319,8 +318,7 @@
 		,modDateTime
 		,ctcsSeq
 	) VALUES (
-		#{cthpSeq}
-		,#{cthpTitle}
+		#{cthpTitle}
 		,#{cthpDesc}
 		,#{cthpData}
 		,#{cthpWriter}

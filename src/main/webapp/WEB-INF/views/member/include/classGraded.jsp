@@ -13,7 +13,8 @@
 						<div>마감일시</div>
 						<!-- <div>기한지남</div> -->
 					</div>
-					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+					<div><c:out value="${item.cthpEndDateTime}"/></div>
+<%-- 					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 				</div>
 				<c:forEach items="${submitList}" var="itemSubmit" varStatus="status">
 				<div class="container_base">
