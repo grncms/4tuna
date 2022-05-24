@@ -143,8 +143,7 @@ public class ClassRoomController {
 		if(temp.equals("temp")) {
 			System.out.println("input 값 체크 : " + dto.toString());
 		
-			dto.setCtboSeq("4");
-			dto.setCtptReservationNy("1");
+			dto.setCtptReservationNy(1);
 			
 			int result = service.insertPost(dto);
 			
@@ -161,6 +160,7 @@ public class ClassRoomController {
 		}else {
 			System.out.println("input 값 체크 : " + dto.toString());
 			// 입력을 작동시킨다.
+			dto.setCtptReservationNy(0);
 			int result = service.insertPost(dto);
 			
 			vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));

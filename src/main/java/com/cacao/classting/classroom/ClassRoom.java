@@ -592,8 +592,8 @@ public class ClassRoom {
 	public Integer getCtptReservationNy() {
 		return ctptReservationNy;
 	}
-	public void setCtptReservationNy(String string) {
-		this.ctptReservationNy = ctptReservationNy;
+	public void setCtptReservationNy(Integer ctptReseravtionNy) {
+		this.ctptReservationNy = ctptReseravtionNy;
 	}
 	
 	@Override
