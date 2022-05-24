@@ -181,6 +181,7 @@
 			,ctptWriter
 			,ctptContent
 			,regDateTime
+			,ctptReservationNy
 			,ctboSeq
 			,ctptDelNy
 		) VALUES (
@@ -189,6 +190,7 @@
 			,#{ctptWriter}
 			,#{ctptContent}
 			,now()
+			,#{ctptReservationNy}
 			,#{ctboSeq}
 			,0
 		)	
@@ -398,7 +400,7 @@
 		,a.ctboSeq
 		,b.ctboTypeCd
 	FROM
-		ctPost a 
+		ctPost a
 		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
 		LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
 	WHERE 1=1

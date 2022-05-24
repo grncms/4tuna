@@ -243,6 +243,7 @@ input:checked+.slider:before {
 							
 							<!-- 게시글설정 끝 -->
 							<div>
+								<input type="button" id="ctptReservationNy" name="ctptReservationNy" value="" style="display:none">
 								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="postUploadSubmit('temp')">임시저장</button>
 								<button type="button" class="basic_button w-100" onclick="postUploadSubmit('submit')">등록</button>
 							</div>
@@ -251,9 +252,11 @@ input:checked+.slider:before {
 						<script>
 							function postUploadSubmit(val){
 								if(val == 'temp') {
-									$('#temp').val('temp');		
+									$('#temp').val('temp');
+									$('#ctptReservationNy').val(1);
 								}else {
 									$('#temp').val('submit');
+									$('#ctptReservationNy').val(0);
 								}
 								
 								document.getElementById('puf').submit();

@@ -142,8 +142,9 @@ public class ClassRoomController {
 		// 임시저장인지 아닌지 확인하는 메서드
 		if(temp.equals("temp")) {
 			System.out.println("input 값 체크 : " + dto.toString());
-			
+		
 			dto.setCtboSeq("4");
+			dto.setCtptReservationNy("1");
 			
 			int result = service.insertPost(dto);
 			
