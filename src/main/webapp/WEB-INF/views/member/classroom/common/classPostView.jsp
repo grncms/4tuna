@@ -126,18 +126,19 @@
 										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
 										</c:forEach>
 									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-									<span style="color: #c8c8c8; font-size: 14px;">조회수:<c:out value="${item.ctptView }"/></span>
+									<%-- &nbsp;&nbsp;<span style="color: #acacac; font-size: 14px;">조회수:<c:out value="${item.ctptView }"/></span> --%>
 									</div>
 								</div>
 						</div>
 						<div class="container_base">
 							<div class="post_content">
-								<div>
+								<div class="mt-3 mb-5">
 									<c:out value="${item.ctptContent}"/>
 								</div>
 								<div class="post_content mt-3 float-end">
-								<i class="fa fa-solid fa-thumbs-up" role="button" onclick=''> <c:out value="${item.ctptLike1}"/></i>
-								<i class="fa fa-solid fa-check" role="button" onclick=''> <c:out value="${item.ctptLike2}"/></i>
+								<i class="fa-solid fa-eye"> <c:out value="${item.ctptView }"/></i>&nbsp;&nbsp;
+								<i class="fa fa-solid fa-thumbs-up" role="button" onclick=''> <c:out value="${item.ctptLike1}"/></i>&nbsp;&nbsp;
+								<i class="fa fa-solid fa-check" role="button" onclick=''> <c:out value="${item.ctptLike2}"/></i>&nbsp;&nbsp;
 								<i class="fa fa-solid fa-circle-question" role="button" onclick=''> <c:out value="${item.ctptLike3}"/></i>
 								</div>
 							</div>

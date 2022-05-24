@@ -38,13 +38,13 @@
 		<h5 style="font-weight: bold; margin-bottom: 30px;">내 클래스 공지 알림</h5>
 		<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
 		<c:if test="${sessSeq eq itemPost.mmSeq}">
-		<c:forEach items="${list}" var="item" varStatus="status">
+		<c:forEach items="${list}" var="item" varStatus="status" >
 		<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
-			<div class="mb-2" onclick="location.href='javascript:goClass(<c:out value="${itemPost.ctcsSeq}"/>)'">
+			<div class="mb-2"  onclick="location.href='javascript:goClass(<c:out value="${itemPost.ctcsSeq}"/>)'">
 			<span style="font-size: 20px; font-weight: bold; padding-top: 25px;"><c:out value="${item.ctcsName}"/></span></div>
 		</c:if>	
 		</c:forEach>
-			<div>	
+			<div  onclick="location.href='javascript:goClass(<c:out value="${itemPost.ctcsSeq}"/>)'">	
 				<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/>
 				<p id="content"><c:out value="${itemPost.ctptContent}"/></p>
 				<p id="date"><fmt:formatDate value="${itemPost.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
@@ -135,7 +135,7 @@ if(${sessTeacher}==0){
 
 goClass = function(seq){
 	$("#ctcsSeq").val(seq);
-	$("#mainclassList").attr("action","/classMain");
+	$("#mainclassList").attr("action","/noticeBoard");
 	$("#mainclassList").submit();
 }
 
