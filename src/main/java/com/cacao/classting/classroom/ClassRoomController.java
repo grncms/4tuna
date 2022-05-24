@@ -44,10 +44,10 @@ public class ClassRoomController {
 	}
 	@RequestMapping(value = "/noticeBoard")
 	public String classNoticeList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
-		
+	
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
-
+		
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
@@ -227,13 +227,11 @@ public class ClassRoomController {
 		}
 
 		//사이드바 구현을 위한  
-		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
-
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		
 		
 		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
