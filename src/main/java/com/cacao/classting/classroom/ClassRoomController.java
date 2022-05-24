@@ -512,6 +512,16 @@ public class ClassRoomController {
 		return "member/classroom/common/classHomeworkView";
 		
 	}
+//	과제등록(선생님)
+	@RequestMapping(value = "/classHomeworkUpload")
+	public String classHomeworkUploaded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
+		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
+		
+		return "/member/classroom/teacher/classHomeworkUpload";
+	}
 //	과제제출(학생)
 	@RequestMapping(value = "/member/classroom/common/homeworkSubmitInst")
 	public String homeworkSubmitInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{

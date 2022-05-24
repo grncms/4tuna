@@ -64,7 +64,7 @@
 						<div class="header">모든 과제</div>
 						<div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div>
 						<div class="footer dropdown">
-							<button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">과제 만들기</button>
+							<button type="button" class="basic_button" onclick="location.href='/classHomeworkUpload'">과제 만들기</button>
 						</div>
 					</div>
 					<form id="postList" name="postList" method="post">
