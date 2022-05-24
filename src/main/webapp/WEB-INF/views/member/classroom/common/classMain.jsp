@@ -73,7 +73,7 @@
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								<span>조회수:<c:out value = "${item.ctptView }"/></span>
 							</div>
-							<div class="body mt-1" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
+							<div class="body mt-2" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
 								<c:if test="${item.ctboTypeCd eq 25}"><span class='badge badge_notice'>공지</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 19}"><span class='badge badge_graded'>자유공간</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 20}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
@@ -82,7 +82,7 @@
 								<br><br>
 								<p><c:out value="${item.ctptContent}"/></p>
 							</div>
-							<div class="footer mt-3">
+							<div class="footer mt-5">
 								<i class="fa-regular fa-comment"> 2</i>&nbsp;
 								<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
 								<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;

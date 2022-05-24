@@ -74,6 +74,10 @@
 						<button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">공지쓰기</button>
 					</div>
 				</div>
+				<form id="noticeList" name="noticeList" method="post">
+				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+				<input  type="hidden" id=ctptSeq name="ctptSeq">
+				<input  type="hidden" id="mmSeq" name="mmSeq">
 				<div class="card shadow mb-4 ">
 				<c:forEach items="${list}" var="item" varStatus="status">
 				<c:if test="${item.ctboTypeCd eq 25}">
@@ -87,15 +91,15 @@
 									<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
 								</c:forEach>
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-								<span>공지</span>
+								<span>조회수:<c:out value = "${item.ctptView }"/></span>
 							</div>
-							<div class="body mt-1">
+							<div class="body mt-2" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
 								<span class='badge badge_hw'>공지</span>
-								<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
+								<span><c:out value="${item.ctptTitle}"/></span>
 								<br><br>
 								<p><c:out value="${item.ctptContent}"/></p>
 							</div>
-							<div class="footer mt-3">
+							<div class="footer mt-5">
 								<i class="fa-regular fa-comment"> 2</i>&nbsp;
 								<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
 								<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
@@ -105,6 +109,7 @@
 					</div>
 				</c:if></c:forEach>	
 				</div>
+			</form>	
 			</div>
 		</div>
 		<!-- End of Main Content -->
@@ -139,6 +144,11 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+goView = function(seq){
+	$("#ctptSeq").val(seq);
+	$("#noticeList").attr("action","/member/class/common/postview");
+	$("#noticeList").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	

@@ -248,16 +248,10 @@ public class ClassRoomController {
 		httpSession.setAttribute("ctcmName", rt.getCtcmName());
 		httpSession.setAttribute("teacherNy", rt.getCtcmTeacherNy());
 		
-		
-		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsName()) : " + rt.getCtcsName());
-		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcsYear()) : " + rt.getCtcsYear());
-		System.out.println("httpSession.setAttribute(\"ctcmSeq\", rt.getCtcmSeq()) : " + rt.getCtcmSeq());
-		System.out.println("httpSession.setAttribute(\"ctcmSeq\", rt.getCtcmName()) : " + rt.getCtcmName());
-		System.out.println("httpSession.setAttribute(\"ctcsName\", rt.getCtcmTeacherNy()) : " + rt.getCtcmTeacherNy());
-
-//		클래스 리스트 불러오기
+//		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
+		
 //		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
