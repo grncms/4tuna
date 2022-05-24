@@ -412,7 +412,7 @@
 <!-- 전체 구성원 수 -->	
 <select id="selectOneMemberCount" resultType="Integer">
 	SELECT
-		count(ctcmSeq)
+		count(*)
 	FROM 
 		ctClassMember
 	WHERE 1=1

@@ -84,16 +84,13 @@
 									</c:forEach>
 									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								</div>
-								<div class="body mt-1" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
+								<div class="body mt-2 mb-5" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
 									<span class='badge badge_hw'>과제</span>
 									<!-- <span class='badge badge_todayend'>오늘 종료</span> -->
 									<span><c:out value="${item.cthpTitle}"/></span>
 									<div>마감 : <c:out value="${item.cthpEndDateTime}"/></div>
 <%-- 									<div>마감 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 									<br><p><c:out value="${item.cthpDesc}"/></p>
-								</div>
-								<div class="footer">
-									<i class="fa-regular fa-comment"> 2</i> <i class="fa-regular fa-thumbs-up"> 2</i> <i class="fa-solid fa-check"> 1</i> <i class="fa-solid fa-question"> 3</i>
 								</div>
 							</div>
 						</div>
