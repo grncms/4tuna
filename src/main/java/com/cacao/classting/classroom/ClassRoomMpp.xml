@@ -234,6 +234,7 @@
 			LEFT JOIN ctClass b on b.ctcsSeq = a.ctcsSeq
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
+		ORDER BY a.regDateTime DESC
 	</select>
 	
 <!-- 	과제 보기 -->	
@@ -333,6 +334,9 @@
 		,#{modDateTime}
 		,#{ctcsSeq}
 	 )   
+	<selectKey resultType="String" keyProperty="cthpSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>	
 </insert>	
 <!-- 과제 점수 update -->
 <update id="updateHomeworkSubmitScore">

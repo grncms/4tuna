@@ -518,6 +518,7 @@ public class ClassRoomController {
 		
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+
 		
 		return "/member/classroom/teacher/classHomeworkUpload";
 	}
@@ -526,18 +527,13 @@ public class ClassRoomController {
 	public String classHomeworkUploadInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, RedirectAttributes redirectAttributes) throws Exception{
 		
 		service.insertHomeworkPost(dto);
-		
+
 		System.out.println("dto.getCthpSeq() : "+dto.getCthpSeq());
-		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
-		System.out.println("+dto.getCthpTitle() : "+dto.getCthpTitle());
-		
-//		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-//		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
 		
 		vo.setCthpSeq(dto.getCthpSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		
 		return "redirect:/member/class/common/homeworkview";
 	}
 //	과제제출(학생)
@@ -547,11 +543,7 @@ public class ClassRoomController {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		
-//		댓글등록
 		service.insertHomeworkSubmit(dto);
-		
-		System.out.println("dto.getCtrpWriter() : "+dto.getCtrpWriter());
-		System.out.println("되능겨?");
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/member/class/common/homeworkview";
