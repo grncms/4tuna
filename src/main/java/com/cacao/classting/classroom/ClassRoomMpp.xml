@@ -306,31 +306,35 @@
 </insert>	
 <!-- 과제등록(선생님) -->
 <insert id="insertHomeworkPost">
-   insert into ctHomeworkPost(
-      cthpSeq
-      ,cthpTitle
-      ,cthpDesc
-      ,cthpData
-      ,cthpWriter
-      ,cthpEndDateTime
-      ,cthpUseNy
-      ,cthpDelNy
-      ,regDateTime
-      ,modDateTime
-      ,ctcsSeq
-   ) VALUES (
-      #{cthpSeq}
-      ,#{cthpTitle}
-      ,#{cthpDesc}
-      ,#{cthpData}
-      ,#{cthpWriter}
-      ,#{cthpEndDateTime}
-      ,1
-      ,0
-      ,#{regDateTime}
-      ,#{modDateTime}
-      ,#{ctcsSeq}
-   )   
+	insert into ctHomeworkPost(
+		cthpSeq
+		,cthpTitle
+		,cthpDesc
+		,cthpData
+		,cthpWriter
+		,cthpEndDateTime
+		,cthpUseNy
+		,cthpDelNy
+		,regDateTime
+		,modDateTime
+		,ctcsSeq
+	) VALUES (
+		#{cthpSeq}
+		,#{cthpTitle}
+		,#{cthpDesc}
+		,#{cthpData}
+		,#{cthpWriter}
+<!-- 		<choose>
+			<when test="cthpEndDateTime.equals('')">,NULL</when>
+			<otherwise>,#{cthpEndDateTime}</otherwise>
+		</choose>  -->
+		,#{cthpEndDateTime}
+		,1
+		,0
+		,#{regDateTime}
+		,#{modDateTime}
+		,#{ctcsSeq}
+	 )   
 </insert>	
 <!-- 과제 점수 update -->
 <update id="updateHomeworkSubmitScore">

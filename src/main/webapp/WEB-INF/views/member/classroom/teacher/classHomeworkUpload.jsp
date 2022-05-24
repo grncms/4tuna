@@ -119,7 +119,9 @@ input:checked+.slider:before {
 	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 	
 	<!-- Begin Page Content -->
-	<form method="post" id="puf" action="/member/classroom/common/classPostInst">
+	<form method="post" id="homeworkForm" name="homeworkForm" action="/classHomeworkUploadInst">
+	<input type="hidden" id="cthpWriter" name="cthpWriter" value="${ctcmSeq}">
+	<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq }"/>">
 	<div class="container-fluid">
 		<div class="row" id="posting">
 			<div class="col-xl-8 col-lg-8">
@@ -128,7 +130,7 @@ input:checked+.slider:before {
 					<div class="card-body">
 						<!-- 제목 시작 -->
 						<div class="form-title">
-							<input type="text" class="form-control" id="title" placeholder="제목" name="ctptTitle" maxlength="100" required="required" pattern=".{4,100}">
+							<input type="text" class="form-control" id="cthpTitle" name="cthpTitle" placeholder="제목">
 						</div>
 						<hr>
 						<!-- 제목 끝  -->
@@ -154,7 +156,7 @@ input:checked+.slider:before {
 
 						<!-- 내용 넣기 시작 -->
 						<div class="title_hw border">
-							<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
+							<textarea class="formBoard" rows="20" cols="100" id="cthpDesc" name="cthpDesc" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
 						</div>
 						<!-- 내용 넣기 끝 -->
 					</div>
@@ -170,19 +172,19 @@ input:checked+.slider:before {
 							<div class="title_hw mb-2">
 								<div>공간</div>
 							</div>
-							<input type="text" class="form-control" id="" name="" placeholder="과제" disabled>
+							<input type="text" class="form-control" placeholder="과제" disabled>
 						</div>
 						
 						<div class="container_base">
 							<div class="title_hw mb-2">
 								<div>마감기한</div>
 							</div>
-							<input type="text" class="form-control" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
+							<input type="text" class="form-control" id="cthpEndDateTime" name="cthpEndDateTime" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
 						</div>
 						<div class="container_base">
 							<div class="rightbar_button">
 								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray">임시저장</button>
-								<button type="button" class="basic_button w-100">점수 등록</button>
+								<button type="button" class="basic_button w-100" id="btn-submit" name="btn-submit">점수 등록</button>
 							</div>
 						</div>
 					</div>
@@ -217,6 +219,12 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+$("#btn-submit").on("click", function(){
+	
+	$("#homeworkForm").attr("action", "/classHomeworkUploadInst");
+	$("#homeworkForm").submit();
+
+});
 
 $("#btnLogout").on("click", function(){
 	
