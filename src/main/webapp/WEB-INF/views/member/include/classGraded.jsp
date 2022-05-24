@@ -24,6 +24,9 @@
 							<c:if test="${itemSubmit.cthsWriter eq itemMember.ctcmSeq }"><p style="font-size: 18px; font-weight: bold; color: black;"><c:out value="${itemMember.ctcmName}"/></p></c:if>
 						</c:forEach>	
 					</div>
+<%-- 					<div class="col-md-8 col-lg-8">
+						<c:if test="${itemSubmit.cthpSeq eq null}"><p>아직 제출한 학생이 없습니다.</p></c:if>
+					</div>--%>
 					<div class="col-md-8 col-lg-8">
 						<c:if test="${itemSubmit.cthsScore eq null}"><p>등록된 점수가 없습니다.</p></c:if>
 						<c:if test="${itemSubmit.cthsScore ne null}"><c:out value="${itemSubmit.cthsScore}"/> 점 / 100점</p></c:if>
@@ -35,15 +38,15 @@
 				<div class="container_base">
 					<div class="title_hw">
 						<div>제출 현황</div>
-						<div>전체 학생 <c:out value="${vo.totalMembers}"/>명 중 5명 제출</div>
+						<div>전체 학생 <c:out value="${vo.totalMembers}"/>명 중 명 제출</div>
 					</div>
 				</div>
 				
-				<div class="container_base">
+<!-- 				<div class="container_base">
 					<div class="rightbar_button">
 						<button type="button" class="basic_button w-50">점수 등록</button>
 					</div>
-				</div>
+				</div> -->
 			<!-- </div> -->
 		</form>	
 		</div>
