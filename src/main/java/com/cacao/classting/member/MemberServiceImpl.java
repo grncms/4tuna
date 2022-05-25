@@ -64,12 +64,19 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insertClass(Member dto) throws Exception {
 		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setRegDateTimeSvr(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
+		dto.setModDateTimeSvr(UtilDateTime.nowDate());
+		
 		dto.setCtcsCode(RandomStringUtils.randomAlphanumeric(6));
-		return dao.insertClass(dto);
+		dao.insertClass(dto);
+		return 1;
 	}
 
 	@Override
 	public int insertClassMember(Member dto) throws Exception {
+		
 		return dao.insertClassMember(dto);
 	}
 

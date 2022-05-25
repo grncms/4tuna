@@ -28,12 +28,7 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
-#posting {
-	width: 1100px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-}
+
 .leftbarProfile {
 	cursor: pointer;
 }
@@ -67,7 +62,7 @@
 
 		<div class="container-fluid">
 			<div class="row" id="posting">
-				<div class="col-xl-8 col-lg-8">
+				<div class="col-12">
 					<div class="container_title shadow mb-4">
 						<div class="header">활동 사진</div>
 							<div class="footer dropdown">
@@ -79,7 +74,7 @@
 							<c:if test="${item.ctboTypeCd eq 21}">
 								<div class="container_base">
 									<div class="homework list">
-										<div class="header">
+										<div class="header" style="cursor: default;">
 											<div class="profile_box">
 												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
 											</div>
@@ -88,14 +83,14 @@
 											</c:forEach>
 											<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 										</div>
-										<div class="body mt-2">
+										<div class="body mt-2" style="cursor: pointer;">
 											<span class='badge badge_hw'>활동사진</span>
 											<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
 											<br><br>
 											<p><c:out value="${item.ctptContent}"/></p>
 											<br>
 										</div>
-										<div class="footer mt-3">
+										<div class="footer mt-3" style="cursor: default;">
 											<i class="fa-regular fa-comment"> 2</i>&nbsp;
 											<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
 											<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
@@ -106,7 +101,6 @@
 							</c:if></c:forEach>	
 						</div>
 					</div>
-					<%@ include file="/WEB-INF/views/member/include/classPostList_include.jsp" %>
 				</div>
 			</div>
 	</div>

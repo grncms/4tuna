@@ -20,6 +20,10 @@
 
 <title></title>
 <style type="text/css">
+	body{
+		cursor: default;
+	}
+	
 	#posting{
 		width: 800px;
 		margin-left: auto;

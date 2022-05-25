@@ -141,6 +141,7 @@
 <form action="/classMemberInst" method="post" id="classMemberForm" name="classMemberForm" class="row">
 	<input type="hidden" name="ctcsSeq" id="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
 	<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
+	<input type="hidden" name="ctcsCode" id="ctcsCode" >
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 		<div class="col-md-7" style="margin-top:100px;">
 		<h3 >축하합니다!
@@ -207,6 +208,7 @@ $("#btn-add2").on("click", function(){
 	$("#classMemberForm").submit();
 
 });
+
 
 $("#btnLogout").on("click", function(){
 	
