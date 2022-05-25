@@ -45,6 +45,8 @@ public class Member {
 	
 	private String ctcmName;
 	private Integer ctcmAlarmReplyNy;
+	private Integer ctcmTeacherNy;
+	
 	private Integer ctcmAlarmReactionNy;
 	private Integer ctcmDelNy;
 	
@@ -116,6 +118,12 @@ public class Member {
 	}
 	public void setMmDesc(String mmDesc) {
 		this.mmDesc = mmDesc;
+	}
+	public Integer getCtcmTeacherNy() {
+		return ctcmTeacherNy;
+	}
+	public void setCtcmTeacherNy(Integer ctcmTeacherNy) {
+		this.ctcmTeacherNy = ctcmTeacherNy;
 	}
 	public Integer getMmAdminNy() {
 		return mmAdminNy;
