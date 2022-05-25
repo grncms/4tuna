@@ -280,30 +280,31 @@
 	</select>
 <!-- 과제제출(학생) -->
 <insert id="insertHomeworkSubmit">
-   insert into ctHomeworkSubmit(
-      cthsSeq
-      ,cthsTitle
-      ,cthsDesc
-      ,cthsData
-      ,cthsWriter
-      ,cthsScore
-      ,cthsUseNy
-      ,cthsDelNy
-      ,regDateTime
-      ,modDateTime
-      ,cthpSeq
-   ) VALUES (
-      #{cthsSeq}
-      ,#{cthsTitle}
-      ,#{cthsDesc}
-      ,#{cthsData}
-      ,#{cthsWriter}
-      ,#{cthsScore}
-      ,1
-      ,0
-      ,now()
-      ,now()
-      ,#{cthpSeq}
+	insert into ctHomeworkSubmit(
+		cthsTitle
+		,cthsDesc
+		,cthsData
+		,cthsWriter
+		,cthsScore
+		,cthsUseNy
+		,cthsDelNy
+		,regDateTime
+		,modDateTime
+		,cthpSeq
+	) VALUES (
+		#{cthsTitle}
+		,#{cthsDesc}
+		,#{cthsData}
+		,#{cthsWriter}
+		,#{cthsScore}
+		,1
+		,0
+		,#{regDateTime}
+		,#{modDateTime}
+		,#{cthpSeq}
+	<selectKey resultType="String" keyProperty="cthsSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>	
    )   
 </insert>	
 <!-- 과제등록(선생님) -->

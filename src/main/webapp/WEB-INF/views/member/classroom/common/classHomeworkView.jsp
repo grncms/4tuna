@@ -236,6 +236,12 @@ goHomeworkSubmitStuEdit = function(seq){
 	$("#homeworkSubmit").submit();
 
 }
+goHomeworkSubmitUpload = function(seq){
+	
+	$("#homeworkSubmit").attr("action","/classHomeworkSubmitUpload");
+	$("#homeworkSubmit").submit();
+
+}
 
 
 
