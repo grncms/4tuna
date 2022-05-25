@@ -452,7 +452,7 @@
 		AND a.ctptReservationNy = 1
 		AND b.ctcsSeq = #{ctcsSeq}
 </select>
-<!-- 	댓글 리스트 -->
+<!-- 게시물 댓글 리스트 -->
 <select id="selectListReply" resultMap="resultMapObj">
 	SELECT
 		a.ctrpSeq
@@ -466,8 +466,9 @@
 		LEFT JOIN ctPost b on b.ctptSeq = a.ctptSeq
 	WHERE 1=1
 		AND a.ctptSeq = #{ctptSeq}
+		AND a.ctrpDelNy = 0
 </select>
-<!-- 댓글 등록 -->
+<!-- 게시물 댓글 등록 -->
 <insert id="insertReply">
 	insert into ctReply(
 		ctrpSeq
@@ -482,6 +483,74 @@
 		,#{ctrpWriter}
 		,0
 		,now()
+		,#{ctptSeq}
+	)	
+</insert>
+<!-- 과제게시물 댓글 리스트 -->
+<select id="selectListHomeworkReply" resultMap="resultMapObj">
+	SELECT
+		a.ctrhSeq
+		,a.ctrhContent
+		,a.ctrhWriter
+		,a.ctrhDelNy
+		,a.regDateTime
+		,a.cthpSeq
+	FROM
+		ctReplyHomework a 
+		LEFT JOIN ctHomeworkPost b on b.cthpSeq = a.cthpSeq
+	WHERE 1=1
+		AND a.cthpSeq = #{cthpSeq}
+		AND a.ctrhDelNy = 0
+</select>
+<!-- 과제게시물 댓글 등록 -->
+<insert id="insertHomeworkReply">
+	insert into ctReplyHomework(
+		ctrhSeq
+		,ctrhContent
+		,ctrhWriter
+		,ctrhDelNy
+		,regDateTime
+		,cthpSeq
+	) VALUES (
+		#{ctrhSeq}
+		,#{ctrhContent}
+		,#{ctrhWriter}
+		,0
+		,#{regDateTime}
+		,#{cthpSeq}
+	)	
+</insert>
+<!-- 과제제출물 댓글 리스트 -->
+<select id="selectListHomeworkSubmitReply" resultMap="resultMapObj">
+	SELECT
+		a.ctrsSeq
+		,a.ctrsContent
+		,a.ctrsWriter
+		,a.ctrsDelNy
+		,a.regDateTime
+		,a.cthsSeq
+	FROM
+		ctReplyHomworkSubmit a 
+		LEFT JOIN ctHomworkSubmit b on b.cthsSeq = a.cthsSeq
+	WHERE 1=1
+		AND a.cthsSeq = #{cthsSeq}
+		AND a.ctrsDelNy = 0
+</select>
+<!-- 과제제출물 댓글 등록 -->
+<insert id="insertHomeworkSubmitReply">
+	insert into ctReplyHomworkSubmit(
+		ctrsSeq
+		,ctrsContent
+		,ctrsWriter
+		,ctrsDelNy
+		,regDateTime
+		,cthsSeq
+	) VALUES (
+		#{ctrsSeq}
+		,#{ctrsContent}
+		,#{ctrsWriter}
+		,0
+		,#{regDateTime}
 		,#{ctptSeq}
 	)	
 </insert>

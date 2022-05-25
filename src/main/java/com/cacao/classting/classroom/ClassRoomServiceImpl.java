@@ -221,6 +221,24 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		
 		return dao.selectOneSubmitCount(vo);
 	}
+
+	@Override
+	public int insertHomeworkReply(ClassRoom dto) throws Exception {
+		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dao.insertHomeworkReply(dto);
+		
+		return 1;
+	}
+
+	@Override
+	public int insertHomeworkSubmitReply(ClassRoom dto) throws Exception {
+		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dao.insertHomeworkSubmitReply(dto);
+		
+		return 1;
+	}
 	
 
 

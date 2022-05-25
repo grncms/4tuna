@@ -93,6 +93,20 @@ public class ClassRoom {
 	private String ctrpContent;	
 	private Integer ctrpWriter;	
 	private Integer ctrpDelNy;	
+
+//	ctHomeworkReply
+	private String ctrhSeq;	
+	private String ctrhContent;	
+	private Integer ctrhWriter;	
+	private Integer ctrhDelNy;	
+	
+//	ctHomeworkSubmitReply
+	private String ctrsSeq;	
+	private String ctrsContent;	
+	private Integer ctrsWriter;	
+	private Integer ctrsDelNy;	
+	
+	
 	
 //	ctPostUploaded
 	private String seq;	
@@ -596,6 +610,54 @@ public class ClassRoom {
 		this.ctptReservationNy = ctptReseravtionNy;
 	}
 	
+	public String getCtrhSeq() {
+		return ctrhSeq;
+	}
+	public void setCtrhSeq(String ctrhSeq) {
+		this.ctrhSeq = ctrhSeq;
+	}
+	public String getCtrhContent() {
+		return ctrhContent;
+	}
+	public void setCtrhContent(String ctrhContent) {
+		this.ctrhContent = ctrhContent;
+	}
+	public Integer getCtrhWriter() {
+		return ctrhWriter;
+	}
+	public void setCtrhWriter(Integer ctrhWriter) {
+		this.ctrhWriter = ctrhWriter;
+	}
+	public Integer getCtrhDelNy() {
+		return ctrhDelNy;
+	}
+	public void setCtrhDelNy(Integer ctrhDelNy) {
+		this.ctrhDelNy = ctrhDelNy;
+	}
+	public String getCtrsSeq() {
+		return ctrsSeq;
+	}
+	public void setCtrsSeq(String ctrsSeq) {
+		this.ctrsSeq = ctrsSeq;
+	}
+	public String getCtrsContent() {
+		return ctrsContent;
+	}
+	public void setCtrsContent(String ctrsContent) {
+		this.ctrsContent = ctrsContent;
+	}
+	public Integer getCtrsWriter() {
+		return ctrsWriter;
+	}
+	public void setCtrsWriter(Integer ctrsWriter) {
+		this.ctrsWriter = ctrsWriter;
+	}
+	public Integer getCtrsDelNy() {
+		return ctrsDelNy;
+	}
+	public void setCtrsDelNy(Integer ctrsDelNy) {
+		this.ctrsDelNy = ctrsDelNy;
+	}
 	@Override
 	public String toString() {
 		return "ClassRoom [regDateTime=" + regDateTime + ", regDateTimeSvr=" + regDateTimeSvr + ", modDateTime=" 
