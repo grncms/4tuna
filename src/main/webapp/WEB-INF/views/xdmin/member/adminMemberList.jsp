@@ -244,13 +244,14 @@
 <form id ="memberList" name="memberList" method="post" action="adminMemberList">
 <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${item.mmSeq}"/>">
+<!-- <input type="hidden" id="shOptionDate" name="shOptionDate" value="1"> -->
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="checkboxSeqArray">
 	<div class="container" style="margin-bottom:20px;">
 		<h3>회원관리</h3>
 				<div class="border p-3 ">
-				<select class="form-select" style="width:200px; display: inline;">
-					<option selected>회원구분</option>
+				<select class="form-select" style="width:200px; display: inline;" name="shMmTeacherNy">
+					<option value="">회원구분</option>
 					<option value="1" <c:if test="${vo.shMmTeacherNy eq 1}">selected</c:if>>선생님</option>
 					<option value="2" <c:if test="${vo.shMmTeacherNy eq 2}">selected</c:if>>학생</option>
 				</select>
@@ -258,6 +259,13 @@
 					<option value="">삭제여부</option>
 					<option value="1"<c:if test="${vo.shMmDelNy eq 1}">selected</c:if>>Y</option>
 					<option value="2"<c:if test="${vo.shMmDelNy eq 2}">selected</c:if>>N</option>
+				</select>
+				
+				
+				<select class="form-select" style="width: 200px; display: inline;" name="shOptionDate">
+					<option value="">날짜구분</option>
+					<option value="1"<c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
+					<option value="2"<c:if test="${vo.shOptionDate eq 2}">selected</c:if>>생일</option>
 				</select>
 				<fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd"/>
 					<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" placeholder="시작날짜"value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" autocomplete="off">

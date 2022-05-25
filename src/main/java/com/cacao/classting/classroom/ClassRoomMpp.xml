@@ -13,12 +13,12 @@
 		 WHERE 1=1
 			<choose>
 				<when test="shCtcsDelNy ==1">AND ctcsDelNy = 1</when>
-				<when test="shCtcsDelNy ==0">AND ctcsDelNy = 0</when>
+				<when test="shCtcsDelNy ==2">AND ctcsDelNy = 0</when>
 			</choose>
 			<if test="shCtcsName != null and !shCtcsName.equals('')"> AND ctcsName LIKE concat('%',#{shCtcsName},'%')</if>
 			<choose>
 				<when test="shOption ==1">AND ctcsName LIKE concat('%',#{shValue},'%')</when>
-				<when test="shOption ==2">AND ctcsId LIKE concat('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND ctcsBelongto LIKE concat('%',#{shValue},'%')</when>
 			</choose>
 			<choose>
 		<when test="shOptionDate == 1">AND regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>

@@ -255,12 +255,16 @@
 				<select class="form-select" style="width: 200px; display: inline;" name="shOption">
 					<option value="">검색구분</option>
 					<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
-					<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
+					<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>소속</option>
 				</select>
 				<select class="form-select" style="width: 200px; display: inline;" name="shCtcsDelNy">
 					<option value="">삭제여부</option>
 					<option value="1"<c:if test="${vo.shCtcsDelNy eq 1}">selected</c:if>>Y</option>
-					<option value="0"<c:if test="${vo.shCtcsDelNy eq 0}">selected</c:if> >N</option>
+					<option value="2"<c:if test="${vo.shCtcsDelNy eq 2}">selected</c:if> >N</option>
+				</select>
+				<select class="form-select" style="width: 200px; display: inline;" name="shOptionDate">
+					<option value="">날짜검색</option>
+					<option value="1"<c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
 				</select>
 				<fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd"/>
 					<input  class="form-control"  type="text" style="width: 200px; display: inline;" name="shDateStart" id="shDateStart" value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" autocomplete="off">
@@ -269,7 +273,6 @@
 				<input  class="form-control" type="text" style="width: 200px; display: inline;" name="shDateEnd" id="shDateEnd" value="<fmt:formatDate value="${shDateEnd}" pattern="yyyy-MM-dd" />" autocomplete="off">
 				
 				<br>
-				<input type="text" class="form-control" placeholder="소속검색"style="width:200px; display:inline;">
 				<input type="text" class="form-control" placeholder="검색어"style="width:200px; display:inline;" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>">
 				<button type="submit" class="btn btn-outline-success btn-lg w-45" id="btn-add" style="margin-bottom:10px;">검색</button>
 				<button type="button" class="btn btn-outline-warning btn-lg w-45" id="btn-add" style="margin-bottom:10px;" onclick="location.href='adminClassList'">새로고침</button>
@@ -440,7 +443,26 @@ $.datepicker.setDefaults({
     showMonthAfterYear: true,
     yearSuffix: '년'
     });
-
+$("#btnLogout").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/login_xdmin";
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});	
+});
 </script>
 </body>
 </html>

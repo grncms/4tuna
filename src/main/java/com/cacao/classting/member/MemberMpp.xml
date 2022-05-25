@@ -348,7 +348,7 @@
 			</choose>
 			<choose>
 		<when test="shOptionDate == 1">AND regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-		<when test="shOptionDate == 2">AND modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		<when test="shOptionDate == 2">AND mmDob BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 	</choose>
     
 	</sql>
