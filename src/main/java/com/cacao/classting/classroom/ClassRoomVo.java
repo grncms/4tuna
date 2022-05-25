@@ -1,4 +1,4 @@
-	package com.cacao.classting.classroom;
+package com.cacao.classting.classroom;
 
 import java.util.Date;
 
@@ -37,6 +37,7 @@ public class ClassRoomVo {
 		
 
 		private int totalMembers;	
+		private int submitMembers;	
 		
 		//class search
 		private String shCtcsDelNy;
@@ -377,6 +378,15 @@ public class ClassRoomVo {
 
 		public void setCthsWriter(String cthsWriter) {
 			this.cthsWriter = cthsWriter;
+		}
+
+		
+		public int getSubmitMembers() {
+			return submitMembers;
+		}
+
+		public void setSubmitMembers(int submitMembers) {
+			this.submitMembers = submitMembers;
 		}
 
 		// ---- paging

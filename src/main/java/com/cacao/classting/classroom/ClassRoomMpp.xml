@@ -409,7 +409,7 @@
 		AND a.ctcsSeq = #{ctcsSeq}
 </select>
 
-<!-- 전체 구성원 수 -->	
+<!-- 전체 구성원 중 학생 -->	
 <select id="selectOneMemberCount" resultType="Integer">
 	SELECT
 		count(*)
@@ -418,6 +418,15 @@
 	WHERE 1=1
 		AND ctcsSeq = #{ctcsSeq}
 		AND ctcmTeacherNy = 0
+</select>
+<!-- 과제 제출자 수 -->	
+<select id="selectOneSubmitCount" resultType="Integer">
+	SELECT
+		count(*)
+	FROM 
+		ctHomeworkSubmit
+	WHERE 1=1
+		AND cthpSeq = #{cthpSeq}
 </select>
 
 	

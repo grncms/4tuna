@@ -210,6 +210,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public List<ClassRoom> enterLog(Map<String, String> dates) throws Exception {
 	return	dao.enterLog(dates);
 	}
+
+	@Override
+	public int selectOneSubmitCount(ClassRoomVo vo) throws Exception {
+		return dao.selectOneSubmitCount(vo);
+	}
 	
 
 

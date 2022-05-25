@@ -491,6 +491,10 @@ public class ClassRoomController {
 		int count = service.selectOneMemberCount(vo);
 		vo.setTotalMembers(count);
 		
+//		과제 제출한 학생 수
+		int countS = service.selectOneSubmitCount(vo);
+		vo.setSubmitMembers(countS);
+		
 		vo.setCthsWriter((String)httpSession.getAttribute("ctcmSeq"));
 		vo.setCthpSeq(dto.getCthpSeq());
 		System.out.println("vo.getCthsWriter() : "+vo.getCthsWriter());

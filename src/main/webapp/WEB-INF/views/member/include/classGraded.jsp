@@ -38,7 +38,8 @@
 				<div class="container_base">
 					<div class="title_hw">
 						<div>제출 현황</div>
-						<div>전체 학생 <c:out value="${vo.totalMembers}"/>명 중 명 제출</div>
+						<c:if test="${vo.submitMembers eq 0}">전체 학생 <c:out value="${vo.totalMembers}"/>명 중 아직 제출자가 없습니다!</div></c:if>
+						<c:if test="${vo.submitMembers ne 0}"><div>전체 학생 <c:out value="${vo.totalMembers}"/>명 중 <c:out value="${vo.submitMembers}"/>명 제출</div></c:if>
 					</div>
 				</div>
 				
