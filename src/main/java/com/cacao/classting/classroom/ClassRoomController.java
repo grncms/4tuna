@@ -562,7 +562,7 @@ public class ClassRoomController {
 		vo.setCthsSeq(dto.getCthsSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/member/class/common/homeworkview";
+		return "redirect:/classHomeworkPostView_student";
 	}
 	
 //	본인이 제출한 과제 확인
