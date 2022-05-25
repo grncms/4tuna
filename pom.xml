@@ -143,6 +143,11 @@
 		    <artifactId>commons-dbcp2</artifactId>
 		    <version>2.9.0</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.11</version>
+		</dependency>
 		<!-- mybatis e 2022.02.13 -->
 		
 		<!-- @Resource in DAO: multi db connection : s 2022.02.13 -->

@@ -388,6 +388,7 @@ public class MemberController {
 					//by pass	
 						
 					}
+				
 					return "xdmin/member/adminMemberList";
 				}
 	

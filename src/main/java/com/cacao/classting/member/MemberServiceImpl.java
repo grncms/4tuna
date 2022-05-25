@@ -2,6 +2,7 @@ package com.cacao.classting.member;
 
 import java.util.List;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -62,6 +63,8 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int insertClass(Member dto) throws Exception {
+		
+		dto.setCtcsCode(RandomStringUtils.randomAlphanumeric(6));
 		return dao.insertClass(dto);
 	}
 
