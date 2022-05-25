@@ -75,7 +75,7 @@
 					<c:forEach items="${list}" var="item" varStatus="status">
 						<div class="container_base">
 							<div class="homework list">
-								<div class="header">
+								<div class="header" style="cursor: default;">
 									<div class="profile_box">
 										<img class="profile" src="/resources/common/image/test.jpg" />
 									</div>
@@ -84,7 +84,7 @@
 									</c:forEach>
 									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								</div>
-								<div class="body mt-2 mb-5" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
+								<div class="body mt-2 mb-5" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
 									<span class='badge badge_hw'>과제</span>
 									<!-- <span class='badge badge_todayend'>오늘 종료</span> -->
 									<span><c:out value="${item.cthpTitle}"/></span>

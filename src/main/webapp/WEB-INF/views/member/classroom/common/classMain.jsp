@@ -63,7 +63,7 @@
 					<c:forEach items="${list}" var="item" varStatus="status">
 					<div class="container_base">
 						<div class="homework list">
-							<div class="header">
+							<div class="header" style="cursor: default;">
 								<div class="profile_box">
 									<img class="profile" src="/resources/common/image/test.jpg" />
 								</div>
@@ -73,7 +73,7 @@
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								<span>조회수:<c:out value = "${item.ctptView }"/></span>
 							</div>
-							<div class="body mt-2" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
+							<div class="body mt-2" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
 								<c:if test="${item.ctboTypeCd eq 25}"><span class='badge badge_notice'>공지</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 19}"><span class='badge badge_graded'>자유공간</span></c:if>
 								<c:if test="${item.ctboTypeCd eq 20}"><span class='badge badge_alreadyend'>학습자료</span></c:if>

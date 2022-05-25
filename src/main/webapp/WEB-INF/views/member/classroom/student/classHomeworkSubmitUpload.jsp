@@ -120,10 +120,10 @@ input:checked+.slider:before {
 	
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
-	<form id="homeworkForm" name="homeworkForm" action="/classHomeworkUploadInst" method="post">
-	<input type="hidden" id="cthpWriter" name="cthpWriter" value="${ctcmSeq}">
-	<input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
-	<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.ctcsSeq}"/>">
+	<form id="submitForm" name="submitForm" action="/homeworkSubmitInst" method="post">
+	<input type="hidden" id="cthsWriter" name="cthsWriter" value="${ctcmSeq}">
+	<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
+	<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${item.cthpSeq}"/>">
 		<div class="row" id="posting">
 			<div class="col-xl-8 col-lg-8">
 				<div class="card shadow mb-4">
@@ -131,7 +131,7 @@ input:checked+.slider:before {
 					<div class="card-body">
 						<!-- 제목 시작 -->
 						<div class="form-title">
-							<input type="text" class="form-control" id="cthpTitle" name="cthpTitle" placeholder="제목">
+							<input type="text" class="form-control" id="cthsTitle" name="cthsTitle" placeholder="제목">
 						</div>
 						<hr>
 						<!-- 제목 끝  -->
@@ -157,7 +157,7 @@ input:checked+.slider:before {
 
 						<!-- 내용 넣기 시작 -->
 						<div class="title_hw border">
-							<textarea class="formBoard" rows="20" cols="100" id="cthpDesc" name="cthpDesc" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
+							<textarea class="formBoard" rows="20" cols="100" id="cthsDesc" name="cthsDesc" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
 						</div>
 						<!-- 내용 넣기 끝 -->
 					</div>
@@ -186,7 +186,7 @@ input:checked+.slider:before {
 						<div class="container_base">
 							<div class="rightbar_button">
 								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray">임시저장</button>
-								<button type="submit" class="basic_button w-100" id="btn-submit" name="btn-submit">과제 등록</button>
+								<button type="submit" class="basic_button w-100" id="btn-submit" name="btn-submit">과제 제출</button>
 							</div>
 						</div>
 					</div>
@@ -223,7 +223,7 @@ if(${sessTeacher}==0){
 
 $("#btn-submit").on("click", function(){
 	
-	$("#homeworkForm").attr("action", "/classHomeworkUploadInst");
+	$("#homeworkForm").attr("action", "/homeworkSubmitInst");
 	$("#homeworkForm").submit();
 	
 });

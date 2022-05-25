@@ -551,16 +551,17 @@ public class ClassRoomController {
 		return "/member/classroom/student/classHomeworkSubmitUpload";
 	}
 //	과제제출(학생)
-	@RequestMapping(value = "/member/classroom/common/homeworkSubmitInst")
+	@RequestMapping(value = "/homeworkSubmitInst")
 	public String homeworkSubmitInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
-		
-		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		
 		service.insertHomeworkSubmit(dto);
 		
-		vo.setCthsSeq(dto.getCthsSeq());
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		System.out.println("dto.getCthpSeq() : "+dto.getCthpSeq());
 		
+		
+		vo.setCthsSeq(dto.getCthsSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/classHomeworkPostView_student";
 	}

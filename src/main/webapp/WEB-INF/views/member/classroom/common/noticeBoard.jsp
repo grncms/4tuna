@@ -83,7 +83,7 @@
 				<c:if test="${item.ctboTypeCd eq 25}">
 					<div class="container_base">
 						<div class="homework list">
-							<div class="header">
+							<div class="header" style="cursor: default;">
 								<div class="profile_box">
 									<img class="profile" src="../../../../../resources/common/image/test.jpg" />
 								</div>
@@ -93,7 +93,7 @@
 								<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 								<span>조회수:<c:out value = "${item.ctptView }"/></span>
 							</div>
-							<div class="body mt-2" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
+							<div class="body mt-2" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
 								<span class='badge badge_hw'>공지</span>
 								<span><c:out value="${item.ctptTitle}"/></span>
 								<br><br>

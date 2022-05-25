@@ -3,7 +3,7 @@
 		<div class="card shadow mb-4">
 			<!-- <div class="rightbar"> -->
 			<form action="" id="homeworkSubmit" name="homeworkSubmit" method="post">
-				<input type="hidden" id="cthsWriter" name="cthsWriter" value="${ctcmSeq}">
+				<input type="hidden" id="cthpWriter" name="cthpWriter" value="${ctcmSeq}">
 				<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
 				<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 				<div class="container_base">
