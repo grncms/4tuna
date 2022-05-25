@@ -571,8 +571,9 @@ public class ClassRoomController {
 	public String classHomeworkPostView_student(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		vo.setCthsWriter((String) httpSession.getAttribute("ctcmSeq"));
 		
+		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
@@ -586,7 +587,7 @@ public class ClassRoomController {
 	public String classHomeworkSubmitEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
 		
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		vo.setCthsWriter((String) httpSession.getAttribute("ctcmSeq"));
 		
 		ClassRoom rt= service.selectOneHomeworkSubmitStudent(vo);
 		model.addAttribute("itemSubmit", rt);
@@ -604,7 +605,7 @@ public class ClassRoomController {
 		System.out.println("cthsSeq : "+vo.getCthsSeq());
 		System.out.println("cthpSeq : "+vo.getCthpSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
-		return "redirect:/member/class/common/homeworkview";
+		return "redirect:/classHomeworkPostView_student";
 	}
 	@RequestMapping(value = "member/class/common/postedit")
 	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{

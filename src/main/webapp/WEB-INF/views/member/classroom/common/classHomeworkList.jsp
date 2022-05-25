@@ -63,8 +63,8 @@
 					<div class="container_title shadow mb-4">
 						<div class="header">모든 과제</div>
 						<div class="body">클래스에 배부된 모든 과제를 모아볼 수 있어요.</div>
-						<div class="footer dropdown">
-							<button type="button" class="basic_button" onclick="location.href='/classHomeworkUpload'">과제 만들기</button>
+						<div class="footer">
+							<c:if test="${teacherNy eq 1}"><button type="button" class="basic_button" onclick="location.href='/classHomeworkUpload'">과제 만들기</button></c:if>
 						</div>
 					</div>
 					<form id="postList" name="postList" method="post">

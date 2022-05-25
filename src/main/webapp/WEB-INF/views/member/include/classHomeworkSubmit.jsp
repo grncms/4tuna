@@ -42,7 +42,9 @@
 				<div class="container_base">
 					<div class="rightbar_button">
 						<c:if test="${itemSubmit.cthsSeq eq null}"><button type="button" class="basic_button w-50" onclick="location.href='javascript:goHomeworkSubmitUpload()'">과제 등록</button></c:if>
-						<c:if test="${itemSubmit.cthsSeq ne null && itemSubmit.cthsScore eq null}"><button type="button" class="basic_button w-50" onclick="location.href='javascript:goHomeworkSubmitStuEdit(<c:out value="${itemSubmit.cthsSeq}"/>)'">과제 수정</button></c:if>
+						<c:if test="${itemSubmit.cthsSeq ne null && itemSubmit.cthsScore eq null}"><button type="button" class="basic_button w-50" onclick="location.href='javascript:goHomeworkSubmitStuEdit(<c:out value="${itemSubmit.cthsSeq}"/>)'">과제 수정</button>
+						<button type="button" class="btn btn-primary w-50" style="border-radius: 9px;" onclick="location.href='javascript:goHomeworkSubmitStu(<c:out value="${itemSubmit.cthsSeq}"/>)'">제출한 과제 확인</button>
+						</c:if>
 						<c:if test="${itemSubmit.cthsScore ne null}">채점완료된 과제는 수정할 수 없습니다. </c:if>
 					</div>
 				</div>

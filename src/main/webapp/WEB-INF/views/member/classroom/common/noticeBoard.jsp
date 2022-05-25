@@ -70,8 +70,8 @@
 				<div class="container_title shadow mb-4">
 					<div class="header">모든 공지</div>
 					<div class="body">클래스의 공지를 확인할 수 있어요.</div>
-					<div class="footer dropdown">
-						<button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">공지쓰기</button>
+					<div class="footer">
+						<c:if test="${teacherNy eq 1}"><button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">공지쓰기</button></c:if>
 					</div>
 				</div>
 				<form id="noticeList" name="noticeList" method="post">
