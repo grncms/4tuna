@@ -44,6 +44,8 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) throws Exception;
+	public List<ClassRoom> selectListHomeworkReply(ClassRoomVo vo) throws Exception;
+	public List<ClassRoom> selectListHomeworkSubmitReply(ClassRoomVo vo) throws Exception;
 	
 	public int insertReply(ClassRoom dto) throws Exception;
 	public int insertHomeworkReply(ClassRoom dto) throws Exception;

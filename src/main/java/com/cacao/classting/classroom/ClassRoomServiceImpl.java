@@ -239,6 +239,16 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		
 		return 1;
 	}
+
+	@Override
+	public List<ClassRoom> selectListHomeworkReply(ClassRoomVo vo) throws Exception {
+		return dao.selectListHomeworkReply(vo);
+	}
+
+	@Override
+	public List<ClassRoom> selectListHomeworkSubmitReply(ClassRoomVo vo) throws Exception {
+		return dao.selectListHomeworkSubmitReply(vo);
+	}
 	
 
 
