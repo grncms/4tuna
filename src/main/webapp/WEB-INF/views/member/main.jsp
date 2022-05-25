@@ -34,7 +34,7 @@
 	<div class="col-md-7" >
 	<img src="/resources/user/image/main_bg.png" class="w-100" id="main_bg"	>
 	
-	<div id="classNotice">
+	<div id="classNotice" style=" cursor: default;">
 		<h5 style="font-weight: bold; margin-bottom: 30px;">내 클래스 공지 알림</h5>
 		<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
 		<c:if test="${sessSeq eq itemPost.mmSeq}">
@@ -58,10 +58,10 @@
 	<form id="mainclassList" name="mainclassList" method="post" action="">
 	<input type="hidden" id="ctcsSeq" name="ctcsSeq">
 	<input type="hidden" id="mmSeq" name="mmSeq">
-		<div id="classList">
-		<h5 style="font-weight: bold; margin-bottom: 30px;">클래스 바로가기</h5>
+		<div id="classList" style="cursor: default;">
+		<h5 style="font-weight: bold; margin-bottom: 30px; cursor: default;">클래스 바로가기</h5>
 			<c:forEach items="${list}" var="item" varStatus="status">	
-			<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
+			<div class="class" style="cursor: pointer;" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
 				<img src="/resources/user/image/a3.jpg" class="" width="50" height="50" style="border-radius: 7px; float: left">
 				<span class="" id="date" style="margin-left: 13px;"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcsName}"/></span>
 			</div>

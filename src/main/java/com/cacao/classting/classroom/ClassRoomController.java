@@ -487,6 +487,10 @@ public class ClassRoomController {
 		List<ClassRoom> submitList = service.selectListHomeworkSubmit(vo);
 		model.addAttribute("submitList", submitList);
 		
+//		전체 학생 수
+		int count = service.selectOneMemberCount(vo);
+		vo.setTotalMembers(count);
+		
 		vo.setCthsWriter((String)httpSession.getAttribute("ctcmSeq"));
 		vo.setCthpSeq(dto.getCthpSeq());
 		System.out.println("vo.getCthsWriter() : "+vo.getCthsWriter());
