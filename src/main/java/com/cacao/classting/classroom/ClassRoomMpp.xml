@@ -530,15 +530,15 @@
 		,a.regDateTime
 		,a.cthsSeq
 	FROM
-		ctReplyHomworkSubmit a 
-		LEFT JOIN ctHomworkSubmit b on b.cthsSeq = a.cthsSeq
+		ctReplyHomeworkSubmit a 
+		LEFT JOIN ctHomeworkSubmit b on b.cthsSeq = a.cthsSeq
 	WHERE 1=1
 		AND a.cthsSeq = #{cthsSeq}
 		AND a.ctrsDelNy = 0
 </select>
 <!-- 과제제출물 댓글 등록 -->
 <insert id="insertHomeworkSubmitReply">
-	insert into ctReplyHomworkSubmit(
+	insert into ctReplyHomeworkSubmit(
 		ctrsSeq
 		,ctrsContent
 		,ctrsWriter
@@ -551,7 +551,7 @@
 		,#{ctrsWriter}
 		,0
 		,#{regDateTime}
-		,#{ctptSeq}
+		,#{cthsSeq}
 	)	
 </insert>
 

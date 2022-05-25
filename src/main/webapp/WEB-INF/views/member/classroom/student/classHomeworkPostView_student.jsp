@@ -149,26 +149,27 @@
 								<div class="col-md-10 col-lg-11" id="classInfo">
 									<div>
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+										<b><c:if test="${itemReply.ctrsWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
 										</c:forEach>
 									</div>
 									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-									<div><c:out value="${itemReply.ctrpContent}"/></div>
+									<div><c:out value="${itemReply.ctrsContent}"/></div>
 								</div>
 							</div>
 							</c:forEach>
 						</div>
 						<div class="container_base">
-						<form id="replyInst" name="replyInst" action="/member/class/common/replyInst" method="post">
-						<input type="hidden" id="ctptSeq" name="ctptSeq" value="<c:out value="${vo.ctptSeq}"/>">
-						<input type="hidden" id="ctrpWriter" name="ctrpWriter" value="<c:out value="${ctcmSeq}"/>">
+						<form id="replyInst" name="replyInst" action="/homeworkSubmitReplyInst" method="post">
+						<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
+						<input type="hidden" id="ctrsWriter" name="ctrsWriter" value="<c:out value="${ctcmSeq}"/>">
+						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 							<div class="comment_write row">
 								<div class="col-md-3 col-lg-2" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 									<div>${ctcmName}</div>
 								</div>
 								<div class="col-md-9 col-lg-10" id="classInfo">
-									<input type="text" id="ctrpContent" name="ctrpContent" class="w-100">
+									<input type="text" id="ctrsContent" name="ctrsContent" class="w-100">
 									<div>
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-outline-secondary btn-sm">
@@ -222,7 +223,7 @@ if(${sessTeacher}==0){
 } 
 
 goReply = function(){
-	$("#replyInst").attr("action","/member/class/common/replyInst");
+	$("#replyInst").attr("action","/homeworkSubmitReplyInst");
 	$("#replyInst").submit();
 }
 

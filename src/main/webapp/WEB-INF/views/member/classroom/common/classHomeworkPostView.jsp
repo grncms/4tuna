@@ -161,24 +161,28 @@
 								<div class="col-md-10 col-lg-11" id="classInfo">
 									<div>
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+										<b><c:if test="${itemReply.ctrsWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
 										</c:forEach>
 									</div>
 									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-									<div><c:out value="${itemReply.ctrpContent}"/></div>
+									<div><c:out value="${itemReply.ctrsContent}"/></div>
 								</div>
 							</div>
 							</c:forEach>
 						</div>
 					<!-- 댓글 s -->
 						<div class="container_base">
+						<form id="replyInst" name="replyInst" action="/homeworkSubmitReplyInst2" method="post">
+						<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
+						<input type="hidden" id="ctrsWriter" name="ctrsWriter" value="<c:out value="${ctcmSeq}"/>">
+						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 							<div class="comment_write row">
 								<div class="col-md-3 col-lg-2" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 									<div>${ctcmName}</div>
 								</div>
 								<div class="col-md-9 col-lg-10" id="classInfo">
-									<input type="text" class="w-100">
+									<input type="text" id="ctrsContent" name="ctrsContent" class="w-100">
 									<div>
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-outline-secondary btn-sm">
@@ -188,95 +192,15 @@
 												<i class="fa-solid fa-image"></i>
 											</button>
 										</div>
-										<button type="button" class="basic_button">등록</button>
+										<button type="button" class="basic_button" onclick="location.href='javascript:goReply()'">등록</button>
 									</div>
 								</div>
-							</div>	
+							</div>
+						</form>		
 						</div>
 					<!-- 댓글 e -->	
 						</div>
 				</div>
-<%-- 				<div class="col-12">
-					<div class="card shadow mb-4">
-						<div class="container_base">
-								<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
-								<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
-								<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
-								<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
-							<div class="title"><c:out value="${item.ctptTitle}"/></div>
-						</div>
-						<div class="container_base">
-								<div class="writer row">
-									<div class="col-md-2 col-lg-1" id="classImg">
-										<img src="/resources/common/image/profile2.png" width="45" height="45" style="border-radius: 7px;">
-									</div>
-									<div class="col-md-10 col-lg-11" id="classInfo">
-										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if>
-										</c:forEach>
-									<span style="color: #c8c8c8; font-size: 14px; margin-left: 20px;"><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-									<span style="color: #c8c8c8; font-size: 14px;">조회수:<c:out value="${item.ctptView }"/></span>
-									</div>
-								</div>
-						</div>
-						<div class="container_base">
-							<div class="post_content">
-								<div>
-									<c:out value="${item.ctptContent}"/>
-								</div>
-								<div class="post_content mt-3 float-end">
-								<i class="fa fa-solid fa-thumbs-up" role="button" onclick=''> <c:out value="${item.ctptLike1}"/></i>
-								<i class="fa fa-solid fa-check" role="button" onclick=''> <c:out value="${item.ctptLike2}"/></i>
-								<i class="fa fa-solid fa-circle-question" role="button" onclick=''> <c:out value="${item.ctptLike3}"/></i>
-								</div>
-							</div>
-						</div>
-						<div class="container_base">
-							<h5>댓글</h5>
-							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
-							<div class="comment row mt-2 mb-3">
-								<div class="col-md-2 col-lg-1" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-								</div>
-								<div class="col-md-10 col-lg-11" id="classInfo">
-									<div>
-										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
-										</c:forEach>
-									</div>
-									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-									<div><c:out value="${itemReply.ctrpContent}"/></div>
-								</div>
-							</div>
-							</c:forEach>
-						</div>
-						<div class="container_base">
-								<div class="comment_write row">
-									<div class="col-md-3 col-lg-2" id="classImg">
-										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
-										<div>${ctcmName}</div>
-									</div>
-									<div class="col-md-9 col-lg-10" id="classInfo">
-										<input type="text" class="w-100">
-										<div>
-											<div class="btn-group" role="group">
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-file-circle-plus"></i>
-												</button>
-												<button type="button" class="btn btn-outline-secondary btn-sm">
-													<i class="fa-solid fa-image"></i>
-												</button>
-											</div>
-											<button type="button" class="basic_button">등록</button>
-										</div>
-									</div>
-								</div>	
-							</div>
-						</div>
-				</div> --%>
-	<%-- 			<div class="col-xl-3 col-lg-3">
-					<%@ include file="/WEB-INF/views/member/classroom/common/classGraded.jsp" %>
-				</div> --%>
 		</div>
 	</div>
 		</div>
@@ -322,6 +246,11 @@ $("#submitScore").on("click", function(){
 	}
 	
 });
+
+goReply = function(){
+	$("#replyInst").attr("action","/homeworkSubmitReplyInst2");
+	$("#replyInst").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	

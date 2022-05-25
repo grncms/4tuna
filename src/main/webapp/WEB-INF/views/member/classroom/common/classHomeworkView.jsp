@@ -139,20 +139,27 @@
 						</div>
  						<div class="container_base">
 								<h6>댓글</h6>
-<!-- 							<div class="comment row">
+						<c:forEach items="${replyList}" var="itemReply" varStatus="status">
+							<div class="comment row mt-2 mb-3">
 								<div class="col-md-2 col-lg-1" id="classImg">
 									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
 								<div class="col-md-10 col-lg-11" id="classInfo">
 									<div>
-										<b>박규원</b>
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+										<b><c:if test="${itemReply.ctrhWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+										</c:forEach>
 									</div>
-									<div style="color: #c8c8c8; font-size: 14px;">4월 22일 오전 11:16</div>
-									<div>우왕 너무 유익해요요</div>
+									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+									<div><c:out value="${itemReply.ctrhContent}"/></div>
 								</div>
-							</div> -->
+							</div>
+							</c:forEach>
 						</div> 
 						<div class="container_base">
+						<form id="replyInst" name="replyInst" action="/homeworkReplyInst" method="post">
+						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
+						<input type="hidden" id="ctrhWriter" name="ctrhWriter" value="<c:out value="${ctcmSeq}"/>">
 								<div class="comment_write row">
 									<div class="col-md-3 col-lg-2" id="classImg">
 										<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
@@ -160,7 +167,7 @@
 									</div>
 	
 									<div class="col-md-9 col-lg-10" id="classInfo">
-										<input type="text" class="w-100">
+										<input type="text" id="ctrhContent" name="ctrhContent" class="w-100">
 										<div>
 											<div class="btn-group" role="group">
 												<button type="button" class="btn btn-outline-secondary btn-sm">
@@ -171,10 +178,11 @@
 												</button>
 											</div>
 	
-											<button type="button" class="basic_button">등록</button>
+											<button type="button" class="basic_button" onclick="location.href='javascript:goReply()'">등록</button>
 										</div>
 									</div>
-								</div>	
+								</div>
+							</form>		
 							</div>
 						</div>
 			</div>
@@ -243,7 +251,10 @@ goHomeworkSubmitUpload = function(seq){
 
 }
 
-
+goReply = function(){
+	$("#replyInst").attr("action","/homeworkReplyInst");
+	$("#replyInst").submit();
+}
 
 
 $("#btnLogout").on("click", function(){
