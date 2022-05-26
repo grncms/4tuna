@@ -184,18 +184,6 @@ function aaa(){
 	
 }
 	
-$("#roleT").hide();
-$("#roleS").hide();
-
-if(${sessTeacher}==0){
-	$("#roleT").hide();		
-	$("#roleS").show();		
-	$("#btn-open").hide();		
-}else{
-	$("#roleT").show();		
-	$("#roleS").hide();		
-	$("#btn-open").show();		
-} 
 
 
 $("#btnLogout").on("click", function(){
@@ -208,7 +196,7 @@ $("#btnLogout").on("click", function(){
 		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "/index";
+				location.href = "/";
 			} else {
 				// by pass
 			}

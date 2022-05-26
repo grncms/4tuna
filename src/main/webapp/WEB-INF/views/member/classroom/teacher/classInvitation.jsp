@@ -105,18 +105,6 @@
 <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 
-$("#roleT").hide();
-$("#roleS").hide();
-
-if(${sessTeacher}==0){
-	$("#roleT").hide();		
-	$("#roleS").show();		
-	$("#btn-open").hide();		
-}else{
-	$("#roleT").show();		
-	$("#roleS").hide();		
-	$("#btn-open").show();		
-} 
 
 var name = '<c:out value="${item.ctcsName}"/>';
 var code = '<c:out value="${item.ctcsCode}"/>';

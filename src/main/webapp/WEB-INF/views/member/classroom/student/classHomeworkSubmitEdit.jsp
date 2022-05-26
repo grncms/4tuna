@@ -179,19 +179,6 @@ input:checked+.slider:before {
 
 <script type="text/javascript">
 
-$("#roleT").hide();
-$("#roleS").hide();
-
-if(${sessTeacher}==0){
-	$("#roleT").hide();		
-	$("#roleS").show();		
-	$("#btn-open").hide();		
-}else{
-	$("#roleT").show();		
-	$("#roleS").hide();		
-	$("#btn-open").show();		
-} 
-
 $("#submitUpdt").on("click", function(){
 	var answer = confirm("수정하시겠습니까?");
 	

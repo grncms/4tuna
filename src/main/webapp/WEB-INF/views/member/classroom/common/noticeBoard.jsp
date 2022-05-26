@@ -131,19 +131,6 @@
 	<script src="../../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script type="text/javascript">
 
-$("#roleT").hide();
-$("#roleS").hide();
-
-if(${sessTeacher}==0){
-	$("#roleT").hide();		
-	$("#roleS").show();		
-	$("#btn-open").hide();		
-}else{
-	$("#roleT").show();		
-	$("#roleS").hide();		
-	$("#btn-open").show();		
-} 
-
 goView = function(seq){
 	$("#ctptSeq").val(seq);
 	$("#noticeList").attr("action","/member/class/common/postview");
