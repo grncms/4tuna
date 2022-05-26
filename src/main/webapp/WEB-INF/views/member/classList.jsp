@@ -92,18 +92,6 @@
 <!-- Custom scripts for all pages-->
 <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 <script type="text/javascript">
-$("#roleT").hide();
-$("#roleS").hide();
-
-if(${sessTeacher}==0){
-	$("#roleT").hide();		
-	$("#roleS").show();		
-	$("#btn-open").hide();		
-}else{
-	$("#roleT").show();		
-	$("#roleS").hide();		
-	$("#btn-open").show();		
-} 
 
 
 goClass = function(seq){

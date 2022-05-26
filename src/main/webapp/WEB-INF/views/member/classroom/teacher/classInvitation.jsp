@@ -122,7 +122,7 @@ var name = '<c:out value="${item.ctcsName}"/>';
 var code = '<c:out value="${item.ctcsCode}"/>';
 
 function shareKakaotalk() {
-    Kakao.init("6ec915718ae8d23e16c65e0f6d22a62e");      // 사용할 앱의 JavaScript 키를 설정
+    Kakao.init("9d9736beb71694de8206b51f8e68d327");      // 사용할 앱의 JavaScript 키를 설정
     Kakao.Link.sendDefault({
           objectType:"feed"
         , content : {
@@ -133,6 +133,7 @@ function shareKakaotalk() {
                   mobileWebUrl: "http://tp.classing.a9xlab.com"   // 모바일 카카오톡에서 사용하는 웹 링크 URL
                 , webUrl:"http://tp.classing.a9xlab.com" // PC버전 카카오톡에서 사용하는 웹 링크 URL
             }
+    
         }
         , buttons : [
             {
