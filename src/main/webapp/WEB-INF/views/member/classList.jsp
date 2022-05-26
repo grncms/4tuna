@@ -35,10 +35,10 @@
 	<form id="subclassList" name="subclassList" method="post" action="">
 	<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
 	<input  type="hidden" id="mmSeq" name="mmSeq">
-		<div id="classNotice">
+		<div id="classNotice"  style="cursor: default;">
 			<div class=""><span style="font-size: 20px; font-weight: bold;">클래스 목록</span></div>
 		</div>
-		<div id="classNotice">
+		<div id="classNotice" style="cursor: pointer;">
 			<c:forEach items="${list}" var="item" varStatus="status">	
 			<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
 				<img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left">
