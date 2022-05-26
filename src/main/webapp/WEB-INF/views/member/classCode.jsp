@@ -146,8 +146,8 @@
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 		<div class="col-md-7" style="margin-top:100px;">
 		<h3 >축하합니다!
-			<br><c:out value="${item.ctcsName}"/> 클래스가
-			추가되었어요
+			<br><c:out value="${item.ctcsName}"/> 클래스에
+			입장했어요!
 		</h3>
 		<p>클래스 프로필을 설정하고 지금 바로 시작하세요.</p>
 		<div>

@@ -80,9 +80,9 @@
 							</div>
 							<div class="classTitleSetting">
 								<div class="form-control" id="content"style="resize:none; margin-top: 10px; margin-bottom:25px; height: auto;">
-						창원경일고등학교의 4조 클래스에 초대합니다! <br> 클래스 코드 : <c:out value="${item.ctcsCode}"/> 	
+						 <c:out value="${item.ctcsName}"/> 클래스에 초대합니다! <br> 클래스 코드 : <c:out value="${item.ctcsCode}"/> 	
 							</div>
-						<button type="button" class="basic_button mt-3 mb-4 w-25 p-2" style="float:right">초대문구 복사</button>
+						<button type="button" class="basic_button mt-3 mb-4 w-25 p-2" style="float:right" onclick="shareKakaotalk();">공유하기</button>
 						</div>
 					</div>
 				</div>	
@@ -101,7 +101,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/resources/common/js/sb-admin-2.min.js"></script> 
-
+    
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 
 $("#roleT").hide();
@@ -117,6 +118,33 @@ if(${sessTeacher}==0){
 	$("#btn-open").show();		
 } 
 
+var name = '<c:out value="${item.ctcsName}"/>';
+var code = '<c:out value="${item.ctcsCode}"/>';
+
+function shareKakaotalk() {
+    Kakao.init("6ec915718ae8d23e16c65e0f6d22a62e");      // 사용할 앱의 JavaScript 키를 설정
+    Kakao.Link.sendDefault({
+          objectType:"feed"
+        , content : {
+              title: name+" 클래스에 초대합니다!"   // 콘텐츠의 타이틀
+            , description: "클래스 입장코드 : "+code   // 콘텐츠 상세설명
+            , imageUrl: "https://ifh.cc/g/GVYqNB.jpg"   // 썸네일 이미지
+            , link : {
+                  mobileWebUrl: "http://tp.classing.a9xlab.com"   // 모바일 카카오톡에서 사용하는 웹 링크 URL
+                , webUrl:"http://tp.classing.a9xlab.com" // PC버전 카카오톡에서 사용하는 웹 링크 URL
+            }
+        }
+        , buttons : [
+            {
+                  title:"클래스 참여하기"    // 버튼 제목
+                , link : {
+                    mobileWebUrl:"http://tp.classing.a9xlab.com"   // 모바일 카카오톡에서 사용하는 웹 링크 URL
+                  , webUrl:"http://tp.classing.a9xlab.com" // PC버전 카카오톡에서 사용하는 웹 링크 URL
+                }
+            }
+        ]
+    });
+}
 
 $("#btnLogout").on("click", function(){
 	
