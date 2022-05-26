@@ -82,7 +82,7 @@
 								<div class="form-control" id="content"style="resize:none; margin-top: 10px; margin-bottom:25px; height: auto;">
 						 <c:out value="${item.ctcsName}"/> 클래스에 초대합니다! <br> 클래스 코드 : <c:out value="${item.ctcsCode}"/> 	
 							</div>
-						<button type="button" class="basic_button mt-3 mb-4 w-25 p-2" style="float:right" onclick="shareKakaotalk();">공유하기</button>
+						<button type="button" class="basic_button mt-3 mb-4 w-25 p-2" style="float:right" onclick="shareKakaotalk();"><img src="/resources/common/image/kakaoicon.png" width="30px;" style="margin-bottom: 2px;"> 공유하기</button>
 						</div>
 					</div>
 				</div>	
