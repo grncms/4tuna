@@ -6,7 +6,6 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
-<!--  ㅇ-->
 <head>
 
 <meta charset="utf-8">
@@ -65,14 +64,15 @@
 									</div>
 									<div class="body">
 										<div class="attendance_bar">
-											<div>50%</div>
+											<c:set var="rate" value="${attendRate }"/>
+											<div><c:out value="${rate }"/>%</div>
 											<div class="progress">
-												<div class="progress-bar base_bgcolor" style="width: 50%" role="progressbar"></div>
+												<div class="progress-bar base_bgcolor" style="width:${rate}%" role="progressbar"></div>
 											</div>
 										</div>
 										<div class="attendance_text">
 											<div class="base_color">출석완료</div>
-											<div>3/6</div>
+											<div><c:out value="${totalAtt }"/></div>
 										</div>
 									</div>
 								</div>
@@ -109,7 +109,10 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="ml" items="${memberList}" varStatus="st">
+											<c:forEach var="item" items="${log}" varStatus="st">
+												<c:set var="name" value="${item.key }" />
+												<c:set var="value" value="${item.value }" />
+
 												<tr>
 													<td>
 														<div>
@@ -117,20 +120,34 @@
 																<img src="../../../../../resources/common/image/test.jpg" class="profile">
 															</div>
 															<span>
-																<c:out value="${ml.ctcmName }" />
+																<c:out value="${name}" />
 															</span>
 														</div>
 													</td>
-													<c:forEach var="logData" items="${log }" varStatus="st">
-														<td>
-															<div>
-																<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
-																<span class="badge bg-secondary">16:34:22</span>
-															</div>
-														</td>
-													</c:forEach>
-													
 
+													<c:forEach var="value" items="${value}" varStatus="st">
+
+														<c:choose>
+															<c:when test="${empty value}">
+																<td>
+																	<div>
+																		<i class="fa-regular fa-circle-xmark fa-2x" style="color:red"></i>
+																	</div>
+																</td>
+															</c:when>
+															<c:otherwise>
+																<td>
+																	<div>
+																		<i class="fa-regular fa-circle-check fa-2x" style="color: green"></i>
+																		<span class="badge bg-secondary">
+																			<fmt:parseDate value="${value }" pattern="yyyy-MM-dd'T'HH:mm" var="date" type="both" />
+																			<fmt:formatDate value="${date}" pattern="HH:mm" />
+																		</span>
+																	</div>
+																</td>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
 												</tr>
 											</c:forEach>
 
@@ -148,8 +165,7 @@
 
 
 
-
-
+	<input type="hidden" id="aaa" value="${now}" />
 
 	<!-- End of Page Wrapper -->
 	<!-- Bootstrap core JavaScript-->
@@ -163,6 +179,11 @@
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 	<script type="text/javascript">
 
+	
+function aaa(){
+	
+}
+	
 $("#roleT").hide();
 $("#roleS").hide();
 
@@ -187,7 +208,7 @@ $("#btnLogout").on("click", function(){
 		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "/";
+				location.href = "/index";
 			} else {
 				// by pass
 			}

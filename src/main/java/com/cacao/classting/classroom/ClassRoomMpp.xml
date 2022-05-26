@@ -615,9 +615,9 @@ select ctcmName,ctadRegDateTime
 from ctClassMember a 
 left join ctAttendance b on a.ctcmSeq = b.ctcmSeq 
 where ctcsSeq = #{classSeq}
-and ctadRegDateTime > #{startDate} 
-and ctadRegDateTime  < #{endDate}
-and ctcmName = #{memberName}
+and b.ctadRegDateTime > #{startDate} and 
+b.ctadRegDateTime < #{endDate}
+
 ]]>
 </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.cacao.classting.classroom;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ClassRoom {
@@ -120,7 +121,8 @@ public class ClassRoom {
 	private Integer delNy;	
 	private Integer pseq;
 	
-	
+	//출석부 관련
+	private LocalDateTime[] ad = new LocalDateTime[5];
 	private String attendanceToday;
 	
 	public String getCtcsSeq() {

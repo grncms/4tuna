@@ -3,7 +3,12 @@ package com.cacao.classting.classroom;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
-import com.cacao.classting.member.Member;
-import com.cacao.classting.member.MemberVo;
 
 
 
@@ -388,8 +391,138 @@ public class ClassRoomController {
 	
 
 	@RequestMapping(value = "member/class/teacher/attendance")
-	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
-		System.out.println("출석부 :" +  httpSession.getAttribute("sessSeq"));
+	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
+			HttpSession httpSession) throws Exception {
+		System.out.println("출석부 :" + httpSession.getAttribute("sessSeq"));
+		String classSeq = (String) httpSession.getAttribute("ctcsSeq");
+		vo.setCtcsSeq(classSeq);
+		List<String> days = new ArrayList<String>();
+		List<String> week = new ArrayList<String>();
+		
+		LocalDate today = LocalDate.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+		String now = LocalDateTime.now().format(dtf);
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		String korean = "";
+
+		for (int i = 4; i >= 0; i--) {
+			days.add(String.valueOf(today.minusDays(i)));
+
+			switch (today.minusDays(i).getDayOfWeek()) {
+			case MONDAY:
+				korean = "월요일";
+				break;
+			case TUESDAY:
+				korean = "화요일";
+				break;
+			case WEDNESDAY:
+				korean = "수요일";
+				break;
+			case THURSDAY:
+				korean = "목요일";
+				break;
+			case FRIDAY:
+				korean = "금요일";
+				break;
+			case SATURDAY:
+				korean = "토요일";
+				break;
+			case SUNDAY:
+				korean = "일요일";
+				break;
+			}
+			week.add(korean);
+		}
+
+		String startDate = String.valueOf(today.minusDays(4));
+		String endDate = String.valueOf(today.plusDays(1));
+
+		Map<String, String> dates = new HashMap<String, String>();
+		dates.put("startDate", startDate);
+		dates.put("endDate", endDate);
+		dates.put("classSeq", classSeq);
+		List<ClassRoom> attendList = service.enterLog(dates);
+
+		
+
+		
+		Map<String, LocalDateTime[]> memberMap = new HashMap<String, LocalDateTime[]>();
+		String memberName = "";
+		String attendName = "";
+
+		LocalDateTime attendDate = null;
+		LocalDate _attendDate = null;
+		for (int i = 0; i < memberList.size(); i++) {
+			memberName = memberList.get(i).getCtcmName();
+			LocalDateTime[] _tmp = new LocalDateTime[5];
+			for (int j = 0; j < attendList.size(); j++) {
+				attendName = attendList.get(j).getCtcmName();
+				if (memberName.equals(attendName)) {
+					attendDate = LocalDateTime.parse(attendList.get(j).getCtadRegDateTime(), dtf);
+					_attendDate = LocalDate.from(attendDate);
+					boolean flag = false;
+					int t = 0;
+					while (flag == false && t < 5) {
+						if (_attendDate.equals(today.minusDays(t))) {
+
+							System.out.println("멤버이름: " + memberName +"의 출석일 넣기");
+							
+							_tmp[4-t] = attendDate;
+							/*
+							 * for(int tt = 0 ; tt < _tmp.length ; tt++) System.out.println(_tmp[tt]);
+							 */
+							flag = true;
+						} else
+							++t;
+					}
+
+				} else {
+						
+				}
+
+			}
+			System.out.println("출석멤버: " + memberName + " 출석날짜:" + _tmp[0] + " , " + _tmp[1] + " , " + _tmp[2] + " , "
+					+ _tmp[3] + " , " + _tmp[4]);
+			
+			memberMap.put(memberName, _tmp);
+		}
+		
+		int a = 0;
+		for(Entry<String, LocalDateTime[]> element : memberMap.entrySet()) {
+				System.out.println(element.getKey());
+				LocalDateTime[] tmp = element.getValue();
+				LocalDateTime _tmp = tmp[4];
+				System.out.println("오늘출석 : " + _tmp);
+				System.out.println();
+					if(_tmp != null)
+						a++;
+					else {};
+						
+		}
+		
+		int memberNum = memberList.size();
+		
+		String totalAtt = String.valueOf(a) + "/" + String.valueOf(memberNum);  
+		
+		int attendRate = (int)(((double)a/memberNum ) * 100);
+		
+			System.out.println("출석율:" + attendRate);
+		
+		
+		System.out.println("멤버맵" + memberMap.get("이학생"));
+
+		System.out.println("시작날 :" + startDate);
+		System.out.println("마지막날:" + endDate);
+		System.out.println("클래스번호:" + classSeq);
+		model.addAttribute("totalAtt", totalAtt);
+		model.addAttribute("attendRate", attendRate);
+		model.addAttribute("log", memberMap);
+		model.addAttribute("day", days);
+		model.addAttribute("week", week);
+		model.addAttribute("now", now);
+		model.addAttribute("memberList", memberList);
+		model.addAttribute("attendList", attendList);
 		return "member/classroom/teacher/classAttendance";
 	}
 	
