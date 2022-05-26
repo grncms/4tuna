@@ -172,6 +172,11 @@ public class MemberServiceImpl implements MemberService{
 	public int deleteMemberMulti(MemberVo vo) throws Exception {
 		return dao.deleteMemberMulti(vo);
 	}
+
+	@Override
+	public Member selectOneClassCode(MemberVo vo) throws Exception {
+		return dao.selectOneClassCode(vo);
+	}
 	
 
 }

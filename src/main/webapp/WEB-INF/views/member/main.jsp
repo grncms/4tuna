@@ -68,30 +68,11 @@
 			<hr>
 			</c:forEach>
 		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
-		<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">클래스 가입</h5>
-						<button type="button" class="btn-close"
-							data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<h3 style="text-align: center">코드입력</h3>
-						<br> <br><div class="input-group mb-3"> <input class="form-control form-control-lg" type="text" placeholder="코드 6자리 입력"> <br>
-					</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">닫기</button>
-						<button type="button" data-bs-toggle="modal" class="btn btn-primary">확인</button>
-					</div>
-				</div>
-			</div>
-		</div> 
+		
 		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
 		</div>
 	</form>	
+	
 	</div>
 	<div class="col-md-12">
 		<div id="schInfo"> 
@@ -103,6 +84,33 @@
 
 		</div>
 	</div>
+	<!-- 모달 -->
+	<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<form action="/classCodeSearch" id="codeModal" name="codeModal" method="post">
+		<%-- <input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>"> --%>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">클래스 가입</h5>
+						<button type="button" class="btn-close"
+							data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<h3 style="text-align: center">코드입력</h3>
+						<br><br>
+						<div class="input-group mb-3">
+							<input class="form-control form-control-lg" type="text" id="ctcsCode" name="ctcsCode" placeholder="코드 6자리 입력"> <br>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+						<button type="submit" class="btn btn-primary">확인</button>
+					</div>
+				</div>
+			</div>
+		</form>	
+	</div> 
+	
 	</div>
 </div>
 <%@ include file="/WEB-INF/views/member/include/main_footer.jsp" %><!-- footer -->

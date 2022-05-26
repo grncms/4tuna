@@ -137,6 +137,7 @@
 			AND mmPhoneNumber = #{mmPhoneNumber}
 			<!-- AND mmDelNy = 0 -->
 	</select>
+	
 	<select id="selectListClass" resultMap="resultMapObj">
 		select
 			a.ctcmSeq
@@ -290,7 +291,7 @@
 			,ctcsSeq
 		) VALUES (
 			#{ctcmName}
-			#{ctcmTeacherNy}
+			,#{ctcmTeacherNy}
 			,0
 			,0
 			,0
@@ -308,6 +309,18 @@
 		WHERE 1=1 
 			AND ctcsSeq = #{ctcsSeq}	
 	</select>
+
+<!--  코드로 클래스 찾기	 -->
+<select id="selectOneClassCode" resultMap="resultMapObj">
+	SELECT
+		ctcsSeq
+		,ctcsCode
+		,ctcsName
+	FROM
+		ctClass
+	WHERE 1=1 
+		AND ctcsCode = #{ctcsCode}	
+</select>
 	
 <!-- 	게시물 리스트 -->
 	<select id="selectListNotice" resultMap="resultMapObj">

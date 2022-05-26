@@ -43,7 +43,7 @@ public class MemberController {
 //	}
 	
 	@RequestMapping(value = "/main")
-	public String main_teacher(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
+	public String main(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
@@ -54,8 +54,47 @@ public class MemberController {
 		List<Member> listNotice = service.selectListNotice(vo);
 		model.addAttribute("listNotice", listNotice);
 		
+		
 		return "member/main";
 	}
+	@RequestMapping(value = "/classCodeSearch")
+	public String classCodeSearch(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+		
+		Member rt = service.selectOneClassCode(vo);
+		model.addAttribute("item", rt);
+		
+		dto.setCtcsSeq(rt.getCtcsSeq());
+		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
+
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/classCode";
+	}
+	@RequestMapping(value = "/classCode")
+	public String classCode(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
+		
+		Member rt = service.selectOneClassCode(vo);
+		model.addAttribute("item", rt);
+		
+		dto.setCtcsSeq(rt.getCtcsSeq());
+		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
+		
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		return "member/classCode";
+	}
+	
+@RequestMapping(value = "/classCodeInst")
+public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model model,RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception  {
+	
+	
+	service.insertClassMember(dto);
+	 
+	vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+	System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+	System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
+	
+	redirectAttributes.addFlashAttribute("vo", vo);
+	return "redirect:/main";
+}
 
 	@RequestMapping(value = "/login_xdmin")
 	public String login_xdmin() throws Exception{
@@ -245,6 +284,7 @@ public class MemberController {
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/main";
 	}
+	
 	
 	
 	@RequestMapping(value = "/classList")

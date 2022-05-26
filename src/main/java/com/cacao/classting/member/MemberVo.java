@@ -6,6 +6,7 @@ public class MemberVo {
 
 	private String mmSeq;
 	private String ctcsSeq;
+	private String ctcsCode;
 
 	private String mmName;
 	private String mmPhoneNumber;
@@ -486,7 +487,13 @@ public class MemberVo {
 	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
 		this.checkboxSeqArray = checkboxSeqArray;
 	}
+	public String getCtcsCode() {
+		return ctcsCode;
+	}
 
+	public void setCtcsCode(String ctcsCode) {
+		this.ctcsCode = ctcsCode;
+	}
 
 			// ---- paging
 			public void setParamsPaging(int totalRowsParam) {
