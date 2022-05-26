@@ -57,6 +57,8 @@
 			,mmTermsOfserviceNy
 			,mmEventNotificationNy
 			,mmPersonalInfoNy
+			,mmAlarmInvitationNy
+			,mmAlarmReplyNy
 			,mmDelNy
 			,modDateTime
 			,modDateTimeSvr
@@ -78,6 +80,8 @@
 			,#{mmTermsOfserviceNy}
 			,#{mmEventNotificationNy}
 			,#{mmPersonalInfoNy}
+			,#{mmAlarmInvitationNy}
+			,#{mmAlarmReplyNy}
 			,0
 			,#{modDateTime}
 			,#{modDateTimeSvr}

@@ -27,6 +27,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insert(Member dto) throws Exception {
 		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setRegDateTimeSvr(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
+		dto.setModDateTimeSvr(UtilDateTime.nowDate());
+		
 		dao.insert(dto);
 		
 //		int j = 0;

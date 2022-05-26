@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.cacao.classting.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -37,8 +39,12 @@
 	</div>
 </div>	
 <!-- 헤더 e-->
+<c:set var="CodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+<c:set var="CodeGrade" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
+<c:set var="CodeLogin" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
 	<form action="/memberInst" method="post" id="memberForm" name="memberForm" class="row">
 	<input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">	
+	<input type="hidden" id="mmTypeOfLoginCd" name="mmTypeOfLoginCd" value="23">	
 		<!-- 정보입력 s -->
 			<div class="mt-4 mb-4">
 				<h3 class="text-center">회원가입</h3>
@@ -56,6 +62,36 @@
 				<input type="password" class="form-control mb-2" id="mmPassword" name="mmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
 				<input type="password" class="form-control" id="mmPasswordChk" name="mmPasswordChk" placeholder="비밀번호 확인"> 
 			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>이메일</b></label>
+				<input type="text" class="form-control mb-2" id="mmMemberEmail" name="mmMemberEmail" placeholder="@를 포함한 형태로 입력"> 
+			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>전화번호</b></label>
+				<input type="text" class="form-control mb-2" id="mmPhoneNumber" name="mmPhoneNumber" placeholder="숫자만 입력 (에. 01012345678)"> 
+			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>생년월일</b></label>
+				<input type="text" class="form-control mb-2" id="mmDob" name="mmDob" placeholder="숫자만 입력 (에. 19981123)"> 
+			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>성별</b></label>
+				<select class="form-select" id="mmGenderCd" name="mmGenderCd" >	
+				<option value="">:: 선택 ::</option>
+				<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
+					<option value="<c:out value="${itemGender.ifcdOrder}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
+				</c:forEach>
+				</select>
+			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>학년</b></label>
+				<select class="form-select" id="mmGradeCd" name="mmGradeCd" >
+				<option value="">:: 선택 ::</option>
+				<c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
+					<option value="<c:out value="${itemGrade.ifcdOrder}"/>" <c:if test="${item.mmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
+				</c:forEach>
+				</select>
+			</div>
 <!-- 			<div class="col-12 mb-4">
 				<label class="form-label"><b>프로필 사진</b></label>
 				<div class="input-group">
@@ -63,6 +99,7 @@
 				</div>
 				<img style="width: 100px;" id="preview-image0" src="">
 			</div> -->
+
 			<div class="col-12 mx-auto mb-4">
 				<label class="form-label"><b>역할</b></label>
 				<div class="form-check">
@@ -77,6 +114,32 @@
 				</div>
 			</div>
 			<div class="col-12 mx-auto mb-4">
+				<label class="form-label"><b>클래스 초대 수락 알림</b></label>
+				<div class="form-check">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="mmAlarmInvitationNy"  id="mmAlarmInvitationNy_y" value="1" >
+						<label class="form-check-label">동의</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="mmAlarmInvitationNy"  id="mmAlarmInvitationNy_n" value="0" >
+						<label class="form-check-label">비동의</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 mx-auto mb-4">
+				<label class="form-label"><b>답글 알림</b></label>
+				<div class="form-check">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="mmAlarmReplyNy"  id="mmAlarmReplyNy_y" value="1" >
+						<label class="form-check-label">동의</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="mmAlarmReplyNy"  id="mmAlarmReplyNy_n" value="0" >
+						<label class="form-check-label">비동의</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 mx-auto mb-4">
 				<label class="form-label mb-3"><b>약관동의</b></label>
 				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="" id="consentAll" name="consentAll">
@@ -87,7 +150,7 @@
 				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="1" name="mmTermsOfserviceNy" id="mmTermsOfserviceNy_y">
 					<input class="form-check-input" type="hidden" value="0" name="mmTermsOfserviceNy" id="mmTermsOfserviceNy_n">
-					<label class="form-check-label" >클래스팅 이용약관<span style="color: red;">(필수)</span></label>
+					<label class="form-check-label" >클래씽 이용약관<span style="color: red;">(필수)</span></label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<div class="form-check mb-3">
@@ -116,103 +179,77 @@
 <script src="/resources/common/js/validation.js"></script>
 <script>
 
-$('#consentAll').click(function(){
+ $('#consentAll').click(function(){
 	var checked = $('#consentAll').is(':checked');
 	if(checked)
 		$('input:checkbox').prop('checked',true);
-});
+}); 
 
-/* upload = function(seq,div){
-	
-	$("#ulFile" + seq).children().remove();
-	
-	var fileCount = $("input[type=file]")[seq].files.length;
-	
-	if(checkUploadedTotalFileNumber(fileCount, seq) == false) {return false;}
-	
-	var totalFileSize;
-	for(var i = 0; i < fileCount; i++){
-		if(div==1){
-			if(checkUploadedAllExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
-		}else if(div==2){
-			if(checkUploadedImageExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
-		}else {
-			return false;
-		}
-		
-		if(checkUploadedEachFileSize($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
-		totalFileSize += $("input[type=file]")[seq].files[i].size;
-	}
-	if(checkUploadedTotalFileSize(totalFileSize, seq) == false) {return false;}
-	
-	for(var i=0; i<fileCount; i++){
-		addUploadLi(seq, i, $("input[type=file]")[seq].files[i].name);
-	}
-}
-
-addUploadLi = function(seq,index,name){
-	
-	var ul_list = $("#ulFile0");
-	
-	li = '<li id="li_'+seq+'_'+index+'" class="list-group-item d-flex justify-content-between align-item-center">';
-	li = li + name;
-	li = li + '<span class="badge bg-danger rounded-pill" onClick="delLi('+ seq +','+index +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
-	li = li + '</li>';
-	
-	$("#ulFile"+seq).append(li);
-}
- */
-function readImage(input) {
-    // 인풋 태그에 파일이 있는 경우
-    if(input.files && input.files[0]) {
-        // 이미지 파일인지 검사 (생략)
-        // FileReader 인스턴스 생성
-        const reader = new FileReader()
-        // 이미지가 로드가 된 경우
-        reader.onload = e => {
-            const previewImage = document.getElementById("preview-image0")
-            previewImage.src = e.target.result
-        }
-        // reader가 이미지 읽도록 하기
-        reader.readAsDataURL(input.files[0])
-    }
-}
-// input file에 change 이벤트 부여 (파일 미리보기)
-const inputImage = document.getElementById("file0")
-inputImage.addEventListener("change", e => {
-    readImage(e.target)
-})
 
 $("#btn-submit").on("click", function(){
-	/* kbmmName */
+
+
+	/* mmName */
 	if(!checkNull($("#mmName"), $("#mmName").val(), "이름을 입력하세요.")) return false;
 		
 	/* kbmmId */
-/*  	if(!checkNull($("#mmId"), $("#mmId").val(), "아이디를 입력하세요.")) return false;
+  	if(!checkNull($("#mmId"), $("#mmId").val(), "아이디를 입력하세요.")) return false;
  	if(!checkId($("#mmId"), $("#mmId").val(), "아이디를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~15자리(대소문자 구분))")) return false;
-	 */
+
  	/* kbmmPassword */
-/*  	if(!checkNull($("#mmPassword"), $("#mmPassword").val(), "비밀번호를 입력하세요.")) return false;
+  	if(!checkNull($("#mmPassword"), $("#mmPassword").val(), "비밀번호를 입력하세요.")) return false;
  	if(!checkPassword($("#mmPassword"), $("#mmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
- */
- 	/* kbmeEmailFull */
+ 
+ 	/* mmMemberEmail */
+ 	if(!checkNull($("#mmMemberEmail"), $("#mmMemberEmail").val(), "이메일을 입력하세요.")) return false;
+ 	if(!checkEmail($("#mmMemberEmail"), $("#mmMemberEmail").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
+ 	
+ 	/* mmPhoneNumber */
+ 	if(!checkNull($("#mmPhoneNumber"), $("#mmPhoneNumber").val(), "휴대폰번호를 입력하세요.")) return false;
+ 	if(!checkOnlyNumber($("#mmPhoneNumber"), $("#mmPhoneNumber").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+ 	
+ 	/* mmDob */
+	if(!checkNull($("#mmDob"), $("#mmDob").val(), "생년월일을 입력하세요")) return false;
+ 	if(!checkDob($("#mmDob"), $("#mmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	
+	
+ 	
+ 	/* mmGenderCd */
+	if(!checkNull($("#mmGenderCd"), $("#mmGenderCd").val(), "성별을 선택하세요.")) return false;
+ 	
+ 	/* mmGradeCd */
+	if(!checkNull($("#mmGradeCd"), $("#mmGradeCd").val(), "학년을 선택하세요.")) return false;
+
+ 	/* mmTeacherNy */
+/*  	if(!checkNull($("#mmTeacherNy"), $("#mmTeacherNy").val(), "역할을 선택하세요.")) return false; 
+ 	if(!checkNull($("#mmAlarmInvitationNy"), $("#mmAlarmInvitationNy").val(), "클래스 초대 수락 알림 동의여부를 선택하세요.")) return false; 
+ 	if(!checkNull($("#mmAlarmReplyNy"), $("#mmAlarmReplyNy").val(), "클래스 초대 수락 알림 동의여부를 선택하세요.")) return false;  */
  	
  	
- 	
-/* 	if ($("input:checkbox[name=kbmmUseConsentNy_c]").is(":checked") == false) {
-		alert("필수항목은 반드시 동의하세요. (교보문고 이용약관)");
+ 	if ($("input:radio[name=mmTeacherNy]").is(":checked") == false) {
+		alert("역할을 선택하세요.");
+		return false;
+	} 
+ 	if ($("input:radio[name=mmAlarmInvitationNy]").is(":checked") == false) {
+		alert("클래스 초대 수락 알림 동의여부를 선택하세요.");
+		return false;
+	} 
+ 	if ($("input:radio[name=mmAlarmReplyNy]").is(":checked") == false) {
+		alert("댓글알림 동의여부를 선택하세요.");
 		return false;
 	} 
 	 
-	if ($("input:checkbox[name=kbmmPersonalinfoConsentNy_c]").is(":checked") == false) {
+ 	
+ 	if ($("input:checkbox[name=mmTermsOfserviceNy]").is(":checked") == false) {
+		alert("필수항목은 반드시 동의하세요. (클래씽 이용약관)");
+		return false;
+	} 
+	 
+	if ($("input:checkbox[name=mmPersonalInfoNy]").is(":checked") == false) {
 		alert("필수항목은 반드시 동의하세요. (개인정보 수집 및 이용안내)");
 		return false;
 	}
 	
-	if ($("input:checkbox[name=kbmmSavedCd]").is(":checked") == false) {
-		alert("개인정보 유효기간을 선택하세요.");
-		return false;
-	} */
+	alert("회원가입이 완료되었습니다.");
 	
 	$("#memberForm").attr("action", "/memberInst");
 	$("#memberForm").submit();

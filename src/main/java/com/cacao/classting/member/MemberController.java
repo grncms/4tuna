@@ -76,9 +76,6 @@ public class MemberController {
 	@RequestMapping(value = "/memberForm_user")
 	public String memberForm_user(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception{
 		
-		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("2"));
-		model.addAttribute("CodeGrade", CodeServiceImpl.selectListCachedCode("3"));
-		model.addAttribute("CodeLogin", CodeServiceImpl.selectListCachedCode("7"));
 		
 		return "member/memberForm_user";
 	}
@@ -88,7 +85,7 @@ public class MemberController {
 		
 		service.insert(dto);
 
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	@RequestMapping(value = "/memberInfo")
 	public String memberInfo(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
