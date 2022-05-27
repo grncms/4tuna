@@ -74,7 +74,8 @@ public class MemberServiceImpl implements MemberService{
 		dto.setModDateTime(UtilDateTime.nowDate());
 		dto.setModDateTimeSvr(UtilDateTime.nowDate());
 		
-		dto.setCtcsCode(RandomStringUtils.randomAlphanumeric(6));
+
+		dto.setCtcsCode(RandomStringUtils.randomAlphanumeric(6).toUpperCase());
 		dao.insertClass(dto);
 		return 1;
 	}
