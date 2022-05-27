@@ -255,6 +255,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.selectListHomeworkSubmitReply(vo);
 	}
 
+	@Override
+	public List<ClassRoom> HomeworkSubmit(String ClassSeq) throws Exception {
+		return dao.HomeworkSubmit(ClassSeq);
+	}
+
 
 	
 

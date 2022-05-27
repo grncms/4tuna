@@ -91,7 +91,7 @@
 											<br>
 										</div>
 										<div class="footer mt-3" style="cursor: default;">
-											<i class="fa-regular fa-comment"> 2</i>&nbsp;
+											<i class="fa-regular fa-comment">2</i>&nbsp;
 											<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
 											<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
 											<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>

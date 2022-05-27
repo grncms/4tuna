@@ -58,6 +58,7 @@ public interface ClassRoomService {
 	public int updateHomeworkSubmitScore(ClassRoom dto) throws Exception;
 	public int updateHomeworkSubmit(ClassRoom dto) throws Exception;
 	
+	public List<ClassRoom> HomeworkSubmit(String ClassSeq) throws Exception;
 	
 //출석부
 	public ClassRoom getClassId(ClassRoomVo vo) throws Exception;

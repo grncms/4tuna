@@ -81,12 +81,10 @@
 									<thead>
 										<tr>
 											<th>전체 5명</th>
-											<th>과제1</th>
-											<th>과제2</th>
-											<th>과제3</th>
-											<th>과제4</th>
+									<c:forEach items="${homeworkList }" var = "homeworkList" varStatus = " st">
+											<th><c:out value="${homeworkList.cthpTitle }"/></th>
+									</c:forEach>
 										</tr>
-
 										<tr>
 											<td>평균 점수</td>
 											<td>0/100점</td>
@@ -103,39 +101,18 @@
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach items="${homeworkList }" var = " homeworkList" var = "st">
+										<c:forEach items="${submitList }" var = "submitList" var = "stt">
 										<tr>
-											<td>박규원</td>
+											<td><c:out value="${homeworkList.ctcmName }"/></td>
 											<td>
 												<div>
 													<span class="badge bg-danger">미제출</span>
 												</div>
 											</td>
-											<td>-</td>
-											<td>50점</td>
-											<td><span class="badge bg-warning">확인 필요</span></td>
 										</tr>
-										<tr>
-											<td>박규원</td>
-											<td>
-												<div>
-													<span class="badge bg-danger">미제출</span>
-												</div>
-											</td>
-											<td>-</td>
-											<td>50점</td>
-											<td><span class="badge bg-warning">확인 필요</span></td>
-										</tr>
-										<tr>
-											<td>박규원</td>
-											<td>
-												<div>
-													<span class="badge bg-danger">미제출</span>
-												</div>
-											</td>
-											<td>-</td>
-											<td>50점</td>
-											<td><span class="badge bg-warning">확인 필요</span></td>
-										</tr>
+										</c:forEach>
+									</c:forEach>	
 									</tbody>
 								</table>
 							</div>

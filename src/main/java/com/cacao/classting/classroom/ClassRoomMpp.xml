@@ -279,6 +279,26 @@
 			AND a.cthpSeq = #{cthpSeq}
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
+	
+		<select id="HomeworkSubmit" resultMap="resultMapObj">
+		SELECT
+			a.cthsSeq
+			,a.cthsTitle
+			,a.cthsWriter
+			,a.cthsDesc
+			,a.cthsData 
+			,a.cthsScore
+			,a.cthsUseNy
+			,a.cthsDelNy
+			,a.cthpSeq
+			,a.regDateTime
+			,b.ctcsSeq
+		FROM
+			ctHomeworkSubmit a
+			LEFT JOIN ctHomeworkPost b on b.cthpSeq = a.cthpSeq
+		WHERE 1=1
+			AND b.ctcsSeq = #{ctcsSeq}
+	</select>
 <!-- 과제제출(학생) -->
 <insert id="insertHomeworkSubmit">
 	insert into ctHomeworkSubmit(

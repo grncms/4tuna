@@ -95,6 +95,9 @@ public class ClassRoomDao {
 	public List<ClassRoom> enterLog(Map<String, String> dates){
 		return sqlSession.selectList(namespace + ".enterLog" , dates );
 	}
+	public List<ClassRoom> homeworkMember(ClassRoom dto) {
+		return sqlSession.selectList(namespace + ".homeworkMember" , dto);
+	}
 
 	
 //게시글
@@ -110,10 +113,8 @@ public class ClassRoomDao {
 		List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListReserv",vo);
 		return list;
 		}
-/*
- * public int updatePost(ClassRoom dto) {
- * 
- * }
- */
+	public List<ClassRoom> HomeworkSubmit(String ClassSeq){
+		return sqlSession.selectList(ClassSeq);
+	}
 
 }
