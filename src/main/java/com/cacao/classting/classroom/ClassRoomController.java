@@ -197,6 +197,9 @@ public class ClassRoomController {
 		List<ClassRoom> list = service.selectListStorage(vo);
 		model.addAttribute("list", list);
 		
+		List<ClassRoom> list2 = service.selectListReserv(vo);
+		model.addAttribute("list2", list2);
+		
 		return "member/classroom/common/classStorage";
 	}
 	

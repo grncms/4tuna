@@ -431,9 +431,8 @@
 		AND cthpSeq = #{cthpSeq}
 </select>
 
-	
-	
-<!-- 	예약/임시저장 리스트 -->
+
+<!-- 	예약/임시저장 리스트 --> <!-- 임시저장만 -->
 <select id="selectListStorage" resultMap="resultMapObj">
 	SELECT
 		a.ctptSeq
@@ -452,7 +451,32 @@
 	WHERE 1=1
 		AND a.ctptReservationNy = 1
 		AND b.ctcsSeq = #{ctcsSeq}
+		
 </select>
+	
+<!-- 	예약/임시저장 리스트 --><!-- 예약만 -->
+<select id="selectListReserv" resultMap="resultMapObj">
+	SELECT
+		a.ctptSeq
+		,a.ctptTitle
+		,a.ctptWriter
+		,a.ctptReservation
+		,a.ctptContent
+		,a.ctptReservationNy
+		,a.regDateTime
+		,a.ctboSeq
+		,b.ctboTypeCd
+	FROM
+		ctPost a
+		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
+		LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
+	WHERE 1=1
+		AND a.ctptReservation > now()
+		AND b.ctcsSeq = #{ctcsSeq}
+
+</select>
+
+
 <!-- 게시물 댓글 리스트 -->
 <select id="selectListReply" resultMap="resultMapObj">
 	SELECT

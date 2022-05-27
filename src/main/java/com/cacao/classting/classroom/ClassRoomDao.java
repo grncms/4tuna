@@ -105,11 +105,15 @@ public class ClassRoomDao {
 	public int insertAddress(ClassRoom dto) {
 		return sqlSession.insert(namespace + ".insertAddress", dto);
 	}
-	
+// 게시글	예약 view
+	public List<ClassRoom> selectListReserv(ClassRoomVo vo) {
+		List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListReserv",vo);
+		return list;
+		}
 /*
  * public int updatePost(ClassRoom dto) {
  * 
  * }
  */
-	
+
 }

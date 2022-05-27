@@ -101,6 +101,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public List<ClassRoom> selectListStorage(ClassRoomVo vo) throws Exception {
 		return dao.selectListStorage(vo);
 	}
+	
+	@Override
+	public List<ClassRoom> selectListReserv(ClassRoomVo vo) throws Exception {
+		return dao.selectListReserv(vo);
+	}
 
 	@Override
 	public ClassRoom selectOneClassPost(ClassRoomVo vo) throws Exception {
@@ -249,6 +254,8 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public List<ClassRoom> selectListHomeworkSubmitReply(ClassRoomVo vo) throws Exception {
 		return dao.selectListHomeworkSubmitReply(vo);
 	}
+
+
 	
 
 
