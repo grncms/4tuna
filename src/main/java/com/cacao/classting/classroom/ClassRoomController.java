@@ -225,6 +225,7 @@ public class ClassRoomController {
 	@RequestMapping(value = "/classMain")
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
+
 		if(vo.getCtcsSeq() != null) {
 			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
 		}

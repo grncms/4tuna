@@ -25,6 +25,7 @@ public class MemberDao {
 
 	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
 	public int insert(Member dto) {return sqlSession.insert(namespace +".insert", dto);}
+	
 	public int update(Member dto) {return sqlSession.update(namespace +".update", dto);}
 	public List<Member> selectListId(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListId",vo); }
 	public Member selectOneLogin(Member dto) {return sqlSession.selectOne(namespace +".selectOneLogin", dto);}
@@ -38,6 +39,9 @@ public class MemberDao {
 	public List<Member> selectListClass(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListClass",vo); }
 	
 	public List<Member> selectListNotice(MemberVo vo) { List<Member> list = sqlSession.selectList(namespace + ".selectListNotice",vo); return list;}
+
+//	public int insertUploaded(Member dto) {return sqlSession.insert(namespace +".insertUploaded", dto);} 
+//	public int updateUploaded(Member dto) {return sqlSession.update(namespace +".updateUploaded", dto);} 
 //	게시글
 	
 	
