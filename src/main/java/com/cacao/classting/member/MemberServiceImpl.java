@@ -2,13 +2,12 @@ package com.cacao.classting.member;
 
 import java.util.List;
 
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cacao.classting.classroom.ClassRoom;
-import com.cacao.classting.classroom.ClassRoomVo;
 import com.cacao.classting.common.util.UtilDateTime;
 import com.cacao.classting.common.util.UtilUpload;
 
@@ -59,32 +58,37 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int update(Member dto) throws Exception {
 		
-	  return dao.update(dto);
-//	      if(!dto.getFile0()[0].isEmpty()) {
-//	            
-//	         String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//	         
-//	         UtilUpload.uploadMember(dto.getFile0()[0], pathModule, dto);
-//	         
-//	         dto.setTableName("ctMemberUploaded");
-//	         dto.setPseq(dto.getMmSeq());
-//	         
-//	         dao.updateUploaded(dto);
-//	            
-//	      } else {
-//	         
-//	         dto.setTableName("ctMemberUploaded");
-//	         dto.setOriginalName("profile2.png");
-//	         dto.setUuidName("profile2.png");
-//	         dto.setExt("png");
-//	         dto.setSize(28647);
-//	         dto.setPath("/resources/common/image/");
-//	         dto.setPseq(dto.getMmSeq());
-//	         
-//	         dao.updateUploaded(dto);
-//	      }
-//	      
-//	      return 1;
+	 dao.update(dto);
+	  
+//     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//    
+//     UtilUpload.uploadMember(dto.getFile0()[0], pathModule, dto);
+//     
+//     dto.setTableName("ctMemberUploaded");
+//     dto.setType(0);
+//     dto.setDefaultNy(1);
+//     dto.setDelNy(0);
+//     dto.setPseq(dto.getMmSeq());
+//     
+//     dao.updateUploaded(dto);
+
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0()) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.uploadMember(multipartFile, pathModule, dto);
+			
+			dto.setTableName("ctMemberUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(1);
+			dto.setSort(j); 	
+			dto.setDelNy(0);
+			dto.setPseq(dto.getMmSeq());
+			
+			dao.updateUploaded(dto);
+			j++;
+			
+		}
+     return 1;
 
 	}
 

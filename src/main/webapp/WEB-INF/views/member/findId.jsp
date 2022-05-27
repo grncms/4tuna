@@ -137,8 +137,8 @@ $("#btn-findId").on("click",function(seq){
 				alert(JSON.stringify(data['idList'][0]['mmId']));
 				
 				for(var i = 0; i < data['idList'].length; i++){	
-					$('#showId').append('<li>' +data['idList'][i]['mmId']+ '</li>') ;
-					}
+					$('#showId').append(data['idList'][i]['mmId']+ '</li>') ;
+				}
 		}			
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);

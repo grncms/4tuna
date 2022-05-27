@@ -43,6 +43,20 @@
 			<p id="title">개인정보</p>
 			<p id="sub">프로필</p>
 			<div class="col-10 mx-auto mb-4">
+				<div class="position-relative">
+					<div class="avatar size-140">
+						<c:choose>
+							<c:when test="${empty uuidName}">
+								<img id="profilePhoto" style="width:; height: 100px;" src="/resources/common/image/profile2.png" class="img-fluid rounded-pill">
+							</c:when>
+							<c:otherwise>
+								<img id="profilePhoto" style="width: 100%; height: 100%;" src="<c:out value="${path}"/><c:out value="${uuidName}"/>" class="img-fluid rounded-pill">
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+			</div>
+			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">이름</label>
 				<input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>" > 
 			</div>
