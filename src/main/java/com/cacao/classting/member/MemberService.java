@@ -13,6 +13,7 @@ public interface MemberService {
 	public Member selectOneLogin(Member dto) throws Exception;
 	public List<Member> selectListId(MemberVo vo) throws Exception;
 	public List<Member> selectListPassword(MemberVo vo) throws Exception;
+	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception;
 	
 	public int insertClass(Member dto) throws Exception;
 	public int insertClassMember(Member dto) throws Exception;

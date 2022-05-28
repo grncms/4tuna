@@ -135,6 +135,9 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		Member rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
 		
+		List<Member> uploadList = service.selectListMemberUploaded(vo);
+		model.addAttribute("uploadList", uploadList);
+		
 		return "member/memberInfo";
 	}
 	
@@ -143,7 +146,6 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		
 		System.out.println("httpSession.getAttribute(\"sessSeq\"): " + httpSession.getAttribute("sessSeq"));
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-		
 		
 		Member rt = service.selectOne(vo);
 		model.addAttribute("rt", rt);

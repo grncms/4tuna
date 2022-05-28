@@ -189,6 +189,11 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> selectListPassword(MemberVo vo) throws Exception {
 		return dao.selectListPassword(vo);
 	}
+
+	@Override
+	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
+		return dao.selectListMemberUploaded(vo);
+	}
 	
 
 }
