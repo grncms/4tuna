@@ -127,15 +127,6 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectListClass(vo);
 	}
 
-	@Override
-	public Member selectOneId(Member dto) throws Exception {
-		return dao.selectOneId(dto);
-	}
-
-	@Override
-	public Member selectOnePassword(Member dto) throws Exception {
-		return dao.selectOnePassword(dto);
-	}
 
 //	@Override
 //	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
@@ -208,6 +199,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member selectOneClassCode(MemberVo vo) throws Exception {
 		return dao.selectOneClassCode(vo);
+	}
+
+	@Override
+	public List<Member> selectListPassword(MemberVo vo) throws Exception {
+		return dao.selectListPassword(vo);
 	}
 	
 

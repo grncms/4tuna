@@ -47,7 +47,7 @@
       
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <div class="site-logo mr-auto w-25"><a href="/index">CLASSING</a></div>
+          <div class="site-logo mr-auto w-25"><a href="/">CLASSING</a></div>
         </div>
       </div>
       

@@ -186,9 +186,6 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	public Map<String, Object> getId(MemberVo vo, Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-//		Member rtMember = service.selectOneId(dto);
-//		model.addAttribute("rtMember", rtMember);
-		
 		List<Member> idList = service.selectListId(vo);
 		model.addAttribute("idList", idList);
 		
@@ -201,39 +198,22 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	@RequestMapping(value = "/findPwd")
 	public String findPwd(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception{
 		
-		Member rt = service.selectOnePassword(dto);
-		model.addAttribute("item", rt);
+		List<Member> pwdList = service.selectListPassword(vo);
+		model.addAttribute("pwdList", pwdList);
 		
 		return "member/findPwd";
 	}
 	@ResponseBody
-	@RequestMapping(value = "member/getPassword", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> getPassword(Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "member/getPassword")
+	public Map<String, Object> getPassword(MemberVo vo, Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		Member rtMember = service.selectOnePassword(dto);
+		List<Member> pwdList = service.selectListPassword(vo);
+		model.addAttribute("pwdList", pwdList);
 		
-		if(rtMember != null) {
-//			rtMember = service.selectOnePassword(dto);
-			if(rtMember.getMmSeq() != null) {
-//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
-				System.out.println("rtMember.getMmName() : " + rtMember.getMmName());
-				System.out.println("rtMember.getMmDelNy() : " + rtMember.getMmDelNy());
-				httpSession.setAttribute("sessFPSeq", rtMember.getMmSeq());
-				httpSession.setAttribute("sessFPId", rtMember.getMmId());
-				httpSession.setAttribute("sessFPPassword", rtMember.getMmPassword());
-				httpSession.setAttribute("sessFPName", rtMember.getMmName());
-				httpSession.setAttribute("sessFPNumber", rtMember.getMmPhoneNumber());
-				
-				returnMap.put("rt", "success");
-			} else {
-				returnMap.put("rt", "fail1");
-			}
-		} else {
-			System.out.println("rtMember : " + rtMember);
-			returnMap.put("rt", "fail2");
-		}
+		returnMap.put("pwdList", pwdList);
+		returnMap.put("rt", "success");
+		
 		return returnMap;
 	}
 //	클래스생성

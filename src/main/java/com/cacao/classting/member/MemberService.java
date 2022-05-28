@@ -12,8 +12,9 @@ public interface MemberService {
 	public int update(Member dto) throws Exception;
 	public Member selectOneLogin(Member dto) throws Exception;
 	public List<Member> selectListId(MemberVo vo) throws Exception;
-	public Member selectOneId(Member dto) throws Exception;
-	public Member selectOnePassword(Member dto) throws Exception;
+	public List<Member> selectListPassword(MemberVo vo) throws Exception;
+//	public Member selectOneId(Member dto) throws Exception;
+//	public Member selectOnePassword(Member dto) throws Exception;
 	
 	public int insertClass(Member dto) throws Exception;
 	public int insertClassMember(Member dto) throws Exception;

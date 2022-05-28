@@ -42,7 +42,7 @@
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <div class="site-logo mr-auto w-25"><a href="/index">CLASSING</a></div>
+          <div class="site-logo mr-auto w-25"><a href="/">CLASSING</a></div>
         </div>
       </div>
     </header>
@@ -57,7 +57,7 @@
                 <div class="col-lg-6 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100">완전히 새로운 클래스관리</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">가정에서도 좀 더 효율적으로 수업을 관리하는 방법</p>
-                  <p data-aos="fade-up" data-aos-delay="300"><a href="/index" class="btn btn-primary py-3 px-5 btn-pill">홈으로</a></p>
+                  <p data-aos="fade-up" data-aos-delay="300"><a href="/" class="btn btn-primary py-3 px-5 btn-pill">홈으로</a></p>
 
                 </div>
 
@@ -77,9 +77,8 @@
                     <div class="form-group">
                       <button class="btn btn-primary btn-pill" type="button" id="btn-findPwd" name="" >비밀번호 찾기</button>
                     </div>
-                    <!-- <p class="mb-4" style="color: red; font-size: 15px;">윤수빈 님의 비밀번호는 <b>asdasd123!</b> 입니다.</p> -->
-                    <p class="mb-4" id="showPwd" style="color: blue; font-size: 15px;">${sessFPName} 님의 비밀번호는 ${sessFPPassword} 입니다.</p>
-					<a href="/findPwd" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 비밀번호 다시 찾기</span></a>
+                    	<p class="mb-4" id="showPwd" style="color: black;"></p>
+						<a href="/findPwd" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 비밀번호 다시 찾기</span></a>
                   </form>
                 </div>
               </div>
@@ -107,7 +106,6 @@
           </div>
           
         </div>
-      </div>
     </footer>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
@@ -120,29 +118,29 @@
 	$("#findId").submit();
 	
 });  */
-$("#showPwd").hide();
 $("#goBack").hide();
 
 
 $("#btn-findPwd").on("click",function(seq){ 
-	
-	$("#mmSeq").val(seq);
 	
 	$.ajax({
 		async: true 
 		,cache: false
 		,type: "post"
 		,url: "/member/getPassword"
-		,data : { "mmSeq" : $("#mmSeq").val(), "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val(), "mmId": $("#mmId").val()}
-		,success: function(response) {
-			if(response.rt == "success") {
-				/* location.href = "/findId"; */
-				$("#showPwd").show(); 
-				$("#goBack").show();
-				$("#btn-findPwd").hide(); 
-			} else {
-				alert("회원없음");
-			}
+		,dataType : "JSON"
+		,data : { "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val(), "mmId": $("#mmId").val()}
+		,success: function(data) {
+ 			$("#goBack").show(); 
+ 			$("#btn-findPwd").hide();
+/* 			alert(data); 
+			alert(JSON.stringify(data));  */ 
+ 			alert(JSON.stringify(data['pwdList'][0]['mmPassword']));
+ 			
+			var name = data['pwdList'][0]['mmName']; 
+			
+			$('#showPwd').append(name+' 님의 비밀번호는 '+'<span style="color: red; font-weight: bold;">' + data['pwdList'][0]['mmPassword'] + '</span>'+' 입니다.' );
+		
 		}			
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
@@ -151,9 +149,6 @@ $("#btn-findPwd").on("click",function(seq){
 	
 });
 <!-- 페이스북 로그인-->
-
-
- 
 
 </script> 
   
