@@ -23,7 +23,7 @@ public class UtilUpload {
 		
 		createPath(path);
 		
-		multipartFile.transferTo(new File(path+uuidFileName));
+//		multipartFile.transferTo(new File(path+uuidFileName)); 
 		
 		dto.setOriginalName(fileName);
 		dto.setUuidName(uuidFileName);

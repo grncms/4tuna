@@ -231,6 +231,14 @@
 		</dependency>
 		<!-- 2022.04.03 -->
 		
+		<!-- 2022.05.28 image -->
+<!-- 	    <dependency>
+	        <groupId>commons-io</groupId>
+	        <artifactId>commons-io</artifactId>
+	        <version>1.4</version>
+		</dependency> -->
+		
+		
 	</dependencies>
     <build>
         <plugins>

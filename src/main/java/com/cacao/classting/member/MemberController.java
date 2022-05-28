@@ -144,11 +144,6 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		System.out.println("httpSession.getAttribute(\"sessSeq\"): " + httpSession.getAttribute("sessSeq"));
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		
-		httpSession.setAttribute("uuidName", dto.getUuidName());
-		httpSession.setAttribute("path", dto.getPath());
-		
-		System.out.println("dto.getUuidName() : "+dto.getUuidName());
-		System.out.println("dto.getPath() : "+dto.getPath());
 		
 		Member rt = service.selectOne(vo);
 		model.addAttribute("rt", rt);
@@ -159,9 +154,6 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes,HttpSession httpSession) throws Exception{
 
 		service.update(dto);
-		
-//		httpSession.setAttribute("uuidName", dto.getUuidName());
-//		httpSession.setAttribute("path", dto.getPath());
 		
 		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessSeq"));
 		

@@ -195,6 +195,7 @@
  	let profileInput = document.getElementById("profile-upload");
 	let img = document.querySelector('#profilePhoto');
 	
+		
 	profileInput.onchange = (e) => {
 		
 		var ext = $("#profile-upload")[0].files[0].name.split('.').pop().toLowerCase();
@@ -203,7 +204,6 @@
 		img.src = URL.createObjectURL(e.target.files[0]);
 	}
 	 
-		
 	goView = function(seq){
 		$("#memberInfoEdit").attr("action","/memberInfo");
 		$("#memberInfoEdit").submit();

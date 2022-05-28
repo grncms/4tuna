@@ -60,34 +60,18 @@ public class MemberServiceImpl implements MemberService{
 		
 	 dao.update(dto);
 	  
-//     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//    
-//     UtilUpload.uploadMember(dto.getFile0()[0], pathModule, dto);
-//     
-//     dto.setTableName("ctMemberUploaded");
-//     dto.setType(0);
-//     dto.setDefaultNy(1);
-//     dto.setDelNy(0);
-//     dto.setPseq(dto.getMmSeq());
-//     
-//     dao.updateUploaded(dto);
+     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+     UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
+     
+     dto.setTableName("ctMemberUploaded");
+     dto.setType(0);
+     dto.setDefaultNy(1);
+     dto.setSort(0);
+     dto.setDelNy(0);
+     dto.setPseq(dto.getMmSeq());
+     
+     dao.updateUploaded(dto);
 
-		int j = 0;
-		for(MultipartFile multipartFile : dto.getFile0()) {
-			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-			UtilUpload.uploadMember(multipartFile, pathModule, dto);
-			
-			dto.setTableName("ctMemberUploaded");
-			dto.setType(0);
-			dto.setDefaultNy(1);
-			dto.setSort(j); 	
-			dto.setDelNy(0);
-			dto.setPseq(dto.getMmSeq());
-			
-			dao.updateUploaded(dto);
-			j++;
-			
-		}
      return 1;
 
 	}

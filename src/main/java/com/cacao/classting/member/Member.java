@@ -82,10 +82,10 @@ public class Member {
 	private String ext;
 	private long size;
 	private Integer delNy;
-	private String path;
 	private String pseq;
+	private String path;
 	
-	private MultipartFile[] file0;
+	private MultipartFile file0;
 	private MultipartFile[] file1;
 	
 	public String getMmSeq() {
@@ -388,10 +388,10 @@ public class Member {
 	public void setPseq(String pseq) {
 		this.pseq = pseq;
 	}
-	public MultipartFile[] getFile0() {
+	public MultipartFile getFile0() {
 		return file0;
 	}
-	public void setFile0(MultipartFile[] file0) {
+	public void setFile0(MultipartFile file0) {
 		this.file0 = file0;
 	}
 	public MultipartFile[] getFile1() {
