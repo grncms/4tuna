@@ -92,32 +92,6 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>	
-	<!-- 	이미지 -->
-	<insert id="insertUploaded">
-		INSERT INTO ${tableName} (
-			type
-			,defaultNy
-			,sort
-			,originalName
-			,uuidName
-			,ext
-			,size
-			,delNy
-			,path
-			,pseq
-		) VALUES (
-			#{type}
-			,#{defaultNy}
-			,#{sort}
-			,#{originalName}
-			,#{uuidName}
-			,#{ext}
-			,#{size}
-			,#{delNy}
-			,#{path}
-			,#{pseq}
-		)		
-	</insert>
 	<update id="update">
 		UPDATE Member SET 	
 			mmTeacherNy = #{mmTeacherNy}
@@ -216,9 +190,32 @@
 			AND mmId = #{mmId}
 			AND mmDelNy = 0
 	</select>
-	
-
-
+	<!-- 회원 이미지 -->
+	<insert id="insertUploaded">
+		INSERT INTO ${tableName} (
+			type
+			,defaultNy
+			,sort
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy
+			,path
+			,pseq
+		) VALUES (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{delNy}
+			,#{path}
+			,#{pseq}
+		)		
+	</insert>
 	<update id="updateUploaded">
 		UPDATE ${tableName} SET
 			type = #{type}
@@ -234,7 +231,6 @@
 			AND pseq = #{pseq}
 			AND type = #{type}
 	</update>
-
 	<select id="selectListMemberUploaded" resultMap = "resultMapObj">
 		SELECT
 			seq
@@ -252,9 +248,7 @@
 			ctMemberUploaded
 		WHERE 1=1
 			AND pseq = #{mmSeq}
-		
 	</select>
-	
 <!-- 	class생성 -->
 	<insert id="insertClass">
 		INSERT INTO ctClass(

@@ -32,7 +32,6 @@ public class UtilUpload {
 		dto.setPath("/resources/uploaded/" + pathModule + "/" + pathDate + "/");
 	
 	}
-	
 	public static void createPath (String path) {
 		File uploadPath = new File(path);
 		
