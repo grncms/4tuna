@@ -29,10 +29,11 @@
 	    <div class="topbar-divider d-none d-sm-block"></div>
         <li class="nav-item dropdown no-arrow">
            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>${sessName}</b></span>
-	           <c:if test="${sessTeacher eq 1}"><span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleT">선생님</font></span></c:if>
-	          <c:if test="${sessTeacher eq 0}"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleS">학생</font></span></c:if>
-               <img class="img-profile rounded-circle" src="/resources/common/image/profile2.png">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>${sessName}</b></span>
+	          <c:if test="${sessTeacher eq 1}"><span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleT">선생님</font></span></c:if>
+	          <c:if test="${sessTeacher eq 0}"><span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleS">학생</font></span></c:if>
+              <c:if test="${sessPath ne null}"><img class="img-profile rounded-circle" style="width: 40px; height: 40px;" src="${sessPath}${sessUuidName}"></c:if>
+<!--                <img class="img-profile rounded-circle" src="/resources/common/image/profile2.png"> -->
            </a>
            <!-- Dropdown - User Information -->
            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -94,8 +94,8 @@
 			</div>
 			<div class="col-12 mb-4">
 				<label class="form-label"><b>프로필 사진</b></label>
-					<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
 					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
+					<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
 			</div>
 <!-- 			<div class="col-12 mb-4">
 				<label class="form-label"><b>프로필 사진</b></label>

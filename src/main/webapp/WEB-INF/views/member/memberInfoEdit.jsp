@@ -47,11 +47,11 @@
 				<div class="position-relative">
 					<div class="avatar size-140">
 						<c:choose>
-							<c:when test="${empty uuidName}">
+							<c:when test="${empty sessUuidName}">
 								<img id="profilePhoto" style="width:; height: 100px;" src="/resources/common/image/profile2.png" class="img-fluid rounded-pill">
 							</c:when>
 							<c:otherwise>
-								<img id="profilePhoto" style="width: 100%; height: 100%;" src="<c:out value="${path}"/><c:out value="${uuidName}"/>" class="img-fluid rounded-pill">
+								<img id="profilePhoto" style="width: 100px; height: 100px;" src="<c:out value="${sessPath}"/><c:out value="${sessUuidName}"/>" class="img-fluid rounded-pill">
 							</c:otherwise>
 						</c:choose>
 					</div>

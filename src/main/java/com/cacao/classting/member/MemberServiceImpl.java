@@ -33,19 +33,36 @@ public class MemberServiceImpl implements MemberService{
 		
 		dao.insert(dto);
 		
-		String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-		UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
-		
-		dto.setTableName("ctMemberUploaded");
-		dto.setType(0);
-		dto.setDefaultNy(1);
-		dto.setSort(0); 	
-		dto.setDelNy(0);
-		dto.setPseq(dto.getMmSeq());
-		
-		dao.insertUploaded(dto);
+		if(!dto.getFile0().isEmpty()) {
 			
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
 		
+			     dto.setTableName("ctMemberUploaded");
+			     dto.setType(0);
+			     dto.setDefaultNy(1);
+			     dto.setSort(0);
+			     dto.setDelNy(0);
+			     dto.setPseq(dto.getMmSeq());
+			     
+			     dao.insertUploaded(dto);
+					
+			} else {
+//		
+				dto.setTableName("ctMemberUploaded");
+			    dto.setType(0);
+			    dto.setDefaultNy(1);
+			    dto.setSort(0);
+				dto.setOriginalName("profile2.png");
+				dto.setUuidName("profile2.png");
+				dto.setExt("png");
+				dto.setSize(33177);
+				dto.setDelNy(0);
+				dto.setPath("/resources/uploaded/common/");
+				dto.setPseq(dto.getMmSeq());
+				dao.insertUploaded(dto);
+			
+			}
 		return 1;
 		
 		
@@ -54,62 +71,21 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int update(Member dto) throws Exception {
 		
-	 dao.update(dto);
-	  
-//     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//     UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
-     
-//     dto.setTableName("ctMemberUploaded");
-//     dto.setType(0);
-//     dto.setDefaultNy(1);
-//     dto.setSort(0);
-//     dto.setDelNy(0);
-//     dto.setPseq(dto.getMmSeq());
-//     
-//     dao.updateUploaded(dto);
-
-	 
-
-		if(!dto.getFile0().isEmpty()) {
-			
-		     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-		     UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
-		     
-		     dto.setTableName("ctMemberUploaded");
-		     dto.setType(0);
-		     dto.setDefaultNy(1);
-		     dto.setSort(0);
-		     dto.setDelNy(0);
-		     dto.setPseq(dto.getMmSeq());
-		     
-		     dao.updateUploaded(dto);
-				
-		} else {
-			
-			dto.setTableName("ctMemberUploaded");
-			dto.setOriginalName("profile2.png");
-			dto.setUuidName("profile2.png");
-			dto.setExt("png");
-			dto.setSize(33177);
-			dto.setPath("/resources/uploaded/image/");
-			dto.setPseq(dto.getMmSeq());
-			
-			dao.updateUploaded(dto);
-		}
-
-	 
-	 
-     return 1;
-
-     
-     
-     
-     
-     
-     
-     
-     
-     
+		 dao.update(dto);
+		  
+	     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+	     UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
+	     
+	     dto.setTableName("ctMemberUploaded");
+	     dto.setType(0);
+	     dto.setDefaultNy(1);
+	     dto.setSort(0);
+	     dto.setDelNy(0);
+	     dto.setPseq(dto.getMmSeq());
+	     
+	     dao.updateUploaded(dto);
+	     
+	     return 1;
 	}
 
 	@Override

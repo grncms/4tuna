@@ -49,9 +49,9 @@ margin-left:10px;
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-		<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" flush="true" />
+		<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
 		<div id="content-wrapper" class="d-flex flex-column">
-		<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
+		<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 
 		<!-- 여기에 내용  -->
 		

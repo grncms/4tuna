@@ -53,7 +53,8 @@ public class MemberController {
 		List<Member> listNotice = service.selectListNotice(vo);
 		model.addAttribute("listNotice", listNotice);
 		
-		
+		System.out.println("httpSession.getAttribute(\"sessPath\") : " + httpSession.getAttribute("sessPath"));
+		System.out.println("httpSession.getAttribute(\"sessUuidName\") : " + httpSession.getAttribute("sessUuidName"));
 		return "member/main";
 	}
 	@RequestMapping(value = "/classCodeSearch")
@@ -141,6 +142,11 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		List<Member> uploadList = service.selectListMemberUploaded(vo);
 		model.addAttribute("uploadList", uploadList);
 		
+		
+		
+		System.out.println("httpSession.getAttribute(sessPath) : "+httpSession.getAttribute("sessPath"));
+		System.out.println("httpSession.getAttribute(sessUuidName) : "+httpSession.getAttribute("sessUuidName"));
+		
 		return "member/memberInfo";
 	}
 	
@@ -159,8 +165,11 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes,HttpSession httpSession) throws Exception{
 
 		service.update(dto);
-		
+		httpSession.setAttribute("sessUuidName", dto.getUuidName());
+		httpSession.setAttribute("sessPath", dto.getPath());
 		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessSeq"));
+		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessPath"));
+		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessUuidName"));
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		redirectAttributes.addFlashAttribute("vo",vo);
@@ -303,6 +312,8 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 				httpSession.setAttribute("sessId", rtMember.getMmId());
 				httpSession.setAttribute("sessName", rtMember.getMmName());
 				httpSession.setAttribute("sessTeacher", rtMember.getMmTeacherNy());
+				httpSession.setAttribute("sessPath", rtMember.getPath());
+				httpSession.setAttribute("sessUuidName", rtMember.getUuidName());
 				
 				returnMap.put("rt", "success");
 			} else {

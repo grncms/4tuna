@@ -140,16 +140,19 @@
 	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
-			mmSeq
-			,mmId
-			,mmName
-			,mmPassword
-			,mmTeacherNy
+			a.mmSeq
+			,a.mmId
+			,a.mmName
+			,a.mmPassword
+			,a.mmTeacherNy
+			,b.uuidName
+			,b.path
 		FROM
-			Member
+			Member a
+		LEFT JOIN ctMemberUploaded b ON b.pseq = a.mmSeq
 		WHERE 1=1 
-			AND mmId = #{mmId}	
-			AND mmPassword = #{mmPassword}	
+			AND a.mmId = #{mmId}	
+			AND a.mmPassword = #{mmPassword}	
 	</select>
 	<select id="selectOneId" resultMap="resultMapObj">
 		select
