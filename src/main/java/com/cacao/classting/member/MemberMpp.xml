@@ -88,8 +88,10 @@
 			,#{regDateTime}
 			,#{regDateTimeSvr}
 		)		
+		<selectKey resultType="String" keyProperty="mmSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>	
-	
 	<update id="update">
 		UPDATE Member SET 	
 			mmTeacherNy = #{mmTeacherNy}
@@ -112,16 +114,19 @@
 	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
-			mmSeq
-			,mmId
-			,mmName
-			,mmPassword
-			,mmTeacherNy
+			a.mmSeq
+			,a.mmId
+			,a.mmName
+			,a.mmPassword
+			,a.mmTeacherNy
+			,b.uuidName
+			,b.path
 		FROM
-			Member
+			Member a
+		LEFT JOIN ctMemberUploaded b ON b.pseq = a.mmSeq
 		WHERE 1=1 
-			AND mmId = #{mmId}	
-			AND mmPassword = #{mmPassword}	
+			AND a.mmId = #{mmId}	
+			AND a.mmPassword = #{mmPassword}	
 	</select>
 	<select id="selectOneId" resultMap="resultMapObj">
 		select
@@ -167,8 +172,9 @@
 		WHERE 1=1
 			AND mmName = #{mmName}
 			AND mmPhoneNumber = #{mmPhoneNumber}
+			AND mmDelNy = 0
 	</select>
-	<select id="selectOnePassword" resultMap="resultMapObj">
+	<select id="selectListPassword" resultMap="resultMapObj">
 		select
 			mmSeq
 			,mmName
@@ -182,10 +188,9 @@
 			AND mmName = #{mmName}
 			AND mmPhoneNumber = #{mmPhoneNumber}
 			AND mmId = #{mmId}
-			<!-- AND mmDelNy = 0 -->
+			AND mmDelNy = 0
 	</select>
-	
-<!-- 	이미지 -->
+	<!-- 회원 이미지 -->
 	<insert id="insertUploaded">
 		INSERT INTO ${tableName} (
 			type
@@ -211,7 +216,6 @@
 			,#{pseq}
 		)		
 	</insert>
-
 	<update id="updateUploaded">
 		UPDATE ${tableName} SET
 			type = #{type}
@@ -227,7 +231,6 @@
 			AND pseq = #{pseq}
 			AND type = #{type}
 	</update>
-
 	<select id="selectListMemberUploaded" resultMap = "resultMapObj">
 		SELECT
 			seq
@@ -245,9 +248,7 @@
 			ctMemberUploaded
 		WHERE 1=1
 			AND pseq = #{mmSeq}
-		
 	</select>
-	
 <!-- 	class생성 -->
 	<insert id="insertClass">
 		INSERT INTO ctClass(

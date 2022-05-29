@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
+
 public class Member {
 
 //	Member
@@ -33,6 +35,7 @@ public class Member {
 	private Date regDateTimeSvr;
 	private Date modDateTime;
 	private Date modDateTimeSvr;
+	
 	
 	private String ctcsSeq;
 	private String ctcsBelongto;
@@ -69,6 +72,7 @@ public class Member {
 	private Integer ctptReservationNy;
 	
 	private String tableName;
+	
 	private String seq;
 	private Integer type;
 	private String uuidName;
@@ -79,8 +83,9 @@ public class Member {
 	private long size;
 	private Integer delNy;
 	private String pseq;
+	private String path;
 	
-	private MultipartFile[] file0;
+	private MultipartFile file0;
 	private MultipartFile[] file1;
 	
 	public String getMmSeq() {
@@ -383,10 +388,10 @@ public class Member {
 	public void setPseq(String pseq) {
 		this.pseq = pseq;
 	}
-	public MultipartFile[] getFile0() {
+	public MultipartFile getFile0() {
 		return file0;
 	}
-	public void setFile0(MultipartFile[] file0) {
+	public void setFile0(MultipartFile file0) {
 		this.file0 = file0;
 	}
 	public MultipartFile[] getFile1() {
@@ -478,6 +483,12 @@ public class Member {
 	}
 	public void setCtptReservationNy(Integer ctptReservationNy) {
 		this.ctptReservationNy = ctptReservationNy;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 	

@@ -41,7 +41,7 @@
 		<div id="classNotice" style="cursor: pointer;">
 			<c:forEach items="${list}" var="item" varStatus="status">	
 			<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
-				<img src="/resources/user/image/a3.jpg" class="col-md-2" width="50" height="50" style="border-radius: 7px; float: left">
+				<img src="/resources/user/image/classLogo.png" class="col-md-2" width="40" height="50" style=" float: left">
 				<span class="col-md-10 float-right" id="date"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcsName}"/></span>
 			</div>
 			<hr>

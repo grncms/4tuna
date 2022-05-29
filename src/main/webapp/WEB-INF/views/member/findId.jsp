@@ -42,7 +42,7 @@
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <div class="site-logo mr-auto w-25"><a href="/index">CLASSING</a></div>
+          <div class="site-logo mr-auto w-25"><a href="/">CLASSING</a></div>
         </div>
       </div>
     </header>
@@ -57,7 +57,7 @@
                 <div class="col-lg-6 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100">완전히 새로운 클래스관리</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">가정에서도 좀 더 효율적으로 수업을 관리하는 방법</p>
-                  <p data-aos="fade-up" data-aos-delay="300"><a href="/index" class="btn btn-primary py-3 px-5 btn-pill">홈으로</a></p>
+                  <p data-aos="fade-up" data-aos-delay="300"><a href="/" class="btn btn-primary py-3 px-5 btn-pill">홈으로</a></p>
 
                 </div>
 
@@ -72,10 +72,10 @@
                       <input type="text" class="form-control" id="mmPhoneNumber" name="mmPhoneNumber" value="01011112222" placeholder="숫자만 입력 (예. 01011112222)">
                     </div>
                     <div class="form-group">
+                    	<button class="btn btn-primary btn-pill" type="button" id="btn-findPwd" name="" >비밀번호 찾기</button>
                     	<button class="btn btn-primary btn-pill" type="button" id="btn-findId" name="" >아이디 찾기</button>
                     </div>
-	                    <%-- <p class="mb-4" id="showId" style="color: blue; font-size: 15px;">${mmName} 님의 아이디는 ${sessFIId} 입니다.</p> --%>
-	                    <ul id="showId"class="list-group"></ul>
+	                    <p class="mb-4" id="showId" style="color: black;"></p>
 						<a href="/findId" id="goBack"><span class="mt-4 mb-1" style="color: gray; font-size: 14px;"><i class="fa-solid fa-rotate-left"></i> 아이디 다시 찾기</span></a>
                   </form>
                 </div>
@@ -108,15 +108,9 @@
 <script src="/resources/common/js/validation.js"></script>
 <script type="text/javascript">
 <!--일반 로그인 -->  
-/* $("#btn-submit").on("click",function(seq){ 
-	
-	$("#mmSeq").val(seq); 
-	$("#findId").attr("action", "/selectFindId");
-	$("#findId").submit();
-	
-});  */
-$("#showId").hide();
+
 $("#goBack").hide();
+$("#btn-findPwd").hide();
 
 
 $("#btn-findId").on("click",function(seq){ 
@@ -129,16 +123,17 @@ $("#btn-findId").on("click",function(seq){
 		,dataType : "JSON"
 		,data : { "mmName" : $("#mmName").val(), "mmPhoneNumber": $("#mmPhoneNumber").val()}
 		,success: function(data) {
-				/* $("#showId").show();  */
-				$("#btn-findId").hide();
-				$("#goBack").show();
-				alert(data);
-				alert(JSON.stringify(data)); 
-				alert(JSON.stringify(data['idList'][0]['mmId']));
-				
-				for(var i = 0; i < data['idList'].length; i++){	
-					$('#showId').append('<li>' +data['idList'][i]['mmId']+ '</li>') ;
-					}
+			/* alert(data); */
+			/* alert(JSON.stringify(data));  */
+			$("#goBack").show(); 
+			$("#btn-findPwd").show(); 
+			$("#btn-findId").hide(); 
+			/* alert(JSON.stringify(data['idList'][0]['mmId']));
+			alert(JSON.stringify(data['idList'][0]['mmName'])); */
+			
+			var name = data['idList'][0]['mmName'];
+			
+			$('#showId').append(name+' 님의 아이디는 '+'<span style="color: blue; font-weight: bold;">' + data['idList'][0]['mmId'] + '</span>'+' 입니다.' );
 		}			
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);

@@ -42,7 +42,7 @@
 <c:set var="CodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 <c:set var="CodeGrade" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 <c:set var="CodeLogin" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
-	<form action="/memberInst" method="post" id="memberForm" name="memberForm" class="row">
+	<form action="/memberInst" method="post" id="memberForm" name="memberForm" class="row" enctype="multipart/form-data">
 	<input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">	
 	<input type="hidden" id="mmTypeOfLoginCd" name="mmTypeOfLoginCd" value="23">	
 		<!-- 정보입력 s -->
@@ -92,10 +92,15 @@
 				</c:forEach>
 				</select>
 			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>프로필 사진</b></label>
+					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
+					<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
+			</div>
 <!-- 			<div class="col-12 mb-4">
 				<label class="form-label"><b>프로필 사진</b></label>
 				<div class="input-group">
-					<input type="file" class="form-control mb-2" id="file0" name="file0" multiple onChange="upload(0,2);">
+					<input type="file" class="form-control mb-2" id="file0" name="file0">
 				</div>
 				<img style="width: 100px;" id="preview-image0" src="">
 			</div> -->
@@ -179,6 +184,45 @@
 <script src="/resources/common/js/validation.js"></script>
 <script>
 
+/* 	let profileInput = document.getElementById("profile-upload");
+	let img = document.querySelector('#profilePhoto');
+	
+	profileInput.onchange = (e) => {
+		
+		var ext = $("#profile-upload")[0].files[0].name.split('.').pop().toLowerCase();
+		if(extArrayImage.indexOf(ext) == -1){
+			alert("허용된 확장자가 아닙니다.");
+			return false;
+		}
+		
+		img.classList.add('preview');
+		img.src = URL.createObjectURL(e.target.files[0]);
+	}
+	 */
+	
+ 	let profileInput = document.getElementById("profile-upload");
+	let img = document.querySelector('#profilePhoto');
+	
+		
+	profileInput.onchange = (e) => {
+		
+		var ext = $("#profile-upload")[0].files[0].name.split('.').pop().toLowerCase();
+		
+		img.classList.add('preview');
+		img.src = URL.createObjectURL(e.target.files[0]);
+	}
+	 
+
+
+
+
+
+
+
+
+
+
+
  $('#consentAll').click(function(){
 	var checked = $('#consentAll').is(':checked');
 	if(checked)
@@ -186,6 +230,10 @@
 }); 
 
 
+ 
+ 
+ 
+ 
 $("#btn-submit").on("click", function(){
 
 
@@ -198,32 +246,27 @@ $("#btn-submit").on("click", function(){
 
  	/* kbmmPassword */
   	if(!checkNull($("#mmPassword"), $("#mmPassword").val(), "비밀번호를 입력하세요.")) return false;
- 	if(!checkPassword($("#mmPassword"), $("#mmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
+ 	if(!checkPassword($("#mmPassword"), $("#mmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false; 
  
  	/* mmMemberEmail */
  	if(!checkNull($("#mmMemberEmail"), $("#mmMemberEmail").val(), "이메일을 입력하세요.")) return false;
- 	if(!checkEmail($("#mmMemberEmail"), $("#mmMemberEmail").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
+ 	if(!checkEmail($("#mmMemberEmail"), $("#mmMemberEmail").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false; 
  	
  	/* mmPhoneNumber */
  	if(!checkNull($("#mmPhoneNumber"), $("#mmPhoneNumber").val(), "휴대폰번호를 입력하세요.")) return false;
- 	if(!checkOnlyNumber($("#mmPhoneNumber"), $("#mmPhoneNumber").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+ 	if(!checkOnlyNumber($("#mmPhoneNumber"), $("#mmPhoneNumber").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false; 
  	
  	/* mmDob */
 	if(!checkNull($("#mmDob"), $("#mmDob").val(), "생년월일을 입력하세요")) return false;
- 	if(!checkDob($("#mmDob"), $("#mmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	
+ 	if(!checkDob($("#mmDob"), $("#mmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	 
 	
  	
  	/* mmGenderCd */
-	if(!checkNull($("#mmGenderCd"), $("#mmGenderCd").val(), "성별을 선택하세요.")) return false;
+	if(!checkNull($("#mmGenderCd"), $("#mmGenderCd").val(), "성별을 선택하세요.")) return false; 
  	
  	/* mmGradeCd */
 	if(!checkNull($("#mmGradeCd"), $("#mmGradeCd").val(), "학년을 선택하세요.")) return false;
 
- 	/* mmTeacherNy */
-/*  	if(!checkNull($("#mmTeacherNy"), $("#mmTeacherNy").val(), "역할을 선택하세요.")) return false; 
- 	if(!checkNull($("#mmAlarmInvitationNy"), $("#mmAlarmInvitationNy").val(), "클래스 초대 수락 알림 동의여부를 선택하세요.")) return false; 
- 	if(!checkNull($("#mmAlarmReplyNy"), $("#mmAlarmReplyNy").val(), "클래스 초대 수락 알림 동의여부를 선택하세요.")) return false;  */
- 	
  	
  	if ($("input:radio[name=mmTeacherNy]").is(":checked") == false) {
 		alert("역할을 선택하세요.");
@@ -248,7 +291,7 @@ $("#btn-submit").on("click", function(){
 		alert("필수항목은 반드시 동의하세요. (개인정보 수집 및 이용안내)");
 		return false;
 	}
-	
+	 
 	alert("회원가입이 완료되었습니다.");
 	
 	$("#memberForm").attr("action", "/memberInst");

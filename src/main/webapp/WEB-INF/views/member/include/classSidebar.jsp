@@ -8,7 +8,7 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-            	<div class="col-md-3 mt-4" id="classImg"><img src="/resources/user/image/a3.jpg"  width="50" height="50" style="border-radius: 7px; "></div>
+            	<div class="col-md-3 mt-4" id="classImg"><img src="/resources/user/image/classLogo.png"  width="50" height="50" style=""></div>
 				<div class="col-md-9 mt-4" id="classInfo"><span><b><c:out value="${ctcsName}"/></b></span><p><span><c:out value="${ctcsYear}"/></span></div>
             </li>
 			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='/classInvitation'">

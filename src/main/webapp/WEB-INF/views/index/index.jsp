@@ -47,7 +47,7 @@
       
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <div class="site-logo mr-auto w-25"><a href="/index">CLASSING</a></div>
+          <div class="site-logo mr-auto w-25"><a href="/">CLASSING</a></div>
         </div>
       </div>
       
@@ -63,7 +63,7 @@
                 <div class="col-lg-6 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100">완전히 새로운 클래스관리</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">가정에서도 좀 더 효율적으로 수업을 관리하는 방법</p>
-                  <p data-aos="fade-up" data-aos-delay="300"><button class="btn btn-primary py-3 px-5 btn-pill" onclick="location.href='/memberForm_main'">회원가입하기</button></p>
+                  <p data-aos="fade-up" data-aos-delay="300" style="display: inline"><button class="btn btn-primary py-3 px-5 btn-pill" onclick="location.href='/memberForm_main'">회원가입하기</button></p>
                 </div>
 
                 	<div class="col-lg-5 ml-auto mb-2" data-aos="fade-up" data-aos-delay="500">
@@ -81,7 +81,8 @@
 	                    <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
 	                    </div>
 	                    <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
-	                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
+	                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기 |</span></a>
+         		        <a href="/login_xdmin"><span class="mb-4" style="color: gray; font-size: 14px;"> 관리자 로그인</span></a>
                  	 </form>
                		 </div>
                		 
@@ -99,8 +100,11 @@
 	                    <input type="button" class="btn btn-primary btn-pill" id="btnLogin2"  value="로그인하기">
 	                    <input type="button" class="btn btn-facebook btn-pill" id="btn-facebook" onclick="fnFbCustomLogin();" value="페이스북 로그인">
 	                    </div>
-	                    <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
-	                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기</span></a>
+	                    <div class="form-group">
+		                    <a href="/findId"><span class="mb-4" style="color: gray; font-size: 14px;">아이디 찾기  |</span></a>
+		                    <a href="/findPwd"><span class="mb-4" style="color: gray; font-size: 14px;">  비밀번호 찾기 |</span></a>
+		                    <a href="/login_xdmin"><span class="mb-4" style="color: gray; font-size: 14px;"> 관리자 로그인</span></a>
+	                    </div>
                  	 </form>
                		 </div>
               </div>

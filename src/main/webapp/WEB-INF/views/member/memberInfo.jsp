@@ -43,15 +43,33 @@
 			<p id="title">개인정보</p>
 			<p id="sub">프로필</p>
 			<div class="col-10 mx-auto mb-4">
+				<div class="position-relative">
+					<div class="avatar size-140">
+						<c:choose>
+							<c:when test="${empty sessUuidName}">
+								<img id="profilePhoto" style="width:; height: 100px;" src="/resources/common/image/profile2.png" class="img-fluid rounded-pill">
+							</c:when>
+							<c:otherwise>
+								<img id="profilePhoto" style="width: 100px; height: 100px;" src="<c:out value="${sessPath}"/><c:out value="${sessUuidName}"/>" class="img-fluid rounded-pill">
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+			</div>
+			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">이름</label>
 				<input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>" > 
 			</div>
-			<div class="col-10 mx-auto mb-4">
+<%-- 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">프로필 사진</label>
-				<div class="input-group">
-				  <input type="file" class="form-control" id="inputGroupFile02">
-				</div>
-			</div>
+					<c:forEach items="${uploadList}" var="itemUploaded" varStatus="statusUploaded">
+					<c:choose>
+						<c:when test="${itemUploaded.size ne 0}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:when>
+						<c:when test="${itemUploaded.size eq 0}"><p style="font-size: 13px; font-style: italic;">선택된 파일이 없습니다!</p></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</div> --%>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">학교</label>
 				<input type="text" class="form-control" id="" name="" value=""> 

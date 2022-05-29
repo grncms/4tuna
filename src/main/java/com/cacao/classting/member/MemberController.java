@@ -46,7 +46,6 @@ public class MemberController {
 	public String main(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
 		
 		List<Member> list = service.selectListClass(vo);
 		model.addAttribute("list", list);
@@ -54,7 +53,8 @@ public class MemberController {
 		List<Member> listNotice = service.selectListNotice(vo);
 		model.addAttribute("listNotice", listNotice);
 		
-		
+		System.out.println("httpSession.getAttribute(\"sessPath\") : " + httpSession.getAttribute("sessPath"));
+		System.out.println("httpSession.getAttribute(\"sessUuidName\") : " + httpSession.getAttribute("sessUuidName"));
 		return "member/main";
 	}
 	@RequestMapping(value = "/classCodeSearch")
@@ -124,6 +124,10 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		
 		service.insert(dto);
 
+		vo.setPseq(dto.getMmSeq());
+		System.out.println("vo.getPseq(): "+vo.getPseq() );
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/";
 	}
 	@RequestMapping(value = "/memberInfo")
@@ -134,6 +138,14 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		
 		Member rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
+		
+		List<Member> uploadList = service.selectListMemberUploaded(vo);
+		model.addAttribute("uploadList", uploadList);
+		
+		
+		
+		System.out.println("httpSession.getAttribute(sessPath) : "+httpSession.getAttribute("sessPath"));
+		System.out.println("httpSession.getAttribute(sessUuidName) : "+httpSession.getAttribute("sessUuidName"));
 		
 		return "member/memberInfo";
 	}
@@ -153,11 +165,13 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes,HttpSession httpSession) throws Exception{
 
 		service.update(dto);
-		
+		httpSession.setAttribute("sessUuidName", dto.getUuidName());
+		httpSession.setAttribute("sessPath", dto.getPath());
 		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessSeq"));
+		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessPath"));
+		System.out.println("httpSession.getAttribute(\"sessSeq\") update맞냐: " + httpSession.getAttribute("sessUuidName"));
+		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-
-//		vo.setMmSeq(dto.getMmSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
 		
 		return "redirect:/memberInfo";
@@ -178,9 +192,6 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	public Map<String, Object> getId(MemberVo vo, Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-//		Member rtMember = service.selectOneId(dto);
-//		model.addAttribute("rtMember", rtMember);
-		
 		List<Member> idList = service.selectListId(vo);
 		model.addAttribute("idList", idList);
 		
@@ -193,39 +204,22 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	@RequestMapping(value = "/findPwd")
 	public String findPwd(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception{
 		
-		Member rt = service.selectOnePassword(dto);
-		model.addAttribute("item", rt);
+		List<Member> pwdList = service.selectListPassword(vo);
+		model.addAttribute("pwdList", pwdList);
 		
 		return "member/findPwd";
 	}
 	@ResponseBody
-	@RequestMapping(value = "member/getPassword", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> getPassword(Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "member/getPassword")
+	public Map<String, Object> getPassword(MemberVo vo, Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		Member rtMember = service.selectOnePassword(dto);
+		List<Member> pwdList = service.selectListPassword(vo);
+		model.addAttribute("pwdList", pwdList);
 		
-		if(rtMember != null) {
-//			rtMember = service.selectOnePassword(dto);
-			if(rtMember.getMmSeq() != null) {
-//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-				System.out.println("rtMember.getMmSeq() : " + rtMember.getMmSeq());
-				System.out.println("rtMember.getMmName() : " + rtMember.getMmName());
-				System.out.println("rtMember.getMmDelNy() : " + rtMember.getMmDelNy());
-				httpSession.setAttribute("sessFPSeq", rtMember.getMmSeq());
-				httpSession.setAttribute("sessFPId", rtMember.getMmId());
-				httpSession.setAttribute("sessFPPassword", rtMember.getMmPassword());
-				httpSession.setAttribute("sessFPName", rtMember.getMmName());
-				httpSession.setAttribute("sessFPNumber", rtMember.getMmPhoneNumber());
-				
-				returnMap.put("rt", "success");
-			} else {
-				returnMap.put("rt", "fail1");
-			}
-		} else {
-			System.out.println("rtMember : " + rtMember);
-			returnMap.put("rt", "fail2");
-		}
+		returnMap.put("pwdList", pwdList);
+		returnMap.put("rt", "success");
+		
 		return returnMap;
 	}
 //	클래스생성
@@ -281,6 +275,7 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
 		System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
 		
+		
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/main";
 	}
@@ -317,6 +312,8 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 				httpSession.setAttribute("sessId", rtMember.getMmId());
 				httpSession.setAttribute("sessName", rtMember.getMmName());
 				httpSession.setAttribute("sessTeacher", rtMember.getMmTeacherNy());
+				httpSession.setAttribute("sessPath", rtMember.getPath());
+				httpSession.setAttribute("sessUuidName", rtMember.getUuidName());
 				
 				returnMap.put("rt", "success");
 			} else {

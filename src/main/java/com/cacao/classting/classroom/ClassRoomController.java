@@ -197,6 +197,9 @@ public class ClassRoomController {
 		List<ClassRoom> list = service.selectListStorage(vo);
 		model.addAttribute("list", list);
 		
+		List<ClassRoom> list2 = service.selectListReserv(vo);
+		model.addAttribute("list2", list2);
+		
 		return "member/classroom/common/classStorage";
 	}
 	
@@ -224,6 +227,7 @@ public class ClassRoomController {
 
 	@RequestMapping(value = "/classMain")
 	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+
 
 		if(vo.getCtcsSeq() != null) {
 			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
@@ -369,10 +373,23 @@ public class ClassRoomController {
 
 	
 	@RequestMapping(value = "member/class/teacher/homeworkreport")
-	public String homeworkReport(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession){
+	public String homeworkReport(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
+			HttpSession httpSession) throws Exception {
+		dto.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		String classSeq = dto.getCtcsSeq();
+		List<ClassRoom> homeworkList = service.HomeworkSubmit(classSeq);
+		
+		
+		
+		model.addAttribute("homeworkList", homeworkList);
+		
+		
+		
+		
 		
 		return "member/classroom/teacher/classHomeworkReport";
 	}
+
 	
 	@RequestMapping(value = "member/class/teacher/homeworklist")
 	public String homeworkList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{

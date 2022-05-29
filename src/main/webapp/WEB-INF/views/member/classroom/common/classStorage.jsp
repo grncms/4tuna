@@ -67,7 +67,7 @@
            <div class="container_base">
 				<div class="body">예약한 글</div>
 			</div>
-			<c:forEach items="${list}" var="item" varStatus="status">
+			<c:forEach items="${list2}" var="item" varStatus="status">
 			<c:if test="${item.ctptReservation ne null && item.ctptWriter eq ctcmSeq}">
 			    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
 				예약 날짜/시간 : <fmt:formatDate value="${item.ctptReservation}" pattern="yyyy-MM-dd HH:mm:ss"/>							

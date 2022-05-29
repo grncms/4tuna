@@ -2,13 +2,12 @@ package com.cacao.classting.member;
 
 import java.util.List;
 
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cacao.classting.classroom.ClassRoom;
-import com.cacao.classting.classroom.ClassRoomVo;
 import com.cacao.classting.common.util.UtilDateTime;
 import com.cacao.classting.common.util.UtilUpload;
 
@@ -34,23 +33,36 @@ public class MemberServiceImpl implements MemberService{
 		
 		dao.insert(dto);
 		
-//		int j = 0;
-//		for(MultipartFile multipartFile : dto.getFile0()) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			UtilUpload.uploadMember(multipartFile, pathModule, dto);
-//			
-//			dto.setTableName("ctMemberUploaded");
-//			dto.setType(0);
-//			dto.setDefaultNy(1);
-//			dto.setSort(j); 	
-//			dto.setDelNy(0);
-//			dto.setPseq(dto.getMmSeq());
-//			
-//			dao.insertUploaded(dto);
-//			j++;
-//			
-//		}
+		if(!dto.getFile0().isEmpty()) {
+			
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
 		
+			     dto.setTableName("ctMemberUploaded");
+			     dto.setType(0);
+			     dto.setDefaultNy(1);
+			     dto.setSort(0);
+			     dto.setDelNy(0);
+			     dto.setPseq(dto.getMmSeq());
+			     
+			     dao.insertUploaded(dto);
+					
+			} else {
+//		
+				dto.setTableName("ctMemberUploaded");
+			    dto.setType(0);
+			    dto.setDefaultNy(1);
+			    dto.setSort(0);
+				dto.setOriginalName("profile2.png");
+				dto.setUuidName("profile2.png");
+				dto.setExt("png");
+				dto.setSize(33177);
+				dto.setDelNy(0);
+				dto.setPath("/resources/uploaded/common/");
+				dto.setPseq(dto.getMmSeq());
+				dao.insertUploaded(dto);
+			
+			}
 		return 1;
 		
 		
@@ -58,7 +70,22 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int update(Member dto) throws Exception {
-		return dao.update(dto);
+		
+		 dao.update(dto);
+		  
+	     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+	     UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
+	     
+	     dto.setTableName("ctMemberUploaded");
+	     dto.setType(0);
+	     dto.setDefaultNy(1);
+	     dto.setSort(0);
+	     dto.setDelNy(0);
+	     dto.setPseq(dto.getMmSeq());
+	     
+	     dao.updateUploaded(dto);
+	     
+	     return 1;
 	}
 
 	@Override
@@ -96,15 +123,6 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectListClass(vo);
 	}
 
-	@Override
-	public Member selectOneId(Member dto) throws Exception {
-		return dao.selectOneId(dto);
-	}
-
-	@Override
-	public Member selectOnePassword(Member dto) throws Exception {
-		return dao.selectOnePassword(dto);
-	}
 
 //	@Override
 //	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
@@ -177,6 +195,16 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member selectOneClassCode(MemberVo vo) throws Exception {
 		return dao.selectOneClassCode(vo);
+	}
+
+	@Override
+	public List<Member> selectListPassword(MemberVo vo) throws Exception {
+		return dao.selectListPassword(vo);
+	}
+
+	@Override
+	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
+		return dao.selectListMemberUploaded(vo);
 	}
 	
 

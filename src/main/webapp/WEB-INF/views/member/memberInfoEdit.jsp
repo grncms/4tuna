@@ -38,19 +38,33 @@
 
 	<div class="row">
 		<div class="col-md-12">
-		<form action="/memberUpdt" method="post" id="memberInfoEdit" name="memberInfoEdit">
+		<form action="/memberUpdt" method="post" id="memberInfoEdit" name="memberInfoEdit" enctype="multipart/form-data">
 		<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
 			<p id="title">개인정보</p>
 			<p id="sub">프로필</p>
+			
+			<div class="col-10 mx-auto mb-4">
+				<div class="position-relative">
+					<div class="avatar size-140">
+						<c:choose>
+							<c:when test="${empty sessUuidName}">
+								<img id="profilePhoto" style="width:; height: 100px;" src="/resources/common/image/profile2.png" class="img-fluid rounded-pill">
+							</c:when>
+							<c:otherwise>
+								<img id="profilePhoto" style="width: 100px; height: 100px;" src="<c:out value="${sessPath}"/><c:out value="${sessUuidName}"/>" class="img-fluid rounded-pill">
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+				<div class="position-relative">
+					<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
+					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
+				</div>
+			</div>
+			
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">이름</label>
 				<input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${rt.mmName}"/>" > 
-			</div>
-			<div class="col-10 mx-auto mb-4">
-				<label class="form-label">프로필 사진</label>
-				<div class="input-group">
-				  <input type="file" class="form-control" id="inputGroupFile02">
-				</div>
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">학교</label>
@@ -64,10 +78,12 @@
 				</c:forEach>
 				</select>
 			</div>
-			<div class="col-10 mx-auto mb-4">
+<%-- 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">프로필</label>
 				<textarea class="form-control" id="mmDesc" name="mmDesc" rows="3"><c:out value="${rt.mmDesc}" escapeXml="false"/></textarea>
-			</div>
+			</div> --%>
+
+
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">성별</label>
 				<select class="form-select" id="" name="" >
@@ -175,6 +191,19 @@
 <script type="text/javascript">
 	
 
+	
+ 	let profileInput = document.getElementById("profile-upload");
+	let img = document.querySelector('#profilePhoto');
+	
+		
+	profileInput.onchange = (e) => {
+		
+		var ext = $("#profile-upload")[0].files[0].name.split('.').pop().toLowerCase();
+		
+		img.classList.add('preview');
+		img.src = URL.createObjectURL(e.target.files[0]);
+	}
+	 
 	goView = function(seq){
 		$("#memberInfoEdit").attr("action","/memberInfo");
 		$("#memberInfoEdit").submit();
