@@ -46,7 +46,6 @@ public class MemberController {
 	public String main(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
 		
 		List<Member> list = service.selectListClass(vo);
 		model.addAttribute("list", list);
@@ -124,6 +123,10 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		
 		service.insert(dto);
 
+		vo.setPseq(dto.getMmSeq());
+		System.out.println("vo.getPseq(): "+vo.getPseq() );
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/";
 	}
 	@RequestMapping(value = "/memberInfo")
@@ -262,6 +265,7 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
 		System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
+		
 		
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/main";

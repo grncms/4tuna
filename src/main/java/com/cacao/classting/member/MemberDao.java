@@ -42,7 +42,7 @@ public class MemberDao {
 	
 	public List<Member> selectListNotice(MemberVo vo) { List<Member> list = sqlSession.selectList(namespace + ".selectListNotice",vo); return list;}
 
-//	public int insertUploaded(Member dto) {return sqlSession.insert(namespace +".insertUploaded", dto);} 
+	public int insertUploaded(Member dto) {return sqlSession.insert(namespace +".insertUploaded", dto);} 
 	public int updateUploaded(Member dto) {return sqlSession.update(namespace +".updateUploaded", dto);} 
 //	게시글
 	

@@ -42,7 +42,7 @@
 <c:set var="CodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 <c:set var="CodeGrade" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 <c:set var="CodeLogin" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
-	<form action="/memberInst" method="post" id="memberForm" name="memberForm" class="row">
+	<form action="/memberInst" method="post" id="memberForm" name="memberForm" class="row" enctype="multipart/form-data">
 	<input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">	
 	<input type="hidden" id="mmTypeOfLoginCd" name="mmTypeOfLoginCd" value="23">	
 		<!-- 정보입력 s -->
@@ -91,6 +91,11 @@
 					<option value="<c:out value="${itemGrade.ifcdOrder}"/>" <c:if test="${item.mmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
 				</c:forEach>
 				</select>
+			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>프로필 사진</b></label>
+					<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
+					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
 			</div>
 <!-- 			<div class="col-12 mb-4">
 				<label class="form-label"><b>프로필 사진</b></label>
@@ -179,8 +184,7 @@
 <script src="/resources/common/js/validation.js"></script>
 <script>
 
-/* 
-	let profileInput = document.getElementById("profile-upload");
+/* 	let profileInput = document.getElementById("profile-upload");
 	let img = document.querySelector('#profilePhoto');
 	
 	profileInput.onchange = (e) => {
@@ -194,12 +198,20 @@
 		img.classList.add('preview');
 		img.src = URL.createObjectURL(e.target.files[0]);
 	}
+	 */
 	
-	deletePhoto = function(){
-		img.src = "/resources/user/images/profileDefault.png";
-		profileInput.value = null;
+ 	let profileInput = document.getElementById("profile-upload");
+	let img = document.querySelector('#profilePhoto');
+	
+		
+	profileInput.onchange = (e) => {
+		
+		var ext = $("#profile-upload")[0].files[0].name.split('.').pop().toLowerCase();
+		
+		img.classList.add('preview');
+		img.src = URL.createObjectURL(e.target.files[0]);
 	}
- */
+	 
 
 
 

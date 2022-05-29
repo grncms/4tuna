@@ -62,10 +62,10 @@
 			</div>
 			<div class="col-10 mx-auto mb-4">
 				<label class="form-label">프로필 사진</label>
-					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+					<c:forEach items="${uploadList}" var="itemUploaded" varStatus="statusUploaded">
 					<c:choose>
-						<c:when test="${itemUploaded.type eq 1 && itemUploaded.size ne 0}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:when>
-						<c:when test="${itemUploaded.type eq 1 && itemUploaded.size eq 0}"><p style="font-size: 13px; font-style: italic;">선택된 파일이 없습니다!</p></c:when>
+						<c:when test="${itemUploaded.size ne 0}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:when>
+						<c:when test="${itemUploaded.size eq 0}"><p style="font-size: 13px; font-style: italic;">선택된 파일이 없습니다!</p></c:when>
 						<c:otherwise></c:otherwise>
 					</c:choose>
 				</c:forEach>
