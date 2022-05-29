@@ -59,6 +59,8 @@ public interface ClassRoomService {
 	public int updateHomeworkSubmit(ClassRoom dto) throws Exception;
 	
 	public List<ClassRoom> HomeworkSubmit(String ClassSeq) throws Exception;
+	public int insertUrl(ClassRoom dto) throws Exception;
+	public ClassRoom selectOneClassPostUrl(ClassRoomVo vo) throws Exception;
 	
 //출석부
 	public ClassRoom getClassId(ClassRoomVo vo) throws Exception;

@@ -173,6 +173,23 @@ public class ClassRoomController {
 			List<ClassRoom> list = service.selectListPost(vo);
 			model.addAttribute("list", list);
 			
+//			pseq에 ctptseq 값 담기
+			String pseq= list.get(list.size()-1).getCtptSeq();
+			dto.setPseq(pseq);
+			
+			String name = dto.getOriginalName();
+			if (name.length() > 40) {
+			name = name.substring(32, 43);
+				dto.setOriginalName(name);
+				System.out.println("11111");
+			} else {
+			name = name.substring(24, 35);
+				System.out.println("22222");
+				dto.setOriginalName(name);
+			}
+			service.insertUrl(dto);
+
+
 //			회원리스트 불러오기
 			List<ClassRoom> memberList = service.selectListClassMember(vo);
 			model.addAttribute("memberList", memberList);
@@ -553,6 +570,11 @@ public class ClassRoomController {
 //		게시물
 		ClassRoom rt = service.selectOneClassPost(vo);
 		model.addAttribute("item", rt);
+
+//		동영상 url
+		ClassRoom ytb = service.selectOneClassPostUrl(vo);
+		model.addAttribute("ytb", ytb);
+		
 
 //		멤버리스트
 		List<ClassRoom> memberList = service.selectListClassMember(vo);

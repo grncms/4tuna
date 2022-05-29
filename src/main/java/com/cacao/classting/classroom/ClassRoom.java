@@ -119,7 +119,7 @@ public class ClassRoom {
 	private Integer sort;	
 	private long size;	
 	private Integer delNy;	
-	private Integer pseq;
+	private String pseq;
 	
 	//출석부 관련
 	private LocalDateTime[] ad = new LocalDateTime[5];
@@ -515,10 +515,10 @@ public class ClassRoom {
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
 	}
-	public Integer getPseq() {
+	public String getPseq() {
 		return pseq;
 	}
-	public void setPseq(Integer pseq) {
+	public void setPseq(String pseq) {
 		this.pseq = pseq;
 	}
 	public Integer getCthpWriter() {

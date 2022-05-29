@@ -40,6 +40,20 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.deleteClassMulti(vo);
 	}
 
+	@Override
+	public ClassRoom selectOneClassPostUrl(ClassRoomVo vo) throws Exception {
+		
+		return dao.selectOneClassPostUrl(vo);
+	}
+
+	@Override
+	public int insertUrl(ClassRoom dto) throws Exception {
+		
+		dao.insertUrl(dto);
+		
+		return 1;
+	}
+
 
 
 	@Override

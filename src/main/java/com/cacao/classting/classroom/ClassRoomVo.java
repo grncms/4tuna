@@ -47,7 +47,18 @@ public class ClassRoomVo {
 		private String shDateEnd;
 		private Integer shOptionDate;
 
-
+//		ctPostUploaded
+		private String seq;	
+		private String originalName;	
+		private String uuidName;	
+		private String ext;	
+		private Integer type;	
+		private Integer defaultNy;	
+		private Integer sort;	
+		private long size;	
+		
+		private Integer delNy;	
+		private String pseq;
 		//common
 		private String[] checkboxSeqArray;
 		private String shOption;
@@ -365,7 +376,86 @@ public class ClassRoomVo {
 			this.ctrpSeq = ctrpSeq;
 		}
 		
-		
+		public String getSeq() {
+			return seq;
+		}
+
+		public void setSeq(String seq) {
+			this.seq = seq;
+		}
+
+		public String getOriginalName() {
+			return originalName;
+		}
+
+		public void setOriginalName(String originalName) {
+			this.originalName = originalName;
+		}
+
+		public String getUuidName() {
+			return uuidName;
+		}
+
+		public void setUuidName(String uuidName) {
+			this.uuidName = uuidName;
+		}
+
+		public String getExt() {
+			return ext;
+		}
+
+		public void setExt(String ext) {
+			this.ext = ext;
+		}
+
+		public Integer getType() {
+			return type;
+		}
+
+		public void setType(Integer type) {
+			this.type = type;
+		}
+
+		public Integer getDefaultNy() {
+			return defaultNy;
+		}
+
+		public void setDefaultNy(Integer defaultNy) {
+			this.defaultNy = defaultNy;
+		}
+
+		public Integer getSort() {
+			return sort;
+		}
+
+		public void setSort(Integer sort) {
+			this.sort = sort;
+		}
+
+		public long getSize() {
+			return size;
+		}
+
+		public void setSize(long size) {
+			this.size = size;
+		}
+
+		public Integer getDelNy() {
+			return delNy;
+		}
+
+		public void setDelNy(Integer delNy) {
+			this.delNy = delNy;
+		}
+
+		public String getPseq() {
+			return pseq;
+		}
+
+		public void setPseq(String pseq) {
+			this.pseq = pseq;
+		}
+
 		public String getCthsSeq() {
 			return cthsSeq;
 		}

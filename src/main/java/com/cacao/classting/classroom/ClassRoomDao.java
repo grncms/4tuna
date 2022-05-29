@@ -70,7 +70,8 @@ public class ClassRoomDao {
 	
 	public int updateHomeworkSubmitScore(ClassRoom dto)  {return sqlSession.update(namespace + ".updateHomeworkSubmitScore", dto);}
 	public int updateHomeworkSubmit(ClassRoom dto)  {return sqlSession.update(namespace + ".updateHomeworkSubmit", dto);}
-
+	public ClassRoom selectOneClassPostUrl(ClassRoomVo vo) {return sqlSession.selectOne(namespace +".selectOneClassPostUrl", vo);}
+	public int insertUrl(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertUrl", dto);}
 //��ȸ��
 	
 	public int hitUpdate(ClassRoom dto) {return sqlSession.update(namespace + ".hitUpdate",dto);}

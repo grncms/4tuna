@@ -531,6 +531,30 @@
 		,#{ctptSeq}
 	)	
 </insert>
+<select id="selectOneClassPostUrl" resultMap ="resultMapObj">
+	select 
+		originalName
+	 from 
+		ctPostUploaded
+	where 1=1
+		and pseq = #{ctptSeq}
+</select>
+
+<!-- 동영상 등록 -->
+<insert id="insertUrl">
+	insert into ctPostUploaded(
+		seq
+		,originalName
+		,delNy
+		,pseq
+	) VALUES (
+		#{seq}
+		,#{originalName}
+		,0
+		,#{pseq}
+	)	
+</insert>
+
 <!-- 과제게시물 댓글 리스트 -->
 <select id="selectListHomeworkReply" resultMap="resultMapObj">
 	SELECT
