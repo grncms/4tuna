@@ -120,6 +120,7 @@ input:checked+.slider:before {
 	
 	<!-- Begin Page Content -->
 		<form method="post" id="puf" action="/member/classroom/common/classPostInst">
+		<input type="text" style="display: none;" id="ctptseq" name="ctptseq" value="<c:out value="${item.ctptSeq}"/>">
 	<div class="container-fluid">
 		<div class="row" id="posting">
 			<div class="col-xl-8 col-lg-8">
@@ -143,9 +144,13 @@ input:checked+.slider:before {
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-file-circle-plus fa-2x"></i>
 									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
+									<button type="button" class="btn btn-outline-secondary btn-sm" id="showUrl" name="showUrl">
 										<i class="fa-solid fa-video fa-2x"></i>
 									</button>
+									
+									
+									
+								
 									<!-- 
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-link fa-2x"></i>
@@ -186,6 +191,7 @@ input:checked+.slider:before {
 
 
 						<!-- 내용 넣기 시작 -->
+						<input type="text" id="originalName" name="originalName" style="width:100%" placeholder="동영상 url을 넣으세요.">
 						<div class="title_hw border">
 							<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
 						</div>
@@ -284,8 +290,14 @@ input:checked+.slider:before {
 <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 <script type="text/javascript">
 
+$("#originalName").hide();
+$("#showUrl").on("click", function(){
+    $("#originalName").toggle();
+	
+});
 
 $("#btnLogout").on("click", function(){
+
 	
 	$.ajax({
 		async: true 
