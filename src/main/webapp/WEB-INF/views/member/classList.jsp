@@ -38,7 +38,27 @@
 		<div id="classNotice"  style="cursor: default;">
 			<div class=""><span style="font-size: 20px; font-weight: bold;">클래스 목록</span></div>
 		</div>
-		<div id="classNotice" style="cursor: pointer;">
+		
+		
+	<c:choose>
+		<c:when test="${fn:length(list) eq 0}">
+				<div id="classNotice" style="cursor: pointer;">참여한 클래스가 없습니다!</div>
+		</c:when>
+		<c:otherwise>		
+			<div id="classNotice" style="cursor: pointer;">
+				<c:forEach items="${list}" var="item" varStatus="status">	
+				<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
+					<img src="/resources/user/image/classLogo.png" class="col-md-2" width="40" height="50" style=" float: left">
+					<span class="col-md-10 float-right" id="date"><c:out value="${item.ctcsYear}"/></span><br><span style="margin-left: 12px;"><c:out value="${item.ctcsName}"/></span>
+				</div>
+				<hr>
+				</c:forEach>
+			</div>
+		</c:otherwise>
+	</c:choose>
+
+
+<%-- 		<div id="classNotice" style="cursor: pointer;">
 			<c:forEach items="${list}" var="item" varStatus="status">	
 			<div class="class" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
 				<img src="/resources/user/image/classLogo.png" class="col-md-2" width="40" height="50" style=" float: left">
@@ -46,7 +66,7 @@
 			</div>
 			<hr>
 			</c:forEach>
-		</div>
+		</div> --%>
 	</form>	
 	</div>
 	<div class="col-md-5">
@@ -73,7 +93,9 @@
 				</div>
 			</div>
 		</div> 
-		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
+		<c:if test="${sessTeacher eq 1}">
+			<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
+		</c:if>
 		</div>
 
 	</div>
@@ -110,7 +132,7 @@ $("#btnLogout").on("click", function(){
 		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "/index";
+				location.href = "/";
 			} else {
 				// by pass
 			}

@@ -36,22 +36,43 @@
 	
 	<div id="classNotice" style=" cursor: default;">
 		<h5 style="font-weight: bold; margin-bottom: 30px;">내 클래스 공지 알림</h5>
-		<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
-		<c:if test="${sessSeq eq itemPost.mmSeq}">
-		<c:forEach items="${list}" var="item" varStatus="status" >
-		<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
-			<div class="mb-2">
-			<span style="font-size: 20px; font-weight: bold; padding-top: 25px;"><c:out value="${item.ctcsName}"/></span></div>
-		</c:if>	
-		</c:forEach>
-			<div>	
-				<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/>
-				<p id="content"><c:out value="${itemPost.ctptContent}"/></p>
-				<p id="date"><fmt:formatDate value="${itemPost.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
-				<hr style="color: gray;">
-			</div>
-		</c:if>	
-	</c:forEach>
+		<c:choose>
+			<c:when test="${fn:length(list) eq 0}">공지가 없습니다!</c:when>
+			<c:otherwise>		
+				<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
+					<c:if test="${sessSeq eq itemPost.mmSeq}">
+					<c:forEach items="${list}" var="item" varStatus="status" >
+					<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
+						<div class="mb-2">
+						<span style="font-size: 20px; font-weight: bold; padding-top: 25px;"><c:out value="${item.ctcsName}"/></span></div>
+					</c:if>	
+					</c:forEach>
+						<div>	
+							<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/>
+							<p id="content"><c:out value="${itemPost.ctptContent}"/></p>
+							<p id="date"><fmt:formatDate value="${itemPost.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+							<hr style="color: gray;">
+						</div>
+					</c:if>	
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+<%-- 		<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
+			<c:if test="${sessSeq eq itemPost.mmSeq}">
+			<c:forEach items="${list}" var="item" varStatus="status" >
+			<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
+				<div class="mb-2">
+				<span style="font-size: 20px; font-weight: bold; padding-top: 25px;"><c:out value="${item.ctcsName}"/></span></div>
+			</c:if>	
+			</c:forEach>
+				<div>	
+					<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/>
+					<p id="content"><c:out value="${itemPost.ctptContent}"/></p>
+					<p id="date"><fmt:formatDate value="${itemPost.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+					<hr style="color: gray;">
+				</div>
+			</c:if>	
+		</c:forEach> --%>
 	</div>
 	</div>
 	<div class="col-md-5">
@@ -69,7 +90,7 @@
 			</c:forEach>
 		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
 		
-		<div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div>
+		<c:if test="${sessTeacher eq 1}"><div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div></c:if>
 		</div>
 	</form>	
 	
