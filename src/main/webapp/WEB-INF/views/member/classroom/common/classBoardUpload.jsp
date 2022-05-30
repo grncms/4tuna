@@ -147,7 +147,7 @@ input:checked+.slider:before {
 									<button type="button" class="btn btn-outline-secondary btn-sm" id="showUrl" name="showUrl">
 										<i class="fa-solid fa-video fa-2x"></i>
 									</button>
-									
+																		
 									
 									
 								
@@ -237,8 +237,10 @@ input:checked+.slider:before {
 								<div>게시글 설정</div>
 								<div>공지 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
 								<br>
-								<div>예약 <label class="switch"> <input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span>
-									</label> <input type="datetime" class="form-control" placeholder="2022.04.28 (오전 03:16)" style="margin-top: 15px;">
+								<div>예약 <label class="switch">
+							
+								<input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span>
+									</label> <input type="datetime" class="form-control" id="ctptReservation" name="ctptReservation" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
 								</div>
 								<br>
 								<div>관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
@@ -250,7 +252,7 @@ input:checked+.slider:before {
 							<!-- 게시글설정 끝 -->
 							<div>
 								<input type="button" id="ctptReservationNy" name="ctptReservationNy" value="" style="display:none">
-								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="postUploadSubmit('temp')">임시저장</button>
+								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="postUploadSubmit('temp')">예약/임시저장</button>
 								<button type="button" class="basic_button w-100" onclick="postUploadSubmit('submit')">등록</button>
 							</div>
 						</div>
@@ -289,6 +291,7 @@ input:checked+.slider:before {
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script src="/resources/common/js/sb-admin-2.min.js"></script> 
 <script type="text/javascript">
+
 
 $("#originalName").hide();
 $("#showUrl").on("click", function(){

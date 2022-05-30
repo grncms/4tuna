@@ -183,6 +183,7 @@
 			,ctptContent
 			,regDateTime
 			,ctptReservationNy
+			,ctptReservation
 			,ctboSeq
 			,ctptDelNy
 		) VALUES (
@@ -192,6 +193,7 @@
 			,#{ctptContent}
 			,now()
 			,#{ctptReservationNy}
+			,#{ctptReservation}
 			,#{ctboSeq}
 			,0
 		)	
@@ -280,7 +282,7 @@
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
 	
-		<select id="HomeworkSubmit" resultMap="resultMapObj">
+<select id="HomeworkSubmit" resultMap="resultMapObj">
 		SELECT
 			a.cthsSeq
 			,a.cthsTitle
@@ -298,7 +300,7 @@
 			LEFT JOIN ctHomeworkPost b on b.cthpSeq = a.cthpSeq
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
-	</select>
+	</select>	
 <!-- 과제제출(학생) -->
 <insert id="insertHomeworkSubmit">
 	insert into ctHomeworkSubmit(
