@@ -30,7 +30,7 @@ public class ZoomController {
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
 		httpURLConnection.setRequestMethod("GET");
-		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2NTQxNzAxMDcsImlhdCI6MTY1MzU2NTMwNn0.wvBMxXJcOj83ZTjwOPAPVyxSBkj5OxDG36y9lA0miis");
+//		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2NTQxNzAxMDcsImlhdCI6MTY1MzU2NTMwNn0.wvBMxXJcOj83ZTjwOPAPVyxSBkj5OxDG36y9lA0miis");
 		
 		BufferedReader bufferedReader;
 		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
