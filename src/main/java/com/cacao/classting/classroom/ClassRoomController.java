@@ -395,17 +395,28 @@ public class ClassRoomController {
 	public String homeworkReport(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
 			HttpSession httpSession) throws Exception {
 		dto.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		String classSeq = dto.getCtcsSeq();
-		List<ClassRoom> homeworkList = service.HomeworkSubmit(classSeq);
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		List<ClassRoom> homeworkList = service.selectListHomework(vo); //클래스에 배부된 숙제 목록
+
+		List<ClassRoom> writerList = service.homeworkWriter(dto); //클래스에 배부된 숙제를 한 사람 목록
 		
 		
+		Map slt = new HashMap();
+		for(int i = 0 ; i < writerList.size(); i ++) {
+			ClassRoom writer = writerList.get(i);
+				dto.setCthsWriter((writer.getCthsWriter())  );
+				List<ClassRoom> submitList = service.homeworkSubmit(dto); // 한사람의 클래스에서 숙제의 제출 목록 
+				System.out.println("제출한 사람 이름:" + submitList.get(0).getCtcmName());
+				System.out.println("제출한 과제 번호 : " + submitList.get(0).getCthpSeq()); 
+				slt.put(writer.getCtcmName(), submitList);
+					
+				
+			}
 		
-		model.addAttribute("homeworkList", homeworkList);
-		
-		
-		
-		
-		
+		model.addAttribute("submitList", slt);
+		model.addAttribute("homeworkList",homeworkList);
+	
+
 		return "member/classroom/teacher/classHomeworkReport";
 	}
 

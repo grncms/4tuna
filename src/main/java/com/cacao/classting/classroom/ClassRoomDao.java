@@ -100,7 +100,11 @@ public class ClassRoomDao {
 		return sqlSession.selectList(namespace + ".homeworkMember" , dto);
 	}
 
+	//과제리포트
 	
+	public List<ClassRoom> homeworkWriter(ClassRoom dto){
+		return sqlSession.selectList(namespace + ".homeworkWriter" , dto);
+	}
 //게시글
 	public int insertPost(ClassRoom dto) {
 		return sqlSession.insert(namespace+ ".insertPost", dto);
@@ -114,8 +118,8 @@ public class ClassRoomDao {
 		List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListReserv",vo);
 		return list;
 		}
-	public List<ClassRoom> HomeworkSubmit(String ClassSeq){
-		return sqlSession.selectList(ClassSeq);
+	public List<ClassRoom> homeworkSubmit(ClassRoom dto){
+		return sqlSession.selectList(namespace + ".homeworkSubmit",dto);
 	}
 
 }

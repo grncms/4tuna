@@ -58,7 +58,7 @@ public interface ClassRoomService {
 	public int updateHomeworkSubmitScore(ClassRoom dto) throws Exception;
 	public int updateHomeworkSubmit(ClassRoom dto) throws Exception;
 	
-	public List<ClassRoom> HomeworkSubmit(String ClassSeq) throws Exception;
+	public List<ClassRoom> homeworkSubmit(ClassRoom dto) throws Exception;
 	public int insertUrl(ClassRoom dto) throws Exception;
 	public ClassRoom selectOneClassPostUrl(ClassRoomVo vo) throws Exception;
 	
@@ -67,7 +67,8 @@ public interface ClassRoomService {
 	public int attendance(ClassRoom dto) throws Exception;
 	public int today(ClassRoom dto) throws Exception;
 	public List<ClassRoom> enterLog(Map<String, String> dates) throws Exception;
-	
+// 과제 리포트
+	public List<ClassRoom> homeworkWriter(ClassRoom dto) throws Exception;
 	
 //게시글등록
 	public int insertPost(ClassRoom dto) throws Exception;

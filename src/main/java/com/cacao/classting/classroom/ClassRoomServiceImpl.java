@@ -270,8 +270,13 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 	@Override
-	public List<ClassRoom> HomeworkSubmit(String ClassSeq) throws Exception {
-		return dao.HomeworkSubmit(ClassSeq);
+	public List<ClassRoom> homeworkSubmit(ClassRoom dto) throws Exception {
+		return dao.homeworkSubmit(dto);
+	}
+
+	@Override
+	public List<ClassRoom> homeworkWriter(ClassRoom dto) throws Exception {
+		return dao.homeworkWriter(dto);
 	}
 
 

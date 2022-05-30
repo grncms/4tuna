@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +28,6 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
-
 .container_wrapper>div:first-child {
 	padding: 0;
 }
@@ -53,120 +52,123 @@
 </head>
 <body id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-	<!-- Sidebar -->
-	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
+		<!-- Sidebar -->
+		<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp"%>
 
-	<!-- Content Wrapper -->
-	<div id="content-wrapper" class="d-flex flex-column">
-		
-	<!-- Topbar -->	
-	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-		<div class="container-fluid">
-			<div class="row" id="posting">
-				<div class="col-12">
-				<div class="container_title shadow mb-4">
-					<div class="header">과제 리포트</div>
-					<div class="body">클래스에 배부된 모든 과제 현황을 확인할 수 있어요.</div>
-				</div>
+			<!-- Topbar -->
+			<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp"%>
 
-				<div class="container_wrapper shadow p-0">
-					<div class="container_base">
-						<div class="homework_check">
-							<div class="homework_table table-responsive">
-								<table class="table m-0" id="dataTable" width="100%" cellspacing="0">
-									<thead>
-										<tr>
-											<th>전체 5명</th>
-									<c:forEach items="${homeworkList }" var = "homeworkList" varStatus = " st">
-											<th><c:out value="${homeworkList.cthpTitle }"/></th>
-									</c:forEach>
-										</tr>
-										<tr>
-											<td>평균 점수</td>
-											<td>0/100점</td>
-											<td>50/100점</td>
-											<td>40/100점</td>
-											<td>0/100점</td>
-										</tr>
-										<tr>
-											<td>제출률</td>
-											<td>0%</td>
-											<td>0%</td>
-											<td>50%</td>
-											<td>100%</td>
-										</tr>
-									</thead>
-									<tbody>
-									<c:forEach items="${homeworkList }" var = " homeworkList" var = "st">
-										<c:forEach items="${submitList }" var = "submitList" var = "stt">
-										<tr>
-											<td><c:out value="${homeworkList.ctcmName }"/></td>
-											<td>
-												<div>
-													<span class="badge bg-danger">미제출</span>
-												</div>
-											</td>
-										</tr>
-										</c:forEach>
-									</c:forEach>	
-									</tbody>
-								</table>
+			<div class="container-fluid">
+				<div class="row" id="posting">
+					<div class="col-12">
+						<div class="container_title shadow mb-4">
+							<div class="header">과제 리포트</div>
+							<div class="body">클래스에 배부된 모든 과제 현황을 확인할 수 있어요.</div>
+						</div>
+
+						<div class="container_wrapper shadow p-0">
+							<div class="container_base">
+								<div class="homework_check">
+									<div class="homework_table table-responsive">
+										<table class="table m-0" id="dataTable" width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th>전체 5명</th>
+													<c:forEach items="${homeworkList }" var="homeworkList" varStatus=" st">
+														<th><c:out value="${homeworkList.cthpTitle }" /></th>
+													</c:forEach>
+
+												</tr>
+												<tr>
+													<td>평균 점수</td>
+													<td>0/100점</td>
+													<td>50/100점</td>
+													<td>40/100점</td>
+													<td>0/100점</td>
+												</tr>
+												<tr>
+													<td>제출률</td>
+													<td>0%</td>
+													<td>0%</td>
+													<td>50%</td>
+													<td>100%</td>
+												</tr>
+
+
+
+											</thead>
+
+											<tbody>
+												<c:forEach items="${submitList }" var="sl" varStatus=" st">
+
+													<tr>
+														<td><c:out value="${sl.key}" /></td>
+														<c:forEach items="${ sl.value }" var="sl2" varStatus="st2">
+															<td><c:out value="${sl2.cthsScore }" /></td>
+														</c:forEach>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
 		</div>
 	</div>
-</div>
 
 
 
 
 
 
-<!-- End of Page Wrapper -->
-<!-- Bootstrap core JavaScript-->
-<script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
-<script src="../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- End of Page Wrapper -->
+	<!-- Bootstrap core JavaScript-->
+	<script src="../../../../resources/common/vendor/jquery/jquery.min.js"></script>
+	<script src="../../../../resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
-<script type="text/javascript">
+	<!-- Custom scripts for all pages-->
+	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
+	<script type="text/javascript">
+		$("#btnLogout").on(
+				"click",
+				function() {
 
-
-
-$("#btnLogout").on("click", function(){
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/member/logoutProc"
-		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/";
-			} else {
-				// by pass
-			}
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});	
-});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
+					$.ajax({
+						async : true,
+						cache : false,
+						type : "post",
+						url : "/member/logoutProc"
+						/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+						,
+						success : function(response) {
+							if (response.rt == "success") {
+								location.href = "/";
+							} else {
+								// by pass
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							alert("ajaxUpdate " + jqXHR.textStatus + " : "
+									+ jqXHR.errorThrown);
+						}
+					});
+				});
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
