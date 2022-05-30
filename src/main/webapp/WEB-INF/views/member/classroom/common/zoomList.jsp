@@ -90,31 +90,38 @@
 				<div class="container_base">
 					<div class="body">실시간 수업 목록</div>
 				</div>	
-				<c:forEach items="${list}" var="item" varStatus="status">
-					<div class="container_base">
-						<div class="homework list">
-							<div class="header" style="cursor: default;">
-								<span class='badge badge_hw'>실시간 수업</span>
-								<div><c:out value = "${item.start_time}"/></div>
+					<c:choose>
+						<c:when test="${fn:length(list) eq 0}">
+							<div class="container_base">
+								<div class="homework list mt-5 mb-5" >실시간 수업이 없습니다!</div>
 							</div>
-							<div class="body mt-2" style="cursor: pointer;">
-								<p style="font-size: 22px; color: black; font-weight: bold;"><c:out value="${item.topic}"/></p>
-								<br>
-								<p style="font-size: 15px; color: black;">시작 시간 : <c:out value = "${item.start_time}"/></p>
-								<p style="font-size: 15px; color: black; display: inline;">진행 시간 : <c:out value="${item.duration}"/> 분</p>
-								<button type="button" class="btn btn-zoom" onclick="location.href='${item.join_url}'">수업 참여 하기</button>
-							</div>
-							<div class="footer mt-4 mb-2">
-							</div>
-						</div>
-					</div>
-				</c:forEach>	
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="item" varStatus="status">
+								<div class="container_base">
+									<div class="homework list">
+										<div class="header" style="cursor: default;">
+											<span class='badge badge_hw'>실시간 수업</span>
+											<div><c:out value = "${item.start_time}"/></div>
+										</div>
+										<div class="body mt-2" style="cursor: pointer;">
+											<p style="font-size: 22px; color: black; font-weight: bold;"><c:out value="${item.topic}"/></p>
+											<br>
+											<p style="font-size: 15px; color: black;">시작 시간 : <c:out value = "${item.start_time}"/></p>
+											<p style="font-size: 15px; color: black; display: inline;">진행 시간 : <c:out value="${item.duration}"/> 분</p>
+											<button type="button" class="btn btn-zoom" onclick="location.href='${item.join_url}'">수업 참여 하기</button>
+										</div>
+										<div class="footer mt-4 mb-2">
+										</div>
+									</div>
+								</div>
+							</c:forEach>	
+						</c:otherwise>
+					</c:choose>	
 				</div>
-			</form>	
+				</form>	
 			</div>
 		</div>
-		<!-- End of Main Content -->
-
 	</div>
 	</div>
 </div>

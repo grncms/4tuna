@@ -81,6 +81,9 @@
 	<input type="hidden" id="mmSeq" name="mmSeq">
 		<div id="classList" style="cursor: default;">
 		<h5 style="font-weight: bold; margin-bottom: 30px; cursor: default;">클래스 바로가기</h5>
+		<c:choose>
+			<c:when test="${fn:length(list) eq 0}"><p>클래스가 없습니다!</p></c:when>
+			<c:otherwise>	
 			<c:forEach items="${list}" var="item" varStatus="status">	
 			<div class="class" style="cursor: pointer;" onclick="location.href='javascript:goClass(<c:out value="${item.ctcsSeq}"/>)'">
 				<img src="/resources/user/image/classLogo.png" class="" width="50" height="50" style="border-radius: 7px; float: left">
@@ -88,8 +91,11 @@
 			</div>
 			<hr>
 			</c:forEach>
+			</c:otherwise>
+		</c:choose>	
+			
+			
 		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
-		
 		<c:if test="${sessTeacher eq 1}"><div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div></c:if>
 		</div>
 	</form>	

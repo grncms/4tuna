@@ -72,29 +72,37 @@
 					<input type="hidden" id=cthpSeq name="cthpSeq">
 					<input type="hidden" id="mmSeq" name="mmSeq">
 					<div class="card shadow mb-4 ">
-					<c:forEach items="${list}" var="item" varStatus="status">
-						<div class="container_base">
-							<div class="homework list">
-								<div class="header" style="cursor: default;">
-									<div class="profile_box">
-										<img class="profile" src="/resources/common/image/test.jpg" />
+						<c:choose>
+							<c:when test="${fn:length(list) eq 0}">
+								<div class="container_base">
+									<div class="homework list mt-5 mb-5" >과제가 없습니다!</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${list}" var="item" varStatus="status">
+									<div class="container_base">
+										<div class="homework list">
+											<div class="header" style="cursor: default;">
+												<div class="profile_box">
+													<img class="profile" src="/resources/common/image/test.jpg" />
+												</div>
+												<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+													<c:if test="${item.cthpWriter eq itemMember.ctcmSeq}"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+												</c:forEach>
+												<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+											</div>
+											<div class="body mt-2 mb-5" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
+												<span class='badge badge_hw'>과제</span>
+												<!-- <span class='badge badge_todayend'>오늘 종료</span> -->
+												<span><c:out value="${item.cthpTitle}"/></span>
+												<div>마감 : <c:out value="${item.cthpEndDateTime}"/></div>
+												<br><p><c:out value="${item.cthpDesc}"/></p>
+											</div>
+										</div>
 									</div>
-									<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<c:if test="${item.cthpWriter eq itemMember.ctcmSeq}"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
-									</c:forEach>
-									<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-								</div>
-								<div class="body mt-2 mb-5" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.cthpSeq}"/>)'">
-									<span class='badge badge_hw'>과제</span>
-									<!-- <span class='badge badge_todayend'>오늘 종료</span> -->
-									<span><c:out value="${item.cthpTitle}"/></span>
-									<div>마감 : <c:out value="${item.cthpEndDateTime}"/></div>
-<%-- 									<div>마감 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
-									<br><p><c:out value="${item.cthpDesc}"/></p>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					</form>
 				</div>

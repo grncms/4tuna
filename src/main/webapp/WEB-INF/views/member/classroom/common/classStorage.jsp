@@ -67,69 +67,85 @@
            <div class="container_base">
 				<div class="body">예약한 글</div>
 			</div>
-			<c:forEach items="${list2}" var="item" varStatus="status">
-			<c:if test="${item.ctptReservation ne null && item.ctptWriter eq ctcmSeq}">
-			    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
-				예약 날짜/시간 : <fmt:formatDate value="${item.ctptReservation}" pattern="yyyy-MM-dd HH:mm:ss"/>							
-					<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
-					<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
-					<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
-					<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
-				<div class="homework_listitem mt-3">
-				    <div class="title_hw" >
-				        <div class="col-md-10 col-lg-10" id="classInfo">
-				        	<b><c:out value="${item.ctptTitle}"/></b><br>
-				        	<span style="font-size: 14px;"><c:out value="${item.ctptContent}"/></span>
-				        	
-				        	<p><p><span style="color: #c8c8c8; font-size: 14px;">저장한 시간 : <fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-			        	</div>
-			            <div class="dropdown no-arrow">
-			                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-			                </a>
-			                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-			                    aria-labelledby="dropdownMenuLink">
-			                    <a class="dropdown-item text-danger" href="#">삭제</a>
-			                </div>
-		               </div>
-			        </div>
-			    </div>
-				</div>	
-				
-			</c:if>	
-			</c:forEach>
+			<c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<div class="container_base">
+						<div class="homework list mt-5 mb-5" >예약한 글이 없습니다!</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list2}" var="item" varStatus="status">
+						<c:if test="${item.ctptReservation ne null && item.ctptWriter eq ctcmSeq}">
+						    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
+								예약 날짜/시간 : <fmt:formatDate value="${item.ctptReservation}" pattern="yyyy-MM-dd HH:mm:ss"/>							
+									<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
+									<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
+									<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+									<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
+								<div class="homework_listitem mt-3">
+								    <div class="title_hw" >
+								        <div class="col-md-10 col-lg-10" id="classInfo">
+								        	<b><c:out value="${item.ctptTitle}"/></b><br>
+								        	<span style="font-size: 14px;"><c:out value="${item.ctptContent}"/></span>
+								        	
+								        	<p><p><span style="color: #c8c8c8; font-size: 14px;">저장한 시간 : <fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+							        	</div>
+							            <div class="dropdown no-arrow">
+							                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+							                </a>
+							                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+							                    aria-labelledby="dropdownMenuLink">
+							                    <a class="dropdown-item text-danger" href="#">삭제</a>
+							                </div>
+						               </div>
+							        </div>
+							    </div>
+							</div>	
+						</c:if>	
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
             <div class="container_base">
 				<div class="body">임시 저장한 글</div>
 			</div>
-			<c:forEach items="${list}" var="item" varStatus="status">
-   			<c:if test="${item.ctptReservation eq null && item.ctptWriter eq ctcmSeq}">
-			    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
-			    임시 저장 중
-   					<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
-					<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
-					<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
-					<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
-								<div class="homework_listitem mt-3">
-			    <div class="title_hw" >
-			        <div class="col-md-10 col-lg-10" id="classInfo">
-			        	<b><c:out value="${item.ctptTitle}"/></b><br>
-			        	<span style="font-size: 14px;"><c:out value="${item.ctptContent}"/></span>
-			        	<p><p><span style="color: #c8c8c8; font-size: 14px;">저장한 시간 : <fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-			        	</div>
-			            <div class="dropdown no-arrow">
-			                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                </a>
-			                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-			                    aria-labelledby="dropdownMenuLink">
-			                    <a class="dropdown-item text-danger" href="#">삭제</a>
-			                </div>
-		               </div>
-			        </div>
-			    </div>
-				</div>	
-				
-			</c:if>	
-			</c:forEach>
+			<c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<div class="container_base">
+						<div class="homework list mt-5 mb-5" >임시 저장 글이 없습니다!</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list}" var="item" varStatus="status">
+			   			<c:if test="${item.ctptReservation eq null && item.ctptWriter eq ctcmSeq}">
+						    <div class="container_base" onclick="location.href='/member/class/common/postedit';">
+							    임시 저장 중
+				   					<c:if test="${item.ctboSeq eq 5}"><span class='badge badge_notice'>공지</span></c:if>
+									<c:if test="${item.ctboSeq eq 1}"><span class='badge badge_graded'>자유공간</span></c:if>
+									<c:if test="${item.ctboSeq eq 2}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+									<c:if test="${item.ctboSeq eq 3}"><span class='badge badge_after3'>활동사진</span></c:if>
+												<div class="homework_listitem mt-3">
+							    <div class="title_hw" >
+							        <div class="col-md-10 col-lg-10" id="classInfo">
+							        	<b><c:out value="${item.ctptTitle}"/></b><br>
+							        	<span style="font-size: 14px;"><c:out value="${item.ctptContent}"/></span>
+							        	<p><p><span style="color: #c8c8c8; font-size: 14px;">저장한 시간 : <fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+							        	</div>
+							            <div class="dropdown no-arrow">
+							                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							                </a>
+							                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+							                    aria-labelledby="dropdownMenuLink">
+							                    <a class="dropdown-item text-danger" href="#">삭제</a>
+							                </div>
+						               </div>
+							        </div>
+							    </div>
+							</div>	
+						</c:if>	
+					</c:forEach>
+			</c:otherwise>
+			</c:choose>
 		    <!-- Card Body -->
 		    </div>
 		</div>

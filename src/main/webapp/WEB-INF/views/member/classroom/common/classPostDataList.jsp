@@ -70,35 +70,45 @@
 							</div>
 						</div>
 						<div class="card shadow mb-4">
-							<c:forEach items="${list}" var="item" varStatus="status">
-							<c:if test="${item.ctboTypeCd eq 20}">
-								<div class="container_base">
-									<div class="homework list">
-										<div class="header" style="cursor: default;">
-											<div class="profile_box">
-												<img class="profile" src="../../../../../resources/common/image/test.jpg" />
-											</div>
-											<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-												<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
-											</c:forEach>
-											<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-										</div>
-										<div class="body mt-2" style="cursor: pointer;">
-											<span class='badge badge_hw'>학습자료</span>
-											<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
-											<br><br>
-											<p><c:out value="${item.ctptContent}"/></p>
-											<br>
-										</div>
-										<div class="footer mt-3" style="cursor: default;">
-											<i class="fa-regular fa-comment"> 2</i>&nbsp;
-											<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
-											<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
-											<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
-										</div>
+							<c:choose>
+								<c:when test="${fn:length(list) eq 0}">
+									<div class="container_base">
+										<div class="homework list mt-5 mb-5" >게시물이 없습니다!</div>
 									</div>
-								</div>
-							</c:if></c:forEach>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${list}" var="item" varStatus="status">
+										<c:if test="${item.ctboTypeCd eq 20}">
+											<div class="container_base">
+												<div class="homework list">
+													<div class="header" style="cursor: default;">
+														<div class="profile_box">
+															<img class="profile" src="../../../../../resources/common/image/test.jpg" />
+														</div>
+														<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+															<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+														</c:forEach>
+														<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+													</div>
+													<div class="body mt-2" style="cursor: pointer;">
+														<span class='badge badge_hw'>학습자료</span>
+														<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
+														<br><br>
+														<p><c:out value="${item.ctptContent}"/></p>
+														<br>
+													</div>
+													<div class="footer mt-3" style="cursor: default;">
+														<i class="fa-regular fa-comment"> 2</i>&nbsp;
+														<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
+														<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
+														<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
+													</div>
+												</div>
+											</div>
+										</c:if>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>	
 						</div>
 					</div>
 				</div>
