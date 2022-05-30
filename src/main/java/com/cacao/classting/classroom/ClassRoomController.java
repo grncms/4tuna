@@ -176,17 +176,19 @@ public class ClassRoomController {
 //			pseq에 ctptseq 값 담기
 			String pseq= list.get(list.size()-1).getCtptSeq();
 			dto.setPseq(pseq);
-			
+//		유튜브 url 뒤 id값만 잘라서 넣기	
 			String name = dto.getOriginalName();
-			if (name.length() > 40) {
-			name = name.substring(32, 43);
-				dto.setOriginalName(name);
-				System.out.println("11111");
-			} else {
-			name = name.substring(24, 35);
-				System.out.println("22222");
-				dto.setOriginalName(name);
-			}
+			if (name.length() == 43) {
+				name = name.substring(32, 43);
+					dto.setOriginalName(name);
+					System.out.println("11111");
+				} else if (name.length() ==35){
+				name = name.substring(24, 35);
+					System.out.println("22222");
+					dto.setOriginalName(name);
+				}	else {
+					dto.setOriginalName(null);
+				}
 			service.insertUrl(dto);
 
 
