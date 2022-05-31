@@ -397,23 +397,51 @@ public class ClassRoomController {
 		dto.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		List<ClassRoom> homeworkList = service.selectListHomework(vo); //클래스에 배부된 숙제 목록
-
-		List<ClassRoom> writerList = service.homeworkWriter(dto); //클래스에 배부된 숙제를 한 사람 목록
+		List<ClassRoom> submitList = service.homeworkSubmit(dto); 
+		List<ClassRoom> writerList = service.selectListClassMember(vo); //클래스 목록
 		
 		
-		Map slt = new HashMap();
-		for(int i = 0 ; i < writerList.size(); i ++) {
-			ClassRoom writer = writerList.get(i);
-				dto.setCthsWriter((writer.getCthsWriter())  );
-				List<ClassRoom> submitList = service.homeworkSubmit(dto); // 한사람의 클래스에서 숙제의 제출 목록 
-				System.out.println("제출한 사람 이름:" + submitList.get(0).getCtcmName());
-				System.out.println("제출한 과제 번호 : " + submitList.get(0).getCthpSeq()); 
-				slt.put(writer.getCtcmName(), submitList);
-					
+		Map submitMap = new HashMap();
+		for(int i=0; i < writerList.size(); i++ ) {
+			ClassRoom tmp = writerList.get(i);
+			Map tmpMap = new HashMap();
+			for(int j =0; j<submitList.size();j++) {
+				ClassRoom submit = submitList.get(j);
 				
+				if(String.valueOf(submit.getCthsWriter()).equals(tmp.getCtcmSeq())) {
+					
+					tmpMap.put(submit.getCthpSeq(),submit.getCthsScore());
+				}
 			}
+			submitMap.put(tmp.getCtcmName(), tmpMap);
+		}
 		
-		model.addAttribute("submitList", slt);
+		
+		
+		System.out.println(submitMap.toString());
+		
+		
+		for(int i =0 ; i < writerList.size();i++) {
+			String name = writerList.get(i).getCtcmName();
+			Map tmpMap = new HashMap();
+			tmpMap = (Map) submitMap.get(name);
+			for(int j =0 ; j<homeworkList.size();j++) {
+				ClassRoom homework = homeworkList.get(j);
+				String homeworkSeq = homework.getCthpSeq();
+				if(!tmpMap.containsKey(homeworkSeq)) 
+					tmpMap.put(homeworkSeq, -1);
+			}
+			
+		}
+		
+		
+		for(int i = 0;i<submitList.size();i++) {
+			
+			
+		}
+		System.out.println(submitMap.toString());		
+
+		model.addAttribute("submitMap", submitMap);
 		model.addAttribute("homeworkList",homeworkList);
 	
 

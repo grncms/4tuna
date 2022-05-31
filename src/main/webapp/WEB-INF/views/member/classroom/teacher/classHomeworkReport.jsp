@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -79,25 +81,23 @@
 										<table class="table m-0" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
-													<th>전체 5명</th>
+													
+													<th>전체<c:out value="${fn:length(submitMap) }" />명</th>
 													<c:forEach items="${homeworkList }" var="homeworkList" varStatus=" st">
-														<th><c:out value="${homeworkList.cthpTitle }" /></th>
+														<th><c:out value="${homeworkList.cthpTitle }" /> <input type="hidden" value="${homeworkList.cthpSeq}" /></th>
 													</c:forEach>
-
 												</tr>
 												<tr>
 													<td>평균 점수</td>
 													<td>0/100점</td>
 													<td>50/100점</td>
 													<td>40/100점</td>
-													<td>0/100점</td>
 												</tr>
 												<tr>
 													<td>제출률</td>
 													<td>0%</td>
 													<td>0%</td>
 													<td>50%</td>
-													<td>100%</td>
 												</tr>
 
 
@@ -105,12 +105,23 @@
 											</thead>
 
 											<tbody>
-												<c:forEach items="${submitList }" var="sl" varStatus=" st">
+												<c:forEach items="${submitMap }" var="sm" varStatus=" st">
 
 													<tr>
-														<td><c:out value="${sl.key}" /></td>
-														<c:forEach items="${ sl.value }" var="sl2" varStatus="st2">
-															<td><c:out value="${sl2.cthsScore }" /></td>
+														<td><c:out value="${sm.key}" /></td>
+														<c:set value="${sm.value }" var="submitList" />
+														<c:forEach items="${submitList}" var="sl2" varStatus="st2">
+															<td><c:choose>
+																	<c:when test="${sl2.value eq -1 }">
+																		<c:out value="미제출" />
+																	</c:when>
+																	<c:when test="${empty sl2.value  }">
+																		<c:out value="채점중" />
+																	</c:when>
+																	<c:otherwise>
+																		<c:out value="${sl2.value }" />
+																	</c:otherwise>
+																</c:choose></td>
 														</c:forEach>
 													</tr>
 												</c:forEach>
@@ -166,6 +177,14 @@
 						}
 					});
 				});
+
+		var length = $
+		{
+			length
+		};
+		for (var i = 0; i < length; i++) {
+
+		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>

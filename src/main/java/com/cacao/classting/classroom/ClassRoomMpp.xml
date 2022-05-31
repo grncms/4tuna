@@ -293,7 +293,7 @@
 		LEFT JOIN
 		ctClassMember b on a.cthsWriter = b.ctcmseq
 		WHERE ctcsSeq = #{ctcsSeq}
-		and cthsWriter = #{cthsWriter}
+		<!-- and cthsWriter = #{cthsWriter} -->
 	</select>
 
 	<select id="homeworkWriter" resultMap="resultMapObj">
@@ -378,7 +378,7 @@
 		AND cthpSeq = #{cthpSeq}
 		AND cthsSeq = #{cthsSeq}
 	</update>
-
+	
 	<!-- 과제제출 보기(선생님->학생것) -->
 	<select id="selectOneHomeworkSubmit" resultMap="resultMapObj">
 		select
@@ -458,7 +458,9 @@
 		WHERE 1=1
 		AND cthpSeq = #{cthpSeq}
 	</select>
-
+	<select id="homeworkAvg" resultMap = "resultMapObj">
+		
+	</select>
 
 	<!-- 예약/임시저장 리스트 --> <!-- 임시저장만 -->
 	<select id="selectListStorage" resultMap="resultMapObj">
