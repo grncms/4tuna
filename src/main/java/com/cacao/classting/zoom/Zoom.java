@@ -6,6 +6,7 @@ public class Zoom {
     private String id;
     private String host_id;
     private String topic;
+    private String agenda;
     private Integer type;
     private String start_time;
     private Integer duration;
@@ -72,6 +73,12 @@ public class Zoom {
 	}
 	public void setJoin_url(String join_url) {
 		this.join_url = join_url;
+	}
+	public String getAgenda() {
+		return agenda;
+	}
+	public void setAgenda(String agenda) {
+		this.agenda = agenda;
 	}
 	
     

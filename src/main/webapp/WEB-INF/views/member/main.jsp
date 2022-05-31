@@ -41,12 +41,12 @@
 			<c:otherwise>		
 				<c:forEach items="${listNotice}" var="itemPost" varStatus="status">
 					<c:if test="${sessSeq eq itemPost.mmSeq}">
-					<c:forEach items="${list}" var="item" varStatus="status" >
-					<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
-						<div class="mb-2">
-						<span style="font-size: 20px; font-weight: bold; padding-top: 25px;"><c:out value="${item.ctcsName}"/></span></div>
-					</c:if>	
-					</c:forEach>
+						<c:forEach items="${list}" var="item" varStatus="status" >
+						<c:if test="${item.ctcsSeq eq itemPost.ctcsSeq}">
+							<div class="mb-2">
+							<span style="font-size: 20px; font-weight: bold; padding-top: 25px;"><c:out value="${item.ctcsName}"/></span></div>
+						</c:if>	
+						</c:forEach>
 						<div>	
 							<span class="badge bg-info text-light mb-3">공지</span> <c:out value="${itemPost.ctptTitle}"/>
 							<p id="content"><c:out value="${itemPost.ctptContent}"/></p>

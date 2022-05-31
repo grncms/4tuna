@@ -78,9 +78,9 @@
 				<div class="container_title shadow mb-4">
 					<div class="header">실시간 수업</div>
 					<div class="body">클래스의 실시간 수업목록을 확인할 수 있어요.</div>
-<%-- 					<div class="footer">
-						<c:if test="${teacherNy eq 1}"><button type="button" class="basic_button" onclick="location.href='/classBoardUpload'"><i class="fa-solid fa-video"></i>실시간 수업 만들기</button></c:if>
-					</div> --%>
+					<div class="footer">
+						<c:if test="${teacherNy eq 1}"><button type="button" class="basic_button w-25" onclick="location.href='/zoomCreate'"><i class="fa-solid fa-video"></i> 실시간 수업 생성</button></c:if>
+					</div>
 				</div>
 				<form id="noticeList" name="noticeList" method="post">
 				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
@@ -98,6 +98,7 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${list}" var="item" varStatus="status">
+								<c:if test="${item.agenda eq ctcsSeq}">
 								<div class="container_base">
 									<div class="homework list">
 										<div class="header" style="cursor: default;">
@@ -115,6 +116,7 @@
 										</div>
 									</div>
 								</div>
+								</c:if>
 							</c:forEach>	
 						</c:otherwise>
 					</c:choose>	

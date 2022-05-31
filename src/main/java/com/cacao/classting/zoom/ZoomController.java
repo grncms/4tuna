@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -30,7 +32,7 @@ public class ZoomController {
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
 		httpURLConnection.setRequestMethod("GET");
-//		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2NTQxNzAxMDcsImlhdCI6MTY1MzU2NTMwNn0.wvBMxXJcOj83ZTjwOPAPVyxSBkj5OxDG36y9lA0miis");
+		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2ODU1MDIwMDAsImlhdCI6MTY1Mzk1ODQwNX0.V1kjHKbBxkK_BcL6JgLRS3hNpvKj98s2uYnwrYvC5eo");
 		
 		BufferedReader bufferedReader;
 		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
@@ -42,24 +44,24 @@ public class ZoomController {
 		StringBuilder stringBuilder = new StringBuilder();
 		String line; 
 		while((line = bufferedReader.readLine()) != null) {
-			System.out.println("line : "+line);
+//			System.out.println("line : "+line);
 			stringBuilder.append(line);
 		}
 		
 		bufferedReader.close();
 		httpURLConnection.disconnect();
 		
-		System.out.println("stringBuilder.toString() : "+stringBuilder.toString());
+//		System.out.println("stringBuilder.toString() : "+stringBuilder.toString());
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
 		
-		System.out.println("###################################################################");
+//		System.out.println("###################################################################");
 		
 		
 		for(String key : map.keySet()) {
 			String value = String.valueOf(map.get(key));
-			System.out.println("[key]: "+key + ", [value]: " + value);
+//			System.out.println("[key]: "+key + ", [value]: " + value);
 		}
 		
 		List<Zoom> list = new ArrayList<Zoom>();
@@ -70,4 +72,53 @@ public class ZoomController {
 		return "/member/classroom/common/zoomList";
 	}
 	
+//	@RequestMapping(value = "/zoomCreate", method = {RequestMethod.POST})
+//	public String zoomCreate(Model model) throws Exception {
+//		
+////		api 호출해서 값을 가져온다.
+//		String apiUrl = "https://api.zoom.us/v2/users/binson1123@naver.com/meetings";
+//		
+//		URL url = new URL(apiUrl);
+//		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+////		httpURLConnection.setRequestMethod("post");
+//		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2ODU1MDIwMDAsImlhdCI6MTY1Mzk1ODQwNX0.V1kjHKbBxkK_BcL6JgLRS3hNpvKj98s2uYnwrYvC5eo");
+//		
+//		BufferedReader bufferedReader;
+//		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
+//			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+//		}else {
+//			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+//		}
+//		
+//		StringBuilder stringBuilder = new StringBuilder();
+//		String line; 
+//		while((line = bufferedReader.readLine()) != null) {
+//			System.out.println("line : "+line);
+//			stringBuilder.append(line);
+//		}
+//		
+//		bufferedReader.close();
+//		httpURLConnection.disconnect();
+//		
+//		System.out.println("stringBuilder.toString() : "+stringBuilder.toString());
+////		
+////		ObjectMapper objectMapper = new ObjectMapper();
+////		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
+////		
+////		System.out.println("###################################################################");
+////		
+////		
+////		for(String key : map.keySet()) {
+////			String value = String.valueOf(map.get(key));
+////			System.out.println("[key]: "+key + ", [value]: " + value);
+////		}
+////		
+////		List<Zoom> list = new ArrayList<Zoom>();
+////		list = (List<Zoom>) map.get("meetings");
+////		
+////		model.addAttribute("list",list);
+////		
+//		return "/member/classroom/common/zoomList";
+//	}
+//	
 }
