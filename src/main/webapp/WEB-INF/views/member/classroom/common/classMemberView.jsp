@@ -65,7 +65,7 @@ margin-left:10px;
 						</div>
 						<div class="body">
 							<div class="col-lg-3" id="classImg">
-								<img src="../../../../../resources/common/image/profile2.png"  width="70" height="70" >
+								<img src="/resources/uploaded/common/profile2.png"  width="70" height="70" >
 							</div>
 							<div class="col-lg-9" id="classInfo">
 								<span style="font-size: 12px;">이 클래스에서만 사용할<br>

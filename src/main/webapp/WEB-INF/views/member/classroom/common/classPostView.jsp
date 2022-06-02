@@ -207,8 +207,21 @@
 										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
 										</c:forEach>
 									</div>
-									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<c:if test="${ctcmSeq eq itemReply.ctrpWriter}">	
+										<div class="dropdown no-arrow d-inline" >
+	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+	                                        </a>
+	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+	                                            aria-labelledby="dropdownMenuLink">
+	                                            <a class="dropdown-item text-danger" href="#">회원탈퇴</a>
+	                                        </div>
+	                                   	</div>
+                                    </c:if>		
+									</div>
 									<div><c:out value="${itemReply.ctrpContent}"/></div>
+
 								</div>
 							</div>
 							</c:forEach>
