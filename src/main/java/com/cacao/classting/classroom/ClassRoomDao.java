@@ -56,13 +56,22 @@ public class ClassRoomDao {
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomework",vo); return list;}
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomeworkSubmit",vo); return list;}
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassMember",vo); return list;}
+	
+//	댓글리스트
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListReply",vo); return list;}
 	public List<ClassRoom> selectListHomeworkReply(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomeworkReply",vo); return list;}
 	public List<ClassRoom> selectListHomeworkSubmitReply(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomeworkSubmitReply",vo); return list;}
 	
+//	댓글삽입
 	public int insertReply(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertReply", dto);}
 	public int insertHomeworkReply(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertHomeworkReply", dto);}
 	public int insertHomeworkSubmitReply(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertHomeworkSubmitReply", dto);}
+	
+//	댓글삭제(update)
+	public int updateReplyUele(ClassRoom dto)  {return sqlSession.update(namespace + ".updateReplyUele", dto);}
+	public int updateHomeworkReplyUele(ClassRoom dto)  {return sqlSession.update(namespace + ".updateHomeworkReplyUele", dto);}
+	public int updateHomeworkSubmitReplyUele(ClassRoom dto)  {return sqlSession.update(namespace + ".updateHomeworkSubmitReplyUele", dto);}
+	
 	
 	
 	public int insertHomeworkSubmit(ClassRoom dto) {return sqlSession.insert(namespace+ ".insertHomeworkSubmit", dto);}

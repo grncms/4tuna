@@ -44,13 +44,21 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
+	
+//	댓글리스트
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomeworkReply(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomeworkSubmitReply(ClassRoomVo vo) throws Exception;
 	
+//	댓글삽입
 	public int insertReply(ClassRoom dto) throws Exception;
 	public int insertHomeworkReply(ClassRoom dto) throws Exception;
 	public int insertHomeworkSubmitReply(ClassRoom dto) throws Exception;
+	
+//	댓글삭제(update)
+	public int updateReplyUele(ClassRoom dto) throws Exception;
+	public int updateHomeworkReplyUele(ClassRoom dto) throws Exception;
+	public int updateHomeworkSubmitReplyUele(ClassRoom dto) throws Exception;
 	
 	
 	public int insertHomeworkSubmit(ClassRoom dto) throws Exception;

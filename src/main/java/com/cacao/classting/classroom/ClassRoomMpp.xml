@@ -140,23 +140,23 @@
 	<!-- 게시물 리스트 -->
 	<select id="selectListPost" resultMap="resultMapObj">
 		SELECT
-		a.ctptSeq
-		,a.ctptTitle
-		,a.ctptWriter
-		,a.ctptContent
-		,a.regDateTime
-		,a.ctptLike1
-		,a.ctptLike2
-		,a.ctptLike3
-		,a.ctptView
-		,a.ctptReservationNy
-		,b.ctboTypeCd
+			a.ctptSeq
+			,a.ctptTitle
+			,a.ctptWriter
+			,a.ctptContent
+			,a.regDateTime
+			,a.ctptLike1
+			,a.ctptLike2
+			,a.ctptLike3
+			,a.ctptView
+			,a.ctptReservationNy
+			,b.ctboTypeCd
 		FROM
-		ctPost a
+			ctPost a
 		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
 		WHERE 1=1
-		AND b.ctcsSeq = #{ctcsSeq}
-		AND a.ctptReservationNy = 0
+			AND b.ctcsSeq = #{ctcsSeq}
+			AND a.ctptReservationNy = 0
 		ORDER BY a.regDateTime
 	</select>
 	<!-- 게시물 보기 -->
@@ -398,23 +398,22 @@
 		and cthsSeq = #{cthsSeq}
 	</select>
 	<!-- 과제제출 보기(학생->본인것) -->
-	<select id="selectOneHomeworkSubmitStudent"
-		resultMap="resultMapObj">
+	<select id="selectOneHomeworkSubmitStudent" resultMap="resultMapObj">
 		select
-		cthsSeq
-		,cthsTitle
-		,cthsWriter
-		,cthsDesc
-		,cthsData
-		,cthsScore
-		,cthsUseNy
-		,cthsDelNy
-		,regDateTime
+			cthsSeq
+			,cthsTitle
+			,cthsWriter
+			,cthsDesc
+			,cthsData
+			,cthsScore
+			,cthsUseNy
+			,cthsDelNy
+			,regDateTime
 		from
-		ctHomeworkSubmit
+			ctHomeworkSubmit
 		where 1=1
-		and cthpSeq = #{cthpSeq}
-		and cthsWriter = #{cthsWriter}
+			and cthpSeq = #{cthpSeq}
+			and cthsWriter = #{cthsWriter}
 	</select>
 	<!-- 과제 제출물 수정 -->
 	<update id="updateHomeworkSubmit">
@@ -509,6 +508,31 @@
 	</select>
 
 
+
+	<select id="selectOneClassPostUrl" resultMap="resultMapObj">
+		select
+		originalName
+		from
+		ctPostUploaded
+		where 1=1
+		and pseq = #{ctptSeq}
+	</select>
+
+	<!-- 동영상 등록 -->
+	<insert id="insertUrl">
+		insert into ctPostUploaded(
+		seq
+		,originalName
+		,delNy
+		,pseq
+		) VALUES (
+		#{seq}
+		,#{originalName}
+		,0
+		,#{pseq}
+		)
+	</insert>
+
 	<!-- 게시물 댓글 리스트 -->
 	<select id="selectListReply" resultMap="resultMapObj">
 		SELECT
@@ -543,29 +567,13 @@
 		,#{ctptSeq}
 		)
 	</insert>
-	<select id="selectOneClassPostUrl" resultMap="resultMapObj">
-		select
-		originalName
-		from
-		ctPostUploaded
-		where 1=1
-		and pseq = #{ctptSeq}
-	</select>
-
-	<!-- 동영상 등록 -->
-	<insert id="insertUrl">
-		insert into ctPostUploaded(
-		seq
-		,originalName
-		,delNy
-		,pseq
-		) VALUES (
-		#{seq}
-		,#{originalName}
-		,0
-		,#{pseq}
-		)
-	</insert>
+	<!-- 게시물 댓글 삭제(update) -->
+	<update id="updateReplyUele">
+		UPDATE ctReply SET		
+			ctrpDelNy = 1
+		WHERE 1=1
+			AND ctrpSeq = #{ctrpSeq}
+	</update>
 
 	<!-- 과제게시물 댓글 리스트 -->
 	<select id="selectListHomeworkReply" resultMap="resultMapObj">
@@ -583,6 +591,7 @@
 		AND a.cthpSeq = #{cthpSeq}
 		AND a.ctrhDelNy = 0
 	</select>
+	
 	<!-- 과제게시물 댓글 등록 -->
 	<insert id="insertHomeworkReply">
 		insert into ctReplyHomework(
@@ -601,9 +610,17 @@
 		,#{cthpSeq}
 		)
 	</insert>
+	
+	<!-- 과제게시물 댓글 삭제(update) -->
+	<update id="updateHomeworkReplyUele">
+		UPDATE ctReplyHomework SET		
+			ctrhDelNy = 1
+		WHERE 1=1
+			AND ctrhSeq = #{ctrhSeq}
+	</update>	
+	
 	<!-- 과제제출물 댓글 리스트 -->
-	<select id="selectListHomeworkSubmitReply"
-		resultMap="resultMapObj">
+	<select id="selectListHomeworkSubmitReply" resultMap="resultMapObj">
 		SELECT
 		a.ctrsSeq
 		,a.ctrsContent
@@ -618,6 +635,7 @@
 		AND a.cthsSeq = #{cthsSeq}
 		AND a.ctrsDelNy = 0
 	</select>
+	
 	<!-- 과제제출물 댓글 등록 -->
 	<insert id="insertHomeworkSubmitReply">
 		insert into ctReplyHomeworkSubmit(
@@ -636,6 +654,14 @@
 		,#{cthsSeq}
 		)
 	</insert>
+
+	<!-- 과제게시물 댓글 삭제(update) -->
+	<update id="updateHomeworkSubmitReplyUele">
+		UPDATE ctReplyHomeworkSubmit SET		
+			ctrsDelNy = 1
+		WHERE 1=1
+			AND ctrsSeq = #{ctrsSeq}
+	</update>	
 
 	<!-- 조회수 증가 -->
 	<update id="hitUpdate">

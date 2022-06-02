@@ -35,6 +35,7 @@ public class ClassRoomVo {
 		private String ctrpSeq;
 		private String cthsWriter;
 		
+		private String ctrhSeq;	
 
 		private int totalMembers;	
 		private int submitMembers;	
@@ -66,6 +67,7 @@ public class ClassRoomVo {
 		private String shBelongto;
 		
 		private String cthsSeq;
+		private String ctrsSeq;	
 		
 
 		private int thisPage = 1;									// 현재 페이지
@@ -477,6 +479,22 @@ public class ClassRoomVo {
 
 		public void setSubmitMembers(int submitMembers) {
 			this.submitMembers = submitMembers;
+		}
+		
+		public String getCtrhSeq() {
+			return ctrhSeq;
+		}
+
+		public void setCtrhSeq(String ctrhSeq) {
+			this.ctrhSeq = ctrhSeq;
+		}
+
+		public String getCtrsSeq() {
+			return ctrsSeq;
+		}
+
+		public void setCtrsSeq(String ctrsSeq) {
+			this.ctrsSeq = ctrsSeq;
 		}
 
 		// ---- paging

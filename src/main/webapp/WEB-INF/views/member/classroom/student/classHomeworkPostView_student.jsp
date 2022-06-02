@@ -119,7 +119,7 @@
 						<div class="container_base">
 								<div class="writer row">
 									<div class="col-md-2 col-lg-1" id="classImg">
-										<img src="/resources/common/image/profile2.png" width="45" height="45" style="border-radius: 7px;">
+										<img src="/resources/uploaded/common/profile2.png" width="45" height="45" style="border-radius: 7px;">
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
@@ -144,16 +144,31 @@
 							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 							<div class="comment row mt-2 mb-3">
 								<div class="col-md-2 col-lg-1" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+									<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
 								<div class="col-md-10 col-lg-11" id="classInfo">
-									<div>
-										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<b><c:if test="${itemReply.ctrsWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
-										</c:forEach>
-									</div>
-									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-									<div><c:out value="${itemReply.ctrsContent}"/></div>
+									<form action="homeworkSubmitReplyUele" id="replyList" name="replyList" method="post">
+										<input type="hidden" id="cthsSeq" name="cthsSeq" value="${vo.cthsSeq}">	
+										<input type="hidden" id="ctrsSeq" name="ctrsSeq" value="${vo.ctrsSeq}">	
+										<div>
+											<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+											<b><c:if test="${itemReply.ctrsWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+											</c:forEach>
+											<c:if test="${ctcmSeq eq itemReply.ctrsWriter}">	
+												<div class="dropdown no-arrow d-inline" >
+			                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+			                                        </a>
+			                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+			                                            aria-labelledby="dropdownMenuLink">
+			                                            <a class="dropdown-item text-danger" href="javascript:goReplyUele(<c:out value="${itemReply.ctrsSeq}"/>)">댓글삭제</a>
+			                                        </div>
+			                                   	</div>
+	                             		    </c:if>	
+										</div>
+										<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+										<div><c:out value="${itemReply.ctrsContent}"/></div>
+									</form>	
 								</div>
 							</div>
 							</c:forEach>
@@ -165,7 +180,7 @@
 						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 							<div class="comment_write row">
 								<div class="col-md-3 col-lg-2" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+									<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
 									<div>${ctcmName}</div>
 								</div>
 								<div class="col-md-9 col-lg-10" id="classInfo">
@@ -213,6 +228,12 @@
 goReply = function(){
 	$("#replyInst").attr("action","/homeworkSubmitReplyInst");
 	$("#replyInst").submit();
+}
+
+goReplyUele = function(seq){
+	$("#ctrsSeq").val(seq);
+	$("#replyList").attr("action","/homeworkSubmitReplyUele");
+	$("#replyList").submit();
 }
 
 $("#btnLogout").on("click", function(){

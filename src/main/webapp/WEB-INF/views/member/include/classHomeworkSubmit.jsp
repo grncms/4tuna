@@ -14,7 +14,6 @@
 						<div>마감일시</div>
 					</div>
 					<div><c:out value="${item.cthpEndDateTime}"/></div>
-<%-- 					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 					<c:if test="${itemSubmit.cthsSeq eq null}"><span class="badge bg-danger">제출 전</span></c:if>
 					<c:if test="${itemSubmit.cthsSeq ne null}"><span class="badge bg-primary">제출 완료</span></c:if>
 					<c:if test="${itemSubmit.cthsScore ne null}"><span class="badge bg-success">채점완료</span></c:if>

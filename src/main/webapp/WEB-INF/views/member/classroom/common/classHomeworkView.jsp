@@ -138,20 +138,36 @@
 							</div>
 						</div>
  						<div class="container_base">
-								<h6>댓글</h6>
+						<h6>댓글</h6>
 						<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 							<div class="comment row mt-2 mb-3">
 								<div class="col-md-2 col-lg-1" id="classImg">
 									<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
 								<div class="col-md-10 col-lg-11" id="classInfo">
-									<div>
-										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-										<b><c:if test="${itemReply.ctrhWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
-										</c:forEach>
-									</div>
-									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-									<div><c:out value="${itemReply.ctrhContent}"/></div>
+									<form action="/homeworkReplyUele" id="replyList" name="replyList" method="post">
+									<input type="hidden" id="cthpSeq" name="cthpSeq" value="${vo.cthpSeq}">	
+									<input type="hidden" id="ctrhSeq" name="ctrhSeq" value="${vo.ctrhSeq}">			
+									<input type="hidden" id="cthsSeq" name="cthsSeq" value="${itemSubmit.cthsSeq}">			
+										<div>
+											<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+											<b><c:if test="${itemReply.ctrhWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
+											</c:forEach>
+											<c:if test="${ctcmSeq eq itemReply.ctrhWriter}">	
+												<div class="dropdown no-arrow d-inline" >
+			                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+			                                        </a>
+			                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+			                                            aria-labelledby="dropdownMenuLink">
+			                                            <a class="dropdown-item text-danger" href="javascript:goReplyUele(<c:out value="${itemReply.ctrhSeq}"/>)">댓글삭제</a>
+			                                        </div>
+			                                   	</div>
+		                                    </c:if>
+										</div>
+										<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+										<div><c:out value="${itemReply.ctrhContent}"/></div>
+									</form>	
 								</div>
 							</div>
 							</c:forEach>
@@ -160,6 +176,7 @@
 						<form id="replyInst" name="replyInst" action="/homeworkReplyInst" method="post">
 						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 						<input type="hidden" id="ctrhWriter" name="ctrhWriter" value="<c:out value="${ctcmSeq}"/>">
+						<input type="hidden" id="cthsSeq" name="cthsSeq" value="${itemSubmit.cthsSeq}">		
 								<div class="comment_write row">
 									<div class="col-md-3 col-lg-2" id="classImg">
 										<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
@@ -244,6 +261,11 @@ goReply = function(){
 	$("#replyInst").submit();
 }
 
+goReplyUele = function(seq){
+	$("#ctrhSeq").val(seq);
+	$("#replyList").attr("action","/homeworkReplyUele");
+	$("#replyList").submit();
+}
 
 $("#btnLogout").on("click", function(){
 	

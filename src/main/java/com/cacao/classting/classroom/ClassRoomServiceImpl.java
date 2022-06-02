@@ -279,6 +279,21 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.homeworkWriter(dto);
 	}
 
+	@Override
+	public int updateReplyUele(ClassRoom dto) throws Exception {
+		return dao.updateReplyUele(dto);
+	}
+
+	@Override
+	public int updateHomeworkReplyUele(ClassRoom dto) throws Exception {
+		return dao.updateHomeworkReplyUele(dto);
+	}
+
+	@Override
+	public int updateHomeworkSubmitReplyUele(ClassRoom dto) throws Exception {
+		return dao.updateHomeworkSubmitReplyUele(dto);
+	}
+
 
 	
 

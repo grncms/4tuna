@@ -202,26 +202,28 @@
 									<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
 								<div class="col-md-10 col-lg-11" id="classInfo">
+								<form action="/replyUele" id="replyList" name="replyList" method="post">
+								<input type="hidden" id="ctptSeq" name="ctptSeq" value="${vo.ctptSeq}">	
+								<input type="hidden" id="ctrpSeq" name="ctrpSeq" value="${vo.ctrpSeq}">	
 									<div>
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
 										<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }"><span><b><c:out value="${itemMember.ctcmName}"/></b></span></c:if></b>
 										</c:forEach>
+										<c:if test="${ctcmSeq eq itemReply.ctrpWriter}">	
+											<div class="dropdown no-arrow d-inline" >
+		                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+		                                        </a>
+		                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+		                                            aria-labelledby="dropdownMenuLink">
+		                                            <a class="dropdown-item text-danger" href="javascript:goReplyUele(<c:out value="${itemReply.ctrpSeq}"/>)">댓글삭제</a>
+		                                        </div>
+		                                   	</div>
+                                  	  	</c:if>	
 									</div>
-									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
-									<c:if test="${ctcmSeq eq itemReply.ctrpWriter}">	
-										<div class="dropdown no-arrow d-inline" >
-	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-	                                        </a>
-	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-	                                            aria-labelledby="dropdownMenuLink">
-	                                            <a class="dropdown-item text-danger" href="#">회원탈퇴</a>
-	                                        </div>
-	                                   	</div>
-                                    </c:if>		
-									</div>
+									<div style="color: #c8c8c8; font-size: 14px;"><fmt:formatDate value="${itemReply.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 									<div><c:out value="${itemReply.ctrpContent}"/></div>
-
+								</form>	
 								</div>
 							</div>
 							</c:forEach>
@@ -279,6 +281,12 @@
 goReply = function(){
 	$("#replyInst").attr("action","/member/class/common/replyInst");
 	$("#replyInst").submit();
+}
+
+goReplyUele = function(seq){
+	$("#ctrpSeq").val(seq);
+	$("#replyList").attr("action","/replyUele");
+	$("#replyList").submit();
 }
 
 $("#btnLogout").on("click", function(){
