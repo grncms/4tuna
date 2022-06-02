@@ -119,7 +119,7 @@
 						<div class="container_base">
 								<div class="writer row">
 									<div class="col-md-2 col-lg-1" id="classImg">
-										<img src="/resources/common/image/profile2.png" width="45" height="45" style="border-radius: 7px;">
+										<img src="/resources/uploaded/common/profile2.png" width="45" height="45" style="border-radius: 7px;">
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
@@ -199,7 +199,7 @@
 							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 							<div class="comment row mt-2 mb-3">
 								<div class="col-md-2 col-lg-1" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+									<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
 								</div>
 								<div class="col-md-10 col-lg-11" id="classInfo">
 									<div>
@@ -219,7 +219,7 @@
 						<input type="hidden" id="ctrpWriter" name="ctrpWriter" value="<c:out value="${ctcmSeq}"/>">
 							<div class="comment_write row">
 								<div class="col-md-3 col-lg-2" id="classImg">
-									<img src="../../../../../resources/common/image/profile2.png" width="35" height="35" style="border-radius: 7px;">
+									<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
 									<div>${ctcmName}</div>
 								</div>
 								<div class="col-md-9 col-lg-10" id="classInfo">

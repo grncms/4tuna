@@ -84,7 +84,7 @@
 										<div class="homework list">
 											<div class="header" style="cursor: default;">
 												<div class="profile_box">
-													<img class="profile" src="/resources/common/image/test.jpg" />
+													<img class="profile" src="/resources/uploaded/common/profile2.png" />
 												</div>
 												<c:forEach items="${memberList}" var="itemMember" varStatus="status">
 													<c:if test="${item.cthpWriter eq itemMember.ctcmSeq}"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>

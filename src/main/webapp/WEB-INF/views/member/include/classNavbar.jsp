@@ -32,7 +32,7 @@
 				               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>${sessName}</b></span>
 					           <c:if test="${teacherNy eq 1}"><span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleT">선생님</font></span></c:if>
 					            <c:if test="${teacherNy eq 0}"><span class="mr-2 d-none d-lg-inline text-gray-600 small"><font id="roleS">학생</font></span></c:if>
-                               <img class="img-profile rounded-circle" src="/resources/common/image/profile2.png" width="35px;" height="35px;">
+                               <img class="img-profile rounded-circle" src="/resources/uploaded/common/profile2.png" width="35px;" height="35px;">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
