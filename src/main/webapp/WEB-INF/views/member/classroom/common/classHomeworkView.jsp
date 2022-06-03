@@ -194,7 +194,6 @@
 													<i class="fa-solid fa-image"></i>
 												</button>
 											</div>
-	
 											<button type="button" class="basic_button" onclick="location.href='javascript:goReply()'">등록</button>
 										</div>
 									</div>
@@ -231,15 +230,19 @@
 
 
 goHomeworkSubmit = function(seq){
+	
 	$("#cthsSeq").val(seq);
 	$("#hwSubmitList").attr("action","/member/class/common/homeworkPostView");
 	$("#hwSubmitList").submit();
+
 }
 
 goHomeworkSubmitStu = function(seq){
+
 	$("#cthsSeq").val(seq);
 	$("#homeworkSubmit").attr("action","/classHomeworkPostView_student");
 	$("#homeworkSubmit").submit();
+
 }
 
 goHomeworkSubmitStuEdit = function(seq){

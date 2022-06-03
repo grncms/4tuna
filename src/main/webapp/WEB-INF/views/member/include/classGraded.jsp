@@ -2,8 +2,8 @@
 
 		<div class="card shadow mb-4">
 		<form action="" id="hwSubmitList" name="hwSubmitList" method="post">
-		<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}" />">
-		<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}" />">
+		<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
+		<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 			<!-- <div class="rightbar"> -->
 				<div class="container_base">
 					<div class="title">과제목록</div>
@@ -14,7 +14,6 @@
 						<!-- <div>기한지남</div> -->
 					</div>
 					<div><c:out value="${item.cthpEndDateTime}"/></div>
-<%-- 					<div><fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 				</div>
 				<c:forEach items="${submitList}" var="itemSubmit" varStatus="status">
 				<div class="container_base">

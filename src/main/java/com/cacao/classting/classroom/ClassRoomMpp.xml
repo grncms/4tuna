@@ -395,7 +395,7 @@
 		from
 		ctHomeworkSubmit
 		where 1=1
-		and cthsSeq = #{cthsSeq}
+		and cthpSeq = #{cthpSeq}
 	</select>
 	<!-- 과제제출 보기(학생->본인것) -->
 	<select id="selectOneHomeworkSubmitStudent" resultMap="resultMapObj">
