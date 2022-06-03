@@ -240,7 +240,10 @@ input:checked+.slider:before {
 								<div>예약 <label class="switch">
 							
 								<input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span>
-									</label> <input type="datetime" class="form-control" id="ctptReservation" name="ctptReservation" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
+									</label> 
+									<!-- <input type="date" class="form-control" id="ctptReservation" name="ctptReservation" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;"> -->
+									<!-- 임시 datetime date문제는 아님 -->
+									<input type="date" class="form-control" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
 								</div>
 								<br>
 								<div>관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
