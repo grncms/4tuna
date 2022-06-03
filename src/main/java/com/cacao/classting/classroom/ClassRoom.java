@@ -122,8 +122,12 @@ public class ClassRoom {
 	private String pseq;
 	
 	//출석부 관련
-	private LocalDateTime[] ad = new LocalDateTime[5];
 	private String attendanceToday;
+	
+	
+	//과제 레포트 관련
+	private String scoreAvg;
+	
 	
 	public String getCtcsSeq() {
 		return ctcsSeq;
@@ -671,5 +675,12 @@ public class ClassRoom {
 				+ ", ctptDelNy=" + ctptDelNy + ", cttgSeq=" + cttgSeq + ", cttgName=" + cttgName + ", delNy="
 				+ delNy + ", pseq=" + pseq + ", attendanceToday=" + attendanceToday + "]";
 	}
+	public String getScoreAvg() {
+		return scoreAvg;
+	}
+	public void setScoreAvg(String scoreAvg) {
+		this.scoreAvg = scoreAvg;
+	}
+
 
 }

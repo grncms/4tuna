@@ -295,8 +295,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 
-	
 
+	@Override
+	public List<ClassRoom> scoreAvg(ClassRoomVo vo) throws Exception {
+		return dao.scoreAvg(vo);
+	}
 
 
 

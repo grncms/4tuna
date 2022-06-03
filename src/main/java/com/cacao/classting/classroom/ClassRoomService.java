@@ -77,7 +77,7 @@ public interface ClassRoomService {
 	public List<ClassRoom> enterLog(Map<String, String> dates) throws Exception;
 // 과제 리포트
 	public List<ClassRoom> homeworkWriter(ClassRoom dto) throws Exception;
-	
+	public List<ClassRoom> scoreAvg(ClassRoomVo vo) throws Exception;
 //게시글등록
 	public int insertPost(ClassRoom dto) throws Exception;
 	public int insertAddress(ClassRoom dto);

@@ -457,8 +457,13 @@
 		WHERE 1=1
 		AND cthpSeq = #{cthpSeq}
 	</select>
-	<select id="homeworkAvg" resultMap = "resultMapObj">
-		
+	<!-- 클래스내 과제 평균점수 -->
+	<select id="scoreAvg" resultMap="resultMapObj">
+		SELECT round(avg(cthsScore),2) as scoreAvg FROM ctHomeworkSubmit a
+		left join ctHomeworkPost b on b.cthpSeq = a.cthpSeq 
+		where ctcsSeq = #{ctcsSeq}
+		group by a.cthpSeq
+		order by b.cthpSeq asc
 	</select>
 
 	<!-- 예약/임시저장 리스트 --> <!-- 임시저장만 -->

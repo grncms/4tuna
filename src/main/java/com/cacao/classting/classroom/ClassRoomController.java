@@ -401,6 +401,8 @@ public class ClassRoomController {
 		List<ClassRoom> writerList = service.selectListClassMember(vo); //클래스 목록
 		
 		
+		
+		
 		Map submitMap = new HashMap();
 		for(int i=0; i < writerList.size(); i++ ) {
 			ClassRoom tmp = writerList.get(i);
@@ -420,6 +422,7 @@ public class ClassRoomController {
 		
 		System.out.println(submitMap.toString());
 		
+		List homeworkCountList = new ArrayList(); 
 		
 		for(int i =0 ; i < writerList.size();i++) {
 			String name = writerList.get(i).getCtcmName();
@@ -434,16 +437,25 @@ public class ClassRoomController {
 			
 		}
 		
-		
-		for(int i = 0;i<submitList.size();i++) {
+		double homeworkCount = 0.0;
+		for(int i = 0; i < homeworkList.size() ; i++) {
 			
+			ClassRoom tmp = homeworkList.get(i);
+			
+			vo.setCthpSeq(tmp.getCthpSeq());
+			homeworkCount = (double)service.selectOneSubmitCount(vo) / writerList.size() ;
+			homeworkCountList.add(homeworkCount); 
 			
 		}
+		
 		System.out.println(submitMap.toString());		
-
+		List<ClassRoom> scoreAvg = service.scoreAvg(vo);
+		System.out.println(scoreAvg.get(0).getScoreAvg());
+		model.addAttribute("scoreAvg", scoreAvg);
 		model.addAttribute("submitMap", submitMap);
 		model.addAttribute("homeworkList",homeworkList);
-	
+		model.addAttribute("homeworkCountList",homeworkCountList);
+		
 
 		return "member/classroom/teacher/classHomeworkReport";
 	}

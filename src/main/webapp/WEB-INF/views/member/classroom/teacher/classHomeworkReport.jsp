@@ -81,23 +81,31 @@
 										<table class="table m-0" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
-													
-													<th>전체<c:out value="${fn:length(submitMap) }" />명</th>
+
+													<td>전체<c:out value="${fn:length(submitMap) }" />명</td>
 													<c:forEach items="${homeworkList }" var="homeworkList" varStatus=" st">
-														<th><c:out value="${homeworkList.cthpTitle }" /> <input type="hidden" value="${homeworkList.cthpSeq}" /></th>
+														<td style="color:black"><b><c:out value="${homeworkList.cthpTitle }" /> <input type="hidden" value="${homeworkList.cthpSeq}" /></b></td>
 													</c:forEach>
 												</tr>
 												<tr>
 													<td>평균 점수</td>
-													<td>0/100점</td>
-													<td>50/100점</td>
-													<td>40/100점</td>
+													<c:forEach items="${scoreAvg}" var="score" varStatus=" st">
+														<c:choose>
+															<c:when test="${empty score.scoreAvg}">
+																<td><b><c:out value="-" /></b></td>
+															</c:when>
+															<c:otherwise>
+																<td><b><c:out value="${score.scoreAvg }" /></b></td>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
 												</tr>
 												<tr>
 													<td>제출률</td>
-													<td>0%</td>
-													<td>0%</td>
-													<td>50%</td>
+													<c:forEach items="${homeworkCountList }" var = "li" varStatus="st">
+														<td><b><fmt:formatNumber value="${li }" type="percent"/></b></td>
+														
+													</c:forEach>
 												</tr>
 
 
@@ -113,10 +121,10 @@
 														<c:forEach items="${submitList}" var="sl2" varStatus="st2">
 															<td><c:choose>
 																	<c:when test="${sl2.value eq -1 }">
-																		<c:out value="미제출" />
+																		<span class='badge badge_hw bg-danger' style="color:white"><c:out value="미제출" /></span>
 																	</c:when>
 																	<c:when test="${empty sl2.value  }">
-																		<c:out value="채점중" />
+																		<span class='badge badge_hw'><c:out value="채점중" /></span>
 																	</c:when>
 																	<c:otherwise>
 																		<c:out value="${sl2.value }" />
@@ -177,14 +185,6 @@
 						}
 					});
 				});
-
-		var length = $
-		{
-			length
-		};
-		for (var i = 0; i < length; i++) {
-
-		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>

@@ -114,6 +114,10 @@ public class ClassRoomDao {
 	public List<ClassRoom> homeworkWriter(ClassRoom dto){
 		return sqlSession.selectList(namespace + ".homeworkWriter" , dto);
 	}
+	
+	public List<ClassRoom> scoreAvg(ClassRoomVo vo){
+		return sqlSession.selectList(namespace + ".scoreAvg" , vo);
+	}
 //게시글
 	public int insertPost(ClassRoom dto) {
 		return sqlSession.insert(namespace+ ".insertPost", dto);
