@@ -136,7 +136,7 @@ $("#btn-findPwd").on("click",function(seq){
  			$("#btn-findPwd").hide();
 /* 			alert(data); 
 			alert(JSON.stringify(data));  */ 
- 			alert(JSON.stringify(data['pwdList'][0]['mmPassword']));
+ 		/* 	alert(JSON.stringify(data['pwdList'][0]['mmPassword'])); */
  			
 			var name = data['pwdList'][0]['mmName']; 
 			

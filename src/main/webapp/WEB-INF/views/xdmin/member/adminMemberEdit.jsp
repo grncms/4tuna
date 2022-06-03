@@ -25,7 +25,8 @@
 <link href="../../../../resources/common/css/classCommon.css" rel="stylesheet">
 <link href="../../../../resources/common/css/boardCss.css" rel="stylesheet">
 <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
-<title>회원정보 수정</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 
 
 

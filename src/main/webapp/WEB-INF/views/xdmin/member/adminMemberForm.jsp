@@ -24,7 +24,8 @@
 <link href="../../../../resources/common/css/sb-admin-2.css" rel="stylesheet">
 <link href="../../../../resources/common/css/classCommon.css" rel="stylesheet">
 <link href="../../../../resources/common/css/boardCss.css" rel="stylesheet">
-<title>회원추가</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 
 
 
