@@ -32,6 +32,14 @@
 			<exclude-mapping path="/rest/**" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="/findId" />
+			<exclude-mapping path="/member/getId" />
+			<exclude-mapping path="/findPwd" />
+			<exclude-mapping path="/member/getPassword" />
+			<exclude-mapping path="/memberForm_user" />
+			<exclude-mapping path="/memberInst" />
+			<exclude-mapping path="/memberForm_main" />
+			<exclude-mapping path="/login_xdmin" />
 			<exclude-mapping path="/index/**" />
 			<beans:bean id="checkLoginSessionInterception" class="com.cacao.classting.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
