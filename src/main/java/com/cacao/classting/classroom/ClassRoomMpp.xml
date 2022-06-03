@@ -240,7 +240,7 @@
 		LEFT JOIN ctClass b on b.ctcsSeq = a.ctcsSeq
 		WHERE 1=1
 		AND b.ctcsSeq = #{ctcsSeq}
-		ORDER BY a.regDateTime DESC
+		ORDER BY a.cthpSeq ASC
 	</select>
 
 	<!-- 과제 보기 -->
