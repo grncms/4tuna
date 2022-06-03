@@ -172,7 +172,7 @@
 						</div>
 					<!-- 댓글 s -->
 						<div class="container_base">
-						<form id="replyInst" name="replyInst" action="/homeworkSubmitReplyInst2" method="post">
+						<form id="replyInst" name="replyInst" action="/homeworkSubmitReplyInst" method="post">
 						<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
 						<input type="hidden" id="ctrsWriter" name="ctrsWriter" value="<c:out value="${ctcmSeq}"/>">
 						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
@@ -236,7 +236,7 @@ $("#submitScore").on("click", function(){
 });
 
 goReply = function(){
-	$("#replyInst").attr("action","/homeworkSubmitReplyInst2");
+	$("#replyInst").attr("action","/homeworkSubmitReplyInst");
 	$("#replyInst").submit();
 }
 
