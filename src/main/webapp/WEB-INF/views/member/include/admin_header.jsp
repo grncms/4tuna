@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px; onclick="location.href='./main_teacher.html'">
+	<img src="../../../../../resources/common/image/header_logo.png"  width="180px;" style="margin-left: 10px;" onclick="location.href='/adminMemberList'">
 	<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 	        <li><a href="/adminMemberList" class="nav-link link-dark" id="home">회원관리</a></li>
 	        <li><a href="/adminClassList" class="nav-link link-secondary" id="class">클래스관리</a></li>
@@ -35,7 +35,7 @@
            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>${sessName}</b></span>
 	           <span class="mr-2 d-none d-lg-inline text-gray-600 small">관리자</span>
-               <img class="img-profile rounded-circle" src="../../../../../resources/common/image/profile2.png">
+               <img class="img-profile rounded-circle" src="/resources/uploaded/common/profile2.png">
            </a>
            <!-- Dropdown - User Information -->
            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

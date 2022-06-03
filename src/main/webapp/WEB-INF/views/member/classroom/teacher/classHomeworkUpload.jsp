@@ -180,7 +180,7 @@ input:checked+.slider:before {
 							<div class="title_hw mb-2">
 								<div>마감기한</div>
 							</div>
-							<input type="text" class="form-control" id="cthpEndDateTime" name="cthpEndDateTime" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
+							<input type="text" class="form-control" id="cthpEndDateTime" name="cthpEndDateTime" placeholder="2022-04-28 12:00:00 형식으로 입력" style="margin-top: 15px;">
 						</div>
 						<div class="container_base">
 							<div class="rightbar_button">
@@ -205,9 +205,16 @@ input:checked+.slider:before {
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script src="/resources/common/js/sb-admin-2.min.js"></script> 
+<script src="/resources/common/js/validation.js"></script> 
 <script type="text/javascript">
 
 $("#btn-submit").on("click", function(){
+	
+	if(!checkNull($("#cthpTitle"), $("#cthpTitle").val(), "제목을 입력하세요.")) return false;
+	
+	if(!checkNull($("#cthpDesc"), $("#cthpDesc").val(), "본문을 입력하세요.")) return false;
+	
+	if(!checkNull($("#cthpEndDateTime"), $("#cthpEndDateTime").val(), "마감기한을 입력하세요.")) return false;
 	
 	$("#homeworkForm").attr("action", "/classHomeworkUploadInst");
 	$("#homeworkForm").submit();

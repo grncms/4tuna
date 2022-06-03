@@ -171,7 +171,7 @@
 			<textarea rows="3" cols="80" id="ctcsDesc" name="ctcsDesc" placeholder="예:즐거운 영어회화 클래스입니다~"></textarea>
 	
 			<button type="button" class="btn btn-outline-secondary" style="display: inline; margin-top:30px;" id="btn-add2" onclick="location.href='./classForm'">이전</button>
-			<button type="submit" class="btn btn-outline-success" style="display: inline;margin-top:30px; float: right;" id="btn-add2" >클래스 개설</button>
+			<button type="submit" class="btn btn-outline-success" style="display: inline; margin-top:30px; float: right;" id="btn-add2" >클래스 개설</button>
 		
 		</div>
 	</form>	
@@ -190,10 +190,14 @@
     <script src="../../../../../resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../../../../resources/common/js/sb-admin-2.min.js"></script> 
+<script src="../../../../../resources/common/js/sb-admin-2.min.js"></script> 
+    
+<script src="/resources/common/js/validation.js"></script>    
 <script type="text/javascript">
 
 $("#btn-add2").on("click", function(){
+	
+	if(!checkNull($("#ctcsName"), $("#ctcsName").val(), "이름을 입력하세요.")) return false;
 	
 	$("#classForm").attr("action", "/classInst");
 	$("#classForm").submit();

@@ -410,7 +410,7 @@
 			/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/login_xdmin";
+					location.href = "/";
 				} else {
 					// by pass
 				}

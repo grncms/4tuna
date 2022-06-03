@@ -132,7 +132,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-						<button type="submit" class="btn btn-primary">확인</button>
+						<button type="submit" class="btn btn-primary" id="btn-submit">확인</button>
 					</div>
 				</div>
 			</div>
@@ -152,7 +152,8 @@
 <script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="/resources/common/js/sb-admin-2.min.js"></script> 
+<script src="/resources/common/js/sb-admin-2.min.js"></script>
+<script src="/resources/common/js/validation.js"></script> 
 <script type="text/javascript">
 
 goClass = function(seq){
@@ -161,6 +162,11 @@ goClass = function(seq){
 	$("#mainclassList").submit();
 }
 
+$("#btn-submit").on("click", function(){
+
+	if(!checkNull($("#ctcsCode"), $("#ctcsCode").val(), "코드를 입력하세요.")) return false;
+	
+});
 $("#btnLogout").on("click", function(){
 	
 	$.ajax({

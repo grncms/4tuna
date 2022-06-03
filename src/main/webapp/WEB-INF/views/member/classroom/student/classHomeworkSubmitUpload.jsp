@@ -206,9 +206,13 @@ input:checked+.slider:before {
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script src="/resources/common/js/sb-admin-2.min.js"></script> 
+<script src="/resources/common/js/validation.js"></script> 
 <script type="text/javascript">
 
 $("#btn-submit").on("click", function(){
+	
+	if(!checkNull($("#cthsTitle"), $("#cthsTitle").val(), "제목을 입력하세요.")) return false;
+	if(!checkNull($("#cthsDesc"), $("#cthsDesc").val(), "내용을 입력하세요.")) return false;
 	
 	$("#homeworkForm").attr("action", "/homeworkSubmitInst");
 	$("#homeworkForm").submit();
