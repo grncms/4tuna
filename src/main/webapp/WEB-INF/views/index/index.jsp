@@ -8,7 +8,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>CLASSING</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

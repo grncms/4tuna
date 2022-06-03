@@ -24,7 +24,8 @@
 <link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/user/css/memberForm_main.css" rel="stylesheet" type="text/css">
-<title>main</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 </head>
 <body>
 <div class="container my-wrap">
