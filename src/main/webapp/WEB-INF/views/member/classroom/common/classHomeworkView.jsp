@@ -176,7 +176,7 @@
 						<form id="replyInst" name="replyInst" action="/homeworkReplyInst" method="post">
 						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 						<input type="hidden" id="ctrhWriter" name="ctrhWriter" value="<c:out value="${ctcmSeq}"/>">
-						<input type="hidden" id="cthsSeq" name="cthsSeq" value="${itemSubmit.cthsSeq}">		
+						<input type="hidden" id="cthsSeq" name="cthsSeq" value="${vo.cthsSeq}">		
 								<div class="comment_write row">
 									<div class="col-md-3 col-lg-2" id="classImg">
 										<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 7px;">
