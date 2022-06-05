@@ -133,7 +133,6 @@
 						<div class="container_base">
 							<div class="post_content">
 								<div class="mt-3 mb-5">
-									<c:out value="${item.ctptContent}"/>
 			<%-- 
 									  <iframe width="700" height="500" src="<c:out value="${ytb.originalName}"/>" 
     title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -182,6 +181,8 @@
 								      player.stopVideo();
 								    }
 								  </script>
+								  <br>
+									<c:out value="${item.ctptContent}"/>
 			 					
 			 					
 			 					

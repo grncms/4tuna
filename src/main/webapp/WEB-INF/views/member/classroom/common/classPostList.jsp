@@ -99,7 +99,11 @@
 													<span class='badge badge_hw'>자유공간</span>
 													<span><c:out value="${item.ctptTitle}"/></span>
 													<br><br>
-													<p><c:out value="${item.ctptContent}"/></p>
+													<p>
+													<c:forEach items="${ytb}" var="ytb" varStatus="status">
+														<c:if test="${ytb.originalName ne null}"><img src="http://img.youtube.com/vi/<c:out value="${ytb.originalName}"/>/0.jpg"/></c:if>
+													</c:forEach>
+													<c:out value="${item.ctptContent}"/></p>
 													<br>
 												</div>
 												<div class="footer mt-3" style="cursor: default;">
