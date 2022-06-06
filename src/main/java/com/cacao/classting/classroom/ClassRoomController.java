@@ -350,10 +350,14 @@ public class ClassRoomController {
 //		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
-		
 //		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
+		System.out.println("memberList"+memberList);
+//		동영상 url
+		List<ClassRoom> ytb = service.selectListClassPostUrl(vo);
+		model.addAttribute("ytb", ytb);
+		System.out.println("ytb" + ytb);
 		
 		return "member/classroom/common/classPostList";
 	}

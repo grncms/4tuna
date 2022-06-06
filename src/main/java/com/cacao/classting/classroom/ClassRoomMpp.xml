@@ -442,6 +442,24 @@
 		WHERE 1=1
 		AND a.ctcsSeq = #{ctcsSeq}
 	</select>
+	
+		<select id="selectListClassPostUrl" resultMap="resultMapObj">
+		select
+			a.originalName
+			,a.pseq
+			,a.seq
+			,b.ctptSeq
+		from
+			ctPostUploaded a
+		LEFT JOIN ctPost b on b.ctptSeq = a.pseq
+		LEFT JOIN ctBoard c on c.ctboSeq = b.ctboSeq
+		where 1=1
+		AND c.ctcsSeq =#{ctcsSeq}
+		
+
+			
+	</select>
+	
 
 	<!-- 전체 구성원 중 학생 -->
 	<select id="selectOneMemberCount" resultType="Integer">
@@ -519,9 +537,9 @@
 
 	<select id="selectOneClassPostUrl" resultMap="resultMapObj">
 		select
-		originalName
+		a.originalName
 		from
-		ctPostUploaded
+		ctPostUploaded a
 		where 1=1
 		and pseq = #{ctptSeq}
 	</select>
@@ -533,11 +551,15 @@
 		,originalName
 		,delNy
 		,pseq
+		,regDateTime
+		,modDateTime
 		) VALUES (
 		#{seq}
 		,#{originalName}
 		,0
 		,#{pseq}
+		,#{regDateTime}
+		,#{modDateTime}
 		)
 	</insert>
 

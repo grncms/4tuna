@@ -48,7 +48,8 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 
 	@Override
 	public int insertUrl(ClassRoom dto) throws Exception {
-		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
 		dao.insertUrl(dto);
 		
 		return 1;
@@ -299,6 +300,12 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	@Override
 	public List<ClassRoom> scoreAvg(ClassRoomVo vo) throws Exception {
 		return dao.scoreAvg(vo);
+	}
+
+	@Override
+	public List<ClassRoom> selectListClassPostUrl(ClassRoomVo vo) throws Exception {
+		
+		return dao.selectListClassPostUrl(vo);
 	}
 
 

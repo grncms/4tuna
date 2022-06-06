@@ -138,7 +138,7 @@
     title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
     </iframe>
 			 --%>				
-			 					<div id="player"></div>	
+			 					 <c:if test="${ytb.originalName ne null}"><div id="player"></div></c:if>	
 			 					
 								  <script>
 								    // 2. This code loads the IFrame Player API code asynchronously.
