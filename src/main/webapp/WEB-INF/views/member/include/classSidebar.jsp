@@ -22,6 +22,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/noticeBoard"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
                 <a class="nav-link" href="/member/class/teacher/homeworklist"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
+                <a class="nav-link" href="#"><i class="fa-brands fa-youtube" style="color: #828282;"></i> <span>모든 영상</span></a>
                 <c:if test="${teacherNy eq 1}">
                 	<a class="nav-link" href="/member/class/teacher/homeworkreport"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
                 </c:if>
@@ -31,10 +32,6 @@
                 <c:if test="${teacherNy eq 1}">
                 	<a class="nav-link" href="/classSetting"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
 				</c:if>
-                
-                
-                
-                
             </li>
 
             <!-- Divider --> 
@@ -47,24 +44,13 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
+            
             <!-- Heading -->
-            <div class="sidebar-heading" style="color: #828282;">내가 참여한 공간</div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
+            <div class="sidebar-heading" style="color: #828282;">모두를 위한 공간</div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder" style="color: #828282;"></i>
-                    <span>모두를 위한 공간</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/member/class/common/postlist">자유 공간</a>
-                        <a class="collapse-item" href="/member/class/common/postdatalist">학습 자료</a>
-                        <a class="collapse-item" href="/member/class/common/postpicturelist">활동 사진</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="/member/class/common/postlist"><i class="fas fa-fw fa-folder" style="color: #828282;"></i> <span>자유 공간</span></a>
+                <a class="nav-link" href="/member/class/common/postdatalist"><i class="fas fa-fw fa-folder" style="color: #828282;"></i> <span>학습 자료</span></a>
+                <a class="nav-link" href="/member/class/common/postpicturelist"><i class="fas fa-fw fa-folder" style="color: #828282;"></i> <span>활동 사진</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
