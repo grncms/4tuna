@@ -455,7 +455,7 @@
 		LEFT JOIN ctBoard c on c.ctboSeq = b.ctboSeq
 		where 1=1
 		AND c.ctcsSeq =#{ctcsSeq}
-		
+		 
 
 			
 	</select>
