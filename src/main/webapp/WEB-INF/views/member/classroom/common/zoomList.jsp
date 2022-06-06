@@ -79,7 +79,36 @@
 					<div class="header">실시간 수업</div>
 					<div class="body">클래스의 실시간 수업목록을 확인할 수 있어요.</div>
 					<div class="footer">
-						<c:if test="${teacherNy eq 1}"><button type="button" class="basic_button w-25" onclick="location.href='/zoomCreate'"><i class="fa-solid fa-video"></i> 실시간 수업 생성</button></c:if>
+						<c:if test="${teacherNy eq 1}"><button type="button" class="basic_button w-25" data-bs-toggle="modal" data-bs-target="#zoomModal"><i class="fa-solid fa-video"></i> <b>실시간 수업 생성</b></button></c:if>
+					</div>
+					<!-- 모달 -->
+					<div class="modal fade" id="zoomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<form action="/zoomCreate" id="createZoom" name="createZoom" method="post">
+						<input type="hidden" id="agenda" name="agenda" value="<c:out value="${ctcsSeq}"/>">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">줌 수업 만들기</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<br>
+										<div class="input-group mt-1">
+											<label class="mt-1">제목</label>&nbsp;
+											<input class="form-control form-control-sm" type="text" id="topic" name="topic" placeholder="제목 입력"> <br>
+										</div>
+										<div class="input-group mt-1">
+											<label class="mt-1">시작시간</label>&nbsp;
+											<input class="form-control form-control-sm" type="text" id="start_time" name="start_time" placeholder="2022-06-07 12:00:00 형태로 입력"> <br>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+										<button type="submit" class="btn btn-primary" id="btn-submit">확인</button>
+									</div>
+								</div>
+							</div>
+						</form>	
 					</div>
 				</div>
 				<form id="noticeList" name="noticeList" method="post">
@@ -111,6 +140,8 @@
 											<p style="font-size: 15px; color: black;">시작 시간 : <c:out value = "${item.start_time}"/></p>
 											<p style="font-size: 15px; color: black; display: inline;">진행 시간 : <c:out value="${item.duration}"/> 분</p>
 											<button type="button" class="btn btn-zoom" onclick="location.href='${item.join_url}'">수업 참여 하기</button>
+											<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fas fa-trash"></i></button>
+											
 										</div>
 										<div class="footer mt-4 mb-2">
 										</div>
