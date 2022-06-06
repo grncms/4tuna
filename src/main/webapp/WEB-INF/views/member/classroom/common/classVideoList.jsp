@@ -92,7 +92,9 @@
 												<span>조회수:<c:out value = "${item.ctptView}"/></span>
 											</div>
 											<div class="body mt-2 mb-5" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
-												<span class='badge badge_hw'>영상</span>
+												<c:if test="${item.ctboTypeCd eq 19}"><span class='badge badge_graded'>자유공간</span></c:if>
+												<c:if test="${item.ctboTypeCd eq 20}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
+												<c:if test="${item.ctboTypeCd eq 21}"><span class='badge badge_after3'>활동사진</span></c:if>
 												<span><c:out value="${item.ctptTitle}"/></span>
 												<p>
 														<c:if test="${item.pseq eq item.ctptSeq}"><img src="http://img.youtube.com/vi/<c:out value="${item.originalName}"/>/mqdefault.jpg"/><br></c:if>

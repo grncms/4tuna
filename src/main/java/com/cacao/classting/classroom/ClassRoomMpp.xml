@@ -460,6 +460,7 @@
 			,b.ctptReservationNy
 			,b.ctptReservation
 			,b.regDateTime
+			,c.ctboTypeCd
 			
 		from
 			ctPostUploaded a
