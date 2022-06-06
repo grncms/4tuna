@@ -1,20 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title></title>
+<title>ForTest</title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -29,20 +26,21 @@
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
 
-.leftbarProfile {
-	cursor: pointer;
+#posting {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
 }
 
-.post>.header {
-	margin-bottom: 0.5rem;
+.container_base .footer {
+	margin-top: 3rem;
 }
 
-.post_title {
-	cursor: pointer;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
+.container_base .footer>* {
+	margin-right: 0.5rem;
 }
+
 </style>
 
 </head>
@@ -56,74 +54,67 @@
 
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column">
-			
-	<!-- Topbar -->		
-	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 
+	<!-- Topbar -->
+	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
 		<div class="container-fluid">
 			<div class="row" id="posting">
 				<div class="col-12">
 					<div class="container_title shadow mb-4">
-						<div class="header">자유 공간</div>
-							<div class="footer dropdown">
-								<button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">글쓰기</button>
-							</div>
+						<div class="header">모든 영상</div>
+						<div class="body">클래스의 모든 영상을 모아볼 수 있어요.</div>
+						<div class="footer">
 						</div>
-						<form id="postList" name="postList" method="post">
-						<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-						<input  type="hidden" id=ctptSeq name="ctptSeq">
-						<input  type="hidden" id="mmSeq" name="mmSeq">
-						<div class="card shadow mb-4">
+					</div>
+					<form id="postList" name="postList" method="post">
+					<input type="hidden" id="ctcsSeq" name="ctcsSeq">
+					<input type="hidden" id=ctptSeq name="ctptSeq">
+					<input type="hidden" id="mmSeq" name="mmSeq">
+					<div class="card shadow mb-4 ">
 						<c:choose>
 							<c:when test="${fn:length(list) eq 0}">
 								<div class="container_base">
-									<div class="homework list mt-5 mb-5" >게시물이 없습니다!</div>
+									<div class="homework list mt-5 mb-5" >영상이 없습니다!</div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${list}" var="item" varStatus="status">
-									<c:if test="${item.ctboTypeCd eq 19}">
-										<div class="container_base">
-											<div class="homework list">
-												<div class="header" style="cursor: default;">
-													<div class="profile_box">
-														<img class="profile" src="/resources/uploaded/common/profile2.png" />
-													</div>
-													<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-														<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
-													</c:forEach>
-													<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-													<span>조회수:<c:out value = "${item.ctptView }"/></span>
+									<div class="container_base">
+										<div class="homework list">
+											<div class="header" style="cursor: default;">
+												<div class="profile_box">
+													<img class="profile" src="/resources/uploaded/common/profile2.png" />
 												</div>
-												<div class="body mt-2" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
-													<span class='badge badge_hw'>자유공간</span>
-													<span><c:out value="${item.ctptTitle}"/></span>
-													<br><br>
-													<p>
-														<c:forEach items="${ytb}" var="ytb" varStatus="status">
-															<c:if test="${ytb.pseq eq item.ctptSeq}"><img src="http://img.youtube.com/vi/<c:out value="${ytb.originalName}"/>/mqdefault.jpg"/><br></c:if>
-														</c:forEach>
-													</p>
-													<p><c:out value="${item.ctptContent}"/></p>
-													<br>
-												</div>
+												<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+													<c:if test="${item.ctptWriter eq itemMember.ctcmSeq}"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
+												</c:forEach>
+												<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+												<span>조회수:<c:out value = "${item.ctptView}"/></span>
+											</div>
+											<div class="body mt-2 mb-5" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
+												<span class='badge badge_hw'>영상</span>
+												<span><c:out value="${item.ctptTitle}"/></span>
+												<p>
+														<c:if test="${item.pseq eq item.ctptSeq}"><img src="http://img.youtube.com/vi/<c:out value="${item.originalName}"/>/mqdefault.jpg"/><br></c:if>
+												</p>
+												<br><p><c:out value="${item.ctptContent}"/></p>
+											</div>
 												<div class="footer mt-3" style="cursor: default;">
 													<i class="fa-regular fa-comment">2</i>&nbsp;
 													<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
 													<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
 													<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
 												</div>
-											</div>
 										</div>
-									</c:if>
+									</div>
 								</c:forEach>
-							</c:otherwise>			
-						</c:choose>				
-						</div>
-					</form>
+							</c:otherwise>
+						</c:choose>
 					</div>
+					</form>
 				</div>
-			</div>
+			</div>	
+		</div>
 	</div>
 </div>
 
@@ -150,6 +141,7 @@ goView = function(seq){
 	$("#postList").attr("action","/member/class/common/postview");
 	$("#postList").submit();
 }
+
 $("#btnLogout").on("click", function(){
 	
 	$.ajax({

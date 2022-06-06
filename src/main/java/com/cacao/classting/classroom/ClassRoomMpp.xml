@@ -446,15 +446,28 @@
 		<select id="selectListClassPostUrl" resultMap="resultMapObj">
 		select
 			a.originalName
+			,a.regDateTime
 			,a.pseq
 			,a.seq
 			,b.ctptSeq
+			,b.ctptTitle
+			,b.ctptContent
+			,b.ctptWriter
+			,b.ctptLike1
+			,b.ctptLike2
+			,b.ctptLike3
+			,b.ctptView
+			,b.ctptReservationNy
+			,b.ctptReservation
+			,b.regDateTime
+			
 		from
 			ctPostUploaded a
 		LEFT JOIN ctPost b on b.ctptSeq = a.pseq
 		LEFT JOIN ctBoard c on c.ctboSeq = b.ctboSeq
 		where 1=1
 		AND c.ctcsSeq =#{ctcsSeq}
+		ORDER BY b.regDateTime desc
 		 
 
 			

@@ -133,13 +133,7 @@
 						<div class="container_base">
 							<div class="post_content">
 								<div class="mt-3 mb-5">
-			<%-- 
-									  <iframe width="700" height="500" src="<c:out value="${ytb.originalName}"/>" 
-    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-			 --%>				
-			 					 <c:if test="${ytb.originalName ne null}"><div id="player"></div></c:if>	
-			 					
+			 					 <c:if test="${ytb.originalName ne null}"><div id="player"></div><br></c:if>	
 								  <script>
 								    // 2. This code loads the IFrame Player API code asynchronously.
 								    var tag = document.createElement('script');
@@ -181,7 +175,7 @@
 								      player.stopVideo();
 								    }
 								  </script>
-								  <br>
+								  
 									<c:out value="${item.ctptContent}"/>
 			 					
 			 					

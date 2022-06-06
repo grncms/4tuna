@@ -22,7 +22,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/noticeBoard"><i class="fa-solid fa-bullhorn" style="color: #828282;"></i> <span>모든 공지</span></a>
                 <a class="nav-link" href="/member/class/teacher/homeworklist"><i class="fa-solid fa-pencil" style="color: #828282;"></i> <span>모든 과제</span></a>
-                <a class="nav-link" href="#"><i class="fa-brands fa-youtube" style="color: #828282;"></i> <span>모든 영상</span></a>
+                <a class="nav-link" href="/member/class/common/classVideoList"><i class="fa-brands fa-youtube" style="color: #828282;"></i> <span>모든 영상</span></a>
                 <c:if test="${teacherNy eq 1}">
                 	<a class="nav-link" href="/member/class/teacher/homeworkreport"><i class="fa-solid fa-file-circle-check" style="color: #828282;"></i> <span>과제 리포트</span></a>
                 </c:if>
