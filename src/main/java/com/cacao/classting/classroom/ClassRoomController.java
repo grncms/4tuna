@@ -236,7 +236,11 @@ public class ClassRoomController {
 
 
 	@RequestMapping(value = "/chat")
-	public String chat(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String chat(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		String seq = (String)httpSession.getAttribute("ctcsSeq");
+		vo.setCtcsSeq(seq);
+		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList",memberList);
 		
 		return "chat/chat";
 	}	

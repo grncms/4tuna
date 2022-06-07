@@ -28,6 +28,7 @@
                 </c:if>
                 <a class="nav-link" href="/member/class/teacher/attendance"><i class="fa-solid fa-school-circle-check" style="color: #828282;"></i> <span>출석부</span></a>
                 <a class="nav-link" href="/classMemberList"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>구성원</span></a>
+                <a class="nav-link" href="/chat"><i class="fa-solid fa-users" style="color: #828282;"></i> <span>클래스채팅</span></a>
                 <a class="nav-link" href="/zoomList"><i class="fa-solid fa-video" style="color: #828282;"></i> <span>실시간 수업</span></a>
                 <c:if test="${teacherNy eq 1}">
                 	<a class="nav-link" href="/classSetting"><i class="fa-solid fa-gear" style="color: #828282;"></i> <span>클래스 설정</span></a>
