@@ -159,7 +159,7 @@
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
 			AND a.ctptReservationNy = 0
-			OR a.ctptReservation <= now()
+			AND IFNULL(a.ctptReservation, now() ) <= now()
 		ORDER BY a.regDateTime desc
 		]]>
 	</select>
