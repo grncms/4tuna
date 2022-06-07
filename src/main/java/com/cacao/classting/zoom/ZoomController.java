@@ -102,8 +102,8 @@ public class ZoomController {
 		System.out.println("dto.getAgenda() : "+dto.getAgenda());
 		System.out.println(" dto.getTopic() : "+dto.getTopic());
 		System.out.println(" dto.getStart_time() : "+dto.getStart_time());
-		String jsonInputString = "{\"agenda\" : \"" + dto.getAgenda() + "\", \"topic\": \"" + dto.getTopic() + "\", \"start_time\": \"" + dto.getStart_time()+"\" }";
-		
+		String jsonInputString = "{\"agenda\" : \"" + dto.getAgenda() + "\", \"topic\": \"" + dto.getTopic() + "\", \"start_time\": \"" + dto.getStart_time()+"\"}";
+//		, \"start_time\":  \"" + UtilDateTime.nowStringZoom() +
 //		전송
 		OutputStreamWriter osw = new OutputStreamWriter(httpURLConnection.getOutputStream());	
 			try{osw.write(jsonInputString);
@@ -135,4 +135,53 @@ public class ZoomController {
 		return "redirect:/zoomList";
 	}
 	
+	@RequestMapping(value = "/zoomDelete")
+	public String zoomDelete(Zoom dto, ZoomVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
+		
+		System.out.println("dto.getId() : "+dto.getId());
+		String jsonInputString = "{\"id\": \"" + dto.getId()+"\" }";
+
+//		api 호출해서 값을 가져온다.
+		String apiUrl = "https://api.zoom.us/v2/meetings/"+dto.getId();
+		
+		URL url = new URL(apiUrl);
+		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+		httpURLConnection.setRequestMethod("DELETE");
+		httpURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
+		httpURLConnection.setRequestProperty("Accept", "application/json; utf-8");
+		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2ODU1MDIwMDAsImlhdCI6MTY1Mzk1ODQwNX0.V1kjHKbBxkK_BcL6JgLRS3hNpvKj98s2uYnwrYvC5eo");
+		httpURLConnection.setDoOutput(true);
+		httpURLConnection.setDoInput(true);
+		
+
+//		전송
+		OutputStreamWriter osw = new OutputStreamWriter(httpURLConnection.getOutputStream());	
+		try{osw.write(jsonInputString);
+		osw.flush();				
+//		응답	
+		BufferedReader br = null;
+		br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "UTF-8"));
+		String line = null;	
+		while ((line = br.readLine()) != null) {	
+			System.out.println(line);				
+		}				
+//		닫기
+		osw.close();
+		br.close();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();			
+		} catch (ProtocolException e) {
+			e.printStackTrace();			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();			
+		} catch (IOException e) {
+			e.printStackTrace();			
+		}
+		
+		
+		vo.setAgenda(dto.getAgenda());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/zoomList";
+	}
 }

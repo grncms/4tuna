@@ -97,10 +97,10 @@
 											<label class="mt-1">제목</label>&nbsp;
 											<input class="form-control form-control-sm" type="text" id="topic" name="topic" placeholder="제목 입력"> <br>
 										</div>
-										<div class="input-group mt-1">
+<!-- 										<div class="input-group mt-1">
 											<label class="mt-1">시작시간</label>&nbsp;
 											<input class="form-control form-control-sm" type="text" id="start_time" name="start_time" placeholder="2022-06-07 12:00:00 형태로 입력"> <br>
-										</div>
+										</div> -->
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -111,14 +111,13 @@
 						</form>	
 					</div>
 				</div>
-				<form id="noticeList" name="noticeList" method="post">
-				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-				<input  type="hidden" id=ctptSeq name="ctptSeq">
-				<input  type="hidden" id="mmSeq" name="mmSeq">
+
 				<div class="card shadow mb-4 ">
 				<div class="container_base">
 					<div class="body">실시간 수업 목록</div>
 				</div>	
+				<form action="/zoomDelete" id="zoomList" name="zoomList" method="post">
+				<input type="hidden" id="id" name="id" value="<c:out value="${dto.id}" />">
 					<c:choose>
 						<c:when test="${fn:length(list) eq 0}">
 							<div class="container_base">
@@ -132,16 +131,16 @@
 									<div class="homework list">
 										<div class="header" style="cursor: default;">
 											<span class='badge badge_hw'>실시간 수업</span>
-											<div><c:out value = "${item.start_time}"/></div>
+											<div class=""><c:out value = "${item.start_time}"/></div>
+											<span onclick="javascript:goDelete(<c:out value="${item.id}"/>);"><i class="fas fa-trash" style="cursor: pointer;"></i></span>	
 										</div>
 										<div class="body mt-2" style="cursor: pointer;">
-											<p style="font-size: 22px; color: black; font-weight: bold;"><c:out value="${item.topic}"/></p>
+											<p style="font-size: 22px; color: black; font-weight: bold;"><c:out value="${item.topic}"/>
+											</p>
 											<br>
 											<p style="font-size: 15px; color: black;">시작 시간 : <c:out value = "${item.start_time}"/></p>
 											<p style="font-size: 15px; color: black; display: inline;">진행 시간 : <c:out value="${item.duration}"/> 분</p>
 											<button type="button" class="btn btn-zoom" onclick="location.href='${item.join_url}'">수업 참여 하기</button>
-											<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fas fa-trash"></i></button>
-											
 										</div>
 										<div class="footer mt-4 mb-2">
 										</div>
@@ -151,8 +150,8 @@
 							</c:forEach>	
 						</c:otherwise>
 					</c:choose>	
+				</form>	 
 				</div>
-				</form>	
 			</div>
 		</div>
 	</div>
@@ -172,6 +171,27 @@
 	<script src="../../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script type="text/javascript">
 
+goDelete = function(seq){
+	$("#id").val(seq);
+	$("#zoomList").attr("action","/zoomDelete");
+	$("#zoomList").submit();
+}
+
+/* $("#btn-delete").on("click", function(){
+var answer = confirm("삭제하시겠습니까?");
+
+	if(answer){
+		$("input[name=checkboxSeq]:checked").each(function() { 
+		checkboxSeqArray.push($(this).val());
+	}); 
+
+		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+	$("#formList").attr("action", "/xdmin/member/deleteMulti");
+	$("#formList").submit();
+}else{
+	return false;
+}
+});  */
 
 $("#btnLogout").on("click", function(){
 	
