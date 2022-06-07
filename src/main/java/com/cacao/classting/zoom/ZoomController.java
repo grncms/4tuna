@@ -10,10 +10,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +41,7 @@ public class ZoomController {
 	ZoomServiceImpl service;
 	
 	@RequestMapping(value = "/zoomList")
-	public String zoomList(Model model) throws Exception {
+	public String zoomList(Model model, Zoom dto) throws Exception {
 		
 //		api 호출해서 값을 가져온다.
 		String apiUrl = "https://api.zoom.us/v2/users/binson1123@naver.com/meetings";
@@ -54,33 +61,33 @@ public class ZoomController {
 		StringBuilder stringBuilder = new StringBuilder();
 		String line; 
 		while((line = bufferedReader.readLine()) != null) {
-			System.out.println("line : "+line);
+//			System.out.println("line : "+line);
 			stringBuilder.append(line);
 		}
 		
 		bufferedReader.close();
 		httpURLConnection.disconnect();
 		
-		System.out.println("stringBuilder.toString() : "+stringBuilder.toString());
+//		System.out.println("stringBuilder.toString() : "+stringBuilder.toString());
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
 		
-		System.out.println("###################################################################");
+//		System.out.println("###################################################################");
 		
 		for(String key : map.keySet()) {
 			String value = String.valueOf(map.get(key));
-			System.out.println("[key]: "+key + ", [value]: " + value);
+//			System.out.println("[key]: "+key + ", [value]: " + value);
 		}
 		
-		System.out.println("meetings#########################");
-		System.out.println("map.get(\"meetings\") : "+map.get("meetings"));
+//		System.out.println("meetings#########################");
+//		System.out.println("map.get(\"meetings\") : "+map.get("meetings"));
 		
 		List<Zoom> list = new ArrayList<Zoom>();
 		list = (List<Zoom>) map.get("meetings");
 		
 		model.addAttribute("list",list);
-		
+	
 		return "/member/classroom/common/zoomList";
 	}
 	
@@ -100,10 +107,9 @@ public class ZoomController {
 		httpURLConnection.setDoInput(true);
 		
 		System.out.println("dto.getAgenda() : "+dto.getAgenda());
-		System.out.println(" dto.getTopic() : "+dto.getTopic());
-		System.out.println(" dto.getStart_time() : "+dto.getStart_time());
-		String jsonInputString = "{\"agenda\" : \"" + dto.getAgenda() + "\", \"topic\": \"" + dto.getTopic() + "\", \"start_time\": \"" + dto.getStart_time()+"\"}";
-//		, \"start_time\":  \"" + UtilDateTime.nowStringZoom() +
+		System.out.println("dto.getTopic() : "+dto.getTopic());
+		String jsonInputString = "{\"agenda\" : \"" + dto.getAgenda() + "\", \"topic\": \"" + dto.getTopic() + "\", \"start_time\":  \"" + UtilDateTime.nowStringZoom() + "\"}";
+		
 //		전송
 		OutputStreamWriter osw = new OutputStreamWriter(httpURLConnection.getOutputStream());	
 			try{osw.write(jsonInputString);

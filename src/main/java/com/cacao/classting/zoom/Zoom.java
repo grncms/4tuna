@@ -14,6 +14,8 @@ public class Zoom {
     private String created_at;
     private String join_url;
     
+    private String rtStart_time;
+    
 	public String getUuid() {
 		return uuid;
 	}
@@ -79,6 +81,12 @@ public class Zoom {
 	}
 	public void setAgenda(String agenda) {
 		this.agenda = agenda;
+	}
+	public String getRtStart_time() {
+		return rtStart_time;
+	}
+	public void setRtStart_time(String rtStart_time) {
+		this.rtStart_time = rtStart_time;
 	}
 	
     

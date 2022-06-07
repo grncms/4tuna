@@ -130,15 +130,15 @@
 								<div class="container_base">
 									<div class="homework list">
 										<div class="header" style="cursor: default;">
-											<span class='badge badge_hw'>실시간 수업</span>
-											<div class=""><c:out value = "${item.start_time}"/></div>
-											<span onclick="javascript:goDelete(<c:out value="${item.id}"/>);"><i class="fas fa-trash" style="cursor: pointer;"></i></span>	
+											<span class='badge badge_hw' style="float: left;">실시간 수업</span>
+											<c:out value="${fn:substring(item.start_time, 0, 10)}"/>&nbsp;<c:out value="${fn:substring(item.start_time, 11, 19)}"/>
 										</div>
 										<div class="body mt-2" style="cursor: pointer;">
 											<p style="font-size: 22px; color: black; font-weight: bold;"><c:out value="${item.topic}"/>
+											<span onclick="javascript:goDelete(<c:out value="${item.id}"/>);" style="float: right;"><i class="fas fa-trash" style="cursor: pointer;"></i></span>	
 											</p>
 											<br>
-											<p style="font-size: 15px; color: black;">시작 시간 : <c:out value = "${item.start_time}"/></p>
+											<p style="font-size: 15px; color: black;">시작 시간 : <c:out value="${fn:substring(item.start_time, 0, 10)}"/>&nbsp;<c:out value="${fn:substring(item.start_time, 11, 19)}"/></p>
 											<p style="font-size: 15px; color: black; display: inline;">진행 시간 : <c:out value="${item.duration}"/> 분</p>
 											<button type="button" class="btn btn-zoom" onclick="location.href='${item.join_url}'">수업 참여 하기</button>
 										</div>
@@ -177,21 +177,11 @@ goDelete = function(seq){
 	$("#zoomList").submit();
 }
 
-/* $("#btn-delete").on("click", function(){
-var answer = confirm("삭제하시겠습니까?");
+/* const date = new Date();
+console.log(date) // Thu Dec 23 2021 00:06:11 GMT+0900 (한국 표준시)
+console.log(date.toISOString()) // 2021-12-22T15:07:22.573Z
+var date1 = date.toISOString().replace('T', ' ').substring(0, 19)); */
 
-	if(answer){
-		$("input[name=checkboxSeq]:checked").each(function() { 
-		checkboxSeqArray.push($(this).val());
-	}); 
-
-		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
-	$("#formList").attr("action", "/xdmin/member/deleteMulti");
-	$("#formList").submit();
-}else{
-	return false;
-}
-});  */
 
 $("#btnLogout").on("click", function(){
 	
