@@ -1,13 +1,23 @@
-	<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>ForTest</title>
+<title></title>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
 <!-- Custom fonts for this template-->
 <link href="/resources/common/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -100,33 +110,30 @@ input:checked+.slider:before {
 <div id="wrapper">
 	
 	<!-- Sidebar -->
-	<jsp:include page="/WEB-INF/views/member/include/classSidebar.jsp" />
-
+	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
+	
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column">
 	
 	<!-- Topbar -->
-	<jsp:include page="/WEB-INF/views/member/include/classNavbar.jsp" flush="true" />
-			
+	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
+	
+	<!-- Begin Page Content -->
+		<form method="post" id="puf" action="/member/classroom/common/classPostInst">
+		<input type="text" style="display: none;" id="ctptseq" name="ctptseq" value="<c:out value="${item.ctptSeq}"/>">
+	<div class="container-fluid">
 		<div class="row" id="posting">
 			<div class="col-xl-8 col-lg-8">
-				<!-- 타이틀 넣으려고 수정중 -->                        
-<!-- 				<div class="card shadow mb-4">
-					<div class="card-body">
-						<h6 style="font-weight: italic;">모두를 위한 공간</h6>
-						<h4 style="font-weight: bold; color: black;">자유공간</h4><Br><br>
-				    </div>
-				</div> -->
 				<div class="card shadow mb-4">
 					<!-- Card Body -->
 					<div class="card-body">
 						<!-- 제목 시작 -->
 						<div class="form-title">
-							<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="title" maxlength="100" required="required" pattern=".{4,100}" value="수정중~">
+							<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="ctptTitle" maxlength="100" required="required" pattern=".{4,100}">
 						</div>
 						<hr>
 						<!-- 제목 끝  -->
-	
+
 						<!-- 첨부파일 넣기 시작 -->
 						<div class="title_hw border">
 							<div class="col-md-10 col-lg-11" id="classInfo">
@@ -137,13 +144,17 @@ input:checked+.slider:before {
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-file-circle-plus fa-2x"></i>
 									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
+									<button type="button" class="btn btn-outline-secondary btn-sm" id="showUrl" name="showUrl">
 										<i class="fa-solid fa-video fa-2x"></i>
 									</button>
+																		
+									
+									
+								
+									<!-- 
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-link fa-2x"></i>
 									</button>
-	
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-b fa-2x"></i>
 									</button>
@@ -156,7 +167,7 @@ input:checked+.slider:before {
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-text-height fa-2x"></i>
 									</button>
-	
+
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-list fa-2x"></i>
 									</button>
@@ -171,22 +182,24 @@ input:checked+.slider:before {
 									</button>
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-check fa-2x"></i>
-									</button>
+									</button> -->
 								</div>
-	
-	
 							</div>
 						</div>
 						<hr>
 						<!-- 첨부파일 넣기 끝 -->
+
+
 						<!-- 내용 넣기 시작 -->
+						<input type="text" id="originalName" name="originalName" style="width:100%" placeholder="동영상 url을 넣으세요.">
 						<div class="title_hw border">
-							<textarea class="formBoard" rows="20" id="content" name="content" placeholder="본문을 작성하세요." style="resize: none;">ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹ</textarea>
+							<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
 						</div>
 						<!-- 내용 넣기 끝 -->
 					</div>
 				</div>
 			</div>
+
 			<div class="col-xl-4 col-lg-4">
 				<div class="card shadow mb-4">
 					<!-- Card Header - Dropdown -->
@@ -201,15 +214,14 @@ input:checked+.slider:before {
 								<div>공간</div>
 							</div>
 							<div class="form-group">
-								<select type="text" class="form-control" id="title">
-									<option value="0">자유공간
-									<option value="1">과제제출
+								<select class="form-control" id="title" name="ctboSeq">
+									<option value="1">자유공간
 									<option value="2">학습자료
+									<option value="3">활동사진
 								</select>
 							</div>
 							<hr>
 							<!-- 공간 끝  -->
-
 							<!-- 태그 시작 -->
 							<div class="title_hw">
 								<div>태그</div>
@@ -223,34 +235,52 @@ input:checked+.slider:before {
 							<!-- 게시글설정 시작 -->
 							<div class="d-flex flex-column gap-2">
 								<div>게시글 설정</div>
-								<div>
-									공지 <label class="switch"> <input type="checkbox"> <span class="slider round"></span>
-									</label>
+								<div>공지 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
+								<br>
+								<div>예약 <label class="switch">
+							
+								<input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span>
+									</label> 
+									<!-- <input type="date" class="form-control" id="ctptReservation" name="ctptReservation" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;"> -->
+									<!-- 임시 datetime date문제는 아님 -->
+									<input type="date" class="form-control" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
 								</div>
 								<br>
-								<div>예약 <label class="switch"> <input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span></label> <input type="datetime" class="form-control" placeholder="2022.04.28 (오전 03:16)" style="margin-top: 15px;">
-								</div>
-								<br>
-								<div>관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label>
-								</div>
+								<div>관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
 							</div>
+							
+							<input type="text" id="temp" name="temp" style="display:none;">
+							
+							
 							<!-- 게시글설정 끝 -->
 							<div>
-								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="location.href='/classStorage'">임시저장</button>
-								<button type="button" class="basic_button w-100" onclick="location.href='/member/class/common/postlist'">등록</button>
+								<input type="button" id="ctptReservationNy" name="ctptReservationNy" value="" style="display:none">
+								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="postUploadSubmit('temp')">예약/임시저장</button>
+								<button type="button" class="basic_button w-100" onclick="postUploadSubmit('submit')">등록</button>
 							</div>
 						</div>
+						
+						<script>
+							function postUploadSubmit(val){
+								if(val == 'temp') {
+									$('#temp').val('temp');
+									$('#ctptReservationNy').val(1);
+								}else {
+									$('#temp').val('submit');
+									$('#ctptReservationNy').val(0);
+								}
+								
+								document.getElementById('puf').submit();
+							}
+						</script>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
+		</form>
 	</div>
 </div>
-
-
-
-
-
 
 	<!-- End of Page Wrapper -->
 	<!-- Bootstrap core JavaScript-->
@@ -262,11 +292,18 @@ input:checked+.slider:before {
 
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
-
+<script src="/resources/common/js/sb-admin-2.min.js"></script> 
 <script type="text/javascript">
 
 
+$("#originalName").hide();
+$("#showUrl").on("click", function(){
+    $("#originalName").toggle();
+	
+});
+
 $("#btnLogout").on("click", function(){
+
 	
 	$.ajax({
 		async: true 
@@ -289,8 +326,6 @@ $("#btnLogout").on("click", function(){
 </script>
 
 
-
-<!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 

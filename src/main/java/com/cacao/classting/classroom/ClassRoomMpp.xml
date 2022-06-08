@@ -211,15 +211,23 @@
 	<!-- 게시글 수정 -->
 	<update id="updatePost">
 		update ctPost (
-		ctptTitle
+		ctptSeq
+		,ctptTitle
 		,ctptWriter
 		,ctptContent
+		,regDateTime
+		,ctptReservationNy
+		,ctptReservation
 		,ctboSeq
 		,ctptDelNy
 		) VALUES (
+		#{ctptSeq}
 		,#{ctptTitle}
 		,#{ctptWriter}
 		,#{ctptContent}
+		,now()
+		,#{ctptReservationNy}
+		,#{ctptReservation}
 		,#{ctboSeq}
 		,0
 		)
