@@ -322,6 +322,19 @@ public class ClassRoomController {
 		
 		return "member/classroom/common/classMemberList";
 	}
+	@RequestMapping(value = "/classMemberUele")
+	public String classMemberUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception{
+		
+		service.updateClassMemberDel(dto);
+		
+		vo.setCtcmSeq(dto.getCtcmSeq());
+		vo.setCtcsSeq(dto.getCtcsSeq());
+		System.out.println("getCtcmSeq : "+vo.getCtcmSeq());
+		System.out.println("getCtcsSeq : "+vo.getCtcsSeq());
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/classMemberList";
+	}
 	
 	@RequestMapping(value = "/classInvitation")
 	public String classInvitation(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{

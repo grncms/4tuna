@@ -60,6 +60,9 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row" id="posting">
+                    <form id="memberList" name="memberList" method="post">
+                    <input type="hidden" id="ctcmSeq" name="ctcmSeq" value="<c:out value="${vo.ctcmSeq}"/>">
+                    <input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${ctcsSeq}"/>">
                         <!-- Area Chart -->
                         <div class="col-12">
 							<div class="container_title shadow mb-4">
@@ -93,15 +96,16 @@
 									<div class="title_hw" >
 						            	<div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/uploaded/common/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
 										<div class="col-md-10 col-lg-10" id="classInfo"><span><b><c:out value="${item.ctcmName}"/></b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
-										<div class="dropdown no-arrow">
-	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-	                                        </a>
-	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-	                                            aria-labelledby="dropdownMenuLink">
-	                                            <a class="dropdown-item text-danger" href="#">회원탈퇴</a>
-	                                        </div>
-                                   		</div>
+										<c:if test="${teacherNy eq 1}">
+											<div class="dropdown no-arrow">
+		                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+		                                        </a>
+		                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+		                                            <a class="dropdown-item text-danger" href="javascript:goList(<c:out value="${item.ctcmSeq}"/>)" >회원탈퇴</a>
+		                                        </div>
+	                                   		</div>
+                                   		</c:if>
 									</div>	
 								</c:if>	
 								</c:forEach>
@@ -112,6 +116,7 @@
                         </div>
                         <!-- Pie Chart -->	
                 <!-- /.container-fluid -->
+                </form>
             </div>
             <!-- End of Main Content -->
 		</div>
@@ -131,6 +136,18 @@
 
 <script type="text/javascript">
 
+goList = function(seq){
+	var answer = confirm("삭제하시겠습니까?");
+	
+	if(answer){
+		$("#ctcmSeq").val(seq);
+		$("#memberList").attr("action", "/classMemberUele");
+		$("#memberList").submit();
+	}else{
+		return false;
+	}
+	
+};
 
 $("#btnLogout").on("click", function(){
 	

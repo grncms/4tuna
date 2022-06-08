@@ -437,12 +437,22 @@
 		,a.ctcmName
 		,a.ctcmTeacherNy
 		,a.ctcsSeq
+		,a.ctcmDelNy
 		FROM
 		ctClassMember a
 		WHERE 1=1
+		AND a.ctcmDelNy = 0
 		AND a.ctcsSeq = #{ctcsSeq}
 	</select>
-	
+	<!-- 구성원 삭제 (update) -->
+	<update id="updateClassMemberDel">
+		UPDATE
+			ctClassMember
+		SET
+			ctcmDelNy = 1
+		WHERE 1=1
+			AND ctcmSeq = #{ctcmSeq}
+	</update>
 		<select id="selectListClassPostUrl" resultMap="resultMapObj">
 		select
 			a.originalName

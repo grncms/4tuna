@@ -58,6 +58,7 @@ public class ClassRoomDao {
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassMember",vo); return list;}
 	public List<ClassRoom> selectListClassPostUrl(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassPostUrl",vo); return list;}
 	
+	public int updateClassMemberDel(ClassRoom dto)  {return sqlSession.update(namespace + ".updateClassMemberDel", dto);}
 //	댓글리스트
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListReply",vo); return list;}
 	public List<ClassRoom> selectListHomeworkReply(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomeworkReply",vo); return list;}

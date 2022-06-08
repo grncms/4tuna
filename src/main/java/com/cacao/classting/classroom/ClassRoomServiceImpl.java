@@ -308,6 +308,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		return dao.selectListClassPostUrl(vo);
 	}
 
+	@Override
+	public int updateClassMemberDel(ClassRoom dto) throws Exception {
+		return dao.updateClassMemberDel(dto);
+	}
+
 
 
 	
