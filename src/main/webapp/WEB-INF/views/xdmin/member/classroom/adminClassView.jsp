@@ -246,12 +246,6 @@
 							<label for="ctcsName" class="form-label">클래스 이름</label>
 							<input type="text" class="form-control" id="ctcsName" name="ctcsName" value="<c:out value="${item.ctcsName}"/>" readonly>
 							
-							<label for="classImg" class="form-label">클래스 사진</label>
-							<div >
-								<img src="../../../../../resources/common/image/profile2.png"  width="70" height="70" >
-							</div>
-							
-							
 							<label for="ctcsBelongto" class="form-label">소속 학교</label>
 							<input type="text" class="form-control" id="ctcsBelongto" name="ctcsBelongto" value="<c:out value="${item.ctcsBelongto}"/>" readonly>
 							
@@ -267,7 +261,8 @@
 							<label for="ctcmName" class="form-label">구성원</label>
 							<div id="ctcmName" name="ctcmName">
 							<c:forEach items="${list}" var="item" varStatus="status">
-			      			 	<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"><strong><c:out value="${item.ctcmName}"/></strong>
+			      			 	 <img src="/resources/uploaded/common/profile2.png" alt="" width="32" height="32" class="rounded-circle me-2">
+			      			 	<strong><c:out value="${item.ctcmName}"/></strong>
 							</c:forEach>
 							</div>
 							

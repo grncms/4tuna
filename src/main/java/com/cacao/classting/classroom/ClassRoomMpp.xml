@@ -438,12 +438,17 @@
 		,a.ctcmTeacherNy
 		,a.ctcsSeq
 		,a.ctcmDelNy
+		,b.seq
+		,b.path
+		,b.uuidName
 		FROM
 		ctClassMember a
+		LEFT JOIN ctMemberUploaded b on b.pseq = a.ctcmSeq
 		WHERE 1=1
 		AND a.ctcmDelNy = 0
 		AND a.ctcsSeq = #{ctcsSeq}
 	</select>
+
 	<!-- 구성원 삭제 (update) -->
 	<update id="updateClassMemberDel">
 		UPDATE

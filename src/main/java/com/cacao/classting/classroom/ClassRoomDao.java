@@ -26,6 +26,8 @@ public class ClassRoomDao {
 
 	public List<ClassRoom> selectListClass(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClass",vo); return list;}
 
+	public List<ClassRoom> selectListMemberUploaded(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListMemberUploaded",vo); return list;}
+
 	public ClassRoom selectOneClass(ClassRoomVo vo) { return sqlSession.selectOne(namespace + ".selectOneClass", vo);}
 
 	public int deleteClass(ClassRoomVo vo) {return sqlSession.update(namespace + ".deleteClass", vo);}

@@ -10,32 +10,35 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-			mmSeq
-			,mmAdminNy
-			,mmDormacyNy
-			,mmTeacherNy
-			,mmGradeCd
-			,mmName
-			,mmId
-			,mmPassword
-			,mmPhoneNumber
-			,mmGenderCd
-			,mmDob
-			,mmMemberEmail
-			,mmTypeOfLoginCd
-			,mmTermsOfserviceNy
-			,mmEventNotificationNy
-			,mmPersonalInfoNy
-			,mmAlarmInvitationNy
-			,mmAlarmReplyNy
-			,mmDelNy
-			,mmDesc
-			,modDateTime
-			,modDateTimeSvr
-			,regDateTime
-			,regDateTimeSvr
+			a.mmSeq
+			,a.mmAdminNy
+			,a.mmDormacyNy
+			,a.mmTeacherNy
+			,a.mmGradeCd
+			,a.mmName
+			,a.mmId
+			,a.mmPassword
+			,a.mmPhoneNumber
+			,a.mmGenderCd
+			,a.mmDob
+			,a.mmMemberEmail
+			,a.mmTypeOfLoginCd
+			,a.mmTermsOfserviceNy
+			,a.mmEventNotificationNy
+			,a.mmPersonalInfoNy
+			,a.mmAlarmInvitationNy
+			,a.mmAlarmReplyNy
+			,a.mmDelNy
+			,a.mmDesc
+			,a.modDateTime
+			,a.modDateTimeSvr
+			,a.regDateTime
+			,a.regDateTimeSvr
+			,b.path
+			,b.uuidName
 		FROM	
-			Member
+			Member a
+		LEFT JOIN ctMemberUploaded b on b.pseq = a.mmSeq
 		WHERE 1=1
 			AND mmSeq = #{mmSeq}
 	</select>

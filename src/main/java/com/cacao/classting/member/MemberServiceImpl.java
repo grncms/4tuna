@@ -168,7 +168,23 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int updateMember(Member dto) throws Exception {
-		return dao.updateMember(dto);
+		
+		
+		
+		 dao.updateMember(dto);
+		  
+	     String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+	     UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
+	     
+	     dto.setTableName("ctMemberUploaded");
+	     dto.setType(0);
+	     dto.setDefaultNy(1);
+	     dto.setSort(0);
+	     dto.setDelNy(0);
+	     dto.setPseq(dto.getMmSeq());
+	     
+	     dao.updateUploaded(dto);
+		return 1;
 	}
 	
 	@Override

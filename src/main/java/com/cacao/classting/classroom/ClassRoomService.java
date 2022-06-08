@@ -10,6 +10,7 @@ public interface ClassRoomService {
 
 
 	public List<ClassRoom> selectListClass(ClassRoomVo vo) throws Exception;
+	public List<ClassRoom> selectListMemberUploaded(ClassRoomVo vo) throws Exception;
 	public int insertClass(ClassRoom dto) throws Exception;
 
 	public int deleteClass(ClassRoomVo vo) throws Exception;
