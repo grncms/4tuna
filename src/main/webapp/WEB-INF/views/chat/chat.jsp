@@ -53,8 +53,9 @@
 							</header>
 							<ul>
 								<c:forEach items="${memberList }" var="ml" varStatus="st">
-
-									<li class="membersList" id="connect">
+									<li class="membersList" id="member" >
+									<input type="hidden" value="${ml.ctcmName }" id="name" class="name">
+									<input type = "hidden" value="${ml.ctcmSeq}" id="seq" class="seq">
 										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
 										<div>
 											<h2>
@@ -73,8 +74,7 @@
 							<header>
 								<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
 								<div>
-									<h2>Chat with Vincent Porter</h2>
-									<h3>already 1902 messages</h3>
+									<h2 id="with">상대방:</h2>
 								</div>
 								<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
 							</header>
@@ -100,8 +100,7 @@
 
 							</ul>
 							<footer>
-								<input type="text" id="msg" /> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt=""> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-								<button id="send">Send</button>
+								<input type="text" id="msg" /> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt=""> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt=""> <input type="button" value="전송" onclick="send()">
 							</footer>
 						</main>
 					</div>
@@ -110,7 +109,7 @@
 		</div>
 	</div>
 
-	<input type="text" value="${vo.ctcmSeq }" id="myId">
+	<input type="hidden" value="${vo.ctcmSeq }" id="myId">
 	<input type="hidden" value="${vo.ctcsSeq }" id="classId">
 
 
@@ -134,6 +133,7 @@
 	var client;
 	var mySessionId = $("#myId").val();
 	var classId = $("#classId").val();
+	var friendId ;
 		$(function() {
 			var msgTemplate;
 			var sock = new SockJS("/ctChatServer");
@@ -142,8 +142,9 @@
 				console.log("connected stompTest");
 				//Controller;s MessageMapping, header , message(자유형식)
 				
+				
+				//내 아이디 구독
 				client.subscribe('/sub/topic/'+classId + "/" + mySessionId ,function(msg){
-						alert(msg);
 						msgTemplate ='<li class="me">'
 							msgTemplate +='<div class="entete">';
 							msgTemplate +='<h3>10:12AM, Today</h3>';
@@ -151,18 +152,53 @@
 							msgTemplate +='<span class="status blue"></span>';
 							msgTemplate +='</div>';
 							msgTemplate +='<div class="triangle"></div>';
-							msgTemplate +='<div class="message">'+ msg + '</div>';
+							msgTemplate +='<div class="message">'+ msg.body + '</div>';
 							msgTemplate +='</li>' ;
 							
 							$("#chat").append(msgTemplate);
 					})
 			})
 			})
-		
-			$("#send").click(function(){
+			
+			
+			
+			function send(classId,sessionId){
 			var msg = $("#msg").val();
-			 client.send('/topic/public/'+classId +"/" + mySessionId, {}, ); 
+			client.send('/topic/public/' + classId+ "/" + session,{},msg);
+		}
+		
+		
+		
+		
+		$(".membersList").click(function(){
+			 
+			
+			
+			
+			var params = {
+					name : $(this).find($(".name")).val()
+					,seq : $(this).find($(".seq")).val()
+			}
+			
+			$.ajax({
+				type : "POST",
+				url : "/enterRoom",
+				data : JSON.stringify(params),
+				contentType: "application/json; charset=UTF-8",
+				dataType:"json",
+				success:function(res){
+					
+					friendId = res.seq;
+					$("#with").html("대화상대: " + res.name);
+					
+					
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown){
+					alert("통신실패");
+				}
 			})
+			
+		})
 	</script>
 </body>
 

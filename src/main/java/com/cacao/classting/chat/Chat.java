@@ -7,6 +7,10 @@ public class Chat {
 	private String chatRoomId;
 	private String Id;
 	private String msg;
+	
+	private String name;
+	private String seq;
+	
 //	ctMessages
 	private String ctmgSeq;
 	private Integer ctmgDefaultNy;
@@ -190,6 +194,7 @@ public class Chat {
 	public void setRoomSeq(String roomSeq) {
 		this.roomSeq = roomSeq;
 	}
+
 	public String getChatRoomId() {
 		return chatRoomId;
 	}
@@ -208,7 +213,18 @@ public class Chat {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	
 	
 	

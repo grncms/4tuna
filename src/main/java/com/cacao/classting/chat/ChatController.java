@@ -1,8 +1,13 @@
 package com.cacao.classting.chat;
 
+import java.util.Map;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ChatController {
@@ -17,6 +22,15 @@ public class ChatController {
 		 */
 		 System.out.println("수신메시지: " + msg);
 		return msg; // sentTo 주소에 매핑하여 전송
+	}
+	
+	@ResponseBody
+	@RequestMapping("/enterRoom")
+	public Map<String,Object> enterRoom(@RequestBody Map<String,Object> chat) {
+		System.out.println("맵:" + chat.toString());
+		chat.put("code","0000");
+		
+		return chat;
 	}
 
 }
