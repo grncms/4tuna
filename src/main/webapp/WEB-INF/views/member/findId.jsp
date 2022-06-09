@@ -64,7 +64,6 @@
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
                   <form action="member/getId" id="findId" name="findId" method="post" class="form-box">
-                  <input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
                     <h3 class="h4 text-black mb-4">아이디 찾기</h3>
                     <div class="form-group">
                       <input type="text" class="form-control" id="mmName" name="mmName" placeholder="이름" value="김선생">
