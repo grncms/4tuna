@@ -231,9 +231,10 @@
 
 goHomeworkSubmit = function(seq){
 	
-	$("#cthsSeq").val(seq);
+	alert(seq);
+ 	$("#cthsSeq").val(seq);
 	$("#hwSubmitList").attr("action","/member/class/common/homeworkPostView");
-	$("#hwSubmitList").submit();
+	$("#hwSubmitList").submit(); 
 
 }
 

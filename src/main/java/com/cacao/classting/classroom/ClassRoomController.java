@@ -712,8 +712,8 @@ public class ClassRoomController {
 	
 //	과제게시물 
 	@RequestMapping(value = "member/class/common/homeworkPostView")
-	public String homeworkPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception{
-		
+	public String homeworkPostView(@ModelAttribute("dto")ClassRoom dto, @ModelAttribute("vo") ClassRoomVo vo, Model model, HttpSession httpSession) throws Exception{
+
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		vo.setCthsWriter((String) httpSession.getAttribute("ctcmSeq"));
 		
@@ -729,8 +729,12 @@ public class ClassRoomController {
 		List<ClassRoom> replyList = service.selectListHomeworkSubmitReply(vo);
 		model.addAttribute("replyList", replyList);
 		
-		vo.setCthsSeq(rt.getCthsSeq());
+		model.addAttribute("rtSeq", dto.getCthsSeq());
+		System.out.println("rtSeq" + dto.getCthsSeq());
+		
+		System.out.println("dto.getCthsSeq() : "+dto.getCthsSeq());
 		System.out.println("vo.getCthsSeq() : "+vo.getCthsSeq());
+		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		
 		return "member/classroom/common/classHomeworkPostView";
 	}
@@ -808,7 +812,6 @@ public class ClassRoomController {
 		vo.setSubmitMembers(countS);
 		
 		vo.setCthsWriter((String)httpSession.getAttribute("ctcmSeq"));
-//		vo.setCthpSeq(dto.getCthpSeq());
 		System.out.println("vo.getCthsWriter() : "+vo.getCthsWriter());
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
 		
