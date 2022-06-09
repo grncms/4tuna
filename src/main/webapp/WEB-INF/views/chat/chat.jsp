@@ -53,13 +53,13 @@
 							</header>
 							<ul>
 								<c:forEach items="${memberList }" var="ml" varStatus="st">
-									<li id="user" onclick="openChat();">
+
+									<li class="membersList" id="connect">
 										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
 										<div>
 											<h2>
 												<c:out value="${ml.ctcmName }" />
 											</h2>
-											<input value="${ml.ctcmSeq }" type="hidden" id="userSeq" />
 											<h3>
 												<span class="status orange"></span>
 												offline
@@ -101,7 +101,7 @@
 							</ul>
 							<footer>
 								<input type="text" id="msg" /> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt=""> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-								<button onclick="sendMsg();">Send</button>
+								<button id="send">Send</button>
 							</footer>
 						</main>
 					</div>
@@ -110,7 +110,8 @@
 		</div>
 	</div>
 
-
+	<input type="text" value="${vo.ctcmSeq }" id="myId">
+	<input type="hidden" value="${vo.ctcsSeq }" id="classId">
 
 
 
@@ -126,41 +127,47 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../../resources/common/js/sb-admin-2.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js" integrity="sha512-1QvjE7BtotQjkq8PxLeF6P46gEpBRXuskzIVgjFpekzFVF4yjRgrQvTG1MTOJ3yQgvTteKAcO7DSZI92+u/yZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
-		var socket;
-		function openChat() {
-			socket = new WebSocket("ws://localhost:8094/echo.do");
-
-			socket.onopen = $("#chat")
-					.append("<li>" + "연결이 생성되었습니다." + "</li>");
-			socket.onmessage = onMessage;
-			socket.onclose = onClose;
-		}
-
-		function sendMsg() {
-			socket.send($("#msg").val());
-		}
-
-		function onMessage(event) {
-			var data = event.data;
-			var msgWindow = "<li class='me'>";
-
-			msgWindow += "<div class='entete'>";
-			msgWindow += "<h3>10:12AM, Today</h3>";
-			msgWindow += "<h2>Vincent</h2>";
-			msgWindow += "<span class='status blue'></span>";
-			msgWindow += "</div>";
-			msgWindow += "<div class='triangle'></div>";
-			msgWindow += "<div class='message'>" + data + "</div>";
-			msgWindow += "</li>";
-			$("#chat").append(msgWindow);
-		}
-
-		function onClose(event) {
-			socket.close();
-			$("#chat").append("<li>" + "연결이 끊어졌습니다." + "</li>");
-		}
+	var client;
+	var mySessionId = $("#myId").val();
+	var classId = $("#classId").val();
+		$(function() {
+			var msgTemplate;
+			var sock = new SockJS("/ctChatServer");
+			client = Stomp.over(sock);
+			client.connect({}, function() {
+				console.log("connected stompTest");
+				//Controller;s MessageMapping, header , message(자유형식)
+				
+				client.subscribe('/sub/topic/'+classId + "/" + mySessionId ,function(msg){
+						alert(msg);
+						msgTemplate ='<li class="me">'
+							msgTemplate +='<div class="entete">';
+							msgTemplate +='<h3>10:12AM, Today</h3>';
+							msgTemplate +='<h2>Vincent</h2>';
+							msgTemplate +='<span class="status blue"></span>';
+							msgTemplate +='</div>';
+							msgTemplate +='<div class="triangle"></div>';
+							msgTemplate +='<div class="message">'+ msg + '</div>';
+							msgTemplate +='</li>' ;
+							
+							$("#chat").append(msgTemplate);
+					})
+			})
+			})
+		
+			$("#send").click(function(){
+			var msg = $("#msg").val();
+			 client.send('/topic/public/'+classId +"/" + mySessionId, {}, ); 
+			})
 	</script>
 </body>
 
 </html>
+
+
+
+

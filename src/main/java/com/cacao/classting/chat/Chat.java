@@ -4,6 +4,9 @@ import java.util.Date;
 
 public class Chat {
 
+	private String chatRoomId;
+	private String Id;
+	private String msg;
 //	ctMessages
 	private String ctmgSeq;
 	private Integer ctmgDefaultNy;
@@ -32,6 +35,11 @@ public class Chat {
 	private Integer ctctDelNy;
 	private Integer ctctChannel;
 	private String ctctUser;
+	
+	
+	private String roomName;
+	private String roomSeq;
+	
 	public String getCtmgSeq() {
 		return ctmgSeq;
 	}
@@ -169,6 +177,36 @@ public class Chat {
 	}
 	public void setCtctUser(String ctctUser) {
 		this.ctctUser = ctctUser;
+	}
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+	public String getRoomSeq() {
+		return roomSeq;
+	}
+	public void setRoomSeq(String roomSeq) {
+		this.roomSeq = roomSeq;
+	}
+	public String getChatRoomId() {
+		return chatRoomId;
+	}
+	public void setChatRoomId(String chatRoomId) {
+		this.chatRoomId = chatRoomId;
+	}
+	public String getId() {
+		return Id;
+	}
+	public void setId(String id) {
+		Id = id;
+	}
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 	
 	

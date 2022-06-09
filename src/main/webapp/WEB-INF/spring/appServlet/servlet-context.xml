@@ -68,22 +68,19 @@
 
 
 	<!-- 웹소켓 -->
-	<websocket:handlers>
-		<websocket:mapping path="/echo.do"
-			handler="websocketHandler" />
-	</websocket:handlers>
-	<!-- Websocket -->
-<!-- 	<websocket:handshake-interceptors>
-			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
-	</websocket:handshake-interceptors> -->
+<!-- 	<websocket:handlers>
+		<websocket:mapping path="/echo.do" handler="websocketHandler" />
+			<websocket:handshake-interceptors>
+        	<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+	</websocket:handlers> -->
 
 
 
 
-		<!-- HTTPSESSION값을 가져오기 위하여 -->
 
-
+<!-- 
 	<beans:bean id="websocketHandler"
-		class="com.cacao.classting.chat.ChatHandler" />
+		class="com.cacao.classting.chat.ChatHandler" /> -->
 	<!-- 웹소켓 끝 -->
 </beans:beans>
