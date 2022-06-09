@@ -246,7 +246,7 @@
 					<input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>" readonly>
 					<label for="classImg" class="form-label">클래스 사진</label>
 					<div >
-						<img src="../../../../resources/common/image/profile2.png"  width="70" height="70" >
+						<c:if test="${item.path ne null}"><img class="img-profile rounded-circle" width="35px" height="35px" src="${item.path}${item.uuidName}"></c:if>
 					</div>
 					<label for="mmSchoolCd" class="form-label">소속 학교</label>
 					<input type="text" class="form-control" id="classSchool" name="classSchool"  value="<c:out value="${item.mmSchoolCd}"/>" readonly>

@@ -94,9 +94,9 @@ public class ClassRoomController {
 			ClassRoom item = service.selectOneClass(vo);
 			model.addAttribute("item", item);
 			
-			  List<ClassRoom> list = service.selectListClassMember(vo);
+			List<ClassRoom> list = service.selectListClassMember(vo);
 			  model.addAttribute("list", list);
-			 
+
 		return "xdmin/member/classroom/adminClassView";
 	}
 

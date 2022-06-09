@@ -211,15 +211,23 @@
 	<!-- 게시글 수정 -->
 	<update id="updatePost">
 		update ctPost (
-		ctptTitle
+		ctptSeq
+		,ctptTitle
 		,ctptWriter
 		,ctptContent
+		,regDateTime
+		,ctptReservationNy
+		,ctptReservation
 		,ctboSeq
 		,ctptDelNy
 		) VALUES (
+		#{ctptSeq}
 		,#{ctptTitle}
 		,#{ctptWriter}
 		,#{ctptContent}
+		,now()
+		,#{ctptReservationNy}
+		,#{ctptReservation}
 		,#{ctboSeq}
 		,0
 		)
@@ -438,12 +446,17 @@
 		,a.ctcmTeacherNy
 		,a.ctcsSeq
 		,a.ctcmDelNy
+		,b.seq
+		,b.path
+		,b.uuidName
 		FROM
 		ctClassMember a
+		LEFT JOIN ctMemberUploaded b on b.pseq = a.ctcmSeq
 		WHERE 1=1
 		AND a.ctcmDelNy = 0
 		AND a.ctcsSeq = #{ctcsSeq}
 	</select>
+
 	<!-- 구성원 삭제 (update) -->
 	<update id="updateClassMemberDel">
 		UPDATE

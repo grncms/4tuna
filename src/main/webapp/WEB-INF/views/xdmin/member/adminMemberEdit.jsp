@@ -232,7 +232,7 @@
 </head>
 <body id="page-top">
 <jsp:include page="/WEB-INF/views/member/include/admin_header.jsp" flush="true" />
-	<form id ="memberEdit" name="memberEdit" method="post" action="updateMember">
+	<form id ="memberEdit" name="memberEdit" method="post" action="updateMember"enctype="multipart/form-data">
 	<input type="hidden" id="mmSeq" name ="mmSeq" value="<c:out value="${item.mmSeq}"/>">
 	<input type="hidden" id="shOption" name="shOption" value="<c:out value="${vo.shOption}"/>">
 	<input type="hidden" id="shValue" name="shValue" value="<c:out value="${vo.shValue}"/>">
@@ -245,7 +245,9 @@
 					<input type="text" class="form-control" id="mmName" name="mmName" value="<c:out value="${item.mmName}"/>">
 					<label for="classImg" class="form-label">클래스 사진</label>
 					<div >
-						<img src="../../../../resources/common/image/profile2.png"  width="70" height="70" >
+						<c:if test="${item.path ne null}"><img class="img-profile rounded-circle" width="35px" height="35px" src="${item.path}${item.uuidName}"></c:if>
+						<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
+					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
 					</div>
 					<label for="mmSchoolCd" class="form-label">소속 학교</label>
 					<input type="text" class="form-control" id="classSchool" name="classSchool"  value="<c:out value="${item.mmSchoolCd}"/>">
