@@ -3,6 +3,8 @@ package com.cacao.classting.classroom;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ClassRoom {
 
 //	ctClass
@@ -28,6 +30,10 @@ public class ClassRoom {
 	private Integer ctcmAlarmReactionNy;
 	private Integer ctcmDelNy;
 	private String mmSeq;
+	
+	private String tableName;
+	private MultipartFile file0;
+	private MultipartFile[] file1;
 	
 //	ctAddendance
 	private String ctadSeq;
@@ -114,6 +120,7 @@ public class ClassRoom {
 	private String originalName;	
 	private String uuidName;	
 	private String ext;	
+	private String path;	
 	private Integer type;	
 	private Integer defaultNy;	
 	private Integer sort;	
@@ -680,6 +687,30 @@ public class ClassRoom {
 	}
 	public void setScoreAvg(String scoreAvg) {
 		this.scoreAvg = scoreAvg;
+	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+	public MultipartFile getFile0() {
+		return file0;
+	}
+	public void setFile0(MultipartFile file0) {
+		this.file0 = file0;
+	}
+	public MultipartFile[] getFile1() {
+		return file1;
+	}
+	public void setFile1(MultipartFile[] file1) {
+		this.file1 = file1;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 

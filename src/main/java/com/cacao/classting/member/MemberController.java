@@ -270,7 +270,7 @@ public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model
 	public String classMemberInst(Member dto, MemberVo vo, Model model, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
 		
 		service.insertClassMember(dto);
-		 
+
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
 		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
 		System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());

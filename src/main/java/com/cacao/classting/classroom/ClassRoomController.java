@@ -40,10 +40,22 @@ public class ClassRoomController {
 		
 		return "member/classroom/student/classStudentForm";
 	}
+
 	@RequestMapping(value = "/classMemberView")
-	public String classMemberView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+	public String classMemberView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		
+		 ClassRoom item = service.selectOneMemberClass(vo);
+		   
+		  model.addAttribute("item", item);
+		  
 		return "member/classroom/common/classMemberView";
+	}
+	@RequestMapping(value = "/updateClassMember")
+	public String updateClassMember(ClassRoom dto) throws Exception  {
+		service.updateClassMember(dto);
+		
+		
+		return "redirect:/classMain";
 	}
 	@RequestMapping(value = "/noticeBoard")
 	public String classNoticeList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {

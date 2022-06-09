@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 
 
+
+
 @Repository
 public class ClassRoomDao {
 	
@@ -40,7 +42,7 @@ public class ClassRoomDao {
 	//classMemberView
 	public int updateClass(ClassRoom dto)  {return sqlSession.update(namespace + ".updateClass", dto);}
 
-	public ClassRoom selectOneMemberClass(ClassRoom vo)  { return sqlSession.selectOne(namespace + ".selectOneMemberClass", vo);}
+	public ClassRoom selectOneMemberClass(ClassRoomVo vo)  { return sqlSession.selectOne(namespace + ".selectOneMemberClass", vo);}
 
 	public int deleteMemberForcely(ClassRoom dto) {return sqlSession.update(namespace + ".DeleteMemberForcely", dto);}
 
@@ -59,7 +61,8 @@ public class ClassRoomDao {
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomeworkSubmit",vo); return list;}
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassMember",vo); return list;}
 	public List<ClassRoom> selectListClassPostUrl(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassPostUrl",vo); return list;}
-	
+	public int updateClassMember(ClassRoom dto) {return sqlSession.update(namespace + ".updateClassMember", dto);}
+	public int updateUploaded(ClassRoom dto) {return sqlSession.update(namespace +".updateUploaded", dto);}
 	public int updateClassMemberDel(ClassRoom dto)  {return sqlSession.update(namespace + ".updateClassMemberDel", dto);}
 //	댓글리스트
 	public List<ClassRoom> selectListReply(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListReply",vo); return list;}

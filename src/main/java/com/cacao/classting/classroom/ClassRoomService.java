@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 
+
 public interface ClassRoomService {
 	
 	//adminClass
-
 
 	public List<ClassRoom> selectListClass(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListMemberUploaded(ClassRoomVo vo) throws Exception;
@@ -21,10 +21,11 @@ public interface ClassRoomService {
 	
 	int deleteClassMulti(ClassRoomVo vo) throws Exception;
 
+	public int updateUploaded(ClassRoom dto) throws Exception;
 	//classMemberView
 	public int updateClass(ClassRoom dto) throws Exception;
 
-	public ClassRoom selectOneMemberClass(ClassRoom vo) throws Exception;
+	public ClassRoom selectOneMemberClass(ClassRoomVo vo) throws Exception;
 
 	public int deleteMemberForcely(ClassRoom dto) throws Exception;
 	// 조회수 
@@ -45,6 +46,7 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
+	public int updateClassMember(ClassRoom dto) throws Exception;
 
 	public int updateClassMemberDel(ClassRoom dto) throws Exception;
 	

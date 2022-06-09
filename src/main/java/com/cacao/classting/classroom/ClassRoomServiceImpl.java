@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cacao.classting.common.util.UtilDateTime;
+import com.cacao.classting.common.util.UtilUpload;
 
 
 @Service
@@ -58,6 +59,30 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 
 
 	@Override
+	public int updateClassMember(ClassRoom dto) throws Exception {
+		dao.updateClassMember(dto);
+		String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+	     UtilUpload.uploadClassMember(dto.getFile0(), pathModule, dto);
+	     
+	     dto.setTableName("ctClassMemberUploaded");
+	     dto.setType(0);
+	     dto.setDefaultNy(1);
+	     dto.setSort(0);
+	     dto.setDelNy(0);
+	     dto.setPseq(dto.getMmSeq());
+	     
+	     dao.updateUploaded(dto);
+		
+		return 1;
+	}
+
+	@Override
+	public int updateUploaded(ClassRoom dto) throws Exception {
+		
+		return dao.updateUploaded(dto);
+	}
+
+	@Override
 	public int selectOneCount(ClassRoomVo vo) throws Exception {
 		
 		return dao.selectOneCount(vo);
@@ -70,9 +95,9 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 	@Override
-	public ClassRoom selectOneMemberClass(ClassRoom vo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ClassRoom selectOneMemberClass(ClassRoomVo vo) throws Exception {
+		
+		return dao.selectOneMemberClass(vo);
 	}
 
 	@Override

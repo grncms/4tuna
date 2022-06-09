@@ -138,7 +138,7 @@
 <img style="float: left;" src="../../../../../resources/common/image/classtingFlower.png">
 
 <div class="row justify-content-center" style="color:black;">
-<form action="/classMemberInst" method="post" id="classMemberForm" name="classMemberForm" class="row">
+<form action="/classMemberInst" method="post" id="classMemberForm" name="classMemberForm" class="row" enctype="multipart/form-data">
 	<input type="hidden" name="ctcsSeq" id="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
 	<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
 	<input type="hidden" name="ctcsCode" id="ctcsCode" >
@@ -151,7 +151,8 @@
 		<p>클래스 프로필을 설정하고 지금 바로 시작하세요.</p>
 		<div>
 			<div id="classImg" style="height: 120px;">
-	               <img class="rounded-circle" style="width: 80px;" src="/resources/uploaded/common/profile2.png">
+					<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
+					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
 	        </div> 
 	        <div>   
 	               <span class=" text-gray-60 small">이 클래스에서만 사용할<br>
