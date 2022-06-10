@@ -223,6 +223,8 @@
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script type="text/javascript">
 
+alert($("#cthsSeq").val());	
+
 $("#submitScore").on("click", function(){
 	var answer = confirm("점수를 등록 하시겠습니까?");
 	

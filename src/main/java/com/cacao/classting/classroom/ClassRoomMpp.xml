@@ -289,13 +289,13 @@
 		,a.cthsDelNy
 		,a.cthpSeq
 		,a.regDateTime
-		,b.ctcsSeq
+		<!-- ,b.ctcsSeq -->
 		FROM
 		ctHomeworkSubmit a
-		LEFT JOIN ctHomeworkPost b on b.cthpSeq = a.cthpSeq
+		<!-- LEFT JOIN ctHomeworkPost b on b.cthpSeq = a.cthpSeq -->
 		WHERE 1=1
 		AND a.cthpSeq = #{cthpSeq}
-		AND b.ctcsSeq = #{ctcsSeq}
+		<!-- AND b.ctcsSeq = #{ctcsSeq} -->
 	</select>
 
 	<!-- 학생이 제출한 과제 -->

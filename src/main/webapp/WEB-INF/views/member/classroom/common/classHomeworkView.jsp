@@ -107,11 +107,6 @@
 
 		<div class="container-fluid">
 			<div class="row" id="posting">
-				<!-- <div class="col-xl-1 col-lg-1">
-					<i class="fa-2x fa-solid fa-thumbs-up" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-check" role="button" onclick=''></i><br>
-					<i class="fa-2x fa-solid fa-circle-question" role="button" onclick=''></i>
-				</div> -->
 				<div class="col-xl-7 col-lg-7">
 					<div class="card shadow mb-4">
 						<div class="container_base">
@@ -203,7 +198,9 @@
 						</div>
 			</div>
 				<div class="col-xl-5 col-lg-5">
-					<c:if test="${teacherNy eq 1 }"><%@ include file="/WEB-INF/views/member/include/classGraded.jsp" %></c:if>
+				<c:if test="${teacherNy eq 1 }">
+					<%@ include file="/WEB-INF/views/member/include/classGraded.jsp" %>
+				</c:if>
 					<c:if test="${teacherNy eq 0 }"><%@ include file="/WEB-INF/views/member/include/classHomeworkSubmit.jsp" %></c:if>
 				</div>
 		</div>
@@ -216,26 +213,26 @@
 
 
 
-	<!-- End of Page Wrapper -->
-	<!-- Bootstrap core JavaScript-->
-	<script src="/resources/common/vendor/jquery/jquery.min.js"></script>
-	<script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- End of Page Wrapper -->
+<!-- Bootstrap core JavaScript-->
+<script src="/resources/common/vendor/jquery/jquery.min.js"></script>
+<script src="/resources/common/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Core plugin JavaScript-->
-	<script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/resources/common/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-	<!-- Custom scripts for all pages-->
-	<script src="/resources/common/js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/resources/common/js/sb-admin-2.min.js"></script>
+<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>	
 <script type="text/javascript">
 
 
-goHomeworkSubmit = function(seq){
 	
+goHomeworkSubmit = function(seq){
 	alert(seq);
- 	$("#cthsSeq").val(seq);
+	$("#cthsSeq").val(seq); 
 	$("#hwSubmitList").attr("action","/member/class/common/homeworkPostView");
 	$("#hwSubmitList").submit(); 
-
 }
 
 goHomeworkSubmitStu = function(seq){
