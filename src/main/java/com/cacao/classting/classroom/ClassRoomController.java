@@ -43,11 +43,17 @@ public class ClassRoomController {
 
 	@RequestMapping(value = "/classMemberView")
 	public String classMemberView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
-		
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq"));
+		System.out.println("vo.getCtcmSeq :" + vo.getCtcmSeq());
+		vo.setMmSeq((String) httpSession.getAttribute("mmSeq"));
+		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
 		 ClassRoom item = service.selectOneMemberClass(vo);
 		   
 		  model.addAttribute("item", item);
-		  
+		  System.out.println("item"+ item);
+		  System.out.println(vo.getCtcsSeq());
 		return "member/classroom/common/classMemberView";
 	}
 	@RequestMapping(value = "/updateClassMember")
@@ -298,6 +304,9 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		
+// 		동영상 가져오기		
+		List<ClassRoom> ytb = service.selectListClassPostUrl(vo);
+		model.addAttribute("ytb", ytb);
 		//출석 체크
 		String today = LocalDate.now().toString();
 		String now = LocalDateTime.now().toString();

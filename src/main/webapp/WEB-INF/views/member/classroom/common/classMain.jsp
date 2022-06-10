@@ -56,6 +56,7 @@
 				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
 				<input  type="hidden" id=ctptSeq name="ctptSeq">
 				<input  type="hidden" id="mmSeq" name="mmSeq">
+				<input  type="hidden" id="ctcmSeq" name="ctcmSeq">
 				<div class="card shadow mb-4">
 					<div class="container_base">
 						<div class="body">전체 게시글</div>
@@ -87,6 +88,9 @@
 										<c:if test="${item.ctboTypeCd eq 21}"><span class='badge badge_after3'>활동사진</span></c:if>
 										<span><c:out value="${item.ctptTitle}"/></span>
 										<br><br>
+										<c:forEach items="${ytb}" var="ytb" varStatus="status">
+											<c:if test="${ytb.pseq eq item.ctptSeq}"><img src="http://img.youtube.com/vi/<c:out value="${ytb.originalName}"/>/mqdefault.jpg"/><br></c:if>
+										</c:forEach>
 										<p><c:out value="${item.ctptContent}"/></p>
 									</div>
 									<div class="footer mt-5">
