@@ -53,6 +53,7 @@ public class MemberController {
 		List<Member> listNotice = service.selectListNotice(vo);
 		model.addAttribute("listNotice", listNotice);
 		
+		System.out.println("httpSession.getAttribute(\"sessTeacher\") : "+httpSession.getAttribute("sessTeacher"));
 		System.out.println("httpSession.getAttribute(\"sessPath\") : " + httpSession.getAttribute("sessPath"));
 		System.out.println("httpSession.getAttribute(\"sessUuidName\") : " + httpSession.getAttribute("sessUuidName"));
 		return "member/main";

@@ -132,7 +132,7 @@
 								<%-- <div >마감일 : <fmt:formatDate value="${item.cthpEndDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div> --%>
 							</div>
 						</div>
- 						<div class="container_base">
+<%-- 						<div class="container_base">
 						<h6>댓글</h6>
 						<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 							<div class="comment row mt-2 mb-3">
@@ -166,8 +166,8 @@
 								</div>
 							</div>
 							</c:forEach>
-						</div> 
-						<div class="container_base">
+						</div>  --%>
+<%-- 						<div class="container_base">
 						<form id="replyInst" name="replyInst" action="/homeworkReplyInst" method="post">
 						<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>">
 						<input type="hidden" id="ctrhWriter" name="ctrhWriter" value="<c:out value="${ctcmSeq}"/>">
@@ -194,13 +194,11 @@
 									</div>
 								</div>
 							</form>		
-							</div>
+							</div> --%>
 						</div>
 			</div>
 				<div class="col-xl-5 col-lg-5">
-				<c:if test="${teacherNy eq 1 }">
-					<%@ include file="/WEB-INF/views/member/include/classGraded.jsp" %>
-				</c:if>
+					<c:if test="${teacherNy eq 1 }"><%@ include file="/WEB-INF/views/member/include/classGraded.jsp" %></c:if>
 					<c:if test="${teacherNy eq 0 }"><%@ include file="/WEB-INF/views/member/include/classHomeworkSubmit.jsp" %></c:if>
 				</div>
 		</div>
@@ -229,7 +227,7 @@
 
 	
 goHomeworkSubmit = function(seq){
-	alert(seq);
+
 	$("#cthsSeq").val(seq); 
 	$("#hwSubmitList").attr("action","/member/class/common/homeworkPostView");
 	$("#hwSubmitList").submit(); 

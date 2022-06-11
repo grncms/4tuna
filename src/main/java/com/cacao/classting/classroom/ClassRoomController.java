@@ -747,17 +747,15 @@ public class ClassRoomController {
 //		homeworkPostView
 		ClassRoom rt = service.selectOneHomeworkSubmit(vo);
 		model.addAttribute("item", rt);
-		
+
 //		댓글리스트
 		List<ClassRoom> replyList = service.selectListHomeworkSubmitReply(vo);
 		model.addAttribute("replyList", replyList);
 		
-		model.addAttribute("rtSeq", dto.getCthsSeq());
-		System.out.println("rtSeq" + dto.getCthsSeq());
-		
 		System.out.println("dto.getCthsSeq() : "+dto.getCthsSeq());
 		System.out.println("vo.getCthsSeq() : "+vo.getCthsSeq());
 		System.out.println("vo.getCthpSeq() : "+vo.getCthpSeq());
+		System.out.println("rt.getCthpSeq() : "+rt.getCthpSeq());
 		
 		return "member/classroom/common/classHomeworkPostView";
 	}
@@ -814,7 +812,8 @@ public class ClassRoomController {
 //		homeworkView
 		ClassRoom rt = service.selectOneClassHomework(vo);
 		model.addAttribute("item", rt);
-//		
+		
+//		학생목록
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 

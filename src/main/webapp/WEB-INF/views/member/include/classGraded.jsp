@@ -3,7 +3,7 @@
 		<div class="card shadow mb-4">
 		<form id="hwSubmitList" name="hwSubmitList" method="post">
 		<input type="hidden" id="cthpSeq" name="cthpSeq" value="<c:out value="${vo.cthpSeq}"/>"/>
-		<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>"/>
+		<input type="hidden" id="cthsSeq" name="cthsSeq"/>
 			<!-- <div class="rightbar"> -->
 				<div class="container_base">
 					<div class="title">과제목록</div>
@@ -35,13 +35,13 @@
 					</div>
 				</div>
 				</c:forEach>
+	</form>		
 				<div class="container_base">
 					<div class="title_hw">
 						<div>제출 현황</div>
 						<c:if test="${vo.submitMembers eq 0}">전체 학생 <c:out value="${vo.totalMembers}"/>명 중 아직 제출자가 없습니다!</div></c:if>
 						<c:if test="${vo.submitMembers ne 0}"><div>전체 학생 <c:out value="${vo.totalMembers}"/>명 중 <c:out value="${vo.submitMembers}"/>명 제출</div></c:if>
 				</div>
-		</form>		
 		</div>
 				
 	
