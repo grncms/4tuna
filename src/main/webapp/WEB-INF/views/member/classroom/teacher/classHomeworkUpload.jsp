@@ -184,7 +184,7 @@ input:checked+.slider:before {
 						</div>
 						<div class="container_base">
 							<div class="rightbar_button">
-								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray">임시저장</button>
+								<!-- <button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray">임시저장</button> -->
 								<button type="submit" class="basic_button w-100" id="btn-submit" name="btn-submit">과제 등록</button>
 							</div>
 						</div>
