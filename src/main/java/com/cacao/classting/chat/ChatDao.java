@@ -1,6 +1,9 @@
 package com.cacao.classting.chat;
 
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
@@ -13,7 +16,9 @@ public class ChatDao {
 	@Inject
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
-	
-
+	private static String namespace = "com.cacao.classting.chat.ChatMpp";
+	public int insertMsgInfo(Chat chat) {return sqlSession.insert(namespace+ ".insertMsgInfo", chat);}
+	public List<Chat> selectMsg(Map<String, Object> chatMap){return sqlSession.selectList(namespace + ".selectMsg", chatMap);}
 	
 }
+	

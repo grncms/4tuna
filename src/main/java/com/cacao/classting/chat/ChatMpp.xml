@@ -7,6 +7,32 @@
 <mapper namespace="com.cacao.classting.chat.ChatMpp">
 
     <resultMap id="resultMapObj" type="com.cacao.classting.chat.Chat"></resultMap>
+	<insert id="insertMsgInfo">
+		insert into ctMessages (
+			ctmgSender, <!-- 보낸유저 -->
+			ctmgSenderId,
+			ctmgReceiver, <!-- 받은유저  -->
+			ctmgMessage, <!-- 메시지  -->
+	ctcsSeq
+	) VALUES(
+	#{ctmgSender},
+	#{ctmgSenderId},
+	#{ctmgReceiver},
+	#{ctmgMessage},
+	#{ctcsSeq}
+
+	)
+	</insert >
+		
+		<select id ="selectMsg" resultMap = "resultMapObj" parameterType = "hashMap">
+		select ctmgSender,ctmgReceiver , ctmgMessage,ctmgSenderId,ctmgSendDate 
+		from ctMessages
+		where ctcsSeq = #{ctcsSeq} and 
+		(ctmgReceiver = #{myId} and ctmgSenderId = #{ctmgReceiver}) 
+		or 
+		(ctmgReceiver = #{ctmgReceiver} and ctmgSenderId =#{myId})
+		order by ctmgSendDate asc;
+		</select>
 	
 
 

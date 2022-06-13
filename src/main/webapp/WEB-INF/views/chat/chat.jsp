@@ -53,10 +53,8 @@
 							</header>
 							<ul>
 								<c:forEach items="${memberList }" var="ml" varStatus="st">
-									<li class="membersList" id="member" >
-									<input type="hidden" value="${ml.ctcmName }" id="name" class="name">
-									<input type = "hidden" value="${ml.ctcmSeq}" id="seq" class="seq">
-										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
+									<li class="membersList" id="member">
+										<input type="hidden" value="${ml.ctcmName }" id="name" class="name"> <input type="hidden" value="${ml.ctcmSeq}" id="seq" class="seq"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
 										<div>
 											<h2>
 												<c:out value="${ml.ctcmName }" />
@@ -70,38 +68,7 @@
 								</c:forEach>
 							</ul>
 						</aside>
-						<main>
-							<header>
-								<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
-								<div>
-									<h2 id="with">상대방:</h2>
-								</div>
-								<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
-							</header>
-							<ul id="chat">
-								<!-- 								<li class="you">
-									<div class="entete">
-										<span class="status green"></span>
-										<h2>Vincent</h2>
-										<h3>10:12AM, Today</h3>
-									</div>
-									<div class="triangle"></div>
-									<div class="message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</div>
-								</li>
-								<li class="me">
-									<div class="entete">
-										<h3>10:12AM, Today</h3>
-										<h2>Vincent</h2>
-										<span class="status blue"></span>
-									</div>
-									<div class="triangle"></div>
-									<div class="message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</div>
-								</li> -->
-
-							</ul>
-							<footer>
-								<input type="text" id="msg" /> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt=""> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt=""> <input type="button" value="전송" onclick="send()">
-							</footer>
+						<main id="main">
 						</main>
 					</div>
 				</div>
@@ -111,7 +78,7 @@
 
 	<input type="hidden" value="${vo.ctcmSeq }" id="myId">
 	<input type="hidden" value="${vo.ctcsSeq }" id="classId">
-
+	<input type="hidden" value="${vo.ctcmName }" id="myName">
 
 
 
@@ -133,26 +100,31 @@
 	var client;
 	var mySessionId = $("#myId").val();
 	var classId = $("#classId").val();
-	var friendId ;
+	var myName = $("#myName").val();
+	var receiver ; //memberList 클릭했을때 받은 정보로 데이터 입력됨
+	var msg ="";
+	//채팅창 시간 표시 위함
+	var today = new Date();
+	var hours = today.getHours();
+	var minutes = today.getMinutes();
 		$(function() {
-			var msgTemplate;
+			var msgTemplate; 
 			var sock = new SockJS("/ctChatServer");
 			client = Stomp.over(sock);
 			client.connect({}, function() {
 				console.log("connected stompTest");
 				//Controller;s MessageMapping, header , message(자유형식)
-				
-				
 				//내 아이디 구독
-				client.subscribe('/sub/topic/'+classId + "/" + mySessionId ,function(msg){
-						msgTemplate ='<li class="me">'
+				client.subscribe('/sub/topic/'+classId + "/" + mySessionId ,function(msg){ //콜백함수는 메시지를 받으면 실행됨 msg는 받은 메세지 파라미터
+					var data = JSON.parse(msg.body);
+						msgTemplate ='<li class="you">'
 							msgTemplate +='<div class="entete">';
-							msgTemplate +='<h3>10:12AM, Today</h3>';
-							msgTemplate +='<h2>Vincent</h2>';
-							msgTemplate +='<span class="status blue"></span>';
+							msgTemplate +='<h3>'+ hours+ "시" + minutes + "분" + '</h3>';
+							msgTemplate +='<h2>'+ data.ctmgSender +'</h2>';
+							msgTemplate +='<span class="status green"></span>';
 							msgTemplate +='</div>';
 							msgTemplate +='<div class="triangle"></div>';
-							msgTemplate +='<div class="message">'+ msg.body + '</div>';
+							msgTemplate +='<div class="message">'+ data.ctmgMessage + '</div>';
 							msgTemplate +='</li>' ;
 							
 							$("#chat").append(msgTemplate);
@@ -162,34 +134,91 @@
 			
 			
 			
-			function send(classId,sessionId){
-			var msg = $("#msg").val();
-			client.send('/topic/public/' + classId+ "/" + session,{},msg);
+			function send(){
+			msg = $("#msg").val();
+			var data = {
+					'ctcsSeq' : $("#classId").val(),
+					'ctmgReceiver' : receiver,
+					'ctmgSender': myName,
+					'ctmgSenderId' : mySessionId,
+					'ctmgMessage' : msg
+					}//클래스id,수신인id,발신인,발신인id,메세지
+			client.send('/topic/public',{},JSON.stringify(data));
+			
+			var msgTemplate ='<li class="me">'
+				msgTemplate +='<div class="entete">';
+				msgTemplate +='<h3>'+ hours+ "시" + minutes + "분" + '</h3>';
+				msgTemplate +='<h2>'+ myName +'</h2>';
+				msgTemplate +='<span class="status blue"></span>';
+				msgTemplate +='</div>';
+				msgTemplate +='<div class="triangle"></div>';
+				msgTemplate +='<div class="message">'+ msg + '</div>';
+				msgTemplate +='</li>' ;
+				$("#chat").append(msgTemplate);
 		}
 		
 		
 		
 		
-		$(".membersList").click(function(){
-			 
-			
-			
-			
+		$(".membersList").click(function(){ //친구 id와 이름을 controller에 전송
 			var params = {
 					name : $(this).find($(".name")).val()
-					,seq : $(this).find($(".seq")).val()
+					,ctmgReceiver : $(this).find($(".seq")).val()
+					,ctcsSeq : classId
+					,myId : mySessionId
 			}
 			
-			$.ajax({
+			$.ajax({ //ajax형태로 /enterRoom에 전송
 				type : "POST",
 				url : "/enterRoom",
 				data : JSON.stringify(params),
 				contentType: "application/json; charset=UTF-8",
 				dataType:"json",
 				success:function(res){
+					receiver = res.receiver;
+					var List = res.chatList;
+					var main = '<header>'
+					main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">'
+					main += '<div>'
+					main += '<h2 id="with">대화상대:'+res.name+'</h2>'
+					main += '</div>'
+					main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">'
+					main += '</header>'
+					main += '<ul id="chat">'
 					
-					friendId = res.seq;
-					$("#with").html("대화상대: " + res.name);
+					
+					$.each(List,function(index,item){
+						
+						if(item.ctmgSenderId == mySessionId){
+							main += '<li class="me">';
+							main += '<div class="entete">';
+							main +='<h3>'+ item.ctmgSendDate + '</h3>'; //시간표시
+							main +='<h2>'+ item.ctmgSender +'</h2>';
+							main +='<span class="status blue"></span>';
+							main +='</div>';
+							main +='<div class="triangle"></div>';
+							main +='<div class="message">'+ item.ctmgMessage + '</div>';
+							main += '</li>'
+						}else{
+							main += '<li class="you">';
+							main += '<div class="entete">';
+							main +='<h3>'+ item.ctmgSendDate + '</h3>';
+							main +='<h2>'+ item.ctmgSender +'</h2>';
+							main +='<span class="status green"></span>';
+							main +='</div>';
+							main +='<div class="triangle"></div>';
+							main +='<div class="message">'+ item.ctmgMessage + '</div>';
+							main += '</li>'
+						}
+
+					})
+					
+					main += '</ul>'
+					main += '<footer>'
+					main += '<input type="text" id="msg" /> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt=""> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt=""> <input type="button" value="전송" onclick="send()">'
+					main += '</footer>'
+					
+					$("#main").html(main)
 					
 					
 				},

@@ -67,20 +67,4 @@
 	<!-- fileUpload e 2022.03.30 -->
 
 
-	<!-- 웹소켓 -->
-<!-- 	<websocket:handlers>
-		<websocket:mapping path="/echo.do" handler="websocketHandler" />
-			<websocket:handshake-interceptors>
-        	<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-        </websocket:handshake-interceptors>
-	</websocket:handlers> -->
-
-
-
-
-
-<!-- 
-	<beans:bean id="websocketHandler"
-		class="com.cacao.classting.chat.ChatHandler" /> -->
-	<!-- 웹소켓 끝 -->
 </beans:beans>

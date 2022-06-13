@@ -6,11 +6,17 @@ public class Chat {
 
 	private String chatRoomId;
 	private String Id;
-	private String msg;
-	
 	private String name;
-	private String seq;
+	private Integer seq;
 	
+	
+
+	private String ctcsSeq;
+	private String ctmgMessage;
+	private String ctmgReceiver;
+	private String ctmgSendDate;
+	private String ctmgSender;
+	private String ctmgSenderId;
 //	ctMessages
 	private String ctmgSeq;
 	private Integer ctmgDefaultNy;
@@ -19,7 +25,6 @@ public class Chat {
 	private String ctmgId;
 	private String ctmgChannel;
 	private String ctmgImage;
-	private String ctcsSeq;
 	private Date regDateTime;
 	private Date regDateTimeSvr;
 	private Date modDateTime;
@@ -43,7 +48,24 @@ public class Chat {
 	
 	private String roomName;
 	private String roomSeq;
-	
+	public String getCtmgMessage() {
+		return ctmgMessage;
+	}
+	public void setCtmgMessage(String ctmgMessage) {
+		this.ctmgMessage = ctmgMessage;
+	}
+	public String getCtmgReceiver() {
+		return ctmgReceiver;
+	}
+	public void setCtmgReceiver(String ctmgReceiver) {
+		this.ctmgReceiver = ctmgReceiver;
+	}
+	public String getCtmgSender() {
+		return ctmgSender;
+	}
+	public void setCtmgSender(String ctmgSender) {
+		this.ctmgSender = ctmgSender;
+	}
 	public String getCtmgSeq() {
 		return ctmgSeq;
 	}
@@ -207,24 +229,32 @@ public class Chat {
 	public void setId(String id) {
 		Id = id;
 	}
-	public String getMsg() {
-		return msg;
-	}
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSeq() {
+	public Integer getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
+	public String getCtmgSenderId() {
+		return ctmgSenderId;
+	}
+	public void setCtmgSenderId(String ctmgSenderId) {
+		this.ctmgSenderId = ctmgSenderId;
+	}
+	public String getCtmgSendDate() {
+		return ctmgSendDate;
+	}
+	public void setCtmgSendDate(String ctmgSendDate) {
+		this.ctmgSendDate = ctmgSendDate;
+	}
+
 	
 	
 	
