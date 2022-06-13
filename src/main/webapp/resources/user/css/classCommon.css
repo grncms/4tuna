@@ -14,6 +14,14 @@
 		border: 1px solid #828282;
 		color: #828282;
 	}
+	#btn-zoom{
+		border-radius: 50px;
+		width: 80%;
+		font-size: 12px;
+		font-weight: bold;
+		border: 1px solid #000080;
+		color: #000080;
+	}
 	.btn-add:hover,
 	.btn-add:active,
 	.btn-add:visited,
