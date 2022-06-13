@@ -155,6 +155,7 @@
 				msgTemplate +='<div class="message">'+ msg + '</div>';
 				msgTemplate +='</li>' ;
 				$("#chat").append(msgTemplate);
+				$("#msg").val("");
 		}
 		
 		
