@@ -53,10 +53,10 @@
 					<div class="body"><c:out value="${ctcsName}"/> 클래스에 오신 것을 환영합니다</div>
 				</div>
 				<form id="postList" name="postList" method="post">
-				<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-				<input  type="hidden" id=ctptSeq name="ctptSeq">
-				<input  type="hidden" id="mmSeq" name="mmSeq">
-				<input  type="hidden" id="ctcmSeq" name="ctcmSeq">
+				<input type="hidden" id="ctcsSeq" name="ctcsSeq">
+				<input type="hidden" id=ctptSeq name="ctptSeq">
+				<input type="hidden" id="mmSeq" name="mmSeq">
+				<input type="hidden" id="ctcmSeq" name="ctcmSeq">
 				<div class="card shadow mb-4">
 					<div class="container_base">
 						<div class="body">전체 게시글</div>

@@ -11,8 +11,6 @@
 		width: 80%;
 		font-size: 12px;
 		font-weight: bold;
-		margin-top: 10px;
-		margin-bottom: 30px;
 		border: 1px solid #828282;
 		color: #828282;
 	}
@@ -23,8 +21,7 @@
 		background-color :#00C896;
 		color: #ffffff;
 	}
-	span
-	{	
+	span{	
 		color: #5a5a5a;	
 		font-weight: bold;
 	}

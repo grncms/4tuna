@@ -151,7 +151,7 @@
 							</div>
 						</form>	
 						</div>
-						<div class="container_base">
+<%-- 						<div class="container_base">
 							<h5>댓글</h5>
 							<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 							<div class="comment row mt-2 mb-3">
@@ -169,9 +169,9 @@
 								</div>
 							</div>
 							</c:forEach>
-						</div>
+						</div> --%>
 					<!-- 댓글 s -->
-						<div class="container_base">
+						<%-- <div class="container_base">
 						<form id="replyInst" name="replyInst" action="/homeworkSubmitReplyInst" method="post">
 						<input type="hidden" id="cthsSeq" name="cthsSeq" value="<c:out value="${vo.cthsSeq}"/>">
 						<input type="hidden" id="ctrsWriter" name="ctrsWriter" value="<c:out value="${ctcmSeq}"/>">
@@ -197,7 +197,7 @@
 								</div>
 							</div>
 						</form>		
-						</div>
+						</div> --%>
 					<!-- 댓글 e -->	
 						</div>
 				</div>

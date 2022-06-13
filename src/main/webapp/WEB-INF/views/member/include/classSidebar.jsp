@@ -11,8 +11,8 @@
             	<div class="col-md-3 mt-4" id="classImg"><img src="/resources/user/image/classLogo.png"  width="50" height="50" style=""></div>
 				<div class="col-md-9 mt-4" id="classInfo"><span><b><c:out value="${ctcsName}"/></b></span><p><span><c:out value="${ctcsYear}"/></span></div>
             </li>
-			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1 p-2" id="btn-add" onclick="location.href='/classInvitation'">
-				<i class="fa-solid fa-user-plus"></i>구성원 초대하기</button>
+			<div class="d-flex justify-content-center w-100"><button type="button" class="btn btn-lg mt-1" id="btn-add" onclick="location.href='/classInvitation'">
+				<i class="fa-solid fa-user-plus"></i> 구성원 초대하기</button>
 			</div>
             <!-- Divider -->
             <hr class="sidebar-divider">
