@@ -27,8 +27,8 @@
 <link href="/resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
-
-<title></title>
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 
 </head>
 <body id="page-top">

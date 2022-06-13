@@ -28,7 +28,8 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 
-<title></title>
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 <style type="text/css">
 	#posting{
 		width: 800px;

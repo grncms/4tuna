@@ -22,7 +22,8 @@
 <!-- Custom styles for this template-->
 <link href="../../../../../resources/common/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../../../../../resources/user/css/classCommon.css" rel="stylesheet">
-<title>클래스 등록</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 <style type="text/css">
 	#home{
 		margin-left: 40px;
