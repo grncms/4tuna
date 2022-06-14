@@ -257,6 +257,8 @@ public class ClassRoomController {
 	public String chat(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		String seq = (String)httpSession.getAttribute("ctcsSeq");
 		String memberSeq = (String)httpSession.getAttribute("ctcmSeq");
+		String memberName = (String)httpSession.getAttribute("ctcmName");
+		vo.setCtcmName(memberName);
 		vo.setCtcsSeq(seq);
 		vo.setCtcmSeq(memberSeq);
 		List<ClassRoom> memberList = service.selectListClassMember(vo);

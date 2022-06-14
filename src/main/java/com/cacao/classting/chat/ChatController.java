@@ -23,8 +23,8 @@ public class ChatController {
 		String receiver = chat.getCtmgReceiver();
 		String sender = chat.getCtmgSender();
 		String msg = chat.getCtmgMessage();
-		System.out.println("classId: " + classId + "receiver: " + receiver );
-		System.out.println("sender: " + sender+ "msg: " + msg);
+		System.out.println("classId: " + classId + " receiver: " + receiver );
+		System.out.println("sender: " + sender+ " msg: " + msg);
 		service.insertMsgInfo(chat);
 		
 		//받은 데이터를 저장 발신인,수신인,메세지,전송날짜,클래스id

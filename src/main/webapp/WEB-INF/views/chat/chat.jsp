@@ -161,7 +161,7 @@
 		
 		
 		
-		$(".membersList").click(function(){ //친구 id와 이름을 controller에 전송
+		$(".membersList").click(function(){ //멤버를 클릭할시 친구 id와 이름을 controller에 전송
 			var params = {
 					name : $(this).find($(".name")).val()
 					,ctmgReceiver : $(this).find($(".seq")).val()
@@ -175,7 +175,7 @@
 				data : JSON.stringify(params),
 				contentType: "application/json; charset=UTF-8",
 				dataType:"json",
-				success:function(res){
+				success:function(res){ //대화창을 생성하고 클래스 id,대화상대id,수신자id를 통해서 대화이력조회후 받아옴
 					receiver = res.receiver;
 					var List = res.chatList;
 					var main = '<header>'
