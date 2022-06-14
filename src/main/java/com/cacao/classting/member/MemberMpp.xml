@@ -11,275 +11,272 @@
 
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-		a.mmSeq
-		,a.mmAdminNy
-		,a.mmDormacyNy
-		,a.mmTeacherNy
-		,a.mmGradeCd
-		,a.mmName
-		,a.mmId
-		,a.mmPassword
-		,a.mmPhoneNumber
-		,a.mmGenderCd
-		,a.mmDob
-		,a.mmMemberEmail
-		,a.mmTypeOfLoginCd
-		,a.mmTermsOfserviceNy
-		,a.mmEventNotificationNy
-		,a.mmPersonalInfoNy
-		,a.mmAlarmInvitationNy
-		,a.mmAlarmReplyNy
-		,a.mmDelNy
-		,a.mmDesc
-		,a.modDateTime
-		,a.modDateTimeSvr
-		,a.regDateTime
-		,a.regDateTimeSvr
-		,b.path
-		,b.uuidName
-		FROM
-		Member a
-		LEFT JOIN ctMemberUploaded b on b.pseq = a.mmSeq
+			a.mmSeq
+			,a.mmAdminNy
+			,a.mmDormacyNy
+			,a.mmTeacherNy
+			,a.mmGradeCd
+			,a.mmName
+			,a.mmId
+			,a.mmPassword
+			,a.mmPhoneNumber
+			,a.mmGenderCd
+			,a.mmDob
+			,a.mmMemberEmail
+			,a.mmTypeOfLoginCd
+			,a.mmTermsOfserviceNy
+			,a.mmEventNotificationNy
+			,a.mmPersonalInfoNy
+			,a.mmAlarmInvitationNy
+			,a.mmAlarmReplyNy
+			,a.mmDelNy
+			,a.mmDesc
+			,a.modDateTime
+			,a.modDateTimeSvr
+			,a.regDateTime
+			,a.regDateTimeSvr
+			,b.path
+			,b.uuidName
+		FROM Member a
+			LEFT JOIN ctMemberUploaded b on b.pseq = a.mmSeq
 		WHERE 1=1
-		AND mmSeq = #{mmSeq}
+			AND mmSeq = #{mmSeq}
 	</select>
 
 	<insert id="insert">
 		INSERT INTO Member(
-		mmAdminNy
-		,mmDormacyNy
-		,mmTeacherNy
-		,mmGradeCd
-		,mmName
-		,mmId
-		,mmPassword
-		,mmPhoneNumber
-		,mmGenderCd
-		,mmDob
-		,mmMemberEmail
-		,mmTypeOfLoginCd
-		,mmTermsOfserviceNy
-		,mmEventNotificationNy
-		,mmPersonalInfoNy
-		,mmAlarmInvitationNy
-		,mmAlarmReplyNy
-		,mmDelNy
-		,modDateTime
-		,modDateTimeSvr
-		,regDateTime
-		,regDateTimeSvr
+			mmAdminNy
+			,mmDormacyNy
+			,mmTeacherNy
+			,mmGradeCd
+			,mmName
+			,mmId
+			,mmPassword
+			,mmPhoneNumber
+			,mmGenderCd
+			,mmDob
+			,mmMemberEmail
+			,mmTypeOfLoginCd
+			,mmTermsOfserviceNy
+			,mmEventNotificationNy
+			,mmPersonalInfoNy
+			,mmAlarmInvitationNy
+			,mmAlarmReplyNy
+			,mmDelNy
+			,modDateTime
+			,modDateTimeSvr
+			,regDateTime
+			,regDateTimeSvr
 		) VALUES (
-		0
-		,0
-		,#{mmTeacherNy}
-		,#{mmGradeCd}
-		,#{mmName}
-		,#{mmId}
-		,#{mmPassword}
-		,#{mmPhoneNumber}
-		,#{mmGenderCd}
-		,#{mmDob}
-		,#{mmMemberEmail}
-		,#{mmTypeOfLoginCd}
-		,#{mmTermsOfserviceNy}
-		,#{mmEventNotificationNy}
-		,#{mmPersonalInfoNy}
-		,#{mmAlarmInvitationNy}
-		,#{mmAlarmReplyNy}
-		,0
-		,#{modDateTime}
-		,#{modDateTimeSvr}
-		,#{regDateTime}
-		,#{regDateTimeSvr}
+			0
+			,0
+			,#{mmTeacherNy}
+			,#{mmGradeCd}
+			,#{mmName}
+			,#{mmId}
+			,#{mmPassword}
+			,#{mmPhoneNumber}
+			,#{mmGenderCd}
+			,#{mmDob}
+			,#{mmMemberEmail}
+			,#{mmTypeOfLoginCd}
+			,#{mmTermsOfserviceNy}
+			,#{mmEventNotificationNy}
+			,#{mmPersonalInfoNy}
+			,#{mmAlarmInvitationNy}
+			,#{mmAlarmReplyNy}
+			,0
+			,#{modDateTime}
+			,#{modDateTimeSvr}
+			,#{regDateTime}
+			,#{regDateTimeSvr}
 		)
 		<selectKey resultType="String" keyProperty="mmSeq"
 			order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
 	<update id="update">
 		UPDATE Member SET
-		mmTeacherNy = #{mmTeacherNy}
-		,mmGradeCd = #{mmGradeCd}
-		,mmName = #{mmName}
-		,mmId = #{mmId}
-		,mmPassword = #{mmPassword}
-		,mmPhoneNumber = #{mmPhoneNumber}
-		,mmDob = #{mmDob}
-		,mmMemberEmail = #{mmMemberEmail}
-		,mmDesc = #{mmDesc}
-		,mmEventNotificationNy = #{mmEventNotificationNy}
-		,mmAlarmInvitationNy = #{mmAlarmInvitationNy}
-		,mmAlarmReplyNy = #{mmAlarmReplyNy}
-		,modDateTime = #{modDateTime}
-		,modDateTimeSvr = #{modDateTimeSvr}
+			mmTeacherNy = #{mmTeacherNy}
+			,mmGradeCd = #{mmGradeCd}
+			,mmName = #{mmName}
+			,mmId = #{mmId}
+			,mmPassword = #{mmPassword}
+			,mmPhoneNumber = #{mmPhoneNumber}
+			,mmDob = #{mmDob}
+			,mmMemberEmail = #{mmMemberEmail}
+			,mmDesc = #{mmDesc}
+			,mmEventNotificationNy = #{mmEventNotificationNy}
+			,mmAlarmInvitationNy = #{mmAlarmInvitationNy}
+			,mmAlarmReplyNy = #{mmAlarmReplyNy}
+			,modDateTime = #{modDateTime}
+			,modDateTimeSvr = #{modDateTimeSvr}
 		WHERE 1=1
-		AND mmSeq=#{mmSeq}
+			AND mmSeq=#{mmSeq}
 	</update>
 
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
-		a.mmSeq
-		,a.mmId
-		,a.mmName
-		,a.mmPassword
-		,a.mmTeacherNy
-		,b.uuidName
-		,b.path
-		FROM
-		Member a
-		LEFT JOIN ctMemberUploaded b ON b.pseq = a.mmSeq
+			a.mmSeq
+			,a.mmId
+			,a.mmName
+			,a.mmPassword
+			,a.mmTeacherNy
+			,b.uuidName
+			,b.path
+		FROM Member a
+			LEFT JOIN ctMemberUploaded b ON b.pseq = a.mmSeq
 		WHERE 1=1
-		AND a.mmId = #{mmId}
-		AND a.mmPassword = #{mmPassword}
+			AND a.mmId = #{mmId}
+			AND a.mmPassword = #{mmPassword}
 	</select>
+	
 	<select id="selectOneId" resultMap="resultMapObj">
 		select
-		mmSeq
-		,mmName
-		,mmId
-		,mmPhoneNumber
-		,mmDelNy
-		FROM
-		Member
+			mmSeq
+			,mmName
+			,mmId
+			,mmPhoneNumber
+			,mmDelNy
+		FROM Member
 		WHERE 1=1
-		AND mmName = #{mmName}
-		AND mmPhoneNumber = #{mmPhoneNumber}
-		<!-- AND mmDelNy = 0 -->
+			AND mmName = #{mmName}
+			AND mmPhoneNumber = #{mmPhoneNumber}
+			<!-- AND mmDelNy = 0 -->
 	</select>
 
 	<select id="selectListClass" resultMap="resultMapObj">
 		select
-		a.ctcmSeq
-		,a.ctcmName
-		,a.ctcmDelNy
-		,b.ctcsYear
-		,a.mmSeq
-		,a.ctcsSeq
-		,b.ctcsName
-		,b.ctcsDelNy
-		FROM
-		ctClassMember a
-		LEFT JOIN ctClass b on b.ctcsSeq = a.ctcsSeq
+			a.ctcmSeq
+			,a.ctcmName
+			,a.ctcmDelNy
+			,b.ctcsYear
+			,a.mmSeq
+			,a.ctcsSeq
+			,b.ctcsName
+			,b.ctcsDelNy
+		FROM ctClassMember a
+			LEFT JOIN ctClass b on b.ctcsSeq = a.ctcsSeq
 		WHERE 1=1
-		AND mmSeq = #{mmSeq}
-		AND ctcsDelNy = 0
+			AND mmSeq = #{mmSeq}
+			AND ctcsDelNy = 0
 	</select>
+	
 	<select id="selectListId" resultMap="resultMapObj">
 		select
-		mmSeq
-		,mmName
-		,mmId
-		,mmPhoneNumber
-		,mmDelNy
-		FROM
-		Member
+			mmSeq
+			,mmName
+			,mmId
+			,mmPhoneNumber
+			,mmDelNy
+		FROM Member
 		WHERE 1=1
-		AND mmName = #{mmName}
-		AND mmPhoneNumber = #{mmPhoneNumber}
-		AND mmDelNy = 0
+			AND mmName = #{mmName}
+			AND mmPhoneNumber = #{mmPhoneNumber}
+			AND mmDelNy = 0
 	</select>
 	<select id="selectListPassword" resultMap="resultMapObj">
 		select
-		mmSeq
-		,mmName
-		,mmId
-		,mmPassword
-		,mmPhoneNumber
-		,mmDelNy
-		FROM
-		Member
+			mmSeq
+			,mmName
+			,mmId
+			,mmPassword
+			,mmPhoneNumber
+			,mmDelNy
+		FROM Member
 		WHERE 1=1
-		AND mmName = #{mmName}
-		AND mmPhoneNumber = #{mmPhoneNumber}
-		AND mmId = #{mmId}
-		AND mmDelNy = 0
+			AND mmName = #{mmName}
+			AND mmPhoneNumber = #{mmPhoneNumber}
+			AND mmId = #{mmId}
+			AND mmDelNy = 0
 	</select>
 	<!-- 회원 이미지 -->
 	<insert id="insertUploaded">
 		INSERT INTO ${tableName} (
-		type
-		,defaultNy
-		,sort
-		,originalName
-		,uuidName
-		,ext
-		,size
-		,delNy
-		,path
-		,pseq
+			type
+			,defaultNy
+			,sort
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy
+			,path
+			,pseq
 		) VALUES (
-		#{type}
-		,#{defaultNy}
-		,#{sort}
-		,#{originalName}
-		,#{uuidName}
-		,#{ext}
-		,#{size}
-		,#{delNy}
-		,#{path}
-		,#{pseq}
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{delNy}
+			,#{path}
+			,#{pseq}
 		)
 	</insert>
+	
 	<update id="updateUploaded">
 		UPDATE ${tableName} SET
-		type = #{type}
-		,defaultNy = #{defaultNy}
-		,sort = #{sort}
-		,originalName = #{originalName}
-		,uuidName = #{uuidName}
-		,ext = #{ext}
-		,size = #{size}
-		,path = #{path}
-		,delNy = #{delNy}
+			type = #{type}
+			,defaultNy = #{defaultNy}
+			,sort = #{sort}
+			,originalName = #{originalName}
+			,uuidName = #{uuidName}
+			,ext = #{ext}
+			,size = #{size}
+			,path = #{path}
+			,delNy = #{delNy}
 		WHERE 1=1
-		AND pseq = #{pseq}
-		AND type = #{type}
+			AND pseq = #{pseq}
+			AND type = #{type}
 	</update>
+	
 	<select id="selectListMemberUploaded" resultMap="resultMapObj">
 		SELECT
-		seq
-		, type
-		, defaultNy
-		, sort
-		, originalName
-		, uuidName
-		, ext
-		, size
-		, delNy
-		, pseq
-		, path
-		FROM
-		ctMemberUploaded
+			seq
+			, type
+			, defaultNy
+			, sort
+			, originalName
+			, uuidName
+			, ext
+			, size
+			, delNy
+			, pseq
+			, path
+		FROM ctMemberUploaded
 		WHERE 1=1
-		AND pseq = #{mmSeq}
+			AND pseq = #{mmSeq}
 	</select>
+	
 	<!-- class생성 -->
 	<insert id="insertClass">
 		INSERT INTO ctClass(
-		<!-- ctcsBelongto -->
-		ctcsName
-		,ctcsYear
-		,ctcsGradeCd
-		,ctcsDesc
-		,ctcsCode
-		,ctcsDelNy
-		,modDateTime
-		,modDateTimeSvr
-		,regDateTime
-		,regDateTimeSvr
+			ctcsName
+			,ctcsYear
+			,ctcsGradeCd
+			,ctcsDesc
+			,ctcsCode
+			,ctcsDelNy
+			,modDateTime
+			,modDateTimeSvr
+			,regDateTime
+			,regDateTimeSvr
 		) VALUES (
-		<!-- #{ctcsBelongto} -->
-		#{ctcsName}
-		,#{ctcsYear}
-		,#{ctcsGradeCd}
-		,#{ctcsDesc}
-		,#{ctcsCode}
-		,0
-		,#{modDateTime}
-		,#{modDateTimeSvr}
-		,#{regDateTime}
-		,#{regDateTimeSvr}
+			#{ctcsName}
+			,#{ctcsYear}
+			,#{ctcsGradeCd}
+			,#{ctcsDesc}
+			,#{ctcsCode}
+			,0
+			,#{modDateTime}
+			,#{modDateTimeSvr}
+			,#{regDateTime}
+			,#{regDateTimeSvr}
 		)
 		<selectKey resultType="String" keyProperty="ctcsSeq"
 			order="AFTER">
@@ -289,68 +286,63 @@
 
 	<insert id="insertClassMember">
 		INSERT INTO ctClassMember(
-		ctcmName
-		,ctcmTeacherNy
-		,ctcmAlarmReplyNy
-		,ctcmAlarmReactionNy
-		,ctcmDelNy
-		,mmSeq
-		,ctcsSeq
+			ctcmName
+			,ctcmTeacherNy
+			,ctcmAlarmReplyNy
+			,ctcmAlarmReactionNy
+			,ctcmDelNy
+			,mmSeq
+			,ctcsSeq
 		) VALUES (
-		#{ctcmName}
-		,1
-		,0
-		,0
-		,0
-		,#{mmSeq}
-		,#{ctcsSeq}
+			#{ctcmName}
+			,1
+			,0
+			,0
+			,0
+			,#{mmSeq}
+			,#{ctcsSeq}
 		)
 	</insert>
 
 	<select id="selectOneClass" resultMap="resultMapObj">
 		SELECT
-		ctcsSeq
-		,ctcsName
+			ctcsSeq
+			,ctcsName
 		FROM
-		ctClass
+			ctClass
 		WHERE 1=1
-		AND ctcsSeq = #{ctcsSeq}
+			AND ctcsSeq = #{ctcsSeq}
 	</select>
 
 	<!-- 코드로 클래스 찾기 -->
 	<select id="selectOneClassCode" resultMap="resultMapObj">
 		SELECT
-		ctcsSeq
-		,ctcsCode
-		,ctcsName
-		FROM
-		ctClass
+			ctcsSeq
+			,ctcsCode
+			,ctcsName
+		FROM ctClass
 		WHERE 1=1
-		AND ctcsCode = #{ctcsCode}
+			AND ctcsCode = #{ctcsCode}
 	</select>
 
 	<!-- 게시물 리스트 -->
 	<select id="selectListNotice" resultMap="resultMapObj">
 		SELECT
-		a.ctptSeq
-		,a.ctptTitle
-		,a.ctptContent
-		,a.regDateTime
-		,b.ctcsSeq
-		,d.mmSeq
-		FROM
-		ctPost a
-		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
-		LEFT JOIN ctClass c on c.ctcsSeq = b.ctcsSeq
-		LEFT JOIN ctClassMember d on d.ctcsSeq = c.ctcsSeq
+			a.ctptSeq
+			,a.ctptTitle
+			,a.ctptContent
+			,a.regDateTime
+			,b.ctcsSeq
+			,d.mmSeq
+		FROM ctPost a
+			LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
+			LEFT JOIN ctClass c on c.ctcsSeq = b.ctcsSeq
+			LEFT JOIN ctClassMember d on d.ctcsSeq = c.ctcsSeq
 		WHERE 1=1
-		AND b.ctboTypeCd = 25
-		AND a.ctptReservationNy = 0
-		<!-- AND a.ctcsSeq = #{ctcsSeq} -->
+			AND b.ctboTypeCd = 25
+			AND a.ctptReservationNy = 0
+			<!-- AND a.ctcsSeq = #{ctcsSeq} -->
 	</select>
-
-
-
 
 	<!-- admin -->
 	<sql id="selectCommonMember">
@@ -380,13 +372,13 @@
 	</sql>
 	<select id="selectListMember" resultMap="resultMapObj">
 		SELECT
-		mmSeq
-		,mmName
-		,mmTeacherNy
-		,mmSchoolCd
-		,mmDob
-		,RegDatetime
-		,mmDelNy
+			mmSeq
+			,mmName
+			,mmTeacherNy
+			,mmSchoolCd
+			,mmDob
+			,RegDatetime
+			,mmDelNy
 		<include refid="selectCommonMember" />
 		limit #{startRnumForMysql},#{rowNumToShow}
 
@@ -394,64 +386,64 @@
 
 	<update id="deleteMember">
 		UPDATE Member SET
-		mmDelNy = 1
+			mmDelNy = 1
 		WHERE 1 = 1
-		AND mmSeq = #{mmSeq}
+			AND mmSeq = #{mmSeq}
 	</update>
 
 	<update id="deleteMemberMulti">
 		UPDATE
-		Member
+			Member
 		SET
-		mmDelny = 1
+			mmDelny = 1
 		WHERE 1=1
-		AND mmSeq = #{mmSeq}
+			AND mmSeq = #{mmSeq}
 	</update>
 
 	<insert id="insertMember">
 		INSERT INTO Member (
-		mmName
-		,mmSchoolCd
-		,mmGradeCd
-		,mmDesc
-		,mmGenderCd
-		,mmDob
-		,mmId
-		,mmPassword
-		,mmMemberEmail
-		,mmPhoneNumber
-		,mmTeacherNy
-		,mmAlarmInvitationNy
-		,mmEventNotificationNy
-		,mmAlarmReplyNy
-		,mmDormacyNy
-		,mmDelNy
-		,modDateTime
-		,modDateTimeSvr
-		,regDateTime
-		,regDateTimeSvr
+			mmName
+			,mmSchoolCd
+			,mmGradeCd
+			,mmDesc
+			,mmGenderCd
+			,mmDob
+			,mmId
+			,mmPassword
+			,mmMemberEmail
+			,mmPhoneNumber
+			,mmTeacherNy
+			,mmAlarmInvitationNy
+			,mmEventNotificationNy
+			,mmAlarmReplyNy
+			,mmDormacyNy
+			,mmDelNy
+			,modDateTime
+			,modDateTimeSvr
+			,regDateTime
+			,regDateTimeSvr
 		) values (
 
-		#{mmName}
-		,#{mmSchoolCd}
-		,#{mmGradeCd}
-		,#{mmDesc}
-		,#{mmGenderCd}
-		,#{mmDob}
-		,#{mmId}
-		,#{mmPassword}
-		,#{mmMemberEmail}
-		,#{mmPhoneNumber}
-		,#{mmTeacherNy}
-		,#{mmAlarmInvitationNy}
-		,#{mmEventNotificationNy}
-		,#{mmAlarmReplyNy}
-		,0
-		,0
-		,#{modDateTime}
-		,#{modDateTimeSvr}
-		,#{regDateTime}
-		,#{regDateTimeSvr}
+			#{mmName}
+			,#{mmSchoolCd}
+			,#{mmGradeCd}
+			,#{mmDesc}
+			,#{mmGenderCd}
+			,#{mmDob}
+			,#{mmId}
+			,#{mmPassword}
+			,#{mmMemberEmail}
+			,#{mmPhoneNumber}
+			,#{mmTeacherNy}
+			,#{mmAlarmInvitationNy}
+			,#{mmEventNotificationNy}
+			,#{mmAlarmReplyNy}
+			,0
+			,0
+			,#{modDateTime}
+			,#{modDateTimeSvr}
+			,#{regDateTime}
+			,#{regDateTimeSvr}
 		)
 		<!-- <selectKey resultType="String" keyProperty="mmSeq" order="AFTER"> 
 			SELECT last_insert_id() </selectKey> -->
@@ -460,52 +452,51 @@
 
 	<update id="updateMember">
 		UPDATE Member SET
-		mmTeacherNy = #{mmTeacherNy}
-		,mmGradeCd = #{mmGradeCd}
-
-		,mmName = #{mmName}
-		,mmId = #{mmId}
-		,mmPassword = #{mmPassword}
-		,mmPhoneNumber = #{mmPhoneNumber}
-		,mmDob = #{mmDob}
-		,mmMemberEmail = #{mmMemberEmail}
-		,mmDesc = #{mmDesc}
-		,mmEventNotificationNy = #{mmEventNotificationNy}
-		,mmAlarmInvitationNy = #{mmAlarmInvitationNy}
-		,mmAlarmReplyNy = #{mmAlarmReplyNy}
-		,modDateTime = #{modDateTime}
-		,modDateTimeSvr = #{modDateTimeSvr}
+			mmTeacherNy = #{mmTeacherNy}
+			,mmGradeCd = #{mmGradeCd}
+			,mmName = #{mmName}
+			,mmId = #{mmId}
+			,mmPassword = #{mmPassword}
+			,mmPhoneNumber = #{mmPhoneNumber}
+			,mmDob = #{mmDob}
+			,mmMemberEmail = #{mmMemberEmail}
+			,mmDesc = #{mmDesc}
+			,mmEventNotificationNy = #{mmEventNotificationNy}
+			,mmAlarmInvitationNy = #{mmAlarmInvitationNy}
+			,mmAlarmReplyNy = #{mmAlarmReplyNy}
+			,modDateTime = #{modDateTime}
+			,modDateTimeSvr = #{modDateTimeSvr}
 		WHERE 1=1
-		AND mmSeq=#{mmSeq}
+			AND mmSeq=#{mmSeq}
 	</update>
 
 
 
 	<select id="selectOneMember" resultMap="resultMapObj">
 		select
-		mmName
-		,mmSchoolCd
-		,mmGradeCd
-		,mmDesc
-		,mmGenderCd
-		,mmDob
-		,mmId
-		,mmPassword
-		,mmMemberEmail
-		,mmPhoneNumber
-		,mmTeacherNy
-		,mmTermsOfserviceNy
-		,mmEventNotificationNy
-		,mmPersonalInfoNy
-		,mmDelNy
-		from
-		Member
+			mmName
+			,mmSchoolCd
+			,mmGradeCd
+			,mmDesc
+			,mmGenderCd
+			,mmDob
+			,mmId
+			,mmPassword
+			,mmMemberEmail
+			,mmPhoneNumber
+			,mmTeacherNy
+			,mmTermsOfserviceNy
+			,mmEventNotificationNy
+			,mmPersonalInfoNy
+			,mmDelNy
+		from Member
 		where 1=1
-		and mmSeq = #{mmSeq}
+			and mmSeq = #{mmSeq}
 	</select>
+	
 	<select id="selectOneCountMember" resultType="Integer">
 		SELECT
-		count(*)
+			count(*)
 		<include refid="selectCommonMember" />
 	</select>
 </mapper>
