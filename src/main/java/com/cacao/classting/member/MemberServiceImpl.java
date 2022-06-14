@@ -113,36 +113,35 @@ public class MemberServiceImpl implements MemberService{
 	
 		dao.insertClassMember(dto);
 		
-	if(!dto.getFile0().isEmpty()) {
-			
-			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-			UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
-		
-			     dto.setTableName("ctClassMemberUploaded");
-			     dto.setType(0);
-			     dto.setDefaultNy(1);
-			     dto.setSort(0);
-			     dto.setDelNy(0);
-			     dto.setPseq(dto.getMmSeq());
-			     
-			     dao.insertUploaded(dto);
-					
-			} else {
+//		if(!dto.getFile0().isEmpty()) {
+//			
+//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//			UtilUpload.uploadMember(dto.getFile0(), pathModule, dto);
 //		
-				dto.setTableName("ctClassMemberUploaded");
-			    dto.setType(0);
-			    dto.setDefaultNy(1);
-			    dto.setSort(0);
-				dto.setOriginalName("profile2.png");
-				dto.setUuidName("profile2.png");
-				dto.setExt("png");
-				dto.setSize(33177);
-				dto.setDelNy(0);
-				dto.setPath("/resources/uploaded/common/");
-				dto.setPseq(dto.getMmSeq());
-				dao.insertUploaded(dto);
-			
-			}
+//			     dto.setTableName("ctClassMemberUploaded");
+//			     dto.setType(0);
+//			     dto.setDefaultNy(1);
+//			     dto.setSort(0);
+//			     dto.setDelNy(0);
+//			     dto.setPseq(dto.getMmSeq());
+//			     
+//			     dao.insertUploaded(dto);
+//					
+//			} else {
+//				dto.setTableName("ctClassMemberUploaded");
+//			    dto.setType(0);
+//			    dto.setDefaultNy(1);
+//			    dto.setSort(0);
+//				dto.setOriginalName("profile2.png");
+//				dto.setUuidName("profile2.png");
+//				dto.setExt("png");
+//				dto.setSize(33177);
+//				dto.setDelNy(0);
+//				dto.setPath("/resources/uploaded/common/");
+//				dto.setPseq(dto.getMmSeq());
+//				dao.insertUploaded(dto);
+//			
+//			}
 		return 1;
 	}
 

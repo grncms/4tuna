@@ -153,7 +153,7 @@
 		<p>클래스 프로필을 설정하고 지금 바로 시작하세요.</p>
 		<div>
 			<div id="classImg" style="height: 120px;">
-	               <img class="rounded-circle" style="width: 80px;" src="../../../../../resources/common/image/profile2.png">
+	               <img class="rounded-circle" style="width: 80px;" src="/resources/uploaded/common/profile2.png">
 	        </div> 
 	        <div>   
 	               <span class=" text-gray-60 small">이 클래스에서만 사용할<br>

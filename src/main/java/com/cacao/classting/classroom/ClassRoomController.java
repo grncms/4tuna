@@ -822,8 +822,8 @@ public class ClassRoomController {
 		model.addAttribute("submitList", submitList);
 		
 //		댓글리스트
-		List<ClassRoom> replyList = service.selectListHomeworkReply(vo);
-		model.addAttribute("replyList", replyList);
+//		List<ClassRoom> replyList = service.selectListHomeworkReply(vo);
+//		model.addAttribute("replyList", replyList);
 		
 //		전체 학생 수
 		int count = service.selectOneMemberCount(vo);
