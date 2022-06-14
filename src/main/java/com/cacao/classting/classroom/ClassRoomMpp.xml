@@ -22,25 +22,27 @@
 			</when>
 		</choose>
 		<choose>
-			<when test="shOptionDate == 1">AND regDateTime BETWEEN #{shDateStart} AND
-				#{shDateEnd}</when>
-			<when test="shOptionDate == 2">AND modDateTime BETWEEN #{shDateStart} AND
-				#{shDateEnd}</when>
+			<when test="shOptionDate == 1">AND regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
-
 	</sql>
+	
+	
 	<select id="selectOneMemberClass" resultMap="resultMapObj">
-		select
+		SELECT
 			ctcmName
-		from ctClassMember
-		where 1=1
-			and ctcmSeq = #{ctcmSeq}
+		FROM
+			ctClassMember
+		WHERE 1=1 AND ctcmSeq = #{ctcmSeq}
 	</select>
+	
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT
 			count(*)
 		<include refid="selectCommonClass" />
 	</select>
+
 
 	<select id="selectOneClassMemberUploaded" resultMap="resultMapObj">
 		SELECT
@@ -48,9 +50,9 @@
 			,uuidName
 		FROM
 			ctClassMemberUploaded
-		where 1=1
-			and pseq = #{ctcmSeq}
+		where 1=1 AND pseq = #{ctcmSeq}
 	</select>
+	
 	
 	<update id="updateClass">
 		UPDATE
@@ -63,12 +65,14 @@
 			AND ctcmSeq = #{ctcmSeq}
 	</update>
 	
+	
 	<delete id="deleteMemberForcely">
 		DELETE FROM
-		ctClassMember
+			ctClassMember
 		WHERE 1=1
-		AND ctcmSeq = #{ctcmSeq}
+			AND ctcmSeq = #{ctcmSeq}
 	</delete>
+
 
 	<select id="selectListClass" resultMap="resultMapObj">
 		SELECT
@@ -80,21 +84,22 @@
 			,ctcsDelNy
 		<include refid="selectCommonClass" />
 		limit #{startRnumForMysql},#{rowNumToShow}
-
 	</select>
 
+
 	<select id="selectOneClass" resultMap="resultMapObj">
-		select
+		SELECT
 			a.ctcsSeq
 			,a.ctcsName
 			,a.ctcsBelongto
 			,a.ctcsDesc
 			,a.regDateTime
 			,a.ctcsCode
-		from ctClass a
-		where 1=1
+		FROM ctClass a
+		WHERE 1=1
 			AND a.ctcsSeq = #{ctcsSeq}
 	</select>
+
 
 	<update id="deleteClass">
 		UPDATE
@@ -104,6 +109,7 @@
 		WHERE 1=1
 			AND ctcsSeq = #{ctcsSeq}
 	</update>
+
 	
 	<update id="deleteClassMulti">
 		UPDATE
@@ -114,10 +120,11 @@
 			AND ctcsSeq = #{ctcsSeq}
 	</update>
 
+
 	<!-- 클래스내 정보 불러오기! -->
 	<select id="selectOneSidebar" resultMap="resultMapObj">
 		SELECT
-		a.ctcsSeq
+			a.ctcsSeq
 			,a.ctcsYear
 			,a.ctcsName
 			,b.ctcmSeq
@@ -133,15 +140,17 @@
 			AND b.mmSeq = #{mmSeq}
 	</select>
 	
+	
 	<!-- 구성원 초대하기 -->
 	<select id="selectOneClassInfo" resultMap="resultMapObj">
-		select
+		SELECT
 			ctcsCode
 			,ctcsName
-		from ctClass
-		where 1=1
-			and ctcsSeq = #{ctcsSeq}
+		FROM ctClass
+		WHERE 1=1
+			AND ctcsSeq = #{ctcsSeq}
 	</select>
+	
 	
 	<!-- 게시물 리스트 -->
 	<select id="selectListPost" resultMap="resultMapObj">
@@ -166,13 +175,14 @@
 			AND b.ctcsSeq = #{ctcsSeq}
 			AND a.ctptReservationNy = 0
 			AND IFNULL(a.ctptReservation, now() ) <= now()
-		ORDER BY a.regDateTime desc
+		ORDER BY a.regDateTime DESC
 		]]>
 	</select>
 	
+	
 	<!-- 게시물 보기 -->
 	<select id="selectOneClassPost" resultMap="resultMapObj">
-		select
+		SELECT
 			ctptSeq
 			,ctptTitle
 			,ctptWriter
@@ -183,14 +193,15 @@
 			,ctptLike3
 			,ctboSeq
 			,ctptView
-		from ctPost
-		where 1=1
-			and ctptSeq = #{ctptSeq}
+		FROM ctPost
+		WHERE 1=1
+			AND ctptSeq = #{ctptSeq}
 	</select>
+	
 	
 	<!-- 게시글 등록 -->
 	<insert id="insertPost">
-		insert into ctPost(
+		INSERT INTO ctPost(
 			ctptSeq
 			,ctptTitle
 			,ctptWriter
@@ -213,9 +224,10 @@
 		)
 	</insert>
 
+
 	<!-- 게시글 수정 -->
 	<update id="updatePost">
-		update ctPost (
+		UPDATE ctPost (
 			ctptSeq
 			,ctptTitle
 			,ctptWriter
@@ -239,7 +251,6 @@
 	</update>
 
 
-
 	<!-- 과제 리스트 -->
 	<select id="selectListHomework" resultMap="resultMapObj">
 		SELECT
@@ -260,9 +271,10 @@
 		ORDER BY a.cthpSeq ASC
 	</select>
 
+
 	<!-- 과제 보기 -->
 	<select id="selectOneClassHomework" resultMap="resultMapObj">
-		select
+		SELECT
 			cthpSeq
 			,cthpTitle
 			,cthpWriter
@@ -273,11 +285,12 @@
 			,cthpDelNy
 			,regDateTime
 			,ctcsSeq
-		from ctHomeworkPost
-		where 1=1
-			and ctcsSeq = #{ctcsSeq}
-			and cthpSeq = #{cthpSeq}
+		FROM ctHomeworkPost
+		WHERE 1=1
+			AND ctcsSeq = #{ctcsSeq}
+			AND cthpSeq = #{cthpSeq}
 	</select>
+
 
 	<!-- 과제제출 리스트 -->
 	<select id="selectListHomeworkSubmit" resultMap="resultMapObj">
@@ -301,33 +314,36 @@
 			<!-- AND b.ctcsSeq = #{ctcsSeq} -->
 	</select>
 
+
 	<!-- 학생이 제출한 과제 -->
 	<select id="homeworkSubmit" resultMap="resultMapObj">
 		SELECT
-		 cthpSeq
-		 ,cthsSeq
-		 ,ctcmName
-		 ,cthsWriter
-		 ,cthsScore
+			 cthpSeq
+			 ,cthsSeq
+			 ,ctcmName
+			 ,cthsWriter
+			 ,cthsScore
 		FROM ctHomeworkSubmit a
 			LEFT JOIN ctClassMember b on a.cthsWriter = b.ctcmseq
 		WHERE ctcsSeq = #{ctcsSeq}
 			<!-- and cthsWriter = #{cthsWriter} -->
 	</select>
 
+
 	<select id="homeworkWriter" resultMap="resultMapObj">
 		SELECT distinct
 			a.cthsWriter 
 			,c.ctcmName
 		FROM classing.ctHomeworkSubmit a
-			left join ctHomeworkPost b on a.cthpSeq = b.cthpSeq
-			left join ctClassMember c ona.cthsWriter = c.ctcmSeq
-		where b.ctcsSeq = ${ctcsSeq};
+			LEFT JOIN ctHomeworkPost b on a.cthpSeq = b.cthpSeq
+			LEFT JOIN ctClassMember c ona.cthsWriter = c.ctcmSeq
+		WHERE b.ctcsSeq = ${ctcsSeq};
 	</select>
+	
 	
 	<!-- 과제제출(학생) -->
 	<insert id="insertHomeworkSubmit">
-		insert into ctHomeworkSubmit(
+		INSERT INTO ctHomeworkSubmit(
 			cthsTitle
 			,cthsDesc
 			,cthsData
@@ -355,9 +371,11 @@
 		</selectKey>
 		)
 	</insert>
+	
+	
 	<!-- 과제등록(선생님) -->
 	<insert id="insertHomeworkPost">
-		insert into ctHomeworkPost(
+		INSERT INTO ctHomeworkPost(
 			cthpTitle
 			,cthpDesc
 			,cthpData
@@ -387,6 +405,8 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	
 	<!-- 과제 점수 update -->
 	<update id="updateHomeworkSubmitScore">
 		UPDATE
@@ -398,9 +418,10 @@
 			AND cthsSeq = #{cthsSeq}
 	</update>
 	
+	
 	<!-- 과제제출 보기(선생님->학생것) -->
 	<select id="selectOneHomeworkSubmit" resultMap="resultMapObj">
-		select
+		SELECT
 			cthsSeq
 			,cthsTitle
 			,cthsWriter
@@ -411,15 +432,17 @@
 			,cthsDelNy
 			,regDateTime
 			,cthpSeq
-		from
+		FROM
 			ctHomeworkSubmit
-		where 1=1
-			and cthpSeq = #{cthpSeq}
-			and cthsSeq = #{cthsSeq}
+		WHERE 1=1
+			AND cthpSeq = #{cthpSeq}
+			AND cthsSeq = #{cthsSeq}
 	</select>
+	
+	
 	<!-- 과제제출 보기(학생->본인것) -->
 	<select id="selectOneHomeworkSubmitStudent" resultMap="resultMapObj">
-		select
+		SELECT
 			cthsSeq
 			,cthsTitle
 			,cthsWriter
@@ -429,12 +452,14 @@
 			,cthsUseNy
 			,cthsDelNy
 			,regDateTime
-		from
+		FROM
 			ctHomeworkSubmit
-		where 1=1
-			and cthpSeq = #{cthpSeq}
-			and cthsWriter = #{cthsWriter}
+		WHERE 1=1
+			AND cthpSeq = #{cthpSeq}
+			AND cthsWriter = #{cthsWriter}
 	</select>
+	
+	
 	<!-- 과제 제출물 수정 -->
 	<update id="updateHomeworkSubmit">
 		UPDATE
@@ -463,6 +488,7 @@
 			AND a.ctcsSeq = #{ctcsSeq}
 	</select>
 
+
 	<update id="updateClassMember">
 		UPDATE
 			ctClassMember
@@ -474,6 +500,7 @@
 		AND ctcmSeq = #{ctcmSeq}
 
 	</update>
+
 	
 	<!-- 구성원 삭제 (update) -->
 	<update id="updateClassMemberDel">
@@ -484,8 +511,10 @@
 		WHERE 1=1
 			AND ctcmSeq = #{ctcmSeq}
 	</update>
-		<select id="selectListClassPostUrl" resultMap="resultMapObj">
-		select
+
+
+	<select id="selectListClassPostUrl" resultMap="resultMapObj">
+		SELECT
 			a.originalName
 			,a.regDateTime
 			,a.pseq
@@ -502,13 +531,14 @@
 			,b.ctptReservation
 			,b.regDateTime
 			,c.ctboTypeCd
-		from ctPostUploaded a
+		FROM ctPostUploaded a
 			LEFT JOIN ctPost b on b.ctptSeq = a.pseq
 			LEFT JOIN ctBoard c on c.ctboSeq = b.ctboSeq
-		where 1=1
+		WHERE 1=1
 			AND c.ctcsSeq =#{ctcsSeq}
 			ORDER BY b.regDateTime desc
 	</select>
+
 
 	<!-- 전체 구성원 중 학생 -->
 	<select id="selectOneMemberCount" resultType="Integer">
@@ -519,6 +549,8 @@
 			AND ctcsSeq = #{ctcsSeq}
 			AND ctcmTeacherNy = 0
 	</select>
+	
+	
 	<!-- 과제 제출자 수 -->
 	<select id="selectOneSubmitCount" resultType="Integer">
 		SELECT
@@ -533,10 +565,11 @@
 			round(avg(cthsScore),2) as scoreAvg 
 		FROM ctHomeworkSubmit a
 			left join ctHomeworkPost b on b.cthpSeq = a.cthpSeq 
-		where ctcsSeq = #{ctcsSeq}
-			group by a.cthpSeq
-			order by b.cthpSeq asc
+		WHERE ctcsSeq = #{ctcsSeq}
+			GROUP BY a.cthpSeq
+			ORDER BY b.cthpSeq ASC
 	</select>
+
 
 	<!-- 예약/임시저장 리스트 --> <!-- 임시저장만 -->
 	<select id="selectListStorage" resultMap="resultMapObj">
@@ -558,6 +591,7 @@
 			AND a.ctptReservationNy = 1
 			AND b.ctcsSeq = #{ctcsSeq}
 	</select>
+
 
 	<!-- 예약/임시저장 리스트 --><!-- 예약만 -->
 	<select id="selectListReserv" resultMap="resultMapObj">
@@ -582,17 +616,17 @@
 
 
 	<select id="selectOneClassPostUrl" resultMap="resultMapObj">
-		select
-		a.originalName
-		from
-		ctPostUploaded a
-		where 1=1
-		and pseq = #{ctptSeq}
+		SELECT
+			a.originalName
+		FROM ctPostUploaded a
+		WHERE 1=1
+			AND pseq = #{ctptSeq}
 	</select>
+
 
 	<!-- 동영상 등록 -->
 	<insert id="insertUrl">
-		insert into ctPostUploaded(
+		INSERT INTO ctPostUploaded(
 			seq
 			,originalName
 			,delNy
@@ -609,6 +643,7 @@
 		)
 	</insert>
 
+
 	<!-- 게시물 댓글 리스트 -->
 	<select id="selectListReply" resultMap="resultMapObj">
 		SELECT
@@ -624,10 +659,11 @@
 			AND a.ctptSeq = #{ctptSeq}
 			AND a.ctrpDelNy = 0
 	</select>
+
 	
 	<!-- 게시물 댓글 등록 -->
 	<insert id="insertReply">
-		insert into ctReply(
+		INSERT INTO ctReply(
 			ctrpSeq
 			,ctrpContent
 			,ctrpWriter
@@ -643,6 +679,8 @@
 			,#{ctptSeq}
 		)
 	</insert>
+	
+	
 	<!-- 게시물 댓글 삭제(update) -->
 	<update id="updateReplyUele">
 		UPDATE ctReply SET		
@@ -650,6 +688,7 @@
 		WHERE 1=1
 			AND ctrpSeq = #{ctrpSeq}
 	</update>
+
 
 	<!-- 과제게시물 댓글 리스트 -->
 	<select id="selectListHomeworkReply" resultMap="resultMapObj">
@@ -666,10 +705,11 @@
 			AND a.cthpSeq = #{cthpSeq}
 			AND a.ctrhDelNy = 0
 	</select>
+
 	
 	<!-- 과제게시물 댓글 등록 -->
 	<insert id="insertHomeworkReply">
-		insert into ctReplyHomework(
+		INSERT INTO ctReplyHomework(
 			ctrhSeq
 			,ctrhContent
 			,ctrhWriter
@@ -686,6 +726,7 @@
 		)
 	</insert>
 	
+	
 	<!-- 과제게시물 댓글 삭제(update) -->
 	<update id="updateHomeworkReplyUele">
 		UPDATE ctReplyHomework SET		
@@ -693,6 +734,7 @@
 		WHERE 1=1
 			AND ctrhSeq = #{ctrhSeq}
 	</update>	
+	
 	
 	<!-- 과제제출물 댓글 리스트 -->
 	<select id="selectListHomeworkSubmitReply" resultMap="resultMapObj">
@@ -710,9 +752,10 @@
 			AND a.ctrsDelNy = 0
 	</select>
 	
+	
 	<!-- 과제제출물 댓글 등록 -->
 	<insert id="insertHomeworkSubmitReply">
-		insert into ctReplyHomeworkSubmit(
+		INSERT INTO ctReplyHomeworkSubmit(
 			ctrsSeq
 			,ctrsContent
 			,ctrsWriter
@@ -729,6 +772,7 @@
 		)
 	</insert>
 
+
 	<!-- 과제게시물 댓글 삭제(update) -->
 	<update id="updateHomeworkSubmitReplyUele">
 		UPDATE ctReplyHomeworkSubmit SET		
@@ -737,17 +781,21 @@
 			AND ctrsSeq = #{ctrsSeq}
 	</update>	
 
+
 	<!-- 조회수 증가 -->
 	<update id="hitUpdate">
-		update ctPost
-		set ctptView = ctptView + 1
-		where ctptSeq = #{ctptSeq}
+		UPDATE
+			ctPost
+		SET
+			ctptView = ctptView + 1
+		WHERE
+			ctptSeq = #{ctptSeq}
 	</update>
 
 
 	<!-- 클래스 설정 -->
 	<update id="insertSetting">
-		update ctClass (
+		UPDATE ctClass (
 			ctcsName
 			,ctcsGradeCd
 			,ctcsDesc
@@ -761,41 +809,46 @@
 
 	<!-- 출석부 -->
 	<insert id="attendance">
-		insert into ctAttendance (
+		INSERT INTO ctAttendance (
 			ctcmSeq,
 			ctadRegDateTime
-		) values (
+		) VALUES (
 			#{ctcmSeq},
 			#{ctadRegDateTime}
 		)
 	</insert>
 
+
 	<select id="getClassId" resultMap="resultMapObj">
-		select 
+		SELECT
 			ctcmSeq
-		from ctClassMember
-		where 
-		mmSeq = ${mmSeq} 
-		and ctcsSeq = ${ctcsSeq}
+		FROM ctClassMember
+		WHERE mmSeq = ${mmSeq} 
+			AND ctcsSeq = ${ctcsSeq}
 	</select>
+
 
 	<!-- 출석부 날짜비교해서 하루에 한번만 기록 들어가게끔, 오늘 날짜로 들어간것들 다 불러오는 쿼리 -->
 	<select id="today" resultType="int">
-		select count(*)
-		from ctAttendance
-		where ctcmSeq=${ctcmSeq}
-		and DATE_FORMAT(ctadRegDateTime, '%Y-%m-%d')=#{attendanceToday}
+		SELECT 
+			count(*)
+		FROM 
+			ctAttendance
+		WHERE ctcmSeq=${ctcmSeq}
+			AND DATE_FORMAT(ctadRegDateTime, '%Y-%m-%d')=#{attendanceToday}
 	</select>
 
-	<select id="enterLog" resultMap="resultMapObj">
-<![CDATA[
-select ctcmName,ctadRegDateTime 
-from ctClassMember a 
-left join ctAttendance b on a.ctcmSeq = b.ctcmSeq 
-where ctcsSeq = #{classSeq}
-and b.ctadRegDateTime > #{startDate} and 
-b.ctadRegDateTime < #{endDate}
 
-]]>
+	<select id="enterLog" resultMap="resultMapObj">
+	<![CDATA[
+	SELECT 
+		ctcmName,ctadRegDateTime 
+	FROM
+		ctClassMember a 
+		LEFT JOIN ctAttendance b on a.ctcmSeq = b.ctcmSeq 
+	WHERE ctcsSeq = #{classSeq}
+		AND b.ctadRegDateTime > #{startDate} 
+		AND b.ctadRegDateTime < #{endDate}
+	]]>
 	</select>
 </mapper>
