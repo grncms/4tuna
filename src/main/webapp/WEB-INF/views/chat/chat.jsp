@@ -130,38 +130,13 @@
 							$("#chat").append(msgTemplate);
 					})
 			})
+
 			})
 			
 			
+
 			
-			function send(){
-			msg = $("#msg").val();
-			var data = {
-					'ctcsSeq' : $("#classId").val(),
-					'ctmgReceiver' : receiver,
-					'ctmgSender': myName,
-					'ctmgSenderId' : mySessionId,
-					'ctmgMessage' : msg
-					}//클래스id,수신인id,발신인,발신인id,메세지
-			client.send('/topic/public',{},JSON.stringify(data));
-			
-			var msgTemplate ='<li class="me">'
-				msgTemplate +='<div class="entete">';
-				msgTemplate +='<h3>'+ hours+ "시" + minutes + "분" + '</h3>';
-				msgTemplate +='<h2>'+ myName +'</h2>';
-				msgTemplate +='<span class="status blue"></span>';
-				msgTemplate +='</div>';
-				msgTemplate +='<div class="triangle"></div>';
-				msgTemplate +='<div class="message">'+ msg + '</div>';
-				msgTemplate +='</li>' ;
-				$("#chat").append(msgTemplate);
-				$("#msg").val("");
-		}
-		
-		
-		
-		
-		$(".membersList").click(function(){ //멤버를 클릭할시 친구 id와 이름을 controller에 전송
+			$(".membersList").click(function(){ //멤버를 클릭할시 친구 id와 이름을 controller에 전송
 			var params = {
 					name : $(this).find($(".name")).val()
 					,ctmgReceiver : $(this).find($(".seq")).val()
@@ -187,9 +162,7 @@
 					main += '</header>'
 					main += '<ul id="chat">'
 					
-					
 					$.each(List,function(index,item){
-						
 						if(item.ctmgSenderId == mySessionId){
 							main += '<li class="me">';
 							main += '<div class="entete">';
@@ -211,17 +184,19 @@
 							main +='<div class="message">'+ item.ctmgMessage + '</div>';
 							main += '</li>'
 						}
-
 					})
-					
 					main += '</ul>'
-					main += '<footer>'
-					main += '<input type="text" id="msg" /> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt=""> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt=""> <input type="button" value="전송" onclick="send()">'
+					main += '<footer>';
+					main += '<div class="input-group">';
+					main += '<input type="text" id="msg" class="form-control" />'  
+					main += '<input type="button" class="btn btn-primary" value="전송" onclick="send()">';
+					main += '</div>';
+					/* main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">'  */
+					/* <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">; */
 					main += '</footer>'
 					
 					$("#main").html(main)
-					
-					
+					$("#chat").scrollTop($("#chat")[0].scrollHeight);
 				},
 				error:function(XMLHttpRequest,textStatus,errorThrown){
 					alert("통신실패");
@@ -229,6 +204,35 @@
 			})
 			
 		})
+			
+			
+		function send(){
+				msg = $("#msg").val();
+				var data = {
+						'ctcsSeq' : $("#classId").val(),
+						'ctmgReceiver' : receiver,
+						'ctmgSender': myName,
+						'ctmgSenderId' : mySessionId,
+						'ctmgMessage' : msg
+						}//클래스id,수신인id,발신인,발신인id,메세지
+				client.send('/topic/public',{},JSON.stringify(data));
+				
+				var msgTemplate ='<li class="me">'
+					msgTemplate +='<div class="entete">';
+					msgTemplate +='<h3>'+ hours+ "시" + minutes + "분" + '</h3>';
+					msgTemplate +='<h2>'+ myName +'</h2>';
+					msgTemplate +='<span class="status blue"></span>';
+					msgTemplate +='</div>';
+					msgTemplate +='<div class="triangle"></div>';
+					msgTemplate +='<div class="message">'+ msg + '</div>';
+					msgTemplate +='</li>' ;
+					$("#chat").append(msgTemplate);
+					$("#chat").animate({
+					scrollTop: $("#chat")[0].scrollHeight //scrollHeight 스크롤 내에 있는 모든 컨텐츠의 길이를 반환
+					},400)
+					
+					$("#msg").val("");
+			}
 	</script>
 </body>
 

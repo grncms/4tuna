@@ -3,6 +3,8 @@ package com.cacao.classting.chat;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -17,15 +19,17 @@ public class ChatController {
 	private SimpMessagingTemplate simpMessagingTempleate;	
 	@Autowired
 	private ChatService service;
+	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
+	
 	@MessageMapping("/topic/public") // 클라이언트에서 메세지를 보내는 주소.
 	public void message(Chat chat) throws Exception {
 		String classId = chat.getCtcsSeq();
 		String receiver = chat.getCtmgReceiver();
 		String sender = chat.getCtmgSender();
 		String msg = chat.getCtmgMessage();
-		System.out.println("classId: " + classId + " receiver: " + receiver );
-		System.out.println("sender: " + sender+ " msg: " + msg);
 		service.insertMsgInfo(chat);
+		logger.info("메세지전송: 발신자(나): " + sender + " |수신자: " + receiver + " |클래스seq: " + classId + " |메세지: " + msg);
+
 		
 		//받은 데이터를 저장 발신인,수신인,메세지,전송날짜,클래스id
 		
@@ -33,13 +37,13 @@ public class ChatController {
 		
 		simpMessagingTempleate.convertAndSend("/sub/topic/" + classId + "/" + receiver, chat); //받은 메세지를 converAndSend의 파라미터로 전송
 
-		 System.out.println("수신메시지: " + chat.getCtmgMessage());
 	}
 	
 	@ResponseBody
 	@RequestMapping("/enterRoom")
 	public Map<String,Object> enterRoom(@RequestBody Map<String,Object> chatMap ) throws Exception {
-		System.out.println("맵:" + chatMap.toString());
+		
+		logger.info("채팅장입장: 발신자(나): " + chatMap.get("myId") + "| 수신자: " + chatMap.get("name") + "|클래스seq: " + chatMap.get("ctcsSeq"));
 		chatMap.put("code","0000");
 		List<Chat> chatList = service.selectMsg(chatMap);
 		chatMap.put("receiver", chatMap.get("ctmgReceiver"));
