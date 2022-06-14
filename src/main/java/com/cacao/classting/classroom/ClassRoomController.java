@@ -297,6 +297,9 @@ public class ClassRoomController {
 		httpSession.setAttribute("ctcmSeq", rt.getCtcmSeq());
 		httpSession.setAttribute("ctcmName", rt.getCtcmName());
 		httpSession.setAttribute("teacherNy", rt.getCtcmTeacherNy());
+		httpSession.setAttribute("ctPath", rt.getPath());
+		httpSession.setAttribute("ctUuidName", rt.getUuidName());
+
 		
 //		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);

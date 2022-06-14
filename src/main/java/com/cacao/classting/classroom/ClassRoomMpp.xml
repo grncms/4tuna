@@ -42,6 +42,16 @@
 		<include refid="selectCommonClass" />
 	</select>
 
+	<select id="selectOneClassMemberUploaded" resultMap="resultMapObj">
+		SELECT
+			path
+			,uuidName
+		FROM
+			ctClassMemberUploaded
+		where 1=1
+			and pseq = #{ctcmSeq}
+	</select>
+	
 	<update id="updateClass">
 		UPDATE
 			ctClassMember
@@ -113,8 +123,11 @@
 			,b.ctcmSeq
 			,b.ctcmName
 			,b.ctcmTeacherNy
+			,c.uuidName
+			,c.path
 		FROM ctClass a
 			LEFT JOIN ctClassMember b on b.ctcsSeq = a.ctcsSeq
+			LEFT JOIN ctClassMemberUploaded c on c.pseq = b.ctcmSeq
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
 			AND b.mmSeq = #{mmSeq}
@@ -450,6 +463,18 @@
 			AND a.ctcsSeq = #{ctcsSeq}
 	</select>
 
+	<update id="updateClassMember">
+		UPDATE
+			ctClassMember
+		SET
+			ctcmName = #{ctcmName}
+			,ctcmAlarmReplyNy = #{ctcmAlarmReplyNy}
+			,ctcmAlarmReactionNy = #{ctcmAlarmReactionNy}
+		WHERE 1=1
+		AND ctcmSeq = #{ctcmSeq}
+
+	</update>
+	
 	<!-- 구성원 삭제 (update) -->
 	<update id="updateClassMemberDel">
 		UPDATE

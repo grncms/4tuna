@@ -24,8 +24,10 @@ public interface ClassRoomService {
 	public int updateUploaded(ClassRoom dto) throws Exception;
 	//classMemberView
 	public int updateClass(ClassRoom dto) throws Exception;
-
+	
 	public ClassRoom selectOneMemberClass(ClassRoomVo vo) throws Exception;
+
+	public ClassRoom selectOneClassMemberUploaded(ClassRoomVo vo) throws Exception;
 
 	public int deleteMemberForcely(ClassRoom dto) throws Exception;
 	// 조회수 

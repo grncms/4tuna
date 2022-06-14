@@ -25,8 +25,7 @@
 <link href="../../../../../resources/common/css/boardCss.css" rel="stylesheet">
 
 
-<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
-<title id="ctl00_headerTitle">CLASSING</title>
+<title></title>
 <style type="text/css">
 	#posting{
 		width: 800px;
@@ -57,6 +56,10 @@ margin-left:10px;
 		<!-- 여기에 내용  -->
 		
 		
+	<form id="updateClassMember" name="updateClassMember" method="post">
+	<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+	<input  type="hidden" id="mmSeq" name="mmSeq">
+	<input  type="hidden" id="ctcmSeq" name="ctcmSeq">
 	<div class="container-fluid">
 			<div class="row" id="posting">
 				<div class="col-12">
@@ -66,15 +69,16 @@ margin-left:10px;
 						</div>
 						<div class="body">
 							<div class="col-lg-3" id="classImg">
-								<img src="/resources/uploaded/common/profile2.png"  width="70" height="70" >
+							 <c:if test="${ctPath ne null}"><img class="img-profile rounded-circle" width="100px" height="100px" src="${ctPath}${ctUuidName}"></c:if>
 							</div>
 							<div class="col-lg-9" id="classInfo">
 								<span style="font-size: 12px;">이 클래스에서만 사용할<br>
 								내 프로필 이미지를 올려주세요.<br>
 								(개인정보 보호에 주의)</span>
 							</div>
+						<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
+					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
 							<div>
-								<button type="button" class="btn btn-outline-primary w-30" id="picture_change" >사진 변경</button>
 							</div>
 						</div>
 				
@@ -82,7 +86,7 @@ margin-left:10px;
 				<div class="homework_list shadow mb-4">
 					<div class="container_title" style="margin-top:20px;">
 						<label for="ifmmName" class="form-label" style="font-weight: bold;">이름</label>
-						<input type="text" class="form-control" id="ifmmName" name="ifmmName">
+						<input type="text" class="form-control" id="ctcmName" name="ctcmName" value="<c:out value="${item.ctcmName}"/>">
 					<div style="text-align: right; margin-top:50px;">
 						<button type="button" class="btn btn-outline-success" id="btn-add" style="margin-bottom:10px; width: 180px;" data-bs-toggle="modal" data-bs-target="#Change">변경사항 저장</button>
 					</div>
@@ -125,8 +129,8 @@ margin-left:10px;
 					<span style="font-size: 12px;">내 게시글에 구성원이 반응하면 알림을 받을 수 있어요.</span>		
 				</div>
 				</div>
-				
-	 <!-- 선생님이 zoom 연동시 생성됨 -->			
+	<!-- 			
+	 선생님이 zoom 연동시 생성됨			
 				
 					<div class="homework_list shadow mb-4">
 						<div class="container_title" style="margin-top: 10px;">
@@ -138,7 +142,7 @@ margin-left:10px;
 						</div>
 					</div>
 				
-			<!-- modal -->
+			modal
 					<div class="modal" tabindex="-1" id="zoomOut">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
@@ -157,9 +161,9 @@ margin-left:10px;
 					    </div>
 					  </div>
 					  
-	<!-- modal end -->
-	<!-- 선생님이 zoom 연동시 생성됨 -->			
-			
+	modal end
+	선생님이 zoom 연동시 생성됨			
+			 -->
 			
 			
 			<div class="homework_list shadow mb-4">
@@ -200,8 +204,10 @@ margin-left:10px;
 
 			
 		</div>
+		</form>
 	</div>
 	</div>
+
 
 
 	<!-- End of Page Wrapper -->

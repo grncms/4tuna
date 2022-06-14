@@ -25,6 +25,12 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	}
 
 	@Override
+	public ClassRoom selectOneClassMemberUploaded(ClassRoomVo vo) throws Exception {
+
+		return dao.selectOneClassMemberUploaded(vo);
+	}
+
+	@Override
 	public int insertClass(ClassRoom dto) throws Exception {
 		
 		return 0;
