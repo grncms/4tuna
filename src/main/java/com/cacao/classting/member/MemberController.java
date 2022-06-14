@@ -83,19 +83,19 @@ public class MemberController {
 		return "member/classCode";
 	}
 	
-@RequestMapping(value = "/classCodeInst")
-public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model model,RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception  {
-	
-	
-	service.insertClassMember(dto);
-	 
-	vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-	System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
-	System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
-	
-	redirectAttributes.addFlashAttribute("vo", vo);
-	return "redirect:/main";
-}
+	@RequestMapping(value = "/classCodeInst")
+	public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model model,RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception  {
+		
+		
+		service.insertClassMember(dto);
+		 
+		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
+		System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/main";
+	}
 
 	@RequestMapping(value = "/login_xdmin")
 	public String login_xdmin() throws Exception{

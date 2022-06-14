@@ -40,6 +40,12 @@ public class ZoomController {
 	@Autowired
 	ZoomServiceImpl service;
 	
+	/**
+	 * @param model
+	 * @param dto
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/zoomList")
 	public String zoomList(Model model, Zoom dto) throws Exception {
 		
