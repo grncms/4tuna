@@ -1,6 +1,7 @@
 package com.cacao.classting.zoom;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -81,8 +82,8 @@ public class ZoomController {
 			System.out.println("[key]: "+key + ", [value]: " + value);
 		}
 		
-//		System.out.println("meetings#########################");
-//		System.out.println("map.get(\"meetings\") : "+map.get("meetings"));
+		System.out.println("meetings#########################");
+		System.out.println("map.get(\"meetings\") : "+map.get("meetings"));
 		
 		List<Zoom> list = new ArrayList<Zoom>();
 		list = (List<Zoom>) map.get("meetings");
