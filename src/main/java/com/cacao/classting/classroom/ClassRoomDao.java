@@ -1,6 +1,7 @@
 package com.cacao.classting.classroom;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -143,5 +144,8 @@ public class ClassRoomDao {
 	public List<ClassRoom> homeworkSubmit(ClassRoom dto){
 		return sqlSession.selectList(namespace + ".homeworkSubmit",dto);
 	}
+	
+//채팅관련
+	public List<ClassRoom> countMsg(HashMap<String, String> countMsg) {return sqlSession.selectList(namespace + ".countMsg",countMsg);}
 
 }

@@ -136,6 +136,9 @@ public class ClassRoom {
 	private String scoreAvg;
 	
 	
+	//채팅 관련
+	private int chatCountNum;
+	
 	public String getCtcsSeq() {
 		return ctcsSeq;
 	}
@@ -711,6 +714,12 @@ public class ClassRoom {
 	}
 	public void setPath(String path) {
 		this.path = path;
+	}
+	public int getChatCountNum() {
+		return chatCountNum;
+	}
+	public void setChatCountNum(int chatCountNum) {
+		this.chatCountNum = chatCountNum;
 	}
 
 

@@ -23,6 +23,17 @@ public class ChatServiceImpl implements ChatService{
 	public List<Chat> selectMsg(Map<String, Object> chatMap) throws Exception {
 		return dao.selectMsg(chatMap);
 	}
+
+	@Override
+	public int readNyUpdate(Map<String, Object> chatMap) throws Exception {
+		return dao.readNyUpdate(chatMap);
+	}
+
+
+
+
+
+
 	
 	
 	

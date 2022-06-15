@@ -1,5 +1,6 @@
 package com.cacao.classting.classroom;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -89,4 +90,7 @@ public interface ClassRoomService {
 //게시글등록
 	public int insertPost(ClassRoom dto) throws Exception;
 	public int insertAddress(ClassRoom dto);
+	
+//채팅관련
+	public List<ClassRoom> countMsg(HashMap<String,String> countMsg) throws Exception;
 }

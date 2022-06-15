@@ -851,4 +851,12 @@
 		AND b.ctadRegDateTime < #{endDate}
 	]]>
 	</select>
+	
+	
+	<!--  최초 메세지를 카운트하는 쿼리 -->
+<select id = "countMsg" parameterType="hashMap" resultMap="resultMapObj" >
+        select ctcmSeq ,ctcmName, count(case when ctmgReceiver = #{ctmgReceiver} and ctmgReadNy = 0 then 1 end) as chatCountNum
+        from ctClassMember a left outer join ctMessages on ctmgSenderId = a.ctcmSeq
+        where a.ctcsSeq =#{ctcsSeq} and a.ctcmDelNy = 0 group by ctcmSeq;
+	</select> 
 </mapper>

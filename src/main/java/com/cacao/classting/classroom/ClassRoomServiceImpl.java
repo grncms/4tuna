@@ -1,6 +1,7 @@
 package com.cacao.classting.classroom;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -348,6 +349,12 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	public List<ClassRoom> selectListMemberUploaded(ClassRoomVo vo) throws Exception {
 		
 		return dao.selectListMemberUploaded(vo);
+	}
+
+	@Override
+	public List<ClassRoom> countMsg(HashMap<String, String> countMsg) throws Exception {
+		
+		return dao.countMsg(countMsg);
 	}
 
 

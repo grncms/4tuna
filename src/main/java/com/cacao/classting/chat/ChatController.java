@@ -29,7 +29,7 @@ public class ChatController {
 		String msg = chat.getCtmgMessage();
 		service.insertMsgInfo(chat);
 		logger.info("메세지전송: 발신자(나): " + sender + " |수신자: " + receiver + " |클래스seq: " + classId + " |메세지: " + msg);
-
+		
 		
 		//받은 데이터를 저장 발신인,수신인,메세지,전송날짜,클래스id
 		
@@ -40,16 +40,25 @@ public class ChatController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/enterRoom")
+	@RequestMapping("/enterRoom") //채팅창 입장
 	public Map<String,Object> enterRoom(@RequestBody Map<String,Object> chatMap ) throws Exception {
-		
 		logger.info("채팅장입장: 발신자(나): " + chatMap.get("myId") + "| 수신자: " + chatMap.get("name") + "|클래스seq: " + chatMap.get("ctcsSeq"));
-		chatMap.put("code","0000");
+		System.out.println(chatMap.toString());
 		List<Chat> chatList = service.selectMsg(chatMap);
+		service.readNyUpdate(chatMap); //내려받은 메세지 db상에서 읽음표시
 		chatMap.put("receiver", chatMap.get("ctmgReceiver"));
 		chatMap.put("chatList", chatList);
 		
 		return chatMap;
 	}
 
+	@ResponseBody
+	@RequestMapping("/countMsg") //자신에게 온 메세지 카운트
+	public Map<String,Object> countMsg(@RequestBody Map<String,Object> chatMap ) throws Exception {
+		
+//			List membersList = service.membersList(chatMap.get)
+		//3개의 변수가 쿼리 조건으로 필요
+		
+		return chatMap;
+	}	
 }
