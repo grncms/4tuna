@@ -40,12 +40,7 @@ public class ZoomController {
 	@Autowired
 	ZoomServiceImpl service;
 	
-	/**
-	 * @param model
-	 * @param dto
-	 * @return
-	 * @throws Exception
-	 */
+
 	@RequestMapping(value = "/zoomList")
 	public String zoomList(Model model, Zoom dto) throws Exception {
 		
@@ -67,23 +62,23 @@ public class ZoomController {
 		StringBuilder stringBuilder = new StringBuilder();
 		String line; 
 		while((line = bufferedReader.readLine()) != null) {
-//			System.out.println("line : "+line);
+			System.out.println("line : "+line);
 			stringBuilder.append(line);
 		}
 		
 		bufferedReader.close();
 		httpURLConnection.disconnect();
 		
-//		System.out.println("stringBuilder.toString() : "+stringBuilder.toString());
+		System.out.println("stringBuilder.toString() : "+stringBuilder.toString());
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
 		
-//		System.out.println("###################################################################");
+		System.out.println("###################################################################");
 		
 		for(String key : map.keySet()) {
 			String value = String.valueOf(map.get(key));
-//			System.out.println("[key]: "+key + ", [value]: " + value);
+			System.out.println("[key]: "+key + ", [value]: " + value);
 		}
 		
 //		System.out.println("meetings#########################");
@@ -106,9 +101,9 @@ public class ZoomController {
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
 		httpURLConnection.setRequestMethod("POST");
-		httpURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
 		httpURLConnection.setRequestProperty("Accept", "application/json; utf-8");
 		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2ODU1MDIwMDAsImlhdCI6MTY1Mzk1ODQwNX0.V1kjHKbBxkK_BcL6JgLRS3hNpvKj98s2uYnwrYvC5eo");
+		httpURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
 		httpURLConnection.setDoOutput(true);
 		httpURLConnection.setDoInput(true);
 		
@@ -142,7 +137,6 @@ public class ZoomController {
 		
 			
 		vo.setAgenda(dto.getAgenda());	
-			
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/zoomList";
 	}

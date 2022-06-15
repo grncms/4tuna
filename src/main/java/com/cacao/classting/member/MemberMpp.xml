@@ -278,8 +278,7 @@
 			,#{regDateTime}
 			,#{regDateTimeSvr}
 		)
-		<selectKey resultType="String" keyProperty="ctcsSeq"
-			order="AFTER">
+		<selectKey resultType="String" keyProperty="ctcsSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
@@ -302,8 +301,28 @@
 			,#{mmSeq}
 			,#{ctcsSeq}
 		)
+		<selectKey resultType="String" keyProperty="ctcsSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
-
+	
+	<update id="updateClassMember">
+		UPDATE ctClassMember SET
+			ctcmName = #{ctcmName}
+		WHERE 1=1
+			AND ctcmSeq = #{ctcmSeq}	
+	</update>
+	
+	<select id="selectOneClassMember" resultMap="resultMapObj">
+		SELECT
+			ctcmSeq
+			,ctcmName
+		FROM
+			ctClassMember
+		WHERE 1=1
+			AND mmSeq = #{mmSeq}
+			AND ctcsSeq = #{ctcsSeq}
+	</select>
 	<select id="selectOneClass" resultMap="resultMapObj">
 		SELECT
 			ctcsSeq

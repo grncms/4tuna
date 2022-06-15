@@ -21,6 +21,9 @@ public interface MemberService {
 	public Member selectOneClassCode(MemberVo vo) throws Exception;
 	public List<Member> selectListClass(MemberVo vo) throws Exception;
 
+	public int updateClassMember(Member dto) throws Exception;
+	public Member selectOneClassMember(MemberVo vo) throws Exception;
+
 	public List<Member> selectListNotice(MemberVo vo) throws Exception;
 	
 //admin

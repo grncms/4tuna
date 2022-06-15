@@ -38,6 +38,7 @@ public class MemberVo {
 	private Date modDateTime;
 	private Date modDateTimeSvr;
 	
+	private String ctcmSeq;
 	private String ctptSeq;
 	private String ctboSeq;
 	private String[] checkboxSeqArray;
@@ -482,6 +483,14 @@ public class MemberVo {
 	}
 	public String[] getCheckboxSeqArray() {
 		return checkboxSeqArray;
+	}
+
+	public String getCtcmSeq() {
+		return ctcmSeq;
+	}
+
+	public void setCtcmSeq(String ctcmSeq) {
+		this.ctcmSeq = ctcmSeq;
 	}
 
 	public void setCheckboxSeqArray(String[] checkboxSeqArray) {

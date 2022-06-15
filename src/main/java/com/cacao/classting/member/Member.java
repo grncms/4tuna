@@ -47,6 +47,7 @@ public class Member {
 	private Integer ctcsDelNy;
 	
 	private String ctcmName;
+	private String ctcmSeq;
 	private Integer ctcmAlarmReplyNy;
 	private Integer ctcmTeacherNy;
 	
@@ -489,6 +490,12 @@ public class Member {
 	}
 	public void setPath(String path) {
 		this.path = path;
+	}
+	public String getCtcmSeq() {
+		return ctcmSeq;
+	}
+	public void setCtcmSeq(String ctcmSeq) {
+		this.ctcmSeq = ctcmSeq;
 	}
 	
 	

@@ -40,6 +40,9 @@ public class MemberDao {
 	public Member selectOneClassCode(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOneClassCode", vo);}
 	public List<Member> selectListClass(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListClass",vo); }
 	
+	public int updateClassMember(Member dto) {return sqlSession.update(namespace +".updateClassMember", dto);} 
+	public Member selectOneClassMember(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOneClassMember", vo);}
+
 	public List<Member> selectListNotice(MemberVo vo) { List<Member> list = sqlSession.selectList(namespace + ".selectListNotice",vo); return list;}
 
 	public int insertUploaded(Member dto) {return sqlSession.insert(namespace +".insertUploaded", dto);} 

@@ -100,7 +100,8 @@
 	<!-- 모달 -->
 	<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<form action="/classCodeSearch" id="codeModal" name="codeModal" method="post">
-		<%-- <input type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>"> --%>
+		<input type="hidden" id="ctcmName" name="ctcmName" value="<c:out value="${sessName}"/>">
+		<input type="hidden" id="mmSeq" name="mmSeq" value="<c:out value="${sessSeq}"/>">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">

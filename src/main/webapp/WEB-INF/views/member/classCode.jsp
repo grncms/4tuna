@@ -139,10 +139,9 @@
 <img style="float: left;" src="../../../../../resources/common/image/classtingFlower.png">
 
 <div class="row justify-content-center" style="color:black;">
-<form action="/classCodeInst" method="post" id="classMemberForm" name="classMemberForm" class="row">
-	<input type="hidden" name="ctcsSeq" id="ctcsSeq" value="<c:out value="${item.ctcsSeq}"/>">
-	<input type="hidden" name="ctcmTeacherNy" id="ctcmTeacherNy" value="<c:out value="${sessTeacher}"/>">
-	<input type="hidden" name="mmSeq" id="mmSeq" value="<c:out value="${vo.mmSeq}"/>">
+<form action="/classCodeMemberUpdt" method="post" id="classMemberForm" name="classMemberForm" class="row" enctype="multipart/form-data">
+	<input type="hidden" name="ctcmSeq" id="ctcmSeq" value="<c:out value="${vo.ctcmSeq}"/>">
+	<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
 	<input type="hidden" name="ctcsCode" id="ctcsCode" >
 	<div class="col-md-10 d-flex justify-content-center" id="context">
 		<div class="col-md-7" style="margin-top:100px;">
@@ -157,16 +156,15 @@
 	        </div> 
 	        <div>   
 	               <span class=" text-gray-60 small">이 클래스에서만 사용할<br>
-	               내 프로필 이미지를 올려주세요.<br>
+	               내 프로필 이름을 설정해주세요.<br>
 	               (개인정보 보호에 주의)
 	               </span>
 			</div>
 		</div>
-		
 		<div style="clear:both;">
-		<label for="name" class="form-label">이름</label>
-		<input type="text" class="form-control" id="ctcmName" name="ctcmName">
-		<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;">완료</button>
+			<label for="name" class="form-label">이름</label>
+			<input type="text" class="form-control" id="ctcmName" name="ctcmName" value="${itemMember.ctcmName}">
+			<button type="button" class="btn btn-outline-success" id="btn-add2" style="margin-top:30px; float: right;">완료</button>
 		</div>
 		</div>
 	</div>
@@ -191,7 +189,7 @@
 
 $("#btn-add2").on("click", function(){
 	
-	$("#classMemberForm").attr("action", "/classCodeInst");
+	$("#classMemberForm").attr("action", "/classCodeMemberUpdt");
 	$("#classMemberForm").submit();
 
 });
