@@ -61,11 +61,10 @@ public class MemberController {
 	@RequestMapping(value = "/classCodeSearch")
 	public String classCodeSearch(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
 		
-		Member rt = service.selectOneClassCode(vo);
+		Member rt = service.selectOneClassCode(vo);	//입력받은 코드로 클래스 찾기
 		model.addAttribute("item", rt);
 	
-		dto.setCtcsSeq(rt.getCtcsSeq());
-		System.out.println("dto.getCtcsSeq() : "+dto.getCtcsSeq());
+		dto.setCtcsSeq(rt.getCtcsSeq()); //70번 insert할때 필요함
 
 		service.insertClassMember(dto);
 		
@@ -77,17 +76,14 @@ public class MemberController {
 	@RequestMapping(value = "/classCode")
 	public String classCode(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
 		
-		Member rt = service.selectOneClassCode(vo);
+		Member rt = service.selectOneClassCode(vo);	//클래스정보 가져옴
 		model.addAttribute("item", rt);
 
+		//클래스 가입시 들어갔던 기본값을 불러오기위한 set
 		dto.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		dto.setCtcsSeq(rt.getCtcsSeq());
-
 		vo.setMmSeq(dto.getMmSeq());
 		vo.setCtcsSeq(dto.getCtcsSeq());
-		
-		System.out.println(vo.getMmSeq());
-		System.out.println(vo.getCtcsSeq());
 
 		Member rt2 = service.selectOneClassMember(vo);
 		model.addAttribute("itemMember", rt2);
@@ -103,31 +99,9 @@ public class MemberController {
 		dto.setPseq(dto.getCtcmSeq());
 		service.updateClassMember(dto);
 		
-		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
-		System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
-		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/main";
 	}
-//	@RequestMapping(value = "/classCodeInst")
-//	public String classCodeInst(@ModelAttribute("vo") MemberVo vo, Member dto, Model model,RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception  {
-//
-//		dto.setPseq(dto.getCtcmSeq());
-//		service.insertClassMember(dto);
-//		System.out.println("dto.getPseq() : "+dto.getPseq());
-//		System.out.println("vo.getPseq() : "+vo.getPseq());
-//		 
-//		System.out.println("dto.getCtcmSeq() : "+dto.getCtcmSeq());
-//		System.out.println("vo.getCtcmSeq() : "+vo.getCtcmSeq());
-//
-//		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
-//		System.out.println("httpSession.getAttribute(\"sessSeq\") : " + httpSession.getAttribute("sessSeq"));
-//		System.out.println("dto.getCtcsSeq() : " +vo.getCtcsSeq());
-//		
-//		redirectAttributes.addFlashAttribute("vo", vo);
-//		return "redirect:/main";
-//	}
 
 	@RequestMapping(value = "/login_xdmin")
 	public String login_xdmin() throws Exception{
