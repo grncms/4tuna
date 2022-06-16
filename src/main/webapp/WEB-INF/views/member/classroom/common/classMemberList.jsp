@@ -79,7 +79,9 @@
 								<c:if test="${item.ctcmTeacherNy eq 1}">
 									<div class="homework_listitem mt-3">
 										<div class="title_hw" >
-							            	<div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/uploaded/common/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
+											<c:if test="${item.path eq null}"><div class="col-md-2 col-lg-2" id="classImg"><img class="profile" src="/resources/uploaded/common/profile2.png" style="border-radius: 18px; width: 40px; height: 40px;"/></div></c:if>
+											<c:if test="${item.path ne null}"><div class="col-md-2 col-lg-2" id="classImg"><img class="profile" src="${item.path}${item.uuidName}" style="border-radius: 18px; width: 40px; height: 40px;"/></div></c:if>
+							            	<!-- <div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/uploaded/common/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div> -->
 											<div class="col-md-10 col-lg-10" id="classInfo"><span><b><c:out value="${item.ctcmName}"/></b></span><p><span style="color: #c8c8c8; font-size: 14px;">선셍님</span></div>
 										</div>
 										
@@ -95,7 +97,8 @@
 								<c:forEach items="${list}" var="item" varStatus="status">
 								<c:if test="${item.ctcmTeacherNy eq 0}">
 									<div class="title_hw" >
-						            	<div class="col-md-2 col-lg-2" id="classImg"><img src="/resources/uploaded/common/profile2.png"  width="40" height="40" style="border-radius: 7px; "></div>
+						            	<c:if test="${item.path eq null}"><div class="col-md-2 col-lg-2" id="classImg"><img class="profile" src="/resources/uploaded/common/profile2.png" style="border-radius: 18px; width: 40px; height: 40px;"/></div></c:if>
+										<c:if test="${item.path ne null}"><div class="col-md-2 col-lg-2" id="classImg"><img class="profile" src="${item.path}${item.uuidName}" style="border-radius: 18px; width: 40px; height: 40px;"/></div></c:if>
 										<div class="col-md-10 col-lg-10" id="classInfo"><span><b><c:out value="${item.ctcmName}"/></b></span><p><span style="color: #c8c8c8; font-size: 14px;">학생</span></div>
 										<c:if test="${teacherNy eq 1}">
 											<div class="dropdown no-arrow">

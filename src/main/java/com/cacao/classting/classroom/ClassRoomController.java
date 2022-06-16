@@ -560,6 +560,7 @@ public class ClassRoomController {
 
 		String now = LocalDateTime.now().format(dtf);
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
+		model.addAttribute("memberList", memberList);
 		String korean = "";
 
 		for (int i = 4; i >= 0; i--) {

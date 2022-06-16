@@ -113,7 +113,7 @@
 						<h3 style="text-align: center">코드입력</h3>
 						<br><br>
 						<div class="input-group mb-3">
-							<input class="form-control form-control-lg" type="text" id="ctcsCode" name="ctcsCode" placeholder="코드 6자리 입력"> <br>
+							<input class="form-control form-control-lg" type="text" id="ctcsCode" name="ctcsCode" placeholder="코드 6자리 입력" value="KIAVUX"> <br>
 						</div>
 					</div>
 					<div class="modal-footer">

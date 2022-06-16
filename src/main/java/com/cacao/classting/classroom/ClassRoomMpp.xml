@@ -482,7 +482,7 @@
 			,b.path
 			,b.uuidName
 		FROM ctClassMember a
-			LEFT JOIN ctMemberUploaded b on b.pseq = a.ctcmSeq
+			LEFT JOIN ctClassMemberUploaded b on b.pseq = a.ctcmSeq
 		WHERE 1=1
 			AND a.ctcmDelNy = 0
 			AND a.ctcsSeq = #{ctcsSeq}
