@@ -56,10 +56,9 @@ margin-left:10px;
 		<!-- 여기에 내용  -->
 		
 		
-	<form id="updateClassMember" name="updateClassMember" method="post">
-	<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-	<input  type="hidden" id="mmSeq" name="mmSeq">
-	<input  type="hidden" id="ctcmSeq" name="ctcmSeq">
+	<form action="/updateClassMember" name="updateClassMember" id="updateClassMember" method="post"  enctype="multipart/form-data">
+	<input  type="hidden" id="ctcsSeq" name="ctcsSeq" value="<c:out value="${vo.ctcsSeq}"/>">
+	<input  type="hidden" id="ctcmSeq" name="ctcmSeq" value="<c:out value="${vo.ctcmSeq}"/>">
 	<div class="container-fluid">
 			<div class="row" id="posting">
 				<div class="col-12">
@@ -69,23 +68,21 @@ margin-left:10px;
 						</div>
 						<div class="body">
 							<div class="col-lg-3" id="classImg">
-							 <c:if test="${ctPath ne null}"><img class="img-profile rounded-circle" width="100px" height="100px" src="${ctPath}${ctUuidName}"></c:if>
+								<c:if test="${ctPath ne null}"><img class="img-profile rounded-circle" width="100px" height="100px" src="${ctPath}${ctUuidName}"></c:if>
 							</div>
 							<div class="col-lg-9" id="classInfo">
 								<span style="font-size: 12px;">이 클래스에서만 사용할<br>
 								내 프로필 이미지를 올려주세요.<br>
 								(개인정보 보호에 주의)</span>
 							</div>
-						<input type="file" class="d-none w-0 h-0 position-absolute" id="profile-upload" name="file0">
-					<label for="profile-upload" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
-							<div>
-							</div>
+							<input type="file" class="d-none w-0 h-0 position-absolute" id="file0" name="file0">
+							<label for="file0" data-bs-toggle="tooltip" data-bs-placement="bottom" class="btn btn-primary me-3"> Upload photo </label>
 						</div>
 				
 				</div>
 				<div class="homework_list shadow mb-4">
 					<div class="container_title" style="margin-top:20px;">
-						<label for="ifmmName" class="form-label" style="font-weight: bold;">이름</label>
+						<label for="ctcmName" class="form-label" style="font-weight: bold;">이름</label>
 						<input type="text" class="form-control" id="ctcmName" name="ctcmName" value="<c:out value="${item.ctcmName}"/>">
 					<div style="text-align: right; margin-top:50px;">
 						<button type="button" class="btn btn-outline-success" id="btn-add" style="margin-bottom:10px; width: 180px;" data-bs-toggle="modal" data-bs-target="#Change">변경사항 저장</button>
@@ -117,13 +114,21 @@ margin-left:10px;
 					<p style="margin-bottom: 20px; margin-top: 10px; font-weight: bold;">클래스 알림 설정</p>
 					
 					<div class="form-check form-switch" style="display: inline; float: right;">
-					  <input class="form-check-input" type="checkbox" role="switch" id="reply">
-					</div>
+					  <input class="form-check-input" type="checkbox" role="switch" id="ctcmAlarmReplyNy" name ="ctcmAlarmReplyNy"
+					 	 <c:choose>
+							<c:when test="${item.ctcmAlarmReplyNy eq 1}">checked</c:when>
+							<c:otherwise></c:otherwise>
+				    	</c:choose>>
+			 		</div>
 					<span>댓글</span><br>
 					<span style="font-size: 12px;">내 게시글에 댓글이 달리면 알림을 받을 수 있어요.</span><br>			
 					
 					<div class="form-check form-switch" style="display: inline; float: right;">
-					  <input class="form-check-input" type="checkbox" role="switch" id="action">
+					  <input class="form-check-input" type="checkbox" role="switch" id="ctcmAlarmReactionNy" name="ctcmAlarmReactionNy"
+					 	 <c:choose>
+							<c:when test="${item.ctcmAlarmReactionNy eq 1}">checked</c:when>
+							<c:otherwise></c:otherwise>
+					 	 </c:choose>>
 					</div>		
 					<span>반응</span><br>
 					<span style="font-size: 12px;">내 게시글에 구성원이 반응하면 알림을 받을 수 있어요.</span>		
@@ -242,6 +247,20 @@ $("#btnLogout").on("click", function(){
 		}
 	});	
 });
+
+if($("#ctcmAlarmReactionNy").is(":checked")) {
+	$("#ctcmAlarmReactionNy").val(1);
+}else{
+	$("#ctcmAlarmReactionNy").val(0);
+	
+}
+
+if($("#ctcmAlarmReplyNy").is(":checked")) {
+	$("#ctcmAlarmReplyNy").val(1);
+}else{
+	$("#ctcmAlarmReplyNy").val(0);
+	
+}
 </script>
 
 

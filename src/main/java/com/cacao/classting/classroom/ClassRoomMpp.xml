@@ -31,6 +31,8 @@
 	<select id="selectOneMemberClass" resultMap="resultMapObj">
 		SELECT
 			ctcmName
+			,ctcmAlarmReplyNy
+			,ctcmAlarmReactionNy
 		FROM
 			ctClassMember
 		WHERE 1=1 AND ctcmSeq = #{ctcmSeq}
@@ -62,6 +64,32 @@
 			,ctcmAlarmReplyNy = #{ctcmAlarmReplyNy}
 			,ctcmAlarmReactionNy = #{ctcmAlarmReactionNy}
 		WHERE 1=1
+			AND ctcmSeq = #{ctcmSeq}
+	</update>
+	
+	
+	<update id="updateUploaded">
+		UPDATE ${tableName} 
+		SET
+			type = #{type}
+			,defaultNy = #{defaultNy}
+			,sort = #{sort}
+			,originalName = #{originalName}
+			,uuidName = #{uuidName}
+			,path = #{path}
+			,delNy = #{delNy}
+		WHERE 1=1
+			AND pseq = #{pseq}
+	</update>
+	
+	
+	<update id="deleteClassMember">
+		UPDATE
+			ctClassMember
+		SET
+			ctcmDelNy = 1
+		WHERE 1=1
+			AND ctcsSeq = #{ctcsSeq}
 			AND ctcmSeq = #{ctcmSeq}
 	</update>
 	

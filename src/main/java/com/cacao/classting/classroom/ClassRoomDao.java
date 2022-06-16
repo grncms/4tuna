@@ -46,6 +46,7 @@ public class ClassRoomDao {
 	public ClassRoom selectOneClassMemberUploaded(ClassRoomVo vo) {return sqlSession.selectOne(namespace + ".selectOneClassMemberUploaded", vo);}
 	
 	public ClassRoom selectOneMemberClass(ClassRoomVo vo)  { return sqlSession.selectOne(namespace + ".selectOneMemberClass", vo);}
+	public int deleteClassMember(ClassRoomVo vo) {return sqlSession.update(namespace + ".deleteClassMember", vo);}
 
 	public int deleteMemberForcely(ClassRoom dto) {return sqlSession.update(namespace + ".DeleteMemberForcely", dto);}
 

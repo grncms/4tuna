@@ -27,7 +27,7 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/user/css/memberInfo.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
-<title id="ctl00_headerTitle">CLASSING</title>title>
+<title id="ctl00_headerTitle">CLASSING</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/member/include/main_header.jsp" %><!-- header -->

@@ -56,10 +56,24 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/updateClassMember")
-	public String updateClassMember(ClassRoom dto) throws Exception {
+	public String updateClassMember(ClassRoom dto, HttpSession httpSession, ClassRoomVo vo,RedirectAttributes redirectAttributes) throws Exception  {
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq"));
+		httpSession.setAttribute("ctUuidName", dto.getUuidName());
+		httpSession.setAttribute("ctPath", dto.getPath());
+		
+		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq") );
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
 		service.updateClassMember(dto);
-
 		return "redirect:/classMain";
+	}
+	@RequestMapping(value = "/deleteClassMember") 
+	public String deleteClassMember(ClassRoomVo vo , RedirectAttributes redirectAttributes ) throws Exception {
+		service.deleteClassMember(vo);
+		
+		
+		return "redirect:/main";
 	}
 
 	@RequestMapping(value = "/noticeBoard")

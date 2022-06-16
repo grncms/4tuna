@@ -162,6 +162,7 @@
 		WHERE 1=1
 			AND mmSeq = #{mmSeq}
 			AND ctcsDelNy = 0
+			AND ctcmDelNy = 0
 	</select>
 	
 	<select id="selectListId" resultMap="resultMapObj">

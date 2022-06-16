@@ -24,7 +24,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		
 		return dao.selectListClass(vo);
 	}
-
+	@Override
+	public int deleteClassMember(ClassRoomVo vo) throws Exception {
+		
+		return dao.deleteClassMember(vo);
+	}
 	@Override
 	public ClassRoom selectOneClassMemberUploaded(ClassRoomVo vo) throws Exception {
 
@@ -76,17 +80,11 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	     dto.setDefaultNy(1);
 	     dto.setSort(0);
 	     dto.setDelNy(0);
-	     dto.setPseq(dto.getMmSeq());
+	     dto.setPseq(dto.getCtcmSeq());
 	     
 	     dao.updateUploaded(dto);
 		
 		return 1;
-	}
-
-	@Override
-	public int updateUploaded(ClassRoom dto) throws Exception {
-		
-		return dao.updateUploaded(dto);
 	}
 
 	@Override
