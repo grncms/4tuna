@@ -54,11 +54,17 @@ public class ChatController {
 
 	@ResponseBody
 	@RequestMapping("/countMsg") //자신에게 온 메세지 카운트
-	public Map<String,Object> countMsg(@RequestBody Map<String,Object> chatMap ) throws Exception {
-		
-//			List membersList = service.membersList(chatMap.get)
-		//3개의 변수가 쿼리 조건으로 필요
-		
-		return chatMap;
+	public int countMsg(@RequestBody Map<String,String> chatMap ) throws Exception {
+		System.out.println("chatMap : " + chatMap.toString());
+		int count = service.countMsgOne(chatMap);
+		System.out.println("count:" + count);
+		logger.info("countMsg:" + chatMap.toString());
+		return count;
+	}	
+	
+	@ResponseBody
+	@RequestMapping("/readNyUpdate") //채팅창에 들어와있을 때는 readny의 값을 1로 변경
+	public void ReadNyUpdate(@RequestBody Map<String,Object> chatMap ) throws Exception {
+		service.readNyUpdate(chatMap);
 	}	
 }

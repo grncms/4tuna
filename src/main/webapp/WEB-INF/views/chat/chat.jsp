@@ -136,7 +136,7 @@
                 client.subscribe('/sub/topic/' + classId + "/" + mySessionId, function(msg) { //콜백함수는 메시지를 받으면 실행됨 msg는 받은 메세지 파라미터
                     var data = JSON.parse(msg.body);
 
-                    if (data.ctmgSenderId == receiver) {
+                    if (data.ctmgSenderId == receiver) { //채팅창에 들어와있을 때
                         msgTemplate = '<li class="you">'
                         msgTemplate += '<div class="entete">';
                         msgTemplate += '<h3>' + hours + "시" + minutes + "분" + '</h3>';
@@ -150,10 +150,42 @@
                         $("#chat").animate({
                             scrollTop : $("#chat")[0].scrollHeight
                         }, 400)
+                        
+                        var tmp = {
+                                    'ctcsSeq' : classId,
+                                    'ctmgReceiver' : data.ctmgSenderId,
+                                    'myId' : mySessionId
+                        }
+                        //readNyUpdate로보내서 들어와있을때 받은 메세지는 읽음표시
+                        $.ajax({
+                            type : "POST",
+                            url : "/readNyUpdate",
+                            data : JSON.stringify(tmp),
+                            contentType : "application/json; charset = UTF-8",
+                            dataType : "json"
+                        })
+                        
+                        
                     } else {
-						
-						$("#" + data.ctmgSenderId).text(Number($("#" + data.ctmgSenderId).text())+1);
-						$("#" + data.ctmgSenderId).attr("style", "display:inline");
+                        //데이터를 아작스에 보내서 확인하면 카운트한걸 받아옴
+        var countData = {
+                            'ctcsSeq' : classId,
+                            'ctmgSenderId' : data.ctmgSenderId,
+                            'myId' : mySessionId
+                        }
+                        
+                        $.ajax({
+                          type : "POST",
+                          url : "/countMsg",
+                          data : JSON.stringify(countData),
+                          contentType : "application/json; charset = UTF-8",
+                          dataType : "json",
+                          success : function(res){
+                              $("#" + data.ctmgSenderId).text(res);
+                          }
+                          
+                        })
+
                     }
                 })
             })

@@ -22,6 +22,6 @@ public class ChatDao {
 	public int insertMsgInfo(Chat chat) {return sqlSession.insert(namespace+ ".insertMsgInfo", chat);}
 	public List<Chat> selectMsg(Map<String, Object> chatMap){return sqlSession.selectList(namespace + ".selectMsg", chatMap);}
 	public int readNyUpdate(Map<String,Object> chatMap) {return sqlSession.update(namespace + ".readNyUpdate", chatMap);}
-	
+	public int countMsgOne(Map<String,String> chatMap) {return sqlSession.selectOne(namespace + ".countMsgOne",chatMap);}
 }
 	

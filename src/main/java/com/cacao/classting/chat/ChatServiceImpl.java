@@ -29,6 +29,11 @@ public class ChatServiceImpl implements ChatService{
 		return dao.readNyUpdate(chatMap);
 	}
 
+	@Override
+	public int countMsgOne(Map<String, String> chatMap) throws Exception {
+		return dao.countMsgOne(chatMap);
+	}
+
 
 
 

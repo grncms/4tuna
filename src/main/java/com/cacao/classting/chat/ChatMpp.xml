@@ -58,4 +58,16 @@
 		from ctClassMember
 		where ctcsSeq = #{ctcsSeq}
 	</select>
+	
+	
+	<select id = "countMsgOne" parameterType = "HashMap" resultType = "Integer">
+		select count(*)
+		from ctMessages
+		where ctcsSeq = #{ctcsSeq}
+		and ctmgReceiver = #{myId}
+		and ctmgSenderId = #{ctmgSenderId}
+		and ctmgReadNy = 0
+	</select>
+	
+
 </mapper>
