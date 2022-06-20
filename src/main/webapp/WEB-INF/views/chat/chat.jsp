@@ -66,22 +66,32 @@
 													<h2>
 														<c:out value="${ml.ctcmName }" />
 													</h2>
-													<h3>
-														<span class="status orange"></span>
+													<%-- 													<h3 id = "status${ml.ctcmSeq }">
+														<span class="status orange" ></span>
 														offline
-													</h3>
+													</h3> --%>
 												</div>
 
 
 												<span id="${ml.ctcmSeq }" class="position-absolute top-0 start-100 translate-middle badge rounded bg-danger">
-												<c:out value="${ml.chatCountNum }"/></span>
+													<c:out value="${ml.chatCountNum }" />
+												</span>
 											</button>
 										</li>
 									</c:if>
 								</c:forEach>
 							</ul>
 						</aside>
-						<main id="main"></main>
+						<main id="main">
+							<header>
+								<div >
+									<h3 style="color: #00C896; font-weight: 700; font-size: 1.5rem;">채팅상대를 정해주세요.</h3>
+								</div>
+							</header>
+							<ul id="chat">
+							
+							</ul>
+						</main>
 					</div>
 				</div>
 			</div>
@@ -91,7 +101,7 @@
 	<input type="hidden" value="${vo.ctcmSeq }" id="myId">
 	<input type="hidden" value="${vo.ctcsSeq }" id="classId">
 	<input type="hidden" value="${vo.ctcmName }" id="myName">
-
+	<input type="hidden" value="${fn:length(memberList) }" id="listSize">
 
 
 	<!-- End of Page Wrapper -->
@@ -109,6 +119,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js" integrity="sha512-1QvjE7BtotQjkq8PxLeF6P46gEpBRXuskzIVgjFpekzFVF4yjRgrQvTG1MTOJ3yQgvTteKAcO7DSZI92+u/yZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
+        var listSize = $("#listSize").val();
         var client;
         var mySessionId = $("#myId").val();
         var classId = $("#classId").val();
@@ -119,77 +130,81 @@
         var today = new Date();
         var hours = today.getHours();
         var minutes = today.getMinutes();
+
+        //채팅창 온라인/오프라인 상태
+        var statusOn = ' <span class="status green" ></span> ';
+        statusOn += "online"
+
+        var onlineSet = new Set(listSize);
+
         $(function() {
-            if($(".badge").text() == 0){
-                $(".badge").attr("style","display:none");
-            }
-            
-            
-            
+      
+
             var msgTemplate;
             var sock = new SockJS("/ctChatServer");
             client = Stomp.over(sock);
             client.connect({}, function() {
                 console.log("connected stompTest");
-                //Controller;s MessageMapping, header , message(자유형식)
-                //내 아이디 구독
-                client.subscribe('/sub/topic/' + classId + "/" + mySessionId, function(msg) { //콜백함수는 메시지를 받으면 실행됨 msg는 받은 메세지 파라미터
-                    var data = JSON.parse(msg.body);
+                //Controller's MessageMapping, header , message(자유형식)
 
-                    if (data.ctmgSenderId == receiver) { //채팅창에 들어와있을 때
-                        msgTemplate = '<li class="you">'
-                        msgTemplate += '<div class="entete">';
-                        msgTemplate += '<h3>' + hours + "시" + minutes + "분" + '</h3>';
-                        msgTemplate += '<h2>' + data.ctmgSender + '</h2>';
-                        msgTemplate += '<span class="status green"></span>';
-                        msgTemplate += '</div>';
-                        msgTemplate += '<div class="triangle"></div>';
-                        msgTemplate += '<div class="message">' + data.ctmgMessage + '</div>';
-                        msgTemplate += '</li>';
-                        $("#chat").append(msgTemplate);
-                        $("#chat").animate({
-                            scrollTop : $("#chat")[0].scrollHeight
-                        }, 400)
-                        
-                        var tmp = {
-                                    'ctcsSeq' : classId,
-                                    'ctmgReceiver' : data.ctmgSenderId,
-                                    'myId' : mySessionId
-                        }
-                        //readNyUpdate로보내서 들어와있을때 받은 메세지는 읽음표시
-                        $.ajax({
-                            type : "POST",
-                            url : "/readNyUpdate",
-                            data : JSON.stringify(tmp),
-                            contentType : "application/json; charset = UTF-8",
-                            dataType : "json"
-                        })
-                        
-                        
-                    } else {
-                        //데이터를 아작스에 보내서 확인하면 카운트한걸 받아옴
-        var countData = {
-                            'ctcsSeq' : classId,
-                            'ctmgSenderId' : data.ctmgSenderId,
-                            'myId' : mySessionId
-                        }
-                        
-                        $.ajax({
-                          type : "POST",
-                          url : "/countMsg",
-                          data : JSON.stringify(countData),
-                          contentType : "application/json; charset = UTF-8",
-                          dataType : "json",
-                          success : function(res){
-                              $("#" + data.ctmgSenderId).text(res);
-                          }
-                          
-                        })
-
-                    }
-                })
             })
 
+
+            //내 아이디 구독
+            client.subscribe('/sub/topic/' + classId + "/" + mySessionId, function(msg) { //콜백함수는 메시지를 받으면 실행됨 msg는 받은 메세지 파라미터
+                var data = JSON.parse(msg.body);
+
+                if (data.ctmgSenderId == receiver) { //채팅창에 들어와있을 때
+                    msgTemplate = '<li class="you">'
+                    msgTemplate += '<div class="entete">';
+                    msgTemplate += '<h3>' + hours + "시" + minutes + "분" + '</h3>';
+                    msgTemplate += '<h2>' + data.ctmgSender + '</h2>';
+                    msgTemplate += '<span class="status green"></span>';
+                    msgTemplate += '</div>';
+                    msgTemplate += '<div class="triangle"></div>';
+                    msgTemplate += '<div class="message">' + data.ctmgMessage + '</div>';
+                    msgTemplate += '</li>';
+                    $("#chat").append(msgTemplate);
+                    $("#chat").animate({
+                        scrollTop : $("#chat")[0].scrollHeight
+                    }, 400)
+
+                    var tmp = {
+                        'ctcsSeq' : classId,
+                        'ctmgReceiver' : data.ctmgSenderId,
+                        'myId' : mySessionId
+                    }
+                    //readNyUpdate로보내서 들어와있을때 받은 메세지는 읽음표시
+                    $.ajax({
+                        type : "POST",
+                        url : "/readNyUpdate",
+                        data : JSON.stringify(tmp),
+                        contentType : "application/json; charset = UTF-8",
+                        dataType : "json"
+                    })
+
+                } else {
+                    //데이터를 아작스에 보내서 확인하면 카운트한걸 받아옴
+                    var countData = {
+                        'ctcsSeq' : classId,
+                        'ctmgSenderId' : data.ctmgSenderId,
+                        'myId' : mySessionId
+                    }
+
+                    $.ajax({
+                        type : "POST",
+                        url : "/countMsg",
+                        data : JSON.stringify(countData),
+                        contentType : "application/json; charset = UTF-8",
+                        dataType : "json",
+                        success : function(res) {
+                            $("#" + data.ctmgSenderId).text(res);
+                        }
+
+                    })
+
+                }
+            })
         })
 
         $(".membersList").click(function() { //멤버를 클릭할시 친구 id와 이름을 controller에 전송
@@ -245,7 +260,7 @@
                     main += '<footer>';
                     main += '<div class="input-group">';
                     main += '<input type="text" id="msg" class="form-control" />'
-                    main += '<input type="button" class="btn btn-primary" value="전송" onclick="send()">';
+                    main += '<input type="button" class="btn btn-primary" value="전송" onclick="send()" id="sendBtn">';
                     main += '</div>';
                     /* main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">'  */
                     /* <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">; */
@@ -254,7 +269,12 @@
                     $("#main").html(main) //html 함수는 태크안을 대체
                     $("#chat").scrollTop($("#chat")[0].scrollHeight); //채팅받으면 채팅화면 밑으로
                     $("#" + res.receiver).text(0); //badge값 0 으로 초기화
-
+                    //엔터키 전송
+                    $("#msg").keydown(function(e){
+                        if(e.keyCode == 13){
+                            $("#sendBtn").trigger("click");
+                        }
+                    })
                 },
                 error : function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("통신실패");
@@ -291,6 +311,10 @@
 
             $("#msg").val("");
         }
+        
+        
+
+          
     </script>
 </body>
 

@@ -29,12 +29,7 @@ public class ChatController {
 		String msg = chat.getCtmgMessage();
 		service.insertMsgInfo(chat);
 		logger.info("메세지전송: 발신자(나): " + sender + " |수신자: " + receiver + " |클래스seq: " + classId + " |메세지: " + msg);
-		
-		
 		//받은 데이터를 저장 발신인,수신인,메세지,전송날짜,클래스id
-		
-		
-		
 		simpMessagingTempleate.convertAndSend("/sub/topic/" + classId + "/" + receiver, chat); //받은 메세지를 converAndSend의 파라미터로 전송
 
 	}
@@ -49,6 +44,8 @@ public class ChatController {
 		chatMap.put("receiver", chatMap.get("ctmgReceiver"));
 		chatMap.put("chatList", chatList);
 		
+		
+		
 		return chatMap;
 	}
 
@@ -57,8 +54,6 @@ public class ChatController {
 	public int countMsg(@RequestBody Map<String,String> chatMap ) throws Exception {
 		System.out.println("chatMap : " + chatMap.toString());
 		int count = service.countMsgOne(chatMap);
-		System.out.println("count:" + count);
-		logger.info("countMsg:" + chatMap.toString());
 		return count;
 	}	
 	
@@ -66,5 +61,14 @@ public class ChatController {
 	@RequestMapping("/readNyUpdate") //채팅창에 들어와있을 때는 readny의 값을 1로 변경
 	public void ReadNyUpdate(@RequestBody Map<String,Object> chatMap ) throws Exception {
 		service.readNyUpdate(chatMap);
-	}	
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getMsgCount")
+	public int getMsgCount(@RequestBody Map<String,String> chatMap) throws Exception{
+		int countMsg = service.countMsg(chatMap);
+		System.out.println("가져온 받는 파라미터: " + chatMap);
+		System.out.println("가져온 메세지 갯수: " + countMsg);
+		return countMsg;
+	}
 }

@@ -69,5 +69,11 @@
 		and ctmgReadNy = 0
 	</select>
 	
-
+	<select id ="countMsg" parameterType = "HashMap" resultType="Integer">
+		select count(*)
+		from ctMessages
+		where ctcsSeq = #{ctcsSeq}
+		and ctmgReceiver = #{myId}
+		and ctmgReadNy = 0
+	</select>
 </mapper>
