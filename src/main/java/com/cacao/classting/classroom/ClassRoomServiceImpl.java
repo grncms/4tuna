@@ -354,8 +354,25 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 		
 		return dao.countMsg(countMsg);
 	}
+	@Override
+	public int checkLike(ClassRoom dto) throws Exception {
+		
+		return dao.checkLike(dto);
+	}
+	@Override
+	public int addLike(ClassRoom dto) throws Exception {
+		return dao.addLike(dto);
+	}
+	@Override
+	public int countLike(ClassRoom dto) throws Exception {
+		return dao.countLike(dto);
+	}
+	@Override
+	public int deleteLike(ClassRoom dto) throws Exception {
+		return dao.deleteLike(dto);
+	}
 
-
+	
 	
 
 }

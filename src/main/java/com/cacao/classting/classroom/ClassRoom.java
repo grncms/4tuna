@@ -128,6 +128,10 @@ public class ClassRoom {
 	private Integer delNy;	
 	private String pseq;
 	
+// ctLike
+	private String ctliUserSeq;
+	
+	
 	//출석부 관련
 	private String attendanceToday;
 	
@@ -720,6 +724,12 @@ public class ClassRoom {
 	}
 	public void setChatCountNum(int chatCountNum) {
 		this.chatCountNum = chatCountNum;
+	}
+	public String getCtliUserSeq() {
+		return ctliUserSeq;
+	}
+	public void setCtliUserSeq(String ctliUserSeq) {
+		this.ctliUserSeq = ctliUserSeq;
 	}
 
 

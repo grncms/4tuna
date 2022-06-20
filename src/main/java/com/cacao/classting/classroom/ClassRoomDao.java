@@ -11,6 +11,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.databind.ser.std.SqlTimeSerializer;
+
 
 
 
@@ -149,4 +151,11 @@ public class ClassRoomDao {
 //채팅관련
 	public List<ClassRoom> countMsg(HashMap<String, String> countMsg) {return sqlSession.selectList(namespace + ".countMsg",countMsg);}
 
-}
+	
+//좋아요 관련
+	public int checkLike(ClassRoom dto){return sqlSession.selectOne(namespace + ".checkLike",dto);}
+	public int addLike(ClassRoom dto) {return sqlSession.insert(namespace + ".addLike",dto);}
+	public int countLike(ClassRoom dto) {return sqlSession.selectOne(namespace + ".countLike",dto);}
+	public int deleteLike(ClassRoom dto) {return sqlSession.delete(namespace + ".deleteLike",dto);}
+	
+	}

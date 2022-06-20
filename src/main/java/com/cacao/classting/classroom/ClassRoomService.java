@@ -87,9 +87,15 @@ public interface ClassRoomService {
 	public List<ClassRoom> homeworkWriter(ClassRoom dto) throws Exception;
 	public List<ClassRoom> scoreAvg(ClassRoomVo vo) throws Exception;
 //게시글등록
-	public int insertPost(ClassRoom dto) throws Exception;
 	public int insertAddress(ClassRoom dto);
 	
 //채팅관련
 	public List<ClassRoom> countMsg(HashMap<String,String> countMsg) throws Exception;
+	
+//좋아요 관련
+	public int checkLike(ClassRoom dto) throws Exception;
+	public int addLike(ClassRoom dto) throws Exception;
+	public int countLike(ClassRoom dto) throws Exception;
+	public int deleteLike(ClassRoom dto) throws Exception;
+	
 }

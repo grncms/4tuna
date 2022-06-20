@@ -887,4 +887,40 @@
         from ctClassMember a left outer join ctMessages on ctmgSenderId = a.ctcmSeq
         where a.ctcsSeq =#{ctcsSeq} and a.ctcmDelNy = 0 group by ctcmSeq;
 	</select> 
+	
+	
+	<!-- 좋아요 여부 확인  -->
+	<select id = "checkLike" resultType="Integer" >
+		select count(*)
+		from ctLike  
+		where ctliUserSeq = #{ctcmSeq}
+		and ctptSeq = #{ctptSeq}
+	</select>
+	
+	<!-- 개시물 좋아요 수  -->
+	<select id ="countLike" resultType ="Integer">
+		select count(*)
+		from ctLike
+		where ctptSeq = #{ctptSeq}
+	</select>
+	
+	<!-- 좋아요 올리기 -->
+	<insert id ="addLike">
+		insert into ctLike (
+		ctliUserSeq,
+		ctptSeq
+		) VALUES (
+		#{ctcmSeq},
+		#{ctptSeq}
+		)
+	</insert>
+	
+	<!-- 좋아요 취소 -->
+	<delete id = "deleteLike">
+		DELETE FROM
+			ctLike
+		WHERE 1=1
+			AND ctptSeq= #{ctptSeq}
+			AND ctliUserSeq = #{ctcmSeq}
+	</delete>
 </mapper>

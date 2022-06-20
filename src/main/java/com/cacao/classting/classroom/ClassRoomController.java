@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.common.constants.Constants;
@@ -698,7 +700,6 @@ public class ClassRoomController {
 	@RequestMapping(value = "member/class/common/postview")
 	public String classPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
 			HttpSession httpSession) throws Exception {
-
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		service.hitUpdate(dto); // 조회수 증가
@@ -718,9 +719,23 @@ public class ClassRoomController {
 //		댓글리스트
 		List<ClassRoom> replyList = service.selectListReply(vo);
 		model.addAttribute("replyList", replyList);
-
+// 		좋아요 개수
+		dto.setCtcmSeq((String)httpSession.getAttribute("ctcmSeq"));
+		int totalLikes = service.countLike(dto);
+		boolean checkLikeOrNot = false;
+		model.addAttribute("countLike",totalLikes);
 		System.out.println("vo.getCtptSeq():" + vo.getCtptSeq());
-
+		
+		
+		System.out.println("checkLikes: " + service.checkLike(dto));
+		if(service.checkLike(dto) == 1) {
+			checkLikeOrNot = true;
+		}else {
+			checkLikeOrNot = false;
+		}
+		model.addAttribute("checkLikeOrNot",checkLikeOrNot);
+		
+		
 		return "member/classroom/common/classPostView";
 	}
 
@@ -1115,5 +1130,36 @@ public class ClassRoomController {
 
 		return "member/classroom/common/classGradeStandby";
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value ="/modLike")
+	public Map checkLike(@RequestBody ClassRoom dto,Model model, HttpSession httpSession) throws Exception {
+		
+		System.out.println("좋아요 누른 사람  ctcmSeq : " + dto.getCtcmSeq());
+		System.out.println("포스트seq : " + dto.getCtptSeq());
+		
+		Map<String,Integer> checkAndTotal = new HashMap(); 
+		
+		
+		if(service.checkLike(dto) == 0) {
+			service.addLike(dto);
+		}else {
+			service.deleteLike(dto);
+		}
+		int checkLike = service.checkLike(dto);
+		
+		int totalLikes = service.countLike(dto);
+		
+		checkAndTotal.put("check", checkLike);
+		checkAndTotal.put("total", totalLikes);
+		
+	
+		
+		
+		return checkAndTotal;
+	}
+	
+	
 
 }
