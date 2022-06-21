@@ -71,6 +71,10 @@
 							</div>
 						</div>
 						<div class="card shadow mb-4">
+						<form id="postList" name="postList" method="post">
+						<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
+						<input  type="hidden" id=ctptSeq name="ctptSeq">
+						<input  type="hidden" id="mmSeq" name="mmSeq">
 						<c:choose>
 							<c:when test="${fn:length(list) eq 0}">
 								<div class="container_base">
@@ -91,7 +95,7 @@
 													</c:forEach>
 													<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 												</div>
-												<div class="body mt-2" style="cursor: pointer;">
+												<div class="body mt-2" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
 													<span class='badge badge_hw'>활동사진</span>
 													<span onclick="location.href='/member/class/common/postview'"><c:out value="${item.ctptTitle}"/></span>
 													<br><br>
@@ -110,6 +114,7 @@
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>	
+						</form>
 						</div>
 					</div>
 				</div>
@@ -133,7 +138,11 @@
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 <script type="text/javascript">
-
+goView = function(seq){
+	$("#ctptSeq").val(seq);
+	$("#postList").attr("action","/member/class/common/postview");
+	$("#postList").submit();
+}
 $("#btnLogout").on("click", function(){
 	
 	$.ajax({
