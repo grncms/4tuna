@@ -150,7 +150,6 @@ $("#btnLogout").on("click", function(){
 		,cache: false
 		,type: "post"
 		,url: "/member/logoutProc"
-		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
 				location.href = "/";
