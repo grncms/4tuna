@@ -109,10 +109,8 @@
 											<p><c:out value="${item.ctptContent}"/></p>
 										</div>
 										<div class="footer mt-5">
-											<i class="fa-regular fa-comment"> 2</i>&nbsp;
-											<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
-											<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
-											<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
+											<i class="fa-regular fa-comment"> <c:out value="${item.commentNumber }"/></i>&nbsp;
+											<i class="fa-regular fa-thumbs-up"> <c:out value="${item.likeNumber}"/></i>&nbsp;
 										</div>
 									</div>
 								</div>
