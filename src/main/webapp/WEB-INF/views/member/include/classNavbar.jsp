@@ -11,10 +11,6 @@
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
 		<!-- Nav Item - Alerts -->
-		<li class="nav-item dropdown no-arrow mx-1">
-			<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"> <i class="fas fa-bell fa-fw"></i>
-			</a>
-		</li>
 
 		<!-- Nav Item - Messages -->
 		<li class="nav-item dropdown no-arrow mx-1 ">

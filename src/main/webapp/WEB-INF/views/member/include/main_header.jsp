@@ -10,22 +10,7 @@
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
 	
-	    <!-- Nav Item - Alerts -->
-	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fas fa-bell fa-fw"></i>
-	            <!-- Counter - Alerts -->
-	        </a>
-	    </li>
 	
-	    <!-- Nav Item - Messages -->
-<!-- 	    <li class="nav-item mx-1">
-	        <a class="nav-link" href="#" id="" role="button">
-	            <i class="fa-solid fa-comment"></i>
-	            Counter - Messages
-	            <span class="badge badge-danger badge-counter">7</span>
-	        </a>
-	    </li> -->
 	    <div class="topbar-divider d-none d-sm-block"></div>
         <li class="nav-item dropdown no-arrow">
            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
