@@ -82,7 +82,7 @@
 			
 			
 		<div><button type="button" class="btn btn-outline-secondary btn-lg w-100" id="btn-add" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="fa-solid fa-lock"></i> 클래스 코드로 가입하기</button></div>
-		<c:if test="${sessTeacher eq 1}"><div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div></c:if>
+		<c:if test="${sessTeacher eq 1}"><div><button type="button" class="btn btn-outline-success btn-lg w-100" id="btn-open" onclick="location.href='/classForm2'"><i class="fa-solid fa-plus"></i> 클래스 생성하기</button></div></c:if>
 		</div>
 	</form>	
 	
