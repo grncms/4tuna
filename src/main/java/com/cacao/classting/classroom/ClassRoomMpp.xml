@@ -196,8 +196,8 @@
 			,a.ctptReservationNy
 			,a.ctptReservation
 			,b.ctboTypeCd
-			,count(distinct ctliUserSeq) as likeNumber
-			,count(case when ctrpDelNy = 0 then 1 end) as commentNumber
+			 ,(SELECT count(*) from ctLike where ctptSeq = a.ctptSeq) as likeNumber
+			 ,(SELECT count(case when ctrpDelNy = 0 then 1 end) from ctReply where ctptSeq = a.ctptSeq ) as commentNumber
 			
 		FROM
 			ctPost a
