@@ -27,7 +27,9 @@
 <link href="../../../resources/common/css/boardCss.css" rel="stylesheet">
 <link href="../../../resources/chat/css/chat.css" rel="stylesheet">
 
-<title></title>
+
+<link rel="shortcut icon" href="https://ifh.cc/g/nj4CTw.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">CLASSING</title>
 <style>
 .membersList {
 	border: 1px solid #00C896;
@@ -61,7 +63,7 @@
 									<c:if test="${ml.ctcmSeq != vo.ctcmSeq  }">
 										<li class="pr-3 py-2 ">
 											<button type="button" class="membersList btn position-relative w-100 rounded" id="member">
-												<input type="hidden" value="${ml.ctcmName }" id="name" class="name" /> <input type="hidden" value="${ml.ctcmSeq}" id="seq" class="seq" /> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
+												<input type="hidden" value="${ml.ctcmName }" id="name" class="name" /> <input type="hidden" value="${ml.ctcmSeq}" id="seq" class="seq" /> <img src="/resources/uploaded/common/profile2.png" alt="" width="35" height="35">
 												<div>
 													<h2>
 														<c:out value="${ml.ctcmName }" />
@@ -225,7 +227,7 @@
                     receiver = res.receiver;
                     var List = res.chatList;
                     var main = '<header>'
-                    main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">'
+                    main += '<img src="/resources/uploaded/common/profile2.png" alt="" width="35" height="35">'
                     main += '<div>'
                     main += '<h2 id="with">대화상대:' + res.name + '</h2>'
                     main += '</div>'
