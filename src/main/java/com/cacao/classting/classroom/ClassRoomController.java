@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -213,7 +212,6 @@ public class ClassRoomController {
 			model.addAttribute("list", list);
 
 //			pseq에 ctptseq 값 담기
-			Collections.reverse(list);
 			String pseq = list.get(list.size() - 1).getCtptSeq();
 			dto.setPseq(pseq);
 //		유튜브 url 뒤 id값만 잘라서 넣기	
@@ -414,8 +412,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/common/postlist")
-	public String postlist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession)
-			throws Exception {
+	public String postlist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -423,10 +420,12 @@ public class ClassRoomController {
 //		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
+		
 //		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 		System.out.println("memberList" + memberList);
+
 //		동영상 url
 		List<ClassRoom> ytb = service.selectListClassPostUrl(vo);
 		model.addAttribute("ytb", ytb);
