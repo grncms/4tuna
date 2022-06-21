@@ -281,13 +281,11 @@ public class ClassRoomController {
 		vo.setCtcmName(memberName);
 		vo.setCtcsSeq(seq);
 		vo.setCtcmSeq(memberSeq);
-		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		HashMap<String, String> countMsg = new HashMap<String, String>();
 		
 		countMsg.put("ctcsSeq", seq);
 		countMsg.put("ctmgReceiver", memberSeq);
 		List<ClassRoom> msgCount = service.countMsg(countMsg);
-		
 		
 		
 		model.addAttribute("memberList",msgCount);
