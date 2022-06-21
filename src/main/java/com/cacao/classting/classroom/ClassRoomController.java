@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -210,6 +211,7 @@ public class ClassRoomController {
 			model.addAttribute("list", list);
 
 //			pseq에 ctptseq 값 담기
+			Collections.reverse(list);
 			String pseq = list.get(list.size() - 1).getCtptSeq();
 			dto.setPseq(pseq);
 //		유튜브 url 뒤 id값만 잘라서 넣기	
