@@ -220,7 +220,9 @@
 								<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 									<div class="comment row mt-2 mb-3">
 										<div class="col-md-2 col-lg-1" id="classImg">
-											<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 18px;" />
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+												<c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq and itemMember.path ne null}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}" style="border-radius: 18px; width: 35px; height: 35px;"/></span></c:if>
+											</c:forEach>
 										</div>
 										<div class="col-md-10 col-lg-11" id="classInfo">
 											<form action="/replyUele" id="replyList" name="replyList" method="post">

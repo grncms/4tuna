@@ -123,7 +123,6 @@
 															<c:forEach items="${memberList}" var="itemMember" varStatus="status">
 																<c:if test="${name eq itemMember.ctcmName}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}"/></span></c:if>
 															</c:forEach>
-																<img src="../../../../../resources/common/image/test.jpg" class="profile">
 															</div>
 															<span>
 																<c:out value="${name}" />
