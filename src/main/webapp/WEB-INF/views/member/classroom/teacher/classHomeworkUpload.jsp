@@ -139,7 +139,7 @@ input:checked+.slider:before {
 						<!-- 제목 끝  -->
 
 						<!-- 첨부파일 넣기 시작 -->
-						<div class="title_hw border">
+<!-- 						<div class="title_hw border">
 							<div class="col-md-10 col-lg-11" id="classInfo">
 								<div class="btn-group" role="group" aria-label="Basic outlined example">
 									<button type="button" class="btn btn-outline-secondary btn-sm">
@@ -153,8 +153,8 @@ input:checked+.slider:before {
 									</button>
 								</div>
 							</div>
-						</div>
-						<hr>
+						</div> 
+						<hr>-->
 						<!-- 첨부파일 넣기 끝 -->
 
 						<!-- 내용 넣기 시작 -->

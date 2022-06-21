@@ -140,51 +140,15 @@ input:checked+.slider:before {
 						<div class="title_hw border">
 							<div class="col-md-10 col-lg-11" id="classInfo">
 								<div class="btn-group" role="group" aria-label="Basic outlined example">
-									<button type="button" class="btn btn-outline-secondary btn-sm">
+<!-- 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-image fa-2x"></i>
 									</button>
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-file-circle-plus fa-2x"></i>
-									</button>
+									</button> -->
 									<button type="button" class="btn btn-outline-secondary btn-sm" id="showUrl" name="showUrl">
 										<i class="fa-solid fa-video fa-2x"></i>
 									</button>
-																		
-									
-									
-								
-									<!-- 
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-link fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-b fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-italic fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-underline fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-text-height fa-2x"></i>
-									</button>
-
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-list fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-list-ol fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-check fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-check fa-2x"></i>
-									</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm">
-										<i class="fa-solid fa-check fa-2x"></i>
-									</button> -->
 								</div>
 							</div>
 						</div>
