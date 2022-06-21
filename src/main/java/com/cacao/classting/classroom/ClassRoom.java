@@ -130,7 +130,8 @@ public class ClassRoom {
 	
 // ctLike
 	private String ctliUserSeq;
-	
+	private String likeNumber;
+	private String commentNumber;
 	
 	//출석부 관련
 	private String attendanceToday;
@@ -730,6 +731,18 @@ public class ClassRoom {
 	}
 	public void setCtliUserSeq(String ctliUserSeq) {
 		this.ctliUserSeq = ctliUserSeq;
+	}
+	public String getLikeNumber() {
+		return likeNumber;
+	}
+	public void setLikeNumber(String likeNumber) {
+		this.likeNumber = likeNumber;
+	}
+	public String getCommentNumber() {
+		return commentNumber;
+	}
+	public void setCommentNumber(String commentNumber) {
+		this.commentNumber = commentNumber;
 	}
 
 

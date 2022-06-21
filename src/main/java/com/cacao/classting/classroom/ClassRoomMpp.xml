@@ -196,13 +196,19 @@
 			,a.ctptReservationNy
 			,a.ctptReservation
 			,b.ctboTypeCd
+			,count(distinct ctliUserSeq) as likeNumber
+			,count(case when ctrpDelNy = 0 then 1 end) as commentNumber
+			
 		FROM
 			ctPost a
 		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
+		LEFT JOIN ctLike c on c.ctptSeq = a.ctptSeq
+		LEFT JOIN ctReply d on d.ctptSeq = a.ctptSeq
 		WHERE 1=1
 			AND b.ctcsSeq = #{ctcsSeq}
 			AND a.ctptReservationNy = 0
 			AND IFNULL(a.ctptReservation, now() ) <= now()
+		GROUP BY a.ctptSeq
 		ORDER BY a.regDateTime DESC
 		]]>
 	</select>
@@ -923,4 +929,15 @@
 			AND ctptSeq= #{ctptSeq}
 			AND ctliUserSeq = #{ctcmSeq}
 	</delete>
+	
+	<!-- 게시글 리스트 좋아요 확인  -->
+	<select id="listLike" resultType="Integer">
+		select ctp.ctptSeq,count(*)
+		from ctLike ctl
+		left join ctPost ctp on ctl.ctptSeq = ctp.ctptSeq
+		left join ctBoard ctb on ctb.ctboSeq = ctp.ctboSeq
+		left join ctClass ctc on ctb.ctcsSeq = ctc.ctcsSeq
+		where ctc.ctcsSeq = 1 <!--   전체게시글이면 board seq는 안받음 포스트 seq와 클래스 seq를 받는다-->
+		group by ctp.ctptSeq; 
+	</select>
 </mapper>
