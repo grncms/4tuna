@@ -128,7 +128,9 @@
 							<div class="container_base">
 								<div class="writer row">
 									<div class="col-md-2 col-lg-1" id="classImg">
-											<img class="profile" src="/resources/uploaded/common/profile2.png" width="45" height="45" style="border-radius: 18px;" />
+											<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+												<c:if test="${item.ctptWriter eq itemMember.ctcmSeq and itemMember.path ne null}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}" style="border-radius: 18px; width: 35px; height: 35px;"/></span></c:if>
+											</c:forEach>
 										<!-- <img src="/resources/uploaded/common/profile2.png" width="45" height="45" style="border-radius: 7px;"> -->
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">

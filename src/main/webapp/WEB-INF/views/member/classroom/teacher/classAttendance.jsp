@@ -80,16 +80,18 @@
 							</div>
 						</div>
 
+								<!-- 	
 						<div class="container_base_wrapper shadow">
 							<div class="container_base d-flex justify-content-center">
 								<div class="attendance_setdate">
-									<!-- 출석 확인 날짜 설정  -->
+									출석 확인 날짜 설정 
 									<button class="btn btn-primary base_bgcolor"><</button>
 									<input type="text" class="daterange " name="daterange" value="01/01/2018 - 01/15/2018" />
 									<button class="btn btn-primary base_bgcolor">></button>
 								</div>
 							</div>
 						</div>
+								 -->	 
 						<div class="container_base_wrapper shadow">
 							<div class="container_base p-0">
 								<div class="attendance_table table-responsive">
@@ -118,6 +120,9 @@
 													<td>
 														<div>
 															<div class="profile_box">
+															<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+																<c:if test="${name eq itemMember.ctcmName}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}"/></span></c:if>
+															</c:forEach>
 																<img src="../../../../../resources/common/image/test.jpg" class="profile">
 															</div>
 															<span>

@@ -701,8 +701,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/common/postview")
-	public String classPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classPostView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 		service.hitUpdate(dto); // 조회수 증가
