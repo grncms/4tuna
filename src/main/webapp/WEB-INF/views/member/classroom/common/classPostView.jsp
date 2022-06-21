@@ -128,12 +128,7 @@
 							<div class="container_base">
 								<div class="writer row">
 									<div class="col-md-2 col-lg-1" id="classImg">
-										<c:if test="${ctPath eq null}">
 											<img class="profile" src="/resources/uploaded/common/profile2.png" width="45" height="45" style="border-radius: 18px;" />
-										</c:if>
-										<c:if test="${ctPath ne null}">
-											<img class="profile" src="${ctPath}${ctUuidName}" width="45" height="45" style="border-radius: 18px;" />
-										</c:if>
 										<!-- <img src="/resources/uploaded/common/profile2.png" width="45" height="45" style="border-radius: 7px;"> -->
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
@@ -223,12 +218,7 @@
 								<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 									<div class="comment row mt-2 mb-3">
 										<div class="col-md-2 col-lg-1" id="classImg">
-											<c:if test="${ctPath eq null}">
-												<img class="profile" src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 18px;" />
-											</c:if>
-											<c:if test="${ctPath ne null}">
-												<img class="profile" src="${ctPath}${ctUuidName}" width="35" height="35" style="border-radius: 18px;" />
-											</c:if>
+											<img src="/resources/uploaded/common/profile2.png" width="35" height="35" style="border-radius: 18px;" />
 										</div>
 										<div class="col-md-10 col-lg-11" id="classInfo">
 											<form action="/replyUele" id="replyList" name="replyList" method="post">

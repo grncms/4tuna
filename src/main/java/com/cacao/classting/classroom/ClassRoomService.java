@@ -70,6 +70,7 @@ public interface ClassRoomService {
 	
 	public int insertHomeworkSubmit(ClassRoom dto) throws Exception;
 	public int insertHomeworkPost(ClassRoom dto) throws Exception;
+	public int insertPost(ClassRoom dto) throws Exception;
 	public int updateHomeworkSubmitScore(ClassRoom dto) throws Exception;
 	public int updateHomeworkSubmit(ClassRoom dto) throws Exception;
 	
