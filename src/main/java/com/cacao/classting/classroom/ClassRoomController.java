@@ -72,7 +72,9 @@ public class ClassRoomController {
 		return "redirect:/classMain";
 	}
 	@RequestMapping(value = "/deleteClassMember") 
-	public String deleteClassMember(ClassRoomVo vo , RedirectAttributes redirectAttributes ) throws Exception {
+	public String deleteClassMember(ClassRoomVo vo, HttpSession httpSession, RedirectAttributes redirectAttributes ) throws Exception {
+		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
+		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq"));
 		service.deleteClassMember(vo);
 		
 		

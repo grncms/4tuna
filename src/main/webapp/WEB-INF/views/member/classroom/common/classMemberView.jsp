@@ -194,7 +194,7 @@ margin-left:10px;
 						  </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-					        <button type="button" class="btn btn-primary">확인</button>
+					        <button type="button" class="btn btn-primary" onclick="javascript:goDele(<c:out value='${item.ctcmSeq}'/>);">확인</button>
 					      </div>
 					      </div>
 					    </div>
@@ -260,6 +260,12 @@ if($("#ctcmAlarmReplyNy").is(":checked")) {
 }else{
 	$("#ctcmAlarmReplyNy").val(0);
 	
+}
+
+goDele = function(seq) {
+	$("#ctcmSeq").val(seq);
+	$("#updateClassMember").attr("action","/deleteClassMember");
+	$("#updateClassMember").submit();
 }
 </script>
 
