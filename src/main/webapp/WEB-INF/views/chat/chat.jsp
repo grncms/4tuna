@@ -333,7 +333,7 @@
             $("#chat").animate({
                 scrollTop : $("#chat")[0].scrollHeight
             }, 400)
-            //scrollHeight 스크롤 내에 있는 모든 컨텐츠의 길이를 반환
+            //scrollHeight 스크롤 내에 있는 모든 컨텐츠의 길이를 반환.
 
             $("#msg").val("");
         }
