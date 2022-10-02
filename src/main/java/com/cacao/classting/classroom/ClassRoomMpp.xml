@@ -34,6 +34,7 @@
 	<select id="selectOneMemberClass" resultMap="resultMapObj">
 		SELECT
 		ctcmName
+		,ctcmTeacherNy
 		,ctcmAlarmReplyNy
 		,ctcmAlarmReactionNy
 		FROM
@@ -162,6 +163,7 @@
 		,b.ctcmSeq
 		,b.ctcmName
 		,b.ctcmTeacherNy
+		,b.ctcmProfile
 		,c.uuidName
 		,c.path
 		FROM ctClass a
@@ -193,13 +195,10 @@
 			,a.ctptWriter
 			,a.ctptContent
 			,a.regDateTime
-			,a.ctptLike1
-			,a.ctptLike2
-			,a.ctptLike3
+			,a.ctptNoticeNy
 			,a.ctptView
-			,a.ctptReservationNy
-			,a.ctptReservation
 			,b.ctboTypeCd
+			,b.ctboName
 			 ,(SELECT count(*) from ctLike where ctptSeq = a.ctptSeq) as likeNumber
 			 ,(SELECT count(case when ctrpDelNy = 0 then 1 end) from ctReply where ctptSeq = a.ctptSeq ) as commentNumber
 			
@@ -209,9 +208,11 @@
 		LEFT JOIN ctLike c on c.ctptSeq = a.ctptSeq
 		LEFT JOIN ctReply d on d.ctptSeq = a.ctptSeq
 		WHERE 1=1
-			AND b.ctcsSeq = #{ctcsSeq}
-			AND a.ctptReservationNy = 0
-			AND IFNULL(a.ctptReservation, now() ) <= now()
+			AND b.ctcsSeq = #{ctcsSeq}]]>
+			<if test = "ctboSeq != null and ctboSeq != ''">
+				and b.ctboSeq =#{ctboSeq}
+			</if>
+			<![CDATA[
 		GROUP BY a.ctptSeq
 		ORDER BY a.regDateTime DESC
 		]]>
@@ -226,9 +227,6 @@
 		,ctptWriter
 		,ctptContent
 		,regDateTime
-		,ctptLike1
-		,ctptLike2
-		,ctptLike3
 		,ctboSeq
 		,ctptView
 		FROM ctPost
@@ -245,20 +243,18 @@
 		,ctptWriter
 		,ctptContent
 		,regDateTime
-		,ctptReservationNy
-		,ctptReservation
 		,ctboSeq
 		,ctptDelNy
+		,ctptNoticeNy
 		) VALUES (
 		#{ctptSeq}
 		,#{ctptTitle}
 		,#{ctptWriter}
 		,#{ctptContent}
 		,now()
-		,#{ctptReservationNy}
-		,#{ctptReservation}
 		,#{ctboSeq}
 		,0
+		,#{ctptNoticeNy}
 		)
 	</insert>
 
@@ -271,8 +267,6 @@
 		,ctptWriter
 		,ctptContent
 		,regDateTime
-		,ctptReservationNy
-		,ctptReservation
 		,ctboSeq
 		,ctptDelNy
 		) VALUES (
@@ -281,14 +275,15 @@
 		,#{ctptWriter}
 		,#{ctptContent}
 		,now()
-		,#{ctptReservationNy}
-		,#{ctptReservation}
 		,#{ctboSeq}
 		,0
 		)
 	</update>
 
-
+	<delete id="deletePost">
+		delete from ctpost
+		where ctptSeq = #{ctptSeq};
+	</delete>
 	<!-- 과제 리스트 -->
 	<select id="selectListHomework" resultMap="resultMapObj">
 		SELECT
@@ -519,6 +514,7 @@
 		,a.ctcmTeacherNy
 		,a.ctcsSeq
 		,a.ctcmDelNy
+		,a.ctcmProfile
 		,b.seq
 		,b.path
 		,b.uuidName
@@ -529,16 +525,16 @@
 		AND a.ctcsSeq = #{ctcsSeq}
 	</select>
 
-
+	<!-- 클래스 멤버 개인정보 수정 -->
 	<update id="updateClassMember">
 		UPDATE
 		ctClassMember
 		SET
-		ctcmName = #{ctcmName}
-		,ctcmAlarmReplyNy = #{ctcmAlarmReplyNy}
-		,ctcmAlarmReactionNy = #{ctcmAlarmReactionNy}
+		ctcmName = #{ctcmName},
+		ctcmProfile = #{ctcmProfile}
 		WHERE 1=1
 		AND ctcmSeq = #{ctcmSeq}
+		and ctcsSeq = #{ctcsSeq}
 
 	</update>
 
@@ -564,12 +560,7 @@
 		,b.ctptTitle
 		,b.ctptContent
 		,b.ctptWriter
-		,b.ctptLike1
-		,b.ctptLike2
-		,b.ctptLike3
 		,b.ctptView
-		,b.ctptReservationNy
-		,b.ctptReservation
 		,b.regDateTime
 		,c.ctboTypeCd
 		FROM ctPostUploaded a
@@ -618,9 +609,7 @@
 		a.ctptSeq
 		,a.ctptTitle
 		,a.ctptWriter
-		,a.ctptReservation
 		,a.ctptContent
-		,a.ctptReservationNy
 		,a.regDateTime
 		,a.ctboSeq
 		,b.ctboTypeCd
@@ -629,7 +618,6 @@
 		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
 		LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
 		WHERE 1=1
-		AND a.ctptReservationNy = 1
 		AND b.ctcsSeq = #{ctcsSeq}
 	</select>
 
@@ -640,9 +628,7 @@
 		a.ctptSeq
 		,a.ctptTitle
 		,a.ctptWriter
-		,a.ctptReservation
 		,a.ctptContent
-		,a.ctptReservationNy
 		,a.regDateTime
 		,a.ctboSeq
 		,b.ctboTypeCd
@@ -651,7 +637,6 @@
 		LEFT JOIN ctBoard b on b.ctboSeq = a.ctboSeq
 		LEFT JOIN ctClassMember c on c.ctcmSeq = a.ctptWriter
 		WHERE 1=1
-		AND a.ctptReservation > now()
 		AND b.ctcsSeq = #{ctcsSeq}
 	</select>
 
@@ -901,6 +886,7 @@
 		SELECT
 			ctcmSeq ,
 			ctcmName,
+			ctcmProfile,
 			count(case when ctmgReceiver = #{ctmgReceiver} and
 			ctmgReadNy = 0 then 1 end) as chatCountNum,
 			b.seq,
@@ -964,4 +950,15 @@
 		ctc.ctcsSeq = 1 <!-- 전체게시글이면 board seq는 안받음 포스트 seq와 클래스 seq를 받는다 -->
 		group by ctp.ctptSeq;
 	</select>
+	
+	
+	
+	<!-- 클래시 입장시 공지제외한 카테고리 불러오기  -->
+	<select id="selectCategory" resultMap="resultMapObj">
+		select * 
+		from ctboard
+		where ctcsSeq = #{ctcsSeq} 
+		and ctboTypeCd not in (25);
+	</select>
+	
 </mapper>

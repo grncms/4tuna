@@ -30,6 +30,7 @@ public class ClassRoom {
 	private Integer ctcmAlarmReactionNy;
 	private Integer ctcmDelNy;
 	private String mmSeq;
+	private String ctcmProfile;
 	
 	private String tableName;
 	private MultipartFile file0;
@@ -75,6 +76,7 @@ public class ClassRoom {
 	private String ctboSeq;	
 	private Integer ctboTypeCd;	
 	private Integer ctboDelNy;	
+	private String ctboName;
 	
 //	ctPost
 	private String ctptSeq;	
@@ -90,6 +92,8 @@ public class ClassRoom {
 	private Integer ctptLike3;	
 	private Integer ctptDelNy;	
 	private Integer ctptReservationNy;	
+	private Integer ctptNoticeNy;
+	
 	
 //	ctTag
 	private String cttgSeq;	
@@ -743,6 +747,24 @@ public class ClassRoom {
 	}
 	public void setCommentNumber(String commentNumber) {
 		this.commentNumber = commentNumber;
+	}
+	public String getCtcmProfile() {
+		return ctcmProfile;
+	}
+	public void setCtcmProfile(String ctcmProfile) {
+		this.ctcmProfile = ctcmProfile;
+	}
+	public String getCtboName() {
+		return ctboName;
+	}
+	public void setCtboName(String ctboName) {
+		this.ctboName = ctboName;
+	}
+	public Integer getCtptNoticeNy() {
+		return ctptNoticeNy;
+	}
+	public void setCtptNoticeNy(Integer ctptNoticeNy) {
+		this.ctptNoticeNy = ctptNoticeNy;
 	}
 
 

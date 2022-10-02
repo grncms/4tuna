@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +36,6 @@
 	margin-right: auto;
 	margin-top: 50px;
 }
-
 
 /* 스위치 */
 /* The switch - the box around the slider */
@@ -108,145 +107,130 @@ input:checked+.slider:before {
 </head>
 <body id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
-	
-	<!-- Sidebar -->
-	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
-	
-	<!-- Content Wrapper -->
-	<div id="content-wrapper" class="d-flex flex-column">
-	
-	<!-- Topbar -->
-	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
-	
-	<!-- Begin Page Content -->
-		<form method="post" id="puf" action="/member/classroom/common/classPostInst">
-		<input type="text" style="display: none;" id="ctptseq" name="ctptseq" value="<c:out value="${item.ctptSeq}"/>">
-	<div class="container-fluid">
-		<div class="row" id="posting">
-			<div class="col-xl-8 col-lg-8">
-				<div class="card shadow mb-4">
-					<!-- Card Body -->
-					<div class="card-body">
-						<!-- 제목 시작 -->
-						<div class="form-title">
-							<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="ctptTitle" maxlength="100" required="required" pattern=".{4,100}">
-						</div>
-						<hr>
-						<!-- 제목 끝  -->
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-						<!-- 첨부파일 넣기 시작 -->
-						<div class="title_hw border">
-							<div class="col-md-10 col-lg-11" id="classInfo">
-								<div class="btn-group" role="group" aria-label="Basic outlined example">
-<!-- 									<button type="button" class="btn btn-outline-secondary btn-sm">
+		<!-- Sidebar -->
+		<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp"%>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Topbar -->
+			<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp"%>
+
+			<!-- Begin Page Content -->
+			<form method="post" id="puf" action="/member/classroom/common/classPostInst">
+				<input type="hidden" id="ctptWriter" name="ctptWriter" value="${ctcmSeq}">
+				<input type="text" style="display: none;" id="ctptseq" name="ctptseq" value="<c:out value="${item.ctptSeq}"/>">
+				<div class="container-fluid">
+					<div class="row" id="posting">
+						<div class="col-xl-8 col-lg-8">
+							<div class="card shadow mb-4">
+								<!-- Card Body -->
+								<div class="card-body">
+									<!-- 제목 시작 -->
+									<div class="form-title">
+										<input type="text" class="form-control" id="title" placeholder="제목(옵션)" name="ctptTitle" maxlength="100" required="required" pattern=".{4,100}">
+									</div>
+									<hr>
+									<!-- 제목 끝  -->
+
+									<!-- 첨부파일 넣기 시작 -->
+									<div class="title_hw border">
+										<div class="col-md-10 col-lg-11" id="classInfo">
+											<div class="btn-group" role="group" aria-label="Basic outlined example">
+												<!-- 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-image fa-2x"></i>
 									</button>
 									<button type="button" class="btn btn-outline-secondary btn-sm">
 										<i class="fa-solid fa-file-circle-plus fa-2x"></i>
 									</button> -->
-									<button type="button" class="btn btn-outline-secondary btn-sm" id="showUrl" name="showUrl">
-										<i class="fa-solid fa-video fa-2x"></i>
-									</button>
+												<button type="button" class="btn btn-outline-secondary btn-sm" id="showUrl" name="showUrl">
+													<i class="fa-solid fa-video fa-2x"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+									<hr>
+									<!-- 첨부파일 넣기 끝 -->
+
+
+									<!-- 내용 넣기 시작 -->
+									<input type="text" id="originalName" name="originalName" style="width: 100%" placeholder="동영상 url을 넣으세요.">
+									<div class="title_hw border">
+										<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
+									</div>
+									<!-- 내용 넣기 끝 -->
 								</div>
 							</div>
 						</div>
-						<hr>
-						<!-- 첨부파일 넣기 끝 -->
+
+						<div class="col-xl-4 col-lg-4">
+							<div class="card shadow mb-4">
+								<!-- Card Header - Dropdown -->
+								<!-- Card Body -->
+								<div class="card-body">
+									<h4 style="font-weight: bold;">옵션</h4>
+									<br>
+									<div class="body_hw">
+										<!-- 각 개별 항목 시작 -->
+										<!-- 공간 시작 -->
+										<div class="fw-bold text-black gap-2">공간</div>
+										<div class="form-group" id="category">
+											<select class="form-control" name="ctboSeq" id="cateSelect">
+												<c:forEach items="${categories}" var="category">
+													<c:choose>
+														<c:when test="${vo.ctboSeq eq category.ctboSeq}">
+															<option value="${category.ctboSeq }" selected><c:out value="${category.ctboName }" /></option>
+														</c:when>
+														<c:otherwise>
+															<option value="${category.ctboSeq }"><c:out value="${category.ctboName }" /></option>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
+											</select>
+										</div>
+										<hr>
+										<!-- 공간 끝  -->
+
+										<!-- 게시글설정 시작 -->
+										<div class="d-flex flex-column gap-2">
+											<div class="fw-bold text-black">게시글 설정</div>
+											<div class="form-check form-switch ml-3">
+												<c:choose>
+													<c:when test="${vo.ctboSeq eq 99 }">
+														<input class="form-check-input" type="checkbox" role="switch" id="notice" name ="ctptNoticeNy" value=1 checked>
+														<label class="form-check-label" for="notice">공지사항</label>
+													</c:when>
+													<c:otherwise>
+														<input class="form-check-input" type="checkbox" role="switch" id="notice" name ="ctptNoticeNy" value=1>
+														<label class="form-check-label" for="notice">공지사항</label>
+													</c:otherwise>
+												</c:choose>
+											</div>
+										</div>
+
+										<input type="text" id="temp" name="temp" style="display: none;">
 
 
-						<!-- 내용 넣기 시작 -->
-						<input type="text" id="originalName" name="originalName" style="width:100%" placeholder="동영상 url을 넣으세요.">
-						<div class="title_hw border">
-							<textarea class="formBoard" rows="20" id="content" name="ctptContent" placeholder="본문을 작성하세요." style="resize: none;"></textarea>
-						</div>
-						<!-- 내용 넣기 끝 -->
-					</div>
-				</div>
-			</div>
+										<!-- 게시글설정 끝 -->
+										<div>
+											<button type="submit" class="basic_button w-100">등록</button>
+										</div>
+									</div>
 
-			<div class="col-xl-4 col-lg-4">
-				<div class="card shadow mb-4">
-					<!-- Card Header - Dropdown -->
-					<!-- Card Body -->
-					<div class="card-body">
-						<h4 style="font-weight: bold;">옵션</h4>
-						<br>
-						<div class="body_hw">
-							<!-- 각 개별 항목 시작 -->
-							<!-- 공간 시작 -->
-							<div class="title_hw">
-								<div>공간</div>
-							</div>
-							<div class="form-group">
-								<select class="form-control" id="title" name="ctboSeq">
-									<option value="1">자유공간
-									<option value="2">학습자료
-									<option value="3">활동사진
-								</select>
-							</div>
-							<hr>
-							<!-- 공간 끝  -->
-							<!-- 태그 시작 -->
-							<div class="title_hw">
-								<div>태그</div>
-							</div>
-							<div>
-								<input type="text" class="form-control" placeholder="#태그 입력"> <a style="font-size: 12px">#태그는 5개까지 가능</a>
-							</div>
-							<hr>
-							<!-- 태그 끝  -->
-
-							<!-- 게시글설정 시작 -->
-							<div class="d-flex flex-column gap-2">
-								<div>게시글 설정</div>
-								<div>공지 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
-								<br>
-								<div>예약 <label class="switch">
-							
-								<input type="checkbox" name="reserve" checked="checked"> <span class="slider round"></span>
-									</label> 
-									<!-- <input type="date" class="form-control" id="ctptReservation" name="ctptReservation" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;"> -->
-									<!-- 임시 datetime date문제는 아님 -->
-									<input type="date" class="form-control" placeholder="2022-04-28 12:00:00" style="margin-top: 15px;">
+									<script>
+										
+									</script>
 								</div>
-								<br>
-								<div>관리자에게만 공개 <label class="switch"> <input type="checkbox"> <span class="slider round"></span></label></div>
-							</div>
-							
-							<input type="text" id="temp" name="temp" style="display:none;">
-							
-							
-							<!-- 게시글설정 끝 -->
-							<div>
-								<input type="button" id="ctptReservationNy" name="ctptReservationNy" value="" style="display:none">
-								<button type="button" class="basic_button w-100" style="margin-bottom: 10px; background-color: lightgray" onclick="postUploadSubmit('temp')">예약/임시저장</button>
-								<button type="button" class="basic_button w-100" onclick="postUploadSubmit('submit')">등록</button>
 							</div>
 						</div>
-						
-						<script>
-							function postUploadSubmit(val){
-								if(val == 'temp') {
-									$('#temp').val('temp');
-									$('#ctptReservationNy').val(1);
-								}else {
-									$('#temp').val('submit');
-									$('#ctptReservationNy').val(0);
-								}
-								
-								document.getElementById('puf').submit();
-							}
-						</script>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
-		</div>
-		</form>
 	</div>
-</div>
 
 	<!-- End of Page Wrapper -->
 	<!-- Bootstrap core JavaScript-->
@@ -258,42 +242,66 @@ input:checked+.slider:before {
 
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
-<script src="/resources/common/js/sb-admin-2.min.js"></script> 
-<script type="text/javascript">
+	<script src="/resources/common/js/sb-admin-2.min.js"></script>
+	<script type="text/javascript">
+		$("#originalName").hide();
+		$("#showUrl").on("click", function() {
+			$("#originalName").toggle();
 
+		});
 
-$("#originalName").hide();
-$("#showUrl").on("click", function(){
-    $("#originalName").toggle();
-	
-});
-
-$("#btnLogout").on("click", function(){
-
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/member/logoutProc"
-		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/";
+		$(function() {
+			if ($("#notice").is(':checked')) {
+				$("#cateSelect").prop("disabled", true)
+				$("#category").append("<input type='hidden' id = 'ctboSeq' name='ctboSeq' value = 99>")
+				
 			} else {
-				// by pass
+				$("#cateSelect").remove("disabled")
 			}
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});	
-});
-</script>
+		})
+
+		$("#notice").on("change", function() {
+			if ($("#notice").is(':checked')){
+				$("#cateSelect").prop("disabled", true)
+				$("#category").append("<input type='hidden' id = 'ctboSeq' name='ctboSeq' value = 99>")
+			}else{
+				$("#cateSelect").prop("disabled",false)
+				if($("#ctboSeq").length > 0){
+					$("#ctboSeq").remove();
+				}
+			}
+		})
+
+		$("#btnLogout").on(
+				"click",
+				function() {
+
+					$.ajax({
+						async : true,
+						cache : false,
+						type : "post",
+						url : "/member/logoutProc"
+						/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+						,
+						success : function(response) {
+							if (response.rt == "success") {
+								location.href = "/";
+							} else {
+								// by pass
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							alert("ajaxUpdate " + jqXHR.textStatus + " : "
+									+ jqXHR.errorThrown);
+						}
+					});
+				});
+
+	</script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

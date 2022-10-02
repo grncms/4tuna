@@ -30,7 +30,7 @@ public class ChatController {
 		service.insertMsgInfo(chat);
 		logger.info("메세지전송: 발신자(나): " + sender + " |수신자: " + receiver + " |클래스seq: " + classId + " |메세지: " + msg);
 		//받은 데이터를 저장 발신인,수신인,메세지,전송날짜,클래스id
-		simpMessagingTempleate.convertAndSend("/sub/topic/" + classId + "/" + receiver, chat); //받은 메세지를 converAndSend의 파라미터로 전송
+		simpMessagingTempleate.convertAndSend("/sub/topic/" + classId + "/" + receiver, chat); //받은 메세지를 convertAndSend의 파라미터로 전송
 
 	}
 	

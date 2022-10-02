@@ -40,36 +40,40 @@
 		order by ctmgSendDate
 		asc;
 	</select>
-	
-	
+
+
 	<update id="readNyUpdate" parameterType="hashMap">
-		update ctMessages 
-		set ctmgReadNy = 1 
-		where ctcsSeq = #{ctcsSeq} 
-		and ctmgReceiver = #{myId} 
+		update ctMessages
+		set ctmgReadNy = 1
+		where ctcsSeq = #{ctcsSeq}
+		and ctmgReceiver = #{myId}
 		and ctmgSenderId = #{ctmgReceiver}
 		and ctmgReadNy = 0
 	</update>
-	
 
-	
-	<select id = "membersList" parameterType = "Integer" resultMap = "resultMapObj">
+
+
+	<select id="membersList" parameterType="Integer"
+		resultMap="resultMapObj">
 		select ctcmSeq
 		from ctClassMember
 		where ctcsSeq = #{ctcsSeq}
 	</select>
-	
-	
-	<select id = "countMsgOne" parameterType = "HashMap" resultType = "Integer">
+
+
+	<select id="countMsgOne" parameterType="HashMap"
+		resultType="Integer">
 		select count(*)
 		from ctMessages
 		where ctcsSeq = #{ctcsSeq}
 		and ctmgReceiver = #{myId}
 		and ctmgSenderId = #{ctmgSenderId}
-		and ctmgReadNy = 0
+		and
+		ctmgReadNy = 0
 	</select>
-	
-	<select id ="countMsg" parameterType = "HashMap" resultType="Integer">
+
+	<select id="countMsg" parameterType="HashMap"
+		resultType="Integer">
 		select count(*)
 		from ctMessages
 		where ctcsSeq = #{ctcsSeq}

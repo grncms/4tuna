@@ -1,14 +1,15 @@
 package com.cacao.classting.member;
 
+import java.io.File;
+import java.util.Enumeration;
 import java.util.HashMap;
-
-
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,17 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.code.CodeServiceImpl;
 import com.cacao.classting.common.constants.Constants;
+import com.cacao.classting.common.util.FileDownloadController;
 import com.cacao.classting.common.util.UtilDateTime;
-
-
 
 @Controller
 public class MemberController {
+	static String defaultDir = System.getProperty("user.dir");
 	
+	static String IMG_DIRECTORY = defaultDir+"\\src\\main\\webapp\\resources\\uploaded";
 	@Autowired
 	MemberServiceImpl service;
 	
@@ -46,6 +49,8 @@ public class MemberController {
 	public String main(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception  {
 		
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq") );
+		
+		
 		
 		List<Member> list = service.selectListClass(vo);
 		model.addAttribute("list", list);
@@ -126,10 +131,45 @@ public class MemberController {
 		return "member/memberForm_user";
 	}
 	
+	
+	//회원가입
 	@RequestMapping(value = "/memberInst")
-	public String memberInst(Member dto, MemberVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
+	public String memberInst(Member dto, MemberVo vo, Model model, RedirectAttributes redirectAttributes, MultipartHttpServletRequest mr) throws Exception {
 		
-		service.insert(dto);
+		String mmprofile = FileDownloadController.upload(mr);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		Enumeration enu = mr.getParameterNames();
+		while(enu.hasMoreElements()) {
+			String name = (String) enu.nextElement();
+			String value = mr.getParameter(name);
+			map.put(name,value);
+		}
+		
+		String mmId = (String) map.get("mmId");
+		
+		
+		if(mmprofile != null && mmprofile.length() !=0) {
+			map.put("mmProfile", mmprofile);
+		}
+		
+		try {
+			if(mmprofile != null && mmprofile.length() !=0) {
+				File srcFile = new File(IMG_DIRECTORY + "\\" + "temp" + "\\" + mmprofile);
+				File descFile = new File(IMG_DIRECTORY + "\\" + "member" + "\\" + mmId);
+				FileUtils.moveFileToDirectory(srcFile, descFile, true);
+			}
+		} catch (Exception e) {
+			if(mmprofile != null && mmprofile.length() !=0) {
+				System.out.println("업로드에러:" + e.getMessage());
+				File srcFile = new File(IMG_DIRECTORY + "\\" + "temp" + "\\" + mmprofile);
+				srcFile.delete(); // 에러 발생할시 임시폴더에 있던 파일 삭제
+			}
+		}
+		
+		
+		
+		service.insert(map);
 
 		vo.setPseq(dto.getMmSeq());
 		System.out.println("vo.getPseq(): "+vo.getPseq() );
@@ -316,12 +356,13 @@ public class MemberController {
 				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 				
 				httpSession.setAttribute("sessSeq", rtMember.getMmSeq());
+				httpSession.setAttribute("sessSeq", rtMember.getMmSeq());
 				httpSession.setAttribute("sessId", rtMember.getMmId());
 				httpSession.setAttribute("sessName", rtMember.getMmName());
 				httpSession.setAttribute("sessTeacher", rtMember.getMmTeacherNy());
 				httpSession.setAttribute("sessPath", rtMember.getPath());
 				httpSession.setAttribute("sessUuidName", rtMember.getUuidName());
-				
+				httpSession.setAttribute("ssesProfile", rtMember.getMmProfile());
 				returnMap.put("rt", "success");
 			} else {
 				returnMap.put("rt", "fail");

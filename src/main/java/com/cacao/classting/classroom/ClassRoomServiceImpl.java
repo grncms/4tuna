@@ -6,10 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.cacao.classting.common.util.UtilDateTime;
-import com.cacao.classting.common.util.UtilUpload;
 
 
 @Service
@@ -70,21 +76,9 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 
 
 	@Override
-	public int updateClassMember(ClassRoom dto) throws Exception {
-		dao.updateClassMember(dto);
-		String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-	     UtilUpload.uploadClassMember(dto.getFile0(), pathModule, dto);
-	     
-	     dto.setTableName("ctClassMemberUploaded");
-	     dto.setType(0);
-	     dto.setDefaultNy(1);
-	     dto.setSort(0);
-	     dto.setDelNy(0);
-	     dto.setPseq(dto.getCtcmSeq());
-	     
-	     dao.updateUploaded(dto);
+	public int updateClassMember(ClassRoomVo vo) throws Exception {
 		
-		return 1;
+		return dao.updateClassMember(vo);
 	}
 
 	@Override
@@ -370,6 +364,18 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 	@Override
 	public int deleteLike(ClassRoom dto) throws Exception {
 		return dao.deleteLike(dto);
+	}
+	@Override
+	public int deletePost(ClassRoomVo vo) {
+		return dao.deletePost(vo);
+	}
+	@Override
+	public List<ClassRoom> selectCategory(ClassRoomVo vo) throws Exception {
+		return dao.selectCategory(vo);
+	}
+	@Override
+	public String getMenuData(String url) throws Exception {
+		return null;
 	}
 
 	

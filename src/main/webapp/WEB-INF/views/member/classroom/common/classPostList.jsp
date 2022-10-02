@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +29,6 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
-
 .leftbarProfile {
 	cursor: pointer;
 }
@@ -49,85 +48,110 @@
 </head>
 <body id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-	<!-- Sidebar -->
-	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
+		<!-- Sidebar -->
+		<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp"%>
 
-	<!-- Content Wrapper -->
-	<div id="content-wrapper" class="d-flex flex-column">
-			
-	<!-- Topbar -->		
-	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-		<div class="container-fluid">
-			<div class="row" id="posting">
-				<div class="col-12">
-					<div class="container_title shadow mb-4">
-						<div class="header">자유 공간</div>
-							<div class="footer dropdown">
-								<button type="button" class="basic_button" onclick="location.href='/classBoardUpload'">글쓰기</button>
+			<!-- Topbar -->
+			<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp"%>
+
+			<div class="container-fluid">
+				<div class="row" id="posting">
+					<div class="col-12">
+						<div class="container_title shadow mb-4">
+							<div class="header"><c:out value="${param.ctboName }"/></div>
+								<div class="footer dropdown">
+								<form id="boardUpload" action="/classBoardUpload" method="post">
+									<input type="hidden" value="${param.ctboSeq }" name="ctboSeq">
+									<button type="submit" class="basic_button">글쓰기</button>
+								</form>
 							</div>
 						</div>
 						<form id="postList" name="postList" method="post">
-						<input  type="hidden" id="ctcsSeq" name="ctcsSeq">
-						<input  type="hidden" id=ctptSeq name="ctptSeq">
-						<input  type="hidden" id="mmSeq" name="mmSeq">
-						<div class="card shadow mb-4">
-						<c:choose>
-							<c:when test="${fn:length(list) eq 0}">
-								<div class="container_base">
-									<div class="homework list mt-5 mb-5" >게시물이 없습니다!</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${list}" var="item" varStatus="status">
-									<c:if test="${item.ctboTypeCd eq 19}">
+							<input type="hidden" id="ctcsSeq" name="ctcsSeq">
+							<input type="hidden" id=ctptSeq name="ctptSeq">
+							<input type="hidden" id="mmSeq" name="mmSeq">
+							<div class="card shadow mb-4">
+								<c:choose>
+									<c:when test="${fn:length(list) eq 0}">
 										<div class="container_base">
-											<div class="homework list">
-												<div class="header" style="cursor: default;">
-													<div class="profile_box">
-													<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-														<c:if test="${item.ctptWriter eq itemMember.ctcmSeq and itemMember.path ne null}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}"/></span></c:if>
-													</c:forEach>
-														
-													</div>
-													<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-														<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
-													</c:forEach>
-													<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-													<span>조회수:<c:out value = "${item.ctptView }"/></span>
-												</div>
-												<div class="body mt-2" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
-													<span class='badge badge_hw'>자유공간</span>
-													<span><c:out value="${item.ctptTitle}"/></span>
-													<br><br>
-													<p>
-														<c:forEach items="${ytb}" var="ytb" varStatus="status">
-															<c:if test="${ytb.pseq eq item.ctptSeq}"><img src="http://img.youtube.com/vi/<c:out value="${ytb.originalName}"/>/mqdefault.jpg"/><br></c:if>
-														</c:forEach>
-													</p>
-													<p><c:out value="${item.ctptContent}"/></p>
-													<br>
-												</div>
-												<div class="footer mt-3" style="cursor: default;">
-													<i class="fa-regular fa-comment">2</i>&nbsp;
-													<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
-												</div>
-											</div>
+											<div class="homework list mt-5 mb-5">게시물이 없습니다!</div>
 										</div>
-									</c:if>
-								</c:forEach>
-							</c:otherwise>			
-						</c:choose>				
-						</div>
-					</form>
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${list}" var="item" varStatus="status">
+												<div class="container_base">
+													<div class="homework list">
+														<div class="header" style="cursor: default;">
+															<div class="profile_box">
+																<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+																	<c:if test="${item.ctptWriter eq itemMember.ctcmSeq and itemMember.path ne null}">
+																		<span>
+																			<img class="profile" src="/resources/uploaded/${ctcsSeq }/${itemMember.ctcmSeq}/${itemMember.ctcmProfile}" onerror="this.src='/resources/uploaded/common/profile2.png'" />
+																		</span>
+																	</c:if>
+																</c:forEach>
+															</div>
+															<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+																<c:if test="${item.ctptWriter eq itemMember.ctcmSeq }">
+																	<span>
+																		<c:out value="${itemMember.ctcmName}" />
+																	</span>
+																</c:if>
+															</c:forEach>
+															<span>
+																<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+															</span>
+															<span>
+																조회수:
+																<c:out value="${item.ctptView }" />
+															</span>
+														</div>
+														<div class="body mt-2" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
+														
+															
+															<span class='badge badge_hw'><c:out value="${param.ctboName }"/></span>
+															
+															
+															<span>
+																<c:out value="${item.ctptTitle}" />
+															</span>
+															<br>
+															<br>
+															<p>
+																<c:forEach items="${ytb}" var="ytb" varStatus="status">
+																	<c:if test="${ytb.pseq eq item.ctptSeq}">
+																		<img src="http://img.youtube.com/vi/<c:out value="${ytb.originalName}"/>/mqdefault.jpg" />
+																		<br>
+																	</c:if>
+																</c:forEach>
+															</p>
+															<p>
+																<c:out value="${item.ctptContent}" />
+															</p>
+															<br>
+														</div>
+														<div class="footer mt-3" style="cursor: default;">
+															<i class="fa-regular fa-comment">&nbsp;<c:out value="${item.commentNumber }"/></i>&nbsp; <i class="fa-regular fa-thumbs-up"> 
+															<c:out value="${item.likeNumber}" /></i>&nbsp;
+														</div>
+													</div>
+												</div>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
+		</div>
 	</div>
-</div>
 
 
 
@@ -145,40 +169,42 @@
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 
-<script type="text/javascript">
-
-goView = function(seq){
-	$("#ctptSeq").val(seq);
-	$("#postList").attr("action","/member/class/common/postview");
-	$("#postList").submit();
-}
-$("#btnLogout").on("click", function(){
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/member/logoutProc"
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/";
-			} else {
-				// by pass
-			}
+	<script type="text/javascript">
+		goView = function(seq) {
+			$("#ctptSeq").val(seq);
+			$("#postList").attr("action", "/member/class/common/postview");
+			$("#postList").submit();
 		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});	
-});
-</script>
+		$("#btnLogout").on(
+				"click",
+				function() {
+
+					$.ajax({
+						async : true,
+						cache : false,
+						type : "post",
+						url : "/member/logoutProc",
+						success : function(response) {
+							if (response.rt == "success") {
+								location.href = "/";
+							} else {
+								// by pass
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							alert("ajaxUpdate " + jqXHR.textStatus + " : "
+									+ jqXHR.errorThrown);
+						}
+					});
+				});
+	</script>
 
 
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-	
+
 </html>

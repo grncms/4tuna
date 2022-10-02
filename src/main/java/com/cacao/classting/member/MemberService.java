@@ -1,14 +1,13 @@
 package com.cacao.classting.member;
 
+import java.util.HashMap;
 import java.util.List;
-
-import com.cacao.classting.classroom.ClassRoom;
-import com.cacao.classting.classroom.ClassRoomVo;
 
 public interface MemberService {
 	
 	public Member selectOne(MemberVo vo) throws Exception;
 	public int insert(Member dto) throws Exception;
+	public int insert(HashMap map) throws Exception;
 	public int update(Member dto) throws Exception;
 	public Member selectOneLogin(Member dto) throws Exception;
 	public List<Member> selectListId(MemberVo vo) throws Exception;

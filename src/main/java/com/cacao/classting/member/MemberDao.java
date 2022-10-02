@@ -1,17 +1,14 @@
 package com.cacao.classting.member;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
-import com.cacao.classting.classroom.ClassRoom;
-import com.cacao.classting.classroom.ClassRoomVo;
 
 
 @Repository
@@ -25,6 +22,7 @@ public class MemberDao {
 
 	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
 	public int insert(Member dto) {return sqlSession.insert(namespace +".insert", dto);}
+	public int insert(HashMap map) {return sqlSession.insert(namespace +".insert", map);}
 	
 	public int update(Member dto) {return sqlSession.update(namespace +".update", dto);}
 	public List<Member> selectListId(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListId",vo); }

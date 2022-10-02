@@ -1,12 +1,11 @@
 package com.cacao.classting.member;
 
+import java.util.HashMap;
 import java.util.List;
-
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.cacao.classting.common.util.UtilDateTime;
 import com.cacao.classting.common.util.UtilUpload;
@@ -67,6 +66,15 @@ public class MemberServiceImpl implements MemberService{
 		
 		
 	}
+	
+	@Override
+	public int insert(HashMap map) throws Exception {
+		
+		map.put("setRegDateTime", UtilDateTime.nowDate());
+		dao.insert(map);
+		return 1;
+	}
+	
 
 	@Override
 	public int update(Member dto) throws Exception {

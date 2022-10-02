@@ -67,7 +67,7 @@
 											<button type="button" class="membersList btn position-relative w-100 rounded" id="member">
 												<input type="hidden" value="${ml.ctcmName }" id="name" class="name" />
 												<input type="hidden" value="${ml.ctcmSeq}" id="seq" class="seq" />
-												<img src="${ml.path}${ml.uuidName}" alt="" width="35" height="35">
+												<img src="/resources/uploaded/${ctcsSeq }/${ml.ctcmSeq}/${ml.ctcmProfile}" onerror="this.src='/resources/uploaded/common/profile2.png'" width="35" height="35">
 												<div>
 													<h2>
 														<c:out value="${ml.ctcmName }" />
@@ -125,219 +125,220 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js" integrity="sha512-1QvjE7BtotQjkq8PxLeF6P46gEpBRXuskzIVgjFpekzFVF4yjRgrQvTG1MTOJ3yQgvTteKAcO7DSZI92+u/yZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
-        $("#btnLogout").on("click", function() {
+		$("#btnLogout").on("click", function() {
+			$.ajax({
+				async : true,
+				cache : false,
+				type : "post",
+				url : "/member/logoutProc"
+				/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+				,
+				success : function(response) {
+					if (response.rt == "success") {
+						location.href = "/";
+					} else {
+						// by pass
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
 
-            $.ajax({
-                async : true,
-                cache : false,
-                type : "post",
-                url : "/member/logoutProc"
-                /* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
-                ,
-                success : function(response) {
-                    if (response.rt == "success") {
-                        location.href = "/";
-                    } else {
-                        // by pass
-                    }
-                },
-                error : function(jqXHR, textStatus, errorThrown) {
-                    alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-                }
-            });
-        });
+		
+		
+		var listSize = $("#listSize").val();
+		var client;
+		var mySessionId = $("#myId").val();
+		var classId = $("#classId").val();
+		var myName = $("#myName").val();
+		var receiver; //memberList 클릭했을때 받은 정보로 데이터 입력됨
+		var msg = "";
+		//채팅창 시간 표시 위함
+		var today = new Date();
+		var hours = today.getHours();
+		var minutes = today.getMinutes();
 
-        var listSize = $("#listSize").val();
-        var client;
-        var mySessionId = $("#myId").val();
-        var classId = $("#classId").val();
-        var myName = $("#myName").val();
-        var receiver; //memberList 클릭했을때 받은 정보로 데이터 입력됨
-        var msg = "";
-        //채팅창 시간 표시 위함
-        var today = new Date();
-        var hours = today.getHours();
-        var minutes = today.getMinutes();
+		//채팅창 온라인/오프라인 상태
+		var statusOn = ' <span class="status green" ></span> ';
+		statusOn += "online"
 
-        //채팅창 온라인/오프라인 상태
-        var statusOn = ' <span class="status green" ></span> ';
-        statusOn += "online"
+		var onlineSet = new Set(listSize);
 
-        var onlineSet = new Set(listSize);
+		$(function() {
+			var msgTemplate;
+			var sock = new SockJS("/ctChatServer");
+			client = Stomp.over(sock);
+			client.connect({}, function() {
+				console.log("connected stompTest");
+				//Controller's MessageMapping, header , message(자유형식)
+				//콜백함수는 메시지를 받으면 실행됨 msg는 받은 메세지 파라미터
+				client.subscribe('/sub/topic/' + classId + "/" + mySessionId, function(msg) { 
+					var data = JSON.parse(msg.body);
 
-        $(function() {
+					if (data.ctmgSenderId == receiver) { //채팅창에 들어와있을 때
+						msgTemplate = '<li class="you">'
+						msgTemplate += '<div class="entete">';
+						msgTemplate += '<h3>' + hours + "시" + minutes + "분" + '</h3>';
+						msgTemplate += '<h2>' + data.ctmgSender + '</h2>';
+						msgTemplate += '<span class="status green"></span>';
+						msgTemplate += '</div>';
+						msgTemplate += '<div class="triangle"></div>';
+						msgTemplate += '<div class="message">' + data.ctmgMessage + '</div>';
+						msgTemplate += '</li>';
+						$("#chat").append(msgTemplate);
+						$("#chat").animate({
+							scrollTop : $("#chat")[0].scrollHeight
+						}, 400)
 
-            var msgTemplate;
-            var sock = new SockJS("/ctChatServer");
-            client = Stomp.over(sock);
-            client.connect({}, function() {
-                console.log("connected stompTest");
-                //Controller's MessageMapping, header , message(자유형식)
-                client.subscribe('/sub/topic/' + classId + "/" + mySessionId, function(msg) { //콜백함수는 메시지를 받으면 실행됨 msg는 받은 메세지 파라미터
-                    var data = JSON.parse(msg.body);
+						var tmp = {
+							'ctcsSeq' : classId,
+							'ctmgReceiver' : data.ctmgSenderId,
+							'myId' : mySessionId
+						}
+						//readNyUpdate로보내서 들어와있을때 받은 메세지는 읽음표시
+						$.ajax({
+							type : "POST",
+							url : "/readNyUpdate",
+							data : JSON.stringify(tmp),
+							contentType : "application/json; charset = UTF-8",
+							dataType : "json"
+						})
 
-                    if (data.ctmgSenderId == receiver) { //채팅창에 들어와있을 때
-                        msgTemplate = '<li class="you">'
-                        msgTemplate += '<div class="entete">';
-                        msgTemplate += '<h3>' + hours + "시" + minutes + "분" + '</h3>';
-                        msgTemplate += '<h2>' + data.ctmgSender + '</h2>';
-                        msgTemplate += '<span class="status green"></span>';
-                        msgTemplate += '</div>';
-                        msgTemplate += '<div class="triangle"></div>';
-                        msgTemplate += '<div class="message">' + data.ctmgMessage + '</div>';
-                        msgTemplate += '</li>';
-                        $("#chat").append(msgTemplate);
-                        $("#chat").animate({
-                            scrollTop : $("#chat")[0].scrollHeight
-                        }, 400)
+					} else {
+						//데이터를 아작스에 보내서 확인하면 카운트한걸 받아옴
+						var countData = {
+							'ctcsSeq' : classId,
+							'ctmgSenderId' : data.ctmgSenderId,
+							'myId' : mySessionId
+						}
 
-                        var tmp = {
-                            'ctcsSeq' : classId,
-                            'ctmgReceiver' : data.ctmgSenderId,
-                            'myId' : mySessionId
-                        }
-                        //readNyUpdate로보내서 들어와있을때 받은 메세지는 읽음표시
-                        $.ajax({
-                            type : "POST",
-                            url : "/readNyUpdate",
-                            data : JSON.stringify(tmp),
-                            contentType : "application/json; charset = UTF-8",
-                            dataType : "json"
-                        })
+						$.ajax({
+							type : "POST",
+							url : "/countMsg",
+							data : JSON.stringify(countData),
+							contentType : "application/json; charset = UTF-8",
+							dataType : "json",
+							success : function(res) {
+								$("#" + data.ctmgSenderId).text(res);
+							}
 
-                    } else {
-                        //데이터를 아작스에 보내서 확인하면 카운트한걸 받아옴
-                        var countData = {
-                            'ctcsSeq' : classId,
-                            'ctmgSenderId' : data.ctmgSenderId,
-                            'myId' : mySessionId
-                        }
+						})
 
-                        $.ajax({
-                            type : "POST",
-                            url : "/countMsg",
-                            data : JSON.stringify(countData),
-                            contentType : "application/json; charset = UTF-8",
-                            dataType : "json",
-                            success : function(res) {
-                                $("#" + data.ctmgSenderId).text(res);
-                            }
+					}
+				})
+			})
 
-                        })
+			//내 아이디 구독
 
-                    }
-                })
-            })
+		})
 
-            //내 아이디 구독
+		$(".membersList").click(function() { //멤버를 클릭할시 친구 id와 이름을 controller에 전송
+			var params = {
+				name : $(this).find($(".name")).val(),
+				ctmgReceiver : $(this).find($(".seq")).val(),
+				ctcsSeq : classId,
+				myId : mySessionId
+			}
 
-        })
+			$.ajax({ //ajax형태로 /enterRoom에 전송
+				type : "POST",
+				url : "/enterRoom",
+				data : JSON.stringify(params),
+				contentType : "application/json; charset=UTF-8",
+				dataType : "json",
+				success : function(res) { //대화창을 생성하고 클래스 id,대화상대id,수신자id를 통해서 대화이력조회후 받아옴
+					receiver = res.receiver;
+					var List = res.chatList;
+					var main = '<header>'
+					main += '<img src="/resources/uploaded/common/profile2.png" alt="" width="35" height="35">'
+					main += '<div>'
+					main += '<h2 id="with">대화상대:' + res.name + '</h2>'
+					main += '</div>'
+					main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">'
+					main += '</header>'
+					main += '<ul id="chat">'
 
-        $(".membersList").click(function() { //멤버를 클릭할시 친구 id와 이름을 controller에 전송
-            var params = {
-                name : $(this).find($(".name")).val(),
-                ctmgReceiver : $(this).find($(".seq")).val(),
-                ctcsSeq : classId,
-                myId : mySessionId
-            }
+					$.each(List, function(index, item) {
+						if (item.ctmgSenderId == mySessionId) {
+							main += '<li class="me">';
+							main += '<div class="entete">';
+							main += '<h3>' + item.ctmgSendDate + '</h3>'; //시간표시
+							main += '<h2>' + item.ctmgSender + '</h2>';
+							main += '<span class="status blue"></span>';
+							main += '</div>';
+							main += '<div class="triangle"></div>';
+							main += '<div class="message">' + item.ctmgMessage + '</div>';
+							main += '</li>'
+						} else {
+							main += '<li class="you">';
+							main += '<div class="entete">';
+							main += '<h3>' + item.ctmgSendDate + '</h3>';
+							main += '<h2>' + item.ctmgSender + '</h2>';
+							main += '<span class="status green"></span>';
+							main += '</div>';
+							main += '<div class="triangle"></div>';
+							main += '<div class="message">' + item.ctmgMessage + '</div>';
+							main += '</li>'
+						}
+					})
+					main += '</ul>'
+					main += '<footer>';
+					main += '<div class="input-group">';
+					main += '<input type="text" id="msg" class="form-control" />'
+					main += '<input type="button" class="btn btn-primary" value="전송" onclick="send()" id="sendBtn">';
+					main += '</div>';
+					/* main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">'  */
+					/* <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">; */
+					main += '</footer>'
 
-            $.ajax({ //ajax형태로 /enterRoom에 전송
-                type : "POST",
-                url : "/enterRoom",
-                data : JSON.stringify(params),
-                contentType : "application/json; charset=UTF-8",
-                dataType : "json",
-                success : function(res) { //대화창을 생성하고 클래스 id,대화상대id,수신자id를 통해서 대화이력조회후 받아옴
-                    receiver = res.receiver;
-                    var List = res.chatList;
-                    var main = '<header>'
-                    main += '<img src="/resources/uploaded/common/profile2.png" alt="" width="35" height="35">'
-                    main += '<div>'
-                    main += '<h2 id="with">대화상대:' + res.name + '</h2>'
-                    main += '</div>'
-                    main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">'
-                    main += '</header>'
-                    main += '<ul id="chat">'
+					$("#main").html(main) //html 함수는 태크안을 대체
+					$("#chat").scrollTop($("#chat")[0].scrollHeight); //채팅받으면 채팅화면 밑으로
+					$("#" + res.receiver).text(0); //badge값 0 으로 초기화
+					//엔터키 전송
+					$("#msg").keydown(function(e) {
+						if (e.keyCode == 13) {
+							$("#sendBtn").trigger("click");
+						}
+					})
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("통신실패");
+				}
+			})
 
-                    $.each(List, function(index, item) {
-                        if (item.ctmgSenderId == mySessionId) {
-                            main += '<li class="me">';
-                            main += '<div class="entete">';
-                            main += '<h3>' + item.ctmgSendDate + '</h3>'; //시간표시
-                            main += '<h2>' + item.ctmgSender + '</h2>';
-                            main += '<span class="status blue"></span>';
-                            main += '</div>';
-                            main += '<div class="triangle"></div>';
-                            main += '<div class="message">' + item.ctmgMessage + '</div>';
-                            main += '</li>'
-                        } else {
-                            main += '<li class="you">';
-                            main += '<div class="entete">';
-                            main += '<h3>' + item.ctmgSendDate + '</h3>';
-                            main += '<h2>' + item.ctmgSender + '</h2>';
-                            main += '<span class="status green"></span>';
-                            main += '</div>';
-                            main += '<div class="triangle"></div>';
-                            main += '<div class="message">' + item.ctmgMessage + '</div>';
-                            main += '</li>'
-                        }
-                    })
-                    main += '</ul>'
-                    main += '<footer>';
-                    main += '<div class="input-group">';
-                    main += '<input type="text" id="msg" class="form-control" />'
-                    main += '<input type="button" class="btn btn-primary" value="전송" onclick="send()" id="sendBtn">';
-                    main += '</div>';
-                    /* main += '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">'  */
-                    /* <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">; */
-                    main += '</footer>'
+		})
 
-                    $("#main").html(main) //html 함수는 태크안을 대체
-                    $("#chat").scrollTop($("#chat")[0].scrollHeight); //채팅받으면 채팅화면 밑으로
-                    $("#" + res.receiver).text(0); //badge값 0 으로 초기화
-                    //엔터키 전송
-                    $("#msg").keydown(function(e) {
-                        if (e.keyCode == 13) {
-                            $("#sendBtn").trigger("click");
-                        }
-                    })
-                },
-                error : function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert("통신실패");
-                }
-            })
+		function send() {
+			msg = $("#msg").val();
+			var data = {
+				'ctcsSeq' : $("#classId").val(),
+				'ctmgReceiver' : receiver,
+				'ctmgSender' : myName,
+				'ctmgSenderId' : mySessionId,
+				'ctmgMessage' : msg
+			}//클래스id,수신인id,발신인,발신인id,메세지
+			client.send('/topic/public', {}, JSON.stringify(data));
 
-        })
+			var msgTemplate = '<li class="me">'
+			msgTemplate += '<div class="entete">';
+			msgTemplate += '<h3>' + hours + "시" + minutes + "분" + '</h3>';
+			msgTemplate += '<h2>' + myName + '</h2>';
+			msgTemplate += '<span class="status blue"></span>';
+			msgTemplate += '</div>';
+			msgTemplate += '<div class="triangle"></div>';
+			msgTemplate += '<div class="message">' + msg + '</div>';
+			msgTemplate += '</li>';
+			$("#chat").append(msgTemplate);
+			$("#chat").animate({
+				scrollTop : $("#chat")[0].scrollHeight
+			}, 400)
+			//scrollHeight 스크롤 내에 있는 모든 컨텐츠의 길이를 반환.
 
-        function send() {
-            msg = $("#msg").val();
-            var data = {
-                'ctcsSeq' : $("#classId").val(),
-                'ctmgReceiver' : receiver,
-                'ctmgSender' : myName,
-                'ctmgSenderId' : mySessionId,
-                'ctmgMessage' : msg
-            }//클래스id,수신인id,발신인,발신인id,메세지
-            client.send('/topic/public', {}, JSON.stringify(data));
-
-            var msgTemplate = '<li class="me">'
-            msgTemplate += '<div class="entete">';
-            msgTemplate += '<h3>' + hours + "시" + minutes + "분" + '</h3>';
-            msgTemplate += '<h2>' + myName + '</h2>';
-            msgTemplate += '<span class="status blue"></span>';
-            msgTemplate += '</div>';
-            msgTemplate += '<div class="triangle"></div>';
-            msgTemplate += '<div class="message">' + msg + '</div>';
-            msgTemplate += '</li>';
-            $("#chat").append(msgTemplate);
-            $("#chat").animate({
-                scrollTop : $("#chat")[0].scrollHeight
-            }, 400)
-            //scrollHeight 스크롤 내에 있는 모든 컨텐츠의 길이를 반환.
-
-            $("#msg").val("");
-        }
-    </script>
+			$("#msg").val("");
+		}
+	</script>
 </body>
 
 </html>

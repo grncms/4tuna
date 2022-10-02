@@ -4,8 +4,6 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
-
 public class Member {
 
 //	Member
@@ -35,7 +33,7 @@ public class Member {
 	private Date regDateTimeSvr;
 	private Date modDateTime;
 	private Date modDateTimeSvr;
-	
+	private String mmProfile;
 	
 	private String ctcsSeq;
 	private String ctcsBelongto;
@@ -496,6 +494,12 @@ public class Member {
 	}
 	public void setCtcmSeq(String ctcmSeq) {
 		this.ctcmSeq = ctcmSeq;
+	}
+	public String getMmProfile() {
+		return mmProfile;
+	}
+	public void setMmProfile(String mmProfile) {
+		this.mmProfile = mmProfile;
 	}
 	
 	

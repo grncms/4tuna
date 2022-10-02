@@ -67,7 +67,8 @@ public class ClassRoomDao {
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListHomeworkSubmit",vo); return list;}
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassMember",vo); return list;}
 	public List<ClassRoom> selectListClassPostUrl(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectListClassPostUrl",vo); return list;}
-	public int updateClassMember(ClassRoom dto) {return sqlSession.update(namespace + ".updateClassMember", dto);}
+	public List<ClassRoom> selectCategory(ClassRoomVo vo) { List<ClassRoom> list = sqlSession.selectList(namespace + ".selectCategory",vo); return list;}
+	public int updateClassMember(ClassRoomVo vo) {return sqlSession.update(namespace + ".updateClassMember", vo);}
 	public int updateUploaded(ClassRoom dto) {return sqlSession.update(namespace +".updateUploaded", dto);}
 	public int updateClassMemberDel(ClassRoom dto)  {return sqlSession.update(namespace + ".updateClassMemberDel", dto);}
 //	댓글리스트
@@ -135,7 +136,9 @@ public class ClassRoomDao {
 	public int insertPost(ClassRoom dto) {
 		return sqlSession.insert(namespace+ ".insertPost", dto);
 	}
-	
+	public int deletePost(ClassRoomVo vo) {
+		return sqlSession.delete(namespace + ".deletePost", vo);
+	}
 	public int insertAddress(ClassRoom dto) {
 		return sqlSession.insert(namespace + ".insertAddress", dto);
 	}

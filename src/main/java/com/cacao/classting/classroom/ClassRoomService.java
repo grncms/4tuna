@@ -48,8 +48,9 @@ public interface ClassRoomService {
 	public List<ClassRoom> selectListHomework(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListHomeworkSubmit(ClassRoomVo vo) throws Exception;
 	public List<ClassRoom> selectListClassMember(ClassRoomVo vo) throws Exception;
-	public int updateClassMember(ClassRoom dto) throws Exception;
-
+	public List<ClassRoom> selectCategory(ClassRoomVo vo) throws Exception;
+	public int updateClassMember(ClassRoomVo vo) throws Exception;
+	
 	public int updateClassMemberDel(ClassRoom dto) throws Exception;
 	
 //	댓글리스트
@@ -89,7 +90,7 @@ public interface ClassRoomService {
 	public List<ClassRoom> scoreAvg(ClassRoomVo vo) throws Exception;
 //게시글등록
 	public int insertAddress(ClassRoom dto);
-	
+	public int deletePost(ClassRoomVo vo);
 //채팅관련
 	public List<ClassRoom> countMsg(HashMap<String,String> countMsg) throws Exception;
 	
@@ -99,4 +100,8 @@ public interface ClassRoomService {
 	public int countLike(ClassRoom dto) throws Exception;
 	public int deleteLike(ClassRoom dto) throws Exception;
 	
+	
+	
+// api 호출 service
+	public String getMenuData(String url) throws Exception;
 }

@@ -26,7 +26,6 @@
 <link href="/resources/user/css/classCommon.css" rel="stylesheet">
 <link href="/resources/common/css/boardCss.css" rel="stylesheet">
 <style type="text/css">
-
 #posting {
 	width: 800px;
 	margin-left: auto;
@@ -41,87 +40,109 @@
 .container_base .footer>* {
 	margin-right: 0.5rem;
 }
-
 </style>
 
 </head>
 <body id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-	<!-- Sidebar -->
-	<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp" %>
+		<!-- Sidebar -->
+		<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp"%>
 
-	<!-- Content Wrapper -->
-	<div id="content-wrapper" class="d-flex flex-column">
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-	<!-- Topbar -->
-	<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp" %>
-		<div class="container-fluid">
-			<div class="row" id="posting">
-				<div class="col-12">
-					<div class="container_title shadow mb-4">
-						<div class="header">모든 영상</div>
-						<div class="body">클래스의 모든 영상을 모아볼 수 있어요.</div>
-						<div class="footer">
+			<!-- Topbar -->
+			<%@ include file="/WEB-INF/views/member/include/classNavbar.jsp"%>
+			<div class="container-fluid">
+				<div class="row" id="posting">
+					<div class="col-12">
+						<div class="container_title shadow mb-4">
+							<div class="header">모든 영상</div>
+							<div class="body">클래스의 모든 영상을 모아볼 수 있어요.</div>
+							<div class="footer"></div>
 						</div>
-					</div>
-					<form id="postList" name="postList" method="post">
-					<input type="hidden" id="ctcsSeq" name="ctcsSeq">
-					<input type="hidden" id=ctptSeq name="ctptSeq">
-					<input type="hidden" id="mmSeq" name="mmSeq">
-					<div class="card shadow mb-4 ">
-						<c:choose>
-							<c:when test="${fn:length(list) eq 0}">
-								<div class="container_base">
-									<div class="homework list mt-5 mb-5" >영상이 없습니다!</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${list}" var="item" varStatus="status">
-									<div class="container_base">
-										<div class="homework list">
-											<div class="header" style="cursor: default;">
-												<div class="profile_box">
-													<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-														<c:if test="${item.ctptWriter eq itemMember.ctcmSeq and itemMember.path ne null}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}"/></span></c:if>
-												</c:forEach>
-												</div>
-												<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-													<c:if test="${item.ctptWriter eq itemMember.ctcmSeq}"><span><c:out value="${itemMember.ctcmName}"/></span></c:if>
-												</c:forEach>
-												<span><fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-												<span>조회수:<c:out value = "${item.ctptView}"/></span>
-											</div>
-											<div class="body mt-2 mb-5" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
-												<c:if test="${item.ctboTypeCd eq 19}"><span class='badge badge_graded'>자유공간</span></c:if>
-												<c:if test="${item.ctboTypeCd eq 20}"><span class='badge badge_alreadyend'>학습자료</span></c:if>
-												<c:if test="${item.ctboTypeCd eq 21}"><span class='badge badge_after3'>활동사진</span></c:if>
-												<span><c:out value="${item.ctptTitle}"/></span>
-												<p>
-														<c:if test="${item.pseq eq item.ctptSeq}"><img src="http://img.youtube.com/vi/<c:out value="${item.originalName}"/>/mqdefault.jpg"/><br></c:if>
-												</p>
-												<br><p><c:out value="${item.ctptContent}"/></p>
-											</div>
-												<div class="footer mt-3" style="cursor: default;">
-													<i class="fa-regular fa-comment">2</i>&nbsp;
-													<i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}"/></i>&nbsp;
-													<i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}"/></i>&nbsp;
-													<i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}"/></i>
-												</div>
+						<form id="postList" name="postList" method="post">
+							<input type="hidden" id="ctcsSeq" name="ctcsSeq">
+							<input type="hidden" id=ctptSeq name="ctptSeq">
+							<input type="hidden" id="mmSeq" name="mmSeq">
+							<div class="card shadow mb-4 ">
+								<c:choose>
+									<c:when test="${fn:length(list) eq 0}">
+										<div class="container_base">
+											<div class="homework list mt-5 mb-5">영상이 없습니다!</div>
 										</div>
-									</div>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${list}" var="item" varStatus="status">
+											<div class="container_base">
+												<div class="homework list">
+													<div class="header" style="cursor: default;">
+														<div class="profile_box">
+															<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+																<c:if test="${item.ctptWriter eq itemMember.ctcmSeq and itemMember.path ne null}">
+																	<span>
+																		<img class="profile" src="/resources/uploaded/${ctcsSeq }/${itemMember.ctcmSeq}/${itemMember.ctcmProfile}" onerror="this.src='/resources/uploaded/common/profile2.png'" />
+																	</span>
+																</c:if>
+															</c:forEach>
+														</div>
+														<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+															<c:if test="${item.ctptWriter eq itemMember.ctcmSeq}">
+																<span>
+																	<c:out value="${itemMember.ctcmName}" />
+																</span>
+															</c:if>
+														</c:forEach>
+														<span>
+															<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+														</span>
+														<span>
+															조회수:
+															<c:out value="${item.ctptView}" />
+														</span>
+													</div>
+													<div class="body mt-2 mb-5" style="cursor: pointer;" onclick="location.href='javascript:goView(<c:out value="${item.ctptSeq}"/>)'">
+														<c:if test="${item.ctboTypeCd eq 19}">
+															<span class='badge badge_graded'>자유공간</span>
+														</c:if>
+														<c:if test="${item.ctboTypeCd eq 20}">
+															<span class='badge badge_alreadyend'>학습자료</span>
+														</c:if>
+														<c:if test="${item.ctboTypeCd eq 21}">
+															<span class='badge badge_after3'>활동사진</span>
+														</c:if>
+														<span>
+															<c:out value="${item.ctptTitle}" />
+														</span>
+														<p>
+															<c:if test="${item.pseq eq item.ctptSeq}">
+																<img src="http://img.youtube.com/vi/<c:out value="${item.originalName}"/>/mqdefault.jpg" />
+																<br>
+															</c:if>
+														</p>
+														<br>
+														<p>
+															<c:out value="${item.ctptContent}" />
+														</p>
+													</div>
+													<div class="footer mt-3" style="cursor: default;">
+														<i class="fa-regular fa-comment">2</i>&nbsp; <i class="fa-regular fa-thumbs-up"> <c:out value="${item.ctptLike1}" /></i>&nbsp; <i class="fa-solid fa-check"> <c:out value="${item.ctptLike2}" /></i>&nbsp; <i class="fa-solid fa-question"> <c:out value="${item.ctptLike3}" /></i>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</form>
 					</div>
-					</form>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
-</div>
 
 
 
@@ -139,42 +160,45 @@
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 
-<script type="text/javascript">
-
-goView = function(seq){
-	$("#ctptSeq").val(seq);
-	$("#postList").attr("action","/member/class/common/postview");
-	$("#postList").submit();
-}
-
-$("#btnLogout").on("click", function(){
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/member/logoutProc"
-		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/";
-			} else {
-				// by pass
-			}
+	<script type="text/javascript">
+		goView = function(seq) {
+			$("#ctptSeq").val(seq);
+			$("#postList").attr("action", "/member/class/common/postview");
+			$("#postList").submit();
 		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});	
-});
-</script>
+
+		$("#btnLogout").on(
+				"click",
+				function() {
+
+					$.ajax({
+						async : true,
+						cache : false,
+						type : "post",
+						url : "/member/logoutProc"
+						/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+						,
+						success : function(response) {
+							if (response.rt == "success") {
+								location.href = "/";
+							} else {
+								// by pass
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							alert("ajaxUpdate " + jqXHR.textStatus + " : "
+									+ jqXHR.errorThrown);
+						}
+					});
+				});
+	</script>
 
 
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-	
+
 </html>

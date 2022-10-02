@@ -95,7 +95,7 @@
 
 </head>
 <body id="page-top">
-<c:set value="${checkLikeOrNot}" var="chkLike"/>
+	<c:set value="${checkLikeOrNot}" var="chkLike" />
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 		<%@ include file="/WEB-INF/views/member/include/classSidebar.jsp"%>
@@ -121,17 +121,26 @@
 								<c:if test="${item.ctboSeq eq 3}">
 									<span class='badge badge_after3'>활동사진</span>
 								</c:if>
-								<div class="title">
+								<div class="title d-flex justify-content-between">
 									<c:out value="${item.ctptTitle}" />
+									<c:if test = "${ctcmSeq eq item.ctptWriter}">
+										<form action = "/postdelete.do" method="post" id="deleteForm">
+											<input value="${item.ctptSeq}" type="hidden" name="ctptSeq">
+											<button type="button" class="btn btn-danger float-end" id="deleteBtn">삭제</button>
+										</form>
+									</c:if>
 								</div>
 							</div>
 							<div class="container_base">
 								<div class="writer row">
 									<div class="col-md-2 col-lg-1" id="classImg">
-											<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-												<c:if test="${item.ctptWriter eq itemMember.ctcmSeq and itemMember.path ne null}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}" style="border-radius: 18px; width: 35px; height: 35px;"/></span></c:if>
-											</c:forEach>
-										<!-- <img src="/resources/uploaded/common/profile2.png" width="45" height="45" style="border-radius: 7px;"> -->
+										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+											<c:if test="${item.ctptWriter eq itemMember.ctcmSeq and itemMember.path ne null}">
+												<span>
+													<img class="profile" src="/resources/uploaded/${ctcsSeq }/${itemMember.ctcmSeq}/${itemMember.ctcmProfile}" onerror="this.src='/resources/uploaded/common/profile2.png'" style="border-radius: 18px; width: 35px; height: 35px;" />
+												</span>
+											</c:if>
+										</c:forEach>
 									</div>
 									<div class="col-md-10 col-lg-11" id="classInfo">
 										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
@@ -156,46 +165,53 @@
 											<br>
 										</c:if>
 										<script>
-                                            // 2. This code loads the IFrame Player API code asynchronously.
-                                            var tag = document.createElement('script');
+											// 2. This code loads the IFrame Player API code asynchronously.
+											var tag = document
+													.createElement('script');
 
-                                            tag.src = "https://www.youtube.com/iframe_api";
-                                            var firstScriptTag = document.getElementsByTagName('script')[0];
-                                            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+											tag.src = "https://www.youtube.com/iframe_api";
+											var firstScriptTag = document
+													.getElementsByTagName('script')[0];
+											firstScriptTag.parentNode
+													.insertBefore(tag,
+															firstScriptTag);
 
-                                            // 3. This function creates an <iframe> (and YouTube player)
-                                            //    after the API code downloads.
-                                            var player;
-                                            function onYouTubeIframeAPIReady() {
-                                                player = new YT.Player('player', {
-                                                    height : '360',
-                                                    width : '640',
-                                                    videoId : '<c:out value="${ytb.originalName}"/>',
-                                                    events : {
-                                                        'onReady' : onPlayerReady,
-                                                        'onStateChange' : onPlayerStateChange
-                                                    }
-                                                });
-                                            }
-                                            // 4. The API will call this function when the video player is ready.
-                                            function onPlayerReady(event) {
-                                                event.target.playVideo();
-                                            }
+											// 3. This function creates an <iframe> (and YouTube player)
+											//    after the API code downloads.
+											var player;
+											function onYouTubeIframeAPIReady() {
+												player = new YT.Player(
+														'player',
+														{
+															height : '360',
+															width : '640',
+															videoId : '<c:out value="${ytb.originalName}"/>',
+															events : {
+																'onReady' : onPlayerReady,
+																'onStateChange' : onPlayerStateChange
+															}
+														});
+											}
+											// 4. The API will call this function when the video player is ready.
+											function onPlayerReady(event) {
+												event.target.playVideo();
+											}
 
-                                            // 5. The API calls this function when the player's state changes.
-                                            //    The function indicates that when playing a video (state=1),
-                                            //    the player should play for six seconds and then stop.
-                                            var done = false;
-                                            function onPlayerStateChange(event) {
-                                                if (event.data == YT.PlayerState.PLAYING && !done) {
+											// 5. The API calls this function when the player's state changes.
+											//    The function indicates that when playing a video (state=1),
+											//    the player should play for six seconds and then stop.
+											var done = false;
+											function onPlayerStateChange(event) {
+												if (event.data == YT.PlayerState.PLAYING
+														&& !done) {
 
-                                                    done = true;
-                                                }
-                                            }
-                                            function stopVideo() {
-                                                player.stopVideo();
-                                            }
-                                        </script>
+													done = true;
+												}
+											}
+											function stopVideo() {
+												player.stopVideo();
+											}
+										</script>
 
 										<c:out value="${item.ctptContent}" />
 
@@ -220,13 +236,18 @@
 								<c:forEach items="${replyList}" var="itemReply" varStatus="status">
 									<div class="comment row mt-2 mb-3">
 										<div class="col-md-2 col-lg-1" id="classImg">
-										<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-												<c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq and itemMember.path ne null}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}" style="border-radius: 18px; width: 35px; height: 35px;"/></span></c:if>
+											<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+												<c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq and itemMember.path ne null}">
+													<span>
+														<img class="profile" src="/resources/uploaded/${ctcsSeq }/${itemMember.ctcmSeq}/${itemMember.ctcmProfile}" alt="/resources/uploaded/common/profile2.png" style="border-radius: 18px; width: 35px; height: 35px;" />
+													</span>
+												</c:if>
 											</c:forEach>
 										</div>
 										<div class="col-md-10 col-lg-11" id="classInfo">
 											<form action="/replyUele" id="replyList" name="replyList" method="post">
-												<input type="hidden" id="ctptSeq" name="ctptSeq" value="${vo.ctptSeq}"> <input type="hidden" id="ctrpSeq" name="ctrpSeq" value="${vo.ctrpSeq}">
+												<input type="hidden" id="ctptSeq" name="ctptSeq" value="${vo.ctptSeq}">
+												<input type="hidden" id="ctrpSeq" name="ctrpSeq" value="${vo.ctrpSeq}">
 												<div>
 													<c:forEach items="${memberList}" var="itemMember" varStatus="status">
 														<b><c:if test="${itemReply.ctrpWriter eq itemMember.ctcmSeq }">
@@ -237,7 +258,8 @@
 													</c:forEach>
 													<c:if test="${ctcmSeq eq itemReply.ctrpWriter}">
 														<div class="dropdown no-arrow d-inline">
-															<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+															<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
 															</a>
 															<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
 																<a class="dropdown-item text-danger" href="javascript:goReplyUele(<c:out value="${itemReply.ctrpSeq}"/>)">댓글삭제</a>
@@ -258,14 +280,12 @@
 							</div>
 							<div class="container_base">
 								<form id="replyInst" name="replyInst" action="/member/class/common/replyInst" method="post">
-									<input type="hidden" id="ctptSeq" name="ctptSeq" value="<c:out value="${vo.ctptSeq}"/>"> <input type="hidden" id="ctrpWriter" name="ctrpWriter" value="<c:out value="${ctcmSeq}"/>">
+									<input type="hidden" id="ctptSeq" name="ctptSeq" value="<c:out value="${vo.ctptSeq}"/>">
+									<input type="hidden" id="ctrpWriter" name="ctrpWriter" value="<c:out value="${ctcmSeq}"/>">
 									<div class="comment_write row">
 										<div class="col-md-3 col-lg-2" id="classImg">
-											<c:if test="${ctPath eq null}">
-												<img class="profile" src="/resources/uploaded/common/profile2.png" style="border-radius: 18px; width: 35px; height: 35px;" />
-											</c:if>
 											<c:if test="${ctPath ne null}">
-												<img class="profile" src="${ctPath}${ctUuidName}" style="border-radius: 18px; width: 35px; height: 35px;" />
+												<img class="profile" src="/resources/uploaded/${ctcsSeq }/${ctcmSeq}/${ctcmProfile}" alt="/resources/uploaded/common/profile2.png" style="border-radius: 18px; width: 35px; height: 35px;" />
 											</c:if>
 											<div>${ctcmName}</div>
 										</div>
@@ -310,66 +330,79 @@
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 	<script type="text/javascript">
-        //좋아요 클릭시
+		//좋아요 클릭시
 
-        var ctptSeq = $("#ctptSeq").val();
-        var ctcmSeq = $("#ctcmSeq").val();
+		var ctptSeq = $("#ctptSeq").val();
+		var ctcmSeq = $("#ctcmSeq").val();
 
-        var sendData = {
-            "ctptSeq" : ctptSeq,
-            "ctcmSeq" : ctcmSeq
-        }
-        goReply = function() {
-            $("#replyInst").attr("action", "/member/class/common/replyInst");
-            $("#replyInst").submit();
-        }
+		var sendData = {
+			"ctptSeq" : ctptSeq,
+			"ctcmSeq" : ctcmSeq
+		}
+		goReply = function() {
+			$("#replyInst").attr("action", "/member/class/common/replyInst");
+			$("#replyInst").submit();
+		}
 
-        goReplyUele = function(seq) {
-            $("#ctrpSeq").val(seq);
-            $("#replyList").attr("action", "/replyUele");
-            $("#replyList").submit();
-        }
+		goReplyUele = function(seq) {
+			$("#ctrpSeq").val(seq);
+			$("#replyList").attr("action", "/replyUele");
+			$("#replyList").submit();
+		}
 
-        $("#btnLogout").on("click", function() {
+		$("#btnLogout").on(
+				"click",
+				function() {
 
-            $.ajax({
-                async : true,
-                cache : false,
-                type : "post",
-                url : "/member/logoutProc"
-                /* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
-                ,
-                success : function(response) {
-                    if (response.rt == "success") {
-                        location.href = "/";
-                    } else {
-                        // by pass
-                    }
-                },
-                error : function(jqXHR, textStatus, errorThrown) {
-                    alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-                }
-            });
-        });
+					$.ajax({
+						async : true,
+						cache : false,
+						type : "post",
+						url : "/member/logoutProc"
+						/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+						,
+						success : function(response) {
+							if (response.rt == "success") {
+								location.href = "/";
+							} else {
+								// by pass
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							alert("ajaxUpdate " + jqXHR.textStatus + " : "
+									+ jqXHR.errorThrown);
+						}
+					});
+				});
 
-        $("#totalLikes").on("click", function() {
-            $.ajax({
-                type : "POST",
-                url : "/modLike",
-                data : JSON.stringify(sendData),
-                contentType : "application/json;charset =utf-8",
-                success : function(res) {
-                    $("#totalLikes").html("&nbsp;" + res.total);
-                    if(res.check == 1){
-                    $("#totalLikes").attr("style","color:#00C896");
-                    }else{
-                        $("#totalLikes").removeAttr("style");
-                    }
-				
-                }
-            })
-        })
-    </script>
+		$("#totalLikes").on("click", function() {
+			$.ajax({
+				type : "POST",
+				url : "/modLike",
+				data : JSON.stringify(sendData),
+				contentType : "application/json;charset =utf-8",
+				success : function(res) {
+					$("#totalLikes").html("&nbsp;" + res.total);
+					if (res.check == 1) {
+						$("#totalLikes").attr("style", "color:#00C896");
+					} else {
+						$("#totalLikes").removeAttr("style");
+					}
+
+				}
+			})
+		})
+		
+		
+		$("#deleteBtn").on("click",function(){
+			if(confirm("정말 삭제하시겠어요?") == true){
+				$("#deleteForm").submit();
+			}else{
+				return false;
+			}
+			
+		})
+	</script>
 
 
 

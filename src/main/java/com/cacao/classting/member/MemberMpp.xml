@@ -43,7 +43,7 @@
 			AND mmSeq = #{mmSeq}
 	</select>
 
-	<insert id="insert">
+	<insert id="insert" parameterType="HashMap">
 		INSERT INTO Member(
 			mmAdminNy
 			,mmDormacyNy
@@ -67,6 +67,7 @@
 			,modDateTimeSvr
 			,regDateTime
 			,regDateTimeSvr
+			,mmProfile
 		) VALUES (
 			0
 			,0
@@ -90,6 +91,7 @@
 			,#{modDateTimeSvr}
 			,#{regDateTime}
 			,#{regDateTimeSvr}
+			,#{mmProfile}
 		)
 		<selectKey resultType="String" keyProperty="mmSeq"
 			order="AFTER">
@@ -123,6 +125,7 @@
 			,a.mmId
 			,a.mmName
 			,a.mmPassword
+			,a.mmProfile
 			,a.mmTeacherNy
 			,b.uuidName
 			,b.path
@@ -360,7 +363,6 @@
 			LEFT JOIN ctClassMember d on d.ctcsSeq = c.ctcsSeq
 		WHERE 1=1
 			AND b.ctboTypeCd = 25
-			AND a.ctptReservationNy = 0
 			<!-- AND a.ctcsSeq = #{ctcsSeq} -->
 	</select>
 
@@ -443,7 +445,6 @@
 			,regDateTime
 			,regDateTimeSvr
 		) values (
-
 			#{mmName}
 			,#{mmSchoolCd}
 			,#{mmGradeCd}

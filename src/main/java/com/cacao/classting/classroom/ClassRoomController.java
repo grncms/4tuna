@@ -1,16 +1,19 @@
 package com.cacao.classting.classroom;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,77 +22,111 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cacao.classting.common.constants.Constants;
 import com.cacao.classting.common.util.UtilDateTime;
-
+import com.cacao.classting.*;
 @Controller
 public class ClassRoomController {
-
+	static String defaultDir = System.getProperty("user.dir");
+	
+	static String IMG_DIRECTORY = defaultDir+"\\src\\main\\webapp\\resources\\uploaded";
+	
 	@Autowired
 	ClassRoomServiceImpl service;
 
 	private static final Logger logger = LoggerFactory.getLogger(ClassRoomController.class);
 
 	@RequestMapping(value = "/classStudentForm")
-	public String classStudentForm(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) {
+	public String classStudentForm(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 
 		return "member/classroom/student/classStudentForm";
 	}
 
 	@RequestMapping(value = "/classMemberView")
-	public String classMemberView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classMemberView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
+		
 		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq"));
 		System.out.println("vo.getCtcmSeq :" + vo.getCtcmSeq());
+		
 		vo.setMmSeq((String) httpSession.getAttribute("mmSeq"));
 		System.out.println("vo.getMmSeq :" + vo.getMmSeq());
+		
 		ClassRoom item = service.selectOneMemberClass(vo);
-
+		
+		
+		System.out.println("시스템경로 :" + System.getProperty("user.dir"));
 		model.addAttribute("item", item);
+		
 		System.out.println("item" + item);
 		System.out.println(vo.getCtcsSeq());
 		return "member/classroom/common/classMemberView";
 	}
 
-	@RequestMapping(value = "/updateClassMember")
-	public String updateClassMember(ClassRoom dto, HttpSession httpSession, ClassRoomVo vo,RedirectAttributes redirectAttributes) throws Exception  {
-		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq"));
-		httpSession.setAttribute("ctUuidName", dto.getUuidName());
-		httpSession.setAttribute("ctPath", dto.getPath());
+	@RequestMapping(value = "/updateClassMember.do")
+	public String updateClassMember(@RequestParam("ctcmName")String ctcmName,HttpSession httpSession, ClassRoomVo vo, RedirectAttributes redirectAttributes, MultipartHttpServletRequest mr) throws Exception {
+		String ctcsSeq = (String) httpSession.getAttribute("ctcsSeq");
+		String ctcmSeq = (String) httpSession.getAttribute("ctcmSeq");// 세션에서 클래스와 멤버의 seq 받아오기
 		
-		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq") );
-		redirectAttributes.addFlashAttribute("vo",vo);
 		
-		service.updateClassMember(dto);
+		vo.setCtcmSeq(ctcmSeq);
+		vo.setCtcsSeq(ctcsSeq); // vo 에 class와 member의 seq set
+		String ctcmProfile = upload(mr);
+		httpSession.setAttribute("profile", ctcmProfile );
+		System.out.println("시스템경로 :" + System.getProperty("user.dir"));
+		System.out.println("프로필 ogName:" + ctcmProfile );
+		
+		vo.setCtcmName(ctcmName);
+		vo.setCtcmProfile(ctcmProfile);
+		
+		httpSession.setAttribute("ctcmProfile", ctcmProfile);
+		//임시폴더에 저장되어 있는 이미파일을 업로드
+		if(ctcmProfile != null) {
+			File srcFile = new File(IMG_DIRECTORY + "\\" + "temp" + "\\" + ctcmProfile); //임시저장 폴더에 저장되어있는 파일 선택
+			File destFile = new File(IMG_DIRECTORY + "\\" + ctcsSeq + "\\" + ctcmSeq ); // 클래스 seq\\멤버 seq 폴더로 사진이동
+
+			File oldFile = new File(IMG_DIRECTORY + "\\" + ctcsSeq + "\\" + ctcmSeq + "\\" + ctcmProfile );
+			//같은 파일이 이미 존재할시 삭제
+			if(oldFile.exists()) {
+				oldFile.delete();
+				FileUtils.moveFileToDirectory(srcFile, destFile, true);
+			}else {
+				FileUtils.moveFileToDirectory(srcFile, destFile, true);
+			}
+		}
+		
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		service.updateClassMember(vo);
 		return "redirect:/classMain";
 	}
-	@RequestMapping(value = "/deleteClassMember") 
-	public String deleteClassMember(ClassRoomVo vo, HttpSession httpSession, RedirectAttributes redirectAttributes ) throws Exception {
+	
+
+	@RequestMapping(value = "/deleteClassMember")
+	public String deleteClassMember(ClassRoomVo vo, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		vo.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq"));
 		service.deleteClassMember(vo);
-		
-		
+
 		return "redirect:/main";
 	}
 
 	@RequestMapping(value = "/noticeBoard")
-	public String classNoticeList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classNoticeList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
 
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
-
+		
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
 
@@ -97,24 +134,17 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/adminClassList"/*  */)
-	public String adminClassList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String adminClassList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		System.out.println("UtilDateTime.nowLocalDateTime()" + UtilDateTime.nowLocalDateTime());
 		System.out.println("UtilDateTime.nowDate()" + UtilDateTime.nowDate());
 		System.out.println("UtilDateTime.nowString()" + UtilDateTime.nowString());
 
-		vo.setShDateStart(vo.getShDateStart() == null
-				? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL)
-				: UtilDateTime.addStringTime(vo.getShDateStart()));
-		vo.setShDateEnd(
-				vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
 
 		vo.setShOptionDate(vo.getShOptionDate() == null ? 0 : vo.getShOptionDate());
-		vo.setShDateStart(vo.getShDateStart() == null
-				? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL)
-				: UtilDateTime.add00TimeString(vo.getShDateStart()));
-		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString()
-				: UtilDateTime.addNowTimeString(vo.getShDateEnd()));
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.add00TimeString(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addNowTimeString(vo.getShDateEnd()));
 
 		int count = service.selectOneCount(vo);
 		vo.setParamsPaging(count);
@@ -131,8 +161,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/adminClassView")
-	public String adminClassView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String adminClassView(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		ClassRoom item = service.selectOneClass(vo);
 		model.addAttribute("item", item);
 
@@ -163,86 +192,29 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/classBoardUpload")
-	public String postUpload(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) {
-
+	public String postUpload(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
+			
 		return "member/classroom/common/classBoardUpload";
 	}
-
+	
 	@RequestMapping(value = "/member/classroom/common/classPostInst")
-	public String classPostInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, String temp, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classPostInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
-		System.out.println("dto.getCtptTitle(): " + dto.getCtptTitle());
-		System.out.println("dto.getCtptContent(): " + dto.getCtptContent());
-		httpSession.getAttribute("sessSeq");
-
-		// 로그인 세션값인 로그인아이디 정보를 가져와서 writer 에다가 세팅하는 작업입니다.
-		dto.setCtptWriter(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()));
-
-		// 임시저장인지 아닌지 확인하는 메서드
-		if (temp.equals("temp")) {
-			System.out.println("input 값 체크 : " + dto.toString());
-
-			dto.setCtptReservationNy(1);
-
-			int result = service.insertPost(dto);
-
-			vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-			System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
-
-			List<ClassRoom> memberList = service.selectListClassMember(vo);
-			model.addAttribute("memberList", memberList);
-
-			List<ClassRoom> list = service.selectListStorage(vo);
-			model.addAttribute("list", list);
-
-			return "member/classroom/common/classStorage";
-		} else {
-			System.out.println("input 값 체크 : " + dto.toString());
-			// 입력을 작동시킨다.
-			dto.setCtptReservationNy(0);
-			int result = service.insertPost(dto);
-
-			vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
-			System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
-
-//			게시물 리스트 불러오기
-			List<ClassRoom> list = service.selectListPost(vo);
-			model.addAttribute("list", list);
-
-//			pseq에 ctptseq 값 담기
-			String pseq = list.get(list.size() - 1).getCtptSeq();
-			dto.setPseq(pseq);
-//		유튜브 url 뒤 id값만 잘라서 넣기	
-			String name = dto.getOriginalName();
-			if (name.length() == 43) {
-				name = name.substring(32, 43);
-				dto.setOriginalName(name);
-				System.out.println("11111");
-			} else if (name.length() == 35) {
-				name = name.substring(24, 35);
-				System.out.println("22222");
-				dto.setOriginalName(name);
-			} else {
-				dto.setOriginalName(null);
-			}
-			service.insertUrl(dto);
-
-//			회원리스트 불러오기
-			List<ClassRoom> memberList = service.selectListClassMember(vo);
-			model.addAttribute("memberList", memberList);
-
-			System.out.println("result: " + result);
-
-			return "member/classroom/common/classMain";
-		}
+		service.insertPost(dto);
+		
+		return "redirect:/classMain";
 
 	}
+	
+	@RequestMapping(value="/postdelete.do")
+	public String postdelete(ClassRoomVo vo ,RedirectAttributes redirect) throws Exception{
+		service.deletePost(vo);
+		return "redirect:/classMain";
+	}
+	
 
 	@RequestMapping(value = "/classStorage")
-	public String classStorage(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classStorage(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -260,52 +232,53 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/classPostEdit")
-	public String classPostEdit3(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) {
+	public String classPostEdit3(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 
 		return "member/classroom/common/classPostEdit";
 	}
 
 	@RequestMapping(value = "/classSetting")
-	public String classSetting(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) {
+	public String classSetting(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 
 		return "member/classroom/teacher/classSetting";
 	}
 
 	@RequestMapping(value = "/chat")
-	public String chat(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession ) throws Exception {
-		String seq = (String)httpSession.getAttribute("ctcsSeq");
-		String memberSeq = (String)httpSession.getAttribute("ctcmSeq");
-		String memberName = (String)httpSession.getAttribute("ctcmName");
+	public String chat(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		String seq = (String) httpSession.getAttribute("ctcsSeq");
+		String memberSeq = (String) httpSession.getAttribute("ctcmSeq");
+		String memberName = (String) httpSession.getAttribute("ctcmName");
 		vo.setCtcmName(memberName);
 		vo.setCtcsSeq(seq);
 		vo.setCtcmSeq(memberSeq);
 		HashMap<String, String> countMsg = new HashMap<String, String>();
-		
+
 		countMsg.put("ctcsSeq", seq);
 		countMsg.put("ctmgReceiver", memberSeq);
 		List<ClassRoom> msgCount = service.countMsg(countMsg);
-		
-		
-		model.addAttribute("memberList",msgCount);
-		
-		
+
+		model.addAttribute("memberList", msgCount);
+
 		return "chat/chat";
 	}
 
 	@RequestMapping(value = "/classMain")
-	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession)
-			throws Exception {
-
-		if (vo.getCtcsSeq() != null) {
+	public String classMain(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+		System.out.println("클래스메인 ctcmSeq:" + vo.getCtcmSeq());
+		System.out.println("클래스메인 ctcsSeq:" + vo.getCtcsSeq());
+		System.out.println("클래스메인 세션 ctcsSeq:" + (String)httpSession.getAttribute("ctcsSeq"));
+		
+		
+		
+		if(httpSession.getAttribute("ctcsSeq") == null) {
 			httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
+		}else if(vo.getCtcsSeq() == null) {
+			vo.setCtcsSeq((String)httpSession.getAttribute("ctcsSeq"));
 		}
 
 		// 사이드바 구현을 위한
-		httpSession.setAttribute("ctcsSeq", vo.getCtcsSeq());
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
-
+		System.out.println("세션 ctcs 값 : " + httpSession.getAttribute("ctcsSeq"));
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 
@@ -323,6 +296,8 @@ public class ClassRoomController {
 		httpSession.setAttribute("teacherNy", rt.getCtcmTeacherNy());
 		httpSession.setAttribute("ctPath", rt.getPath());
 		httpSession.setAttribute("ctUuidName", rt.getUuidName());
+		httpSession.setAttribute("ctcmProfile", rt.getCtcmProfile());
+		httpSession.setAttribute("profilePath", IMG_DIRECTORY);
 
 //		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
@@ -332,6 +307,10 @@ public class ClassRoomController {
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
 
+//		카테고리 리스트 불러오기 && session에 binding
+		List<ClassRoom> categories = service.selectCategory(vo);
+		httpSession.setAttribute("categories",categories );
+		
 // 		동영상 가져오기		
 		List<ClassRoom> ytb = service.selectListClassPostUrl(vo);
 		model.addAttribute("ytb", ytb);
@@ -363,8 +342,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/classMemberList")
-	public String classMemberList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classMemberList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -376,8 +354,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/classMemberUele")
-	public String classMemberUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
+	public String classMemberUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.updateClassMemberDel(dto);
 
@@ -391,8 +368,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "/classInvitation")
-	public String classInvitation(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classInvitation(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -418,7 +394,7 @@ public class ClassRoomController {
 //		게시물 리스트 불러오기
 		List<ClassRoom> list = service.selectListPost(vo);
 		model.addAttribute("list", list);
-		
+
 //		회원리스트 불러오기
 		List<ClassRoom> memberList = service.selectListClassMember(vo);
 		model.addAttribute("memberList", memberList);
@@ -433,8 +409,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/common/postdatalist")
-	public String postdatalist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String postdatalist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -451,8 +426,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/common/postpicturelist")
-	public String postpicturelist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String postpicturelist(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -469,8 +443,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/teacher/homeworkreport")
-	public String homeworkReport(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String homeworkReport(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		dto.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		List<ClassRoom> homeworkList = service.selectListHomework(vo); // 클래스에 배부된 숙제 목록
@@ -532,8 +505,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/teacher/homeworklist")
-	public String homeworkList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String homeworkList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -548,8 +520,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/common/classVideoList")
-	public String videoList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession)
-			throws Exception {
+	public String videoList(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -564,8 +535,7 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/teacher/attendance")
-	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classattendance(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 		System.out.println("출석부 :" + httpSession.getAttribute("sessSeq"));
 		String classSeq = (String) httpSession.getAttribute("ctcsSeq");
 		vo.setCtcsSeq(classSeq);
@@ -653,8 +623,7 @@ public class ClassRoomController {
 				}
 
 			}
-			System.out.println("출석멤버: " + memberName + " 출석날짜:" + _tmp[0] + " , " + _tmp[1] + " , " + _tmp[2] + " , "
-					+ _tmp[3] + " , " + _tmp[4]);
+			System.out.println("출석멤버: " + memberName + " 출석날짜:" + _tmp[0] + " , " + _tmp[1] + " , " + _tmp[2] + " , " + _tmp[3] + " , " + _tmp[4]);
 
 			memberMap.put(memberName, _tmp);
 		}
@@ -708,7 +677,6 @@ public class ClassRoomController {
 		ClassRoom rt = service.selectOneClassPost(vo);
 		model.addAttribute("item", rt);
 
-//		동영상 url
 		ClassRoom ytb = service.selectOneClassPostUrl(vo);
 		model.addAttribute("ytb", ytb);
 
@@ -720,29 +688,26 @@ public class ClassRoomController {
 		List<ClassRoom> replyList = service.selectListReply(vo);
 		model.addAttribute("replyList", replyList);
 // 		좋아요 개수
-		dto.setCtcmSeq((String)httpSession.getAttribute("ctcmSeq"));
+		dto.setCtcmSeq((String) httpSession.getAttribute("ctcmSeq"));
 		int totalLikes = service.countLike(dto);
 		boolean checkLikeOrNot = false;
-		model.addAttribute("countLike",totalLikes);
+		model.addAttribute("countLike", totalLikes);
 		System.out.println("vo.getCtptSeq():" + vo.getCtptSeq());
-		
-		
+
 		System.out.println("checkLikes: " + service.checkLike(dto));
-		if(service.checkLike(dto) == 1) {
+		if (service.checkLike(dto) == 1) {
 			checkLikeOrNot = true;
-		}else {
+		} else {
 			checkLikeOrNot = false;
 		}
-		model.addAttribute("checkLikeOrNot",checkLikeOrNot);
-		
-		
+		model.addAttribute("checkLikeOrNot", checkLikeOrNot);
+
 		return "member/classroom/common/classPostView";
 	}
 
 	// 게시물 댓글
 	@RequestMapping(value = "member/class/common/replyInst")
-	public String replyInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession,
-			RedirectAttributes redirectAttributes) throws Exception {
+	public String replyInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -758,8 +723,7 @@ public class ClassRoomController {
 
 	// 게시물 댓글삭제
 	@RequestMapping(value = "/replyUele")
-	public String replyUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession,
-			RedirectAttributes redirectAttributes) throws Exception {
+	public String replyUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -776,8 +740,7 @@ public class ClassRoomController {
 
 //	과제게시물 
 	@RequestMapping(value = "member/class/common/homeworkPostView")
-	public String homeworkPostView(@ModelAttribute("dto") ClassRoom dto, @ModelAttribute("vo") ClassRoomVo vo,
-			Model model, HttpSession httpSession) throws Exception {
+	public String homeworkPostView(@ModelAttribute("dto") ClassRoom dto, @ModelAttribute("vo") ClassRoomVo vo, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		vo.setCthsWriter((String) httpSession.getAttribute("ctcmSeq"));
@@ -804,8 +767,7 @@ public class ClassRoomController {
 
 //	과제제출물 댓글입력
 	@RequestMapping(value = "/homeworkSubmitReplyInst2")
-	public String homeworkSubmitReplyInst2(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
+	public String homeworkSubmitReplyInst2(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -828,8 +790,7 @@ public class ClassRoomController {
 
 //	과제점수 업데이트
 	@RequestMapping(value = "member/class/common/submitScoreUpdt")
-	public String submitScoreUpdt(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+	public String submitScoreUpdt(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
 
 		service.updateHomeworkSubmitScore(dto);
 
@@ -844,8 +805,7 @@ public class ClassRoomController {
 
 //	모든과제
 	@RequestMapping(value = "member/class/common/homeworkview")
-	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String postHomeworkview(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
@@ -882,8 +842,7 @@ public class ClassRoomController {
 		System.out.println("vo.getCthpSeq() : " + vo.getCthpSeq());
 
 		httpSession.setAttribute("teacherNy", rt2.getCtcmTeacherNy());
-		System.out
-				.println("httpSession.setAttribute(\"ctcsName\", rt2.getCtcmTeacherNy()) : " + rt2.getCtcmTeacherNy());
+		System.out.println("httpSession.setAttribute(\"ctcsName\", rt2.getCtcmTeacherNy()) : " + rt2.getCtcmTeacherNy());
 
 //		homeworkPostView(학생화면)
 //		제출
@@ -897,8 +856,7 @@ public class ClassRoomController {
 
 //	과제게시물 댓글 입력
 	@RequestMapping(value = "/homeworkReplyInst")
-	public String homeworkReplyInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
+	public String homeworkReplyInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -920,8 +878,7 @@ public class ClassRoomController {
 
 //  과제게시물 댓글삭제
 	@RequestMapping(value = "/homeworkReplyUele")
-	public String homeworkReplyUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
+	public String homeworkReplyUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -938,8 +895,7 @@ public class ClassRoomController {
 
 //	과제제출물 댓글입력
 	@RequestMapping(value = "/homeworkSubmitReplyInst")
-	public String homeworkSubmitReplyInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
+	public String homeworkSubmitReplyInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -961,8 +917,7 @@ public class ClassRoomController {
 
 //  과제제출물 댓글삭제
 	@RequestMapping(value = "/homeworkSubmitReplyUele")
-	public String homeworkSubmitReplyUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
+	public String homeworkSubmitReplyUele(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -980,8 +935,7 @@ public class ClassRoomController {
 //	
 //	과제등록(선생님)
 	@RequestMapping(value = "/classHomeworkUpload")
-	public String classHomeworkUploaded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classHomeworkUploaded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -991,8 +945,7 @@ public class ClassRoomController {
 
 // 
 	@RequestMapping(value = "/classHomeworkUploadInst")
-	public String classHomeworkUploadInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			RedirectAttributes redirectAttributes) throws Exception {
+	public String classHomeworkUploadInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.insertHomeworkPost(dto);
 
@@ -1007,8 +960,7 @@ public class ClassRoomController {
 
 //	과제제출(학생)
 	@RequestMapping(value = "/classHomeworkSubmitUpload")
-	public String classHomeworkSubmitUpload(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classHomeworkSubmitUpload(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		System.out.println("vo.getCtcsSeq :" + vo.getCtcsSeq());
@@ -1023,8 +975,7 @@ public class ClassRoomController {
 
 //	과제제출(학생)
 	@RequestMapping(value = "/homeworkSubmitInst")
-	public String homeworkSubmitInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
+	public String homeworkSubmitInst(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.insertHomeworkSubmit(dto);
 
@@ -1039,8 +990,7 @@ public class ClassRoomController {
 
 //	본인이 제출한 과제 확인
 	@RequestMapping(value = "/classHomeworkPostView_student")
-	public String classHomeworkPostView_student(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classHomeworkPostView_student(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		vo.setCthsWriter((String) httpSession.getAttribute("ctcmSeq"));
@@ -1060,8 +1010,7 @@ public class ClassRoomController {
 
 //	본인이 제출한 과제 수정	
 	@RequestMapping(value = "/classHomeworkSubmitEdit")
-	public String classHomeworkSubmitEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classHomeworkSubmitEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		vo.setCtcsSeq((String) httpSession.getAttribute("ctcsSeq"));
 		vo.setCthsWriter((String) httpSession.getAttribute("ctcmSeq"));
@@ -1074,8 +1023,7 @@ public class ClassRoomController {
 
 //	
 	@RequestMapping(value = "/classHomeworkSubmitEditUpdt")
-	public String classHomeworkSubmitEditUpdt(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+	public String classHomeworkSubmitEditUpdt(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
 
 		service.updateHomeworkSubmit(dto);
 
@@ -1088,29 +1036,25 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/common/postedit")
-	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) throws Exception {
+	public String classPostEdit(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 		return "member/classroom/common/classPostEdit";
 	}
 
 	@RequestMapping(value = "member/class/common/postedit2")
-	public String classPostEdit2(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) {
+	public String classPostEdit2(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 
 		return "member/classroom/common/classPostEdit2";
 	}
 
 	@RequestMapping(value = "member/class/common/classGrade")
-	public String classGrade(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) {
+	public String classGrade(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 
 		return "member/classroom/common/classGrade";
 	}
 
 	@RequestMapping(value = "member/class/common/classGraded")
-	public String classGraded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession)
-			throws Exception {
+	public String classGraded(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
 
 //		System.out.println("여긴 graded");
 //		vo.setMmSeq((String) httpSession.getAttribute("sessSeq"));
@@ -1125,41 +1069,53 @@ public class ClassRoomController {
 	}
 
 	@RequestMapping(value = "member/class/common/classGradeStandby")
-	public String classGradeStandby(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model,
-			HttpSession httpSession) {
+	public String classGradeStandby(@ModelAttribute("vo") ClassRoomVo vo, ClassRoom dto, Model model, HttpSession httpSession) {
 
 		return "member/classroom/common/classGradeStandby";
 	}
-	
-	
+
 	@ResponseBody
-	@RequestMapping(value ="/modLike")
-	public Map checkLike(@RequestBody ClassRoom dto,Model model, HttpSession httpSession) throws Exception {
-		
+	@RequestMapping(value = "/modLike")
+	public Map checkLike(@RequestBody ClassRoom dto, Model model, HttpSession httpSession) throws Exception {
+
 		System.out.println("좋아요 누른 사람  ctcmSeq : " + dto.getCtcmSeq());
 		System.out.println("포스트seq : " + dto.getCtptSeq());
-		
-		Map<String,Integer> checkAndTotal = new HashMap(); 
-		
-		
-		if(service.checkLike(dto) == 0) {
+
+		Map<String, Integer> checkAndTotal = new HashMap();
+
+		if (service.checkLike(dto) == 0) {
 			service.addLike(dto);
-		}else {
+		} else {
 			service.deleteLike(dto);
 		}
 		int checkLike = service.checkLike(dto);
-		
+
 		int totalLikes = service.countLike(dto);
-		
+
 		checkAndTotal.put("check", checkLike);
 		checkAndTotal.put("total", totalLikes);
-		
-	
-		
-		
+
 		return checkAndTotal;
 	}
-	
-	
 
+	
+	
+	public static String upload(MultipartHttpServletRequest mpr) throws Exception {
+		Iterator<String> fileNames = mpr.getFileNames();
+		
+		String fileName = fileNames.next();
+		MultipartFile mFile = mpr.getFile(fileName);
+		
+		String ogFileName = mFile.getOriginalFilename();
+		
+		File file = new File(IMG_DIRECTORY + "\\" + "temp" + "\\" +fileName);
+		System.out.println("mfile의 사이즈는 :" + mFile.getSize());
+		if(mFile.getSize() !=0) {
+			if(!file.exists()) {
+				file.getParentFile().mkdirs();
+				mFile.transferTo(new File(IMG_DIRECTORY + "\\" + "temp" + "\\" + ogFileName));
+			}
+		}
+		return ogFileName;
+	}
 }

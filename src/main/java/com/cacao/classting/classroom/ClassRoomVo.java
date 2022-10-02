@@ -27,6 +27,7 @@ public class ClassRoomVo {
 		private Integer ctcmAlarmReactionNy;
 		private Integer ctcmDelNy;
 		private String mmSeq;
+		private String ctcmProfile;
 		
 		private String cthwSeq;
 		private String ctptSeq;
@@ -85,6 +86,7 @@ public class ClassRoomVo {
 		private Integer RNUM;
 		private int startRnumForMysql = 0;							// 쿼리 시작 row
 		
+		private Integer ctptNoticeNy;
 		
 		public int getTotalMembers() {
 			return totalMembers;
@@ -541,5 +543,21 @@ public class ClassRoomVo {
 			System.out.println("getEndRnumForOracle():" + endRnumForOracle);
 			System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
 			
+		}
+
+		public String getCtcmProfile() {
+			return ctcmProfile;
+		}
+
+		public void setCtcmProfile(String ctcmProfile) {
+			this.ctcmProfile = ctcmProfile;
+		}
+
+		public Integer getCtptNoticeNy() {
+			return ctptNoticeNy;
+		}
+
+		public void setCtptNoticeNy(Integer ctptNoticeNy) {
+			this.ctptNoticeNy = ctptNoticeNy;
 		}
 	}

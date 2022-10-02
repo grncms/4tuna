@@ -65,22 +65,27 @@
 									</div>
 									<div class="body">
 										<div class="attendance_bar">
-											<c:set var="rate" value="${attendRate }"/>
-											<div><c:out value="${rate }"/>%</div>
+											<c:set var="rate" value="${attendRate }" />
+											<div>
+												<c:out value="${rate }" />
+												%
+											</div>
 											<div class="progress">
 												<div class="progress-bar base_bgcolor" style="width:${rate}%" role="progressbar"></div>
 											</div>
 										</div>
 										<div class="attendance_text">
 											<div class="base_color">출석완료</div>
-											<div><c:out value="${totalAtt }"/></div>
+											<div>
+												<c:out value="${totalAtt }" />
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-								<!-- 	
+						<!-- 	
 						<div class="container_base_wrapper shadow">
 							<div class="container_base d-flex justify-content-center">
 								<div class="attendance_setdate">
@@ -91,7 +96,7 @@
 								</div>
 							</div>
 						</div>
-								 -->	 
+								 -->
 						<div class="container_base_wrapper shadow">
 							<div class="container_base p-0">
 								<div class="attendance_table table-responsive">
@@ -120,9 +125,13 @@
 													<td>
 														<div>
 															<div class="profile_box">
-															<c:forEach items="${memberList}" var="itemMember" varStatus="status">
-																<c:if test="${name eq itemMember.ctcmName}"><span><img class="profile" src="${itemMember.path}${itemMember.uuidName}"/></span></c:if>
-															</c:forEach>
+																<c:forEach items="${memberList}" var="itemMember" varStatus="status">
+																	<c:if test="${name eq itemMember.ctcmName}">
+																		<span>
+																			<img class="profile" src="/resources/uploaded/${ctcsSeq }/${itemMember.ctcmSeq}/${itemMember.ctcmProfile}" onerror="this.src='/resources/uploaded/common/profile2.png'" />
+																		</span>
+																	</c:if>
+																</c:forEach>
 															</div>
 															<span>
 																<c:out value="${name}" />
@@ -136,7 +145,7 @@
 															<c:when test="${empty value}">
 																<td>
 																	<div>
-																		<i class="fa-regular fa-circle-xmark fa-2x" style="color:red"></i>
+																		<i class="fa-regular fa-circle-xmark fa-2x" style="color: red"></i>
 																	</div>
 																</td>
 															</c:when>
@@ -183,35 +192,35 @@
 	<!-- Custom scripts for all pages-->
 	<script src="../../../../resources/common/js/sb-admin-2.min.js"></script>
 	<script type="text/javascript">
+		function aaa() {
 
-	
-function aaa(){
-	
-}
-	
-
-
-$("#btnLogout").on("click", function(){
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/member/logoutProc"
-		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/";
-			} else {
-				// by pass
-			}
 		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});	
-});
-</script>
+
+		$("#btnLogout").on(
+				"click",
+				function() {
+
+					$.ajax({
+						async : true,
+						cache : false,
+						type : "post",
+						url : "/member/logoutProc"
+						/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+						,
+						success : function(response) {
+							if (response.rt == "success") {
+								location.href = "/";
+							} else {
+								// by pass
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							alert("ajaxUpdate " + jqXHR.textStatus + " : "
+									+ jqXHR.errorThrown);
+						}
+					});
+				});
+	</script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
